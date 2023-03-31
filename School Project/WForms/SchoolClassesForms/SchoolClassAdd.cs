@@ -152,7 +152,7 @@ public partial class SchoolClassAdd : Form
             DateOnly.FromDateTime(dateTimePickerEndCourse.Value),
             TimeOnly.FromDateTime(dateTimePickerBeginHour.Value),
             TimeOnly.FromDateTime(dateTimePickerEndHour.Value),
-            "area:campos[8]",
+            "location:campos[8]",
             "type:campos[9]",
             "area:campos[10]",
             (int) numericUpDownTotalNumberEnrolledStudents.Value,
@@ -608,8 +608,10 @@ public partial class SchoolClassAdd : Form
         var nova =
             "Disciplinas selecionadas " +
             $"{newCoursesList.Count}\n";
-        foreach (var item in newCoursesList)
-            nova += string.Concat(values: $"{item.IdCourse} - {item.Name}\n");
+        nova = newCoursesList.Aggregate(
+            nova, (current, item) =>
+                current + string.Concat(
+                    values: $"{item.IdCourse} - {item.Name}\n"));
         MessageBox.Show(nova);
 
 

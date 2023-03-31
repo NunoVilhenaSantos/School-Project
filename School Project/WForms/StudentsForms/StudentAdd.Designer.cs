@@ -866,7 +866,7 @@ namespace School_Project.WForms.StudentsForms
             Padding = new Padding(20);
             StartPosition = FormStartPosition.CenterParent;
             Text = "Formulário Adicionar Estudante";
-            Load += WinFormStudentAdd_Load;
+            Load += WinFormLoading_Load;
             KeyDown += WinFormAdd_KeyDown;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhotoDisplay).EndInit();

@@ -30,8 +30,6 @@ public class Student : INotifyPropertyChanged
     //
     private static int _mCounter;
 
-    private static readonly List<string> Genreslist = new()
-        {"Male", "Female", "Non Binary", "Prefer not to say"};
 
     private string? _identificationNumber;
     private string? _taxIdentificationNumber;
@@ -56,6 +54,9 @@ public class Student : INotifyPropertyChanged
     public string? Phone { get; set; }
     public string? Email { get; set; }
     public bool Active { get; set; } = true;
+
+    public static readonly List<string> Genreslist = new()
+        {"Male", "Female", "Non Binary", "Prefer not to say"};
 
     public static readonly List<string> Genres = Genreslist;
 
