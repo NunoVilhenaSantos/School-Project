@@ -35,9 +35,6 @@ public partial class InitialWinForm : Form
         _context = new SchoolContext();
         //_context.Database.EnsureCreated();
 
-        //studentsGridView.AutoGenerateColumns = false;
-        //studentsGridView.DataSource = _context.Students.ToList();
-
         ChangeImageInButtons();
     }
 
@@ -160,7 +157,10 @@ public partial class InitialWinForm : Form
 
     private void ButtonCloseProgram_Click(object sender, EventArgs e)
     {
-        XFiles.StoreInFiles();
+        var xFilesMessages = XFiles.StoreInFiles();
+        MessageBox.Show(
+            "Esta é a mensagem que chegou do XFiles!\n\n" + xFilesMessages,
+            "Gravar ficheiros");
 
         Console.WriteLine("Testes de Debug");
 

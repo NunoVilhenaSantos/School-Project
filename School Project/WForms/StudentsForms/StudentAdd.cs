@@ -51,6 +51,10 @@ public partial class StudentAdd : Form
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
 
+        dateTimePickerBirthDate.Value = DateTime.Now.AddYears(-10);
+        dateTimePickerCCValidDate.Value = DateTime.Now.AddYears(10);
+
+
         //
         // initial update
         // count register and the list
@@ -94,8 +98,10 @@ public partial class StudentAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: V}) return;
-        ((TextBox) sender).Paste();
+        if (e is not { Modifiers: Keys.Control, KeyCode: V }) return;
+
+        ((TextBox)sender).Paste();
+
         Console.WriteLine("Testes de Debug");
     }
 
@@ -105,21 +111,21 @@ public partial class StudentAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Students.AddStudent(
-            (int) numericUpDownStudentID.Value,
-            textBoxStudentName.Text,
-            textBoxStudentLastName.Text,
-            textBoxStudentAddress.Text,
-            textBoxStudentPhone.Text,
+            (int)numericUpDownStudentID.Value,
+            textBoxName.Text,
+            textBoxLastName.Text,
+            textBoxAddress.Text,
+            textBoxPhone.Text,
             textBoxEmail.Text,
             true,
-            "",
+            comboBoxGenre.Text,
             DateOnly.FromDateTime(dateTimePickerBirthDate.Value),
-            "",
-            DateOnly.FromDateTime(DateTime.Now),
-            "",
-            "",
-            "",
-            "",
+            textBoxCC.Text,
+            DateOnly.FromDateTime(dateTimePickerCCValidDate.Value),
+            textBoxNIF.Text,
+            textBoxNationality.Text,
+            textBoxBirthPlace.Text,
+            _studentPhoto,
             0,
             DateOnly.FromDateTime(DateTime.Now),
             null
@@ -137,10 +143,10 @@ public partial class StudentAdd : Form
 
     private void ClearTextBoxes()
     {
-        textBoxStudentName.Clear();
-        textBoxStudentLastName.Clear();
-        textBoxStudentPhone.Clear();
-        textBoxStudentAddress.Clear();
+        textBoxName.Clear();
+        textBoxLastName.Clear();
+        textBoxPhone.Clear();
+        textBoxAddress.Clear();
     }
 
 
@@ -171,26 +177,26 @@ public partial class StudentAdd : Form
 
 
         if (
-            string.IsNullOrEmpty(textBoxStudentName.Text) ||
-            string.IsNullOrWhiteSpace(textBoxStudentName.Text))
+            string.IsNullOrEmpty(textBoxName.Text) ||
+            string.IsNullOrWhiteSpace(textBoxName.Text))
         {
             MessageBox.Show("Insira o Nome",
                 "Nome",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             valid = false;
-            textBoxStudentName.Select();
+            textBoxName.Select();
         }
 
 
         if (
-            string.IsNullOrEmpty(textBoxStudentLastName.Text) ||
-            string.IsNullOrWhiteSpace(textBoxStudentLastName.Text))
+            string.IsNullOrEmpty(textBoxLastName.Text) ||
+            string.IsNullOrWhiteSpace(textBoxLastName.Text))
         {
             MessageBox.Show("Insira o apelido do estudante",
                 "Apelido do Estudante",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             valid = false;
-            labelStudentLastName.Select();
+            labelLastName.Select();
         }
 
         return valid;
@@ -282,11 +288,11 @@ public partial class StudentAdd : Form
             char.IsLetter(e.KeyChar) || // validating if it's a letter
             char.IsSeparator(e.KeyChar) || // validating if it's a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if it's a whitespace
-            e.KeyChar is (char) Back or '.' or '\'' or '-'
-            // validating if it's a backspace
-            // validating if it's a dot
-            // validating if it's an apostrophe
-            // validating if it's a separator
+            e.KeyChar is (char)Back or '.' or '\'' or '-'
+        // validating if it's a backspace
+        // validating if it's a dot
+        // validating if it's an apostrophe
+        // validating if it's a separator
         )
             return;
         e.Handled = true;
@@ -297,7 +303,7 @@ public partial class StudentAdd : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Back) return;
         e.Handled = true;
     }
 
@@ -368,18 +374,18 @@ public partial class StudentAdd : Form
         List<Enrollment> enrollments = new();
 
         foreach (var c in Courses.ListCourses)
-        foreach (var t in checkedListBoxDisciplines.CheckedItems)
-            if (t is Course v && c.IdCourse == v.IdCourse)
-                enrollments.Add(
-                    new Enrollment
-                    {
-                        //Grade = 0,
-                        //StudentId = ,
-                        //Student = 0,
-                        CourseId = c.IdCourse,
-                        Course = c
-                    }
-                );
+            foreach (var t in checkedListBoxDisciplines.CheckedItems)
+                if (t is Course v && c.IdCourse == v.IdCourse)
+                    enrollments.Add(
+                        new Enrollment
+                        {
+                            //Grade = 0,
+                            //StudentId = ,
+                            //Student = 0,
+                            CourseId = c.IdCourse,
+                            Course = c
+                        }
+                    );
 
         /*
         //
@@ -466,7 +472,7 @@ public partial class StudentAdd : Form
 
         //Students.ListStudents[^1].Photo = fileDialog.FileName;
         _studentPhoto = fileDialog.FileName;
-        pictureBox1.ImageLocation = fileDialog.FileName;
+        pictureBoxPhotoDisplay.ImageLocation = fileDialog.FileName;
     }
 
     private void ButtonExit_Click(object sender, EventArgs e)
