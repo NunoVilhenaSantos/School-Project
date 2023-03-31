@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="ClassesFolder\TransparentTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UControl\ControleGuiaTransparente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="WForms\CoursesForms\DisciplineAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\CoursesForms\DisciplineEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\InitialForms\FormButtons1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\InitialForms\InitialWinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\InitialForms\MainWinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\JoelForms\CopyOfDisciplineAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\JoelForms\EditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\JoelForms\FormAbertura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\JoelForms\FormAdicionarNovoClt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\JoelForms\FormCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\SchoolClassesForms\SchoolClassAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\SchoolClassesForms\SchoolClassEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\StatisticsForms\ChartsWinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\StatisticsForms\ChartsWinForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\StatisticsForms\StudentDiscipline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\StudentsForms\StudentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\StudentsForms\StudentEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\StudentsForms\StudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

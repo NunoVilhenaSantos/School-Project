@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School Project", "School Project\School Project.csproj", "{94EF6099-89F7-41A9-A612-1543EBC54DD7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4831528B-D4F1-40A9-B348-38DF9976B26B} = {4831528B-D4F1-40A9-B348-38DF9976B26B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{4831528B-D4F1-40A9-B348-38DF9976B26B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{CCAB9907-4458-4C68-BD2B-74DAC2F7D8DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94EF6099-89F7-41A9-A612-1543EBC54DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94EF6099-89F7-41A9-A612-1543EBC54DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94EF6099-89F7-41A9-A612-1543EBC54DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94EF6099-89F7-41A9-A612-1543EBC54DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4831528B-D4F1-40A9-B348-38DF9976B26B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4831528B-D4F1-40A9-B348-38DF9976B26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4831528B-D4F1-40A9-B348-38DF9976B26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4831528B-D4F1-40A9-B348-38DF9976B26B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCAB9907-4458-4C68-BD2B-74DAC2F7D8DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAB9907-4458-4C68-BD2B-74DAC2F7D8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAB9907-4458-4C68-BD2B-74DAC2F7D8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAB9907-4458-4C68-BD2B-74DAC2F7D8DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

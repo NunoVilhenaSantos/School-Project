@@ -1,0 +1,52 @@
+﻿1;Ana;Ribeiro;;;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30
+2;Bruno;Ferreira;;;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30
+3;Catarina;Palma;;;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30
+4;Claudia;Passarinho;;
+5;Dário;Dias;;
+6;Diogo;Alves;;
+7;Diogo;Santana;;
+8;Duarte;Marques;;
+9;Filipe;Baptista;;
+10;Joel;Santo Rangel;;
+11;Jorge;Pinto;;
+12;Láercio;Rodrigues;;
+13;Licínio;Rosário;;
+14;Luis;Leopoldo;;
+15;Luis;Patricio;;
+16;Maria;Cristina;;
+17;Mariana;Oliveira;;
+18;Mariana;Leite;;
+19;Nuno;Vilhena Santos;;
+20;Pedro;Silva;;
+21;Reinaldo;Souza;;
+22;Ruben;Correia;;
+23;Simão;André;;
+24;Tatiane;Avellar;;
+25;-----------;-----------;;;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30
+26;Joel;Santo Rangel;;
+27;Nuno;Vilhena Santos;;
+28;-----------;-----------;;;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30
+29;Ana;Ribeiro;;
+30;Bruno;Ferreira;;
+31;Catarina;Palma;;
+32;Claudia;Passarinho;;
+33;Dário;Dias;;
+34;Diogo;Alves;;
+35;Diogo;Santana;;
+36;Duarte;Marques;;
+37;Filipe;Baptista;;
+38;Joel;Santo Rangel;;
+39;Jorge;Pinto;;
+40;Láercio;Rodrigues;;
+41;Licínio;Rosário;;
+42;Luis;Leopoldo;;
+43;Luis;Patricio;;
+44;Maria;Cristina;;
+45;Mariana;Oliveira;;
+46;Mariana;Leite;;
+47;Nuno;Vilhena Santos;;
+48;Pedro;Silva;;
+49;Reinaldo;Souza;;
+50;Ruben;Correia;;
+51;Simão;André;;
+52;Tatiane;Avellar;;

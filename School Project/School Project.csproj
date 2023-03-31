@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <RootNamespace>School_Project</RootNamespace>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>True</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Linq" Version="4.3.0"/>
+        <PackageReference Include="System.Linq.Expressions" Version="4.3.0"/>
+        <PackageReference Include="System.Linq.Queryable" Version="4.3.0"/>
+        <PackageReference Include="System.Xml.XDocument" Version="4.3.0"/>
+        <PackageReference Include="WinForms.DataVisualization" Version="1.8.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Properties\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Properties\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Properties\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="Properties\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Properties\Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Properties\DataSources\ClassLibrary.Course.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Courses.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Enrollment.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Enrollments.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.SchoolClass.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.SchoolContext.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.SchoolManaging.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Student.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Students.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Teacher.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Teachers.datasource"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="WFormSettings.Designer.cs">
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>WFormSettings.settings</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="WFormSettings.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>WFormSettings.Designer.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,5 @@
+﻿1;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;1;2;3;4;5;6;7;8;9
+2;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;10;11;12;13;14;15;16;17;18;19
+3;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;5;6;7;8;9;10;11;12;13;14;15;16
+4;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos
+5;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;1;2;3;4

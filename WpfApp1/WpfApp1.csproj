@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj"/>
+        <ProjectReference Include="..\School Project\School Project.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="WPF\ChartWpfPage1.xaml.cs"/>
+        <Compile Remove="WPF\StudentWpf.xaml.cs"/>
+        <Compile Remove="WPF\ChartWpfWindow.xaml.cs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Page Remove="WPF\ChartWpfWindow.xaml"/>
+        <Page Remove="WPF\ChartWpfPage1.xaml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="WPfAppSettings1.Designer.cs">
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>WPfAppSettings1.settings</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="WPfAppSettings1.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>WPfAppSettings1.Designer.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+</Project>
