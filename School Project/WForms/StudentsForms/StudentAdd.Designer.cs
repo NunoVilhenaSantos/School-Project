@@ -680,7 +680,7 @@ namespace School_Project.WForms.StudentsForms
             // comboBoxSearchList
             // 
             comboBoxSearchList.FormattingEnabled = true;
-            comboBoxSearchList.Location = new Point(28, 76);
+            comboBoxSearchList.Location = new Point(28, 73);
             comboBoxSearchList.Name = "comboBoxSearchList";
             comboBoxSearchList.Size = new Size(279, 23);
             comboBoxSearchList.TabIndex = 7;

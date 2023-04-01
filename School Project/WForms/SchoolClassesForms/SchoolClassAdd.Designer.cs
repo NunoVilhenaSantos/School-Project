@@ -41,6 +41,9 @@ namespace School_Project.WForms.SchoolClassesForms
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchoolClassAdd));
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             labelSchoolClassID = new Label();
             labelSchoolClassName = new Label();
             labelStudentLastName = new Label();
@@ -62,7 +65,6 @@ namespace School_Project.WForms.SchoolClassesForms
             labelTotalNumberEnrolledStudents = new Label();
             label5 = new Label();
             numericUpDownWorkingHours = new NumericUpDown();
-            buttonAddPhoto = new Button();
             checkedListBoxStudents = new CheckedListBox();
             tabPage1 = new TabPage();
             groupBox1 = new GroupBox();
@@ -75,12 +77,14 @@ namespace School_Project.WForms.SchoolClassesForms
             tabPage3 = new TabPage();
             chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            button7 = new Button();
             button6 = new Button();
             buttonPrint = new Button();
             panelBottom = new Panel();
+            comboBoxSearchList = new ComboBox();
             button4 = new Button();
+            comboBoxSearchOptions = new ComboBox();
             button9 = new Button();
+            buttonSearch = new Button();
             buttonEdit = new Button();
             buttonRemove = new Button();
             buttonClose = new Button();
@@ -88,6 +92,8 @@ namespace School_Project.WForms.SchoolClassesForms
             openFileDialog1 = new OpenFileDialog();
             printPreviewDialog1 = new PrintPreviewDialog();
             transparentTabControl1 = new TransparentTabControl();
+            tabPage4 = new TabPage();
+            dataGridView1 = new DataGridView();
             tableLayoutPanelStudentData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalCourses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSchoolClassID).BeginInit();
@@ -103,6 +109,8 @@ namespace School_Project.WForms.SchoolClassesForms
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             panelBottom.SuspendLayout();
             transparentTabControl1.SuspendLayout();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // labelSchoolClassID
@@ -360,27 +368,6 @@ namespace School_Project.WForms.SchoolClassesForms
             numericUpDownWorkingHours.TextAlign = HorizontalAlignment.Right;
             numericUpDownWorkingHours.ThousandsSeparator = true;
             // 
-            // buttonAddPhoto
-            // 
-            buttonAddPhoto.Anchor = AnchorStyles.None;
-            buttonAddPhoto.BackgroundImage = Resources.importar_foto;
-            buttonAddPhoto.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonAddPhoto.Cursor = Cursors.Hand;
-            buttonAddPhoto.FlatAppearance.BorderSize = 0;
-            buttonAddPhoto.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonAddPhoto.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonAddPhoto.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonAddPhoto.FlatStyle = FlatStyle.Flat;
-            buttonAddPhoto.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddPhoto.Location = new Point(17, 2);
-            buttonAddPhoto.Margin = new Padding(0);
-            buttonAddPhoto.Name = "buttonAddPhoto";
-            buttonAddPhoto.Size = new Size(125, 50);
-            buttonAddPhoto.TabIndex = 8;
-            buttonAddPhoto.TextAlign = ContentAlignment.MiddleRight;
-            buttonAddPhoto.UseVisualStyleBackColor = true;
-            buttonAddPhoto.Click += ButtonAddPhoto_Click;
-            // 
             // checkedListBoxStudents
             // 
             checkedListBoxStudents.Dock = DockStyle.Fill;
@@ -540,7 +527,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tabPage3.Padding = new Padding(10);
             tabPage3.Size = new Size(1416, 486);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "3 - Gráficos";
+            tabPage3.Text = "4 - Gráficos";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // chart2
@@ -575,25 +562,6 @@ namespace School_Project.WForms.SchoolClassesForms
             chart1.TabIndex = 6;
             chart1.Text = "chart1";
             // 
-            // button7
-            // 
-            button7.Anchor = AnchorStyles.None;
-            button7.BackgroundImage = Resources.pesquisar;
-            button7.BackgroundImageLayout = ImageLayout.Zoom;
-            button7.Cursor = Cursors.Hand;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatAppearance.CheckedBackColor = Color.Transparent;
-            button7.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button7.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button7.Location = new Point(170, 58);
-            button7.Name = "button7";
-            button7.Size = new Size(125, 50);
-            button7.TabIndex = 12;
-            button7.TextAlign = ContentAlignment.MiddleRight;
-            button7.UseVisualStyleBackColor = true;
-            // 
             // button6
             // 
             button6.Anchor = AnchorStyles.None;
@@ -606,7 +574,7 @@ namespace School_Project.WForms.SchoolClassesForms
             button6.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button6.Location = new Point(170, 2);
+            button6.Location = new Point(475, 57);
             button6.Name = "button6";
             button6.Size = new Size(125, 50);
             button6.TabIndex = 11;
@@ -625,7 +593,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonPrint.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonPrint.FlatStyle = FlatStyle.Flat;
             buttonPrint.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPrint.Location = new Point(604, 58);
+            buttonPrint.Location = new Point(603, 57);
             buttonPrint.Margin = new Padding(0);
             buttonPrint.Name = "buttonPrint";
             buttonPrint.Size = new Size(125, 50);
@@ -635,22 +603,32 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             // panelBottom
             // 
+            panelBottom.BorderStyle = BorderStyle.FixedSingle;
+            panelBottom.Controls.Add(comboBoxSearchList);
             panelBottom.Controls.Add(button4);
+            panelBottom.Controls.Add(comboBoxSearchOptions);
             panelBottom.Controls.Add(button9);
+            panelBottom.Controls.Add(buttonSearch);
             panelBottom.Controls.Add(button6);
-            panelBottom.Controls.Add(button7);
             panelBottom.Controls.Add(buttonEdit);
             panelBottom.Controls.Add(buttonRemove);
             panelBottom.Controls.Add(buttonClose);
             panelBottom.Controls.Add(buttonNew);
             panelBottom.Controls.Add(buttonPrint);
-            panelBottom.Controls.Add(buttonAddPhoto);
             panelBottom.Dock = DockStyle.Bottom;
             panelBottom.Location = new Point(20, 552);
             panelBottom.Margin = new Padding(0);
             panelBottom.Name = "panelBottom";
             panelBottom.Size = new Size(1424, 110);
             panelBottom.TabIndex = 1;
+            // 
+            // comboBoxSearchList
+            // 
+            comboBoxSearchList.FormattingEnabled = true;
+            comboBoxSearchList.Location = new Point(16, 72);
+            comboBoxSearchList.Name = "comboBoxSearchList";
+            comboBoxSearchList.Size = new Size(425, 23);
+            comboBoxSearchList.TabIndex = 38;
             // 
             // button4
             // 
@@ -664,13 +642,21 @@ namespace School_Project.WForms.SchoolClassesForms
             button4.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(1207, 2);
+            button4.Location = new Point(1206, 1);
             button4.Name = "button4";
             button4.Size = new Size(125, 50);
             button4.TabIndex = 13;
             button4.TextAlign = ContentAlignment.MiddleRight;
             button4.UseVisualStyleBackColor = true;
             button4.Click += ButtonAddStudents_Click;
+            // 
+            // comboBoxSearchOptions
+            // 
+            comboBoxSearchOptions.FormattingEnabled = true;
+            comboBoxSearchOptions.Location = new Point(153, 18);
+            comboBoxSearchOptions.Name = "comboBoxSearchOptions";
+            comboBoxSearchOptions.Size = new Size(288, 23);
+            comboBoxSearchOptions.TabIndex = 37;
             // 
             // button9
             // 
@@ -684,13 +670,33 @@ namespace School_Project.WForms.SchoolClassesForms
             button9.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button9.FlatStyle = FlatStyle.Flat;
             button9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button9.Location = new Point(925, 2);
+            button9.Location = new Point(924, 1);
             button9.Name = "button9";
             button9.Size = new Size(125, 50);
             button9.TabIndex = 14;
             button9.TextAlign = ContentAlignment.MiddleRight;
             button9.UseVisualStyleBackColor = true;
             button9.Click += ButtonAddCourses_Click;
+            // 
+            // buttonSearch
+            // 
+            buttonSearch.Anchor = AnchorStyles.None;
+            buttonSearch.BackgroundImage = Resources.pesquisar_negrito;
+            buttonSearch.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonSearch.Cursor = Cursors.Hand;
+            buttonSearch.FlatAppearance.BorderSize = 0;
+            buttonSearch.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonSearch.FlatStyle = FlatStyle.Flat;
+            buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearch.Location = new Point(16, 1);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(125, 50);
+            buttonSearch.TabIndex = 36;
+            buttonSearch.TextAlign = ContentAlignment.MiddleRight;
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += ButtonSearch_Click;
             // 
             // buttonEdit
             // 
@@ -704,7 +710,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonEdit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonEdit.FlatStyle = FlatStyle.Flat;
             buttonEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEdit.Location = new Point(604, 2);
+            buttonEdit.Location = new Point(603, 1);
             buttonEdit.Margin = new Padding(0);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(125, 50);
@@ -725,7 +731,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonRemove.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonRemove.FlatStyle = FlatStyle.Flat;
             buttonRemove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonRemove.Location = new Point(476, 2);
+            buttonRemove.Location = new Point(475, 1);
             buttonRemove.Name = "buttonRemove";
             buttonRemove.Size = new Size(125, 50);
             buttonRemove.TabIndex = 4;
@@ -745,7 +751,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonClose.FlatStyle = FlatStyle.Flat;
             buttonClose.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClose.Location = new Point(732, 58);
+            buttonClose.Location = new Point(731, 57);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(125, 50);
             buttonClose.TabIndex = 3;
@@ -765,7 +771,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonNew.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonNew.FlatStyle = FlatStyle.Flat;
             buttonNew.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNew.Location = new Point(732, 2);
+            buttonNew.Location = new Point(731, 1);
             buttonNew.Name = "buttonNew";
             buttonNew.Size = new Size(125, 50);
             buttonNew.TabIndex = 2;
@@ -791,6 +797,7 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             transparentTabControl1.Controls.Add(tabPage1);
             transparentTabControl1.Controls.Add(tabPage2);
+            transparentTabControl1.Controls.Add(tabPage4);
             transparentTabControl1.Controls.Add(tabPage3);
             transparentTabControl1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             transparentTabControl1.Location = new Point(20, 20);
@@ -801,6 +808,52 @@ namespace School_Project.WForms.SchoolClassesForms
             transparentTabControl1.SelectedIndex = 0;
             transparentTabControl1.Size = new Size(1424, 528);
             transparentTabControl1.TabIndex = 0;
+            transparentTabControl1.SelectedIndexChanged += TransparentTabControl1_SelectedIndexChanged;
+            transparentTabControl1.TabIndexChanged += TransparentTabControl1_TabIndexChanged;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(dataGridView1);
+            tabPage4.Location = new Point(4, 38);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(1416, 486);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "3 - Pesquisar";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(1416, 486);
+            dataGridView1.TabIndex = 0;
             // 
             // SchoolClassAdd
             // 
@@ -833,6 +886,8 @@ namespace School_Project.WForms.SchoolClassesForms
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             panelBottom.ResumeLayout(false);
             transparentTabControl1.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -872,18 +927,21 @@ namespace School_Project.WForms.SchoolClassesForms
         private Button buttonClose;
         private Button buttonNew;
         private DataGridView dataGridViewSchoolClasses;
-        private Button buttonAddPhoto;
         private Button buttonClear;
         private OpenFileDialog openFileDialog1;
         private PrintPreviewDialog printPreviewDialog1;
         private TableLayoutPanel tableLayoutPanel1;
         private Button buttonStore;
-        private Button button7;
         private Button button6;
         private Button button4;
         private Button button9;
         private NumericUpDown numericUpDownTotalCourses;
         private Label label6;
         private GroupBox groupBox1;
+        private ComboBox comboBoxSearchList;
+        private ComboBox comboBoxSearchOptions;
+        private Button buttonSearch;
+        private TabPage tabPage4;
+        private DataGridView dataGridView1;
     }
 }

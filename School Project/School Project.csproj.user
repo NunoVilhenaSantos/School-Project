@@ -46,6 +46,9 @@
     <Compile Update="WForms\SchoolClassesForms\SchoolClassEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="WForms\SchoolClassesForms\SchoolClassSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="WForms\StatisticsForms\ChartsWinForm.cs">
       <SubType>Form</SubType>
     </Compile>

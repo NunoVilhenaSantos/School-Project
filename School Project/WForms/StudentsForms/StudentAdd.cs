@@ -1,5 +1,5 @@
-﻿using ClassLibrary;
-using System.Reflection;
+﻿using System.Reflection;
+using ClassLibrary;
 using static System.Windows.Forms.Keys;
 
 namespace School_Project.WForms.StudentsForms;
@@ -7,13 +7,14 @@ namespace School_Project.WForms.StudentsForms;
 public partial class StudentAdd : Form
 {
     private readonly BindingSource _bSourceCourses = new();
+    private readonly BindingSource _bSourceSearchList = new();
+
+    private readonly BindingSource _bSourceSearchOptions = new();
     //
     // Global variables for the windows forms
     //
 
     private readonly BindingSource _bSourceStudents = new();
-    private readonly BindingSource _bSourceSearchOptions = new();
-    private readonly BindingSource _bSourceSearchList = new();
     private string _studentPhoto;
     private int _studentsCount;
 
@@ -157,11 +158,6 @@ public partial class StudentAdd : Form
 
     private void UpdateLists()
     {
-        //if (Students.ListStudents != null)
-        //    groupBoxStudentsList.Enabled = Students.ListStudents.Count != 0;
-        //if (Courses.ListCourses != null)
-        //    groupBoxDisciplinesList.Enabled = Courses.ListCourses.Count != 0;
-
         //
         //
         // binding section for data grids and checked lists 
@@ -176,16 +172,25 @@ public partial class StudentAdd : Form
         comboBoxGenre.DataSource = Student.Genreslist;
 
 
+        _bSourceStudents.ResetBindings(false);
+        _bSourceCourses.ResetBindings(false);
+
+        _bSourceStudents.ResetBindings(true);
+        _bSourceCourses.ResetBindings(true);
+
+
         // To display all the properties of the Student class in the comboBoxSearchOptions,
         // you can use reflection to get a list of the property names and set the DataSource
         // and DisplayMember properties of the combobox accordingly.
         // Here's an example code snippet to achieve this:
 
         _bSourceSearchOptions.DataSource = typeof(Student);
-        PropertyInfo[] properties = typeof(Student).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        var properties =
+            typeof(Student).GetProperties(BindingFlags.Public |
+                                          BindingFlags.Instance);
 
         List<string> propertyNames = new();
-        foreach (PropertyInfo property in properties)
+        foreach (var property in properties)
         {
             propertyNames.Add(property.Name);
         }
@@ -196,26 +201,36 @@ public partial class StudentAdd : Form
 
         //_bSourceSearchList.DataSource = Students.ConsultStudent;
         comboBoxSearchList.DataSource = _bSourceSearchList;
-        dataGridView2.DataContext = _bSourceSearchList;
+        dataGridView2.DataSource = _bSourceSearchList;
+        dataGridView2.AutoResizeColumns();
 
+        _bSourceSearchOptions.ResetBindings(false);
+        _bSourceSearchList.ResetBindings(false);
+
+        _bSourceSearchOptions.ResetBindings(true);
+        _bSourceSearchList.ResetBindings(true);
 
         dataGridView1.Refresh();
-        //dataGridView1.Update();
+        dataGridView1.Update();
+
+        dataGridView2.Refresh();
+        dataGridView2.Update();
 
         Console.WriteLine("Testes de Debug");
     }
 
-    private void ComboBoxSearchOptions_SelectedIndexChanged(object sender, EventArgs e)
+    private void ComboBoxSearchOptions_SelectedIndexChanged(object sender,
+        EventArgs e)
     {
         // Get the name of the selected property
-        string selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
+        var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
 
         // Create a new list to store the filtered results
         List<Student> filteredStudents = new();
 
-        foreach (Student student in Students.ListStudents)
+        var property = typeof(Student).GetProperty(selectedProperty);
+        foreach (var student in Students.ListStudents)
         {
-            PropertyInfo property = typeof(Student).GetProperty(selectedProperty);
             if (property == null || property.GetValue(student).ToString() == "")
                 continue;
 
@@ -486,26 +501,7 @@ public partial class StudentAdd : Form
                         }
                     );
 
-        /*
-        //
-        // debugging
-        //
-        var nova = "";
-        foreach (var item in enrollments)
-            nova += string.Concat(values: $"{item.IdCourse} - {item.Grade}\n");
-        MessageBox.Show(
-            "Disciplinas selecionadas: " +
-            $"{studentGrades.Count}");
-        MessageBox.Show($"Disciplinas selecionadas {nova}");
 
-
-        //
-        // end of the disciplines cycle
-        //
-
-        Students.ListStudents[rc].StudentCoursesGradesList =
-            studentGrades;
-        */
         UpdateLists();
 
         Console.WriteLine("Testes de Debug");
@@ -586,6 +582,5 @@ public partial class StudentAdd : Form
     private void ButtonSearch_Click(object sender, EventArgs e)
     {
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[2];
-
     }
 }

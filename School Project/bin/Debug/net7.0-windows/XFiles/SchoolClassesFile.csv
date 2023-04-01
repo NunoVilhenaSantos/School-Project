@@ -1,19 +1,97 @@
 ﻿IdSchoolClass;ClassAcronym;ClassName;StartDate;EndDate;StartHour;EndHour;Location;Type;Area;CoursesList
-1;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-2;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-3;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-4;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-5;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-6;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-7;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-8;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-9;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-10;TURMA-1;turma-1;30/03/2023;30/03/2024;19:00;23:00;area:campos[8];type:campos[9];area:campos[10];1;2;3;4;5;6;7;8;9
-11;TURMA-2;turma-22;30/03/2023;30/03/2024;20:00;21:00;area:campos[8];type:campos[9];area:campos[10];2
-12;TURMA-3;turma-3;30/03/2023;30/03/2024;19:00;23:00;area:campos[8];type:campos[9];area:campos[10];10;11;12;13;14;15
-13;TURMA-4;turma-4;30/03/2023;30/03/2024;20:00;21:00;area:campos[8];type:campos[9];area:campos[10];14;15;16;17;18;19;20;21
-14;TURMA-5;turma-55;30/03/2023;30/03/2024;19:00;23:00;area:campos[8];type:campos[9];area:campos[10];20;21;22;23;24;25;26
-15;TURMA-6;turma-6;31/03/2023;31/03/2024;19:00;23:00;area:campos[8];type:campos[9];area:campos[10];
-16;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-17;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
-18;ClassAcronym;ClassName;01/01/0001;01/01/0001;00:00;00:00;Location;Type;Area;
+1;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:23;08:23;Location;Type;Area;
+2;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:20;08:20;Location;Type;Area;
+3;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:19;08:19;Location;Type;Area;
+4;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:17;08:17;Location;Type;Area;
+5;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:13;08:13;Location;Type;Area;
+6;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:12;08:12;Location;Type;Area;
+7;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:07;08:07;Location;Type;Area;
+8;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:02;08:02;Location;Type;Area;
+9;ClassAcronym;ClassName;01/04/2022;01/04/2024;00:01;08:01;Location;Type;Area;
+10;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:57;07:57;Location;Type;Area;
+11;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:54;07:54;Location;Type;Area;
+12;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:52;07:52;Location;Type;Area;
+13;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:50;07:50;Location;Type;Area;
+14;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:48;07:48;Location;Type;Area;
+15;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:46;07:46;Location;Type;Area;
+16;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:42;07:42;Location;Type;Area;
+17;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:42;07:42;Location;Type;Area;
+18;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:41;07:41;Location;Type;Area;
+19;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:40;07:40;Location;Type;Area;
+20;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:38;07:38;Location;Type;Area;
+21;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:35;07:35;Location;Type;Area;
+22;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:35;07:35;Location;Type;Area;
+23;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:27;07:27;Location;Type;Area;
+24;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:24;07:24;Location;Type;Area;
+25;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:20;07:20;Location;Type;Area;
+26;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:20;07:20;Location;Type;Area;
+27;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:15;07:15;Location;Type;Area;
+28;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:12;07:12;Location;Type;Area;
+29;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:09;07:09;Location;Type;Area;
+30;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:08;07:08;Location;Type;Area;
+31;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:07;07:07;Location;Type;Area;
+32;ClassAcronym;ClassName;01/04/2022;01/04/2024;23:04;07:04;Location;Type;Area;
+33;ClassAcronym;ClassName;01/04/2022;01/04/2024;22:48;06:48;Location;Type;Area;
+34;CLASSACRONYM;ClassName;01/04/2022;01/04/2024;22:00;06:00;Location;Type;Area;
+35;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:40;05:40;Location;Type;Area;
+36;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:39;05:39;Location;Type;Area;
+37;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;2;3;4;5;6;7;8;9;10
+38;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+39;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+40;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];4;6;7
+41;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+42;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+43;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+44;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+45;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+46;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+47;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+48;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+49;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+50;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+51;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+52;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+53;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+54;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+55;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+56;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+57;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+58;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+59;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+60;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+61;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+62;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+63;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+64;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+65;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+66;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+67;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+68;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+69;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+70;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+71;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+72;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+73;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+74;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+75;TURMA-1;turma-1;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;2;3;4;5;6;7;8;9
+76;TURMA-2;turma-22;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2
+77;TURMA-3;turma-3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];10;11;12;13;14;15
+78;TURMA-4;turma-4;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];14;15;16;17;18;19;20;21
+79;TURMA-5;turma-55;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];20;21;22;23;24;25;26
+80;TURMA-6;turma-6;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+81;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+82;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+83;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+84;TESTE;teste;01/04/2022;01/04/2024;21:33;05:33;campos[7];campos[8];campos[9];
+85;2-TESTE;segundo teste;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+86;TESTE 3;teste numero 3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+87;TESTE-2;6546;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+88;ERWER;werwer;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+89;WERWER;novo teste;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+90;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+91;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+92;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+93;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+94;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+95;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+96;;;01/04/2022;01/04/2024;21:33;05:33;;;;
