@@ -680,7 +680,7 @@ public static class XFiles
                     studentId,
                     //Student = student,
                     courseId
-                //Course = course
+                    //Course = course
                 );
             }
 
@@ -767,6 +767,16 @@ public static class XFiles
                 _ = DateOnly.TryParse(campos[4], out var endDate);
                 _ = TimeOnly.TryParse(campos[5], out var startHour);
                 _ = TimeOnly.TryParse(campos[6], out var endHour);
+
+                if (startDate == default)
+                    startDate = DateOnly.FromDateTime(DateTime.Now)
+                        .AddYears(-1);
+                if (endDate == default)
+                    endDate = DateOnly.FromDateTime(DateTime.Now).AddYears(1);
+
+                if (startHour == default)
+                    startHour = TimeOnly.FromDateTime(DateTime.Now).AddHours(9);
+                if (endHour == default) endHour = startHour.AddHours(8);
 
                 SchoolClasses.AddSchoolClass(
                     id, campos[1], campos[2],
