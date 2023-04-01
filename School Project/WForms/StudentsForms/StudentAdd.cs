@@ -1,4 +1,5 @@
 ﻿using ClassLibrary;
+using System.Reflection;
 using static System.Windows.Forms.Keys;
 
 namespace School_Project.WForms.StudentsForms;
@@ -11,6 +12,8 @@ public partial class StudentAdd : Form
     //
 
     private readonly BindingSource _bSourceStudents = new();
+    private readonly BindingSource _bSourceSearchOptions = new();
+    private readonly BindingSource _bSourceSearchList = new();
     private string _studentPhoto;
     private int _studentsCount;
 
@@ -29,21 +32,6 @@ public partial class StudentAdd : Form
         if (Students.ListStudents.Count > 0 && Students.ListStudents != null)
             _studentsCount = Students.ListStudents[^1].IdStudent;
 
-        /*
-         *
-         * binding section for data grids and checked lists 
-         * 
-         */
-        _bSourceStudents.DataSource = Students.ListStudents;
-
-        dataGridView1.DataSource = _bSourceStudents;
-        dataGridView1.AutoResizeColumns();
-
-        _bSourceCourses.DataSource = Courses.ListCourses;
-        checkedListBoxDisciplines.DataSource = _bSourceCourses;
-
-        comboBoxGenre.DataSource = Student.Genreslist;
-
         //
         // make the transparent tab-control transparent
         // transparentTabControl1.MakeTransparent();
@@ -51,10 +39,8 @@ public partial class StudentAdd : Form
         transparentTabControl1.MakeTransparent();
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
-
         dateTimePickerBirthDate.Value = DateTime.Now.AddYears(-10);
         dateTimePickerCCValidDate.Value = DateTime.Now.AddYears(10);
-
 
         //
         // initial update
@@ -99,9 +85,9 @@ public partial class StudentAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: V}) return;
+        if (e is not { Modifiers: Keys.Control, KeyCode: V }) return;
 
-        ((TextBox) sender).Paste();
+        ((TextBox)sender).Paste();
 
         Console.WriteLine("Testes de Debug");
     }
@@ -112,10 +98,12 @@ public partial class StudentAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Students.AddStudent(
-            (int) numericUpDownStudentID.Value,
+            (int)numericUpDownStudentID.Value,
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
+            textBox2.Text,
+            textBox1.Text,
             textBoxPhone.Text,
             textBoxEmail.Text,
             true,
@@ -144,10 +132,26 @@ public partial class StudentAdd : Form
 
     private void ClearTextBoxes()
     {
+        //(int)numericUpDownStudentID.Value;
         textBoxName.Clear();
         textBoxLastName.Clear();
-        textBoxPhone.Clear();
         textBoxAddress.Clear();
+        textBox2.Clear();
+        textBox1.Clear();
+        textBoxPhone.Clear();
+        textBoxEmail.Clear();
+        //true;
+        //comboBoxGenre.Items.Clear();
+        //DateOnly.FromDateTime(dateTimePickerBirthDate.Value);
+        textBoxCC.Clear();
+        //DateOnly.FromDateTime(dateTimePickerCCValidDate.Value);
+        textBoxNIF.Clear();
+        textBoxNationality.Clear();
+        textBoxBirthPlace.Clear();
+        _studentPhoto = string.Empty;
+        //0;
+        //DateOnly.FromDateTime(DateTime.Now);
+        //null;
     }
 
 
@@ -158,12 +162,106 @@ public partial class StudentAdd : Form
         //if (Courses.ListCourses != null)
         //    groupBoxDisciplinesList.Enabled = Courses.ListCourses.Count != 0;
 
+        //
+        //
+        // binding section for data grids and checked lists 
+        // 
+        //
+        _bSourceStudents.DataSource = Students.ListStudents;
+        dataGridView1.DataSource = _bSourceStudents;
+        dataGridView1.AutoResizeColumns();
+
+        _bSourceCourses.DataSource = Courses.ListCourses;
+        checkedListBoxDisciplines.DataSource = _bSourceCourses;
+        comboBoxGenre.DataSource = Student.Genreslist;
+
+
+        // To display all the properties of the Student class in the comboBoxSearchOptions,
+        // you can use reflection to get a list of the property names and set the DataSource
+        // and DisplayMember properties of the combobox accordingly.
+        // Here's an example code snippet to achieve this:
+
+        _bSourceSearchOptions.DataSource = typeof(Student);
+        PropertyInfo[] properties = typeof(Student).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+        List<string> propertyNames = new();
+        foreach (PropertyInfo property in properties)
+        {
+            propertyNames.Add(property.Name);
+        }
+
+        comboBoxSearchOptions.DataSource = propertyNames;
+        comboBoxSearchOptions.DisplayMember = "ToString()";
+
+
+        //_bSourceSearchList.DataSource = Students.ConsultStudent;
+        comboBoxSearchList.DataSource = _bSourceSearchList;
+        dataGridView2.DataContext = _bSourceSearchList;
+
+
         dataGridView1.Refresh();
         //dataGridView1.Update();
 
         Console.WriteLine("Testes de Debug");
     }
 
+    private void ComboBoxSearchOptions_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        // Get the name of the selected property
+        string selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
+
+        // Create a new list to store the filtered results
+        List<Student> filteredStudents = new();
+
+        foreach (Student student in Students.ListStudents)
+        {
+            PropertyInfo property = typeof(Student).GetProperty(selectedProperty);
+            if (property == null || property.GetValue(student).ToString() == "")
+                continue;
+
+            filteredStudents.Add(student);
+        }
+
+        _bSourceSearchList.DataSource = filteredStudents;
+        //_bSourceSearchList.DataSource = Students.ListStudents.Select(s => s.GetType().GetProperty(selectedProperty).GetValue(s)).ToList();
+
+        comboBoxSearchList.Refresh();
+        dataGridView2.Refresh();
+    }
+
+
+    /*
+    private void ComboBoxSearchOptions_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        // Get the name of the selected property
+        string propertyName = comboBoxSearchOptions.SelectedItem.ToString();
+
+        // Get the PropertyInfo for the selected property
+        PropertyInfo propertyInfo = typeof(Student).GetProperty(propertyName);
+
+        // Create a new list to store the filtered results
+        List<Student> filteredList = new();
+
+        // Iterate through each student in the ConsultStudent list
+        foreach (Student student in Students.ListStudents)
+        {
+            // Get the value of the selected property for the current student
+            object propertyValue = propertyInfo.GetValue(student);
+
+            // If the property value is not null and matches the search term
+            //if (propertyValue != null && propertyValue.ToString().Contains(searchTerm))
+            //if (propertyValue != null && propertyValue.ToString().Contains("teste"))
+            if (propertyValue != null && propertyValue.ToString().Contains("t"))
+            {
+                // Add the student to the filtered list
+                filteredList.Add(student);
+            }
+        }
+
+        // Set the DataSource of the search list to the filtered list
+        _bSourceSearchList.DataSource = filteredList;
+    }
+    */
 
     private void UpdateLabelsCounts()
     {
@@ -289,11 +387,11 @@ public partial class StudentAdd : Form
             char.IsLetter(e.KeyChar) || // validating if it's a letter
             char.IsSeparator(e.KeyChar) || // validating if it's a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if it's a whitespace
-            e.KeyChar is (char) Back or '.' or '\'' or '-'
-            // validating if it's a backspace
-            // validating if it's a dot
-            // validating if it's an apostrophe
-            // validating if it's a separator
+            e.KeyChar is (char)Back or '.' or '\'' or '-'
+        // validating if it's a backspace
+        // validating if it's a dot
+        // validating if it's an apostrophe
+        // validating if it's a separator
         )
             return;
         e.Handled = true;
@@ -304,7 +402,7 @@ public partial class StudentAdd : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Back) return;
         e.Handled = true;
     }
 
@@ -375,18 +473,18 @@ public partial class StudentAdd : Form
         List<Enrollment> enrollments = new();
 
         foreach (var c in Courses.ListCourses)
-        foreach (var t in checkedListBoxDisciplines.CheckedItems)
-            if (t is Course v && c.IdCourse == v.IdCourse)
-                enrollments.Add(
-                    new Enrollment
-                    {
-                        //Grade = 0,
-                        //StudentId = ,
-                        //Student = 0,
-                        CourseId = c.IdCourse,
-                        Course = c
-                    }
-                );
+            foreach (var t in checkedListBoxDisciplines.CheckedItems)
+                if (t is Course v && c.IdCourse == v.IdCourse)
+                    enrollments.Add(
+                        new Enrollment
+                        {
+                            //Grade = 0,
+                            //StudentId = ,
+                            //Student = 0,
+                            CourseId = c.IdCourse,
+                            Course = c
+                        }
+                    );
 
         /*
         //
@@ -422,47 +520,46 @@ public partial class StudentAdd : Form
         //
 
 
-        if (dataGridView1.SelectedRows != null)
+        if (dataGridView1.SelectedRows == null) return;
+
+        var rc = -1;
+        var rowText = string.Empty;
+
+        foreach (DataGridViewRow row in dataGridView1.SelectedRows)
         {
-            var rc = -1;
-            var rowText = string.Empty;
-
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                //for find the row index number
-                rc = dataGridView1.CurrentCell.RowIndex;
-                rowText += row.Cells[rc].Value + ", ";
-                dataGridView1.Rows.RemoveAt(row.Index);
-            }
-
-            MessageBox.Show("Current Row Index is = " + rowText);
-
             //for find the row index number
             rc = dataGridView1.CurrentCell.RowIndex;
-            MessageBox.Show("Current Row Index is = " + rc);
-
-            var studentToView = Students.ListStudents[rc];
-
-
-            if (studentToView?.Enrollments != null)
-                foreach (var enrollment in studentToView.Enrollments)
-                    //
-                    // subtract 1 from the Courses list,
-                    // because the list starts at 1 and
-                    // all other objects start from 0
-                    //
-                    checkedListBoxDisciplines.SetItemChecked(
-                        enrollment.CourseId - 1, true);
-
-            // update the numericUpDownLabel with  the value
-            numericUpDownTotalWorkLoad.Value =
-                Students.ListStudents[^1].TotalWorkHoursLoad;
-
-            numericUpDownTotalWorkLoad.Value =
-                studentToView.TotalWorkHoursLoad;
-
-            Console.WriteLine("Testes de Debug");
+            rowText += row.Cells[rc].Value + ", ";
+            dataGridView1.Rows.RemoveAt(row.Index);
         }
+
+        MessageBox.Show("Current Row Index is = " + rowText);
+
+        //for find the row index number
+        rc = dataGridView1.CurrentCell.RowIndex;
+        MessageBox.Show("Current Row Index is = " + rc);
+
+        var studentToView = Students.ListStudents[rc];
+
+
+        if (studentToView?.Enrollments != null)
+            foreach (var enrollment in studentToView.Enrollments)
+                //
+                // subtract 1 from the Courses list,
+                // because the list starts at 1 and
+                // all other objects start from 0
+                //
+                checkedListBoxDisciplines.SetItemChecked(
+                    enrollment.CourseId - 1, true);
+
+        // update the numericUpDownLabel with  the value
+        numericUpDownTotalWorkLoad.Value =
+            Students.ListStudents[^1].TotalWorkHoursLoad;
+
+        numericUpDownTotalWorkLoad.Value =
+            studentToView.TotalWorkHoursLoad;
+
+        Console.WriteLine("Testes de Debug");
     }
 
     private void ButtonAddPhoto_Click(object sender, EventArgs e)
@@ -484,5 +581,11 @@ public partial class StudentAdd : Form
     private void ButtonNew_Click(object sender, EventArgs e)
     {
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[0];
+    }
+
+    private void ButtonSearch_Click(object sender, EventArgs e)
+    {
+        transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[2];
+
     }
 }

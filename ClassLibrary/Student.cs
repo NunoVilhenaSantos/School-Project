@@ -30,12 +30,29 @@ public class Student : INotifyPropertyChanged
     //
     private static int _mCounter;
 
+    private int _idStudent;
+    private string _name;
+    private string _lastName;
+    private string? _address;
+    private string? _postalCode;
+    private string? _city;
+    private string? _phone;
+    private string? _email;
+    private bool _active = true;
+    private string _genre;
+    private DateOnly _dateOfBirth;
+    private string _identificationNumber;
+    private DateOnly _expirationDateIn;
+    private string _taxIdentificationNumber;
+    private string _nationality;
+    private string _birthplace;
+    private string? _photo;
+    private DateOnly _enrollmentDate;
+    private List<Enrollment> _enrollments = new();
 
-    private string? _identificationNumber;
-    private string? _taxIdentificationNumber;
-    private int? _coursesCount;
-    private const int IdNumberlength = 12;
-    private const int TidNumberlength = 6;
+
+    private int _coursesCount;
+    private int _totalWorkHoursLoad;
 
     #endregion
 
@@ -46,81 +63,249 @@ public class Student : INotifyPropertyChanged
 
     #region Properties
 
-    public int IdStudent { get; set; }
-    public string? Name { get; set; }
-    public string? LastName { get; set; }
+    public int IdStudent
+    {
+        get => _idStudent;
+        set
+        {
+            if (value == _idStudent) return;
+            _idStudent = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(FullName));
+        }
+    }
 
-    public string? Address { get; set; }
-    public string? Phone { get; set; }
-    public string? Email { get; set; }
-    public bool Active { get; set; } = true;
+    public string? Name
+    {
+        get => _name;
+        set
+        {
+            if (value == _name) return;
+            _name = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(FullName));
+        }
+    }
+
+    public string? LastName
+    {
+        get => _lastName;
+        set
+        {
+            if (value == _lastName) return;
+            _lastName = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(FullName));
+        }
+    }
+
+    public string? Address
+    {
+        get => _address;
+        set
+        {
+            if (value == _address) return;
+            _address = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string? PostalCode
+    {
+        get => _postalCode;
+        set
+        {
+            if (value == _postalCode) return;
+            _postalCode = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string? City
+    {
+        get => _city;
+        set
+        {
+            if (value == _city) return;
+            _city = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string? Phone
+    {
+        get => _phone;
+        set
+        {
+            if (value == _phone) return;
+            _phone = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string? Email
+    {
+        get => _email;
+        set
+        {
+            if (value == _email) return;
+            _email = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public bool Active
+    {
+        get => _active;
+        set
+        {
+            if (value == _active) return;
+            _active = value;
+            OnPropertyChanged();
+        }
+    }
 
     public static readonly List<string> Genreslist = new()
         {"Male", "Female", "Non Binary", "Prefer not to say"};
 
-    public static readonly List<string> Genres = Genreslist;
+    public string? Genre
+    {
+        get => _genre;
+        set
+        {
+            if (value == _genre) return;
+            _genre = value;
+            OnPropertyChanged();
+        }
+    }
 
-    public string? Genre { get; set; }
-
-    public DateOnly DateOfBirth { get; set; }
+    public DateOnly DateOfBirth
+    {
+        get => _dateOfBirth;
+        set
+        {
+            if (value.Equals(_dateOfBirth)) return;
+            _dateOfBirth = value;
+            OnPropertyChanged();
+        }
+    }
 
     public string? IdentificationNumber
     {
         get => _identificationNumber;
         set
         {
-            if (string.IsNullOrEmpty(value) ||
-                string.IsNullOrWhiteSpace(value) ||
-                value.Length > IdNumberlength)
-            {
-                //return "The field may only have " + IDNumberlength + " characters";
-            }
-
+            if (value.Equals(_identificationNumber)) return;
             _identificationNumber = value;
+            OnPropertyChanged();
         }
     }
 
-    public DateOnly ExpirationDateIn { get; set; }
+    public DateOnly ExpirationDateIn
+    {
+        get => _expirationDateIn;
+        set
+        {
+            if (value.Equals(_expirationDateIn)) return;
+            _expirationDateIn = value;
+            OnPropertyChanged();
+        }
+    }
 
     public string? TaxIdentificationNumber
     {
         get => _taxIdentificationNumber;
         set
         {
-            if (string.IsNullOrEmpty(value) ||
-                string.IsNullOrWhiteSpace(value) ||
-                value.Length > TidNumberlength)
-            {
-                //return "The field may only have " + IDNumberlength + " characters";
-            }
-
+            if (value.Equals(_taxIdentificationNumber)) return;
             _taxIdentificationNumber = value;
+            OnPropertyChanged();
         }
     }
 
-    public string? Nationality { get; set; }
-    public string? Birthplace { get; set; }
-
-    public string? Photo { get; set; }
-    //public Image Photo { get; set; }
-
-
-    public int? CoursesCount
+    public string? Nationality
     {
-        get => _coursesCount;
-        set => SetField(ref _coursesCount, value);
+        get => _nationality;
+        set
+        {
+            if (value == _nationality) return;
+            _nationality = value;
+            OnPropertyChanged();
+        }
     }
 
-    public int TotalWorkHoursLoad { get; internal set; }
+    public string? Birthplace
+    {
+        get => _birthplace;
+        set
+        {
+            if (value == _birthplace) return;
+            _birthplace = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string? Photo
+    {
+        get => _photo;
+        set
+        {
+            if (value == _photo) return;
+            _photo = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int CoursesCount
+    {
+        get => _coursesCount;
+        set
+        {
+            if (value == _coursesCount) return;
+            _coursesCount = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int TotalWorkHoursLoad
+    {
+        get => _totalWorkHoursLoad;
+        internal set
+        {
+            if (value == _totalWorkHoursLoad) return;
+            _totalWorkHoursLoad = value;
+            OnPropertyChanged();
+        }
+    }
 
 
     //
     // Section of enrolments 
     //
     //public List<Course>? CoursesList { get; set; } = new();
-    public DateOnly EnrollmentDate { get; set; }
+    public DateOnly EnrollmentDate
+    {
+        get => _enrollmentDate;
+        set
+        {
+            if (value.Equals(_enrollmentDate)) return;
+            _enrollmentDate = value;
+            OnPropertyChanged();
+        }
+    }
 
-    public List<Enrollment> Enrollments { get; set; } = new();
+    public List<Enrollment> Enrollments
+    {
+        get => _enrollments;
+        set
+        {
+            if (Equals(value, _enrollments)) return;
+            _enrollments = value;
+            OnPropertyChanged();
+        }
+    }
+
+
     //public List<StudentGrades> StudentCoursesGradesList { get; set; } = new();
 
 

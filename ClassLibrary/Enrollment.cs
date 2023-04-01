@@ -1,6 +1,9 @@
-﻿namespace ClassLibrary;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-public class Enrollment
+namespace ClassLibrary;
+
+public class Enrollment : INotifyPropertyChanged
 {
     //
     // Attributes
@@ -9,6 +12,11 @@ public class Enrollment
     #region Attributes
 
     private static int _mCounter;
+    private decimal? _grade;
+    private int _studentId;
+    private Student _student;
+    private int _courseId;
+    private Course _course;
 
     #endregion
 
@@ -26,12 +34,88 @@ public class Enrollment
 
     #endregion
 
+
+    #region Properties
+
     public int IdEnrollment { get; }
-    public decimal? Grade { get; set; }
 
-    public int StudentId { get; set; }
-    public Student Student { get; set; }
+    public decimal? Grade
+    {
+        get => _grade;
+        set
+        {
+            if (value == _grade) return;
+            _grade = value;
+            OnPropertyChanged();
+        }
+    }
 
-    public int CourseId { get; set; }
-    public Course Course { get; set; }
+    public int StudentId
+    {
+        get => _studentId;
+        set
+        {
+            if (value == _studentId) return;
+            _studentId = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public Student Student
+    {
+        get => _student;
+        set
+        {
+            if (Equals(value, _student)) return;
+            _student = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int CourseId
+    {
+        get => _courseId;
+        set
+        {
+            if (value == _courseId) return;
+            _courseId = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public Course Course
+    {
+        get => _course;
+        set
+        {
+            if (Equals(value, _course)) return;
+            _course = value;
+            OnPropertyChanged();
+        }
+    }
+
+    #endregion
+
+
+    #region PropertyChanged
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged(
+        [CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this,
+            new PropertyChangedEventArgs(propertyName));
+    }
+
+    protected bool SetField<T>(ref T field, T value,
+        [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
+
+    #endregion
 }

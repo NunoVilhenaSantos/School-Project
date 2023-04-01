@@ -22,6 +22,9 @@ public class SchoolClass : INotifyPropertyChanged
 
     #endregion
 
+
+    #region PropertyChanged
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     protected virtual void OnPropertyChanged(
@@ -51,6 +54,9 @@ public class SchoolClass : INotifyPropertyChanged
         PropertyChanged?.Invoke(this,
             new PropertyChangedEventArgs(propertyName));
     }
+
+    #endregion
+
     //
     // Attributes
     //
@@ -74,7 +80,7 @@ public class SchoolClass : INotifyPropertyChanged
     private decimal? _classAverage;
     private decimal? _highestGrade;
     private decimal? _lowestGrade;
-    private List<Course>? _coursesList;
+    private List<Course> _coursesList = new();
 
     #endregion
 

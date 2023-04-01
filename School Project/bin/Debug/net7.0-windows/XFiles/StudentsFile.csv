@@ -1,5 +1,2 @@
-﻿1;Estudante;apelido;morada;555666444;email;True;;31/03/2023;;31/03/2023;;;;C:\Users\nunov\Downloads\Rafael - Formador\Retratos\d474bec30de796382c5519a961824018.jpg
-2;nome estudante;apelido estudante;morada estudante;555666444;emai@estudante.ed;True;;31/03/2023;1,08811E+20;31/03/2023;111222444;Portugal;Angola;C:\Users\nunov\Downloads\Rafael - Formador\Retratos\d474bec30de796382c5519a961824018.jpg
-3;nome estudante;apelido estudante;morada estudante;555555555;emai@estudante.edu;True;;31/03/2013;;31/03/2033;;;;C:\Users\nunov\Downloads\Rafael - Formador\Retratos\d474bec30de796382c5519a961824018.jpg
-4;nome estudante;apelido estudante;morada estudante;555;email@estudante.edu;True;;31/03/2013;1,23457E+11;31/03/2033;123456789;Port;angola;C:\Users\nunov\Downloads\Rafael - Formador\Retratos\d474bec30de796382c5519a961824018.jpg
-5;estudante foto;estudante foto;;;;True;Male;31/03/2013;;31/03/2033;;;;C:\Users\nunov\Downloads\Rafael - Formador\Retratos\d474bec30de796382c5519a961824018.jpg
+﻿1;nome;apelido;address;postalcode;city;phone;email;True;Male;01/04/2013;identification number;01/04/2033;vat number;nationality;birthplace;photo0;01/01/0001;System.Collections.Generic.List`1[ClassLibrary.Enrollment];
+5;novo etudante;novo estudante apleido;;;;;;True;Male;01/04/2013;;01/04/2033;;;;C:\Users\nunov\Downloads\Rafael - Formador\Retratos\d474bec30de796382c5519a961824018.jpg0;01/04/2023;;

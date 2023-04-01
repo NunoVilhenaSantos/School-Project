@@ -1,9 +1,9 @@
-﻿using System.Globalization;
-using ClassLibrary;
+﻿using ClassLibrary;
 using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
+using System.Globalization;
 
 namespace School_Project.WForms.InitialForms;
 

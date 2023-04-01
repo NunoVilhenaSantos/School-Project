@@ -50,7 +50,6 @@ namespace School_Project.WForms.SchoolClassesForms
             numericUpDownTotalCourses = new NumericUpDown();
             label6 = new Label();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
             numericUpDownSchoolClassID = new NumericUpDown();
             numericUpDownTotalNumberEnrolledStudents = new NumericUpDown();
             label2 = new Label();
@@ -66,8 +65,9 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonAddPhoto = new Button();
             checkedListBoxStudents = new CheckedListBox();
             tabPage1 = new TabPage();
-            buttonStore = new Button();
+            groupBox1 = new GroupBox();
             buttonClear = new Button();
+            buttonStore = new Button();
             tabPage2 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
             dataGridViewSchoolClasses = new DataGridView();
@@ -90,11 +90,11 @@ namespace School_Project.WForms.SchoolClassesForms
             transparentTabControl1 = new TransparentTabControl();
             tableLayoutPanelStudentData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalCourses).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSchoolClassID).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalNumberEnrolledStudents).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownWorkingHours).BeginInit();
             tabPage1.SuspendLayout();
+            groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSchoolClasses).BeginInit();
@@ -110,9 +110,9 @@ namespace School_Project.WForms.SchoolClassesForms
             labelSchoolClassID.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelSchoolClassID.AutoSize = true;
             labelSchoolClassID.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelSchoolClassID.Location = new Point(3, 18);
+            labelSchoolClassID.Location = new Point(3, 20);
             labelSchoolClassID.Name = "labelSchoolClassID";
-            labelSchoolClassID.Size = new Size(94, 17);
+            labelSchoolClassID.Size = new Size(120, 17);
             labelSchoolClassID.TabIndex = 0;
             labelSchoolClassID.Text = "ID da Turma:";
             // 
@@ -121,9 +121,9 @@ namespace School_Project.WForms.SchoolClassesForms
             labelSchoolClassName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelSchoolClassName.AutoSize = true;
             labelSchoolClassName.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelSchoolClassName.Location = new Point(3, 62);
+            labelSchoolClassName.Location = new Point(3, 78);
             labelSchoolClassName.Name = "labelSchoolClassName";
-            labelSchoolClassName.Size = new Size(94, 34);
+            labelSchoolClassName.Size = new Size(120, 17);
             labelSchoolClassName.TabIndex = 4;
             labelSchoolClassName.Text = "Acrónimo Turma:";
             // 
@@ -132,9 +132,9 @@ namespace School_Project.WForms.SchoolClassesForms
             labelStudentLastName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelStudentLastName.AutoSize = true;
             labelStudentLastName.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelStudentLastName.Location = new Point(3, 115);
+            labelStudentLastName.Location = new Point(3, 136);
             labelStudentLastName.Name = "labelStudentLastName";
-            labelStudentLastName.Size = new Size(94, 34);
+            labelStudentLastName.Size = new Size(120, 17);
             labelStudentLastName.TabIndex = 6;
             labelStudentLastName.Text = "Nome da Turma:";
             // 
@@ -142,10 +142,10 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             textBoxSchoolClassAcronym.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBoxSchoolClassAcronym.CharacterCasing = CharacterCasing.Upper;
-            textBoxSchoolClassAcronym.Location = new Point(103, 68);
+            textBoxSchoolClassAcronym.Location = new Point(129, 75);
             textBoxSchoolClassAcronym.Name = "textBoxSchoolClassAcronym";
             textBoxSchoolClassAcronym.PlaceholderText = "Acrónimo Turma";
-            textBoxSchoolClassAcronym.Size = new Size(228, 23);
+            textBoxSchoolClassAcronym.Size = new Size(288, 23);
             textBoxSchoolClassAcronym.TabIndex = 5;
             textBoxSchoolClassAcronym.KeyPress += TextBoxNames_KeyPress;
             textBoxSchoolClassAcronym.KeyUp += TextBox_KeyUp;
@@ -153,10 +153,10 @@ namespace School_Project.WForms.SchoolClassesForms
             // textBoxSchoolClassName
             // 
             textBoxSchoolClassName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBoxSchoolClassName.Location = new Point(103, 121);
+            textBoxSchoolClassName.Location = new Point(129, 133);
             textBoxSchoolClassName.Name = "textBoxSchoolClassName";
             textBoxSchoolClassName.PlaceholderText = "Nome da Turma";
-            textBoxSchoolClassName.Size = new Size(228, 23);
+            textBoxSchoolClassName.Size = new Size(288, 23);
             textBoxSchoolClassName.TabIndex = 7;
             textBoxSchoolClassName.KeyPress += TextBoxNames_KeyPress;
             textBoxSchoolClassName.KeyUp += TextBox_KeyUp;
@@ -164,18 +164,16 @@ namespace School_Project.WForms.SchoolClassesForms
             // tableLayoutPanelStudentData
             // 
             tableLayoutPanelStudentData.Anchor = AnchorStyles.None;
-            tableLayoutPanelStudentData.ColumnCount = 5;
+            tableLayoutPanelStudentData.ColumnCount = 4;
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
-            tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanelStudentData.Controls.Add(numericUpDownTotalCourses, 3, 1);
             tableLayoutPanelStudentData.Controls.Add(label6, 2, 1);
             tableLayoutPanelStudentData.Controls.Add(label1, 0, 4);
             tableLayoutPanelStudentData.Controls.Add(labelSchoolClassID, 0, 0);
             tableLayoutPanelStudentData.Controls.Add(labelSchoolClassName, 0, 1);
-            tableLayoutPanelStudentData.Controls.Add(pictureBox1, 4, 0);
             tableLayoutPanelStudentData.Controls.Add(labelStudentLastName, 0, 2);
             tableLayoutPanelStudentData.Controls.Add(textBoxSchoolClassName, 1, 2);
             tableLayoutPanelStudentData.Controls.Add(textBoxSchoolClassAcronym, 1, 1);
@@ -191,8 +189,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tableLayoutPanelStudentData.Controls.Add(labelTotalNumberEnrolledStudents, 2, 0);
             tableLayoutPanelStudentData.Controls.Add(label5, 2, 2);
             tableLayoutPanelStudentData.Controls.Add(numericUpDownWorkingHours, 3, 2);
-            tableLayoutPanelStudentData.Controls.Add(buttonAddPhoto, 4, 5);
-            tableLayoutPanelStudentData.Location = new Point(13, 17);
+            tableLayoutPanelStudentData.Location = new Point(8, 24);
             tableLayoutPanelStudentData.Name = "tableLayoutPanelStudentData";
             tableLayoutPanelStudentData.RowCount = 6;
             tableLayoutPanelStudentData.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
@@ -201,17 +198,17 @@ namespace School_Project.WForms.SchoolClassesForms
             tableLayoutPanelStudentData.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanelStudentData.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanelStudentData.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanelStudentData.Size = new Size(870, 323);
+            tableLayoutPanelStudentData.Size = new Size(840, 350);
             tableLayoutPanelStudentData.TabIndex = 0;
             // 
             // numericUpDownTotalCourses
             // 
             numericUpDownTotalCourses.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownTotalCourses.Enabled = false;
-            numericUpDownTotalCourses.Location = new Point(437, 68);
+            numericUpDownTotalCourses.Location = new Point(549, 75);
             numericUpDownTotalCourses.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDownTotalCourses.Name = "numericUpDownTotalCourses";
-            numericUpDownTotalCourses.Size = new Size(228, 23);
+            numericUpDownTotalCourses.Size = new Size(288, 23);
             numericUpDownTotalCourses.TabIndex = 14;
             numericUpDownTotalCourses.TextAlign = HorizontalAlignment.Right;
             numericUpDownTotalCourses.ThousandsSeparator = true;
@@ -221,9 +218,9 @@ namespace School_Project.WForms.SchoolClassesForms
             label6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(337, 62);
+            label6.Location = new Point(423, 78);
             label6.Name = "label6";
-            label6.Size = new Size(94, 34);
+            label6.Size = new Size(120, 17);
             label6.TabIndex = 14;
             label6.Text = "Total dos Cursos:";
             // 
@@ -232,30 +229,20 @@ namespace School_Project.WForms.SchoolClassesForms
             label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 221);
+            label1.Location = new Point(3, 252);
             label1.Name = "label1";
-            label1.Size = new Size(94, 34);
+            label1.Size = new Size(120, 17);
             label1.TabIndex = 8;
             label1.Text = "Inicio formação:";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new Point(671, 3);
-            pictureBox1.Name = "pictureBox1";
-            tableLayoutPanelStudentData.SetRowSpan(pictureBox1, 5);
-            pictureBox1.Size = new Size(196, 259);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
             // 
             // numericUpDownSchoolClassID
             // 
             numericUpDownSchoolClassID.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownSchoolClassID.Enabled = false;
-            numericUpDownSchoolClassID.Location = new Point(103, 15);
+            numericUpDownSchoolClassID.Location = new Point(129, 17);
             numericUpDownSchoolClassID.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDownSchoolClassID.Name = "numericUpDownSchoolClassID";
-            numericUpDownSchoolClassID.Size = new Size(228, 23);
+            numericUpDownSchoolClassID.Size = new Size(288, 23);
             numericUpDownSchoolClassID.TabIndex = 1;
             numericUpDownSchoolClassID.TextAlign = HorizontalAlignment.Right;
             // 
@@ -263,10 +250,10 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             numericUpDownTotalNumberEnrolledStudents.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownTotalNumberEnrolledStudents.Enabled = false;
-            numericUpDownTotalNumberEnrolledStudents.Location = new Point(437, 15);
+            numericUpDownTotalNumberEnrolledStudents.Location = new Point(549, 17);
             numericUpDownTotalNumberEnrolledStudents.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDownTotalNumberEnrolledStudents.Name = "numericUpDownTotalNumberEnrolledStudents";
-            numericUpDownTotalNumberEnrolledStudents.Size = new Size(228, 23);
+            numericUpDownTotalNumberEnrolledStudents.Size = new Size(288, 23);
             numericUpDownTotalNumberEnrolledStudents.TabIndex = 3;
             numericUpDownTotalNumberEnrolledStudents.TextAlign = HorizontalAlignment.Right;
             numericUpDownTotalNumberEnrolledStudents.ThousandsSeparator = true;
@@ -276,44 +263,44 @@ namespace School_Project.WForms.SchoolClassesForms
             label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(337, 221);
+            label2.Location = new Point(423, 252);
             label2.Name = "label2";
-            label2.Size = new Size(94, 34);
+            label2.Size = new Size(120, 17);
             label2.TabIndex = 10;
             label2.Text = "Fim formação:";
             // 
             // dateTimePickerBeginCourse
             // 
             dateTimePickerBeginCourse.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePickerBeginCourse.Location = new Point(103, 227);
+            dateTimePickerBeginCourse.Location = new Point(129, 249);
             dateTimePickerBeginCourse.Name = "dateTimePickerBeginCourse";
-            dateTimePickerBeginCourse.Size = new Size(228, 23);
+            dateTimePickerBeginCourse.Size = new Size(288, 23);
             dateTimePickerBeginCourse.TabIndex = 9;
             // 
             // dateTimePickerEndCourse
             // 
             dateTimePickerEndCourse.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePickerEndCourse.Location = new Point(437, 227);
+            dateTimePickerEndCourse.Location = new Point(549, 249);
             dateTimePickerEndCourse.Name = "dateTimePickerEndCourse";
-            dateTimePickerEndCourse.Size = new Size(228, 23);
+            dateTimePickerEndCourse.Size = new Size(288, 23);
             dateTimePickerEndCourse.TabIndex = 11;
             // 
             // dateTimePickerEndHour
             // 
             dateTimePickerEndHour.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             dateTimePickerEndHour.Format = DateTimePickerFormat.Time;
-            dateTimePickerEndHour.Location = new Point(437, 282);
+            dateTimePickerEndHour.Location = new Point(549, 308);
             dateTimePickerEndHour.Name = "dateTimePickerEndHour";
-            dateTimePickerEndHour.Size = new Size(228, 23);
+            dateTimePickerEndHour.Size = new Size(288, 23);
             dateTimePickerEndHour.TabIndex = 15;
             // 
             // dateTimePickerBeginHour
             // 
             dateTimePickerBeginHour.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             dateTimePickerBeginHour.Format = DateTimePickerFormat.Time;
-            dateTimePickerBeginHour.Location = new Point(103, 282);
+            dateTimePickerBeginHour.Location = new Point(129, 308);
             dateTimePickerBeginHour.Name = "dateTimePickerBeginHour";
-            dateTimePickerBeginHour.Size = new Size(228, 23);
+            dateTimePickerBeginHour.Size = new Size(288, 23);
             dateTimePickerBeginHour.TabIndex = 13;
             // 
             // label3
@@ -321,9 +308,9 @@ namespace School_Project.WForms.SchoolClassesForms
             label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(3, 285);
+            label3.Location = new Point(3, 311);
             label3.Name = "label3";
-            label3.Size = new Size(94, 17);
+            label3.Size = new Size(120, 17);
             label3.TabIndex = 12;
             label3.Text = "Hora Inicio:";
             // 
@@ -333,9 +320,9 @@ namespace School_Project.WForms.SchoolClassesForms
             label4.AutoEllipsis = true;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(337, 285);
+            label4.Location = new Point(423, 311);
             label4.Name = "label4";
-            label4.Size = new Size(94, 17);
+            label4.Size = new Size(120, 17);
             label4.TabIndex = 14;
             label4.Text = "Hora Fim";
             // 
@@ -344,9 +331,9 @@ namespace School_Project.WForms.SchoolClassesForms
             labelTotalNumberEnrolledStudents.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelTotalNumberEnrolledStudents.AutoSize = true;
             labelTotalNumberEnrolledStudents.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTotalNumberEnrolledStudents.Location = new Point(337, 1);
+            labelTotalNumberEnrolledStudents.Location = new Point(423, 12);
             labelTotalNumberEnrolledStudents.Name = "labelTotalNumberEnrolledStudents";
-            labelTotalNumberEnrolledStudents.Size = new Size(94, 51);
+            labelTotalNumberEnrolledStudents.Size = new Size(120, 34);
             labelTotalNumberEnrolledStudents.TabIndex = 2;
             labelTotalNumberEnrolledStudents.Text = "Total Estudantes Inscritos:";
             // 
@@ -355,9 +342,9 @@ namespace School_Project.WForms.SchoolClassesForms
             label5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(337, 115);
+            label5.Location = new Point(423, 128);
             label5.Name = "label5";
-            label5.Size = new Size(94, 34);
+            label5.Size = new Size(120, 34);
             label5.TabIndex = 3;
             label5.Text = "Total Horas dos Cursos:";
             // 
@@ -365,10 +352,10 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             numericUpDownWorkingHours.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownWorkingHours.Enabled = false;
-            numericUpDownWorkingHours.Location = new Point(437, 121);
+            numericUpDownWorkingHours.Location = new Point(549, 133);
             numericUpDownWorkingHours.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDownWorkingHours.Name = "numericUpDownWorkingHours";
-            numericUpDownWorkingHours.Size = new Size(228, 23);
+            numericUpDownWorkingHours.Size = new Size(288, 23);
             numericUpDownWorkingHours.TabIndex = 4;
             numericUpDownWorkingHours.TextAlign = HorizontalAlignment.Right;
             numericUpDownWorkingHours.ThousandsSeparator = true;
@@ -385,7 +372,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonAddPhoto.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonAddPhoto.FlatStyle = FlatStyle.Flat;
             buttonAddPhoto.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddPhoto.Location = new Point(706, 269);
+            buttonAddPhoto.Location = new Point(17, 2);
             buttonAddPhoto.Margin = new Padding(0);
             buttonAddPhoto.Name = "buttonAddPhoto";
             buttonAddPhoto.Size = new Size(125, 50);
@@ -400,42 +387,33 @@ namespace School_Project.WForms.SchoolClassesForms
             checkedListBoxStudents.FormattingEnabled = true;
             checkedListBoxStudents.Location = new Point(1131, 3);
             checkedListBoxStudents.Name = "checkedListBoxStudents";
-            checkedListBoxStudents.Size = new Size(276, 564);
+            checkedListBoxStudents.Size = new Size(276, 474);
             checkedListBoxStudents.TabIndex = 0;
             // 
             // tabPage1
             // 
             tabPage1.AutoScroll = true;
-            tabPage1.Controls.Add(tableLayoutPanelStudentData);
-            tabPage1.Controls.Add(buttonStore);
-            tabPage1.Controls.Add(buttonClear);
+            tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 38);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(10);
-            tabPage1.Size = new Size(1416, 566);
+            tabPage1.Size = new Size(1416, 486);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "1 - Ficha";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // buttonStore
+            // groupBox1
             // 
-            buttonStore.Anchor = AnchorStyles.None;
-            buttonStore.BackgroundImage = Resources.guardar_base_dados_regular;
-            buttonStore.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonStore.Cursor = Cursors.Hand;
-            buttonStore.FlatAppearance.BorderSize = 0;
-            buttonStore.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonStore.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonStore.FlatStyle = FlatStyle.Flat;
-            buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStore.Location = new Point(597, 503);
-            buttonStore.Name = "buttonStore";
-            buttonStore.Size = new Size(125, 50);
-            buttonStore.TabIndex = 13;
-            buttonStore.TextAlign = ContentAlignment.MiddleRight;
-            buttonStore.UseVisualStyleBackColor = true;
-            buttonStore.Click += ButtonSave_Click;
+            groupBox1.Controls.Add(buttonClear);
+            groupBox1.Controls.Add(tableLayoutPanelStudentData);
+            groupBox1.Controls.Add(buttonStore);
+            groupBox1.Location = new Point(13, 13);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(5);
+            groupBox1.Size = new Size(860, 460);
+            groupBox1.TabIndex = 14;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Adicionar Turmas";
             // 
             // buttonClear
             // 
@@ -449,13 +427,33 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonClear.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClear.Location = new Point(725, 503);
+            buttonClear.Location = new Point(715, 402);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(125, 50);
             buttonClear.TabIndex = 9;
             buttonClear.TextAlign = ContentAlignment.MiddleRight;
             buttonClear.UseVisualStyleBackColor = true;
             buttonClear.Click += ButtonCancel_Click;
+            // 
+            // buttonStore
+            // 
+            buttonStore.Anchor = AnchorStyles.None;
+            buttonStore.BackgroundImage = Resources.guardar_base_dados_regular;
+            buttonStore.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonStore.Cursor = Cursors.Hand;
+            buttonStore.FlatAppearance.BorderSize = 0;
+            buttonStore.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonStore.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonStore.FlatStyle = FlatStyle.Flat;
+            buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonStore.Location = new Point(587, 402);
+            buttonStore.Name = "buttonStore";
+            buttonStore.Size = new Size(125, 50);
+            buttonStore.TabIndex = 13;
+            buttonStore.TextAlign = ContentAlignment.MiddleRight;
+            buttonStore.UseVisualStyleBackColor = true;
+            buttonStore.Click += ButtonSave_Click;
             // 
             // tabPage2
             // 
@@ -464,7 +462,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tabPage2.Margin = new Padding(10);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(10);
-            tabPage2.Size = new Size(1416, 566);
+            tabPage2.Size = new Size(1416, 486);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "2 - Lista";
             tabPage2.UseVisualStyleBackColor = true;
@@ -482,7 +480,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1410, 570);
+            tableLayoutPanel1.Size = new Size(1410, 480);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridViewSchoolClasses
@@ -516,7 +514,7 @@ namespace School_Project.WForms.SchoolClassesForms
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridViewSchoolClasses.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewSchoolClasses.RowTemplate.Height = 25;
-            dataGridViewSchoolClasses.Size = new Size(840, 564);
+            dataGridViewSchoolClasses.Size = new Size(840, 474);
             dataGridViewSchoolClasses.TabIndex = 0;
             dataGridViewSchoolClasses.CellBeginEdit += DataGridViewSchoolClasses_CellBeginEdit;
             dataGridViewSchoolClasses.CellEnter += DataGridViewSchoolClasses_CellEnter;
@@ -528,7 +526,7 @@ namespace School_Project.WForms.SchoolClassesForms
             checkedListBoxCourses.FormattingEnabled = true;
             checkedListBoxCourses.Location = new Point(849, 3);
             checkedListBoxCourses.Name = "checkedListBoxCourses";
-            checkedListBoxCourses.Size = new Size(276, 564);
+            checkedListBoxCourses.Size = new Size(276, 474);
             checkedListBoxCourses.TabIndex = 0;
             checkedListBoxCourses.SelectedIndexChanged += CheckedListBoxCourses_SelectedIndexChanged;
             // 
@@ -540,7 +538,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tabPage3.Margin = new Padding(10);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(10);
-            tabPage3.Size = new Size(1416, 566);
+            tabPage3.Size = new Size(1416, 486);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "3 - Gráficos";
             tabPage3.UseVisualStyleBackColor = true;
@@ -551,7 +549,7 @@ namespace School_Project.WForms.SchoolClassesForms
             chart2.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chart2.Legends.Add(legend1);
-            chart2.Location = new Point(742, 282);
+            chart2.Location = new Point(721, 13);
             chart2.Name = "chart2";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -567,7 +565,7 @@ namespace School_Project.WForms.SchoolClassesForms
             chart1.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             chart1.Legends.Add(legend2);
-            chart1.Location = new Point(742, 13);
+            chart1.Location = new Point(13, 13);
             chart1.Name = "chart1";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
@@ -627,7 +625,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonPrint.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonPrint.FlatStyle = FlatStyle.Flat;
             buttonPrint.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPrint.Location = new Point(597, 58);
+            buttonPrint.Location = new Point(604, 58);
             buttonPrint.Margin = new Padding(0);
             buttonPrint.Name = "buttonPrint";
             buttonPrint.Size = new Size(125, 50);
@@ -646,8 +644,9 @@ namespace School_Project.WForms.SchoolClassesForms
             panelBottom.Controls.Add(buttonClose);
             panelBottom.Controls.Add(buttonNew);
             panelBottom.Controls.Add(buttonPrint);
+            panelBottom.Controls.Add(buttonAddPhoto);
             panelBottom.Dock = DockStyle.Bottom;
-            panelBottom.Location = new Point(20, 631);
+            panelBottom.Location = new Point(20, 552);
             panelBottom.Margin = new Padding(0);
             panelBottom.Name = "panelBottom";
             panelBottom.Size = new Size(1424, 110);
@@ -705,7 +704,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonEdit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonEdit.FlatStyle = FlatStyle.Flat;
             buttonEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEdit.Location = new Point(597, 2);
+            buttonEdit.Location = new Point(604, 2);
             buttonEdit.Margin = new Padding(0);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(125, 50);
@@ -726,7 +725,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonRemove.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonRemove.FlatStyle = FlatStyle.Flat;
             buttonRemove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonRemove.Location = new Point(469, 2);
+            buttonRemove.Location = new Point(476, 2);
             buttonRemove.Name = "buttonRemove";
             buttonRemove.Size = new Size(125, 50);
             buttonRemove.TabIndex = 4;
@@ -746,7 +745,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonClose.FlatStyle = FlatStyle.Flat;
             buttonClose.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClose.Location = new Point(725, 58);
+            buttonClose.Location = new Point(732, 58);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(125, 50);
             buttonClose.TabIndex = 3;
@@ -766,7 +765,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonNew.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonNew.FlatStyle = FlatStyle.Flat;
             buttonNew.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNew.Location = new Point(725, 2);
+            buttonNew.Location = new Point(732, 2);
             buttonNew.Name = "buttonNew";
             buttonNew.Size = new Size(125, 50);
             buttonNew.TabIndex = 2;
@@ -800,7 +799,7 @@ namespace School_Project.WForms.SchoolClassesForms
             transparentTabControl1.Name = "transparentTabControl1";
             transparentTabControl1.Padding = new Point(15, 10);
             transparentTabControl1.SelectedIndex = 0;
-            transparentTabControl1.Size = new Size(1424, 608);
+            transparentTabControl1.Size = new Size(1424, 528);
             transparentTabControl1.TabIndex = 0;
             // 
             // SchoolClassAdd
@@ -808,7 +807,7 @@ namespace School_Project.WForms.SchoolClassesForms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSalmon;
-            ClientSize = new Size(1464, 761);
+            ClientSize = new Size(1464, 682);
             Controls.Add(panelBottom);
             Controls.Add(transparentTabControl1);
             KeyPreview = true;
@@ -821,11 +820,11 @@ namespace School_Project.WForms.SchoolClassesForms
             tableLayoutPanelStudentData.ResumeLayout(false);
             tableLayoutPanelStudentData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalCourses).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSchoolClassID).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalNumberEnrolledStudents).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownWorkingHours).EndInit();
             tabPage1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewSchoolClasses).EndInit();
@@ -873,7 +872,6 @@ namespace School_Project.WForms.SchoolClassesForms
         private Button buttonClose;
         private Button buttonNew;
         private DataGridView dataGridViewSchoolClasses;
-        private PictureBox pictureBox1;
         private Button buttonAddPhoto;
         private Button buttonClear;
         private OpenFileDialog openFileDialog1;
@@ -886,5 +884,6 @@ namespace School_Project.WForms.SchoolClassesForms
         private Button button9;
         private NumericUpDown numericUpDownTotalCourses;
         private Label label6;
+        private GroupBox groupBox1;
     }
 }

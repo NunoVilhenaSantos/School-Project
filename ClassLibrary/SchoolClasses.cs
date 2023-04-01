@@ -20,20 +20,20 @@ public static class SchoolClasses
     )
     {
         ListSchoolClasses.Add(new SchoolClass
-            {
-                //Id_SchoolClass = id,
-                ClassAcronym = classAcronym,
-                ClassName = className,
-                StartDate = startDate,
-                EndDate = endDate,
-                StartHour = startHour,
-                EndHour = endHour,
-                Location = location,
-                Type = type,
-                Area = area,
-                //StudentsCount = studentsCount,
-                CoursesList = courses
-            }
+        {
+            //Id_SchoolClass = id,
+            ClassAcronym = classAcronym,
+            ClassName = className,
+            StartDate = startDate,
+            EndDate = endDate,
+            StartHour = startHour,
+            EndHour = endHour,
+            Location = location,
+            Type = type,
+            Area = area,
+            //StudentsCount = studentsCount,
+            CoursesList = courses
+        }
         );
 
         ListSchoolClasses[^1].GetStudentsCount();
@@ -146,7 +146,7 @@ public static class SchoolClasses
             schoolClasses = ListSchoolClasses
                 .Where(a => a.StudentsCount == studentsCount).ToList();
 
-        if (courses is {Count: > 0})
+        if (courses is { Count: > 0 })
             schoolClasses = ListSchoolClasses
                 .Where(a => a.CoursesList == courses).ToList();
 
@@ -245,11 +245,11 @@ public static class SchoolClasses
                         {
                             var grades = course.Enrollments.Select(e => e.Grade)
                                 .ToList();
-                            classTotal += (decimal) grades.Average();
+                            classTotal += (decimal)grades.Average();
                             highestGrade = Math.Max(highestGrade,
-                                (decimal) grades.Max());
+                                (decimal)grades.Max());
                             lowestGrade = Math.Min(lowestGrade,
-                                (decimal) grades.Min());
+                                (decimal)grades.Min());
                         }
                     }
 

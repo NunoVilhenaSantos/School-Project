@@ -1,6 +1,9 @@
-﻿namespace ClassLibrary;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-public class Course
+namespace ClassLibrary;
+
+public class Course : INotifyPropertyChanged
 {
     #region Attributes
 
@@ -8,6 +11,10 @@ public class Course
     // Attributes
     //
     private static int _mCounter;
+    private string _name;
+    private int _workLoad;
+    private int _credits;
+    private List<Enrollment> _enrollments = new();
 
     #endregion
 
@@ -51,12 +58,52 @@ public class Course
     /// <summary>
     ///     Gets or sets the name of the course.
     /// </summary>
-    public string Name { get; set; }
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            if (value == _name) return;
+            _name = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(FullName));
+            //OnPropertyChanged();
+            //OnPropertyChanged(nameof(FullName));
+        }
+    }
 
-    public int WorkLoad { get; set; }
-    public int Credits { get; set; }
+    public int WorkLoad
+    {
+        get => _workLoad;
+        set
+        {
+            if (value == _workLoad) return;
+            _workLoad = value;
+            OnPropertyChanged();
+        }
+    }
 
-    public List<Enrollment> Enrollments { get; set; } = new();
+    public int Credits
+    {
+        get => _credits;
+        set
+        {
+            if (value == _credits) return;
+            _credits = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public List<Enrollment> Enrollments
+    {
+        get => _enrollments;
+        set
+        {
+            if (Equals(value, _enrollments)) return;
+            _enrollments = value;
+            OnPropertyChanged();
+        }
+    }
 
 
     /// <summary>
@@ -93,4 +140,22 @@ public class Course
     //public List<SchoolClass> SchoolClassesList { get; set; } = new();
 
     #endregion
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged(
+        [CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this,
+            new PropertyChangedEventArgs(propertyName));
+    }
+
+    protected bool SetField<T>(ref T field, T value,
+        [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
 }

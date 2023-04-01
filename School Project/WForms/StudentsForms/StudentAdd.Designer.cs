@@ -34,12 +34,19 @@ namespace School_Project.WForms.StudentsForms
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentAdd));
             checkedListBoxDisciplines = new CheckedListBox();
             dataGridView1 = new DataGridView();
             pictureBoxPhotoDisplay = new PictureBox();
-            button6 = new Button();
+            buttonSearch = new Button();
             tableLayoutPanelStudentData = new TableLayoutPanel();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            label1 = new Label();
+            checkBox1 = new CheckBox();
             numericUpDownTotalWorkLoad = new NumericUpDown();
             labelIDNumber = new Label();
             labelTotalWorkLoad = new Label();
@@ -49,7 +56,6 @@ namespace School_Project.WForms.StudentsForms
             textBoxLastName = new TextBox();
             textBoxName = new TextBox();
             buttonAddPhoto = new Button();
-            radioButtonActiveOrNot = new RadioButton();
             labelActiveOrNot = new Label();
             textBoxNationality = new TextBox();
             textBoxBirthPlace = new TextBox();
@@ -71,9 +77,12 @@ namespace School_Project.WForms.StudentsForms
             labelCCValidDate = new Label();
             textBoxCC = new TextBox();
             labelCC = new Label();
+            label2 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panelBottom = new Panel();
+            comboBoxSearchList = new ComboBox();
+            comboBoxSearchOptions = new ComboBox();
             buttonEdit = new Button();
             buttonRemove = new Button();
             buttonExit = new Button();
@@ -82,11 +91,13 @@ namespace School_Project.WForms.StudentsForms
             buttonAddCourses = new Button();
             panelTop = new Panel();
             transparentTabControl1 = new TransparentTabControl();
-            tabPage3 = new TabPage();
+            tabPage1 = new TabPage();
             buttonStore = new Button();
             buttonClear = new Button();
+            tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            dataGridView2 = new DataGridView();
             tabPage4 = new TabPage();
-            tabPage5 = new TabPage();
             notifyIcon1 = new NotifyIcon(components);
             printPreviewDialog1 = new PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -99,9 +110,11 @@ namespace School_Project.WForms.StudentsForms
             panelBottom.SuspendLayout();
             panelTop.SuspendLayout();
             transparentTabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             tabPage4.SuspendLayout();
-            tabPage5.SuspendLayout();
             SuspendLayout();
             // 
             // checkedListBoxDisciplines
@@ -110,7 +123,7 @@ namespace School_Project.WForms.StudentsForms
             checkedListBoxDisciplines.FormattingEnabled = true;
             checkedListBoxDisciplines.Location = new Point(850, 3);
             checkedListBoxDisciplines.Name = "checkedListBoxDisciplines";
-            checkedListBoxDisciplines.Size = new Size(277, 569);
+            checkedListBoxDisciplines.Size = new Size(277, 474);
             checkedListBoxDisciplines.TabIndex = 1;
             // 
             // dataGridView1
@@ -136,7 +149,7 @@ namespace School_Project.WForms.StudentsForms
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(841, 569);
+            dataGridView1.Size = new Size(841, 474);
             dataGridView1.TabIndex = 0;
             // 
             // pictureBoxPhotoDisplay
@@ -150,24 +163,25 @@ namespace School_Project.WForms.StudentsForms
             pictureBoxPhotoDisplay.TabIndex = 9;
             pictureBoxPhotoDisplay.TabStop = false;
             // 
-            // button6
+            // buttonSearch
             // 
-            button6.Anchor = AnchorStyles.None;
-            button6.BackgroundImage = Properties.Resources.pesquisar_negrito;
-            button6.BackgroundImageLayout = ImageLayout.Zoom;
-            button6.Cursor = Cursors.Hand;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.CheckedBackColor = Color.Transparent;
-            button6.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button6.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button6.Location = new Point(25, 526);
-            button6.Name = "button6";
-            button6.Size = new Size(110, 45);
-            button6.TabIndex = 3;
-            button6.TextAlign = ContentAlignment.MiddleRight;
-            button6.UseVisualStyleBackColor = true;
+            buttonSearch.Anchor = AnchorStyles.None;
+            buttonSearch.BackgroundImage = Properties.Resources.pesquisar_negrito;
+            buttonSearch.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonSearch.Cursor = Cursors.Hand;
+            buttonSearch.FlatAppearance.BorderSize = 0;
+            buttonSearch.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonSearch.FlatStyle = FlatStyle.Flat;
+            buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearch.Location = new Point(12, 2);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(110, 45);
+            buttonSearch.TabIndex = 3;
+            buttonSearch.TextAlign = ContentAlignment.MiddleRight;
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += ButtonSearch_Click;
             // 
             // tableLayoutPanelStudentData
             // 
@@ -179,6 +193,10 @@ namespace School_Project.WForms.StudentsForms
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12F));
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24F));
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanelStudentData.Controls.Add(textBox2, 3, 5);
+            tableLayoutPanelStudentData.Controls.Add(textBox1, 1, 5);
+            tableLayoutPanelStudentData.Controls.Add(label1, 0, 5);
+            tableLayoutPanelStudentData.Controls.Add(checkBox1, 5, 0);
             tableLayoutPanelStudentData.Controls.Add(numericUpDownTotalWorkLoad, 3, 0);
             tableLayoutPanelStudentData.Controls.Add(labelIDNumber, 0, 0);
             tableLayoutPanelStudentData.Controls.Add(labelTotalWorkLoad, 2, 0);
@@ -189,7 +207,6 @@ namespace School_Project.WForms.StudentsForms
             tableLayoutPanelStudentData.Controls.Add(textBoxName, 1, 1);
             tableLayoutPanelStudentData.Controls.Add(pictureBoxPhotoDisplay, 6, 0);
             tableLayoutPanelStudentData.Controls.Add(buttonAddPhoto, 6, 6);
-            tableLayoutPanelStudentData.Controls.Add(radioButtonActiveOrNot, 5, 0);
             tableLayoutPanelStudentData.Controls.Add(labelActiveOrNot, 4, 0);
             tableLayoutPanelStudentData.Controls.Add(textBoxNationality, 5, 5);
             tableLayoutPanelStudentData.Controls.Add(textBoxBirthPlace, 5, 6);
@@ -211,6 +228,7 @@ namespace School_Project.WForms.StudentsForms
             tableLayoutPanelStudentData.Controls.Add(labelCCValidDate, 2, 6);
             tableLayoutPanelStudentData.Controls.Add(textBoxCC, 1, 6);
             tableLayoutPanelStudentData.Controls.Add(labelCC, 0, 6);
+            tableLayoutPanelStudentData.Controls.Add(label2, 2, 5);
             tableLayoutPanelStudentData.Location = new Point(18, 18);
             tableLayoutPanelStudentData.Name = "tableLayoutPanelStudentData";
             tableLayoutPanelStudentData.RowCount = 7;
@@ -223,6 +241,47 @@ namespace School_Project.WForms.StudentsForms
             tableLayoutPanelStudentData.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanelStudentData.Size = new Size(1094, 400);
             tableLayoutPanelStudentData.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Location = new Point(395, 302);
+            textBox2.MaxLength = 7;
+            textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "Código Postal";
+            textBox2.Size = new Size(172, 23);
+            textBox2.TabIndex = 17;
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(110, 302);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Cidade";
+            textBox1.Size = new Size(172, 23);
+            textBox1.TabIndex = 13;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(3, 305);
+            label1.Name = "label1";
+            label1.Size = new Size(101, 17);
+            label1.TabIndex = 12;
+            label1.Text = "Cidade:";
+            // 
+            // checkBox1
+            // 
+            checkBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(680, 19);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(208, 19);
+            checkBox1.TabIndex = 21;
+            checkBox1.Text = "Ativo ou Inativo";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // numericUpDownTotalWorkLoad
             // 
@@ -331,24 +390,10 @@ namespace School_Project.WForms.StudentsForms
             buttonAddPhoto.Margin = new Padding(0);
             buttonAddPhoto.Name = "buttonAddPhoto";
             buttonAddPhoto.Size = new Size(125, 50);
-            buttonAddPhoto.TabIndex = 30;
+            buttonAddPhoto.TabIndex = 34;
             buttonAddPhoto.TextAlign = ContentAlignment.MiddleRight;
             buttonAddPhoto.UseVisualStyleBackColor = true;
             buttonAddPhoto.Click += ButtonAddPhoto_Click;
-            // 
-            // radioButtonActiveOrNot
-            // 
-            radioButtonActiveOrNot.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            radioButtonActiveOrNot.AutoSize = true;
-            radioButtonActiveOrNot.Checked = true;
-            radioButtonActiveOrNot.Location = new Point(680, 19);
-            radioButtonActiveOrNot.Name = "radioButtonActiveOrNot";
-            radioButtonActiveOrNot.Size = new Size(208, 19);
-            radioButtonActiveOrNot.TabIndex = 17;
-            radioButtonActiveOrNot.TabStop = true;
-            radioButtonActiveOrNot.Text = "Ativo ou Inativo";
-            radioButtonActiveOrNot.TextAlign = ContentAlignment.MiddleCenter;
-            radioButtonActiveOrNot.UseVisualStyleBackColor = true;
             // 
             // labelActiveOrNot
             // 
@@ -358,7 +403,7 @@ namespace School_Project.WForms.StudentsForms
             labelActiveOrNot.Location = new Point(573, 20);
             labelActiveOrNot.Name = "labelActiveOrNot";
             labelActiveOrNot.Size = new Size(101, 17);
-            labelActiveOrNot.TabIndex = 16;
+            labelActiveOrNot.TabIndex = 20;
             labelActiveOrNot.Text = "Ativo:";
             // 
             // textBoxNationality
@@ -368,7 +413,7 @@ namespace School_Project.WForms.StudentsForms
             textBoxNationality.Name = "textBoxNationality";
             textBoxNationality.PlaceholderText = "Nacionalidade do Estudante";
             textBoxNationality.Size = new Size(208, 23);
-            textBoxNationality.TabIndex = 27;
+            textBoxNationality.TabIndex = 31;
             textBoxNationality.KeyUp += TextBox_KeyUp;
             // 
             // textBoxBirthPlace
@@ -378,7 +423,7 @@ namespace School_Project.WForms.StudentsForms
             textBoxBirthPlace.Name = "textBoxBirthPlace";
             textBoxBirthPlace.PlaceholderText = "Naturalidade do Estudante:";
             textBoxBirthPlace.Size = new Size(208, 23);
-            textBoxBirthPlace.TabIndex = 29;
+            textBoxBirthPlace.TabIndex = 33;
             textBoxBirthPlace.KeyUp += TextBox_KeyUp;
             // 
             // labelBirthPlace
@@ -389,7 +434,7 @@ namespace School_Project.WForms.StudentsForms
             labelBirthPlace.Location = new Point(573, 362);
             labelBirthPlace.Name = "labelBirthPlace";
             labelBirthPlace.Size = new Size(101, 17);
-            labelBirthPlace.TabIndex = 28;
+            labelBirthPlace.TabIndex = 32;
             labelBirthPlace.Text = "Naturalidade:";
             // 
             // labelNationality
@@ -400,7 +445,7 @@ namespace School_Project.WForms.StudentsForms
             labelNationality.Location = new Point(573, 305);
             labelNationality.Name = "labelNationality";
             labelNationality.Size = new Size(101, 17);
-            labelNationality.TabIndex = 26;
+            labelNationality.TabIndex = 30;
             labelNationality.Text = "Nacionalidade";
             // 
             // labelAddress
@@ -456,7 +501,7 @@ namespace School_Project.WForms.StudentsForms
             textBoxPhone.Name = "textBoxPhone";
             textBoxPhone.PlaceholderText = "Telefone do Estudante";
             textBoxPhone.Size = new Size(208, 23);
-            textBoxPhone.TabIndex = 25;
+            textBoxPhone.TabIndex = 29;
             textBoxPhone.KeyPress += TextBoxStudentPhone_KeyPress;
             textBoxPhone.KeyUp += TextBox_KeyUp;
             // 
@@ -468,7 +513,7 @@ namespace School_Project.WForms.StudentsForms
             labelPhone.Location = new Point(573, 239);
             labelPhone.Name = "labelPhone";
             labelPhone.Size = new Size(101, 34);
-            labelPhone.TabIndex = 24;
+            labelPhone.TabIndex = 28;
             labelPhone.Text = "Telefone do Estudante:";
             // 
             // comboBoxGenre
@@ -478,7 +523,7 @@ namespace School_Project.WForms.StudentsForms
             comboBoxGenre.Location = new Point(680, 188);
             comboBoxGenre.Name = "comboBoxGenre";
             comboBoxGenre.Size = new Size(208, 23);
-            comboBoxGenre.TabIndex = 23;
+            comboBoxGenre.TabIndex = 27;
             // 
             // labelGenre
             // 
@@ -488,7 +533,7 @@ namespace School_Project.WForms.StudentsForms
             labelGenre.Location = new Point(573, 182);
             labelGenre.Name = "labelGenre";
             labelGenre.Size = new Size(101, 34);
-            labelGenre.TabIndex = 22;
+            labelGenre.TabIndex = 26;
             labelGenre.Text = "Genero do Estudante:";
             // 
             // labelBirthDate
@@ -499,7 +544,7 @@ namespace School_Project.WForms.StudentsForms
             labelBirthDate.Location = new Point(573, 68);
             labelBirthDate.Name = "labelBirthDate";
             labelBirthDate.Size = new Size(101, 34);
-            labelBirthDate.TabIndex = 18;
+            labelBirthDate.TabIndex = 22;
             labelBirthDate.Text = "Data Nascimento";
             // 
             // dateTimePickerBirthDate
@@ -508,7 +553,7 @@ namespace School_Project.WForms.StudentsForms
             dateTimePickerBirthDate.Location = new Point(680, 74);
             dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
             dateTimePickerBirthDate.Size = new Size(208, 23);
-            dateTimePickerBirthDate.TabIndex = 19;
+            dateTimePickerBirthDate.TabIndex = 23;
             // 
             // labelNIF
             // 
@@ -518,7 +563,7 @@ namespace School_Project.WForms.StudentsForms
             labelNIF.Location = new Point(573, 125);
             labelNIF.Name = "labelNIF";
             labelNIF.Size = new Size(101, 34);
-            labelNIF.TabIndex = 20;
+            labelNIF.TabIndex = 24;
             labelNIF.Text = "NIF do Estudante:";
             // 
             // textBoxNIF
@@ -529,7 +574,7 @@ namespace School_Project.WForms.StudentsForms
             textBoxNIF.Name = "textBoxNIF";
             textBoxNIF.PlaceholderText = "NIF do Estudante";
             textBoxNIF.Size = new Size(208, 23);
-            textBoxNIF.TabIndex = 21;
+            textBoxNIF.TabIndex = 25;
             textBoxNIF.KeyPress += TextBoxStudentPhone_KeyPress;
             textBoxNIF.KeyUp += TextBox_KeyUp;
             // 
@@ -539,7 +584,7 @@ namespace School_Project.WForms.StudentsForms
             dateTimePickerCCValidDate.Location = new Point(395, 359);
             dateTimePickerCCValidDate.Name = "dateTimePickerCCValidDate";
             dateTimePickerCCValidDate.Size = new Size(172, 23);
-            dateTimePickerCCValidDate.TabIndex = 15;
+            dateTimePickerCCValidDate.TabIndex = 19;
             // 
             // labelCCValidDate
             // 
@@ -549,7 +594,7 @@ namespace School_Project.WForms.StudentsForms
             labelCCValidDate.Location = new Point(288, 354);
             labelCCValidDate.Name = "labelCCValidDate";
             labelCCValidDate.Size = new Size(101, 34);
-            labelCCValidDate.TabIndex = 14;
+            labelCCValidDate.TabIndex = 18;
             labelCCValidDate.Text = "Data Validade CC:";
             // 
             // textBoxCC
@@ -561,7 +606,7 @@ namespace School_Project.WForms.StudentsForms
             textBoxCC.Name = "textBoxCC";
             textBoxCC.PlaceholderText = "Cartão Cidadão Estudante";
             textBoxCC.Size = new Size(172, 23);
-            textBoxCC.TabIndex = 13;
+            textBoxCC.TabIndex = 15;
             // 
             // labelCC
             // 
@@ -571,8 +616,19 @@ namespace School_Project.WForms.StudentsForms
             labelCC.Location = new Point(3, 345);
             labelCC.Name = "labelCC";
             labelCC.Size = new Size(101, 51);
-            labelCC.TabIndex = 12;
+            labelCC.TabIndex = 14;
             labelCC.Text = "Cartão Cidadão Estudante:";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(288, 305);
+            label2.Name = "label2";
+            label2.Size = new Size(101, 17);
+            label2.TabIndex = 16;
+            label2.Text = "Código Postal:";
             // 
             // tableLayoutPanel1
             // 
@@ -585,7 +641,7 @@ namespace School_Project.WForms.StudentsForms
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1130, 575);
+            tableLayoutPanel1.Size = new Size(1130, 480);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // chart1
@@ -606,17 +662,37 @@ namespace School_Project.WForms.StudentsForms
             // 
             // panelBottom
             // 
+            panelBottom.Controls.Add(comboBoxSearchList);
+            panelBottom.Controls.Add(comboBoxSearchOptions);
             panelBottom.Controls.Add(buttonEdit);
             panelBottom.Controls.Add(buttonRemove);
+            panelBottom.Controls.Add(buttonSearch);
             panelBottom.Controls.Add(buttonExit);
             panelBottom.Controls.Add(buttonNew);
             panelBottom.Controls.Add(buttonPrint);
             panelBottom.Controls.Add(buttonAddCourses);
             panelBottom.Dock = DockStyle.Bottom;
-            panelBottom.Location = new Point(20, 656);
+            panelBottom.Location = new Point(20, 559);
             panelBottom.Name = "panelBottom";
             panelBottom.Size = new Size(1144, 110);
             panelBottom.TabIndex = 1;
+            // 
+            // comboBoxSearchList
+            // 
+            comboBoxSearchList.FormattingEnabled = true;
+            comboBoxSearchList.Location = new Point(28, 76);
+            comboBoxSearchList.Name = "comboBoxSearchList";
+            comboBoxSearchList.Size = new Size(279, 23);
+            comboBoxSearchList.TabIndex = 7;
+            // 
+            // comboBoxSearchOptions
+            // 
+            comboBoxSearchOptions.FormattingEnabled = true;
+            comboBoxSearchOptions.Location = new Point(135, 16);
+            comboBoxSearchOptions.Name = "comboBoxSearchOptions";
+            comboBoxSearchOptions.Size = new Size(172, 23);
+            comboBoxSearchOptions.TabIndex = 6;
+            comboBoxSearchOptions.SelectedIndexChanged += ComboBoxSearchOptions_SelectedIndexChanged;
             // 
             // buttonEdit
             // 
@@ -630,7 +706,7 @@ namespace School_Project.WForms.StudentsForms
             buttonEdit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonEdit.FlatStyle = FlatStyle.Flat;
             buttonEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEdit.Location = new Point(601, 3);
+            buttonEdit.Location = new Point(601, 2);
             buttonEdit.Margin = new Padding(0);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(125, 50);
@@ -651,7 +727,7 @@ namespace School_Project.WForms.StudentsForms
             buttonRemove.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonRemove.FlatStyle = FlatStyle.Flat;
             buttonRemove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonRemove.Location = new Point(473, 3);
+            buttonRemove.Location = new Point(473, 2);
             buttonRemove.Name = "buttonRemove";
             buttonRemove.Size = new Size(125, 50);
             buttonRemove.TabIndex = 2;
@@ -691,7 +767,7 @@ namespace School_Project.WForms.StudentsForms
             buttonNew.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonNew.FlatStyle = FlatStyle.Flat;
             buttonNew.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNew.Location = new Point(729, 3);
+            buttonNew.Location = new Point(729, 2);
             buttonNew.Name = "buttonNew";
             buttonNew.Size = new Size(125, 50);
             buttonNew.TabIndex = 0;
@@ -745,14 +821,15 @@ namespace School_Project.WForms.StudentsForms
             panelTop.Controls.Add(transparentTabControl1);
             panelTop.Location = new Point(20, 22);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1144, 628);
+            panelTop.Size = new Size(1144, 531);
             panelTop.TabIndex = 0;
             // 
             // transparentTabControl1
             // 
+            transparentTabControl1.Controls.Add(tabPage1);
+            transparentTabControl1.Controls.Add(tabPage2);
             transparentTabControl1.Controls.Add(tabPage3);
             transparentTabControl1.Controls.Add(tabPage4);
-            transparentTabControl1.Controls.Add(tabPage5);
             transparentTabControl1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             transparentTabControl1.Location = new Point(3, 3);
             transparentTabControl1.MaximumSize = new Size(1424, 630);
@@ -760,22 +837,21 @@ namespace School_Project.WForms.StudentsForms
             transparentTabControl1.Name = "transparentTabControl1";
             transparentTabControl1.Padding = new Point(15, 10);
             transparentTabControl1.SelectedIndex = 0;
-            transparentTabControl1.Size = new Size(1138, 622);
+            transparentTabControl1.Size = new Size(1138, 525);
             transparentTabControl1.TabIndex = 0;
             // 
-            // tabPage3
+            // tabPage1
             // 
-            tabPage3.Controls.Add(buttonStore);
-            tabPage3.Controls.Add(buttonClear);
-            tabPage3.Controls.Add(button6);
-            tabPage3.Controls.Add(tableLayoutPanelStudentData);
-            tabPage3.Location = new Point(4, 38);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(15);
-            tabPage3.Size = new Size(1130, 580);
-            tabPage3.TabIndex = 0;
-            tabPage3.Text = "1 - Ficha";
-            tabPage3.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(buttonStore);
+            tabPage1.Controls.Add(buttonClear);
+            tabPage1.Controls.Add(tableLayoutPanelStudentData);
+            tabPage1.Location = new Point(4, 38);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(15);
+            tabPage1.Size = new Size(1130, 483);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "1 - Ficha";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // buttonStore
             // 
@@ -789,7 +865,7 @@ namespace School_Project.WForms.StudentsForms
             buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonStore.FlatStyle = FlatStyle.Flat;
             buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStore.Location = new Point(594, 521);
+            buttonStore.Location = new Point(594, 424);
             buttonStore.Name = "buttonStore";
             buttonStore.Size = new Size(125, 50);
             buttonStore.TabIndex = 1;
@@ -809,7 +885,7 @@ namespace School_Project.WForms.StudentsForms
             buttonClear.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClear.Location = new Point(722, 521);
+            buttonClear.Location = new Point(722, 424);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(125, 50);
             buttonClear.TabIndex = 2;
@@ -817,26 +893,70 @@ namespace School_Project.WForms.StudentsForms
             buttonClear.UseVisualStyleBackColor = true;
             buttonClear.Click += ButtonCancel_Click;
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(tableLayoutPanel1);
+            tabPage2.Location = new Point(4, 38);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(15);
+            tabPage2.Size = new Size(1130, 483);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "2 - Lista";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(dataGridView2);
+            tabPage3.Location = new Point(4, 38);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(1130, 483);
+            tabPage3.TabIndex = 3;
+            tabPage3.Text = "3 - Pesquisa";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView2.Dock = DockStyle.Fill;
+            dataGridView2.Location = new Point(0, 0);
+            dataGridView2.Name = "dataGridView2";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(1130, 483);
+            dataGridView2.TabIndex = 0;
+            // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(tableLayoutPanel1);
+            tabPage4.Controls.Add(chart1);
             tabPage4.Location = new Point(4, 38);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(15);
-            tabPage4.Size = new Size(1130, 580);
-            tabPage4.TabIndex = 1;
-            tabPage4.Text = "2 - Lista";
+            tabPage4.Size = new Size(1130, 483);
+            tabPage4.TabIndex = 2;
+            tabPage4.Text = "4 - Gráficos";
             tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            tabPage5.Controls.Add(chart1);
-            tabPage5.Location = new Point(4, 38);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(1130, 580);
-            tabPage5.TabIndex = 2;
-            tabPage5.Text = "3 - Gráficos";
-            tabPage5.UseVisualStyleBackColor = true;
             // 
             // notifyIcon1
             // 
@@ -858,7 +978,7 @@ namespace School_Project.WForms.StudentsForms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
-            ClientSize = new Size(1184, 786);
+            ClientSize = new Size(1184, 689);
             Controls.Add(panelTop);
             Controls.Add(panelBottom);
             KeyPreview = true;
@@ -879,18 +999,20 @@ namespace School_Project.WForms.StudentsForms
             panelBottom.ResumeLayout(false);
             panelTop.ResumeLayout(false);
             transparentTabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             tabPage4.ResumeLayout(false);
-            tabPage5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         private CheckedListBox checkedListBoxDisciplines;
         private DataGridView dataGridView1;
         private TransparentTabControl transparentTabControl1;
-        private TabPage tabPage3;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
         private TabPage tabPage4;
-        private TabPage tabPage5;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private PictureBox pictureBoxPhotoDisplay;
         private Panel panelBottom;
@@ -909,7 +1031,7 @@ namespace School_Project.WForms.StudentsForms
         private NumericUpDown numericUpDownTotalWorkLoad;
         private Panel panelTop;
         private TableLayoutPanel tableLayoutPanel1;
-        private Button button6;
+        private Button buttonSearch;
         private SplitContainer splitContainer1;
         private Label labelEmail;
         private TextBox textBoxEmail;
@@ -925,22 +1047,30 @@ namespace School_Project.WForms.StudentsForms
         private Label labelCC;
         private Label labelGenre;
         private Label labelActiveOrNot;
-        private RadioButton radioButtonActiveOrNot;
         private DateTimePicker dateTimePickerBirthDate;
         private NotifyIcon notifyIcon1;
         private Label labelBirthDate;
         private Label labelCCValidDate;
         private Label labelNIF;
         private Label labelNationality;
-        private TextBox textBox1;
+        private TextBox textBoxPostalCode;
         private TextBox textBoxCC;
         private TextBox textBoxNationality;
         private DateTimePicker dateTimePickerCCValidDate;
         private TextBox textBoxBirthPlace;
-        private TextBox textBox5;
+        private TextBox textBoxCity;
         private TextBox textBoxNIF;
         private Label labelBirthPlace;
         private ComboBox comboBoxGenre;
         private PrintPreviewDialog printPreviewDialog1;
+        private TextBox textBox2;
+        private TextBox textBox1;
+        private Label label1;
+        private CheckBox checkBox1;
+        private Label label2;
+        private TabPage tabPage3;
+        private DataGridView dataGridView2;
+        private ComboBox comboBoxSearchOptions;
+        private ComboBox comboBoxSearchList;
     }
 }

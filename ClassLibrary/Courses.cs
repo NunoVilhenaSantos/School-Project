@@ -1,6 +1,6 @@
 ﻿namespace ClassLibrary;
 
-public class Courses
+public static class Courses
 {
     #region Properties
 
@@ -16,21 +16,22 @@ public class Courses
     /// <param name="id"></param>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
-    /// <param name="studentGrades"></param>
+    /// <param name="credits"></param>
+    /// <param name="enrollments"></param>
     public static void AddCourse(
         int id, string name, int workLoad, int credits,
-        List<Enrollment>? enrollments
+        List<Enrollment> enrollments
     )
     {
         ListCourses.Add(new Course
-            {
-                //Id_Course = id,
-                Name = name,
-                WorkLoad = workLoad,
-                Credits = credits
-                // Enrollments = enrollments,
-                // StudentGradesList = studentGrades,
-            }
+        {
+            //Id_Course = id,
+            Name = name,
+            WorkLoad = workLoad,
+            Credits = credits
+            // Enrollments = enrollments,
+            // StudentGradesList = studentGrades,
+        }
         );
     }
 
@@ -53,16 +54,17 @@ public class Courses
 
 
     /// <summary>
-    ///     Editing an existing course
+    ///     Editing an existing course 
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
-    /// <param name="studentGrades"></param>
-    /// <returns>Informs if the list is empty, or the course doesn't exists or was successful editing the course</returns>
+    /// <param name="enrollments"></param>
+    /// <returns>Informs if the list is empty,
+    /// or the course doesn't exists or was successful editing the course</returns>
     public static string EditCourse(
         int id, string name, int workLoad,
-        List<Enrollment>? enrollments
+        List<Enrollment> enrollments
     )
     {
         if (ListCourses.Count < 1)
@@ -85,13 +87,12 @@ public class Courses
 
 
     /// <summary>
-    ///     Searching a course
+    ///      Searching a course
     /// </summary>
-    /// <param name="id"></param>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
-    /// <param name="studentGrades"></param>
-    /// <returns>Returns a list of Courses by name or working hours </returns>
+    /// <param name="enrollments"></param>
+    /// <returns>Returns a list of Courses by name or working hours</returns>
     public static List<Course> ConsultCourse(
         string name, int workLoad,
         List<Enrollment>? enrollments
@@ -114,6 +115,15 @@ public class Courses
     }
 
 
+
+    /// <summary>
+    ///  Makes a consultation of the main list
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="name"></param>
+    /// <param name="workLoad"></param>
+    /// <param name="enrollments"></param>
+    /// <returns>returns a list </returns>
     public static List<Course> ConsultCourse(
         int id, string name, int workLoad,
         List<Enrollment>? enrollments)

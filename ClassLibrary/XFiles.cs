@@ -89,11 +89,10 @@ public static class XFiles
         //
         var message = string.Empty;
 
-        StreamWriter streamWriter;
         try
         {
-            using FileStream fileStream =
-                new(SchoolClassesFile, FileMode.Create);
+            using (FileStream fileStream =
+                   new(SchoolClassesFile, FileMode.Create)) ;
         }
         catch (IOException ex)
         {
@@ -106,41 +105,90 @@ public static class XFiles
             throw;
         }
 
+        /*
         using (FileStream fileStream = new(SchoolClassesFile, FileMode.Create))
         {
-            streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
-
-            foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+            using (streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
             {
-                var line =
-                    $"{schoolClass.IdSchoolClass};" +
-                    $"{schoolClass.ClassAcronym};" +
-                    $"{schoolClass.ClassName};" +
-                    $"{schoolClass.StartDate};" +
-                    $"{schoolClass.EndDate};" +
-                    $"{schoolClass.StartHour};" +
-                    $"{schoolClass.EndHour};" +
-                    $"{schoolClass.Location};" +
-                    $"{schoolClass.Type};" +
-                    $"{schoolClass.Area}";
-                //$"{schoolClass.StudentsCount};" +
-                //$"{schoolClass.WorkHourLoad};" +
-                //$"{schoolClass.CoursesList}";
+                foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+                {
+                    var line =
+                        $"{schoolClass.IdSchoolClass};" +
+                        $"{schoolClass.ClassAcronym};" +
+                        $"{schoolClass.ClassName};" +
+                        $"{schoolClass.StartDate};" +
+                        $"{schoolClass.EndDate};" +
+                        $"{schoolClass.StartHour};" +
+                        $"{schoolClass.EndHour};" +
+                        $"{schoolClass.Location};" +
+                        $"{schoolClass.Type};" +
+                        $"{schoolClass.Area}";
+                    //$"{schoolClass.StudentsCount};" +
+                    //$"{schoolClass.WorkHourLoad};" +
+                    //$"{schoolClass.CoursesList}";
 
-                //
-                // check if the list of disciplines of the student is not null
-                // else write the line without this info
-                //
-                if (schoolClass.CoursesList != null)
-                    line =
-                        schoolClass.CoursesList.Aggregate(
-                            line, (current, c)
-                                => current + $";{c.IdCourse}");
+                    //
+                    // check if the list of disciplines of the student is not null
+                    // else write the line without this info
+                    //
+                    if (schoolClass.CoursesList != null)
+                        line =
+                            schoolClass.CoursesList.Aggregate(
+                                line, (current, c)
+                                    => current + $";{c.IdCourse}");
 
-                streamWriter.WriteLine(line);
+                    streamWriter.WriteLine(line);
+                }
+
+                streamWriter.Flush();
             }
+        }
+        */
 
-            streamWriter.Close();
+        using (FileStream fileStream = new(SchoolClassesFile, FileMode.Create))
+        {
+            using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
+            {
+                // Write the header line
+                const string headerLine = "IdSchoolClass;" +
+                                          "ClassAcronym;" +
+                                          "ClassName;" +
+                                          "StartDate;" +
+                                          "EndDate;" +
+                                          "StartHour;" +
+                                          "EndHour;" +
+                                          "Location;" +
+                                          "Type;" +
+                                          "Area;" +
+                                          "CoursesList";
+                streamWriter.WriteLine(headerLine);
+
+
+                foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+                {
+                    var line =
+                        $"{schoolClass.IdSchoolClass};" +
+                        $"{schoolClass.ClassAcronym};" +
+                        $"{schoolClass.ClassName};" +
+                        $"{schoolClass.StartDate};" +
+                        $"{schoolClass.EndDate};" +
+                        $"{schoolClass.StartHour};" +
+                        $"{schoolClass.EndHour};" +
+                        $"{schoolClass.Location};" +
+                        $"{schoolClass.Type};" +
+                        $"{schoolClass.Area}";
+
+                    if (schoolClass.CoursesList != null)
+                    {
+                        var coursesLine =
+                            schoolClass.CoursesList.Select(c =>
+                                $"{c.IdCourse}");
+                        line += $";{string.Join(";", coursesLine)}";
+                    }
+
+                    streamWriter.WriteLine(line);
+                }
+            }
         }
 
         return "Operação realizada com sucesso";
@@ -158,7 +206,8 @@ public static class XFiles
 
         try
         {
-            using FileStream fileStream = new(TeachersFile, FileMode.Create);
+            using FileStream fileStream =
+                new(TeachersFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -171,39 +220,54 @@ public static class XFiles
             throw;
         }
 
+
         using (FileStream fileStream = new(TeachersFile, FileMode.Create))
         {
-            StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
-
-            foreach (var teacher in Teachers.TeachersList)
+            using (var streamWriter =
+                   new StreamWriter(fileStream, Encoding.UTF8))
             {
-                var line =
-                    $"{teacher.TeacherId};" +
-                    $"{teacher.Name};" +
-                    $"{teacher.LastName};" +
-                    $"{teacher.Address};" +
-                    $"{teacher.PostalCode};" +
-                    $"{teacher.City};" +
-                    $"{teacher.Mobile};" +
-                    $"{teacher.Email};";
-                //$"{teacher.DepartmentId};";
+                var csvStringBuilder = new StringBuilder();
 
-                //public List<Course> Courses { get; set; } = new();
-                //public List<SchoolClass> SchoolClasses { get; set; } = new();
+                const string header =
+                    "TeacherId;Name;LastName;Address;Phone;Email;" +
+                    "Active;Genre;DateOfBirth;IdentificationNumber;" +
+                    "ExpirationDateIn;TaxIdentificationNumber;" +
+                    "Nationality;Birthplace;Photo;IdCourse";
 
-                if (teacher.Courses != null)
-                    line = teacher.Courses.Aggregate(line,
-                        (current, c) => current + $";{c.IdCourse}");
+                csvStringBuilder.AppendLine(header);
 
-                streamWriter.WriteLine(line);
+                foreach (var teacher in Teachers.TeachersList)
+                {
+                    var teacherCsv = new StringBuilder();
+
+                    teacherCsv.Append($"{teacher.TeacherId};");
+                    teacherCsv.Append($"{teacher.Name};");
+                    teacherCsv.Append($"{teacher.LastName};");
+                    teacherCsv.Append($"{teacher.Address};");
+                    teacherCsv.Append($"{teacher.Phone};");
+                    teacherCsv.Append($"{teacher.Email};");
+                    teacherCsv.Append($"{teacher.Active};");
+                    teacherCsv.Append($"{teacher.Genre};");
+                    teacherCsv.Append($"{teacher.DateOfBirth};");
+                    teacherCsv.Append($"{teacher.IdentificationNumber};");
+                    teacherCsv.Append($"{teacher.ExpirationDateIn};");
+                    teacherCsv.Append(
+                        $"{teacher.TaxIdentificationNumber};");
+                    teacherCsv.Append($"{teacher.Nationality};");
+                    teacherCsv.Append($"{teacher.Birthplace};");
+                    teacherCsv.Append($"{teacher.Photo};");
+                    teacherCsv.Append(string.Join(";",
+                        teacher.Courses.Select(c => c.IdCourse)));
+
+                    csvStringBuilder.AppendLine(teacherCsv.ToString());
+                }
+
+                streamWriter.Write(csvStringBuilder.ToString());
             }
-
-            streamWriter.Close();
         }
 
         return "Operação concluida com sucesso";
     }
-
 
     private static string StoreCoursesInFile()
     {
@@ -231,28 +295,19 @@ public static class XFiles
 
         using (FileStream fileStream = new(CoursesFile, FileMode.Create))
         {
-            StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
-
-            foreach (var course in Courses.ListCourses)
+            using (StreamWriter streamWriter =
+                   new(fileStream, Encoding.UTF8))
             {
-                var line =
-                    $"{course.IdCourse};" +
-                    $"{course.Name};" +
-                    $"{course.WorkLoad};" +
-                    $"{course.Credits}";
-                //$"{course.TeacherId}";
-
-                /*
-                if (course.Enrollments != null)
-                    line = course.Enrollments.Aggregate(
-                        line,
-                        (current, e)
-                            => current + $";{e.IdEnrollment}");
-                */
-                streamWriter.WriteLine(line);
+                foreach (var line in
+                         Courses.ListCourses.Select(course =>
+                             $"{course.IdCourse};" +
+                             $"{course.Name};" +
+                             $"{course.WorkLoad};" +
+                             $"{course.Credits}"))
+                {
+                    streamWriter.WriteLine(line);
+                }
             }
-
-            streamWriter.Close();
         }
 
         return "Operação concluida com sucesso";
@@ -309,10 +364,10 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
-
         try
         {
-            using FileStream fileStream = new(StudentsFile, FileMode.Create);
+            using FileStream fileStream =
+                new(StudentsFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -327,32 +382,36 @@ public static class XFiles
 
         using (FileStream fileStream = new(StudentsFile, FileMode.Create))
         {
-            StreamWriter streamWriter =
-                new(fileStream, Encoding.UTF8);
+            using (StreamWriter streamWriter =
+                   new(fileStream, Encoding.UTF8))
+            {
+                foreach (var line in
+                         Students.ListStudents.Select(student =>
+                             $"{student.IdStudent};" +
+                             $"{student.Name};" +
+                             $"{student.LastName};" +
+                             $"{student.Address};" +
+                             $"{student.PostalCode};" +
+                             $"{student.City};" +
+                             $"{student.Phone};" +
+                             $"{student.Email};" +
+                             $"{student.Active};" +
+                             $"{student.Genre};" +
+                             $"{student.DateOfBirth};" +
+                             $"{student.IdentificationNumber};" +
+                             $"{student.ExpirationDateIn};" +
+                             $"{student.TaxIdentificationNumber};" +
+                             $"{student.Nationality};" +
+                             $"{student.Birthplace};" +
+                             $"{student.Photo}" +
+                             $"{student.TotalWorkHoursLoad};" +
+                             $"{student.EnrollmentDate};" +
+                             $"{student.Enrollments};"))
 
-            foreach (var line in
-                     Students.ListStudents.Select(student =>
-                         $"{student.IdStudent};" +
-                         $"{student.Name};" +
-                         $"{student.LastName};" +
-                         $"{student.Address};" +
-                         $"{student.Phone};" +
-                         $"{student.Email};" +
-                         $"{student.Active};" +
-                         $"{student.Genre};" +
-                         $"{student.DateOfBirth};" +
-                         $"{student.IdentificationNumber};" +
-                         $"{student.ExpirationDateIn};" +
-                         $"{student.TaxIdentificationNumber};" +
-                         $"{student.Nationality};" +
-                         $"{student.Birthplace};" +
-                         $"{student.Photo}"))
-                //$"{student.TotalWorkHoursLoad}";
-                //$"{student.CoursesList}" +
-                //$"{student.StudentCoursesGradesList}";
-                streamWriter.WriteLine(line);
+                    streamWriter.WriteLine(line);
 
-            streamWriter.Close();
+                streamWriter.Flush();
+            }
         }
 
         return "Operação concluida com sucesso";
@@ -512,13 +571,14 @@ public static class XFiles
 
                 // validating the line, if has at least 5 fields,
                 // less than 5 will continue reading the file
-                if (campos.Length < 15) continue;
-
+                if (campos.Length < 18) continue;
 
                 _ = int.TryParse(campos[0], out var id);
-                _ = bool.TryParse(campos[6], out var active);
-                _ = DateOnly.TryParse(campos[8], out var dateOfBirth);
-                _ = DateOnly.TryParse(campos[10], out var expirationDateIn);
+                _ = bool.TryParse(campos[8], out var active);
+                _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+                _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+                _ = int.TryParse(campos[17], out var totalWorkHours);
+                _ = DateOnly.TryParse(campos[18], out var enrollmentDate);
 
                 Students.AddStudent(
                     id,
@@ -527,17 +587,19 @@ public static class XFiles
                     campos[3],
                     campos[4],
                     campos[5],
-                    active,
+                    campos[6],
                     campos[7],
-                    dateOfBirth,
+                    active,
                     campos[9],
-                    expirationDateIn,
+                    dateOfBirth,
                     campos[11],
-                    campos[12],
+                    expirationDateIn,
                     campos[13],
                     campos[14],
-                    0,
-                    DateOnly.FromDateTime(DateTime.Now),
+                    campos[15],
+                    campos[16],
+                    totalWorkHours,
+                    enrollmentDate,
                     new List<Enrollment>()
                 );
             }
@@ -618,7 +680,7 @@ public static class XFiles
                     studentId,
                     //Student = student,
                     courseId
-                    //Course = course
+                //Course = course
                 );
             }
 
@@ -749,7 +811,8 @@ public static class XFiles
             throw;
         }
 
-        using (FileStream fileStream = new(TeachersFile, FileMode.OpenOrCreate))
+        using (FileStream fileStream =
+               new(TeachersFile, FileMode.OpenOrCreate))
         {
             StreamReader streamReader = new(fileStream);
 
@@ -770,7 +833,7 @@ public static class XFiles
                 // validating the line,
                 // if is not null or empty,
                 // else will continue
-                if (campos.Length < 7) continue;
+                if (campos.Length < 18) continue;
 
 
                 // -----------------------------------------------------------------
@@ -788,21 +851,42 @@ public static class XFiles
                 // validating the line,
                 // if has more than 3 fields,
                 // will read the disciplines
-                if (campos.Length > 7)
+                if (campos.Length > 18)
                     foreach (var c in Courses.ListCourses)
-                        for (var index = 7; index < campos.Length; index++)
+                        for (var index = 19; index < campos.Length; index++)
                         {
                             int.TryParse(campos[index], out index);
                             if (c.IdCourse == index) coursesList.Add(c);
                         }
 
+
                 _ = int.TryParse(campos[0], out var id);
+                _ = bool.TryParse(campos[8], out var active);
+                _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+                _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+                _ = int.TryParse(campos[17], out var coursesCount);
+                _ = int.TryParse(campos[18], out var totalWorkHours);
 
                 Teachers.AddTeacher(
                     id,
-                    campos[1], campos[2], campos[3],
-                    campos[4], campos[5], campos[6],
+                    campos[1],
+                    campos[2],
+                    campos[3],
+                    campos[4],
+                    campos[5],
+                    campos[6],
                     campos[7],
+                    active,
+                    campos[9],
+                    dateOfBirth,
+                    campos[11],
+                    expirationDateIn,
+                    campos[13],
+                    campos[14],
+                    campos[15],
+                    campos[16],
+                    coursesCount,
+                    totalWorkHours,
                     coursesList
                 );
             }
