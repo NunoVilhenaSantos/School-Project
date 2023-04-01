@@ -5,19 +5,6 @@ namespace ClassLibrary;
 
 public class Course : INotifyPropertyChanged
 {
-    #region Attributes
-
-    //
-    // Attributes
-    //
-    private static int _mCounter;
-    private string _name;
-    private int _workLoad;
-    private int _credits;
-    private List<Enrollment> _enrollments = new();
-
-    #endregion
-
     #region Constructor
 
     //
@@ -32,6 +19,8 @@ public class Course : INotifyPropertyChanged
 
     #endregion
 
+    public event PropertyChangedEventHandler? PropertyChanged;
+
 
     #region Methods
 
@@ -43,6 +32,41 @@ public class Course : INotifyPropertyChanged
         //return $"{Id_Course,5:G} - {Name,50} - {WorkLoad} horas";
         return $"{IdCourse,5:G} - {Name} - {WorkLoad} horas";
     }
+
+    #endregion
+
+
+    #region PropertyChanged
+
+    protected virtual void OnPropertyChanged(
+        [CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this,
+            new PropertyChangedEventArgs(propertyName));
+    }
+
+    protected bool SetField<T>(ref T field, T value,
+        [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
+    }
+
+    #endregion
+
+
+    #region Attributes
+
+    //
+    // Attributes
+    //
+    private static int _mCounter;
+    private string _name;
+    private int _workLoad;
+    private int _credits;
+    private List<Enrollment> _enrollments = new();
 
     #endregion
 
@@ -140,22 +164,4 @@ public class Course : INotifyPropertyChanged
     //public List<SchoolClass> SchoolClassesList { get; set; } = new();
 
     #endregion
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected virtual void OnPropertyChanged(
-        [CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this,
-            new PropertyChangedEventArgs(propertyName));
-    }
-
-    protected bool SetField<T>(ref T field, T value,
-        [CallerMemberName] string? propertyName = null)
-    {
-        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
-    }
 }

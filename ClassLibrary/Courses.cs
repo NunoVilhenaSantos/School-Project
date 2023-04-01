@@ -24,14 +24,14 @@ public static class Courses
     )
     {
         ListCourses.Add(new Course
-        {
-            //Id_Course = id,
-            Name = name,
-            WorkLoad = workLoad,
-            Credits = credits
-            // Enrollments = enrollments,
-            // StudentGradesList = studentGrades,
-        }
+            {
+                //Id_Course = id,
+                Name = name,
+                WorkLoad = workLoad,
+                Credits = credits
+                // Enrollments = enrollments,
+                // StudentGradesList = studentGrades,
+            }
         );
     }
 
@@ -54,14 +54,16 @@ public static class Courses
 
 
     /// <summary>
-    ///     Editing an existing course 
+    ///     Editing an existing course
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
     /// <param name="enrollments"></param>
-    /// <returns>Informs if the list is empty,
-    /// or the course doesn't exists or was successful editing the course</returns>
+    /// <returns>
+    ///     Informs if the list is empty,
+    ///     or the course doesn't exists or was successful editing the course
+    /// </returns>
     public static string EditCourse(
         int id, string name, int workLoad,
         List<Enrollment> enrollments
@@ -87,7 +89,7 @@ public static class Courses
 
 
     /// <summary>
-    ///      Searching a course
+    ///     Searching a course
     /// </summary>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
@@ -115,9 +117,8 @@ public static class Courses
     }
 
 
-
     /// <summary>
-    ///  Makes a consultation of the main list
+    ///     Makes a consultation of the main list
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>

@@ -316,6 +316,7 @@
             ClientSize = new Size(1384, 561);
             Controls.Add(tableLayoutPanel1);
             Name = "SchoolClassSearch";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "SchoolClassSearch";
             Load += SchoolClassSearch_Load;
             tableLayoutPanel1.ResumeLayout(false);

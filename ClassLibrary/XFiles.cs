@@ -92,7 +92,10 @@ public static class XFiles
         try
         {
             using (FileStream fileStream =
-                   new(SchoolClassesFile, FileMode.Create)) ;
+                   new(SchoolClassesFile, FileMode.Create))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {
@@ -304,9 +307,7 @@ public static class XFiles
                              $"{course.Name};" +
                              $"{course.WorkLoad};" +
                              $"{course.Credits}"))
-                {
                     streamWriter.WriteLine(line);
-                }
             }
         }
 

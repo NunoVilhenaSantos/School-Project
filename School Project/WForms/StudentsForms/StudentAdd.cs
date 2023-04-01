@@ -192,10 +192,7 @@ public partial class StudentAdd : Form
                                           BindingFlags.Instance);
 
         List<string> propertyNames = new();
-        foreach (var property in properties)
-        {
-            propertyNames.Add(property.Name);
-        }
+        foreach (var property in properties) propertyNames.Add(property.Name);
 
         comboBoxSearchOptions.DataSource = propertyNames;
         comboBoxSearchOptions.DisplayMember = "ToString()";

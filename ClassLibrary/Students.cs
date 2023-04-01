@@ -40,28 +40,28 @@ public class Students
     )
     {
         ListStudents.Add(new Student
-        {
-            //IdStudent = id,
-            Name = name,
-            LastName = lastName,
-            Address = address,
-            PostalCode = postalCode,
-            City = city,
-            Phone = phone,
-            Email = email,
-            Active = active,
-            Genre = genre,
-            DateOfBirth = dateOfBirth,
-            IdentificationNumber = identificationNumber,
-            ExpirationDateIn = expirationDateIn,
-            TaxIdentificationNumber = taxIdentificationNumber,
-            Nationality = nationality,
-            Birthplace = birthplace,
-            Photo = photo,
-            TotalWorkHoursLoad = totalWorkHours,
-            EnrollmentDate = enrollmentDate,
-            Enrollments = enrollments
-        }
+            {
+                //IdStudent = id,
+                Name = name,
+                LastName = lastName,
+                Address = address,
+                PostalCode = postalCode,
+                City = city,
+                Phone = phone,
+                Email = email,
+                Active = active,
+                Genre = genre,
+                DateOfBirth = dateOfBirth,
+                IdentificationNumber = identificationNumber,
+                ExpirationDateIn = expirationDateIn,
+                TaxIdentificationNumber = taxIdentificationNumber,
+                Nationality = nationality,
+                Birthplace = birthplace,
+                Photo = photo,
+                TotalWorkHoursLoad = totalWorkHours,
+                EnrollmentDate = enrollmentDate,
+                Enrollments = enrollments
+            }
         );
 
         Console.WriteLine("Debugging");
@@ -114,24 +114,35 @@ public class Students
             return "O estudante não existe!";
 
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Name = name;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.LastName = lastName;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.LastName =
+            lastName;
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Address = address;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.PostalCode = postalCode;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.PostalCode =
+            postalCode;
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.City = city;
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Phone = phone;
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Email = email;
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Active = active;
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Genre = genre;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.DateOfBirth = dateOfBirth;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.IdentificationNumber = identificationNumber;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.ExpirationDateIn = expirationDateIn;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.TaxIdentificationNumber = taxIdentificationNumber;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Nationality = nationality;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Birthplace = birthplace;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.DateOfBirth =
+            dateOfBirth;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!
+            .IdentificationNumber = identificationNumber;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.ExpirationDateIn =
+            expirationDateIn;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!
+            .TaxIdentificationNumber = taxIdentificationNumber;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Nationality =
+            nationality;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Birthplace =
+            birthplace;
         ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Photo = photo;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.TotalWorkHoursLoad = totalWorkHours;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.EnrollmentDate = enrollmentDate;
-        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Enrollments = enrollments;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!
+            .TotalWorkHoursLoad = totalWorkHours;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.EnrollmentDate =
+            enrollmentDate;
+        ListStudents.FirstOrDefault(a => a.IdStudent == id)!.Enrollments =
+            enrollments;
 
         ListStudents[id].GetTotalWorkHourLoad();
 
@@ -164,25 +175,53 @@ public class Students
     {
         var students = ListStudents;
 
-        if (!string.IsNullOrWhiteSpace(name)) students = ListStudents.Where(a => a.Name == name).ToList();
-        if (!string.IsNullOrWhiteSpace(lastName)) students = ListStudents.Where(a => a.LastName == lastName).ToList();
-        if (!string.IsNullOrWhiteSpace(address)) students = ListStudents.Where(a => a.Address == address).ToList();
-        if (!string.IsNullOrWhiteSpace(postalCode)) students = ListStudents.Where(a => a.PostalCode == postalCode).ToList();
-        if (!string.IsNullOrWhiteSpace(city)) students = ListStudents.Where(a => a.City == city).ToList();
-        if (!string.IsNullOrWhiteSpace(phone)) students = ListStudents.Where(a => a.Phone == phone).ToList();
-        if (!string.IsNullOrWhiteSpace(email)) students = ListStudents.Where(a => a.Email == email).ToList();
+        if (!string.IsNullOrWhiteSpace(name))
+            students = ListStudents.Where(a => a.Name == name).ToList();
+        if (!string.IsNullOrWhiteSpace(lastName))
+            students = ListStudents.Where(a => a.LastName == lastName).ToList();
+        if (!string.IsNullOrWhiteSpace(address))
+            students = ListStudents.Where(a => a.Address == address).ToList();
+        if (!string.IsNullOrWhiteSpace(postalCode))
+            students = ListStudents.Where(a => a.PostalCode == postalCode)
+                .ToList();
+        if (!string.IsNullOrWhiteSpace(city))
+            students = ListStudents.Where(a => a.City == city).ToList();
+        if (!string.IsNullOrWhiteSpace(phone))
+            students = ListStudents.Where(a => a.Phone == phone).ToList();
+        if (!string.IsNullOrWhiteSpace(email))
+            students = ListStudents.Where(a => a.Email == email).ToList();
         students = ListStudents.Where(a => a.Active == active).ToList();
-        if (!string.IsNullOrWhiteSpace(genre)) students = ListStudents.Where(a => a.Genre == genre).ToList();
-        if (dateOfBirth != default) students = ListStudents.Where(a => a.DateOfBirth == dateOfBirth).ToList();
-        if (!string.IsNullOrWhiteSpace(identificationNumber)) students = ListStudents.Where(a => a.IdentificationNumber == identificationNumber).ToList();
-        if (expirationDateIn != default) students = ListStudents.Where(a => a.ExpirationDateIn == expirationDateIn).ToList();
-        if (!string.IsNullOrWhiteSpace(taxIdentificationNumber)) students = ListStudents.Where(a => a.TaxIdentificationNumber == taxIdentificationNumber).ToList();
-        if (!string.IsNullOrWhiteSpace(nationality)) students = ListStudents.Where(a => a.Nationality == nationality).ToList();
-        if (!string.IsNullOrWhiteSpace(birthplace)) students = ListStudents.Where(a => a.Birthplace == photo).ToList();
-        if (!string.IsNullOrWhiteSpace(photo)) students = ListStudents.Where(a => a.Photo == photo).ToList();
-        if (!int.IsNegative(totalWorkHours)) students = ListStudents.Where(a => a.TotalWorkHoursLoad == totalWorkHours).ToList();
-        if (enrollmentDate != default) students = ListStudents.Where(a => a.EnrollmentDate == enrollmentDate).ToList();
-        if (enrollments != null) students = ListStudents.Where(a => a.Enrollments == enrollments).ToList();
+        if (!string.IsNullOrWhiteSpace(genre))
+            students = ListStudents.Where(a => a.Genre == genre).ToList();
+        if (dateOfBirth != default)
+            students = ListStudents.Where(a => a.DateOfBirth == dateOfBirth)
+                .ToList();
+        if (!string.IsNullOrWhiteSpace(identificationNumber))
+            students = ListStudents
+                .Where(a => a.IdentificationNumber == identificationNumber)
+                .ToList();
+        if (expirationDateIn != default)
+            students = ListStudents
+                .Where(a => a.ExpirationDateIn == expirationDateIn).ToList();
+        if (!string.IsNullOrWhiteSpace(taxIdentificationNumber))
+            students = ListStudents.Where(a =>
+                a.TaxIdentificationNumber == taxIdentificationNumber).ToList();
+        if (!string.IsNullOrWhiteSpace(nationality))
+            students = ListStudents.Where(a => a.Nationality == nationality)
+                .ToList();
+        if (!string.IsNullOrWhiteSpace(birthplace))
+            students = ListStudents.Where(a => a.Birthplace == photo).ToList();
+        if (!string.IsNullOrWhiteSpace(photo))
+            students = ListStudents.Where(a => a.Photo == photo).ToList();
+        if (!int.IsNegative(totalWorkHours))
+            students = ListStudents
+                .Where(a => a.TotalWorkHoursLoad == totalWorkHours).ToList();
+        if (enrollmentDate != default)
+            students = ListStudents
+                .Where(a => a.EnrollmentDate == enrollmentDate).ToList();
+        if (enrollments != null)
+            students = ListStudents.Where(a => a.Enrollments == enrollments)
+                .ToList();
 
         return students;
     }

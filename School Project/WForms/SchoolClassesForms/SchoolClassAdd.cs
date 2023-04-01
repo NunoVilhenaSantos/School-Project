@@ -12,17 +12,17 @@ public partial class SchoolClassAdd : Form
     private readonly BindingSource _bSListCourses = new();
     private readonly BindingSource _bSListSClasses = new();
     private readonly BindingSource _bSListStudents = new();
-    private readonly BindingSource _bSsClassesCourses = new();
-    private readonly BindingSource _bSourceSearchOptions = new();
     private readonly BindingSource _bSourceSearchList = new();
+    private readonly BindingSource _bSourceSearchOptions = new();
+    private readonly BindingSource _bSsClassesCourses = new();
 
     private int _coursesCount;
+    private string _photoFile;
 
     // keep track of the DataGridViewSchoolClasses row index previousRowIndex
     private int _previousRowIndex = -1;
     private int _schoolClassesCount;
     private int _studentsCount;
-    private string _photoFile;
 
     public SchoolClassAdd()
     {
@@ -240,10 +240,7 @@ public partial class SchoolClassAdd : Form
                                               BindingFlags.Instance);
 
         List<string> propertyNames = new();
-        foreach (var property in properties)
-        {
-            propertyNames.Add(property.Name);
-        }
+        foreach (var property in properties) propertyNames.Add(property.Name);
 
         comboBoxSearchOptions.DataSource = propertyNames;
         comboBoxSearchOptions.DisplayMember = "ToString()";
@@ -280,7 +277,8 @@ public partial class SchoolClassAdd : Form
         var property = typeof(SchoolClass).GetProperty(selectedProperty);
         foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
         {
-            if (property == null || property.GetValue(schoolClass).ToString() == "")
+            if (property == null ||
+                property.GetValue(schoolClass).ToString() == "")
                 continue;
 
             filteredSchoolClass.Add(schoolClass);

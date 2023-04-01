@@ -5,6 +5,20 @@ namespace ClassLibrary;
 
 public class Enrollment : INotifyPropertyChanged
 {
+    #region Constructor
+
+    //
+    // https://itecnote.com/tecnote/c-incrementing-a-unique-id-number-in-the-constructor/
+    //
+    // Constructor for the class and incrementation of the ID
+    //
+    public Enrollment()
+    {
+        IdEnrollment = Interlocked.Increment(ref _mCounter);
+    }
+
+    #endregion
+
     //
     // Attributes
     //
@@ -17,20 +31,6 @@ public class Enrollment : INotifyPropertyChanged
     private Student _student;
     private int _courseId;
     private Course _course;
-
-    #endregion
-
-    #region Constructor
-
-    //
-    // https://itecnote.com/tecnote/c-incrementing-a-unique-id-number-in-the-constructor/
-    //
-    // Constructor for the class and incrementation of the ID
-    //
-    public Enrollment()
-    {
-        IdEnrollment = Interlocked.Increment(ref _mCounter);
-    }
 
     #endregion
 

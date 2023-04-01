@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace ClassLibrary;
+﻿namespace ClassLibrary;
 
 public static class SchoolClasses
 {
@@ -156,10 +154,11 @@ public static class SchoolClasses
     }
 
 
+    /*
     public static List<SchoolClass> ConsultSchoolClasses(
         string selectedProperty, object selectedValue)
     {
-        /*
+        
         //
         // 1.º teste
         //
@@ -177,20 +176,50 @@ public static class SchoolClasses
 
             filteredSchoolClass.Add(schoolClass);
         }
-        */
 
 
         var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        if (property == null)
-        {
-            return new List<SchoolClass>();
-        }
+        if (property == null) return new List<SchoolClass>();
 
         var propertyType = property.PropertyType;
         var convertedValue =
             Convert.ChangeType(selectedValue, propertyType);
 
-        return SchoolClasses.ListSchoolClasses
+        return ListSchoolClasses
+            .Where(schoolClass =>
+                property.GetValue(schoolClass)
+                    ?.Equals(convertedValue) ==
+                true)
+            .ToList();
+    }
+    */
+
+    public static List<SchoolClass> ConsultSchoolClasses(
+        string selectedProperty, object selectedValue)
+    {
+        var property = typeof(SchoolClass).GetProperty(selectedProperty);
+        if (property == null) return new List<SchoolClass>();
+
+        var propertyType = property.PropertyType;
+        object convertedValue;
+        try
+        {
+            convertedValue = Convert.ChangeType(selectedValue, propertyType);
+        }
+        catch (InvalidCastException ex)
+        {
+            // Handle invalid cast exception
+            Console.WriteLine($"Invalid cast: {ex.Message}");
+            return new List<SchoolClass>();
+        }
+        catch (FormatException ex)
+        {
+            // Handle format exception
+            Console.WriteLine($"Invalid format: {ex.Message}");
+            return new List<SchoolClass>();
+        }
+
+        return ListSchoolClasses
             .Where(schoolClass =>
                 property.GetValue(schoolClass)
                     ?.Equals(convertedValue) ==
