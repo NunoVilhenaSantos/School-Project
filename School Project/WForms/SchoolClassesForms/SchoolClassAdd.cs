@@ -1,28 +1,28 @@
-﻿using ClassLibrary;
+﻿using System.Reflection;
+using ClassLibrary;
 
 namespace School_Project.WForms.SchoolClassesForms;
 
 public partial class SchoolClassAdd : Form
 {
-    private readonly BindingSource _bSCoursesStudents = new();
-    private readonly BindingSource _bSListCourses = new();
-
     //
     // Global variables for the windows forms
     //
+    private readonly BindingSource _bSCoursesStudents = new();
+    private readonly BindingSource _bSListCourses = new();
     private readonly BindingSource _bSListSClasses = new();
     private readonly BindingSource _bSListStudents = new();
     private readonly BindingSource _bSsClassesCourses = new();
+    private readonly BindingSource _bSourceSearchOptions = new();
+    private readonly BindingSource _bSourceSearchList = new();
 
     private int _coursesCount;
-
 
     // keep track of the DataGridViewSchoolClasses row index previousRowIndex
     private int _previousRowIndex = -1;
     private int _schoolClassesCount;
     private int _studentsCount;
     private string _photoFile;
-    private int schoolClassFormWidth;
 
     public SchoolClassAdd()
     {
@@ -31,8 +31,6 @@ public partial class SchoolClassAdd : Form
 
     private void WinFormStudentAdd_Load(object sender, EventArgs e)
     {
-        // Set the initial value of schoolClassFormWidth
-        schoolClassFormWidth = this.Width;
         /*
          * 
          * assign the local variables to is
@@ -198,7 +196,7 @@ public partial class SchoolClassAdd : Form
         _bSListStudents.ResetBindings(false);
 
         _bSListCourses.ResetBindings(true);
-        _bSListStudents.ResetBindings(true);
+        _bSListSClasses.ResetBindings(true);
         _bSListStudents.ResetBindings(true);
 
         // Set the DataSource property of the DataGridView to the BindingSource object
@@ -229,7 +227,70 @@ public partial class SchoolClassAdd : Form
         //dataGridViewSchoolClasses.Refresh();
 
 
+        // To display all the properties of the Student class
+        // in the comboBoxSearchOptions,
+        // you can use reflection to get a list
+        // of the property names and set the DataSource
+        // and DisplayMember properties of the combobox accordingly.
+        // Here's an example code snippet to achieve this:
+
+        _bSourceSearchOptions.DataSource = typeof(SchoolClass);
+        var properties =
+            typeof(SchoolClass).GetProperties(BindingFlags.Public |
+                                              BindingFlags.Instance);
+
+        List<string> propertyNames = new();
+        foreach (var property in properties)
+        {
+            propertyNames.Add(property.Name);
+        }
+
+        comboBoxSearchOptions.DataSource = propertyNames;
+        comboBoxSearchOptions.DisplayMember = "ToString()";
+
+
+        //_bSourceSearchList.DataSource = Students.ConsultStudent;
+        comboBoxSearchList.DataSource = _bSourceSearchList;
+        dataGridViewSearch.DataSource = _bSourceSearchList;
+        dataGridViewSearch.AutoResizeColumns();
+
+        _bSourceSearchOptions.ResetBindings(false);
+        _bSourceSearchList.ResetBindings(false);
+
+        _bSourceSearchOptions.ResetBindings(true);
+        _bSourceSearchList.ResetBindings(true);
+
+        dataGridViewSearch.Refresh();
+        dataGridViewSearch.Update();
+
+
         Console.WriteLine("Testes de Debug");
+    }
+
+
+    private void ComboBoxSearchOptions_SelectedIndexChanged(
+        object sender, EventArgs e)
+    {
+        // Get the name of the selected property
+        var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
+
+        // Create a new list to store the filtered results
+        List<SchoolClass> filteredSchoolClass = new();
+
+        var property = typeof(SchoolClass).GetProperty(selectedProperty);
+        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+        {
+            if (property == null || property.GetValue(schoolClass).ToString() == "")
+                continue;
+
+            filteredSchoolClass.Add(schoolClass);
+        }
+
+        _bSourceSearchList.DataSource = filteredSchoolClass;
+        //_bSourceSearchList.DataSource = Students.ListStudents.Select(s => s.GetType().GetProperty(selectedProperty).GetValue(s)).ToList();
+
+        comboBoxSearchList.Refresh();
+        dataGridViewSearch.Refresh();
     }
 
 
@@ -275,8 +336,10 @@ public partial class SchoolClassAdd : Form
 
     private void ButtonStudentRemove_Click(object sender, EventArgs e)
     {
+        // This will change the selected tab page of transparentTabControl1 to the second tab page. 
+        transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
+
         // by rows
-        var rowText = string.Empty;
         // var to retain the value of the index, by row or cell
         var rc = -1;
         foreach (DataGridViewRow row in dataGridViewSchoolClasses.SelectedRows)
@@ -333,8 +396,9 @@ public partial class SchoolClassAdd : Form
 
     private void ButtonStudentEdit_Click(object sender, EventArgs e)
     {
-        //try
-        //{
+        // This will change the selected tab page of transparentTabControl1 to the second tab page. 
+        transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
+
         // Get the selected school class from the data source
         var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
 
@@ -369,15 +433,6 @@ public partial class SchoolClassAdd : Form
         if (schoolClassEdit.ShowDialog() == DialogResult.OK)
             // redraw the list with the new data
             UpdateLists();
-        //}
-        //catch (Exception ex)
-        //{
-        //    MessageBox.Show(
-        //        $"Error editing school class object: {ex.Message}",
-        //        "Editar",
-        //        MessageBoxButtons.OK, MessageBoxIcon.Error
-        //    );
-        //}
     }
 
 
@@ -776,7 +831,7 @@ public partial class SchoolClassAdd : Form
         }
         else { this.Width = schoolClassFormWidth; }
         */
-        
+
 
         /*
         // Get the left distance of groupBox1 from the left edge of the form
@@ -816,5 +871,12 @@ public partial class SchoolClassAdd : Form
     {
         //transparentTabControl1.SelectedIndexChanged=transparentTabControl1.per;
         TransparentTabControl1_SelectedIndexChanged(sender, e);
+    }
+
+    private void ButtonSearchForm_Click(object sender, EventArgs e)
+    {
+        SchoolClassSearch schoolClassSearch = new();
+        schoolClassSearch.ShowDialog();
+        schoolClassSearch.Dispose();
     }
 }

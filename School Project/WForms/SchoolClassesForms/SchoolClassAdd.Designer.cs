@@ -77,7 +77,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tabPage3 = new TabPage();
             chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            button6 = new Button();
+            buttonSearchForm = new Button();
             buttonPrint = new Button();
             panelBottom = new Panel();
             comboBoxSearchList = new ComboBox();
@@ -93,7 +93,7 @@ namespace School_Project.WForms.SchoolClassesForms
             printPreviewDialog1 = new PrintPreviewDialog();
             transparentTabControl1 = new TransparentTabControl();
             tabPage4 = new TabPage();
-            dataGridView1 = new DataGridView();
+            dataGridViewSearch = new DataGridView();
             tableLayoutPanelStudentData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalCourses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSchoolClassID).BeginInit();
@@ -110,7 +110,7 @@ namespace School_Project.WForms.SchoolClassesForms
             panelBottom.SuspendLayout();
             transparentTabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).BeginInit();
             SuspendLayout();
             // 
             // labelSchoolClassID
@@ -562,24 +562,25 @@ namespace School_Project.WForms.SchoolClassesForms
             chart1.TabIndex = 6;
             chart1.Text = "chart1";
             // 
-            // button6
+            // buttonSearchForm
             // 
-            button6.Anchor = AnchorStyles.None;
-            button6.BackgroundImage = Resources.pesquisar_negrito;
-            button6.BackgroundImageLayout = ImageLayout.Zoom;
-            button6.Cursor = Cursors.Hand;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.CheckedBackColor = Color.Transparent;
-            button6.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button6.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button6.Location = new Point(475, 57);
-            button6.Name = "button6";
-            button6.Size = new Size(125, 50);
-            button6.TabIndex = 11;
-            button6.TextAlign = ContentAlignment.MiddleRight;
-            button6.UseVisualStyleBackColor = true;
+            buttonSearchForm.Anchor = AnchorStyles.None;
+            buttonSearchForm.BackgroundImage = Resources.pesquisar_negrito;
+            buttonSearchForm.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonSearchForm.Cursor = Cursors.Hand;
+            buttonSearchForm.FlatAppearance.BorderSize = 0;
+            buttonSearchForm.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonSearchForm.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonSearchForm.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonSearchForm.FlatStyle = FlatStyle.Flat;
+            buttonSearchForm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearchForm.Location = new Point(475, 57);
+            buttonSearchForm.Name = "buttonSearchForm";
+            buttonSearchForm.Size = new Size(125, 50);
+            buttonSearchForm.TabIndex = 11;
+            buttonSearchForm.TextAlign = ContentAlignment.MiddleRight;
+            buttonSearchForm.UseVisualStyleBackColor = true;
+            buttonSearchForm.Click += ButtonSearchForm_Click;
             // 
             // buttonPrint
             // 
@@ -609,7 +610,7 @@ namespace School_Project.WForms.SchoolClassesForms
             panelBottom.Controls.Add(comboBoxSearchOptions);
             panelBottom.Controls.Add(button9);
             panelBottom.Controls.Add(buttonSearch);
-            panelBottom.Controls.Add(button6);
+            panelBottom.Controls.Add(buttonSearchForm);
             panelBottom.Controls.Add(buttonEdit);
             panelBottom.Controls.Add(buttonRemove);
             panelBottom.Controls.Add(buttonClose);
@@ -657,6 +658,7 @@ namespace School_Project.WForms.SchoolClassesForms
             comboBoxSearchOptions.Name = "comboBoxSearchOptions";
             comboBoxSearchOptions.Size = new Size(288, 23);
             comboBoxSearchOptions.TabIndex = 37;
+            comboBoxSearchOptions.SelectedIndexChanged += ComboBoxSearchOptions_SelectedIndexChanged;
             // 
             // button9
             // 
@@ -813,7 +815,7 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(dataGridView1);
+            tabPage4.Controls.Add(dataGridViewSearch);
             tabPage4.Location = new Point(4, 38);
             tabPage4.Name = "tabPage4";
             tabPage4.Size = new Size(1416, 486);
@@ -821,7 +823,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tabPage4.Text = "3 - Pesquisar";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridViewSearch
             // 
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
@@ -830,8 +832,8 @@ namespace School_Project.WForms.SchoolClassesForms
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Window;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -839,10 +841,10 @@ namespace School_Project.WForms.SchoolClassesForms
             dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
+            dataGridViewSearch.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewSearch.Dock = DockStyle.Fill;
+            dataGridViewSearch.Location = new Point(0, 0);
+            dataGridViewSearch.Name = "dataGridViewSearch";
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = SystemColors.Control;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -850,10 +852,10 @@ namespace School_Project.WForms.SchoolClassesForms
             dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1416, 486);
-            dataGridView1.TabIndex = 0;
+            dataGridViewSearch.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewSearch.RowTemplate.Height = 25;
+            dataGridViewSearch.Size = new Size(1416, 486);
+            dataGridViewSearch.TabIndex = 0;
             // 
             // SchoolClassAdd
             // 
@@ -887,7 +889,7 @@ namespace School_Project.WForms.SchoolClassesForms
             panelBottom.ResumeLayout(false);
             transparentTabControl1.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).EndInit();
             ResumeLayout(false);
         }
 
@@ -932,7 +934,7 @@ namespace School_Project.WForms.SchoolClassesForms
         private PrintPreviewDialog printPreviewDialog1;
         private TableLayoutPanel tableLayoutPanel1;
         private Button buttonStore;
-        private Button button6;
+        private Button buttonSearchForm;
         private Button button4;
         private Button button9;
         private NumericUpDown numericUpDownTotalCourses;
@@ -942,6 +944,6 @@ namespace School_Project.WForms.SchoolClassesForms
         private ComboBox comboBoxSearchOptions;
         private Button buttonSearch;
         private TabPage tabPage4;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewSearch;
     }
 }

@@ -1,41 +1,72 @@
-﻿1;Língua Portuguesa;50;0
-2;Língua Inglesa;50;0
-3;Matemática;50;0
-4;Empresa Estrutura E Funções;25;0
-5;Arquitetura De Hardware;25;0
-6;Sistemas De Informação - Fundamentos;25;0
-7;Sistemas De Informação - Conceção;25;0
-8;Engenharia De Software;25;0
-9;Bases De Dados - Conceitos;25;0
-10;Bases De Dados - Sistemas De Gestão;25;0
-11;Criação De Estrutura De Base De Dados Em SQL;25;0
-12;Programação Em SQL;25;0
-13;Programação Algoritmos;25;0
-14;Programação De Computadores - Estruturada;50;0
-15;Programação De Computadores - Orientada A Objetos;50;0
-16;Programação Para A Web - Cliente (Client-Side);50;0
-17;Web - Hipermédia E Acessibilidades;25;0
-18;Web - Ferramentas Multimédia;25;0
-19;Programação Para A Web - Servidor (Server-Side);50;0
-20;Redes De Comunicação De Dados;25;0
-21;Segurança Em Sistemas Informáticos;25;0
-22;Sistemas Operativos Open Source;25;0
-23;Sistema Operativo Servidor (Plataforma Proprietária);25;0
-24;Integração De Sistemas De Informação - Conceitos;25;0
-25;Integração De Sistemas De Informação - Tecnologias E Níveis De Integração;50;0
-26;Integração De Sistemas De Informação - Ferramentas;25;0
-27;Acesso Móvel A Sistemas De Informação;50;0
-28;Planeamento E Gestão De Projetos De Sistemas De Informação;25;0
-29;Projeto De Tecnologias E Programação De Sistemas De Informação;50;0
-30;Formação Prática Em Contexto De Trabalho;400;0
-31;Teste-1;30;0
-32;Teste-1;30;0
-33;Teste-1;30;0
-34;Teste-1;30;0
-35;Teste-7;70;0
-36;Teste-5;300;0
-37;Teste-5;300;0
-38;Hello;600;0
-39;Olé;50;0
-40;Português;50;0
-41;Matemática;50;0
+﻿1;Língua Portuguesa;50;50
+2;Língua Inglesa;50;50
+3;Matemática;50;50
+4;Empresa Estrutura E Funções;25;25
+5;Arquitetura De Hardware;25;25
+6;Sistemas De Informação - Fundamentos;25;25
+7;Sistemas De Informação - Conceção;25;25
+8;Engenharia De Software;25;25
+9;Bases De Dados - Conceitos;25;25
+10;Bases De Dados - Sistemas De Gestão;25;25
+11;Criação De Estrutura De Base De Dados Em SQL;25;25
+12;Programação Em SQL;25;25
+13;Programação Algoritmos;25;25
+14;Programação De Computadores - Estruturada;50;50
+15;Programação De Computadores - Orientada A Objetos;50;50
+16;Programação Para A WEB - Cliente (Client-Side);50;50
+17;WEB - Hipermédia E Acessibilidades;25;25
+18;WEB - Ferramentas Multimédia;25;25
+19;Programação Para A WEB - Servidor (Server-Side);50;50
+20;Redes De Comunicação De Dados;25;25
+21;Segurança Em Sistemas Informáticos;25;25
+22;Sistemas Operativos Open Source;25;25
+23;Sistema Operativo Servidor (Plataforma Proprietária);25;25
+24;Integração De Sistemas De Informação - Conceitos;25;25
+25;Integração De Sistemas De Informação - Tecnologias E Níveis De Integração;50;50
+26;Integração De Sistemas De Informação - Ferramentas;25;25
+27;Acesso Móvel A Sistemas De Informação;50;50
+28;Planeamento E Gestão De Projetos De Sistemas De Informação;25;25
+29;Projeto De Tecnologias E Programação De Sistemas De Informação;50;50
+30;Formação Prática Em Contexto De Trabalho;400;400
+31;Teste-1;30;30
+32;Teste-1;30;30
+33;Teste-1;30;30
+34;Teste-1;30;30
+35;Teste-7;70;70
+36;Teste-5;300;300
+37;Teste-5;300;300
+38;Hello;600;600
+39;Olé;501;501
+40;Disciplina-2;100;100
+41;Disciplina -2;150;150
+42;Disciplina-3;200;200
+43;Disciplina -3;250;250
+44;Disciplina-4;300;300
+45;Disciplina -4;350;350
+46;Disciplina-5;400;400
+47;Disciplina -5;450;450
+48;Disciplina-6;500;500
+49;Disciplina -6;550;550
+50;Disciplina-7;600;600
+51;Disciplina -7;650;650
+52;Disciplina-8;700;700
+53;Disciplina -8;750;750
+54;Disciplina-9;800;800
+55;Disciplina -9;850;850
+56;Disciplina-10;900;900
+57;Disciplina -10;950;950
+58;Disciplina-11;1000;1000
+59;Disciplina -11;1050;1050
+60;Disciplina-12;1100;1100
+61;Disciplina -12;1150;1150
+62;Disciplina-13;1200;1200
+63;Disciplina -13;1250;1250
+64;Disciplina-14;1300;1300
+65;Disciplina -14;1350;1350
+66;Disciplina-15;1400;1400
+67;Disciplina -15;1450;1450
+68;Disciplina-16;1500;1500
+69;Disciplina -16;1550;1550
+70;Disciplina-17;1600;1600
+71;Disciplina -17;1650;1650
+72;Disciplina-18;1700;1700

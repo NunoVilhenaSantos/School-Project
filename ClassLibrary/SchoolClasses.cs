@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary;
+﻿using System.Reflection;
+
+namespace ClassLibrary;
 
 public static class SchoolClasses
 {
@@ -20,20 +22,20 @@ public static class SchoolClasses
     )
     {
         ListSchoolClasses.Add(new SchoolClass
-        {
-            //Id_SchoolClass = id,
-            ClassAcronym = classAcronym,
-            ClassName = className,
-            StartDate = startDate,
-            EndDate = endDate,
-            StartHour = startHour,
-            EndHour = endHour,
-            Location = location,
-            Type = type,
-            Area = area,
-            //StudentsCount = studentsCount,
-            CoursesList = courses
-        }
+            {
+                //Id_SchoolClass = id,
+                ClassAcronym = classAcronym,
+                ClassName = className,
+                StartDate = startDate,
+                EndDate = endDate,
+                StartHour = startHour,
+                EndHour = endHour,
+                Location = location,
+                Type = type,
+                Area = area,
+                //StudentsCount = studentsCount,
+                CoursesList = courses
+            }
         );
 
         ListSchoolClasses[^1].GetStudentsCount();
@@ -104,13 +106,13 @@ public static class SchoolClasses
 
 
     public static List<SchoolClass> ConsultSchoolClasses(
-        int id, string classAcronym, string className,
-        DateOnly startDate, DateOnly endDate,
-        TimeOnly startHour, TimeOnly endHour,
-        string location, string type, string area,
-        int studentsCount,
+        int? id, string? classAcronym, string? className,
+        DateOnly? startDate, DateOnly? endDate,
+        TimeOnly? startHour, TimeOnly? endHour,
+        string? location, string? type, string? area,
+        int? studentsCount,
         //List<Student>? studentsList
-        List<Course> courses
+        List<Course>? courses
     )
     {
         var schoolClasses = ListSchoolClasses;
@@ -142,15 +144,58 @@ public static class SchoolClasses
         if (!string.IsNullOrWhiteSpace(area))
             schoolClasses =
                 ListSchoolClasses.Where(a => a.Area == area).ToList();
-        if (!int.IsNegative(studentsCount))
+        if (studentsCount != null && int.IsNegative((int) studentsCount))
             schoolClasses = ListSchoolClasses
                 .Where(a => a.StudentsCount == studentsCount).ToList();
 
-        if (courses is { Count: > 0 })
+        if (courses is {Count: > 0})
             schoolClasses = ListSchoolClasses
                 .Where(a => a.CoursesList == courses).ToList();
 
         return schoolClasses;
+    }
+
+
+    public static List<SchoolClass> ConsultSchoolClasses(
+        string selectedProperty, object selectedValue)
+    {
+        /*
+        //
+        // 1.º teste
+        //
+
+        // Create a new list to store the filtered results
+        List<SchoolClass> filteredSchoolClass = new();
+
+        var property = typeof(SchoolClass).GetProperty(selectedProperty);
+        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+        {
+            if (property == null ||
+                property.GetValue(schoolClass).ToString() == ""
+               )
+                continue;
+
+            filteredSchoolClass.Add(schoolClass);
+        }
+        */
+
+
+        var property = typeof(SchoolClass).GetProperty(selectedProperty);
+        if (property == null)
+        {
+            return new List<SchoolClass>();
+        }
+
+        var propertyType = property.PropertyType;
+        var convertedValue =
+            Convert.ChangeType(selectedValue, propertyType);
+
+        return SchoolClasses.ListSchoolClasses
+            .Where(schoolClass =>
+                property.GetValue(schoolClass)
+                    ?.Equals(convertedValue) ==
+                true)
+            .ToList();
     }
 
 
@@ -245,11 +290,11 @@ public static class SchoolClasses
                         {
                             var grades = course.Enrollments.Select(e => e.Grade)
                                 .ToList();
-                            classTotal += (decimal)grades.Average();
+                            classTotal += (decimal) grades.Average();
                             highestGrade = Math.Max(highestGrade,
-                                (decimal)grades.Max());
+                                (decimal) grades.Max());
                             lowestGrade = Math.Min(lowestGrade,
-                                (decimal)grades.Min());
+                                (decimal) grades.Min());
                         }
                     }
 
