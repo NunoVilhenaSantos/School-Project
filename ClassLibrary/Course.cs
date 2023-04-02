@@ -90,7 +90,6 @@ public class Course : INotifyPropertyChanged
             if (value == _name) return;
             _name = value;
             OnPropertyChanged();
-
         }
     }
 

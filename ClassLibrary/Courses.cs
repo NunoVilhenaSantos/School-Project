@@ -24,14 +24,14 @@ public static class Courses
     )
     {
         ListCourses.Add(new Course
-        {
-            //Id_Course = id,
-            Name = name,
-            WorkLoad = workLoad,
-            Credits = credits
-            // Enrollments = enrollments,
-            // StudentGradesList = studentGrades,
-        }
+            {
+                //Id_Course = id,
+                Name = name,
+                WorkLoad = workLoad,
+                Credits = credits
+                // Enrollments = enrollments,
+                // StudentGradesList = studentGrades,
+            }
         );
     }
 

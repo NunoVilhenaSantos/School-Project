@@ -1,6 +1,6 @@
-﻿using ClassLibrary;
+﻿using System.Reflection;
+using ClassLibrary;
 using School_Project.WForms.SchoolClassesForms;
-using System.Reflection;
 
 namespace School_Project.WForms.CoursesForms;
 
@@ -13,9 +13,9 @@ public partial class DisciplineAdd : Form
     private readonly BindingSource _bSourceSearchOptions = new();
     private readonly BindingSource _bSsClassesCourses = new();
 
-    private int _disciplinesCount;
-
     private int _coursesCount;
+
+    private int _disciplinesCount;
     private string _photoFile;
 
     // keep track of the DataGridViewSchoolClasses row index previousRowIndex
@@ -52,6 +52,7 @@ public partial class DisciplineAdd : Form
             _disciplinesCount = Courses.ListCourses.Count;
             _disciplinesCount = Courses.GetLastId();
         }
+
         //
         // 
         // assign the local variables to is
@@ -83,7 +84,6 @@ public partial class DisciplineAdd : Form
         UpdateLists();
         UpdateLabelsCounts();
     }
-
 
 
     private void WinForm_KeyDown(object sender, KeyEventArgs e)
@@ -120,9 +120,9 @@ public partial class DisciplineAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
+        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
         {
-            ((TextBox)sender).Paste();
+            ((TextBox) sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -132,9 +132,9 @@ public partial class DisciplineAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Courses.AddCourse(
-            (int)numericUpDownDisciplineID.Value,
+            (int) numericUpDownDisciplineID.Value,
             textBoxDisciplineName.Text,
-            (int)numericUpDownNumberHours.Value,
+            (int) numericUpDownNumberHours.Value,
             0, null
         );
 
@@ -226,7 +226,7 @@ public partial class DisciplineAdd : Form
         _bSourceSearchOptions.DataSource = typeof(Course);
         var properties =
             typeof(Course).GetProperties(BindingFlags.Public |
-                                              BindingFlags.Instance);
+                                         BindingFlags.Instance);
 
         List<string> propertyNames = new();
         foreach (var property in properties) propertyNames.Add(property.Name);
@@ -254,7 +254,6 @@ public partial class DisciplineAdd : Form
     }
 
 
-
     private void ComboBoxSearchOptions_SelectedIndexChanged(
         object sender, EventArgs e)
     {
@@ -279,7 +278,6 @@ public partial class DisciplineAdd : Form
         comboBoxSearchList.Refresh();
         dataGridViewSearch.Refresh();
     }
-
 
 
     private void UpdateLabelsCounts()
@@ -414,12 +412,16 @@ public partial class DisciplineAdd : Form
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var selectedCourse = (Course)_bSListCourses.Current;
+        var selectedCourse = (Course) _bSListCourses.Current;
 
         // Get the students for the selected course from the data source
-        var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments.Where(x => x.CourseId == selectedCourse.IdCourse).Select(e => e.Student).ToList();
-        var selectedCourseEnrollments = Enrollments.ListEnrollments.Where(x => x.CourseId == selectedCourse.IdCourse).ToList();
-        var selectedCourseStudents = selectedCourseEnrollments.Select(e => e.Student).ToList();
+        var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments
+            .Where(x => x.CourseId == selectedCourse.IdCourse)
+            .Select(e => e.Student).ToList();
+        var selectedCourseEnrollments = Enrollments.ListEnrollments
+            .Where(x => x.CourseId == selectedCourse.IdCourse).ToList();
+        var selectedCourseStudents =
+            selectedCourseEnrollments.Select(e => e.Student).ToList();
 
         if (selectedCourseStudents == null)
         {
@@ -430,7 +432,7 @@ public partial class DisciplineAdd : Form
         // Set the checked items in the checkedListBoxStudents control
         for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
         {
-            var student = (Student)checkedListBoxStudents.Items[i];
+            var student = (Student) checkedListBoxStudents.Items[i];
             checkedListBoxStudents.SetItemChecked(i,
                 selectedCourseStudents.Contains(student));
         }
@@ -488,7 +490,6 @@ public partial class DisciplineAdd : Form
             buttonAddStudents.Visible = false;
             //buttonAddStudent.Visible = false;
         }
-
     }
 
     private void TransparentTabControl1_TabIndexChanged(
@@ -503,10 +504,6 @@ public partial class DisciplineAdd : Form
         schoolClassSearch.ShowDialog();
         schoolClassSearch.Dispose();
     }
-
-
-
-
 
 
     private void ButtonAddEnrollments_Click(object sender, EventArgs e)
@@ -565,7 +562,8 @@ public partial class DisciplineAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos estudante(s) para adicionar, vamos lá.");
-        var courseToAdd = (Course)_bSListCourses.Current; ;
+        var courseToAdd = (Course) _bSListCourses.Current;
+        ;
 
         //
         // cycle to evaluate which student(s) are select and add it
@@ -573,21 +571,22 @@ public partial class DisciplineAdd : Form
         List<Enrollment> newEnrollmentList = new();
 
         foreach (var a in Students.ListStudents)
-            foreach (var t in checkedListBoxStudents.CheckedItems)
-                if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
-                {
-                    newEnrollmentList.Add(
-                        new Enrollment
-                        {
-                            Grade = null,
-                            StudentId = toVerify.IdStudent,
-                            Student = toVerify,
-                            CourseId = courseToAdd.IdCourse,
-                            Course = courseToAdd,
-                        }
-                        );
-                    Enrollments.AddEnrollment(toVerify.IdStudent, courseToAdd.IdCourse);
-                }
+        foreach (var t in checkedListBoxStudents.CheckedItems)
+            if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
+            {
+                newEnrollmentList.Add(
+                    new Enrollment
+                    {
+                        Grade = null,
+                        StudentId = toVerify.IdStudent,
+                        Student = toVerify,
+                        CourseId = courseToAdd.IdCourse,
+                        Course = courseToAdd
+                    }
+                );
+                Enrollments.AddEnrollment(toVerify.IdStudent,
+                    courseToAdd.IdCourse);
+            }
 
         //
         // debugging
@@ -601,7 +600,7 @@ public partial class DisciplineAdd : Form
                     values:
                     $"{item.StudentId} - {item.Student.Name}|" +
                     $"{item.CourseId} - {item.Course.Name}\n")
-                );
+        );
         MessageBox.Show(nova);
 
 
@@ -619,10 +618,4 @@ public partial class DisciplineAdd : Form
 
         Console.WriteLine("Testes de Debug");
     }
-
-
-
-
-
-
 }

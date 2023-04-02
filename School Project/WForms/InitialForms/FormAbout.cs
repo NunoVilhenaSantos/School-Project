@@ -1,22 +1,20 @@
-﻿namespace School_Project.WForms.InitialForms
+﻿namespace School_Project.WForms.InitialForms;
+
+public partial class FormAbout : Form
 {
-    public partial class FormAbout : Form
+    public FormAbout()
     {
-        public FormAbout()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void FormAbout_Load(object sender, EventArgs e)
-        {
-            this.KeyPreview = true;
-        }
+    private void FormAbout_Load(object sender, EventArgs e)
+    {
+        KeyPreview = true;
+    }
 
 
-        private void WinForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) Close();
-        }
-
+    private void WinForm_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Escape) Close();
     }
 }

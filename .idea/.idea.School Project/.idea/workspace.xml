@@ -6,23 +6,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="more things added and update, with some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Course.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Course.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Students.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Students.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Teacher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/XFiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/XFiles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/UControl/UC_Sobre.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/UControl/UC_About.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/UControl/UC_Sobre.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/UControl/UC_About.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/UControl/UC_Sobre.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/UControl/UC_About.resx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineEdit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormAbout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormAbout.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormAbout.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormAbout.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/MainWinForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/MainWinForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassEdit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/ChartsWinForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/ChartsWinForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/ChartsWinForm1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/ChartsWinForm1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentEdit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/AssemblyInfo.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +150,7 @@
       <workItem from="1680284330502" duration="20642000" />
       <workItem from="1680339699684" duration="2489000" />
       <workItem from="1680347324964" duration="28756000" />
-      <workItem from="1680435366294" duration="4383000" />
+      <workItem from="1680435366294" duration="4457000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>

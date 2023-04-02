@@ -6,5 +6,4 @@ public partial class UC_About : UserControl
     {
         InitializeComponent();
     }
-
 }

@@ -9,6 +9,24 @@ public class Teacher : INotifyPropertyChanged
         {"Male", "Female", "Non Binary", "Prefer not to say"};
 
 
+    #region Constructor
+
+    //
+    // Constructor for the class and incrementation of the ID
+    //
+
+    //
+    // https://itecnote.com/tecnote/c-incrementing-a-unique-id-number-in-the-constructor/
+    //
+    // Constructor for the class and incrementation of the ID
+    //
+    public Teacher()
+    {
+        TeacherId = Interlocked.Increment(ref _mCounter);
+    }
+
+    #endregion
+
 
     #region Attributes
 
@@ -43,30 +61,7 @@ public class Teacher : INotifyPropertyChanged
     #endregion
 
 
-    #region Constructor
-    //
-    // Constructor for the class and incrementation of the ID
-    //
-
-    //
-    // https://itecnote.com/tecnote/c-incrementing-a-unique-id-number-in-the-constructor/
-    //
-    // Constructor for the class and incrementation of the ID
-    //
-    public Teacher()
-    {
-        TeacherId = Interlocked.Increment(ref _mCounter);
-    }
-
-    #endregion
-
-
-
-
     #region Properties
-
-
-
 
     public int TeacherId { get; }
 
@@ -280,12 +275,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-
-
-
-
     #endregion
-
 
 
     #region Methods

@@ -1,9 +1,9 @@
-﻿using ClassLibrary;
+﻿using System.Globalization;
+using ClassLibrary;
 using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
-using System.Globalization;
 
 namespace School_Project.WForms.InitialForms;
 
@@ -28,13 +28,11 @@ public partial class InitialWinForm : Form
     private void WinFormInitial_Load(object sender, EventArgs e)
     {
         // try to read files if they exist
-        var xFilesMessages = XFiles.ReadFromFiles(out string myString);
-        if(!xFilesMessages)
-        {
+        var xFilesMessages = XFiles.ReadFromFiles(out var myString);
+        if (!xFilesMessages)
             MessageBox.Show(
                 "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
                 "Ler ficheiros");
-        }
 
         _context = new SchoolContext();
         //_context.Database.EnsureCreated();
@@ -45,13 +43,11 @@ public partial class InitialWinForm : Form
 
     private void ButtonCloseProgram_Click(object sender, EventArgs e)
     {
-        var xFilesMessages = XFiles.StoreInFiles(out string myString);
+        var xFilesMessages = XFiles.StoreInFiles(out var myString);
         if (!xFilesMessages)
-        {
             MessageBox.Show(
                 "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
                 "Ler ficheiros");
-        }
 
         Console.WriteLine("Testes de Debug");
 
@@ -173,7 +169,7 @@ public partial class InitialWinForm : Form
 
     private void ButtonAbout_Click(object sender, EventArgs e)
     {
-        FormAbout formAbout = new FormAbout();
+        var formAbout = new FormAbout();
         //Hide();
         formAbout.ShowDialog();
         formAbout.Close();
@@ -213,7 +209,6 @@ public partial class InitialWinForm : Form
         //this.tableLayoutPanelInitialForm.SetRowSpan(pictureBox1, 9);
         */
     }
-
 
 
     private void WinFormInitial_FormClosing(object sender,

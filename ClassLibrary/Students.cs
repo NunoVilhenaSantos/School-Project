@@ -40,28 +40,28 @@ public class Students
     )
     {
         ListStudents.Add(new Student
-        {
-            //IdStudent = id,
-            Name = name,
-            LastName = lastName,
-            Address = address,
-            PostalCode = postalCode,
-            City = city,
-            Phone = phone,
-            Email = email,
-            Active = active,
-            Genre = genre,
-            DateOfBirth = dateOfBirth,
-            IdentificationNumber = identificationNumber,
-            ExpirationDateIn = expirationDateIn,
-            TaxIdentificationNumber = taxIdentificationNumber,
-            Nationality = nationality,
-            Birthplace = birthplace,
-            Photo = photo,
-            TotalWorkHoursLoad = totalWorkHours,
-            EnrollmentDate = enrollmentDate,
-            Enrollments = enrollments
-        }
+            {
+                //IdStudent = id,
+                Name = name,
+                LastName = lastName,
+                Address = address,
+                PostalCode = postalCode,
+                City = city,
+                Phone = phone,
+                Email = email,
+                Active = active,
+                Genre = genre,
+                DateOfBirth = dateOfBirth,
+                IdentificationNumber = identificationNumber,
+                ExpirationDateIn = expirationDateIn,
+                TaxIdentificationNumber = taxIdentificationNumber,
+                Nationality = nationality,
+                Birthplace = birthplace,
+                Photo = photo,
+                TotalWorkHoursLoad = totalWorkHours,
+                EnrollmentDate = enrollmentDate,
+                Enrollments = enrollments
+            }
         );
 
         Console.WriteLine("Debugging");

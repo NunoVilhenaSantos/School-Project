@@ -135,9 +135,9 @@ public partial class SchoolClassEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
+        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
 
-        ((TextBox)sender).Paste();
+        ((TextBox) sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -281,9 +281,9 @@ public partial class SchoolClassEdit : Form
         List<Course> newCoursesList = new();
 
         foreach (var a in Courses.ListCourses)
-            foreach (var t in checkedListBoxCourses.CheckedItems)
-                if (t is Course toVerify && a.IdCourse == toVerify.IdCourse)
-                    newCoursesList.Add(toVerify);
+        foreach (var t in checkedListBoxCourses.CheckedItems)
+            if (t is Course toVerify && a.IdCourse == toVerify.IdCourse)
+                newCoursesList.Add(toVerify);
 
         //
         // debugging
@@ -329,7 +329,7 @@ public partial class SchoolClassEdit : Form
         // Set the checked items in the checkedListBoxCourses control
         for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
         {
-            var course = (Course)checkedListBoxCourses.Items[i];
+            var course = (Course) checkedListBoxCourses.Items[i];
             checkedListBoxCourses.SetItemChecked(i,
                 selectedSchoolClassCourses.Contains(course));
         }

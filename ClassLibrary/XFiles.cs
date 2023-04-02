@@ -61,15 +61,20 @@ public static class XFiles
         // If the directory already exists, this method does nothing.
         file.Directory.Create();
 
-        var storeSchoolClassesInFile = StoreSchoolClassesInFile(out string message_StoreSchoolClassesInFile);
+        var storeSchoolClassesInFile =
+            StoreSchoolClassesInFile(out var message_StoreSchoolClassesInFile);
 
-        var storeTeachersInFile = StoreTeachersInFile(out string message_StoreTeachersInFile);
+        var storeTeachersInFile =
+            StoreTeachersInFile(out var message_StoreTeachersInFile);
 
-        var storeCoursesInFile = StoreCoursesInFile(out string message_StoreCoursesInFile);
+        var storeCoursesInFile =
+            StoreCoursesInFile(out var message_StoreCoursesInFile);
 
-        var storeEnrollmentsInFile = StoreEnrollmentsInFile(out string message_StoreEnrollmentsInFile);
+        var storeEnrollmentsInFile =
+            StoreEnrollmentsInFile(out var message_StoreEnrollmentsInFile);
 
-        var storeStudentsInFile = StoreStudentsInFile(out string message_StoreStudentsInFile);
+        var storeStudentsInFile =
+            StoreStudentsInFile(out var message_StoreStudentsInFile);
 
         myString =
             message_StoreSchoolClassesInFile + "\n\n" +
@@ -78,7 +83,9 @@ public static class XFiles
             message_StoreEnrollmentsInFile + "\n\n" +
             message_StoreStudentsInFile;
 
-        bool myBool = (storeSchoolClassesInFile && storeTeachersInFile && storeCoursesInFile && storeEnrollmentsInFile && storeStudentsInFile);
+        var myBool = storeSchoolClassesInFile && storeTeachersInFile &&
+                     storeCoursesInFile && storeEnrollmentsInFile &&
+                     storeStudentsInFile;
 
         return myBool;
     }
@@ -103,13 +110,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -199,7 +208,8 @@ public static class XFiles
                 }
             }
         }
-        myString= "Operação realizada com sucesso";
+
+        myString = "Operação realizada com sucesso";
         return true;
     }
 
@@ -220,13 +230,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -296,13 +308,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -341,13 +355,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -387,13 +403,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -462,19 +480,25 @@ public static class XFiles
 
 
         // 1st file to read are the courses file
-        var readCoursesFromFile = ReadCoursesFromFile(out string message_ReadCoursesFromFile);
+        var readCoursesFromFile =
+            ReadCoursesFromFile(out var message_ReadCoursesFromFile);
 
         // 2nd file to read are the students file
-        var readStudentsFromFile = ReadStudentsFromFile(out string message_ReadStudentsFromFile);
+        var readStudentsFromFile =
+            ReadStudentsFromFile(out var message_ReadStudentsFromFile);
 
         // 3rd file to read are the enrollment file
-        var readEnrollmentsInFile = ReadEnrollmentsInFile(out string message_ReadEnrollmentsInFile);
+        var readEnrollmentsInFile =
+            ReadEnrollmentsInFile(out var message_ReadEnrollmentsInFile);
 
         // 4th file to read are the school-classes file
-        var readSchoolClassesFromFile = ReadSchoolClassesFromFile(out string message_ReadSchoolClassesFromFile);
+        var readSchoolClassesFromFile =
+            ReadSchoolClassesFromFile(
+                out var message_ReadSchoolClassesFromFile);
 
         // 5th file to read are the teachers file
-        var readTeachersInFile = ReadTeachersInFile(out string message_ReadTeachersInFile);
+        var readTeachersInFile =
+            ReadTeachersInFile(out var message_ReadTeachersInFile);
 
         myString =
             message_ReadCoursesFromFile + "\n\n" +
@@ -483,7 +507,9 @@ public static class XFiles
             message_ReadSchoolClassesFromFile + "\n\n" +
             message_ReadTeachersInFile;
 
-        bool myBool = (readCoursesFromFile && readStudentsFromFile && readEnrollmentsInFile && readSchoolClassesFromFile && readTeachersInFile);
+        var myBool = readCoursesFromFile && readStudentsFromFile &&
+                     readEnrollmentsInFile && readSchoolClassesFromFile &&
+                     readTeachersInFile;
 
         return myBool;
     }
@@ -505,13 +531,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -568,13 +596,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -655,13 +685,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -710,7 +742,7 @@ public static class XFiles
                     studentId,
                     //Student = student,
                     courseId
-                //Course = course
+                    //Course = course
                 );
             }
 
@@ -737,13 +769,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }
@@ -846,13 +880,15 @@ public static class XFiles
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " + ex.Message;
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " + e.Message;
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
             return false;
             throw;
         }

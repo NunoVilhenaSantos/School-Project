@@ -1,9 +1,9 @@
-﻿using ClassLibrary;
+﻿using System.Globalization;
+using ClassLibrary;
 using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
-using System.Globalization;
 
 namespace School_Project.WForms.InitialForms;
 
@@ -30,27 +30,21 @@ public partial class MainWinForm : Form
         MaximizeBox = true;
 
         // try to read files if they exist
-        var xFilesMessages = XFiles.ReadFromFiles(out string myString);
+        var xFilesMessages = XFiles.ReadFromFiles(out var myString);
         if (!xFilesMessages)
-        {
             MessageBox.Show(
                 "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
                 "Ler ficheiros");
-        }
     }
-
 
 
     private void ButtonCloseProgram_Click(object sender, EventArgs e)
     {
-
-        var xFilesMessages = XFiles.StoreInFiles(out string myString);
+        var xFilesMessages = XFiles.StoreInFiles(out var myString);
         if (!xFilesMessages)
-        {
             MessageBox.Show(
                 "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
                 "Ler ficheiros");
-        }
 
         Console.WriteLine("Testes de Debug");
 
@@ -98,7 +92,6 @@ public partial class MainWinForm : Form
         StudentDiscipline winFormStudentDiscipline = new();
         winFormStudentDiscipline.ShowDialog();
     }
-
 
 
     private void WinFormInitial_FormClosing(object sender,
