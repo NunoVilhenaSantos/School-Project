@@ -439,7 +439,7 @@ public partial class StudentAdd : Form
         //
         // open the edit form with the studentForValidation editing
         //
-        MessageBox.Show("Temos disciplinas, vamos lá");
+        MessageBox.Show("Temos disciplina(s), vamos lá");
 
 
         //

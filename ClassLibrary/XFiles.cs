@@ -123,45 +123,6 @@ public static class XFiles
             throw;
         }
 
-        /*
-        using (FileStream fileStream = new(SchoolClassesFile, FileMode.Create))
-        {
-            using (streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
-            {
-                foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
-                {
-                    var line =
-                        $"{schoolClass.IdSchoolClass};" +
-                        $"{schoolClass.ClassAcronym};" +
-                        $"{schoolClass.ClassName};" +
-                        $"{schoolClass.StartDate};" +
-                        $"{schoolClass.EndDate};" +
-                        $"{schoolClass.StartHour};" +
-                        $"{schoolClass.EndHour};" +
-                        $"{schoolClass.Location};" +
-                        $"{schoolClass.Type};" +
-                        $"{schoolClass.Area}";
-                    //$"{schoolClass.StudentsCount};" +
-                    //$"{schoolClass.WorkHourLoad};" +
-                    //$"{schoolClass.CoursesList}";
-
-                    //
-                    // check if the list of disciplines of the student is not null
-                    // else write the line without this info
-                    //
-                    if (schoolClass.CoursesList != null)
-                        line =
-                            schoolClass.CoursesList.Aggregate(
-                                line, (current, c)
-                                    => current + $";{c.IdCourse}");
-
-                    streamWriter.WriteLine(line);
-                }
-
-                streamWriter.Flush();
-            }
-        }
-        */
 
         using (FileStream fileStream = new(SchoolClassesFile, FileMode.Create))
         {
@@ -206,6 +167,8 @@ public static class XFiles
 
                     streamWriter.WriteLine(line);
                 }
+
+                streamWriter.Flush();
             }
         }
 
@@ -286,6 +249,7 @@ public static class XFiles
                 }
 
                 streamWriter.Write(csvStringBuilder.ToString());
+                streamWriter.Flush();
             }
         }
 
@@ -331,8 +295,10 @@ public static class XFiles
                              $"{course.IdCourse};" +
                              $"{course.Name};" +
                              $"{course.WorkLoad};" +
-                             $"{course.Credits}"))
+                             $"{course.Credits}"
+                         ))
                     streamWriter.WriteLine(line);
+                streamWriter.Flush();
             }
         }
 
@@ -371,17 +337,20 @@ public static class XFiles
         using (FileStream fileStream =
                new(EnrollmentsFile, FileMode.Create))
         {
-            StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
-
-            foreach (var line in
-                     Enrollments.ListEnrollments.Select(e =>
-                         $"{e.IdEnrollment};" +
-                         $"{e.Grade};" +
-                         $"{e.StudentId};" +
-                         $"{e.Student};" +
-                         $"{e.CourseId};" +
-                         $"{e.Course}"))
-                streamWriter.WriteLine(line);
+            using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
+            {
+                foreach (var line in
+                         Enrollments.ListEnrollments.Select(e =>
+                                 $"{e.IdEnrollment};" +
+                                 $"{e.Grade};" +
+                                 $"{e.StudentId};" +
+                                 //$"{e.Student};" +
+                                 $"{e.CourseId};"
+                             //$"{e.Course}"
+                         ))
+                    streamWriter.WriteLine(line);
+                streamWriter.Flush();
+            }
         }
 
         myString = "Operação realizada com sucesso";
@@ -549,31 +518,36 @@ public static class XFiles
             var fileStream =
             new FileStream(CoursesFile, FileMode.OpenOrCreate))
         {
-            StreamReader streamReader = new(fileStream);
-
-            while (!streamReader.EndOfStream)
+            using (StreamReader streamReader = new(fileStream))
             {
-                // read a line
-                var line = streamReader.ReadLine();
+                while (!streamReader.EndOfStream)
+                {
+                    // read a line
+                    var line = streamReader.ReadLine();
 
-                // validating the line,
-                // if is not null or empty,
-                // else will continue
-                if (string.IsNullOrEmpty(line)) continue;
+                    // validating the line,
+                    // if is not null or empty,
+                    // else will continue
+                    if (string.IsNullOrEmpty(line)) continue;
 
-                // split the line into an array of strings
-                var campos = line.Split(';');
+                    // split the line into an array of strings
+                    var campos = line.Split(';');
 
-                _ = int.TryParse(campos[0], out var id);
-                _ = int.TryParse(campos[2], out var workLoad);
-                _ = int.TryParse(campos[2], out var credits);
-                int Credits;
-                Courses.AddCourse(
-                    id, campos[1], workLoad, credits, null
-                );
+                    // validating the line, if has at least 4 fields,
+                    // less than 4 will continue reading the file
+                    if (campos.Length < 4) continue;
+
+                    _ = int.TryParse(campos[0], out var id);
+                    _ = int.TryParse(campos[2], out var workLoad);
+                    _ = int.TryParse(campos[3], out var credits);
+
+                    Courses.AddCourse(
+                        id, campos[1], workLoad, credits, null
+                    );
+                }
+
+                streamReader.Close();
             }
-
-            streamReader.Close();
         }
 
         myString = "Operação realizada com sucesso";
@@ -612,56 +586,57 @@ public static class XFiles
         using (FileStream fileStream =
                new(StudentsFile, FileMode.OpenOrCreate))
         {
-            StreamReader streamReader = new(fileStream);
-
-            while (!streamReader.EndOfStream)
+            using (StreamReader streamReader = new(fileStream))
             {
-                // reading a line
-                var line = streamReader.ReadLine();
+                while (!streamReader.EndOfStream)
+                {
+                    // reading a line
+                    var line = streamReader.ReadLine();
 
-                // validating the line, if is not null or empty,
-                // else will continue reading the file
-                if (string.IsNullOrEmpty(line)) continue;
+                    // validating the line, if is not null or empty,
+                    // else will continue reading the file
+                    if (string.IsNullOrEmpty(line)) continue;
 
-                // split the line into an array of strings
-                var campos = line.Split(';');
+                    // split the line into an array of strings
+                    var campos = line.Split(';');
 
-                // validating the line, if has at least 5 fields,
-                // less than 5 will continue reading the file
-                if (campos.Length < 18) continue;
+                    // validating the line, if has at least 18 fields,
+                    // less than 18 will continue reading the file
+                    if (campos.Length < 18) continue;
 
-                _ = int.TryParse(campos[0], out var id);
-                _ = bool.TryParse(campos[8], out var active);
-                _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
-                _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
-                _ = int.TryParse(campos[17], out var totalWorkHours);
-                _ = DateOnly.TryParse(campos[18], out var enrollmentDate);
+                    _ = int.TryParse(campos[0], out var id);
+                    _ = bool.TryParse(campos[8], out var active);
+                    _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+                    _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+                    _ = int.TryParse(campos[17], out var totalWorkHours);
+                    _ = DateOnly.TryParse(campos[18], out var enrollmentDate);
 
-                Students.AddStudent(
-                    id,
-                    campos[1],
-                    campos[2],
-                    campos[3],
-                    campos[4],
-                    campos[5],
-                    campos[6],
-                    campos[7],
-                    active,
-                    campos[9],
-                    dateOfBirth,
-                    campos[11],
-                    expirationDateIn,
-                    campos[13],
-                    campos[14],
-                    campos[15],
-                    campos[16],
-                    totalWorkHours,
-                    enrollmentDate,
-                    new List<Enrollment>()
-                );
+                    Students.AddStudent(
+                        id,
+                        campos[1],
+                        campos[2],
+                        campos[3],
+                        campos[4],
+                        campos[5],
+                        campos[6],
+                        campos[7],
+                        active,
+                        campos[9],
+                        dateOfBirth,
+                        campos[11],
+                        expirationDateIn,
+                        campos[13],
+                        campos[14],
+                        campos[15],
+                        campos[16],
+                        totalWorkHours,
+                        enrollmentDate,
+                        new List<Enrollment>()
+                    );
+                }
+
+                streamReader.Close();
             }
-
-            streamReader.Close();
         }
 
         myString = "Operação realizada com sucesso";
@@ -701,52 +676,52 @@ public static class XFiles
         using (FileStream fileStream =
                new(EnrollmentsFile, FileMode.OpenOrCreate))
         {
-            StreamReader streamReader = new(fileStream);
-
-            while (!streamReader.EndOfStream)
+            using (StreamReader streamReader = new(fileStream))
             {
-                // reading a line
-                var line = streamReader.ReadLine();
+                while (!streamReader.EndOfStream)
+                {
+                    // reading a line
+                    var line = streamReader.ReadLine();
 
-                // validating the line, if is not null or empty,
-                // else will continue reading the file
-                if (string.IsNullOrEmpty(line)) continue;
+                    // validating the line, if is not null or empty,
+                    // else will continue reading the file
+                    if (string.IsNullOrEmpty(line)) continue;
 
-                // split the line into an array of strings
-                var campos = line.Split(';');
+                    // split the line into an array of strings
+                    var campos = line.Split(';');
 
-                // validating the line, if has at least 5 fields,
-                // less than 5 will continue reading the file
-                //if (campos.Length < 15) continue;
-                /*
-                 *
-                 * public int IdEnrollment { get; }
-                 * public decimal? Grade { get; set; }
-                 * public int StudentId { get; set; }
-                 * public Student Student { get; set; }
-                 * public int CourseId { get; set; }
-                 * public Course Course { get; set; }
-                 *
-                 * 
-                 */
-                _ = int.TryParse(campos[0], out var idEnrollment);
-                _ = decimal.TryParse(campos[1], out var grade);
-                _ = int.TryParse(campos[2], out var studentId);
-                _ = int.TryParse(campos[4], out var courseId);
+                    // validating the line, if has at least 5 fields,
+                    // less than 5 will continue reading the file
+                    if (campos.Length < 4) continue;
+                    //
+                    //
+                    // public int IdEnrollment { get; }
+                    // public decimal? Grade { get; set; }
+                    // public int StudentId { get; set; }
+                    // public Student Student { get; set; }
+                    // public int CourseId { get; set; }
+                    // public Course Course { get; set; }
+                    //
+                    //
+                    _ = int.TryParse(campos[0], out var idEnrollment);
+                    _ = decimal.TryParse(campos[1], out var grade);
+                    _ = int.TryParse(campos[2], out var studentId);
+                    _ = int.TryParse(campos[3], out var courseId);
 
-                // verificar este ciclo porque esta adicionar todos
-                // tem que adicionar na lista deste estudante o que lhe pertence
-                Enrollments.AddEnrollment(
-                    // IdEnrollment=idEnrollment,
-                    grade,
-                    studentId,
-                    //Student = student,
-                    courseId
-                    //Course = course
-                );
+                    // verificar este ciclo porque esta adicionar todos tem que
+                    // adicionar na lista deste estudante o que lhe pertence
+                    Enrollments.AddEnrollment(
+                        // IdEnrollment=idEnrollment,
+                        grade,
+                        studentId,
+                        //Student = student,
+                        courseId
+                        //Course = course
+                    );
+                }
+
+                streamReader.Close();
             }
-
-            streamReader.Close();
         }
 
         myString = "Operação realizada com sucesso";
@@ -785,77 +760,80 @@ public static class XFiles
         using (FileStream fileStream =
                new(SchoolClassesFile, FileMode.OpenOrCreate))
         {
-            StreamReader streamReader = new(fileStream);
-
-            while (!streamReader.EndOfStream)
+            using (StreamReader streamReader = new(fileStream))
             {
-                // read a line
-                var line = streamReader.ReadLine();
+                while (!streamReader.EndOfStream)
+                {
+                    // read a line
+                    var line = streamReader.ReadLine();
 
-                // validating the line,
-                // if is not null or empty,
-                // else will continue
-                if (string.IsNullOrEmpty(line)) continue;
+                    // validating the line,
+                    // if is not null or empty,
+                    // else will continue
+                    if (string.IsNullOrEmpty(line)) continue;
 
-                // split the line into an array of strings
-                var campos = line.Split(';');
+                    // split the line into an array of strings
+                    var campos = line.Split(';');
 
-                // validating the line,
-                // if is not null or empty,
-                // else will continue
-                if (campos.Length < 10) continue;
+                    // validating the line,
+                    // if is not null or empty,
+                    // else will continue
+                    if (campos.Length < 10) continue;
 
 
-                // -----------------------------------------------------------------
-                //
-                // cycle to evaluate which students are select and add it
-                //
-                // -----------------------------------------------------------------
+                    // ---------------------------------------------------------
+                    //
+                    // cycle to evaluate which students are select and add it
+                    //
+                    // ---------------------------------------------------------
 
-                //
-                // temp variable of the class student to
-                // retain the students for studentForValidation
-                //
-                List<Course> coursesList = new();
+                    //
+                    // temp variable of the class student to
+                    // retain the students for studentForValidation
+                    //
+                    List<Course> coursesList = new();
 
-                // validating the line,
-                // if has more than 3 fields,
-                // will read the disciplines
-                if (campos.Length > 9)
-                    foreach (var c in Courses.ListCourses)
-                        for (var index = 10; index < campos.Length; index++)
-                        {
-                            int.TryParse(campos[index], out var idCourse);
-                            if (c.IdCourse == idCourse) coursesList.Add(c);
-                        }
+                    // validating the line,
+                    // if has more than 3 fields,
+                    // will read the disciplines
+                    if (campos.Length > 9)
+                        foreach (var c in Courses.ListCourses)
+                            for (var index = 10; index < campos.Length; index++)
+                            {
+                                int.TryParse(campos[index], out var idCourse);
+                                if (c.IdCourse == idCourse) coursesList.Add(c);
+                            }
 
-                _ = int.TryParse(campos[0], out var id);
-                _ = DateOnly.TryParse(campos[3], out var startDate);
-                _ = DateOnly.TryParse(campos[4], out var endDate);
-                _ = TimeOnly.TryParse(campos[5], out var startHour);
-                _ = TimeOnly.TryParse(campos[6], out var endHour);
+                    _ = int.TryParse(campos[0], out var id);
+                    _ = DateOnly.TryParse(campos[3], out var startDate);
+                    _ = DateOnly.TryParse(campos[4], out var endDate);
+                    _ = TimeOnly.TryParse(campos[5], out var startHour);
+                    _ = TimeOnly.TryParse(campos[6], out var endHour);
 
-                if (startDate == default)
-                    startDate = DateOnly.FromDateTime(DateTime.Now)
-                        .AddYears(-1);
-                if (endDate == default)
-                    endDate = DateOnly.FromDateTime(DateTime.Now).AddYears(1);
+                    if (startDate == default)
+                        startDate = DateOnly.FromDateTime(DateTime.Now)
+                            .AddYears(-1);
+                    if (endDate == default)
+                        endDate = DateOnly.FromDateTime(DateTime.Now)
+                            .AddYears(1);
 
-                if (startHour == default)
-                    startHour = TimeOnly.FromDateTime(DateTime.Now).AddHours(9);
-                if (endHour == default) endHour = startHour.AddHours(8);
+                    if (startHour == default)
+                        startHour = TimeOnly.FromDateTime(DateTime.Now)
+                            .AddHours(9);
+                    if (endHour == default) endHour = startHour.AddHours(8);
 
-                SchoolClasses.AddSchoolClass(
-                    id, campos[1], campos[2],
-                    startDate, endDate,
-                    startHour, endHour,
-                    campos[7], campos[8], campos[9],
-                    0,
-                    coursesList
-                );
+                    SchoolClasses.AddSchoolClass(
+                        id, campos[1], campos[2],
+                        startDate, endDate,
+                        startHour, endHour,
+                        campos[7], campos[8], campos[9],
+                        0,
+                        coursesList
+                    );
+                }
+
+                streamReader.Close();
             }
-
-            streamReader.Close();
         }
 
         myString = "Operação realizada com sucesso";
@@ -896,84 +874,85 @@ public static class XFiles
         using (FileStream fileStream =
                new(TeachersFile, FileMode.OpenOrCreate))
         {
-            StreamReader streamReader = new(fileStream);
-
-            while (!streamReader.EndOfStream)
+            using (StreamReader streamReader = new(fileStream))
             {
-                // read a line
-                var line = streamReader.ReadLine();
+                while (!streamReader.EndOfStream)
+                {
+                    // read a line
+                    var line = streamReader.ReadLine();
 
-                // validating the line,
-                // if is not null or empty,
-                // else will continue
-                if (string.IsNullOrEmpty(line)) continue;
+                    // validating the line,
+                    // if is not null or empty,
+                    // else will continue
+                    if (string.IsNullOrEmpty(line)) continue;
 
-                // split the line into an array of strings
-                var campos = line.Split(';');
-
-
-                // validating the line,
-                // if is not null or empty,
-                // else will continue
-                if (campos.Length < 18) continue;
+                    // split the line into an array of strings
+                    var campos = line.Split(';');
 
 
-                // -----------------------------------------------------------------
-                //
-                // cycle to evaluate which students are select and add it
-                //
-                // -----------------------------------------------------------------
-
-                //
-                // temp variable of the class student to
-                // retain the students for studentForValidation
-                //
-                List<Course> coursesList = new();
-
-                // validating the line,
-                // if has more than 3 fields,
-                // will read the disciplines
-                if (campos.Length > 18)
-                    foreach (var c in Courses.ListCourses)
-                        for (var index = 19; index < campos.Length; index++)
-                        {
-                            int.TryParse(campos[index], out index);
-                            if (c.IdCourse == index) coursesList.Add(c);
-                        }
+                    // validating the line,
+                    // if is not null or empty,
+                    // else will continue
+                    if (campos.Length < 18) continue;
 
 
-                _ = int.TryParse(campos[0], out var id);
-                _ = bool.TryParse(campos[8], out var active);
-                _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
-                _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
-                _ = int.TryParse(campos[17], out var coursesCount);
-                _ = int.TryParse(campos[18], out var totalWorkHours);
+                    // ---------------------------------------------------------
+                    //
+                    // cycle to evaluate which students are select and add it
+                    //
+                    // ---------------------------------------------------------
 
-                Teachers.AddTeacher(
-                    id,
-                    campos[1],
-                    campos[2],
-                    campos[3],
-                    campos[4],
-                    campos[5],
-                    campos[6],
-                    campos[7],
-                    active,
-                    campos[9],
-                    dateOfBirth,
-                    campos[11],
-                    expirationDateIn,
-                    campos[13],
-                    campos[14],
-                    campos[15],
-                    campos[16],
-                    coursesCount,
-                    totalWorkHours,
-                    coursesList
-                );
+                    //
+                    // temp variable of the class student to
+                    // retain the students for studentForValidation
+                    //
+                    List<Course> coursesList = new();
+
+                    // validating the line,
+                    // if has more than 3 fields,
+                    // will read the disciplines
+                    if (campos.Length > 18)
+                        foreach (var c in Courses.ListCourses)
+                            for (var index = 19; index < campos.Length; index++)
+                            {
+                                int.TryParse(campos[index], out index);
+                                if (c.IdCourse == index) coursesList.Add(c);
+                            }
+
+
+                    _ = int.TryParse(campos[0], out var id);
+                    _ = bool.TryParse(campos[8], out var active);
+                    _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+                    _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+                    _ = int.TryParse(campos[17], out var coursesCount);
+                    _ = int.TryParse(campos[18], out var totalWorkHours);
+
+                    Teachers.AddTeacher(
+                        id,
+                        campos[1],
+                        campos[2],
+                        campos[3],
+                        campos[4],
+                        campos[5],
+                        campos[6],
+                        campos[7],
+                        active,
+                        campos[9],
+                        dateOfBirth,
+                        campos[11],
+                        expirationDateIn,
+                        campos[13],
+                        campos[14],
+                        campos[15],
+                        campos[16],
+                        coursesCount,
+                        totalWorkHours,
+                        coursesList
+                    );
+                }
+
+                streamReader.Close();
             }
-
-            streamReader.Close();
         }
 
         myString = "Operação realizada com sucesso";
