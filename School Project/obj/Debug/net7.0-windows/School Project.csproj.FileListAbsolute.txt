@@ -1,3 +1,8 @@
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\CoursesFile.csv
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\EnrollmentsFile.csv
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\SchoolClassesFile.csv
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\StudentsFile.csv
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\TeachersFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\School Project.exe
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\School Project.dll.config
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\School Project.deps.json
@@ -79,9 +84,12 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.AssemblyReference.cache
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.Form1.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.ControleGuiaTransparente.resources
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.UC_About.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineAdd.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineEdit.resources
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormAbout.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormButtons1.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.InitialWinForm.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.MainWinForm.resources
@@ -92,6 +100,7 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.FormCliente.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassAdd.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassEdit.resources
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassSearch.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.ChartsWinForm.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.ChartsWinForm1.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.StudentDiscipline.resources
@@ -110,12 +119,3 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.genruntimeconfig.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\ref\School Project.dll
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\CoursesFile.csv
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\EnrollmentsFile.csv
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\StudentsFile.csv
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\TeachersFile.csv
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\SchoolClassesFile.csv
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassSearch.resources
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.Form1.resources
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.UC_About.resources
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormAbout.resources

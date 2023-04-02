@@ -1,5 +1,10 @@
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\School Project.deps.json
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\School Project.runtimeconfig.json
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\XFiles\CoursesFile.csv
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\XFiles\EnrollmentsFile.csv
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\XFiles\SchoolClassesFile.csv
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\XFiles\StudentsFile.csv
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\XFiles\TeachersFile.csv
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\School Project.exe
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\WpfApp1.exe
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\WpfApp1.dll.config
