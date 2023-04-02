@@ -1,4 +1,4 @@
-﻿namespace School_Project.ClassesFolder;
+﻿namespace School_Project.ICFolder;
 
 public class TransparentTabControl : TabControl, ITransparentTabControl
 {
@@ -24,7 +24,7 @@ public class TransparentTabControl : TabControl, ITransparentTabControl
                 TabPages[tab].Controls[ix].Parent = page;
             _pages.Add(page);
 
-            //Control? parent = Parent;
+            var parent = Parent;
             Parent.Controls.Add(page);
         }
 
