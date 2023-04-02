@@ -161,14 +161,25 @@ public partial class ChartsWinForm : Form
         Console.WriteLine("Debug point");
     }
 
-
     private void UpdateChart()
-        //private void ButtonHouseLoanChart_Click(object sender, EventArgs e)
     {
-        //CasaUpdateListBoxValues();
+        using var chartStudents = new Chart();
+        chartStudents.DataSource = Students.ListStudents;
+        //chartStudents.DataBindTable(Students.ListStudents);
+        chartStudents.DataBind();
+        chartStudents.Show();
 
+        using var chartPayments = new Chart();
+        chartPayments.DataSource = Students.ListStudents;
+        chartPayments.DataBind();
+        chartPayments.Show();
 
-        /*
+        Console.WriteLine("Debug point");
+    }
+
+    /*
+    private void UpdateChart()
+    {
          * ================================================================================
          * 
          * entered data set for the chart
@@ -177,16 +188,12 @@ public partial class ChartsWinForm : Form
          * and the total amount of capital paid
          * 
          * 
-         */
-        /*
         List<KeyValuePair<string, int>> data = new();
         foreach (var schoolClass in _schoolClassesList)
             data.Add(
                 new KeyValuePair<string, int>
                     (schoolClass.ClassAcronym, schoolClass.Students.Count));
-        */
-
-
+  
         BindingSource bindingSource1 = new();
         bindingSource1.DataSource = Students.ListStudents;
 
@@ -211,16 +218,16 @@ public partial class ChartsWinForm : Form
         //chartAutoListPayments.Series[2].YValueMembers = ;
         //chartAutoListPayments.Series[2].XValueMember = "DataDoPagamento";
         //chartAutoListPayments.Series[2] = ;
-        chart2.DataBind();
-        chart2.Show();
-        /*
-        chartFinanCarro.Series[0].ChartType = 
-            System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-        chartFinanCarro.Series[1].ChartType =
-            System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-        */
+        //chart2.DataBind();
+        //chart2.Show();
+        
+        //chartFinanCarro.Series[0].ChartType = 
+        //    System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+        //chartFinanCarro.Series[1].ChartType =
+        //    System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+  
 
-
-        Console.WriteLine("Debug point");
+        //Console.WriteLine("Debug point");
     }
+    */
 }
