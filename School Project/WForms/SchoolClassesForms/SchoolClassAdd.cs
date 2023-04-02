@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using ClassLibrary;
+﻿using ClassLibrary;
+using System.Reflection;
 
 namespace School_Project.WForms.SchoolClassesForms;
 
@@ -141,8 +141,8 @@ public partial class SchoolClassAdd : Form
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
         //if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
-        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
-        ((TextBox) sender).Paste();
+        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
+        ((TextBox)sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -151,7 +151,7 @@ public partial class SchoolClassAdd : Form
     {
         if (!ValidateTextBoxes()) return;
         SchoolClasses.AddSchoolClass(
-            (int) numericUpDownSchoolClassID.Value,
+            (int)numericUpDownSchoolClassID.Value,
             textBoxSchoolClassAcronym.Text,
             textBoxSchoolClassName.Text,
             DateOnly.FromDateTime(dateTimePickerBeginCourse.Value),
@@ -161,7 +161,7 @@ public partial class SchoolClassAdd : Form
             "location:campos[8]",
             "type:campos[9]",
             "area:campos[10]",
-            (int) numericUpDownTotalNumberEnrolledStudents.Value,
+            (int)numericUpDownTotalNumberEnrolledStudents.Value,
             null
         );
 
@@ -229,7 +229,6 @@ public partial class SchoolClassAdd : Form
 
         // Update the data source of the dataGridViewSchoolClasses control
         dataGridViewSchoolClasses.Refresh();
-        //dataGridViewSchoolClasses.Refresh();
 
 
         // To display all the properties of the Student class
@@ -370,7 +369,7 @@ public partial class SchoolClassAdd : Form
         //
 
         // Get the selected school class from the data source
-        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
+        var selectedSchoolClass = (SchoolClass)_bSListSClasses.Current;
 
         // Get the IdSchoolClass from the selected school class from the data source
         var index = selectedSchoolClass.IdSchoolClass;
@@ -403,7 +402,7 @@ public partial class SchoolClassAdd : Form
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
         // Get the selected school class from the data source
-        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
+        var selectedSchoolClass = (SchoolClass)_bSListSClasses.Current;
 
         if (selectedSchoolClass == null)
         {
@@ -446,11 +445,11 @@ public partial class SchoolClassAdd : Form
             char.IsSeparator(e.KeyChar) || // validating if its a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if its a whitespace
             char.IsDigit(e.KeyChar) || // validating if its a digit
-            e.KeyChar is (char) Keys.Back or '.' or '\'' or '-'
-            // validating if its a backspace
-            // validating if its a dot
-            // validating if its an apostrophe
-            // validating if its a separator
+            e.KeyChar is (char)Keys.Back or '.' or '\'' or '-'
+        // validating if its a backspace
+        // validating if its a dot
+        // validating if its an apostrophe
+        // validating if its a separator
         )
             return;
         e.Handled = true;
@@ -464,12 +463,12 @@ public partial class SchoolClassAdd : Form
         if (Keys.V.Equals(e.KeyChar) &&
             Keys.Control.Equals(e.KeyChar))
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             return;
         }
 
         // validating if its a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Keys.Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back) return;
 
         e.Handled = true;
     }
@@ -550,22 +549,22 @@ public partial class SchoolClassAdd : Form
         List<Course> newCourses = new();
 
         foreach (var s in Students.ListStudents)
-        foreach (var v in checkedListBoxStudents.CheckedItems)
-            if (v is Student verify && s.IdStudent == verify.IdStudent)
-                newStudents.Add(verify);
+            foreach (var v in checkedListBoxStudents.CheckedItems)
+                if (v is Student verify && s.IdStudent == verify.IdStudent)
+                    newStudents.Add(verify);
 
         foreach (var c in Courses.ListCourses)
-        foreach (var t in checkedListBoxCourses.CheckedItems)
-            if (t is Course verify && c.IdCourse == verify.IdCourse)
-                newCourses.Add(verify);
+            foreach (var t in checkedListBoxCourses.CheckedItems)
+                if (t is Course verify && c.IdCourse == verify.IdCourse)
+                    newCourses.Add(verify);
 
 
         //
         // adding the new list to the class
         //
         foreach (var student in newStudents)
-        foreach (var course in newCourses)
-            Enrollments.AddEnrollment(student.IdStudent, course.IdCourse);
+            foreach (var course in newCourses)
+                Enrollments.AddEnrollment(student.IdStudent, course.IdCourse);
 
 
         //
@@ -650,9 +649,9 @@ public partial class SchoolClassAdd : Form
         List<Course> newCoursesList = new();
 
         foreach (var a in Courses.ListCourses)
-        foreach (var t in checkedListBoxCourses.CheckedItems)
-            if (t is Course toVerify && a.IdCourse == toVerify.IdCourse)
-                newCoursesList.Add(toVerify);
+            foreach (var t in checkedListBoxCourses.CheckedItems)
+                if (t is Course toVerify && a.IdCourse == toVerify.IdCourse)
+                    newCoursesList.Add(toVerify);
 
         //
         // debugging
@@ -698,6 +697,7 @@ public partial class SchoolClassAdd : Form
             UpdateSelectedSchoolClass();
     }
 
+
     private void UpdateSelectedSchoolClass()
     {
         // Check if the row index has changed
@@ -706,7 +706,7 @@ public partial class SchoolClassAdd : Form
             _previousRowIndex) return;
 
         // Get the selected school class from the data source
-        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
+        var selectedSchoolClass = (SchoolClass)_bSListSClasses.Current;
 
         // Get the courses for the selected school class from the data source
         var selectedSchoolClassCourses = selectedSchoolClass.CoursesList;
@@ -720,7 +720,7 @@ public partial class SchoolClassAdd : Form
         // Set the checked items in the checkedListBoxCourses control
         for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
         {
-            var course = (Course) checkedListBoxCourses.Items[i];
+            var course = (Course)checkedListBoxCourses.Items[i];
             checkedListBoxCourses.SetItemChecked(i,
                 selectedSchoolClassCourses.Contains(course));
         }

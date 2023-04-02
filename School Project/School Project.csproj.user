@@ -13,10 +13,16 @@
     <Compile Update="UControl\ControleGuiaTransparente.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UControl\UC_Sobre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="WForms\CoursesForms\DisciplineAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="WForms\CoursesForms\DisciplineEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WForms\InitialForms\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="WForms\InitialForms\FormButtons1.cs">

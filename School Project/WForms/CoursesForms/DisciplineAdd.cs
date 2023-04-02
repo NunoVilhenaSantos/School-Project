@@ -1,10 +1,28 @@
 ﻿using ClassLibrary;
+using System.Linq;
+using System.Reflection;
 
 namespace School_Project.WForms.CoursesForms;
 
 public partial class DisciplineAdd : Form
 {
+    private readonly BindingSource _bSCoursesStudents = new();
+    private readonly BindingSource _bSListCourses = new();
+    private readonly BindingSource _bSListStudents = new();
+    private readonly BindingSource _bSourceSearchList = new();
+    private readonly BindingSource _bSourceSearchOptions = new();
+    private readonly BindingSource _bSsClassesCourses = new();
+
     private int _disciplinesCount;
+
+    private int _coursesCount;
+    private string _photoFile;
+
+    // keep track of the DataGridViewSchoolClasses row index previousRowIndex
+    private int _previousRowIndex = -1;
+    private int _schoolClassesCount;
+    private int _studentsCount;
+
 
     public DisciplineAdd()
     {
@@ -17,7 +35,58 @@ public partial class DisciplineAdd : Form
     }
 
 
-    private void DisciplineAdd_KeyDown(object sender, KeyEventArgs e)
+    private void ButtonExit_Click(object sender, EventArgs e)
+    {
+        Close();
+    }
+
+
+    private void DisciplineAdd_Load(object sender, EventArgs e)
+    {
+        //
+        // assign the local variables to is counterpart
+        // Global variables from the initial form
+        //
+        if (Courses.ListCourses.Count > 0)
+        {
+            _disciplinesCount = Courses.ListCourses.Count;
+            _disciplinesCount = Courses.GetLastId();
+        }
+        //
+        // 
+        // assign the local variables to is
+        // counterpart Global variables from the initial form
+        // 
+        //
+        if (Courses.ListCourses.Count > 0)
+            _coursesCount = Courses.GetLastId();
+
+        if (SchoolClasses.ListSchoolClasses.Count > 0)
+            _schoolClassesCount = SchoolClasses.GetLastId();
+
+        if (Students.ListStudents.Count > 0)
+            _studentsCount = Students.GetLastId();
+
+        SchoolClasses.ToObtainValuesForCalculatedFields();
+
+
+        //
+        // make the transparent tab-control transparent
+        // transparentTabControl1.MakeTransparent();
+        //
+        transparentTabControl1.MakeTransparent();
+
+        //
+        // initial update
+        // count register and the list
+        //
+        UpdateLists();
+        UpdateLabelsCounts();
+    }
+
+
+
+    private void WinForm_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Escape) Close();
     }
@@ -51,50 +120,21 @@ public partial class DisciplineAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
+        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
-
-
-    private void DisciplineAdd_Load(object sender, EventArgs e)
-    {
-        //
-        // assign the local variables to is counterpart
-        // Global variables from the initial form
-        //
-        if (Courses.ListCourses.Count > 0)
-        {
-            _disciplinesCount = Courses.ListCourses.Count;
-            _disciplinesCount = Courses.GetLastId();
-        }
-
-
-        //
-        // make the transparent tab-control transparent
-        // transparentTabControl1.MakeTransparent();
-        //
-        transparentTabControl1.MakeTransparent();
-
-        //
-        // initial update
-        // count register and the list
-        //
-        UpdateLists();
-        UpdateLabelsCounts();
-    }
-
 
     private void ButtonDisciplineSave_Click(object sender, EventArgs e)
     {
         if (!ValidateTextBoxes()) return;
 
         Courses.AddCourse(
-            (int) numericUpDownDisciplineID.Value,
+            (int)numericUpDownDisciplineID.Value,
             textBoxDisciplineName.Text,
-            (int) numericUpDownNumberHours.Value,
+            (int)numericUpDownNumberHours.Value,
             0, null
         );
 
@@ -137,8 +177,109 @@ public partial class DisciplineAdd : Form
         //listBoxDisciplines.DisplayMember = "Name";
         listBoxDisciplines.ClearSelected();
 
+        // *
+        // * 
+        // * Data bindings
+        // * 
+        // *
+        _bSListCourses.DataSource = Courses.ListCourses;
+        _bSListStudents.DataSource = Students.ListStudents;
+
+        _bSListCourses.ResetBindings(false);
+        _bSListStudents.ResetBindings(false);
+
+        _bSListCourses.ResetBindings(true);
+        _bSListStudents.ResetBindings(true);
+
+        // Set the DataSource property of the DataGridView to the BindingSource object
+        dataGridViewCourses.DataSource = _bSListCourses;
+
+        // Set the AutoGenerateColumns property of the DataGridView to true
+        dataGridViewCourses.AutoGenerateColumns = true;
+
+        // Set the BackgroundColor property of the DataGridView to Color.Transparent
+        // this cant be used because gives an error
+        //dataGridViewSchoolClasses.BackgroundColor = Color.Transparent;
+        dataGridViewCourses.AutoSizeColumnsMode =
+            DataGridViewAutoSizeColumnsMode.AllCells;
+        dataGridViewSearch.AutoSizeColumnsMode =
+            DataGridViewAutoSizeColumnsMode.AllCells;
+
+
+        checkedListBoxStudents.DataSource = _bSListStudents;
+        checkedListBoxStudents.DisplayMember = "Name";
+        checkedListBoxStudents.DisplayMember = "FullName";
+        checkedListBoxStudents.ValueMember = "IdStudent";
+
+
+        // Update the data source of the dataGridViewSchoolClasses control
+        dataGridViewCourses.Refresh();
+
+
+        // To display all the properties of the Student class
+        // in the comboBoxSearchOptions,
+        // you can use reflection to get a list
+        // of the property names and set the DataSource
+        // and DisplayMember properties of the combobox accordingly.
+        // Here's an example code snippet to achieve this:
+
+        _bSourceSearchOptions.DataSource = typeof(Course);
+        var properties =
+            typeof(Course).GetProperties(BindingFlags.Public |
+                                              BindingFlags.Instance);
+
+        List<string> propertyNames = new();
+        foreach (var property in properties) propertyNames.Add(property.Name);
+
+        comboBoxSearchOptions.DataSource = propertyNames;
+        comboBoxSearchOptions.DisplayMember = "ToString()";
+
+
+        //_bSourceSearchList.DataSource = Students.ConsultStudent;
+        comboBoxSearchList.DataSource = _bSourceSearchList;
+        dataGridViewSearch.DataSource = _bSourceSearchList;
+        dataGridViewSearch.AutoResizeColumns();
+
+        _bSourceSearchOptions.ResetBindings(false);
+        _bSourceSearchList.ResetBindings(false);
+
+        _bSourceSearchOptions.ResetBindings(true);
+        _bSourceSearchList.ResetBindings(true);
+
+        dataGridViewSearch.Refresh();
+        dataGridViewSearch.Update();
+
+
         Console.WriteLine("Testes de Debug");
     }
+
+
+
+    private void ComboBoxSearchOptions_SelectedIndexChanged(
+        object sender, EventArgs e)
+    {
+        // Get the name of the selected property
+        var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
+
+        // Create a new list to store the filtered results
+        List<Course> filteredCourse = new();
+
+        var property = typeof(Course).GetProperty(selectedProperty);
+        foreach (var course in Courses.ListCourses)
+        {
+            if (property == null ||
+                property.GetValue(course).ToString() == "")
+                continue;
+
+            filteredCourse.Add(course);
+        }
+
+        _bSourceSearchList.DataSource = filteredCourse;
+
+        comboBoxSearchList.Refresh();
+        dataGridViewSearch.Refresh();
+    }
+
 
 
     private void UpdateLabelsCounts()
@@ -249,8 +390,54 @@ public partial class DisciplineAdd : Form
         UpdateLists();
     }
 
-    private void ButtonExit_Click(object sender, EventArgs e)
+
+    private void DataGridViewSchoolClasses_CellEnter(object sender,
+        DataGridViewCellEventArgs e)
     {
-        Close();
+        UpdateSelectedSchoolClass();
     }
+
+    private void DataGridViewSchoolClasses_Scroll(object sender,
+        ScrollEventArgs e)
+    {
+        // If the scroll event is for scrolling the vertical bar, update the selected school class
+        if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            UpdateSelectedSchoolClass();
+    }
+
+
+    private void UpdateSelectedSchoolClass()
+    {
+        // Check if the row index has changed
+        if (dataGridViewCourses.CurrentCell == null ||
+            dataGridViewCourses.CurrentCell.RowIndex ==
+            _previousRowIndex) return;
+
+        // Get the selected course from the data source
+        var selectedCourse = (Course)_bSListCourses.Current;
+
+        // Get the students for the selected course from the data source
+        var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments.Where(x => x.CourseId == selectedCourse.IdCourse).Select(e => e.Student).ToList();
+        var selectedCourseEnrollments = Enrollments.ListEnrollments.Where(x => x.CourseId == selectedCourse.IdCourse).ToList();
+        var selectedCourseStudents = selectedCourseEnrollments.Select(e => e.Student).ToList();
+
+        if (selectedCourseStudents == null)
+        {
+            checkedListBoxStudents.Invalidate();
+            return;
+        }
+
+        // Set the checked items in the checkedListBoxStudents control
+        for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
+        {
+            var student = (Student)checkedListBoxStudents.Items[i];
+            checkedListBoxStudents.SetItemChecked(i,
+                selectedCourseStudents.Contains(student));
+        }
+
+        // Update the previous row index
+        _previousRowIndex = dataGridViewCourses.CurrentCell.RowIndex;
+    }
+
+
 }
