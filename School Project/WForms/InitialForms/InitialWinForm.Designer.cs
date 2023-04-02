@@ -301,7 +301,7 @@
             buttonAbout.Text = "Sobre";
             buttonAbout.TextAlign = ContentAlignment.MiddleRight;
             buttonAbout.UseVisualStyleBackColor = true;
-            buttonAbout.Click += buttonAbout_Click;
+            buttonAbout.Click += ButtonAbout_Click;
             // 
             // InitialWinForm
             // 

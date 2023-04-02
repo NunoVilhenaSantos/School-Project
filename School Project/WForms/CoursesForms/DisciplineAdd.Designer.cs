@@ -30,9 +30,9 @@ namespace School_Project.WForms.CoursesForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             labelDisciplineID = new Label();
@@ -47,24 +47,24 @@ namespace School_Project.WForms.CoursesForms
             transparentTabControl1 = new TransparentTabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
-            checkedListBox1 = new CheckedListBox();
-            dataGridView1 = new DataGridView();
+            checkedListBoxStudents = new CheckedListBox();
+            dataGridViewCourses = new DataGridView();
+            tabPage5 = new TabPage();
+            dataGridViewSearch = new DataGridView();
             tabPage3 = new TabPage();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tabPage4 = new TabPage();
-            tabPage5 = new TabPage();
             panelBottom = new Panel();
+            comboBoxSearchList = new ComboBox();
+            comboBoxSearchOptions = new ComboBox();
+            buttonSearch = new Button();
+            buttonSearchForm = new Button();
             buttonEdit = new Button();
             buttonRemove = new Button();
             buttonExit = new Button();
             buttonNew = new Button();
             buttonPrint = new Button();
-            buttonAddCourses = new Button();
-            comboBoxSearchList = new ComboBox();
-            comboBoxSearchOptions = new ComboBox();
-            buttonSearch = new Button();
-            buttonSearchForm = new Button();
-            dataGridView2 = new DataGridView();
+            buttonAddStudents = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNumberHours).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDisciplineID).BeginInit();
@@ -72,13 +72,13 @@ namespace School_Project.WForms.CoursesForms
             transparentTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCourses).BeginInit();
+            tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             tabPage4.SuspendLayout();
-            tabPage5.SuspendLayout();
             panelBottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -207,7 +207,7 @@ namespace School_Project.WForms.CoursesForms
             buttonStore.TabIndex = 3;
             buttonStore.TextAlign = ContentAlignment.MiddleRight;
             buttonStore.UseVisualStyleBackColor = true;
-            buttonStore.Click += ButtonDisciplineSave_Click;
+            buttonStore.Click += ButtonSave_Click;
             // 
             // buttonClear
             // 
@@ -227,7 +227,7 @@ namespace School_Project.WForms.CoursesForms
             buttonClear.TabIndex = 4;
             buttonClear.TextAlign = ContentAlignment.MiddleRight;
             buttonClear.UseVisualStyleBackColor = true;
-            buttonClear.Click += ButtonDisciplineCancel_Click;
+            buttonClear.Click += ButtonCancel_Click;
             // 
             // transparentTabControl1
             // 
@@ -244,6 +244,7 @@ namespace School_Project.WForms.CoursesForms
             transparentTabControl1.SelectedIndex = 0;
             transparentTabControl1.Size = new Size(974, 470);
             transparentTabControl1.TabIndex = 5;
+            transparentTabControl1.SelectedIndexChanged += TransparentTabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
@@ -258,8 +259,8 @@ namespace School_Project.WForms.CoursesForms
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(checkedListBox1);
-            tabPage2.Controls.Add(dataGridView1);
+            tabPage2.Controls.Add(checkedListBoxStudents);
+            tabPage2.Controls.Add(dataGridViewCourses);
             tabPage2.Location = new Point(4, 40);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(5);
@@ -268,24 +269,44 @@ namespace School_Project.WForms.CoursesForms
             tabPage2.Text = "2 - Lista";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox1
+            // checkedListBoxStudents
             // 
-            checkedListBox1.Dock = DockStyle.Right;
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(721, 5);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(240, 416);
-            checkedListBox1.TabIndex = 6;
+            checkedListBoxStudents.Dock = DockStyle.Right;
+            checkedListBoxStudents.FormattingEnabled = true;
+            checkedListBoxStudents.Location = new Point(721, 5);
+            checkedListBoxStudents.Name = "checkedListBoxStudents";
+            checkedListBoxStudents.Size = new Size(240, 416);
+            checkedListBoxStudents.TabIndex = 6;
             // 
-            // dataGridView1
+            // dataGridViewCourses
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Left;
-            dataGridView1.Location = new Point(5, 5);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(730, 416);
-            dataGridView1.TabIndex = 5;
+            dataGridViewCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCourses.Dock = DockStyle.Left;
+            dataGridViewCourses.Location = new Point(5, 5);
+            dataGridViewCourses.Name = "dataGridViewCourses";
+            dataGridViewCourses.RowTemplate.Height = 25;
+            dataGridViewCourses.Size = new Size(730, 416);
+            dataGridViewCourses.TabIndex = 5;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(dataGridViewSearch);
+            tabPage5.Location = new Point(4, 40);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(966, 426);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "3 - Pesquisar";
+            tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewSearch
+            // 
+            dataGridViewSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSearch.Dock = DockStyle.Fill;
+            dataGridViewSearch.Location = new Point(0, 0);
+            dataGridViewSearch.Name = "dataGridViewSearch";
+            dataGridViewSearch.RowTemplate.Height = 25;
+            dataGridViewSearch.Size = new Size(966, 426);
+            dataGridViewSearch.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -299,16 +320,16 @@ namespace School_Project.WForms.CoursesForms
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            chart1.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
             chart1.Location = new Point(3, 3);
             chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chart1.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
             chart1.Size = new Size(694, 369);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
@@ -323,16 +344,6 @@ namespace School_Project.WForms.CoursesForms
             tabPage4.Text = "5 - Lista";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // tabPage5
-            // 
-            tabPage5.Controls.Add(dataGridView2);
-            tabPage5.Location = new Point(4, 40);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(966, 426);
-            tabPage5.TabIndex = 4;
-            tabPage5.Text = "3 - Pesquisar";
-            tabPage5.UseVisualStyleBackColor = true;
-            // 
             // panelBottom
             // 
             panelBottom.BorderStyle = BorderStyle.FixedSingle;
@@ -345,12 +356,69 @@ namespace School_Project.WForms.CoursesForms
             panelBottom.Controls.Add(buttonExit);
             panelBottom.Controls.Add(buttonNew);
             panelBottom.Controls.Add(buttonPrint);
-            panelBottom.Controls.Add(buttonAddCourses);
+            panelBottom.Controls.Add(buttonAddStudents);
             panelBottom.Dock = DockStyle.Bottom;
             panelBottom.Location = new Point(20, 499);
             panelBottom.Name = "panelBottom";
             panelBottom.Size = new Size(975, 110);
             panelBottom.TabIndex = 6;
+            // 
+            // comboBoxSearchList
+            // 
+            comboBoxSearchList.FormattingEnabled = true;
+            comboBoxSearchList.Location = new Point(2, 74);
+            comboBoxSearchList.Name = "comboBoxSearchList";
+            comboBoxSearchList.Size = new Size(316, 23);
+            comboBoxSearchList.TabIndex = 42;
+            // 
+            // comboBoxSearchOptions
+            // 
+            comboBoxSearchOptions.FormattingEnabled = true;
+            comboBoxSearchOptions.Location = new Point(139, 20);
+            comboBoxSearchOptions.Name = "comboBoxSearchOptions";
+            comboBoxSearchOptions.Size = new Size(179, 23);
+            comboBoxSearchOptions.TabIndex = 41;
+            comboBoxSearchOptions.SelectedIndexChanged += ComboBoxSearchOptions_SelectedIndexChanged;
+            // 
+            // buttonSearch
+            // 
+            buttonSearch.Anchor = AnchorStyles.None;
+            buttonSearch.BackgroundImage = Properties.Resources.pesquisar_negrito;
+            buttonSearch.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonSearch.Cursor = Cursors.Hand;
+            buttonSearch.FlatAppearance.BorderSize = 0;
+            buttonSearch.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonSearch.FlatStyle = FlatStyle.Flat;
+            buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearch.Location = new Point(1, 1);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(125, 50);
+            buttonSearch.TabIndex = 40;
+            buttonSearch.TextAlign = ContentAlignment.MiddleRight;
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += ButtonSearch_Click;
+            // 
+            // buttonSearchForm
+            // 
+            buttonSearchForm.Anchor = AnchorStyles.None;
+            buttonSearchForm.BackgroundImage = Properties.Resources.pesquisar_negrito;
+            buttonSearchForm.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonSearchForm.Cursor = Cursors.Hand;
+            buttonSearchForm.FlatAppearance.BorderSize = 0;
+            buttonSearchForm.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonSearchForm.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonSearchForm.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonSearchForm.FlatStyle = FlatStyle.Flat;
+            buttonSearchForm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearchForm.Location = new Point(348, 57);
+            buttonSearchForm.Name = "buttonSearchForm";
+            buttonSearchForm.Size = new Size(125, 50);
+            buttonSearchForm.TabIndex = 39;
+            buttonSearchForm.TextAlign = ContentAlignment.MiddleRight;
+            buttonSearchForm.UseVisualStyleBackColor = true;
+            buttonSearchForm.Click += ButtonSearchForm_Click;
             // 
             // buttonEdit
             // 
@@ -371,7 +439,7 @@ namespace School_Project.WForms.CoursesForms
             buttonEdit.TabIndex = 1;
             buttonEdit.TextAlign = ContentAlignment.MiddleRight;
             buttonEdit.UseVisualStyleBackColor = true;
-            buttonEdit.Click += ButtonDisciplineEdit_Click;
+            buttonEdit.Click += ButtonEdit_Click;
             // 
             // buttonRemove
             // 
@@ -391,7 +459,7 @@ namespace School_Project.WForms.CoursesForms
             buttonRemove.TabIndex = 0;
             buttonRemove.TextAlign = ContentAlignment.MiddleRight;
             buttonRemove.UseVisualStyleBackColor = true;
-            buttonRemove.Click += ButtonDisciplineRemove_Click;
+            buttonRemove.Click += ButtonRemove_Click;
             // 
             // buttonExit
             // 
@@ -431,6 +499,7 @@ namespace School_Project.WForms.CoursesForms
             buttonNew.TabIndex = 2;
             buttonNew.TextAlign = ContentAlignment.MiddleRight;
             buttonNew.UseVisualStyleBackColor = true;
+            buttonNew.Click += ButtonNew_Click;
             // 
             // buttonPrint
             // 
@@ -452,88 +521,24 @@ namespace School_Project.WForms.CoursesForms
             buttonPrint.TextAlign = ContentAlignment.MiddleRight;
             buttonPrint.UseVisualStyleBackColor = true;
             // 
-            // buttonAddCourses
+            // buttonAddStudents
             // 
-            buttonAddCourses.Anchor = AnchorStyles.None;
-            buttonAddCourses.BackgroundImage = Properties.Resources.adicionar_estudante_solido;
-            buttonAddCourses.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonAddCourses.Cursor = Cursors.Hand;
-            buttonAddCourses.FlatAppearance.BorderSize = 0;
-            buttonAddCourses.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonAddCourses.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonAddCourses.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonAddCourses.FlatStyle = FlatStyle.Flat;
-            buttonAddCourses.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddCourses.Location = new Point(778, 1);
-            buttonAddCourses.Name = "buttonAddCourses";
-            buttonAddCourses.Size = new Size(125, 50);
-            buttonAddCourses.TabIndex = 5;
-            buttonAddCourses.TextAlign = ContentAlignment.MiddleRight;
-            buttonAddCourses.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxSearchList
-            // 
-            comboBoxSearchList.FormattingEnabled = true;
-            comboBoxSearchList.Location = new Point(2, 74);
-            comboBoxSearchList.Name = "comboBoxSearchList";
-            comboBoxSearchList.Size = new Size(316, 23);
-            comboBoxSearchList.TabIndex = 42;
-            // 
-            // comboBoxSearchOptions
-            // 
-            comboBoxSearchOptions.FormattingEnabled = true;
-            comboBoxSearchOptions.Location = new Point(139, 20);
-            comboBoxSearchOptions.Name = "comboBoxSearchOptions";
-            comboBoxSearchOptions.Size = new Size(179, 23);
-            comboBoxSearchOptions.TabIndex = 41;
-            // 
-            // buttonSearch
-            // 
-            buttonSearch.Anchor = AnchorStyles.None;
-            buttonSearch.BackgroundImage = Properties.Resources.pesquisar_negrito;
-            buttonSearch.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonSearch.Cursor = Cursors.Hand;
-            buttonSearch.FlatAppearance.BorderSize = 0;
-            buttonSearch.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonSearch.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonSearch.FlatStyle = FlatStyle.Flat;
-            buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSearch.Location = new Point(1, 1);
-            buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(125, 50);
-            buttonSearch.TabIndex = 40;
-            buttonSearch.TextAlign = ContentAlignment.MiddleRight;
-            buttonSearch.UseVisualStyleBackColor = true;
-            // 
-            // buttonSearchForm
-            // 
-            buttonSearchForm.Anchor = AnchorStyles.None;
-            buttonSearchForm.BackgroundImage = Properties.Resources.pesquisar_negrito;
-            buttonSearchForm.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonSearchForm.Cursor = Cursors.Hand;
-            buttonSearchForm.FlatAppearance.BorderSize = 0;
-            buttonSearchForm.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonSearchForm.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonSearchForm.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonSearchForm.FlatStyle = FlatStyle.Flat;
-            buttonSearchForm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSearchForm.Location = new Point(348, 57);
-            buttonSearchForm.Name = "buttonSearchForm";
-            buttonSearchForm.Size = new Size(125, 50);
-            buttonSearchForm.TabIndex = 39;
-            buttonSearchForm.TextAlign = ContentAlignment.MiddleRight;
-            buttonSearchForm.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(0, 0);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(966, 426);
-            dataGridView2.TabIndex = 0;
+            buttonAddStudents.Anchor = AnchorStyles.None;
+            buttonAddStudents.BackgroundImage = Properties.Resources.adicionar_estudante_solido;
+            buttonAddStudents.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonAddStudents.Cursor = Cursors.Hand;
+            buttonAddStudents.FlatAppearance.BorderSize = 0;
+            buttonAddStudents.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonAddStudents.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonAddStudents.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonAddStudents.FlatStyle = FlatStyle.Flat;
+            buttonAddStudents.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddStudents.Location = new Point(778, 1);
+            buttonAddStudents.Name = "buttonAddStudents";
+            buttonAddStudents.Size = new Size(125, 50);
+            buttonAddStudents.TabIndex = 5;
+            buttonAddStudents.TextAlign = ContentAlignment.MiddleRight;
+            buttonAddStudents.UseVisualStyleBackColor = true;
             // 
             // DisciplineAdd
             // 
@@ -549,7 +554,7 @@ namespace School_Project.WForms.CoursesForms
             StartPosition = FormStartPosition.CenterParent;
             Text = "Formulário Adicionar Disciplina";
             Load += DisciplineAdd_Load;
-            KeyDown += DisciplineAdd_KeyDown;
+            KeyDown += WinForm_KeyDown;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNumberHours).EndInit();
@@ -558,13 +563,13 @@ namespace School_Project.WForms.CoursesForms
             transparentTabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCourses).EndInit();
+            tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).EndInit();
             tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             tabPage4.ResumeLayout(false);
-            tabPage5.ResumeLayout(false);
             panelBottom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -584,17 +589,17 @@ namespace School_Project.WForms.CoursesForms
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TabPage tabPage3;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewCourses;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private TabPage tabPage4;
-        private CheckedListBox checkedListBox1;
+        private CheckedListBox checkedListBoxStudents;
         private Panel panelBottom;
         private Button buttonEdit;
         private Button buttonRemove;
         private Button buttonExit;
         private Button buttonNew;
         private Button buttonPrint;
-        private Button buttonAddCourses;
+        private Button buttonAddStudents;
         private Button buttonStore;
         private Button buttonClear;
         private TabPage tabPage5;
@@ -602,6 +607,6 @@ namespace School_Project.WForms.CoursesForms
         private ComboBox comboBoxSearchOptions;
         private Button buttonSearch;
         private Button buttonSearchForm;
-        private DataGridView dataGridView2;
+        private DataGridView dataGridViewSearch;
     }
 }

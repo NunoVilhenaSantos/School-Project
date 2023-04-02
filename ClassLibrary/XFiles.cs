@@ -681,7 +681,7 @@ public static class XFiles
                     studentId,
                     //Student = student,
                     courseId
-                    //Course = course
+                //Course = course
                 );
             }
 

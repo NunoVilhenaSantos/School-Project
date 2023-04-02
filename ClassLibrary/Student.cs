@@ -71,7 +71,6 @@ public class Student : INotifyPropertyChanged
             if (value == _idStudent) return;
             _idStudent = value;
             OnPropertyChanged();
-            OnPropertyChanged(nameof(FullName));
         }
     }
 
@@ -83,7 +82,6 @@ public class Student : INotifyPropertyChanged
             if (value == _name) return;
             _name = value;
             OnPropertyChanged();
-            OnPropertyChanged(nameof(FullName));
         }
     }
 
@@ -95,7 +93,6 @@ public class Student : INotifyPropertyChanged
             if (value == _lastName) return;
             _lastName = value;
             OnPropertyChanged();
-            OnPropertyChanged(nameof(FullName));
         }
     }
 
@@ -305,11 +302,6 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-
-    //public List<StudentGrades> StudentCoursesGradesList { get; set; } = new();
-
-
-    public string FullName => $"{IdStudent,5} | {Name} {LastName}";
 
     #endregion
 

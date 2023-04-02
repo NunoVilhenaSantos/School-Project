@@ -298,13 +298,13 @@
             comboBoxSearchOptions.TabIndex = 37;
             comboBoxSearchOptions.SelectedIndexChanged += ComboBoxSearchOptions_SelectedIndexChanged;
             // 
-            // dataGridViewSchoolClasses
+            // dataGridViewCourses
             // 
             dataGridViewSchoolClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel1.SetColumnSpan(dataGridViewSchoolClasses, 2);
             dataGridViewSchoolClasses.Dock = DockStyle.Fill;
             dataGridViewSchoolClasses.Location = new Point(3, 63);
-            dataGridViewSchoolClasses.Name = "dataGridViewSchoolClasses";
+            dataGridViewSchoolClasses.Name = "dataGridViewCourses";
             dataGridViewSchoolClasses.RowTemplate.Height = 25;
             dataGridViewSchoolClasses.Size = new Size(1378, 375);
             dataGridViewSchoolClasses.TabIndex = 4;

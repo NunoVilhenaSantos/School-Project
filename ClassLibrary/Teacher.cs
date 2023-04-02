@@ -8,11 +8,45 @@ public class Teacher : INotifyPropertyChanged
     public static readonly List<string> Genreslist = new()
         {"Male", "Female", "Non Binary", "Prefer not to say"};
 
+
+
+    #region Attributes
+
+    //
+    // Attributes
+    //
+    private static int _mCounter;
+
+
+    private string _name;
+    private string _lastName;
+    private string? _address;
+    private string? _postalCode;
+    private string? _city;
+    private string? _phone;
+    private string? _email;
+    private bool _active = true;
+    private string _genre;
+    private DateOnly _dateOfBirth;
+    private string _identificationNumber;
+    private DateOnly _expirationDateIn;
+    private string _taxIdentificationNumber;
+    private string _nationality;
+    private string _birthplace;
+    private string? _photo;
+
+    private int _coursesCount;
+    private int _totalWorkHoursLoad;
+
+    private List<Course> _courses = new();
+
+    #endregion
+
+
+    #region Constructor
     //
     // Constructor for the class and incrementation of the ID
     //
-
-    #region Constructor
 
     //
     // https://itecnote.com/tecnote/c-incrementing-a-unique-id-number-in-the-constructor/
@@ -25,6 +59,14 @@ public class Teacher : INotifyPropertyChanged
     }
 
     #endregion
+
+
+
+
+    #region Properties
+
+
+
 
     public int TeacherId { get; }
 
@@ -238,50 +280,12 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    #region Attributes
-
-    //
-    // Attributes
-    //
-    private static int _mCounter;
 
 
-    private string _name;
-    private string _lastName;
-    private string? _address;
-    private string? _postalCode;
-    private string? _city;
-    private string? _phone;
-    private string? _email;
-    private bool _active = true;
-    private string _genre;
-    private DateOnly _dateOfBirth;
-    private string _identificationNumber;
-    private DateOnly _expirationDateIn;
-    private string _taxIdentificationNumber;
-    private string _nationality;
-    private string _birthplace;
-    private string? _photo;
 
-    private int _coursesCount;
-    private int _totalWorkHoursLoad;
-
-    private List<Course> _courses = new();
 
     #endregion
 
-
-    #region Properties
-
-    #endregion
-
-
-    //
-    // para avaliar se é preciso
-    //
-    //public int DepartmentId { get; set; }
-    //public Department Department { get; set; }
-    //public List<SchoolClass> SchoolClasses { get; set; } = new();
 
 
     #region Methods

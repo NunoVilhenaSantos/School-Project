@@ -1,7 +1,7 @@
 ﻿
 namespace School_Project.UControl
 {
-    partial class UC_Sobre
+    partial class UC_About
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,113 +29,98 @@ namespace School_Project.UControl
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Sobre));
-            this.tabControlVersao = new System.Windows.Forms.TabControl();
-            this.tp_versao = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tp_sobre = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tabControlVersao.SuspendLayout();
-            this.tp_versao.SuspendLayout();
-            this.tp_sobre.SuspendLayout();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_About));
+            tabControlVersao = new TabControl();
+            tabVersion = new TabPage();
+            labelVersion = new Label();
+            tabAbout = new TabPage();
+            labelAbout = new Label();
+            tabControlVersao.SuspendLayout();
+            tabVersion.SuspendLayout();
+            tabAbout.SuspendLayout();
+            SuspendLayout();
             // 
             // tabControlVersao
             // 
-            this.tabControlVersao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tabControlVersao.Controls.Add(this.tp_versao);
-            this.tabControlVersao.Controls.Add(this.tp_sobre);
-            this.tabControlVersao.Location = new System.Drawing.Point(0, 112);
-            this.tabControlVersao.Name = "tabControlVersao";
-            this.tabControlVersao.SelectedIndex = 0;
-            this.tabControlVersao.Size = new System.Drawing.Size(763, 514);
-            this.tabControlVersao.TabIndex = 0;
+            tabControlVersao.Controls.Add(tabVersion);
+            tabControlVersao.Controls.Add(tabAbout);
+            tabControlVersao.Dock = DockStyle.Fill;
+            tabControlVersao.Location = new Point(0, 0);
+            tabControlVersao.Name = "tabControlVersao";
+            tabControlVersao.SelectedIndex = 0;
+            tabControlVersao.Size = new Size(596, 416);
+            tabControlVersao.TabIndex = 0;
             // 
-            // tp_versao
+            // tabVersion
             // 
-            this.tp_versao.BackColor = System.Drawing.Color.LightGray;
-            this.tp_versao.Controls.Add(this.label1);
-            this.tp_versao.Location = new System.Drawing.Point(4, 30);
-            this.tp_versao.Name = "tp_versao";
-            this.tp_versao.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_versao.Size = new System.Drawing.Size(755, 480);
-            this.tp_versao.TabIndex = 0;
-            this.tp_versao.Text = "Versão";
+            tabVersion.BackColor = Color.FromArgb(83, 36, 100);
+            tabVersion.Controls.Add(labelVersion);
+            tabVersion.ForeColor = Color.Transparent;
+            tabVersion.Location = new Point(4, 30);
+            tabVersion.Name = "tabVersion";
+            tabVersion.Padding = new Padding(15);
+            tabVersion.Size = new Size(588, 382);
+            tabVersion.TabIndex = 0;
+            tabVersion.Text = "Versão";
             // 
-            // label1
+            // labelVersion
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(15, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(721, 437);
-            this.label1.TabIndex = 0;
-            this.label1.Text = resources.GetString("label1.Text");
+            labelVersion.BackColor = Color.Transparent;
+            labelVersion.BorderStyle = BorderStyle.Fixed3D;
+            labelVersion.Dock = DockStyle.Fill;
+            labelVersion.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelVersion.Location = new Point(15, 15);
+            labelVersion.Name = "labelVersion";
+            labelVersion.Size = new Size(558, 352);
+            labelVersion.TabIndex = 0;
+            labelVersion.Text = resources.GetString("labelVersion.Text");
             // 
-            // tp_sobre
+            // tabAbout
             // 
-            this.tp_sobre.BackColor = System.Drawing.Color.LightGray;
-            this.tp_sobre.Controls.Add(this.label2);
-            this.tp_sobre.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tp_sobre.Location = new System.Drawing.Point(4, 30);
-            this.tp_sobre.Name = "tp_sobre";
-            this.tp_sobre.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_sobre.Size = new System.Drawing.Size(755, 480);
-            this.tp_sobre.TabIndex = 1;
-            this.tp_sobre.Text = "Sobre";
+            tabAbout.BackColor = Color.FromArgb(83, 36, 100);
+            tabAbout.Controls.Add(labelAbout);
+            tabAbout.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabAbout.ForeColor = Color.Transparent;
+            tabAbout.Location = new Point(4, 30);
+            tabAbout.Name = "tabAbout";
+            tabAbout.Padding = new Padding(15);
+            tabAbout.Size = new Size(588, 382);
+            tabAbout.TabIndex = 1;
+            tabAbout.Text = "Sobre";
             // 
-            // label2
+            // labelAbout
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(13, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(727, 456);
-            this.label2.TabIndex = 1;
-            this.label2.Text = resources.GetString("label2.Text");
+            labelAbout.BackColor = Color.Transparent;
+            labelAbout.BorderStyle = BorderStyle.Fixed3D;
+            labelAbout.Dock = DockStyle.Fill;
+            labelAbout.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelAbout.Location = new Point(15, 15);
+            labelAbout.Name = "labelAbout";
+            labelAbout.Size = new Size(558, 352);
+            labelAbout.TabIndex = 1;
+            labelAbout.Text = resources.GetString("labelAbout.Text");
             // 
-            // label3
+            // UC_About
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(94)))));
-            this.label3.Location = new System.Drawing.Point(318, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 28);
-            this.label3.TabIndex = 1041;
-            this.label3.Text = "Sobre";
-            // 
-            // UC_Sobre
-            // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.tabControlVersao);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Name = "UC_Sobre";
-            this.Size = new System.Drawing.Size(763, 626);
-            this.tabControlVersao.ResumeLayout(false);
-            this.tp_versao.ResumeLayout(false);
-            this.tp_sobre.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(10F, 21F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Transparent;
+            Controls.Add(tabControlVersao);
+            Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Name = "UC_About";
+            Size = new Size(596, 416);
+            tabControlVersao.ResumeLayout(false);
+            tabVersion.ResumeLayout(false);
+            tabAbout.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.TabControl tabControlVersao;
-        private System.Windows.Forms.TabPage tp_versao;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tp_sobre;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabVersion;
+        private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.TabPage tabAbout;
+        private System.Windows.Forms.Label labelAbout;
     }
 }

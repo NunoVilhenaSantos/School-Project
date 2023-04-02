@@ -1,9 +1,10 @@
 ﻿namespace School_Project.UControl;
 
-public partial class UC_Sobre : UserControl
+public partial class UC_About : UserControl
 {
-    public UC_Sobre()
+    public UC_About()
     {
         InitializeComponent();
     }
+
 }

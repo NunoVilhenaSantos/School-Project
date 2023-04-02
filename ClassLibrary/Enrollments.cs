@@ -20,6 +20,7 @@ public class Enrollments
     {
         ListEnrollments.Add(new Enrollment
         {
+            Grade = null,
             StudentId = studentId,
             CourseId = courseId
         });

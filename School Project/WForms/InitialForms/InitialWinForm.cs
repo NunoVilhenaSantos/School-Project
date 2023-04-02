@@ -1,9 +1,9 @@
-﻿using System.Globalization;
-using ClassLibrary;
+﻿using ClassLibrary;
 using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
+using System.Globalization;
 
 namespace School_Project.WForms.InitialForms;
 
@@ -142,16 +142,47 @@ public partial class InitialWinForm : Form
         Show();
     }
 
-    private void buttonAbout_Click(object sender, EventArgs e)
+    private void ButtonAbout_Click(object sender, EventArgs e)
     {
-        MessageBox.Show("Falta implementar código");
-        Console.WriteLine("Falta implementar código");
+        FormAbout formAbout = new FormAbout();
+        //Hide();
+        formAbout.ShowDialog();
+        formAbout.Close();
+        //Show();
 
-        //ChartWpfWindow chartWpfWindow = new();
-        Hide();
-        //chartWpfWindow.ShowDialog();
-        //chartWpfWindow.Close();
-        Show();
+        /*
+        // Remove the picture box from the form's control collection
+        this.Controls.Remove(pictureBox1);
+        pictureBox1.Dispose();
+
+        // Create a new panel and set its properties
+        Panel panel1 = new();
+        panel1.Dock = DockStyle.Fill;
+
+        // Add the panel to the form's control collection in the same position as the picture box
+        int index = this.Controls.IndexOf(pictureBox1);
+        tableLayoutPanelInitialForm.Controls.Add(panel1, 1, 3);
+        tableLayoutPanelInitialForm.SetRowSpan(panel1, 6);
+
+        //this.Controls.SetChildIndex(panel1, index);
+
+        // Add the user control to the panel
+        UControl.UC_About uC_Sobre = new()
+        {
+            Dock = DockStyle.Fill,
+            Visible = true,
+            //Size = new Size(898, 580),
+        };
+        panel1.Controls.Add(uC_Sobre);
+
+        // Set the panel's Visible property to true to make it show up
+        panel1.Visible = true;
+
+        // Remove the panel from the form's control collection and re-insert the picture box in its place
+        //this.tableLayoutPanelInitialForm.Controls.Remove(panel1);
+        //this.tableLayoutPanelInitialForm.Controls.Add(pictureBox1, 1, 1);
+        //this.tableLayoutPanelInitialForm.SetRowSpan(pictureBox1, 9);
+        */
     }
 
 

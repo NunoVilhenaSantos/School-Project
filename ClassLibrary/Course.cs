@@ -90,9 +90,7 @@ public class Course : INotifyPropertyChanged
             if (value == _name) return;
             _name = value;
             OnPropertyChanged();
-            OnPropertyChanged(nameof(FullName));
-            //OnPropertyChanged();
-            //OnPropertyChanged(nameof(FullName));
+
         }
     }
 
@@ -128,12 +126,6 @@ public class Course : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-
-
-    /// <summary>
-    ///     Gets the full name of the course, which includes the course ID and name.
-    /// </summary>
-    public string FullName => $"{IdCourse,3} | {Name}";
 
 
     /// <summary>
