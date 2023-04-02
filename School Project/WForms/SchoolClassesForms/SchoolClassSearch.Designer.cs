@@ -319,6 +319,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "SchoolClassSearch";
             Load += SchoolClassSearch_Load;
+            KeyDown += WinForm_KeyDown;
             tableLayoutPanel1.ResumeLayout(false);
             panelBottom.ResumeLayout(false);
             panel1.ResumeLayout(false);

@@ -116,3 +116,4 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\TeachersFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\SchoolClassesFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassSearch.resources
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.Form1.resources

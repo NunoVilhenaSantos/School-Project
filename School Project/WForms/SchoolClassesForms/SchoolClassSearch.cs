@@ -14,11 +14,6 @@ public partial class SchoolClassSearch : Form
         InitializeComponent();
     }
 
-    private void ButtonClose_Click(object sender, EventArgs e)
-    {
-        Close();
-    }
-
     private void SchoolClassSearch_Load(object sender, EventArgs e)
     {
         //
@@ -28,6 +23,20 @@ public partial class SchoolClassSearch : Form
         UpdateLists();
         //UpdateLabelsCounts();
         //groupBoxAddSchollClass.ForeColor = Color.White;
+        this.KeyPreview = true;
+    }
+
+
+
+    private void WinForm_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Escape) Close();
+    }
+
+
+    private void ButtonClose_Click(object sender, EventArgs e)
+    {
+        Close();
     }
 
 
@@ -248,7 +257,7 @@ public partial class SchoolClassSearch : Form
                     ?.GetValue(sC);
                 if (value != null && value.GetType() == typeof(DateTime))
                     // Convert the value to DateTime and remove the time component
-                    value = ((DateTime) value).Date;
+                    value = ((DateTime)value).Date;
                 return value;
             })
             .Where(value => value != null)
