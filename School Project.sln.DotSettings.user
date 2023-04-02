@@ -3,7 +3,8 @@
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=School_0020Project_002FProperties_002FResources/@EntryIndexedValue">True</s:Boolean>
 	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=School_0020Project_002FUControl_002FControleGuiaTransparente/@EntryIndexedValue">False</s:Boolean>
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=School_0020Project_002FUControl_002FUC_005FSobre/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=School_0020Project_002FUControl_002FUC_005FAbout/@EntryIndexedValue">True</s:Boolean>
+	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=School_0020Project_002FWForms_002FCoursesForms_002FDisciplineAdd/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=School_0020Project_002FWForms_002FCoursesForms_002FDisciplineEdit/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=School_0020Project_002FWForms_002FInitialForms_002FFormAbout/@EntryIndexedValue">True</s:Boolean>
