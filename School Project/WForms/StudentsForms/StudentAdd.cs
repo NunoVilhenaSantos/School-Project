@@ -241,39 +241,6 @@ public partial class StudentAdd : Form
     }
 
 
-    /*
-    private void ComboBoxSearchOptions_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        // Get the name of the selected property
-        string propertyName = comboBoxSearchOptions.SelectedItem.ToString();
-
-        // Get the PropertyInfo for the selected property
-        PropertyInfo propertyInfo = typeof(Student).GetProperty(propertyName);
-
-        // Create a new list to store the filtered results
-        List<Student> filteredList = new();
-
-        // Iterate through each student in the ConsultStudent list
-        foreach (Student student in Students.ListStudents)
-        {
-            // Get the value of the selected property for the current student
-            object propertyValue = propertyInfo.GetValue(student);
-
-            // If the property value is not null and matches the search term
-            //if (propertyValue != null && propertyValue.ToString().Contains(searchTerm))
-            //if (propertyValue != null && propertyValue.ToString().Contains("teste"))
-            if (propertyValue != null && propertyValue.ToString().Contains("t"))
-            {
-                // Add the student to the filtered list
-                filteredList.Add(student);
-            }
-        }
-
-        // Set the DataSource of the search list to the filtered list
-        _bSourceSearchList.DataSource = filteredList;
-    }
-    */
-
     private void UpdateLabelsCounts()
     {
         _studentsCount++;

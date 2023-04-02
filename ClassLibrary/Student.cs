@@ -314,8 +314,9 @@ public class Student : INotifyPropertyChanged
     public override string ToString()
     {
         // return base.ToString();
-        //return $"{IdStudent,5} | {FullName()} | {Phone} - {Address}";
-        return $"{IdStudent,3} | {Name} {LastName} | {Phone} - {Address}";
+        // return $"{IdStudent,5} | {FullName()} | {Phone} - {Address}";
+        // return $"{IdStudent,3} | {Name} {LastName} | {Phone} - {Address}";
+        return $"{IdStudent,3} | {Name} {LastName}";
     }
 
 
@@ -329,8 +330,8 @@ public class Student : INotifyPropertyChanged
 
     public int GetTotalWorkHourLoad()
     {
-        var enrollment = Enrollments?.Where(e =>
-            e.Student.IdStudent == IdStudent).ToList();
+        var enrollment = Enrollments?
+            .Where(e => e.Student.IdStudent == IdStudent).ToList();
 
         return Enrollments?.Sum(enrollment => enrollment.Course.WorkLoad) ?? 0;
         /*
@@ -341,12 +342,12 @@ public class Student : INotifyPropertyChanged
     }
 
 
-    public int GetCoursesCount()
+    public int? GetCoursesCount()
     {
         var enrollment = Enrollments?.Where(
             e => e.Student.IdStudent == IdStudent).Count();
 
-        return enrollment ?? 0;
+        return enrollment ?? null;
         /*
         return CoursesList == null
             ? 0
@@ -355,6 +356,21 @@ public class Student : INotifyPropertyChanged
         if (CoursesList == null) return 0;
         return CoursesList.Sum(course => course.Enrollments.Count);
         */
+    }
+
+
+    public string GetFullName()
+    {
+        return $"{Name} {LastName}";
+    }
+
+
+    public string GetFullInfo()
+    {
+        return $"{IdStudent,5} | " +
+               //$"{ListStudents[id].GetFullName()} | " +
+               $"{GetFullName()} | " +
+               $"{Phone} - {Address}";
     }
 
     #endregion

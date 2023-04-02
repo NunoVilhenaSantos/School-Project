@@ -70,12 +70,12 @@ public partial class DisciplineAdd : Form
 
         SchoolClasses.ToObtainValuesForCalculatedFields();
 
-
         //
         // make the transparent tab-control transparent
         // transparentTabControl1.MakeTransparent();
         //
         transparentTabControl1.MakeTransparent();
+        transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
         //
         // initial update
@@ -389,6 +389,19 @@ public partial class DisciplineAdd : Form
     }
 
 
+    private void DataGridViewCourses_CellBeginEdit(
+        object sender, DataGridViewCellCancelEventArgs e)
+    {
+        // Get the column index of the cell being edited
+        var columnIndex = e.ColumnIndex;
+
+        // Check if the column is read-only
+        if (columnIndex is 0 or 2)
+            // Cancel the edit operation for the read-only column
+            e.Cancel = true;
+    }
+
+
     private void DataGridViewCourses_CellEnter(
         object sender, DataGridViewCellEventArgs e)
     {
@@ -604,15 +617,8 @@ public partial class DisciplineAdd : Form
         MessageBox.Show(nova);
 
 
-        //
-        // adding the new list to the class
-        //
-        //Enrollments.ListEnrollments[courseToEdit].CoursesList = newEnrollmentList;
-
-        //dataGridViewSchoolClasses.InvalidateRow(_previousRowIndex);
-        //dataGridViewSchoolClasses.InvalidateRow(courseToEdit);
-
         SchoolClasses.ToObtainValuesForCalculatedFields();
+        Courses.GetStudentsCount();
 
         UpdateLists();
 

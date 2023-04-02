@@ -33,6 +33,7 @@ public static class Courses
                 // StudentGradesList = studentGrades,
             }
         );
+        GetStudentsCount();
     }
 
 
@@ -167,5 +168,19 @@ public static class Courses
         // return GetLastIndex();
     }
 
-    #endregion
+
+    public static string GetStudentsCount()
+    {
+        if (ListCourses.Count < 1)
+            return "A lista está vazia";
+
+        foreach (var course in ListCourses)
+            course.StudentsCount = Enrollments.ListEnrollments?
+                .Where(x => x.CourseId == course.IdCourse)
+                .Count() ?? 0;
+
+        return "Cálculos executados.";
+
+        #endregion
+    }
 }

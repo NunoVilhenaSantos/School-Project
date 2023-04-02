@@ -1,45 +1,78 @@
 ﻿IdSchoolClass;ClassAcronym;ClassName;StartDate;EndDate;StartHour;EndHour;Location;Type;Area;CoursesList
-26;CLASSACRONYM;ClassName;01/04/2022;01/04/2024;22:00;06:00;Location;Type;Area;
-27;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:40;05:40;Location;Type;Area;
-28;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:39;05:39;Location;Type;Area;
-29;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;2;3;4;5;6;7;8;9;10
-30;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-31;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-32;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];4;6;7
-33;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-34;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-35;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-36;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-37;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-38;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-39;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-40;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-41;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-42;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-43;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-44;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-45;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-46;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-47;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-67;TURMA-1;turma-1;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;2;3;4;5;6;7;8;9
-68;TURMA-2;turma-22;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2
-69;TURMA-3;turma-3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];10;11;12;13;14;15
-70;TURMA-4;turma-4;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];14;15;16;17;18;19;20;21
-71;TURMA-5;turma-55;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];20;21;22;23;24;25;26
-72;TURMA-6;turma-6;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-73;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
-74;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
-75;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
-76;TESTE;teste;01/04/2022;01/04/2024;21:33;05:33;campos[7];campos[8];campos[9];
-77;2-TESTE;segundo teste;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-78;TESTE 3;teste numero 3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-79;TESTE-2;6546;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-80;ERWER;werwer;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-81;WERWER;novo teste;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
-82;;;01/04/2022;01/04/2024;21:33;05:33;;;;
-83;;;01/04/2022;01/04/2024;21:33;05:33;;;;
-84;;;01/04/2022;01/04/2024;21:33;05:33;;;;
-85;;;01/04/2022;01/04/2024;21:33;05:33;;;;
-86;;;01/04/2022;01/04/2024;21:33;05:33;;;;
-87;;;01/04/2022;01/04/2024;21:33;05:33;;;;
-88;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+1;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:25;15:25;Location;Type;Area;
+2;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:21;15:21;Location;Type;Area;
+3;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:20;15:20;Location;Type;Area;
+4;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:18;15:18;Location;Type;Area;
+5;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:18;15:18;Location;Type;Area;
+6;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:14;15:14;Location;Type;Area;
+7;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:12;15:12;Location;Type;Area;1;2;3;4;5;6;7;8
+8;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:11;15:11;Location;Type;Area;1;2;3;4;5;6;7;8;9;10;11;12
+9;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:06;15:06;Location;Type;Area;
+10;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:06;15:06;Location;Type;Area;
+11;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:06;15:06;Location;Type;Area;
+12;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:01;15:01;Location;Type;Area;
+13;ClassAcronym;ClassName;02/04/2022;02/04/2024;07:00;15:00;Location;Type;Area;
+14;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:58;14:58;Location;Type;Area;
+15;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:57;14:57;Location;Type;Area;
+16;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:57;14:57;Location;Type;Area;
+17;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:56;14:56;Location;Type;Area;
+18;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:48;14:48;Location;Type;Area;
+19;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:47;14:47;Location;Type;Area;
+20;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:43;14:43;Location;Type;Area;
+21;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:28;14:28;Location;Type;Area;
+22;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:25;14:25;Location;Type;Area;
+23;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:22;14:22;Location;Type;Area;
+24;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:21;14:21;Location;Type;Area;
+25;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:20;14:20;Location;Type;Area;
+26;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:13;14:13;Location;Type;Area;
+27;ClassAcronym;ClassName;02/04/2022;02/04/2024;06:01;14:01;Location;Type;Area;
+28;ClassAcronym;ClassName;02/04/2022;02/04/2024;05:59;13:59;Location;Type;Area;
+29;ClassAcronym;ClassName;02/04/2022;02/04/2024;05:56;13:56;Location;Type;Area;
+30;ClassAcronym;ClassName;02/04/2022;02/04/2024;05:53;13:53;Location;Type;Area;
+31;ClassAcronym;ClassName;02/04/2022;02/04/2024;05:48;13:48;Location;Type;Area;
+32;ClassAcronym;ClassName;02/04/2022;02/04/2024;05:16;13:16;Location;Type;Area;
+33;ClassAcronym;ClassName;02/04/2022;02/04/2024;04:54;12:54;Location;Type;Area;
+34;CLASSACRONYM;ClassName;01/04/2022;01/04/2024;22:00;06:00;Location;Type;Area;
+35;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:40;05:40;Location;Type;Area;
+36;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:39;05:39;Location;Type;Area;
+37;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;2;3;4;5;6;7;8;9;10
+38;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];11;12;13;14;15;16;17;18;19;20;21
+39;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];23;24;25;26;27;28;29;30
+40;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];4;6;7
+41;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+42;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+43;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+44;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+45;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+46;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+47;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+48;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+49;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+50;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+51;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+52;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+53;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+54;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+55;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+56;TURMA-1;turma-1;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;2;3;4;5;6;7;8;9
+57;TURMA-2;turma-22;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2
+58;TURMA-3;turma-3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];10;11;12;13;14;15
+59;TURMA-4;turma-4;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];14;15;16;17;18;19;20;21
+60;TURMA-5;turma-55;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];20;21;22;23;24;25;26
+61;TURMA-6;turma-6;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+62;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+63;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+64;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;
+65;TESTE;teste;01/04/2022;01/04/2024;21:33;05:33;campos[7];campos[8];campos[9];
+66;2-TESTE;segundo teste;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+67;TESTE 3;teste numero 3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+68;TESTE-2;6546;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+69;ERWER;werwer;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+70;WERWER;novo teste;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];
+71;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+72;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+73;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+74;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+75;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+76;;;01/04/2022;01/04/2024;21:33;05:33;;;;
+77;;;01/04/2022;01/04/2024;21:33;05:33;;;;

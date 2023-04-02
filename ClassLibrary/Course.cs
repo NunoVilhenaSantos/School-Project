@@ -33,6 +33,38 @@ public class Course : INotifyPropertyChanged
         return $"{IdCourse,5:G} - {Name} - {WorkLoad} horas";
     }
 
+
+    public string GetFullName()
+    {
+        return $"{Name} {WorkLoad}";
+    }
+
+
+    public string GetFullInfo()
+    {
+        return $"{IdCourse,5} | " +
+               //$"{ListStudents[id].GetFullName()} | " +
+               $"{GetFullName()} | " +
+               $"{WorkLoad} - {Credits}";
+    }
+
+    public int GetStudentsCount()
+    {
+        StudentsCount = Enrollments?
+            .Where(x => x.CourseId == IdCourse)
+            .Sum(x => Enrollments.Count) ?? 0;
+
+        return StudentsCount ?? 0;
+        /*
+        return CoursesList == null
+            ? 0
+            : CoursesList.Sum(course => course.Enrollments.Count);
+        
+        if (CoursesList == null) return 0;
+        return CoursesList.Sum(course => course.Enrollments.Count);
+        */
+    }
+
     #endregion
 
 
@@ -67,6 +99,7 @@ public class Course : INotifyPropertyChanged
     private int _workLoad;
     private int _credits;
     private List<Enrollment> _enrollments = new();
+    private int? _studentsCount;
 
     #endregion
 
@@ -122,6 +155,18 @@ public class Course : INotifyPropertyChanged
         {
             if (Equals(value, _enrollments)) return;
             _enrollments = value;
+            OnPropertyChanged();
+        }
+    }
+
+
+    public int? StudentsCount
+    {
+        get => _studentsCount;
+        set
+        {
+            if (value == _studentsCount) return;
+            _studentsCount = value;
             OnPropertyChanged();
         }
     }

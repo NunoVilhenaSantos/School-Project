@@ -216,14 +216,34 @@ public partial class SchoolClassAdd : Form
         dataGridViewSearch.AutoSizeColumnsMode =
             DataGridViewAutoSizeColumnsMode.AllCells;
 
+
+        var query1 = Courses.ListCourses
+            .ToList()
+            .Select(q => new
+            {
+                FullName = q.Name + " " + q.Credits,
+                FullInfo = q.IdCourse + q.Name + " " + q.Credits
+            });
         checkedListBoxCourses.DataSource = _bSListCourses;
         checkedListBoxCourses.DisplayMember = "Name";
-        checkedListBoxCourses.DisplayMember = "FullName";
+        //checkedListBoxCourses.DisplayMember = "GetFullName()";
+        //checkedListBoxCourses.DisplayMember = "GetFullInfo()";
+        //checkedListBoxCourses.DisplayMember = "ToString()";
         checkedListBoxCourses.ValueMember = "IdCourse";
 
+        var query2 = Students.ListStudents
+            .ToList()
+            .Select(q => new
+            {
+                FullName = q.Name + " " + q.LastName,
+                FullInfo = q.IdStudent + q.Name + " " + q.LastName
+            });
         checkedListBoxStudents.DataSource = _bSListStudents;
         checkedListBoxStudents.DisplayMember = "Name";
-        checkedListBoxStudents.DisplayMember = "FullName";
+        //checkedListBoxStudents.DisplayMember = "LastName";
+        checkedListBoxStudents.DisplayMember = "GetFullName()";
+        ////checkedListBoxStudents.DisplayMember = "ToString()";
+        //checkedListBoxStudents.DisplayMember = "query2.FullName";
         checkedListBoxStudents.ValueMember = "IdStudent";
 
 

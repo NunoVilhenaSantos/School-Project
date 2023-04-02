@@ -44,11 +44,6 @@ public class SchoolClass : INotifyPropertyChanged
     }
 
 
-    protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
-    {
-        PropertyChanged?.Invoke(this, e);
-    }
-
     private void NotifyPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this,

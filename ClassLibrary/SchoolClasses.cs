@@ -298,42 +298,41 @@ public static class SchoolClasses
         foreach (var school in ListSchoolClasses)
         {
             var cList = school.CoursesList;
-            if (cList != null && cList.Any())
-            {
-                var coursesCount = 0;
-                var workHourLoad = 0;
-                var studentsCount = 0;
-                decimal classTotal = 0;
-                decimal highestGrade = 0;
-                var lowestGrade = decimal.MaxValue;
+            if (cList == null || !cList.Any()) continue;
 
-                foreach (var course in cList)
-                    if (course != null)
-                    {
-                        coursesCount++;
-                        studentsCount += course.Enrollments?.Count ?? 0;
-                        workHourLoad += course.WorkLoad;
+            var coursesCount = 0;
+            var workHourLoad = 0;
+            var studentsCount = 0;
+            decimal classTotal = 0;
+            decimal highestGrade = 0;
+            var lowestGrade = decimal.MaxValue;
 
-                        if (course.Enrollments != null &&
-                            course.Enrollments.Any())
-                        {
-                            var grades = course.Enrollments.Select(e => e.Grade)
-                                .ToList();
-                            classTotal += (decimal) grades.Average();
-                            highestGrade = Math.Max(highestGrade,
-                                (decimal) grades.Max());
-                            lowestGrade = Math.Min(lowestGrade,
-                                (decimal) grades.Min());
-                        }
-                    }
+            foreach (var course in cList)
+                if (course != null)
+                {
+                    coursesCount++;
+                    studentsCount += course.Enrollments?.Count ?? 0;
+                    workHourLoad += course.WorkLoad;
 
-                school.CoursesCount = coursesCount;
-                school.WorkHourLoad = workHourLoad;
-                school.StudentsCount = studentsCount;
-                school.ClassAverage = classTotal / coursesCount;
-                school.HighestGrade = highestGrade;
-                school.LowestGrade = lowestGrade;
-            }
+                    if (course.Enrollments == null || !course.Enrollments.Any())
+                        continue;
+
+                    var grades = course.Enrollments
+                        .Select(e => e.Grade)
+                        .ToList();
+                    classTotal += (decimal) grades.Average();
+                    highestGrade = Math.Max(highestGrade,
+                        (decimal) grades.Max());
+                    lowestGrade = Math.Min(lowestGrade,
+                        (decimal) grades.Min());
+                }
+
+            school.CoursesCount = coursesCount;
+            school.WorkHourLoad = workHourLoad;
+            school.StudentsCount = studentsCount;
+            school.ClassAverage = classTotal / coursesCount;
+            school.HighestGrade = highestGrade;
+            school.LowestGrade = lowestGrade;
         }
         /*
         if (ListSchoolClasses.Count < 1)

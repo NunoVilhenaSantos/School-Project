@@ -245,6 +245,7 @@ namespace School_Project.WForms.CoursesForms
             transparentTabControl1.Size = new Size(974, 470);
             transparentTabControl1.TabIndex = 5;
             transparentTabControl1.SelectedIndexChanged += TransparentTabControl1_SelectedIndexChanged;
+            transparentTabControl1.TabIndexChanged += TransparentTabControl1_TabIndexChanged;
             // 
             // tabPage1
             // 
@@ -288,6 +289,9 @@ namespace School_Project.WForms.CoursesForms
             dataGridViewCourses.RowTemplate.Height = 25;
             dataGridViewCourses.Size = new Size(730, 416);
             dataGridViewCourses.TabIndex = 5;
+            dataGridViewCourses.CellBeginEdit += DataGridViewCourses_CellBeginEdit;
+            dataGridViewCourses.CellEnter += DataGridViewCourses_CellEnter;
+            dataGridViewCourses.Scroll += DataGridViewCourses_Scroll;
             // 
             // tabPage5
             // 
