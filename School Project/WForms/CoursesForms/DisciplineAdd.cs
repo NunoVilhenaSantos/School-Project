@@ -509,7 +509,7 @@ public partial class DisciplineAdd : Form
 
 
 
-    private void ButtonAddCourses_Click(object sender, EventArgs e)
+    private void ButtonAddEnrollments_Click(object sender, EventArgs e)
     {
         //
         //

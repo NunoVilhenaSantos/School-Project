@@ -30,8 +30,41 @@ public partial class MainWinForm : Form
         MaximizeBox = true;
 
         // try to read files if they exist
-        XFiles.ReadFromFiles();
+        var xFilesMessages = XFiles.ReadFromFiles(out string myString);
+        if (!xFilesMessages)
+        {
+            MessageBox.Show(
+                "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
+                "Ler ficheiros");
+        }
     }
+
+
+
+    private void ButtonCloseProgram_Click(object sender, EventArgs e)
+    {
+
+        var xFilesMessages = XFiles.StoreInFiles(out string myString);
+        if (!xFilesMessages)
+        {
+            MessageBox.Show(
+                "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
+                "Ler ficheiros");
+        }
+
+        Console.WriteLine("Testes de Debug");
+
+        //
+        // variable to allow the program be closed,
+        // other wise it will be cancel in the method
+        // in a line with the following statement
+        // e.Cancel = true;
+        //
+        _closeFromUser = true;
+        Application.Exit();
+        //Close();
+    }
+
 
     private void ButtonSchoolClass_Click(object sender, EventArgs e)
     {
@@ -66,23 +99,6 @@ public partial class MainWinForm : Form
         winFormStudentDiscipline.ShowDialog();
     }
 
-
-    private void ButtonCloseProgram_Click(object sender, EventArgs e)
-    {
-        XFiles.StoreInFiles();
-
-        Console.WriteLine("Testes de Debug");
-
-        //
-        // variable to allow the program be closed,
-        // other wise it will be cancel in the method
-        // in a line with the following statement
-        // e.Cancel = true;
-        //
-        _closeFromUser = true;
-        //Application.Exit();
-        Close();
-    }
 
 
     private void WinFormInitial_FormClosing(object sender,

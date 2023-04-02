@@ -271,6 +271,7 @@ namespace School_Project.WForms.CoursesForms
             // 
             // checkedListBoxStudents
             // 
+            checkedListBoxStudents.CheckOnClick = true;
             checkedListBoxStudents.Dock = DockStyle.Right;
             checkedListBoxStudents.FormattingEnabled = true;
             checkedListBoxStudents.Location = new Point(721, 5);
@@ -539,12 +540,13 @@ namespace School_Project.WForms.CoursesForms
             buttonAddStudents.TabIndex = 5;
             buttonAddStudents.TextAlign = ContentAlignment.MiddleRight;
             buttonAddStudents.UseVisualStyleBackColor = true;
+            buttonAddStudents.Click += ButtonAddEnrollments_Click;
             // 
             // DisciplineAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Salmon;
+            BackColor = Color.FromArgb(229, 204, 202);
             ClientSize = new Size(1015, 629);
             Controls.Add(panelBottom);
             Controls.Add(transparentTabControl1);

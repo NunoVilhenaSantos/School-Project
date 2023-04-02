@@ -27,16 +27,45 @@ public partial class InitialWinForm : Form
 
     private void WinFormInitial_Load(object sender, EventArgs e)
     {
-        var xFilesMessages = XFiles.ReadFromFiles();
-        MessageBox.Show(
-            "Esta é a mensagem que chegou do XFiles!\n\n" + xFilesMessages,
-            "Ler ficheiros");
+        // try to read files if they exist
+        var xFilesMessages = XFiles.ReadFromFiles(out string myString);
+        if(!xFilesMessages)
+        {
+            MessageBox.Show(
+                "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
+                "Ler ficheiros");
+        }
 
         _context = new SchoolContext();
         //_context.Database.EnsureCreated();
 
         ChangeImageInButtons();
     }
+
+
+    private void ButtonCloseProgram_Click(object sender, EventArgs e)
+    {
+        var xFilesMessages = XFiles.StoreInFiles(out string myString);
+        if (!xFilesMessages)
+        {
+            MessageBox.Show(
+                "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
+                "Ler ficheiros");
+        }
+
+        Console.WriteLine("Testes de Debug");
+
+        //
+        // variable to allow the program be closed,
+        // other wise it will be cancel in the method
+        // in a line with the following statement
+        // e.Cancel = true;
+        //
+        _closeFromUser = true;
+        Application.Exit();
+        //Close();
+    }
+
 
     private void ChangeImageInButtons()
     {
@@ -185,26 +214,6 @@ public partial class InitialWinForm : Form
         */
     }
 
-
-    private void ButtonCloseProgram_Click(object sender, EventArgs e)
-    {
-        var xFilesMessages = XFiles.StoreInFiles();
-        MessageBox.Show(
-            "Esta é a mensagem que chegou do XFiles!\n\n" + xFilesMessages,
-            "Gravar ficheiros");
-
-        Console.WriteLine("Testes de Debug");
-
-        //
-        // variable to allow the program be closed,
-        // other wise it will be cancel in the method
-        // in a line with the following statement
-        // e.Cancel = true;
-        //
-        _closeFromUser = true;
-        Application.Exit();
-        //Close();
-    }
 
 
     private void WinFormInitial_FormClosing(object sender,
