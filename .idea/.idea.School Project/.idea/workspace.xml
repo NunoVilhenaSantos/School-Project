@@ -6,11 +6,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/School Project/UControl/UC_Sobre.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/School Project/UControl/UC_Sobre.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/School Project/UControl/UC_Sobre.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/School Project.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +142,7 @@
       <workItem from="1680284330502" duration="20642000" />
       <workItem from="1680339699684" duration="2489000" />
       <workItem from="1680347324964" duration="28756000" />
+      <workItem from="1680435366294" duration="3012000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>
@@ -164,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680349424231</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="a lot to go">
+      <created>1680435886645</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680435886645</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +213,8 @@
     <MESSAGE value="more changes made" />
     <MESSAGE value="mais alterações" />
     <MESSAGE value="more commits" />
-    <option name="LAST_COMMIT_MESSAGE" value="more commits" />
+    <MESSAGE value="a lot to go" />
+    <option name="LAST_COMMIT_MESSAGE" value="a lot to go" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

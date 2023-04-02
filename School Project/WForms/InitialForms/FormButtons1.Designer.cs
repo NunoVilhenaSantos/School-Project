@@ -308,10 +308,12 @@
             // 
             // panelBottom
             // 
+            panelBottom.Controls.Add(comboBoxSearchList);
             panelBottom.Controls.Add(button9);
+            panelBottom.Controls.Add(comboBoxSearchOptions);
+            panelBottom.Controls.Add(buttonSearch);
             panelBottom.Controls.Add(button10);
             panelBottom.Controls.Add(button11);
-            panelBottom.Controls.Add(button12);
             panelBottom.Controls.Add(button13);
             panelBottom.Controls.Add(button14);
             panelBottom.Controls.Add(button15);
@@ -374,7 +376,7 @@
             button11.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button11.FlatStyle = FlatStyle.Flat;
             button11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button11.Location = new Point(225, 3);
+            button11.Location = new Point(524, 57);
             button11.Name = "button11";
             button11.Size = new Size(125, 50);
             button11.TabIndex = 11;
@@ -393,7 +395,7 @@
             button12.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button12.FlatStyle = FlatStyle.Flat;
             button12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button12.Location = new Point(225, 59);
+            button12.Location = new Point(1113, 265);
             button12.Name = "button12";
             button12.Size = new Size(125, 50);
             button12.TabIndex = 12;
@@ -451,7 +453,7 @@
             button15.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button15.FlatStyle = FlatStyle.Flat;
             button15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button15.Location = new Point(780, 59);
+            button15.Location = new Point(780, 57);
             button15.Name = "button15";
             button15.Size = new Size(125, 50);
             button15.TabIndex = 3;
@@ -489,7 +491,7 @@
             buttonPrint.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonPrint.FlatStyle = FlatStyle.Flat;
             buttonPrint.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPrint.Location = new Point(652, 59);
+            buttonPrint.Location = new Point(652, 57);
             buttonPrint.Margin = new Padding(0);
             buttonPrint.Name = "buttonPrint";
             buttonPrint.Size = new Size(125, 50);
@@ -539,17 +541,17 @@
             // comboBoxSearchList
             // 
             comboBoxSearchList.FormattingEnabled = true;
-            comboBoxSearchList.Location = new Point(98, 438);
+            comboBoxSearchList.Location = new Point(67, 71);
             comboBoxSearchList.Name = "comboBoxSearchList";
-            comboBoxSearchList.Size = new Size(279, 23);
+            comboBoxSearchList.Size = new Size(295, 23);
             comboBoxSearchList.TabIndex = 35;
             // 
             // comboBoxSearchOptions
             // 
             comboBoxSearchOptions.FormattingEnabled = true;
-            comboBoxSearchOptions.Location = new Point(205, 378);
+            comboBoxSearchOptions.Location = new Point(183, 17);
             comboBoxSearchOptions.Name = "comboBoxSearchOptions";
-            comboBoxSearchOptions.Size = new Size(172, 23);
+            comboBoxSearchOptions.Size = new Size(179, 23);
             comboBoxSearchOptions.TabIndex = 34;
             // 
             // buttonSearch
@@ -564,7 +566,7 @@
             buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonSearch.FlatStyle = FlatStyle.Flat;
             buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSearch.Location = new Point(82, 364);
+            buttonSearch.Location = new Point(67, 3);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(110, 45);
             buttonSearch.TabIndex = 33;
@@ -576,9 +578,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1476, 667);
-            Controls.Add(comboBoxSearchList);
-            Controls.Add(comboBoxSearchOptions);
-            Controls.Add(buttonSearch);
+            Controls.Add(button12);
             Controls.Add(button17);
             Controls.Add(button18);
             Controls.Add(panelBottom);

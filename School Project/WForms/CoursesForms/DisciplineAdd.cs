@@ -137,21 +137,6 @@ public partial class DisciplineAdd : Form
         //listBoxDisciplines.DisplayMember = "Name";
         listBoxDisciplines.ClearSelected();
 
-
-        //
-        // disabling or enabling the button's Remove and Edit
-        //
-        if (_disciplinesCount == 0)
-        {
-            buttonDisciplineEdit.Enabled = false;
-            buttonDisciplineRemove.Enabled = false;
-        }
-        else
-        {
-            buttonDisciplineEdit.Enabled = true;
-            buttonDisciplineRemove.Enabled = true;
-        }
-
         Console.WriteLine("Testes de Debug");
     }
 
