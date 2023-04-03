@@ -183,4 +183,43 @@ public static class Courses
 
         #endregion
     }
+
+
+
+
+    public static string GetFullName(int id)
+    {
+        if (ListCourses.Count < 1)
+            return "A lista está vazia";
+
+        var course =
+            ListCourses.FirstOrDefault(
+                a => a.IdCourse== id);
+
+        if (course == null)
+            return "O curso não existe!";
+
+        return $"{course.IdCourse,5} | " +
+               $"{course.Name} " +
+               $"{course.Credits}";
+    }
+
+
+    public static string GetFullInfo(int id)
+    {
+        if (ListCourses.Count < 1)
+            return "A lista está vazia";
+
+        var course =
+            ListCourses.FirstOrDefault(
+                a => a.IdCourse == id);
+
+        if (course == null)
+            return "A turma não existe!";
+
+        return $"{GetFullName(id)} | " +
+               $"{course.WorkLoad} - {course.StudentsCount}";
+    }
+
+
 }

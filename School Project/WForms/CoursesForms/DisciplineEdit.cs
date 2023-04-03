@@ -8,16 +8,15 @@ public partial class DisciplineEdit : Form
     // Global variables to be used in this windows form
     // Variáveis globais do formulário do Windows
     //
-    private readonly int _courseToEditIndex;
+    private readonly Course _courseToEdit;
 
-
-    public DisciplineEdit(int id)
+    public DisciplineEdit(Course courseToEdit)
     {
         InitializeComponent();
 
         // assigning the parent variable to
         // the local variables to be edited
-        _courseToEditIndex = id;
+        _courseToEdit = courseToEdit;
     }
 
 
@@ -26,12 +25,9 @@ public partial class DisciplineEdit : Form
         //
         // insert data into the boxes
         //
-        numericUpDownDisciplineID.Value =
-            Courses.ListCourses[_courseToEditIndex].IdCourse;
-        textBoxDisciplineName.Text =
-            Courses.ListCourses[_courseToEditIndex].Name;
-        numericUpDownNumberHours.Value =
-            Courses.ListCourses[_courseToEditIndex].WorkLoad;
+        numericUpDownDisciplineID.Value = _courseToEdit.IdCourse;
+        textBoxDisciplineName.Text = _courseToEdit.Name;
+        numericUpDownNumberHours.Value = _courseToEdit.WorkLoad;
     }
 
 
@@ -69,22 +65,20 @@ public partial class DisciplineEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
+        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
 
 
-    private void ButtonDisciplineSave_Click(object sender, EventArgs e)
+    private void ButtonSave_Click(object sender, EventArgs e)
     {
         if (!ValidateTextBoxes()) return;
 
-        Courses.ListCourses[_courseToEditIndex].Name =
-            textBoxDisciplineName.Text;
-        Courses.ListCourses[_courseToEditIndex].WorkLoad =
-            (int) numericUpDownNumberHours.Value;
+        _courseToEdit.Name = textBoxDisciplineName.Text;
+        _courseToEdit.WorkLoad = (int)numericUpDownNumberHours.Value;
 
         Close();
     }
@@ -119,7 +113,7 @@ public partial class DisciplineEdit : Form
     }
 
 
-    private void ButtonDisciplineCancel_Click(object sender, EventArgs e)
+    private void ButtonCancel_Click(object sender, EventArgs e)
     {
         Close();
     }

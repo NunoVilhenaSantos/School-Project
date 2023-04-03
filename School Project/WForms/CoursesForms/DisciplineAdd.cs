@@ -318,46 +318,60 @@ public partial class DisciplineAdd : Form
 
     private void ButtonRemove_Click(object sender, EventArgs e)
     {
-        //
-        // cast the selected object to be displayed in the dialog box
-        //
-        var disciplineToDelete = listBoxDisciplines.SelectedItem as Course;
+        // This will change the selected tab page of transparentTabControl1 to the second tab page. 
+        transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
-        if (listBoxDisciplines.SelectedItem != null)
-        {
-            //
-            // local variable that will contain the response
-            //
+        // by rows
+        // var to retain the value of the index, by row or cell
+        var rc = -1;
+        foreach (DataGridViewRow row in dataGridViewCourses.SelectedRows)
+            //for find the row index number
+            rc = dataGridViewCourses.CurrentCell.RowIndex;
 
-            var dialogResult =
-                //
-                // get the answer, if yes or soups, displaying the message
-                //
-                MessageBox.Show(
-                    "Remover o curso " + $"{disciplineToDelete}",
-                    "Apagar",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Question
-                );
+        // by cells
+        if (dataGridViewCourses.CurrentCell != null)
+            //for find the row index number
+            rc = dataGridViewCourses.CurrentCell.RowIndex;
 
-            if (dialogResult == DialogResult.OK)
-            {
-                var index = listBoxDisciplines.SelectedIndex;
 
-                Courses.DeleteCourse(index);
-                UpdateLists();
-            }
-        }
-        else
+        if (int.IsNegative(rc))
         {
             MessageBox.Show(
                 "Tem de selecionar para poder Adicionar ou Remover ",
-                "Apagar",
+                "Editar",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning
             );
+            return;
         }
 
-        UpdateLists();
+        //
+        // get the answer, if yes or soups, displaying the message
+        //
+
+        // Get the selected school class from the data source
+        var selectedCourse = (Course)_bSListCourses.Current;
+
+        // Get the IdSchoolClass from the selected school class from the data source
+        var index = selectedCourse.IdCourse;
+
+        // send a msg to the user to chose if he wants to delete or not the record
+        var msg =
+            "Tem a certeza que deseja apagar o seguinte registo?" +
+            $"\n{Courses.GetFullInfo(index)}";
+
+        var dialogResult = MessageBox.Show(
+            msg, "Apagar",
+            MessageBoxButtons.OKCancel,
+            MessageBoxIcon.Question);
+
+        if (dialogResult == DialogResult.OK)
+        {
+            MessageBox.Show(Courses.DeleteCourse(index));
+
+            UpdateLists();
+        }
+
+
         Console.WriteLine("Testes de Debug");
     }
 
@@ -367,25 +381,63 @@ public partial class DisciplineAdd : Form
         //
         // cast the selected object to be displayed in the dialog box
         //
-        var disciplineToEdit = listBoxDisciplines.SelectedItem! as Course;
+        //var disciplineToEdit = listBoxDisciplines.SelectedItem! as Course;
 
-        if (disciplineToEdit != null)
-        {
-            //
-            // open the edit form with the student editing
-            //
-            DisciplineEdit disciplineEdit = new(disciplineToEdit.IdCourse);
-            disciplineEdit.ShowDialog();
-        }
-        else
+        //if (disciplineToEdit != null)
+        //{
+        //    //
+        //    // open the edit form with the student editing
+        //    //
+        //    DisciplineEdit disciplineEdit = new(disciplineToEdit.IdCourse);
+        //    disciplineEdit.ShowDialog();
+        //}
+        //else
+        //{
+        //    MessageBox.Show(
+        //        "Tem de selecionar para poder Adicionar ou Remover ", "Editar",
+        //        MessageBoxButtons.OK, MessageBoxIcon.Warning
+        //    );
+        //}
+
+        //UpdateLists();
+
+        // This will change the selected tab page of transparentTabControl1 to the second tab page. 
+        transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
+
+        // Get the selected school class from the data source
+        var selectedCourse = (Course)_bSListCourses.Current;
+
+        if (selectedCourse == null)
         {
             MessageBox.Show(
-                "Tem de selecionar para poder Adicionar ou Remover ", "Editar",
+                "Tem de selecionar para poder Adicionar ou Remover ",
+                "Editar",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning
             );
+            return;
         }
 
-        UpdateLists();
+        // Get the IdSchoolClass from the selected school class from the data source
+        var index = selectedCourse.IdCourse;
+
+        if (index < 0)
+        {
+            MessageBox.Show(
+                "Tem de selecionar para poder Adicionar ou Remover ",
+                "Editar",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning
+            );
+            return;
+        }
+
+        //
+        // open the edit form with the studentForValidation editing
+        //
+        DisciplineEdit disciplineEdit = new(selectedCourse);
+        if (disciplineEdit.ShowDialog() == DialogResult.OK)
+            // redraw the list with the new data
+            UpdateLists();
+
     }
 
 

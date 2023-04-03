@@ -28,89 +28,124 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanelDisciplineEdit = new TableLayoutPanel();
-            label1 = new Label();
-            labelDisciplineID = new Label();
-            labelDisciplineName = new Label();
+            groupBoxDisciplineAdding = new GroupBox();
+            buttonStore = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             textBoxDisciplineName = new TextBox();
             numericUpDownNumberHours = new NumericUpDown();
             numericUpDownDisciplineID = new NumericUpDown();
-            buttonDisciplineSave = new Button();
-            buttonDisciplineCancel = new Button();
-            tableLayoutPanelDisciplineEdit.SuspendLayout();
+            buttonClear = new Button();
+            groupBoxDisciplineAdding.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNumberHours).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDisciplineID).BeginInit();
             SuspendLayout();
             // 
-            // tableLayoutPanelDisciplineEdit
+            // groupBoxDisciplineAdding
             // 
-            tableLayoutPanelDisciplineEdit.ColumnCount = 2;
-            tableLayoutPanelDisciplineEdit.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanelDisciplineEdit.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanelDisciplineEdit.Controls.Add(label1, 0, 2);
-            tableLayoutPanelDisciplineEdit.Controls.Add(labelDisciplineID, 0, 0);
-            tableLayoutPanelDisciplineEdit.Controls.Add(labelDisciplineName, 0, 1);
-            tableLayoutPanelDisciplineEdit.Controls.Add(textBoxDisciplineName, 1, 1);
-            tableLayoutPanelDisciplineEdit.Controls.Add(numericUpDownNumberHours, 1, 2);
-            tableLayoutPanelDisciplineEdit.Controls.Add(numericUpDownDisciplineID, 1, 0);
-            tableLayoutPanelDisciplineEdit.Location = new Point(12, 12);
-            tableLayoutPanelDisciplineEdit.Name = "tableLayoutPanelDisciplineEdit";
-            tableLayoutPanelDisciplineEdit.RowCount = 3;
-            tableLayoutPanelDisciplineEdit.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanelDisciplineEdit.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanelDisciplineEdit.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanelDisciplineEdit.Size = new Size(680, 200);
-            tableLayoutPanelDisciplineEdit.TabIndex = 1;
+            groupBoxDisciplineAdding.Controls.Add(buttonStore);
+            groupBoxDisciplineAdding.Controls.Add(tableLayoutPanel1);
+            groupBoxDisciplineAdding.Controls.Add(buttonClear);
+            groupBoxDisciplineAdding.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBoxDisciplineAdding.Location = new Point(23, 23);
+            groupBoxDisciplineAdding.Name = "groupBoxDisciplineAdding";
+            groupBoxDisciplineAdding.Padding = new Padding(20);
+            groupBoxDisciplineAdding.Size = new Size(730, 378);
+            groupBoxDisciplineAdding.TabIndex = 2;
+            groupBoxDisciplineAdding.TabStop = false;
+            groupBoxDisciplineAdding.Text = "Adicionar Disciplina";
             // 
-            // label1
+            // buttonStore
             // 
-            label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 146);
-            label1.Name = "label1";
-            label1.Size = new Size(198, 40);
-            label1.TabIndex = 2;
-            label1.Text = "Carga Horária da Disciplina:";
+            buttonStore.Anchor = AnchorStyles.None;
+            buttonStore.BackgroundImage = Properties.Resources.guardar_base_dados_regular;
+            buttonStore.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonStore.Cursor = Cursors.Hand;
+            buttonStore.FlatAppearance.BorderSize = 0;
+            buttonStore.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonStore.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonStore.FlatStyle = FlatStyle.Flat;
+            buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonStore.Location = new Point(447, 305);
+            buttonStore.Name = "buttonStore";
+            buttonStore.Size = new Size(125, 50);
+            buttonStore.TabIndex = 3;
+            buttonStore.TextAlign = ContentAlignment.MiddleRight;
+            buttonStore.UseVisualStyleBackColor = true;
+            buttonStore.Click += ButtonSave_Click;
             // 
-            // labelDisciplineID
+            // tableLayoutPanel1
             // 
-            labelDisciplineID.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            labelDisciplineID.AutoSize = true;
-            labelDisciplineID.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDisciplineID.Location = new Point(3, 23);
-            labelDisciplineID.Name = "labelDisciplineID";
-            labelDisciplineID.Size = new Size(198, 20);
-            labelDisciplineID.TabIndex = 0;
-            labelDisciplineID.Text = "ID da Disciplina:";
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+            tableLayoutPanel1.Controls.Add(label2, 0, 2);
+            tableLayoutPanel1.Controls.Add(label3, 0, 0);
+            tableLayoutPanel1.Controls.Add(label4, 0, 1);
+            tableLayoutPanel1.Controls.Add(textBoxDisciplineName, 1, 1);
+            tableLayoutPanel1.Controls.Add(numericUpDownNumberHours, 1, 2);
+            tableLayoutPanel1.Controls.Add(numericUpDownDisciplineID, 1, 0);
+            tableLayoutPanel1.Location = new Point(23, 41);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Size = new Size(680, 244);
+            tableLayoutPanel1.TabIndex = 0;
             // 
-            // labelDisciplineName
+            // label2
             // 
-            labelDisciplineName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            labelDisciplineName.AutoSize = true;
-            labelDisciplineName.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDisciplineName.Location = new Point(3, 89);
-            labelDisciplineName.Name = "labelDisciplineName";
-            labelDisciplineName.Size = new Size(198, 20);
-            labelDisciplineName.TabIndex = 1;
-            labelDisciplineName.Text = "Nome da Disciplina:";
+            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(3, 186);
+            label2.Name = "label2";
+            label2.Size = new Size(164, 34);
+            label2.TabIndex = 2;
+            label2.Text = "Carga Horária da Disciplina:";
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(3, 32);
+            label3.Name = "label3";
+            label3.Size = new Size(164, 17);
+            label3.TabIndex = 0;
+            label3.Text = "ID da Disciplina:";
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(3, 113);
+            label4.Name = "label4";
+            label4.Size = new Size(164, 17);
+            label4.TabIndex = 1;
+            label4.Text = "Nome da Disciplina:";
             // 
             // textBoxDisciplineName
             // 
             textBoxDisciplineName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBoxDisciplineName.Location = new Point(207, 87);
+            textBoxDisciplineName.Location = new Point(173, 109);
             textBoxDisciplineName.Name = "textBoxDisciplineName";
-            textBoxDisciplineName.Size = new Size(470, 23);
+            textBoxDisciplineName.Size = new Size(504, 25);
             textBoxDisciplineName.TabIndex = 4;
-            textBoxDisciplineName.KeyUp += TextBox_KeyUp;
             // 
             // numericUpDownNumberHours
             // 
             numericUpDownNumberHours.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            numericUpDownNumberHours.Location = new Point(207, 154);
+            numericUpDownNumberHours.Location = new Point(173, 190);
             numericUpDownNumberHours.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
             numericUpDownNumberHours.Name = "numericUpDownNumberHours";
-            numericUpDownNumberHours.Size = new Size(470, 23);
+            numericUpDownNumberHours.Size = new Size(504, 25);
             numericUpDownNumberHours.TabIndex = 5;
             numericUpDownNumberHours.TextAlign = HorizontalAlignment.Right;
             numericUpDownNumberHours.ThousandsSeparator = true;
@@ -119,70 +154,66 @@
             // 
             numericUpDownDisciplineID.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownDisciplineID.Enabled = false;
-            numericUpDownDisciplineID.Location = new Point(207, 21);
+            numericUpDownDisciplineID.Location = new Point(173, 28);
+            numericUpDownDisciplineID.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numericUpDownDisciplineID.Name = "numericUpDownDisciplineID";
-            numericUpDownDisciplineID.Size = new Size(470, 23);
-            numericUpDownDisciplineID.TabIndex = 7;
+            numericUpDownDisciplineID.Size = new Size(504, 25);
+            numericUpDownDisciplineID.TabIndex = 3;
             numericUpDownDisciplineID.TextAlign = HorizontalAlignment.Right;
-            numericUpDownDisciplineID.ThousandsSeparator = true;
             // 
-            // buttonDisciplineSave
+            // buttonClear
             // 
-            buttonDisciplineSave.AutoSize = true;
-            buttonDisciplineSave.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDisciplineSave.Location = new Point(510, 218);
-            buttonDisciplineSave.Name = "buttonDisciplineSave";
-            buttonDisciplineSave.Size = new Size(90, 31);
-            buttonDisciplineSave.TabIndex = 0;
-            buttonDisciplineSave.Text = "Guardar";
-            buttonDisciplineSave.UseVisualStyleBackColor = true;
-            buttonDisciplineSave.Click += ButtonDisciplineSave_Click;
-            // 
-            // buttonDisciplineCancel
-            // 
-            buttonDisciplineCancel.AutoSize = true;
-            buttonDisciplineCancel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDisciplineCancel.Location = new Point(606, 218);
-            buttonDisciplineCancel.Name = "buttonDisciplineCancel";
-            buttonDisciplineCancel.Size = new Size(86, 31);
-            buttonDisciplineCancel.TabIndex = 0;
-            buttonDisciplineCancel.Text = "Cancelar";
-            buttonDisciplineCancel.UseVisualStyleBackColor = true;
-            buttonDisciplineCancel.Click += ButtonDisciplineCancel_Click;
+            buttonClear.Anchor = AnchorStyles.None;
+            buttonClear.BackgroundImage = Properties.Resources.cancelar_solido;
+            buttonClear.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonClear.Cursor = Cursors.Hand;
+            buttonClear.FlatAppearance.BorderSize = 0;
+            buttonClear.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonClear.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonClear.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonClear.FlatStyle = FlatStyle.Flat;
+            buttonClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClear.Location = new Point(578, 305);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(125, 50);
+            buttonClear.TabIndex = 4;
+            buttonClear.TextAlign = ContentAlignment.MiddleRight;
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += ButtonCancel_Click;
             // 
             // DisciplineEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSalmon;
-            ClientSize = new Size(703, 259);
-            Controls.Add(buttonDisciplineCancel);
-            Controls.Add(buttonDisciplineSave);
-            Controls.Add(tableLayoutPanelDisciplineEdit);
+            ClientSize = new Size(782, 432);
+            Controls.Add(groupBoxDisciplineAdding);
             KeyPreview = true;
             Name = "DisciplineEdit";
+            Padding = new Padding(20);
             StartPosition = FormStartPosition.CenterParent;
             Text = "Formulário Editar Disciplina";
             Load += WinFormDisciplineEdit_Load;
             KeyDown += WinForm_KeyDown;
-            tableLayoutPanelDisciplineEdit.ResumeLayout(false);
-            tableLayoutPanelDisciplineEdit.PerformLayout();
+            groupBoxDisciplineAdding.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNumberHours).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDisciplineID).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private TableLayoutPanel tableLayoutPanelDisciplineEdit;
-        private Label label1;
-        private Label labelDisciplineID;
-        private Label labelDisciplineName;
+        private GroupBox groupBoxDisciplineAdding;
+        private Button buttonStore;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
         private TextBox textBoxDisciplineName;
-        private Button buttonDisciplineSave;
-        private Button buttonDisciplineCancel;
         private NumericUpDown numericUpDownNumberHours;
         private NumericUpDown numericUpDownDisciplineID;
+        private Button buttonClear;
     }
 }
