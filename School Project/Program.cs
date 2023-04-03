@@ -15,6 +15,6 @@ internal static class Program
         ApplicationConfiguration.Initialize();
         //Application.Run(new Form1());
         Application.Run(new InitialWinForm());
-        Application.Run(new MainWinForm());
+        //Application.Run(new MainWinForm());
     }
 }

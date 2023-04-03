@@ -306,7 +306,7 @@ public static class SchoolClasses
             var studentsCount = 0;
             decimal classTotal = 0;
             decimal highestGrade = 0;
-            decimal lowestGrade = decimal.MaxValue;
+            var lowestGrade = decimal.MaxValue;
 
             foreach (var course in coursesList)
                 if (course != null)

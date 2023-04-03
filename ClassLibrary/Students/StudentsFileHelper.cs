@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
 
@@ -26,8 +27,10 @@ public class StudentsFileHelper
             Delimiter = ";"
         };
 
-        using var writer = new StreamWriter(StudentsFilePath);
-        using var csvWriter = new CsvWriter(writer, csvConfig);
+        using var fileStream =
+            new FileStream(StudentsFilePath, FileMode.Create);
+        using var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
+        using var csvWriter = new CsvWriter(streamWriter, csvConfig);
 
         csvWriter.WriteRecords(Students.ListStudents);
     }
@@ -41,8 +44,8 @@ public class StudentsFileHelper
 
         using var fileStream =
             new FileStream(StudentsFilePath, FileMode.OpenOrCreate);
-        using var reader = new StreamReader(fileStream);
-        using var csvReader = new CsvReader(reader, csvConfig);
+        using var streamReader = new StreamReader(fileStream);
+        using var csvReader = new CsvReader(streamReader, csvConfig);
 
         return csvReader.GetRecords<Student>().ToList();
     }
