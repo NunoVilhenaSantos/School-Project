@@ -81,8 +81,8 @@ public partial class StudentDiscipline : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
-        ((TextBox)sender).Paste();
+        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
+        ((TextBox) sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -149,7 +149,7 @@ public partial class StudentDiscipline : Form
     private void ButtonStudentDisciplinesAdding_Click(
         object sender, EventArgs e)
     {
-        var studentToEdit = (Student)listBoxStudents.SelectedItem;
+        var studentToEdit = (Student) listBoxStudents.SelectedItem;
 
         if (studentToEdit == null)
         {
@@ -181,25 +181,25 @@ public partial class StudentDiscipline : Form
         List<Enrollment> enrollments = new();
 
         foreach (var d in Courses.ListCourses)
-            foreach (var t in checkedListBoxDisciplines.CheckedItems)
-                if (t is Course v && d.IdCourse == v.IdCourse)
-                    enrollments.Add(
-                        new Enrollment
-                        {
-                            //Grade = 0,
-                            //StudentId = d.IdCourse,
-                            //Student = d,
-                            CourseId = d.IdCourse,
-                            Course = d
-                        }
-                    );
+        foreach (var t in checkedListBoxDisciplines.CheckedItems)
+            if (t is Course v && d.IdCourse == v.IdCourse)
+                enrollments.Add(
+                    new Enrollment
+                    {
+                        //Grade = 0,
+                        //StudentId = d.IdCourse,
+                        //Student = d,
+                        CourseId = d.IdCourse,
+                        Course = d
+                    }
+                );
 
         Console.WriteLine("Debug point");
 
 
         foreach (var t in checkedListBoxDisciplines.CheckedItems)
         {
-            var b = (Course)t;
+            var b = (Course) t;
             var c =
                 Courses.ListCourses.FirstOrDefault(
                     a => a.IdCourse == b.IdCourse);
@@ -248,7 +248,7 @@ public partial class StudentDiscipline : Form
     {
         if (Courses.ListCourses == null) return;
 
-        var studentToView = (Student)listBoxStudents.SelectedItem;
+        var studentToView = (Student) listBoxStudents.SelectedItem;
         if (studentToView.Enrollments == null) return;
 
 

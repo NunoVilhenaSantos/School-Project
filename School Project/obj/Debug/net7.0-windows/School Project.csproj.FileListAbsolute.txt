@@ -118,4 +118,4 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.genruntimeconfig.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\ref\School Project.dll
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.CoursesSearch.resources
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.CoursesSearch.resources

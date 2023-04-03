@@ -1,4 +1,4 @@
-﻿namespace School_Project.WForms.SchoolClassesForms
+﻿namespace School_Project.WForms.CoursesForms
 {
     partial class CoursesSearch
     {

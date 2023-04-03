@@ -65,9 +65,9 @@ public partial class DisciplineEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
+        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
         {
-            ((TextBox)sender).Paste();
+            ((TextBox) sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -78,7 +78,7 @@ public partial class DisciplineEdit : Form
         if (!ValidateTextBoxes()) return;
 
         _courseToEdit.Name = textBoxDisciplineName.Text;
-        _courseToEdit.WorkLoad = (int)numericUpDownNumberHours.Value;
+        _courseToEdit.WorkLoad = (int) numericUpDownNumberHours.Value;
 
         Close();
     }
