@@ -1,5 +1,5 @@
-﻿using System.Windows.Forms.DataVisualization.Charting;
-using ClassLibrary;
+﻿using ClassLibrary;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace School_Project.WForms.StatisticsForms;
 
@@ -71,9 +71,9 @@ public partial class ChartsWinForm : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
+        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -140,7 +140,7 @@ public partial class ChartsWinForm : Form
 
 
     private void UpdateDataGrid()
-        //private void ButtonUpdateHouseLoanDataGrid_Click(object sender, EventArgs e)
+    //private void ButtonUpdateHouseLoanDataGrid_Click(object sender, EventArgs e)
     {
         //
         // rebinding the data, so the system will refresh the info

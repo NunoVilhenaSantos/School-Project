@@ -346,7 +346,7 @@ public static class XFiles
                                  $"{e.StudentId};" +
                                  //$"{e.Student};" +
                                  $"{e.CourseId};"
-                             //$"{e.Course}"
+                         //$"{e.Course}"
                          ))
                 {
                     streamWriter.WriteLine(line);
@@ -718,7 +718,7 @@ public static class XFiles
                         studentId,
                         //Student = student,
                         courseId
-                        //Course = course
+                    //Course = course
                     );
                 }
 

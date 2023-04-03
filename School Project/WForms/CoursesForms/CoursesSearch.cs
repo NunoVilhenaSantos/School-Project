@@ -3,13 +3,13 @@ using System.Reflection;
 
 namespace School_Project.WForms.SchoolClassesForms;
 
-public partial class SchoolClassSearch : Form
+public partial class CoursesSearch : Form
 {
     private readonly BindingSource _bSListSClasses = new();
     private readonly BindingSource _bSourceSearchList = new();
     private readonly BindingSource _bSourceSearchOptions = new();
 
-    public SchoolClassSearch()
+    public CoursesSearch()
     {
         InitializeComponent();
     }

@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using ClassLibrary;
+﻿using ClassLibrary;
 using School_Project.WForms.SchoolClassesForms;
+using System.Reflection;
 
 namespace School_Project.WForms.CoursesForms;
 
@@ -120,9 +120,9 @@ public partial class DisciplineAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
+        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -132,9 +132,9 @@ public partial class DisciplineAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Courses.AddCourse(
-            (int) numericUpDownDisciplineID.Value,
+            (int)numericUpDownDisciplineID.Value,
             textBoxDisciplineName.Text,
-            (int) numericUpDownNumberHours.Value,
+            (int)numericUpDownNumberHours.Value,
             0, null
         );
 
@@ -477,7 +477,7 @@ public partial class DisciplineAdd : Form
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var selectedCourse = (Course) _bSListCourses.Current;
+        var selectedCourse = (Course)_bSListCourses.Current;
 
         // Get the students for the selected course from the data source
         var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments
@@ -497,7 +497,7 @@ public partial class DisciplineAdd : Form
         // Set the checked items in the checkedListBoxStudents control
         for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
         {
-            var student = (Student) checkedListBoxStudents.Items[i];
+            var student = (Student)checkedListBoxStudents.Items[i];
             checkedListBoxStudents.SetItemChecked(i,
                 selectedCourseStudents.Contains(student));
         }
@@ -565,9 +565,9 @@ public partial class DisciplineAdd : Form
 
     private void ButtonSearchForm_Click(object sender, EventArgs e)
     {
-        SchoolClassSearch schoolClassSearch = new();
-        schoolClassSearch.ShowDialog();
-        schoolClassSearch.Dispose();
+        CoursesSearch coursesSearch = new();
+        coursesSearch.ShowDialog();
+        coursesSearch.Dispose();
     }
 
 
@@ -627,7 +627,7 @@ public partial class DisciplineAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos estudante(s) para adicionar, vamos lá.");
-        var courseToAdd = (Course) _bSListCourses.Current;
+        var courseToAdd = (Course)_bSListCourses.Current;
         ;
 
         //
@@ -636,22 +636,22 @@ public partial class DisciplineAdd : Form
         List<Enrollment> newEnrollmentList = new();
 
         foreach (var a in Students.ListStudents)
-        foreach (var t in checkedListBoxStudents.CheckedItems)
-            if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
-            {
-                newEnrollmentList.Add(
-                    new Enrollment
-                    {
-                        Grade = null,
-                        StudentId = toVerify.IdStudent,
-                        Student = toVerify,
-                        CourseId = courseToAdd.IdCourse,
-                        Course = courseToAdd
-                    }
-                );
-                Enrollments.AddEnrollment(toVerify.IdStudent,
-                    courseToAdd.IdCourse);
-            }
+            foreach (var t in checkedListBoxStudents.CheckedItems)
+                if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
+                {
+                    newEnrollmentList.Add(
+                        new Enrollment
+                        {
+                            Grade = null,
+                            StudentId = toVerify.IdStudent,
+                            Student = toVerify,
+                            CourseId = courseToAdd.IdCourse,
+                            Course = courseToAdd
+                        }
+                    );
+                    Enrollments.AddEnrollment(toVerify.IdStudent,
+                        courseToAdd.IdCourse);
+                }
 
         //
         // debugging

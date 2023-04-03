@@ -24,14 +24,14 @@ public static class Courses
     )
     {
         ListCourses.Add(new Course
-            {
-                //Id_Course = id,
-                Name = name,
-                WorkLoad = workLoad,
-                Credits = credits
-                // Enrollments = enrollments,
-                // StudentGradesList = studentGrades,
-            }
+        {
+            //Id_Course = id,
+            Name = name,
+            WorkLoad = workLoad,
+            Credits = credits
+            // Enrollments = enrollments,
+            // StudentGradesList = studentGrades,
+        }
         );
         GetStudentsCount();
     }
@@ -194,7 +194,7 @@ public static class Courses
 
         var course =
             ListCourses.FirstOrDefault(
-                a => a.IdCourse== id);
+                a => a.IdCourse == id);
 
         if (course == null)
             return "O curso não existe!";

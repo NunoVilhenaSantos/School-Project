@@ -1,5 +1,5 @@
-﻿using System.Windows.Forms.DataVisualization.Charting;
-using ClassLibrary;
+﻿using ClassLibrary;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace School_Project.WForms.StatisticsForms;
 
@@ -25,7 +25,7 @@ public partial class ChartsWinForm1 : Form
 
 
     private void UpdateChart()
-        //private void ButtonHouseLoanChart_Click(object sender, EventArgs e)
+    //private void ButtonHouseLoanChart_Click(object sender, EventArgs e)
     {
         //CasaUpdateListBoxValues();
 
