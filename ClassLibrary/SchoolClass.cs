@@ -222,7 +222,13 @@ public class SchoolClass : INotifyPropertyChanged
 
     public int GetStudentsCount()
     {
-        return CoursesList?.Sum(course => course.Enrollments.Count) ?? 0;
+        //return CoursesList.Join(Enrollments.ListEnrollments?.Where(x=>x.Course)).Count() ?? 0;
+        return CoursesList.Join(Enrollments.ListEnrollments,
+                c => c.IdCourse,
+                e => e.CourseId,
+                (c, e) => e)
+            .Count();
+
         /*
         return CoursesList == null
             ? 0

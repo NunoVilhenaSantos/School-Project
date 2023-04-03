@@ -70,14 +70,12 @@ public class SchoolContext : DbContext
     }
     */
 
+    public DbSet<SchoolClass> SchoolClasses { get; set; }
+    public DbSet<Teacher> Teachers { get; set; }
+    public DbSet<Course> Courses { get; set; }
     public DbSet<Student> Students { get; set; }
     public DbSet<Enrollment> Enrollments { get; set; }
-    public DbSet<Course> Courses { get; set; }
 
-    public DbSet<Teacher> Teachers { get; set; }
-
-    //public DbSet<Department> Departments { get; set; }
-    public DbSet<SchoolClass> SchoolClasses { get; set; }
 
     private static DbContextOptions<SchoolContext> GetOptions(
         string connectionString)
@@ -99,8 +97,8 @@ public class SchoolContext : DbContext
         //    UsingEntity(j => j.ToTable("CourseTeacher"));
 
         // Configure one-to-many relationship between Course and Enrollment entities
-        modelBuilder.Entity<Course>().HasMany(c => c.Enrollments)
-            .WithOne(e => e.Course);
+        //modelBuilder.Entity<Course>().HasMany(c => c.Enrollments)
+        //    .WithOne(e => e.Course);
 
         // Configure one-to-many relationship between Student and Enrollment entities
         modelBuilder.Entity<Student>().HasMany(s => s.Enrollments)

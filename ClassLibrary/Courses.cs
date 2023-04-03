@@ -117,8 +117,8 @@ public static class Courses
         ListCourses.FirstOrDefault(a => a.IdCourse == id)!.Name = name;
         ListCourses.FirstOrDefault(
             a => a.IdCourse == id)!.WorkLoad = workLoad;
-        ListCourses.FirstOrDefault(
-            a => a.IdCourse == id)!.Enrollments = enrollments;
+        //ListCourses.FirstOrDefault(
+        //    a => a.IdCourse == id)!.Enrollments = enrollments;
 
         return "Curso alterado com sucesso";
     }
@@ -145,9 +145,9 @@ public static class Courses
             courses = ListCourses.Where(
                 a => a.WorkLoad == workLoad).ToList();
 
-        if (enrollments != null)
-            courses = ListCourses.Where(
-                a => a.Enrollments == enrollments).ToList();
+        //if (enrollments != null)
+        //    courses = ListCourses.Where(
+        //        a => a.Enrollments == enrollments).ToList();
 
         return courses;
     }
@@ -173,8 +173,8 @@ public static class Courses
         if (workLoad >= 0)
             courses = courses.Where(c => c.WorkLoad == workLoad).ToList();
 
-        if (enrollments != null)
-            courses = courses.Where(c => c.Enrollments == enrollments).ToList();
+        //if (enrollments != null)
+        //    courses = courses.Where(c => c.Enrollments == enrollments).ToList();
 
         return courses;
     }
@@ -212,6 +212,7 @@ public static class Courses
         foreach (var course in ListCourses)
             course.StudentsCount = Enrollments.ListEnrollments?
                 .Where(x => x.CourseId == course.IdCourse)
+                .Distinct()
                 .Count() ?? 0;
 
         return "Cálculos executados.";

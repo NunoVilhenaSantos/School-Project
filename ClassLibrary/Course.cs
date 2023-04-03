@@ -50,9 +50,9 @@ public class Course : INotifyPropertyChanged
 
     public int GetStudentsCount()
     {
-        StudentsCount = Enrollments?
+        StudentsCount = Enrollments.ListEnrollments?
             .Where(x => x.CourseId == IdCourse)
-            .Sum(x => Enrollments.Count) ?? 0;
+            .Count() ?? 0;
 
         return StudentsCount ?? 0;
         /*
@@ -98,7 +98,7 @@ public class Course : INotifyPropertyChanged
     private string _name;
     private int _workLoad;
     private int _credits;
-    private List<Enrollment> _enrollments = new();
+    //private List<Enrollment> _enrollments = new();
     private int? _studentsCount;
 
     #endregion
@@ -148,16 +148,16 @@ public class Course : INotifyPropertyChanged
         }
     }
 
-    public List<Enrollment> Enrollments
-    {
-        get => _enrollments;
-        set
-        {
-            if (Equals(value, _enrollments)) return;
-            _enrollments = value;
-            OnPropertyChanged();
-        }
-    }
+    // public List<Enrollment> Enrollments
+    // {
+    //     get => _enrollments;
+    //     set
+    //     {
+    //         if (Equals(value, _enrollments)) return;
+    //         _enrollments = value;
+    //         OnPropertyChanged();
+    //     }
+    // }
 
 
     public int? StudentsCount

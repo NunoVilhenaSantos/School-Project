@@ -5,6 +5,29 @@ namespace ClassLibrary;
 
 public class Student : INotifyPropertyChanged
 {
+
+    //
+    // public class Student {
+    //     public int StudentId { get; set; }
+    //     public string Name { get; set; }
+    //     public string Major { get; set; }
+    //
+    //     public override bool Equals(object obj) {
+    //         if (obj == null || !(obj is Student)) {
+    //             return false;
+    //         }
+    //     
+    //         Student other = (Student) obj;
+    //         return this.StudentId == other.StudentId;
+    //     }
+    //
+    //     public override int GetHashCode() {
+    //         return this.StudentId.GetHashCode();
+    //     }
+    //}
+    //
+    //
+    
     //
     // Constructor for the class and incrementation of the ID
     //

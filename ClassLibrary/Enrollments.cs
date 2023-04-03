@@ -1,6 +1,6 @@
 ﻿namespace ClassLibrary;
 
-public class Enrollments
+public static class Enrollments
 {
     #region Properties
 

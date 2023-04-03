@@ -30,6 +30,10 @@ namespace School_Project.WForms.CoursesForms
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -169,10 +173,10 @@ namespace School_Project.WForms.CoursesForms
             // 
             listBoxDisciplines.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listBoxDisciplines.FormattingEnabled = true;
-            listBoxDisciplines.ItemHeight = 17;
+            listBoxDisciplines.ItemHeight = 15;
             listBoxDisciplines.Location = new Point(49, 18);
             listBoxDisciplines.Name = "listBoxDisciplines";
-            listBoxDisciplines.Size = new Size(710, 293);
+            listBoxDisciplines.Size = new Size(710, 289);
             listBoxDisciplines.TabIndex = 0;
             // 
             // groupBoxDisciplineAdding
@@ -236,7 +240,7 @@ namespace School_Project.WForms.CoursesForms
             transparentTabControl1.Controls.Add(tabPage5);
             transparentTabControl1.Controls.Add(tabPage3);
             transparentTabControl1.Controls.Add(tabPage4);
-            transparentTabControl1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            transparentTabControl1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             transparentTabControl1.Location = new Point(20, 22);
             transparentTabControl1.Margin = new Padding(5);
             transparentTabControl1.Name = "transparentTabControl1";
@@ -250,10 +254,10 @@ namespace School_Project.WForms.CoursesForms
             // tabPage1
             // 
             tabPage1.Controls.Add(groupBoxDisciplineAdding);
-            tabPage1.Location = new Point(4, 40);
+            tabPage1.Location = new Point(4, 38);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(20);
-            tabPage1.Size = new Size(966, 426);
+            tabPage1.Size = new Size(966, 428);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "1 - Ficha";
             tabPage1.UseVisualStyleBackColor = true;
@@ -262,32 +266,47 @@ namespace School_Project.WForms.CoursesForms
             // 
             tabPage2.Controls.Add(checkedListBoxStudents);
             tabPage2.Controls.Add(dataGridViewCourses);
-            tabPage2.Location = new Point(4, 40);
+            tabPage2.Location = new Point(4, 38);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(5);
-            tabPage2.Size = new Size(966, 426);
+            tabPage2.Size = new Size(966, 428);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "2 - Lista";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // checkedListBoxStudents
             // 
-            checkedListBoxStudents.CheckOnClick = true;
             checkedListBoxStudents.Dock = DockStyle.Right;
             checkedListBoxStudents.FormattingEnabled = true;
             checkedListBoxStudents.Location = new Point(721, 5);
             checkedListBoxStudents.Name = "checkedListBoxStudents";
-            checkedListBoxStudents.Size = new Size(240, 416);
+            checkedListBoxStudents.Size = new Size(240, 418);
             checkedListBoxStudents.TabIndex = 6;
             // 
             // dataGridViewCourses
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCourses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewCourses.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewCourses.Dock = DockStyle.Left;
             dataGridViewCourses.Location = new Point(5, 5);
             dataGridViewCourses.Name = "dataGridViewCourses";
             dataGridViewCourses.RowTemplate.Height = 25;
-            dataGridViewCourses.Size = new Size(730, 416);
+            dataGridViewCourses.Size = new Size(730, 418);
             dataGridViewCourses.TabIndex = 5;
             dataGridViewCourses.CellBeginEdit += DataGridViewCourses_CellBeginEdit;
             dataGridViewCourses.CellEnter += DataGridViewCourses_CellEnter;
@@ -296,29 +315,45 @@ namespace School_Project.WForms.CoursesForms
             // tabPage5
             // 
             tabPage5.Controls.Add(dataGridViewSearch);
-            tabPage5.Location = new Point(4, 40);
+            tabPage5.Location = new Point(4, 38);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(966, 426);
+            tabPage5.Size = new Size(966, 428);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "3 - Pesquisar";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // dataGridViewSearch
             // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridViewSearch.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewSearch.Dock = DockStyle.Fill;
             dataGridViewSearch.Location = new Point(0, 0);
             dataGridViewSearch.Name = "dataGridViewSearch";
             dataGridViewSearch.RowTemplate.Height = 25;
-            dataGridViewSearch.Size = new Size(966, 426);
+            dataGridViewSearch.Size = new Size(966, 428);
             dataGridViewSearch.TabIndex = 0;
             // 
             // tabPage3
             // 
             tabPage3.Controls.Add(chart1);
-            tabPage3.Location = new Point(4, 40);
+            tabPage3.Location = new Point(4, 38);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(966, 426);
+            tabPage3.Size = new Size(966, 428);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "4 - Gráficos";
             tabPage3.UseVisualStyleBackColor = true;
@@ -342,9 +377,9 @@ namespace School_Project.WForms.CoursesForms
             // tabPage4
             // 
             tabPage4.Controls.Add(listBoxDisciplines);
-            tabPage4.Location = new Point(4, 40);
+            tabPage4.Location = new Point(4, 38);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(966, 426);
+            tabPage4.Size = new Size(966, 428);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "5 - Lista";
             tabPage4.UseVisualStyleBackColor = true;
