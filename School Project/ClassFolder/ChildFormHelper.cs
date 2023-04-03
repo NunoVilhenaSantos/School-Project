@@ -1,4 +1,6 @@
-﻿namespace School_Project.ICFolder;
+﻿using School_Project.InterfaceFolder;
+
+namespace School_Project.ClassFolder;
 
 public class ChildFormHelper
 {

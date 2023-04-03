@@ -1,4 +1,4 @@
-﻿using School_Project.ICFolder;
+﻿using School_Project.ClassFolder;
 using School_Project.Properties;
 
 namespace School_Project.WForms.SchoolClassesForms

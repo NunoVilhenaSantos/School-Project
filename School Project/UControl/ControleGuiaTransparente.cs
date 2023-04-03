@@ -1,4 +1,4 @@
-﻿using School_Project.ICFolder;
+﻿using School_Project.ClassFolder;
 
 namespace School_Project.UControl;
 

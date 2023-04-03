@@ -1,4 +1,4 @@
-﻿namespace School_Project.ICFolder;
+﻿namespace ClassLibrary;
 
 // Example child form class
 public class MyChildForm : Form, IChildForm

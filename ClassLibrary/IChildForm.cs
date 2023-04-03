@@ -1,4 +1,4 @@
-﻿namespace School_Project.ICFolder;
+﻿namespace ClassLibrary;
 
 // Interface for child forms
 public interface IChildForm

@@ -1,4 +1,4 @@
-﻿namespace School_Project.ICFolder;
+﻿namespace School_Project.InterfaceFolder;
 
 public interface ITransparentTabControl
 {
