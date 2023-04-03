@@ -1,4 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
+using ClassLibrary.SchoolClasses;
+using ClassLibrary.Students;
+using ClassLibrary.Teachers;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary;
 

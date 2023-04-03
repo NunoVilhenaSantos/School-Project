@@ -1,4 +1,12 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
+using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
+using ClassLibrary.SchoolClasses;
+using ClassLibrary.Students;
+using ClassLibrary.Teachers;
+
+// using CsvBuilder;
 
 namespace ClassLibrary;
 
@@ -14,7 +22,7 @@ public static class XFiles
     private static readonly string ProjectFolder =
         Directory.GetCurrentDirectory();
 
-    private static readonly string FilesFolder =
+    internal static readonly string FilesFolder =
         ProjectFolder + "\\XFiles\\";
 
     private static readonly string CoursesFile =
@@ -62,19 +70,29 @@ public static class XFiles
         file.Directory.Create();
 
         var storeSchoolClassesInFile =
-            StoreSchoolClassesInFile(out var message_StoreSchoolClassesInFile);
+            StoreSchoolClassesInFile(
+                out var message_StoreSchoolClassesInFile);
+        SchoolClassesFileHelper.WriteSchoolClassesToFile();
 
         var storeTeachersInFile =
-            StoreTeachersInFile(out var message_StoreTeachersInFile);
+            StoreTeachersInFile(
+                out var message_StoreTeachersInFile);
+        TeachersFileHelper.WriteTeachersToFile();
 
         var storeCoursesInFile =
-            StoreCoursesInFile(out var message_StoreCoursesInFile);
+            StoreCoursesInFile(
+                out var message_StoreCoursesInFile);
+        CoursesFileHelper.WriteCoursesToFile();
 
         var storeEnrollmentsInFile =
-            StoreEnrollmentsInFile(out var message_StoreEnrollmentsInFile);
+            StoreEnrollmentsInFile(
+                out var message_StoreEnrollmentsInFile);
+        EnrollmentsFileHelper.WriteEnrollmentsToFile();
 
         var storeStudentsInFile =
-            StoreStudentsInFile(out var message_StoreStudentsInFile);
+            StoreStudentsInFile(
+                out var message_StoreStudentsInFile);
+        StudentsFileHelper.WriteStudentsToFile();
 
         myString =
             message_StoreSchoolClassesInFile + "\n\n" +
@@ -102,11 +120,8 @@ public static class XFiles
 
         try
         {
-            using (FileStream fileStream =
-                   new(SchoolClassesFile, FileMode.Create))
-            {
-                ;
-            }
+            using FileStream fileStream =
+                new(SchoolClassesFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -124,7 +139,8 @@ public static class XFiles
         }
 
 
-        using (FileStream fileStream = new(SchoolClassesFile, FileMode.Create))
+        using (FileStream fileStream =
+               new(SchoolClassesFile, FileMode.Create))
         {
             using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
             {
@@ -142,8 +158,23 @@ public static class XFiles
                                           "CoursesList";
                 streamWriter.WriteLine(headerLine);
 
+                // Read the public properties to build the header line
+                var properties = typeof(SchoolClass)
+                    .GetProperties(
+                        BindingFlags.Public | BindingFlags.Instance);
 
-                foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+                // Create a list with the public properties
+                // to build the header line
+                var propertyNames =
+                    string.Join(";",
+                        properties.Select(p => p.Name.Normalize()));
+
+                // Write the header line
+                streamWriter.WriteLine(propertyNames);
+
+
+                foreach (var schoolClass in SchoolClasses.SchoolClasses
+                             .ListSchoolClasses)
                 {
                     var line =
                         $"{schoolClass.IdSchoolClass};" +
@@ -222,7 +253,22 @@ public static class XFiles
 
                 csvStringBuilder.AppendLine(header);
 
-                foreach (var teacher in Teachers.TeachersList)
+                // Read the public properties to build the header line
+                var properties = typeof(Teacher)
+                    .GetProperties(
+                        BindingFlags.Public | BindingFlags.Instance);
+
+                // Create a list with the public properties
+                // to build the header line
+                var propertyNames =
+                    string.Join(";",
+                        properties.Select(p => p.Name.Normalize()));
+
+                // Write the header line
+                streamWriter.WriteLine(propertyNames);
+
+
+                foreach (var teacher in Teachers.Teachers.TeachersList)
                 {
                     var teacherCsv = new StringBuilder();
 
@@ -290,8 +336,23 @@ public static class XFiles
             using (StreamWriter streamWriter =
                    new(fileStream, Encoding.UTF8))
             {
+                // Read the public properties to build the header line
+                var properties = typeof(Course)
+                    .GetProperties(
+                        BindingFlags.Public | BindingFlags.Instance);
+
+                // Create a list with the public properties
+                // to build the header line
+                var propertyNames =
+                    string.Join(";",
+                        properties.Select(p => p.Name.Normalize()));
+
+                // Write the header line
+                streamWriter.WriteLine(propertyNames);
+
+
                 foreach (var line in
-                         Courses.ListCourses.Select(course =>
+                         Courses.Courses.ListCourses.Select(course =>
                              $"{course.IdCourse};" +
                              $"{course.Name};" +
                              $"{course.WorkLoad};" +
@@ -339,15 +400,31 @@ public static class XFiles
         {
             using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
             {
+                // Read the public properties to build the header line
+                var properties = typeof(Enrollment)
+                    .GetProperties(
+                        BindingFlags.Public | BindingFlags.Instance);
+
+                // Create a list with the public properties
+                // to build the header line
+                var propertyNames =
+                    string.Join(";",
+                        properties.Select(p => p.Name.Normalize()));
+
+                // Write the header line
+                streamWriter.WriteLine(propertyNames);
+
+
                 foreach (var line in
-                         Enrollments.ListEnrollments.Select(e =>
-                                 $"{e.IdEnrollment};" +
-                                 $"{e.Grade};" +
-                                 $"{e.StudentId};" +
-                                 //$"{e.Student};" +
-                                 $"{e.CourseId};"
-                             //$"{e.Course}"
-                         ))
+                         Enrollments.Enrollments.ListEnrollments
+                             .Select(e =>
+                                     $"{e.IdEnrollment};" +
+                                     $"{e.Grade};" +
+                                     $"{e.StudentId};" +
+                                     //$"{e.Student};" +
+                                     $"{e.CourseId};"
+                                 //$"{e.Course}"
+                             ))
                 {
                     streamWriter.WriteLine(line);
                     streamWriter.Flush();
@@ -392,8 +469,23 @@ public static class XFiles
             using (StreamWriter streamWriter =
                    new(fileStream, Encoding.UTF8))
             {
+                // Read the public properties to build the header line
+                var properties = typeof(Student)
+                    .GetProperties(
+                        BindingFlags.Public | BindingFlags.Instance);
+
+                // Create a list with the public properties
+                // to build the header line
+                var propertyNames =
+                    string.Join(";",
+                        properties.Select(p => p.Name.Normalize()));
+
+                // Write the header line
+                streamWriter.WriteLine(propertyNames);
+
+
                 foreach (var line in
-                         Students.ListStudents.Select(student =>
+                         Students.Students.ListStudents.Select(student =>
                              $"{student.IdStudent};" +
                              $"{student.Name};" +
                              $"{student.LastName};" +
@@ -452,24 +544,33 @@ public static class XFiles
 
         // 1st file to read are the courses file
         var readCoursesFromFile =
-            ReadCoursesFromFile(out var message_ReadCoursesFromFile);
+            ReadCoursesFromFile(
+                out var message_ReadCoursesFromFile);
+        CoursesFileHelper.ReadCoursesFromFile();
 
         // 2nd file to read are the students file
         var readStudentsFromFile =
-            ReadStudentsFromFile(out var message_ReadStudentsFromFile);
+            ReadStudentsFromFile(
+                out var message_ReadStudentsFromFile);
+        StudentsFileHelper.ReadStudentsFromFile();
 
         // 3rd file to read are the enrollment file
         var readEnrollmentsInFile =
-            ReadEnrollmentsInFile(out var message_ReadEnrollmentsInFile);
+            ReadEnrollmentsInFile(
+                out var message_ReadEnrollmentsInFile);
+        EnrollmentsFileHelper.ReadEnrollmentsFromFile();
 
         // 4th file to read are the school-classes file
         var readSchoolClassesFromFile =
             ReadSchoolClassesFromFile(
                 out var message_ReadSchoolClassesFromFile);
+        SchoolClassesFileHelper.ReadSchoolClassesFromFile();
 
         // 5th file to read are the teachers file
         var readTeachersInFile =
-            ReadTeachersInFile(out var message_ReadTeachersInFile);
+            ReadTeachersInFile(
+                out var message_ReadTeachersInFile);
+        TeachersFileHelper.ReadTeachersFromFile();
 
         myString =
             message_ReadCoursesFromFile + "\n\n" +
@@ -543,7 +644,7 @@ public static class XFiles
                     _ = int.TryParse(campos[2], out var workLoad);
                     _ = int.TryParse(campos[3], out var credits);
 
-                    Courses.AddCourse(
+                    Courses.Courses.AddCourse(
                         id, campos[1], workLoad, credits, null
                     );
                 }
@@ -613,7 +714,7 @@ public static class XFiles
                     _ = int.TryParse(campos[17], out var totalWorkHours);
                     _ = DateOnly.TryParse(campos[18], out var enrollmentDate);
 
-                    Students.AddStudent(
+                    Students.Students.AddStudent(
                         id,
                         campos[1],
                         campos[2],
@@ -712,7 +813,7 @@ public static class XFiles
 
                     // verificar este ciclo porque esta adicionar todos tem que
                     // adicionar na lista deste estudante o que lhe pertence
-                    Enrollments.AddEnrollment(
+                    Enrollments.Enrollments.AddEnrollment(
                         // IdEnrollment=idEnrollment,
                         grade,
                         studentId,
@@ -799,7 +900,7 @@ public static class XFiles
                     // if has more than 3 fields,
                     // will read the disciplines
                     if (campos.Length > 9)
-                        foreach (var c in Courses.ListCourses)
+                        foreach (var c in Courses.Courses.ListCourses)
                             for (var index = 10; index < campos.Length; index++)
                             {
                                 int.TryParse(campos[index], out var idCourse);
@@ -824,7 +925,7 @@ public static class XFiles
                             .AddHours(9);
                     if (endHour == default) endHour = startHour.AddHours(8);
 
-                    SchoolClasses.AddSchoolClass(
+                    SchoolClasses.SchoolClasses.AddSchoolClass(
                         id, campos[1], campos[2],
                         startDate, endDate,
                         startHour, endHour,
@@ -914,7 +1015,7 @@ public static class XFiles
                     // if has more than 3 fields,
                     // will read the disciplines
                     if (campos.Length > 18)
-                        foreach (var c in Courses.ListCourses)
+                        foreach (var c in Courses.Courses.ListCourses)
                             for (var index = 19; index < campos.Length; index++)
                             {
                                 int.TryParse(campos[index], out index);
@@ -929,7 +1030,7 @@ public static class XFiles
                     _ = int.TryParse(campos[17], out var coursesCount);
                     _ = int.TryParse(campos[18], out var totalWorkHours);
 
-                    Teachers.AddTeacher(
+                    Teachers.Teachers.AddTeacher(
                         id,
                         campos[1],
                         campos[2],

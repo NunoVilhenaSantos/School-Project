@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ClassLibrary.Courses;
 
-namespace ClassLibrary;
+namespace ClassLibrary.SchoolClasses;
 
 public class SchoolClass : INotifyPropertyChanged
 {
@@ -223,7 +224,7 @@ public class SchoolClass : INotifyPropertyChanged
     public int GetStudentsCount()
     {
         //return CoursesList.Join(Enrollments.ListEnrollments?.Where(x=>x.Course)).Count() ?? 0;
-        return CoursesList.Join(Enrollments.ListEnrollments,
+        return CoursesList.Join(Enrollments.Enrollments.ListEnrollments,
                 c => c.IdCourse,
                 e => e.CourseId,
                 (c, e) => e)

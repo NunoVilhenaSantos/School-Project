@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ClassLibrary.Courses;
 
-namespace ClassLibrary;
+namespace ClassLibrary.Teachers;
 
 public class Teacher : INotifyPropertyChanged
 {

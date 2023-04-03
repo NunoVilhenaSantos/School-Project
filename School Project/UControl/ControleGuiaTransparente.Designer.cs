@@ -1,4 +1,5 @@
-﻿using School_Project.ClassFolder;
+﻿using ClassLibrary.Students;
+using School_Project.ClassFolder;
 
 namespace School_Project.UControl
 {
@@ -154,7 +155,7 @@ namespace School_Project.UControl
             // 
             // bindingSource1
             // 
-            bindingSource1.DataSource = typeof(ClassLibrary.Students);
+            bindingSource1.DataSource = typeof(Students);
             // 
             // dataGridView1
             // 

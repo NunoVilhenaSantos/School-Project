@@ -1,5 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
+using ClassLibrary.SchoolClasses;
+using ClassLibrary.Students;
+using ClassLibrary.Teachers;
 
 namespace ClassLibrary;
 

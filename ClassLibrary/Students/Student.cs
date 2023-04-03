@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
 
-namespace ClassLibrary;
+namespace ClassLibrary.Students;
 
 public class Student : INotifyPropertyChanged
 {
-
     //
     // public class Student {
     //     public int StudentId { get; set; }
@@ -27,7 +28,7 @@ public class Student : INotifyPropertyChanged
     //}
     //
     //
-    
+
     //
     // Constructor for the class and incrementation of the ID
     //

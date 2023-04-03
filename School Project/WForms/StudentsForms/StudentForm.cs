@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+﻿using ClassLibrary.Students;
 
 namespace School_Project.WForms.StudentsForms;
 

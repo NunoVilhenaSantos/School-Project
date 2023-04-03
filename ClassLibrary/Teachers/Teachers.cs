@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary;
+﻿using ClassLibrary.Courses;
+
+namespace ClassLibrary.Teachers;
 
 public static class Teachers
 {

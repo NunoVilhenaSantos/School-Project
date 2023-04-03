@@ -1,4 +1,4 @@
-﻿using ClassLibrary;
+﻿using ClassLibrary.Courses;
 
 namespace School_Project.WForms.CoursesForms;
 

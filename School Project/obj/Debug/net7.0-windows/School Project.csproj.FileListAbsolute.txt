@@ -1,5 +1,5 @@
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\EnrollmentsFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\CoursesFile.csv
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\EnrollmentsFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\SchoolClassesFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\StudentsFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\TeachersFile.csv
@@ -11,6 +11,11 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\School Project.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Azure.Core.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Azure.Identity.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ClosedXML.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\CsvHelper.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\CsvHelper.Excel.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ExcelNumberFormat.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.Data.Sqlite.dll
@@ -86,6 +91,7 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.AssemblyReference.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.ControleGuiaTransparente.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.UC_About.resources
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.CoursesSearch.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineAdd.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineEdit.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormAbout.resources
@@ -118,4 +124,3 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.genruntimeconfig.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\ref\School Project.dll
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.CoursesSearch.resources

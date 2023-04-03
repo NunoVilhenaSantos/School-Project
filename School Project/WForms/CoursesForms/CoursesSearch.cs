@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using ClassLibrary;
+using ClassLibrary.SchoolClasses;
 
 namespace School_Project.WForms.CoursesForms;
 

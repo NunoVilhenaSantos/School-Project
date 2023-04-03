@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary;
+﻿using ClassLibrary.Courses;
+
+namespace ClassLibrary.SchoolClasses;
 
 public static class SchoolClasses
 {
@@ -290,46 +292,56 @@ public static class SchoolClasses
     }
 
 
-    public static string ToObtainValuesForCalculatedFields()
+    public static void ToObtainValuesForCalculatedFields()
     {
-        if (ListSchoolClasses.Count < 1)
-            return "A lista está vazia";
+        if (ListSchoolClasses.Count < 1) return;
 
         foreach (var schoolClass in ListSchoolClasses)
         {
-            var cList = schoolClass.CoursesList;
-            if (cList == null || !cList.Any()) continue;
+            var coursesList = schoolClass.CoursesList;
+            if (coursesList == null || !coursesList.Any()) continue;
 
             var coursesCount = 0;
             var workHourLoad = 0;
             var studentsCount = 0;
             decimal classTotal = 0;
             decimal highestGrade = 0;
-            var lowestGrade = decimal.MaxValue;
+            decimal lowestGrade = decimal.MaxValue;
 
-            foreach (var course in cList)
+            foreach (var course in coursesList)
                 if (course != null)
                 {
                     coursesCount++;
+
                     studentsCount +=
-                        Enrollments.ListEnrollments?
+                        Enrollments.Enrollments.ListEnrollments?
                             .Count(e => e.Course == course) ?? 0;
+                    // studentsCount +=
+                    //     Enrollments.Enrollments.ListEnrollments?
+                    //         .Count(e => e.Course == course);
+
                     workHourLoad += course.WorkLoad;
 
-                    if (Enrollments.ListEnrollments == null ||
-                        !Enrollments.ListEnrollments.Any())
+                    if (Enrollments.Enrollments.ListEnrollments == null ||
+                        !Enrollments.Enrollments.ListEnrollments.Any())
                         continue;
 
-                    var grades = Enrollments.ListEnrollments?
-                        .Where(e => e.Course == course)
-                        .Select(e => e.Grade)
-                        .ToList();
-                    
+                    // var grades = Enrollments.Enrollments.ListEnrollments?
+                    //     .Where(e => e.Course == course)
+                    //     .Select(e => e.Grade)
+                    //     .ToList();
+
+                    var grades =
+                        Enrollments.Enrollments.ListEnrollments?
+                            .Where(e => e.Course == course)
+                            .Select(e => e.Grade);
+
+
+                    if (!grades.Any()) continue;
+
                     classTotal += (decimal) grades.Average();
-                    
                     highestGrade = Math.Max(highestGrade,
                         (decimal) grades.Max());
-                    
                     lowestGrade = Math.Min(lowestGrade,
                         (decimal) grades.Min());
                 }
@@ -341,47 +353,6 @@ public static class SchoolClasses
             schoolClass.HighestGrade = highestGrade;
             schoolClass.LowestGrade = lowestGrade;
         }
-        /*
-        if (ListSchoolClasses.Count < 1)
-            return "A lista está vazia";
-
-        foreach (var school in ListSchoolClasses)
-        {
-            var cList= school.CoursesList;
-            if (cList != null)
-            {
-
-                school.CoursesCount = cList?.Sum(course => course.Enrollments.Count) ?? 0;
-
-                school.WorkHourLoad = cList?.Sum(course => course.WorkLoad) ?? 0;
-                school.StudentsCount = cList?.Count ?? 0;
-
-                school.ClassAverage = cList?.SelectMany(course => course.Enrollments)
-                                             .Average(enrollment => enrollment.Grade)
-                                             ?? 0;
-
-                school.HighestGrade = cList?.SelectMany(course => course.Enrollments)
-                                             .Average(enrollment => enrollment.Grade)
-                                             ?? 0;
-
-                school.LowestGrade = cList?.SelectMany(course => course.Enrollments)
-                                             .Average(enrollment => enrollment.Grade)
-                                             ?? 0;
-            }
-        }
-        */
-
-        return "Cálculos executados.";
-
-        //return CoursesList?.Count ?? 0;
-        /*
-        return CoursesList == null
-            ? 0
-            : CoursesList.Sum(course => course.Enrollments.Count);
-        
-        if (CoursesList == null) return 0;
-        return CoursesList.Sum(course => course.Enrollments.Count);
-        */
     }
 
     #endregion

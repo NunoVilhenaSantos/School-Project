@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary;
+﻿using ClassLibrary.Enrollments;
+
+namespace ClassLibrary.Students;
 
 public class Students
 {

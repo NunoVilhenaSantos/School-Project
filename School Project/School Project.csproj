@@ -96,4 +96,8 @@
         </None>
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="WForms\TeacherForms"/>
+    </ItemGroup>
+
 </Project>

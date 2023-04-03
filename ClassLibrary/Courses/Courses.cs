@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary;
+﻿using ClassLibrary.Enrollments;
+
+namespace ClassLibrary.Courses;
 
 public static class Courses
 {
@@ -210,7 +212,7 @@ public static class Courses
             return "A lista está vazia";
 
         foreach (var course in ListCourses)
-            course.StudentsCount = Enrollments.ListEnrollments?
+            course.StudentsCount = Enrollments.Enrollments.ListEnrollments?
                 .Where(x => x.CourseId == course.IdCourse)
                 .Distinct()
                 .Count() ?? 0;

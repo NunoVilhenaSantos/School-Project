@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary;
+﻿namespace ClassLibrary.Enrollments;
 
 public static class Enrollments
 {
@@ -22,7 +22,13 @@ public static class Enrollments
         {
             Grade = null,
             StudentId = studentId,
-            CourseId = courseId
+            Student =
+                Students.Students.ListStudents
+                    .Find(s => s.IdStudent == studentId),
+            CourseId = courseId,
+            Course =
+                Courses.Courses.ListCourses
+                    .Find(c => c.IdCourse == courseId)
         });
     }
 
@@ -38,7 +44,13 @@ public static class Enrollments
         {
             Grade = grade,
             StudentId = studentId,
-            CourseId = courseId
+            Student =
+                Students.Students.ListStudents
+                    .Find(s => s.IdStudent == studentId),
+            CourseId = courseId,
+            Course =
+                Courses.Courses.ListCourses
+                    .Find(c => c.IdCourse == courseId)
         });
     }
 

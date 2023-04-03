@@ -1,4 +1,6 @@
-﻿using ClassLibrary;
+﻿using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
+using ClassLibrary.Students;
 using School_Project.WForms.StudentsForms;
 
 namespace School_Project.WForms.StatisticsForms;

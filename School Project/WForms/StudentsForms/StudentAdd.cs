@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
-using ClassLibrary;
+using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
+using ClassLibrary.Students;
 using static System.Windows.Forms.Keys;
 
 namespace School_Project.WForms.StudentsForms;
@@ -156,18 +158,13 @@ public partial class StudentAdd : Form
 
     private void UpdateLists()
     {
-        //
-        //
-        // binding section for data grids and checked lists 
-        // 
-        //
+        // *
+        // * 1st 
+        // * Data bindings
+        // * 
+        // *
         _bSourceStudents.DataSource = Students.ListStudents;
-        dataGridView1.DataSource = _bSourceStudents;
-        dataGridView1.AutoResizeColumns();
-
         _bSourceCourses.DataSource = Courses.ListCourses;
-        checkedListBoxDisciplines.DataSource = _bSourceCourses;
-        comboBoxGenre.DataSource = Student.Genreslist;
 
         _bSourceStudents.ResetBindings(false);
         _bSourceCourses.ResetBindings(false);
@@ -175,9 +172,34 @@ public partial class StudentAdd : Form
         _bSourceStudents.ResetBindings(true);
         _bSourceCourses.ResetBindings(true);
 
+
+        // *
+        // * 2nd 
+        // * checkedListBox
+        // * must be add before the dataGridView 
+        // *
+        checkedListBoxDisciplines.DataSource = _bSourceCourses;
+
+
+        // *
+        // * 3rd 
+        // * dataGridView
+        // * must be add after the dataGridView 
+        // *
+
+        dataGridView1.DataSource = _bSourceStudents;
+        dataGridView1.AutoResizeColumns();
+
         dataGridView1.Refresh();
         dataGridView1.Update();
 
+
+        // *
+        // * 4rd 
+        // * comboBox
+        // * must be add after the dataGridView 
+        // *
+        comboBoxGenre.DataSource = Student.Genreslist;
 
         // To display all the properties of the Student class
         // in the comboBoxSearchOptions,
@@ -434,7 +456,6 @@ public partial class StudentAdd : Form
             );
             return;
         }
-
 
         //
         // open the edit form with the studentForValidation editing

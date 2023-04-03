@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms.DataVisualization.Charting;
-using ClassLibrary;
+using ClassLibrary.SchoolClasses;
 
 namespace School_Project.WForms.StatisticsForms;
 

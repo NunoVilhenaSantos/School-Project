@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
-using ClassLibrary;
+using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
+using ClassLibrary.SchoolClasses;
+using ClassLibrary.Students;
 
 namespace School_Project.WForms.CoursesForms;
 
@@ -119,9 +122,9 @@ public partial class DisciplineAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
+        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
         {
-            ((TextBox)sender).Paste();
+            ((TextBox) sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -131,9 +134,9 @@ public partial class DisciplineAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Courses.AddCourse(
-            (int)numericUpDownDisciplineID.Value,
+            (int) numericUpDownDisciplineID.Value,
             textBoxDisciplineName.Text,
-            (int)numericUpDownNumberHours.Value,
+            (int) numericUpDownNumberHours.Value,
             0, null
         );
 
@@ -169,7 +172,7 @@ public partial class DisciplineAdd : Form
         // that's why it is necessary to clear the list with a null and
         // then re-associate the class again and that's how it works.
         //
-        listBoxDisciplines.DataSource = null;
+        //listBoxDisciplines.DataSource = null;
         listBoxDisciplines.DataSource = Courses.ListCourses;
         //
         // activate this option if you want a specific value else it will use the override method to string
@@ -177,7 +180,7 @@ public partial class DisciplineAdd : Form
         listBoxDisciplines.ClearSelected();
 
         // *
-        // * 
+        // * 1st 
         // * Data bindings
         // * 
         // *
@@ -189,6 +192,24 @@ public partial class DisciplineAdd : Form
 
         _bSListCourses.ResetBindings(true);
         _bSListStudents.ResetBindings(true);
+
+
+        // *
+        // * 2nd 
+        // * checkedListBox
+        // * must be add before the dataGridView 
+        // *
+        checkedListBoxStudents.DataSource = _bSListStudents;
+        //checkedListBoxStudents.DisplayMember = "Name";
+        //checkedListBoxStudents.DisplayMember = "FullName";
+        //checkedListBoxStudents.ValueMember = "IdStudent";
+
+
+        // *
+        // * 3rd 
+        // * dataGridView
+        // * must be add after the dataGridView 
+        // *
 
         // Set the DataSource property of the DataGridView to the BindingSource object
         dataGridViewCourses.DataSource = _bSListCourses;
@@ -203,12 +224,6 @@ public partial class DisciplineAdd : Form
             DataGridViewAutoSizeColumnsMode.AllCells;
         dataGridViewSearch.AutoSizeColumnsMode =
             DataGridViewAutoSizeColumnsMode.AllCells;
-
-
-        checkedListBoxStudents.DataSource = _bSListStudents;
-        //checkedListBoxStudents.DisplayMember = "Name";
-        //checkedListBoxStudents.DisplayMember = "FullName";
-        //checkedListBoxStudents.ValueMember = "IdStudent";
 
 
         // Update the data source of the dataGridViewSchoolClasses control
@@ -348,7 +363,7 @@ public partial class DisciplineAdd : Form
         //
 
         // Get the selected school class from the data source
-        var selectedCourse = (Course)_bSListCourses.Current;
+        var selectedCourse = (Course) _bSListCourses.Current;
 
         // Get the IdSchoolClass from the selected school class from the data source
         var index = selectedCourse.IdCourse;
@@ -404,7 +419,7 @@ public partial class DisciplineAdd : Form
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
         // Get the selected school class from the data source
-        var selectedCourse = (Course)_bSListCourses.Current;
+        var selectedCourse = (Course) _bSListCourses.Current;
 
         if (selectedCourse == null)
         {
@@ -475,23 +490,23 @@ public partial class DisciplineAdd : Form
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var selectedCourse = (Course)_bSListCourses.Current;
+        var selectedCourse = (Course) _bSListCourses.Current;
 
         // Get the students for the selected course from the data source
         var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments
             .Where(x => x.CourseId == selectedCourse.IdCourse)
             .Select(e => e.Student)
             .ToList();
-        
+
         var selectedCourseEnrollments = Enrollments.ListEnrollments
             .Where(x => x.CourseId == selectedCourse.IdCourse)
             .ToList();
-        
+
         var selectedCourseStudents = selectedCourseEnrollments
             .Select(e => e.Student)
             .ToList();
 
-        if (selectedCoursesEnrollmentsStudents == null)
+        if (selectedCourseEnrollments == null)
         {
             checkedListBoxStudents.Invalidate();
             return;
@@ -500,7 +515,7 @@ public partial class DisciplineAdd : Form
         // Set the checked items in the checkedListBoxStudents control
         for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
         {
-            var student = (Student)checkedListBoxStudents.Items[i];
+            var student = (Student) checkedListBoxStudents.Items[i];
             checkedListBoxStudents.SetItemChecked(i,
                 selectedCoursesEnrollmentsStudents.Contains(student));
         }
@@ -630,7 +645,7 @@ public partial class DisciplineAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos estudante(s) para adicionar, vamos lá.");
-        var courseToAdd = (Course)_bSListCourses.Current;
+        var courseToAdd = (Course) _bSListCourses.Current;
         ;
 
         //
@@ -639,22 +654,22 @@ public partial class DisciplineAdd : Form
         List<Enrollment> newEnrollmentList = new();
 
         foreach (var a in Students.ListStudents)
-            foreach (var t in checkedListBoxStudents.CheckedItems)
-                if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
-                {
-                    newEnrollmentList.Add(
-                        new Enrollment
-                        {
-                            Grade = null,
-                            StudentId = toVerify.IdStudent,
-                            Student = toVerify,
-                            CourseId = courseToAdd.IdCourse,
-                            Course = courseToAdd
-                        }
-                    );
-                    Enrollments.AddEnrollment(toVerify.IdStudent,
-                        courseToAdd.IdCourse);
-                }
+        foreach (var t in checkedListBoxStudents.CheckedItems)
+            if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
+            {
+                newEnrollmentList.Add(
+                    new Enrollment
+                    {
+                        Grade = null,
+                        StudentId = toVerify.IdStudent,
+                        Student = toVerify,
+                        CourseId = courseToAdd.IdCourse,
+                        Course = courseToAdd
+                    }
+                );
+                Enrollments.AddEnrollment(toVerify.IdStudent,
+                    courseToAdd.IdCourse);
+            }
 
         //
         // debugging

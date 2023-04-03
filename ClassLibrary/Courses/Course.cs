@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ClassLibrary;
+namespace ClassLibrary.Courses;
 
 public class Course : INotifyPropertyChanged
 {
@@ -50,7 +50,7 @@ public class Course : INotifyPropertyChanged
 
     public int GetStudentsCount()
     {
-        StudentsCount = Enrollments.ListEnrollments?
+        StudentsCount = Enrollments.Enrollments.ListEnrollments?
             .Where(x => x.CourseId == IdCourse)
             .Count() ?? 0;
 
@@ -97,7 +97,9 @@ public class Course : INotifyPropertyChanged
     private static int _mCounter;
     private string _name;
     private int _workLoad;
+
     private int _credits;
+
     //private List<Enrollment> _enrollments = new();
     private int? _studentsCount;
 

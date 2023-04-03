@@ -14,6 +14,11 @@ C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\Wpf
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\WpfApp1.pdb
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\Azure.Core.dll
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\Azure.Identity.dll
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\ClosedXML.dll
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\CsvHelper.dll
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\CsvHelper.Excel.dll
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\ExcelNumberFormat.dll
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
 C:\Users\nunov\RiderProjects\School Project\WpfApp1\bin\Debug\net7.0-windows\Microsoft.Data.Sqlite.dll
