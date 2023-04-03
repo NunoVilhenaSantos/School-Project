@@ -1,3 +1,4 @@
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\EnrollmentsFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\CoursesFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\SchoolClassesFile.csv
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\XFiles\StudentsFile.csv
