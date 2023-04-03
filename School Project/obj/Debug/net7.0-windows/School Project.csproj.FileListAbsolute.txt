@@ -84,7 +84,6 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.AssemblyReference.cache
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.Form1.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.ControleGuiaTransparente.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.UC_About.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineAdd.resources
