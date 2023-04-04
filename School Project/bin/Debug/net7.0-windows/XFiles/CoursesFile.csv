@@ -1,3 +1,74 @@
 ﻿IdCourse;Name;WorkLoad;Credits;StudentsCount
 1;Name;0;0
-2;Name;0;0
+2;Língua Portuguesa;50;50
+3;Língua Inglesa;50;50
+4;Matemática;50;50
+5;Empresa Estrutura E Funções;25;25
+6;Arquitetura De Hardware;25;25
+7;Sistemas De Informação - Fundamentos;25;25
+8;Sistemas De Informação - Conceção;25;25
+9;Engenharia De Software;25;25
+10;Bases De Dados - Conceitos;25;25
+11;Bases De Dados - Sistemas De Gestão;25;25
+12;Criação De Estrutura De Base De Dados Em SQL;25;25
+13;Programação Em SQL;25;25
+14;Programação Algoritmos;25;25
+15;Programação De Computadores - Estruturada;50;50
+16;Programação De Computadores - Orientada A Objetos;50;50
+17;Programação Para A WEB - Cliente (Client-Side);50;50
+18;WEB - Hipermédia E Acessibilidades;25;25
+19;WEB - Ferramentas Multimédia;25;25
+20;Programação Para A WEB - Servidor (Server-Side);50;50
+21;Redes De Comunicação De Dados;25;25
+22;Segurança Em Sistemas Informáticos;25;25
+23;Sistemas Operativos Open Source;25;25
+24;Sistema Operativo Servidor (Plataforma Proprietária);25;25
+25;Integração De Sistemas De Informação - Conceitos;25;25
+26;Integração De Sistemas De Informação - Tecnologias E Níveis De Integração;50;50
+27;Integração De Sistemas De Informação - Ferramentas;25;25
+28;Acesso Móvel A Sistemas De Informação;50;50
+29;Planeamento E Gestão De Projetos De Sistemas De Informação;25;25
+30;Projeto De Tecnologias E Programação De Sistemas De Informação;50;50
+31;Formação Prática Em Contexto De Trabalho;400;400
+32;Teste-1;30;30
+33;Teste-1;30;30
+34;Teste-1;30;30
+35;Teste-1;30;30
+36;Teste-7;70;70
+37;Teste-5;300;300
+38;Teste-5;300;300
+39;Hello;600;600
+40;Olé;501;501
+41;Disciplina-2;100;100
+42;Disciplina -2;150;150
+43;Disciplina-3;200;200
+44;Disciplina -3;250;250
+45;Disciplina-4;300;300
+46;Disciplina -4;350;350
+47;Disciplina-5;400;400
+48;Disciplina -5;450;450
+49;Disciplina-6;500;500
+50;Disciplina -6;550;550
+51;Disciplina-7;600;600
+52;Disciplina -7;650;650
+53;Disciplina-8;700;700
+54;Disciplina -8;750;750
+55;Disciplina-9;800;800
+56;Disciplina -9;850;850
+57;Disciplina-10;900;900
+58;Disciplina -10;950;950
+59;Disciplina-11;1000;1000
+60;Disciplina -11;1050;1050
+61;Disciplina-12;1100;1100
+62;Disciplina -12;1150;1150
+63;Disciplina-13;1200;1200
+64;Disciplina -13;1250;1250
+65;Disciplina-14;1300;1300
+66;Disciplina -14;1350;1350
+67;Disciplina-15;1400;1400
+68;Disciplina -15;1450;1450
+69;Disciplina-16;1500;1500
+70;Disciplina -16;1550;1550
+71;Disciplina-17;1600;1600
+72;Disciplina -17;1650;1650
+73;Disciplina-18;1700;1700

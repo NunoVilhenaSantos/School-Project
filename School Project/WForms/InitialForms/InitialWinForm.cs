@@ -58,9 +58,9 @@ public partial class InitialWinForm : Form
         // e.Cancel = true;
         //
         _closeFromUser = true;
-        Application.Exit();
         //Application.DoEvents();
         //Close();
+        Application.Exit();
     }
 
 

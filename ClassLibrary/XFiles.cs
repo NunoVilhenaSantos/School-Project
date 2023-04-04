@@ -37,7 +37,7 @@ public static class XFiles
         FilesFolder + "EnrollmentsFile.csv";
 
     private static readonly string TeachersFile =
-        FilesFolder + "TeachersFile.csv";
+        FilesFolder + "Teachers.csv";
 
     #endregion
 
