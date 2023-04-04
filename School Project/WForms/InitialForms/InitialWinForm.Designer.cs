@@ -120,7 +120,7 @@
             // 
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.ErrorImage = Properties.Resources.Students_watching_webinar;
-            pictureBox1.Image = Properties.Resources.escolaweb;
+            pictureBox1.Image = Properties.Resources.Students_watching_webinar;
             pictureBox1.Location = new Point(228, 73);
             pictureBox1.Name = "pictureBox1";
             tableLayoutPanelInitialForm.SetRowSpan(pictureBox1, 9);
@@ -310,6 +310,7 @@
             BackColor = Color.SandyBrown;
             ClientSize = new Size(1134, 661);
             Controls.Add(tableLayoutPanelInitialForm);
+            DoubleBuffered = true;
             ForeColor = Color.Transparent;
             HelpButton = true;
             MinimumSize = new Size(1150, 700);

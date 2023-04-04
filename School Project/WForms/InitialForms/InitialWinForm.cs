@@ -59,7 +59,7 @@ public partial class InitialWinForm : Form
         //
         _closeFromUser = true;
         Application.Exit();
-        Application.DoEvents();
+        //Application.DoEvents();
         //Close();
     }
 
@@ -69,16 +69,16 @@ public partial class InitialWinForm : Form
         //
         // original code
         //
-        //buttonSchoolClass.Image = Resources.Icon_chalkboard_32x32;
-        //buttonTeachers.Image = Resources.Icon_id_card_32x32;
-        //buttonStudent.Image = Resources.Icon_graduate_32x32;
-        //buttonDiscipline.Image = Resources.Icon_book_green_32x32;
-        //buttonStudenDisciplines.Image = Resources.Icon_address_card_64x64;
-        //buttonCharts.Image = Resources.Icon_bar_chart_32x32;
-        //buttonListagens.Image = Resources.Icon_printer_32x32;
-        //buttonCloseProgram.Image = Resources.Icon_doughnut_chart_32x32;
-        //pictureBox1.Image = Resources.escolaweb_capas_artigos_2_software_de_gestao_escolar_vantagens_para_todos_os_formatos_de_instituicoes_1;
-        //pictureBox1.Image = Resources.Students_watching_webinar;
+        //buttonSchoolClass.Image = Properties.Resources.Icon_chalkboard_32x32;
+        //buttonTeachers.Image = Properties.Resources.Icon_id_card_32x32;
+        //buttonStudent.Image = Properties.Resources.Icon_graduate_32x32;
+        //buttonDiscipline.Image = Properties.Resources.Icon_book_green_32x32;
+        //buttonStudenDisciplines.Image = Properties.Resources.Icon_address_card_64x64;
+        //buttonCharts.Image = Properties.Resources.Icon_bar_chart_32x32;
+        //buttonListagens.Image = Properties.Resources.Icon_printer_32x32;
+        //buttonCloseProgram.Image = Properties.Resources.Icon_doughnut_chart_32x32;
+        //pictureBox1.Image = Properties.Resources.escola-web;
+        //pictureBox1.Image = Properties.Resources.Students_watching_webinar;
     }
 
 

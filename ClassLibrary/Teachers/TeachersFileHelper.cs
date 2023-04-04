@@ -22,32 +22,88 @@ public static class TeachersFileHelper
     #endregion
 
 
-    public static void WriteTeachersToFile()
+    public static void WriteTeachersToFile(
+        out bool sucess, out string myString)
     {
+        //
+        // constructor for the reading files
+        // with a try and catch
+        // and also returning the messages
+        //
+        FileStream fileStream;
+        try
+        {
+            fileStream = new(TeachersFilePath, FileMode.OpenOrCreate);
+        }
+        catch (IOException ex)
+        {
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
+            sucess = false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
+            sucess = false;
+        }
+
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             Delimiter = ";"
         };
 
-        using var fileStream =
-            new FileStream(TeachersFilePath, FileMode.Create);
-        using var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
+        fileStream = new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
+        using var streamWriter =
+            new StreamWriter(fileStream, Encoding.UTF8);
         using var csvWriter = new CsvWriter(streamWriter, csvConfig);
 
         csvWriter.WriteRecords(Teachers.TeachersList);
+
+        myString = "Operação realizada com sucesso";
+        sucess = true;
     }
 
-    public static List<Teacher> ReadTeachersFromFile()
+    public static List<Teacher> ReadTeachersFromFile(
+        out bool sucess, out string myString)
     {
+        //
+        // constructor for the reading files
+        // with a try and catch
+        // and also returning the messages
+        //
+        FileStream? fileStream;
+        try
+        {
+            fileStream =
+                new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
+        }
+        catch (IOException ex)
+        {
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
+            sucess = false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
+            sucess = false;
+        }
+
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             Delimiter = ";"
         };
 
-        using var fileStream =
-            new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
+        fileStream = new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
         using var streamReader = new StreamReader(fileStream);
         using var csvReader = new CsvReader(streamReader, csvConfig);
+
+        myString = "Operação realizada com sucesso";
+        sucess = true;
 
         return csvReader.GetRecords<Teacher>().ToList();
     }

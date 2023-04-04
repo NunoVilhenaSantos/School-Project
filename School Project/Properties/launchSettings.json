@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "School Project": {
+      "commandName": "Project",
+      "sqlDebugging": true,
+      "nativeDebugging": true
+    }
+  }
+}

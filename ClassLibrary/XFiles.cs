@@ -6,7 +6,6 @@ using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using ClassLibrary.Teachers;
 
-// using CsvBuilder;
 
 namespace ClassLibrary;
 
@@ -62,48 +61,65 @@ public static class XFiles
          * this files must be read in this order
          * 
         */
-        var messages = string.Empty;
 
         // If the directory already exists, this method does nothing.
         var file = new FileInfo(CoursesFile);
         // If the directory already exists, this method does nothing.
-        file.Directory.Create();
+        file.Directory?.Create();
 
         var storeSchoolClassesInFile =
             StoreSchoolClassesInFile(
-                out var message_StoreSchoolClassesInFile);
-        SchoolClassesFileHelper.WriteSchoolClassesToFile();
+                out var messageStoreSchoolClassesInFile);
+        SchoolClassesFileHelper.WriteSchoolClassesToFile(
+            out var successStoreSchoolClassesInCsv,
+            out var messageStoreSchoolClassesInCsv);
 
         var storeTeachersInFile =
             StoreTeachersInFile(
-                out var message_StoreTeachersInFile);
-        TeachersFileHelper.WriteTeachersToFile();
+                out var messageStoreTeachersInFile);
+        TeachersFileHelper.WriteTeachersToFile(
+            out var sucessStoreTeachersInCsv,
+            out var messageStoreTeachersInCsv);
 
         var storeCoursesInFile =
             StoreCoursesInFile(
-                out var message_StoreCoursesInFile);
-        CoursesFileHelper.WriteCoursesToFile();
+                out var messageStoreCoursesInFile);
+        CoursesFileHelper.WriteCoursesToFile(
+            out var sucessStoreCoursesInCsv,
+            out var messageStoreCoursesInCsv);
 
         var storeEnrollmentsInFile =
             StoreEnrollmentsInFile(
-                out var message_StoreEnrollmentsInFile);
-        EnrollmentsFileHelper.WriteEnrollmentsToFile();
+                out var messageStoreEnrollmentsInFile);
+        EnrollmentsFileHelper.WriteEnrollmentsToFile(
+            out var sucessStoreEnrollmentsInCsv,
+            out var messageStoreEnrollmentsInCsv);
 
         var storeStudentsInFile =
             StoreStudentsInFile(
-                out var message_StoreStudentsInFile);
-        StudentsFileHelper.WriteStudentsToFile();
+                out var messageStoreStudentsInFile);
+        StudentsFileHelper.WriteStudentsToFile(
+            out var sucessStoreStudentsInCsv,
+            out var messageStoreStudentsInCsv);
 
         myString =
-            message_StoreSchoolClassesInFile + "\n\n" +
-            message_StoreTeachersInFile + "\n\n" +
-            message_StoreCoursesInFile + "\n\n" +
-            message_StoreEnrollmentsInFile + "\n\n" +
-            message_StoreStudentsInFile;
+            messageStoreSchoolClassesInFile + "\n\n" +
+            messageStoreTeachersInFile + "\n\n" +
+            messageStoreCoursesInFile + "\n\n" +
+            messageStoreEnrollmentsInFile + "\n\n" +
+            messageStoreStudentsInFile + "\n\n" +
+            messageStoreSchoolClassesInCsv + "\n\n" +
+            messageStoreTeachersInCsv + "\n\n" +
+            messageStoreCoursesInCsv + "\n\n" +
+            messageStoreEnrollmentsInCsv + "\n\n" +
+            messageStoreStudentsInCsv
+            ;
 
         var myBool = storeSchoolClassesInFile && storeTeachersInFile &&
                      storeCoursesInFile && storeEnrollmentsInFile &&
-                     storeStudentsInFile;
+                     storeStudentsInFile && successStoreSchoolClassesInCsv &&
+                     sucessStoreTeachersInCsv && sucessStoreCoursesInCsv &&
+                     sucessStoreEnrollmentsInCsv && sucessStoreStudentsInCsv;
 
         return myBool;
     }
@@ -116,7 +132,7 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
-        var message = string.Empty;
+
 
         try
         {
@@ -135,7 +151,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
 
@@ -215,7 +230,6 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
-        var message = string.Empty;
 
         try
         {
@@ -234,7 +248,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
 
@@ -310,7 +323,6 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
-        var message = string.Empty;
 
         try
         {
@@ -328,7 +340,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
         using (FileStream fileStream = new(CoursesFile, FileMode.Create))
@@ -392,7 +403,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
         using (FileStream fileStream =
@@ -461,7 +471,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
         using (FileStream fileStream = new(StudentsFile, FileMode.Create))
@@ -533,55 +542,73 @@ public static class XFiles
          * this files must be read in this order
          * 
          */
-        var messages = string.Empty;
-
 
         // If the directory already exists, this method does nothing.
         var file = new FileInfo(CoursesFile);
         // If the directory already exists, this method does nothing.
-        file.Directory.Create();
+        file.Directory?.Create();
 
 
         // 1st file to read are the courses file
         var readCoursesFromFile =
             ReadCoursesFromFile(
-                out var message_ReadCoursesFromFile);
-        CoursesFileHelper.ReadCoursesFromFile();
+                out var messageReadCoursesFromFile);
+        CoursesFileHelper.ReadCoursesFromFile(
+            out var successReadCoursesFromCsv,
+            out var messageReadCoursesFromCsv);
 
         // 2nd file to read are the students file
         var readStudentsFromFile =
             ReadStudentsFromFile(
-                out var message_ReadStudentsFromFile);
-        StudentsFileHelper.ReadStudentsFromFile();
+                out var messageReadStudentsFromFile);
+        StudentsFileHelper.ReadStudentsFromFile(
+            out var successReadStudentsFromCsv,
+            out var messageReadStudentsFromCsv);
 
         // 3rd file to read are the enrollment file
         var readEnrollmentsInFile =
             ReadEnrollmentsInFile(
-                out var message_ReadEnrollmentsInFile);
-        EnrollmentsFileHelper.ReadEnrollmentsFromFile();
+                out var messageReadEnrollmentsInFile);
+        EnrollmentsFileHelper.ReadEnrollmentsFromFile(
+            out var successReadEnrollmentsInCsv,
+            out var messageReadEnrollmentsInCsv);
 
         // 4th file to read are the school-classes file
         var readSchoolClassesFromFile =
             ReadSchoolClassesFromFile(
-                out var message_ReadSchoolClassesFromFile);
-        SchoolClassesFileHelper.ReadSchoolClassesFromFile();
+                out var messageReadSchoolClassesFromFile);
+        SchoolClassesFileHelper.ReadSchoolClassesFromFile(
+            out var successReadSchoolClassesFromCsv,
+            out var messageReadSchoolClassesFromCsv);
 
         // 5th file to read are the teachers file
         var readTeachersInFile =
             ReadTeachersInFile(
-                out var message_ReadTeachersInFile);
-        TeachersFileHelper.ReadTeachersFromFile();
+                out var messageReadTeachersInFile);
+        TeachersFileHelper.ReadTeachersFromFile(
+            out var successReadTeachersInCsv,
+            out var messageReadTeachersInCsv);
 
         myString =
-            message_ReadCoursesFromFile + "\n\n" +
-            message_ReadStudentsFromFile + "\n\n" +
-            message_ReadEnrollmentsInFile + "\n\n" +
-            message_ReadSchoolClassesFromFile + "\n\n" +
-            message_ReadTeachersInFile;
+            messageReadCoursesFromFile + "\n\n" +
+            messageReadStudentsFromFile + "\n\n" +
+            messageReadEnrollmentsInFile + "\n\n" +
+            messageReadSchoolClassesFromFile + "\n\n" +
+            messageReadTeachersInFile + "\n\n" +
+            messageReadCoursesFromCsv + "\n\n" +
+            messageReadStudentsFromCsv + "\n\n" +
+            messageReadEnrollmentsInCsv + "\n\n" +
+            messageReadSchoolClassesFromCsv + "\n\n" +
+            messageReadTeachersInCsv
+            ;
 
         var myBool = readCoursesFromFile && readStudentsFromFile &&
                      readEnrollmentsInFile && readSchoolClassesFromFile &&
-                     readTeachersInFile;
+                     readTeachersInFile && successReadCoursesFromCsv &&
+                     successReadStudentsFromCsv &&
+                     successReadEnrollmentsInCsv &&
+                     successReadSchoolClassesFromCsv &&
+                     successReadTeachersInCsv;
 
         return myBool;
     }
@@ -613,7 +640,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
 
@@ -683,7 +709,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
         using (FileStream fileStream =
@@ -773,7 +798,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
         using (FileStream fileStream =
@@ -806,7 +830,7 @@ public static class XFiles
                     // public Course Course { get; set; }
                     //
                     //
-                    _ = int.TryParse(campos[0], out var idEnrollment);
+                    //_ = int.TryParse(campos[0], out var idEnrollment);
                     _ = decimal.TryParse(campos[1], out var grade);
                     _ = int.TryParse(campos[2], out var studentId);
                     _ = int.TryParse(campos[3], out var courseId);
@@ -857,7 +881,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
         using (FileStream fileStream =
@@ -952,7 +975,6 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
-        var message = string.Empty;
 
         try
         {
@@ -971,7 +993,6 @@ public static class XFiles
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             return false;
-            throw;
         }
 
         using (FileStream fileStream =
@@ -1018,7 +1039,7 @@ public static class XFiles
                         foreach (var c in Courses.Courses.ListCourses)
                             for (var index = 19; index < campos.Length; index++)
                             {
-                                int.TryParse(campos[index], out index);
+                                _ = int.TryParse(campos[index], out index);
                                 if (c.IdCourse == index) coursesList.Add(c);
                             }
 

@@ -49,10 +49,6 @@
               "target": "Package",
               "version": "[30.0.1, )"
             },
-            "CsvHelper.Excel.Core2": {
-              "target": "Package",
-              "version": "[26.0.2, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.4, )"
@@ -62,10 +58,6 @@
               "version": "[7.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[7.0.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[7.0.4, )"
             },

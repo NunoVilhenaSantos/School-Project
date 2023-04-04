@@ -20,32 +20,78 @@ public class EnrollmentsFileHelper
     #endregion
 
 
-    public static void WriteEnrollmentsToFile()
+    public static void WriteEnrollmentsToFile(
+        out bool Success, out string myString)
     {
+        FileStream fileStream;
+        try
+        {
+            fileStream =
+                new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate);
+        }
+        catch (IOException ex)
+        {
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
+            Success = false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
+            Success = false;
+        }
+
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             Delimiter = ";"
         };
 
-        using var fileStream =
-            new FileStream(EnrollmentsFilePath, FileMode.Create);
+        fileStream = new FileStream(EnrollmentsFilePath, FileMode.Create);
         using var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
         using var csvWriter = new CsvWriter(streamWriter, csvConfig);
 
         csvWriter.WriteRecords(Enrollments.ListEnrollments);
+
+        myString = "Operação realizada com sucesso";
+        Success = true;
     }
 
-    public static List<Enrollment> ReadEnrollmentsFromFile()
+    public static List<Enrollment> ReadEnrollmentsFromFile(
+        out bool Success, out string myString)
     {
+        FileStream fileStream;
+        try
+        {
+            fileStream =
+                new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate);
+        }
+        catch (IOException ex)
+        {
+            myString = "Error accessing the file: " + ex.Source + " | " +
+                       ex.Message;
+            Success = false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            myString = "Error accessing the file: " + e.Source + " | " +
+                       e.Message;
+            Success = false;
+        }
+
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             Delimiter = ";"
         };
 
-        using var fileStream =
-            new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate);
+        fileStream = new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate);
         using var streamReader = new StreamReader(fileStream);
         using var csvReader = new CsvReader(streamReader, csvConfig);
+
+        myString = "Operação realizada com sucesso";
+        Success = true;
 
         return csvReader.GetRecords<Enrollment>().ToList();
     }

@@ -57,7 +57,7 @@ public static class Courses
     /// <param name="enrollments"></param>
     public static void AddCourse(
         int id, string name, int workLoad, int credits,
-        List<Enrollment> enrollments
+        List<Enrollment>? enrollments
     )
     {
         ListCourses.Add(new Course
