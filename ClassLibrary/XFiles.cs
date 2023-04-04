@@ -70,56 +70,57 @@ public static class XFiles
         var storeSchoolClassesInFile =
             StoreSchoolClassesInFile(
                 out var messageStoreSchoolClassesInFile);
-        SchoolClassesFileHelper.WriteSchoolClassesToFile(
-            out var successStoreSchoolClassesInCsv,
-            out var messageStoreSchoolClassesInCsv);
+        // SchoolClassesFileHelper.WriteSchoolClassesToFile(
+        //     out var successStoreSchoolClassesInCsv,
+        //     out var messageStoreSchoolClassesInCsv);
 
         var storeTeachersInFile =
             StoreTeachersInFile(
                 out var messageStoreTeachersInFile);
-        TeachersFileHelper.WriteTeachersToFile(
-            out var sucessStoreTeachersInCsv,
-            out var messageStoreTeachersInCsv);
+        // TeachersFileHelper.WriteTeachersToFile(
+        //     out var sucessStoreTeachersInCsv,
+        //     out var messageStoreTeachersInCsv);
 
         var storeCoursesInFile =
             StoreCoursesInFile(
                 out var messageStoreCoursesInFile);
-        CoursesFileHelper.WriteCoursesToFile(
-            out var sucessStoreCoursesInCsv,
-            out var messageStoreCoursesInCsv);
+        // CoursesFileHelper.WriteCoursesToFile(
+        //     out var sucessStoreCoursesInCsv,
+        //     out var messageStoreCoursesInCsv);
 
         var storeEnrollmentsInFile =
             StoreEnrollmentsInFile(
                 out var messageStoreEnrollmentsInFile);
-        EnrollmentsFileHelper.WriteEnrollmentsToFile(
-            out var sucessStoreEnrollmentsInCsv,
-            out var messageStoreEnrollmentsInCsv);
+        // EnrollmentsFileHelper.WriteEnrollmentsToFile(
+        //     out var sucessStoreEnrollmentsInCsv,
+        //     out var messageStoreEnrollmentsInCsv);
 
         var storeStudentsInFile =
             StoreStudentsInFile(
                 out var messageStoreStudentsInFile);
-        StudentsFileHelper.WriteStudentsToFile(
-            out var sucessStoreStudentsInCsv,
-            out var messageStoreStudentsInCsv);
+        // StudentsFileHelper.WriteStudentsToFile(
+        //     out var sucessStoreStudentsInCsv,
+        //     out var messageStoreStudentsInCsv);
 
         myString =
             messageStoreSchoolClassesInFile + "\n\n" +
             messageStoreTeachersInFile + "\n\n" +
             messageStoreCoursesInFile + "\n\n" +
             messageStoreEnrollmentsInFile + "\n\n" +
-            messageStoreStudentsInFile + "\n\n" +
-            messageStoreSchoolClassesInCsv + "\n\n" +
-            messageStoreTeachersInCsv + "\n\n" +
-            messageStoreCoursesInCsv + "\n\n" +
-            messageStoreEnrollmentsInCsv + "\n\n" +
-            messageStoreStudentsInCsv
-            ;
+            messageStoreStudentsInFile;
+        // myString +=
+        //     messageStoreSchoolClassesInCsv + "\n\n" +
+        //     messageStoreTeachersInCsv + "\n\n" +
+        //     messageStoreCoursesInCsv + "\n\n" +
+        //     messageStoreEnrollmentsInCsv + "\n\n" +
+        //     messageStoreStudentsInCsv;
 
         var myBool = storeSchoolClassesInFile && storeTeachersInFile &&
                      storeCoursesInFile && storeEnrollmentsInFile &&
-                     storeStudentsInFile && successStoreSchoolClassesInCsv &&
-                     sucessStoreTeachersInCsv && sucessStoreCoursesInCsv &&
-                     sucessStoreEnrollmentsInCsv && sucessStoreStudentsInCsv;
+                     storeStudentsInFile;
+        // myBool += successStoreSchoolClassesInCsv &&
+        //           sucessStoreTeachersInCsv && sucessStoreCoursesInCsv &&
+        //           sucessStoreEnrollmentsInCsv && sucessStoreStudentsInCsv;
 
         return myBool;
     }
@@ -553,62 +554,63 @@ public static class XFiles
         var readCoursesFromFile =
             ReadCoursesFromFile(
                 out var messageReadCoursesFromFile);
-        CoursesFileHelper.ReadCoursesFromFile(
-            out var successReadCoursesFromCsv,
-            out var messageReadCoursesFromCsv);
+        // CoursesFileHelper.ReadCoursesFromFile(
+        //     out var successReadCoursesFromCsv,
+        //     out var messageReadCoursesFromCsv);
 
         // 2nd file to read are the students file
         var readStudentsFromFile =
             ReadStudentsFromFile(
                 out var messageReadStudentsFromFile);
-        StudentsFileHelper.ReadStudentsFromFile(
-            out var successReadStudentsFromCsv,
-            out var messageReadStudentsFromCsv);
+        // StudentsFileHelper.ReadStudentsFromFile(
+        //     out var successReadStudentsFromCsv,
+        //     out var messageReadStudentsFromCsv);
 
         // 3rd file to read are the enrollment file
         var readEnrollmentsInFile =
             ReadEnrollmentsInFile(
                 out var messageReadEnrollmentsInFile);
-        EnrollmentsFileHelper.ReadEnrollmentsFromFile(
-            out var successReadEnrollmentsInCsv,
-            out var messageReadEnrollmentsInCsv);
+        // EnrollmentsFileHelper.ReadEnrollmentsFromFile(
+        //     out var successReadEnrollmentsInCsv,
+        //     out var messageReadEnrollmentsInCsv);
 
         // 4th file to read are the school-classes file
         var readSchoolClassesFromFile =
             ReadSchoolClassesFromFile(
                 out var messageReadSchoolClassesFromFile);
-        SchoolClassesFileHelper.ReadSchoolClassesFromFile(
-            out var successReadSchoolClassesFromCsv,
-            out var messageReadSchoolClassesFromCsv);
+        // SchoolClassesFileHelper.ReadSchoolClassesFromFile(
+        //     out var successReadSchoolClassesFromCsv,
+        //     out var messageReadSchoolClassesFromCsv);
 
         // 5th file to read are the teachers file
         var readTeachersInFile =
             ReadTeachersInFile(
                 out var messageReadTeachersInFile);
-        TeachersFileHelper.ReadTeachersFromFile(
-            out var successReadTeachersInCsv,
-            out var messageReadTeachersInCsv);
+        // TeachersFileHelper.ReadTeachersFromFile(
+        //     out var successReadTeachersInCsv,
+        //     out var messageReadTeachersInCsv);
 
         myString =
             messageReadCoursesFromFile + "\n\n" +
             messageReadStudentsFromFile + "\n\n" +
             messageReadEnrollmentsInFile + "\n\n" +
             messageReadSchoolClassesFromFile + "\n\n" +
-            messageReadTeachersInFile + "\n\n" +
-            messageReadCoursesFromCsv + "\n\n" +
-            messageReadStudentsFromCsv + "\n\n" +
-            messageReadEnrollmentsInCsv + "\n\n" +
-            messageReadSchoolClassesFromCsv + "\n\n" +
-            messageReadTeachersInCsv
-            ;
+            messageReadTeachersInFile;
+        // myString +=
+        //     messageReadCoursesFromCsv + "\n\n" +
+        //     messageReadStudentsFromCsv + "\n\n" +
+        //     messageReadEnrollmentsInCsv + "\n\n" +
+        //     messageReadSchoolClassesFromCsv + "\n\n" +
+        //     messageReadTeachersInCsv;
 
         var myBool = readCoursesFromFile && readStudentsFromFile &&
                      readEnrollmentsInFile && readSchoolClassesFromFile &&
-                     readTeachersInFile && successReadCoursesFromCsv &&
-                     successReadStudentsFromCsv &&
-                     successReadEnrollmentsInCsv &&
-                     successReadSchoolClassesFromCsv &&
-                     successReadTeachersInCsv;
+                     readTeachersInFile;
+        // myBool += successReadCoursesFromCsv &&
+        //           successReadStudentsFromCsv &&
+        //           successReadEnrollmentsInCsv &&
+        //           successReadSchoolClassesFromCsv &&
+        //           successReadTeachersInCsv;
 
         return myBool;
     }

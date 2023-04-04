@@ -6,132 +6,129 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/School Project/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XFiles/TeachersFile.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XFiles/courses.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XFiles/enrollments.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XFiles/schoolclasses.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XFiles/students.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XFiles/teachers.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/ChildFormHelper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/Courses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/Courses.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/IChildForm.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/MyChildForm.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClassesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClassesFileHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Students/StudentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Students/StudentsFileHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/XFiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/XFiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/ClassLibrary.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/ClassLibrary.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/ClassLibrary.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/ClassLibrary.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ref/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ref/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/refint/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/refint/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/School Project.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/Properties/Resources.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/Properties/Resources.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/Properties/Resources.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/Properties/Resources.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/Resources/escolaweb-capas-artigos-2-software-de-gestao-escolar-vantagens-para-todos-os-formatos-de-instituicoes-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/Resources/escolaweb-capas-artigos-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/School Project.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/School Project.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/UControl/UC_About.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/UControl/UC_About.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/CoursesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/XFiles/CoursesFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/DisciplinesFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/XFiles/DisciplinesFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/EnrollmentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/XFiles/EnrollmentsFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/SchoolClassesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/XFiles/SchoolClassesFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/SchoolClassesFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/XFiles/SchoolClassesFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/StudentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/XFiles/StudentsFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/StudentsFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/XFiles/StudentsFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/XFiles/TeachersFile.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Data.Sqlite.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.EntityFrameworkCore.Sqlite.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.DependencyModel.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/SQLitePCLRaw.batteries_v2.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/SQLitePCLRaw.core.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/SQLitePCLRaw.provider.e_sqlite3.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/CoursesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/CoursesFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/EnrollmentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/EnrollmentsFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/TeachersFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/TeachersFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/alpine-arm/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/alpine-arm64/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/alpine-x64/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/browser-wasm/nativeassets/net7.0/e_sqlite3.a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-arm/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-arm64/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-armel/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-mips64/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-musl-arm/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-musl-arm64/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-musl-x64/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-ppc64le/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-s390x/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-x64/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/linux-x86/native/libe_sqlite3.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/maccatalyst-arm64/native/libe_sqlite3.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/maccatalyst-x64/native/libe_sqlite3.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/osx-arm64/native/libe_sqlite3.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/osx-x64/native/libe_sqlite3.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-arm/native/e_sqlite3.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-arm64/native/e_sqlite3.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-x64/native/e_sqlite3.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-x86/native/e_sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ref/ClassLibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/refint/ClassLibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Azure.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Azure.Identity.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Data.SqlClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.EntityFrameworkCore.SqlServer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.EntityFrameworkCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Configuration.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.DependencyInjection.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Diagnostics.HealthChecks.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.FileProviders.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Hosting.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Identity.Client.Extensions.Msal.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.Identity.Client.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/Microsoft.SqlServer.Server.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/System.Memory.Data.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/System.Runtime.Caching.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/WinForms.DataVisualization.Utilities.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/WinForms.DataVisualization.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.CoreCompileInputs.cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/School Project.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/School Project.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/School Project.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/School Project.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/WPF/StudentWpf.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/WPF/StudentWpf.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/WpfApp1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/WpfApp1.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/App.g.i.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/MainWindow.g.i.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WPF/StudentWpf.baml" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WPF/StudentWpf.baml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WPF/StudentWpf.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WPF/StudentWpf.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WPF/StudentWpf.g.i.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.UControl.ControleGuiaTransparente.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.CoursesForms.DisciplineAdd.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.CoursesForms.DisciplineEdit.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.InitialForms.FormButtons1.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.InitialForms.InitialWinForm.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.InitialForms.MainWinForm.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.JoelForms.CopyOfDisciplineAdd.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.JoelForms.EditarCliente.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.JoelForms.FormAbertura.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.JoelForms.FormAdicionarNovoClt.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.JoelForms.FormCliente.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.SchoolClassesForms.SchoolClassAdd.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.SchoolClassesForms.SchoolClassEdit.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.SchoolClassesForms.SchoolClassSearch.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.StatisticsForms.ChartsWinForm.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.StatisticsForms.ChartsWinForm1.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.StatisticsForms.StudentDiscipline.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.StudentsForms.StudentAdd.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.StudentsForms.StudentEdit.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School_Project.WForms.StudentsForms.StudentForm.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/ref/School Project.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/refint/School Project.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/App.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/MainWindow.baml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/MainWindow.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WPF/StudentWpf.baml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WPF/StudentWpf.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1_MarkupCompile.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1_MarkupCompile.i.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/WpfApp1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/WpfApp1.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/WpfApp1.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/WpfApp1.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1_MarkupCompile.cache" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,6 +284,7 @@
       <workItem from="1680596629561" duration="1665000" />
       <workItem from="1680629456302" duration="3704000" />
       <workItem from="1680635391428" duration="5457000" />
+      <workItem from="1680642717191" duration="2861000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>

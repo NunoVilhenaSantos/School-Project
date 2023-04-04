@@ -23,11 +23,10 @@ public class EnrollmentsFileHelper
     public static void WriteEnrollmentsToFile(
         out bool Success, out string myString)
     {
-        FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate);
+            using (var fileStream =
+                   new FileStream(EnrollmentsFilePath, FileMode.Create)) ;
         }
         catch (IOException ex)
         {
@@ -48,24 +47,25 @@ public class EnrollmentsFileHelper
             Delimiter = ";"
         };
 
-        fileStream = new FileStream(EnrollmentsFilePath, FileMode.Create);
-        using var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
-        using var csvWriter = new CsvWriter(streamWriter, csvConfig);
+        using (var fileStream =
+               new FileStream(EnrollmentsFilePath, FileMode.Create))
+        using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
+        using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+        {
+            csvWriter.WriteRecords(Enrollments.ListEnrollments);
 
-        csvWriter.WriteRecords(Enrollments.ListEnrollments);
-
-        myString = "Operação realizada com sucesso";
-        Success = true;
+            myString = "Operação realizada com sucesso";
+            Success = true;
+        }
     }
 
     public static List<Enrollment> ReadEnrollmentsFromFile(
         out bool Success, out string myString)
     {
-        FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate);
+            using (var fileStream =
+                   new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate)) ;
         }
         catch (IOException ex)
         {
@@ -86,13 +86,15 @@ public class EnrollmentsFileHelper
             Delimiter = ";"
         };
 
-        fileStream = new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate);
-        using var streamReader = new StreamReader(fileStream);
-        using var csvReader = new CsvReader(streamReader, csvConfig);
+        using (var fileStream =
+               new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate))
+        using (var streamReader = new StreamReader(fileStream))
+        using (var csvReader = new CsvReader(streamReader, csvConfig))
+        {
+            myString = "Operação realizada com sucesso";
+            Success = true;
 
-        myString = "Operação realizada com sucesso";
-        Success = true;
-
-        return csvReader.GetRecords<Enrollment>().ToList();
+            return csvReader.GetRecords<Enrollment>().ToList();
+        }
     }
 }

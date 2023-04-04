@@ -24,11 +24,10 @@ public class SchoolClassesFileHelper
         out bool Success, out string myString)
 
     {
-        FileStream fileStream;
         try
         {
-            fileStream = new FileStream(
-                SchoolClassesFilePath, FileMode.OpenOrCreate);
+            using (var fileStream = new FileStream(
+                       SchoolClassesFilePath, FileMode.Create)) ;
         }
         catch (IOException ex)
         {
@@ -49,24 +48,25 @@ public class SchoolClassesFileHelper
             Delimiter = ";"
         };
 
-        fileStream = new FileStream(SchoolClassesFilePath, FileMode.Create);
-        using var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
-        using var csvWriter = new CsvWriter(streamWriter, csvConfig);
+        using (var fileStream =
+               new FileStream(SchoolClassesFilePath, FileMode.Create))
+        using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
+        using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+        {
+            csvWriter.WriteRecords(SchoolClasses.ListSchoolClasses);
 
-        csvWriter.WriteRecords(SchoolClasses.ListSchoolClasses);
-
-        myString = "Operação realizada com sucesso";
-        Success = true;
+            myString = "Operação realizada com sucesso";
+            Success = true;
+        }
     }
 
     public static List<SchoolClass> ReadSchoolClassesFromFile(
         out bool Success, out string myString)
     {
-        FileStream fileStream;
         try
         {
-            fileStream = new FileStream(
-                SchoolClassesFilePath, FileMode.OpenOrCreate);
+            using (var fileStream = new FileStream(
+                       SchoolClassesFilePath, FileMode.OpenOrCreate)) ;
         }
         catch (IOException ex)
         {
@@ -87,14 +87,15 @@ public class SchoolClassesFileHelper
             Delimiter = ";"
         };
 
-        fileStream =
-            new FileStream(SchoolClassesFilePath, FileMode.OpenOrCreate);
-        using var streamReader = new StreamReader(fileStream);
-        using var csvReader = new CsvReader(streamReader, csvConfig);
+        using (var fileStream =
+               new FileStream(SchoolClassesFilePath, FileMode.OpenOrCreate))
+        using (var streamReader = new StreamReader(fileStream))
+        using (var csvReader = new CsvReader(streamReader, csvConfig))
+        {
+            myString = "Operação realizada com sucesso";
+            Success = true;
 
-        myString = "Operação realizada com sucesso";
-        Success = true;
-
-        return csvReader.GetRecords<SchoolClass>().ToList();
+            return csvReader.GetRecords<SchoolClass>().ToList();
+        }
     }
 }
