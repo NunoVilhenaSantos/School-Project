@@ -130,35 +130,16 @@ public partial class CoursesSearch : Form
         // Create a new list to store the filtered results
 
         // Get the PropertyInfo object for the selected property of the SchoolClass type
-        var property = typeof(SchoolClass).GetProperty(selectedProperty);
+        var property = typeof(SchoolClass)
+            .GetProperty(selectedProperty ?? string.Empty);
 
-
-        // Loop through all SchoolClass objects in the ListSchoolClasses collection
-        /*
-        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
-        {
-            // Check if the selected property is null or its value is an empty string
-            if (property == null ||
-                property.GetValue(schoolClass).ToString() == "")
-                continue;
-
-            // Add the current SchoolClass object to the filtered list
-            filteredSchoolClass.Add(schoolClass);
-        }
-        
-        List<SchoolClass> filteredSchoolClass = SchoolClasses.ListSchoolClasses
-            .Where(schoolClass => property != null &&
-                                  property.GetValue(schoolClass)
-                                      .ToString() !=
-                                  "")
-            .ToList();
-        */
         // Create a new list to store the filtered results
-        var filteredSchoolClass = SchoolClasses.ListSchoolClasses
-            .Where(schoolClass =>
-                property?.GetValue(schoolClass)?.ToString() != null &&
-                property.GetValue(schoolClass).ToString() != "")
-            .ToList();
+        var filteredSchoolClass =
+            SchoolClasses.ListSchoolClasses
+                .Where(schoolClass =>
+                    property?.GetValue(schoolClass)?.ToString() != null &&
+                    property.GetValue(schoolClass).ToString() != "")
+                .ToList();
 
 
         // Create a list of distinct values for the selected property from all SchoolClass objects
@@ -252,8 +233,8 @@ public partial class CoursesSearch : Form
         var propertyValues = SchoolClasses.ListSchoolClasses
             .Select(sC =>
             {
-                var value = sC.GetType().GetProperty(selectedProperty)
-                    ?.GetValue(sC);
+                var value =
+                    sC.GetType().GetProperty(selectedProperty)?.GetValue(sC);
                 if (value != null && value.GetType() == typeof(DateTime))
                     // Convert the value to DateTime and remove the time component
                     value = ((DateTime) value).Date;

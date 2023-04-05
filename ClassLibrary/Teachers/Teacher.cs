@@ -39,11 +39,11 @@ public class Teacher : INotifyPropertyChanged
 
     private string _name;
     private string _lastName;
-    private string? _address;
-    private string? _postalCode;
-    private string? _city;
-    private string? _phone;
-    private string? _email;
+    private string _address;
+    private string _postalCode;
+    private string _city;
+    private string _phone;
+    private string _email;
     private bool _active = true;
     private string _genre;
     private DateOnly _dateOfBirth;
@@ -52,7 +52,7 @@ public class Teacher : INotifyPropertyChanged
     private string _taxIdentificationNumber;
     private string _nationality;
     private string _birthplace;
-    private string? _photo;
+    private string _photo;
 
     private int _coursesCount;
     private int _totalWorkHoursLoad;
@@ -88,7 +88,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? Address
+    public string Address
     {
         get => _address;
         set
@@ -99,7 +99,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? PostalCode
+    public string PostalCode
     {
         get => _postalCode;
         set
@@ -110,7 +110,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? City
+    public string City
     {
         get => _city;
         set
@@ -121,7 +121,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? Phone
+    public string Phone
     {
         get => _phone;
         set
@@ -132,7 +132,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? Email
+    public string Email
     {
         get => _email;
         set
@@ -154,7 +154,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? Genre
+    public string Genre
     {
         get => _genre;
         set
@@ -176,7 +176,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? IdentificationNumber
+    public string IdentificationNumber
     {
         get => _identificationNumber;
         set
@@ -198,7 +198,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? TaxIdentificationNumber
+    public string TaxIdentificationNumber
     {
         get => _taxIdentificationNumber;
         set
@@ -209,7 +209,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? Nationality
+    public string Nationality
     {
         get => _nationality;
         set
@@ -220,7 +220,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? Birthplace
+    public string Birthplace
     {
         get => _birthplace;
         set
@@ -231,7 +231,7 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public string? Photo
+    public string Photo
     {
         get => _photo;
         set

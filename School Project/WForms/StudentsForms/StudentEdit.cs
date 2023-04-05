@@ -8,7 +8,7 @@ public partial class StudentEdit : Form
     // Global variables to be used in this windows form
     // Variáveis globais do formulário do Windows
     //
-    private readonly Student _studentToEdit;
+    private readonly Student? _studentToEdit;
 
 
     public StudentEdit(int studentForEditing)

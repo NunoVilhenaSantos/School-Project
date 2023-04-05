@@ -26,7 +26,10 @@ public class StudentsFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(StudentsFilePath, FileMode.Create)) ;
+                   new FileStream(StudentsFilePath, FileMode.Create))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {
@@ -65,7 +68,10 @@ public class StudentsFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(StudentsFilePath, FileMode.OpenOrCreate)) ;
+                   new FileStream(StudentsFilePath, FileMode.OpenOrCreate))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {

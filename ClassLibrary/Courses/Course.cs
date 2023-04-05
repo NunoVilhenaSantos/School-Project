@@ -15,6 +15,9 @@ public class Course : INotifyPropertyChanged
     public Course()
     {
         IdCourse = Interlocked.Increment(ref _mCounter);
+
+
+        GetStudentsCount();
     }
 
     #endregion
@@ -97,10 +100,7 @@ public class Course : INotifyPropertyChanged
     private static int _mCounter;
     private string _name;
     private int _workLoad;
-
     private int _credits;
-
-    //private List<Enrollment> _enrollments = new();
     private int? _studentsCount;
 
     #endregion
@@ -150,17 +150,6 @@ public class Course : INotifyPropertyChanged
         }
     }
 
-    // public List<Enrollment> Enrollments
-    // {
-    //     get => _enrollments;
-    //     set
-    //     {
-    //         if (Equals(value, _enrollments)) return;
-    //         _enrollments = value;
-    //         OnPropertyChanged();
-    //     }
-    // }
-
 
     public int? StudentsCount
     {
@@ -184,22 +173,6 @@ public class Course : INotifyPropertyChanged
     {
         set => Name = value?.Trim();
     }
-
-    // Example usage:
-    // var course = new Course { IdCourse = 1, SetFullName = "  Introduction to Programming " };
-    // Console.WriteLine(course.FullName); // Outputs "  1 | Introduction to Programming"
-
-
-    //
-    // para avaliar se vão ser precisos
-    //
-    //public int TeacherId { get; set; }
-    //public Teacher Teachers { get; set; }
-
-    //public int DepartmentId { get; set; }
-    //public Department Departments { get; set; }
-    //public List<Teacher> TeacherList { get; set; }= new();
-    //public List<SchoolClass> SchoolClassesList { get; set; } = new();
 
     #endregion
 }

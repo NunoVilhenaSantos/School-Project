@@ -18,18 +18,20 @@ public static class Enrollments
     /// <param name="courseId"></param>
     public static void AddEnrollment(int studentId, int courseId)
     {
-        ListEnrollments.Add(new Enrollment
-        {
-            Grade = null,
-            StudentId = studentId,
-            Student =
-                Students.Students.ListStudents
-                    .Find(s => s.IdStudent == studentId),
-            CourseId = courseId,
-            Course =
-                Courses.Courses.ListCourses
-                    .Find(c => c.IdCourse == courseId)
-        });
+        ListEnrollments.Add(
+            new Enrollment
+            {
+                Grade = null,
+                StudentId = studentId,
+                Student =
+                    Students.Students.ListStudents
+                        .Find(s => s.IdStudent == studentId),
+                CourseId = courseId,
+                Course =
+                    Courses.Courses.ListCourses
+                        .Find(c => c.IdCourse == courseId)
+            }
+        );
     }
 
     /// <summary>

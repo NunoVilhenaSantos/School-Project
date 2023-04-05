@@ -244,19 +244,17 @@ public partial class StudentAdd : Form
         var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
 
         // Create a new list to store the filtered results
-        List<Student> filteredStudents = new();
 
-        var property = typeof(Student).GetProperty(selectedProperty);
-        foreach (var student in Students.ListStudents)
-        {
-            if (property == null || property.GetValue(student).ToString() == "")
-                continue;
-
-            filteredStudents.Add(student);
-        }
+        var property = typeof(Student)
+            .GetProperty(selectedProperty ?? string.Empty);
+        var filteredStudents =
+            Students.ListStudents
+                .Where(
+                    student => property != null &&
+                               property.GetValue(student)
+                                   .ToString() != "").ToList();
 
         _bSourceSearchList.DataSource = filteredStudents;
-        //_bSourceSearchList.DataSource = Students.ListStudents.Select(s => s.GetType().GetProperty(selectedProperty).GetValue(s)).ToList();
 
         comboBoxSearchList.Refresh();
         dataGridViewSearch.Refresh();

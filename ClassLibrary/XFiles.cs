@@ -6,7 +6,6 @@ using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using ClassLibrary.Teachers;
 
-
 namespace ClassLibrary;
 
 public static class XFiles
@@ -18,26 +17,23 @@ public static class XFiles
 
     #region Properties
 
-    private static readonly string ProjectFolder =
-        Directory.GetCurrentDirectory();
+    // private static readonly string ProjectFolder =
+    //     Directory.GetCurrentDirectory();
+    private const string ProjectFolder =
+        "C:\\Users\\nunov\\Downloads\\Projeto\\";
 
-    internal static readonly string FilesFolder =
-        ProjectFolder + "\\XFiles\\";
+    internal const string FilesFolder = ProjectFolder + "\\XFiles\\";
 
-    private static readonly string CoursesFile =
-        FilesFolder + "CoursesFile.csv";
+    private const string CoursesFile = FilesFolder + "CoursesFile.csv";
 
-    private static readonly string SchoolClassesFile =
+    private const string SchoolClassesFile =
         FilesFolder + "SchoolClassesFile.csv";
 
-    private static readonly string StudentsFile =
-        FilesFolder + "StudentsFile.csv";
+    private const string StudentsFile = FilesFolder + "StudentsFile.csv";
 
-    private static readonly string EnrollmentsFile =
-        FilesFolder + "EnrollmentsFile.csv";
+    private const string EnrollmentsFile = FilesFolder + "EnrollmentsFile.csv";
 
-    private static readonly string TeachersFile =
-        FilesFolder + "Teachers.csv";
+    private const string TeachersFile = FilesFolder + "Teachers.csv";
 
     #endregion
 
@@ -78,28 +74,28 @@ public static class XFiles
             StoreTeachersInFile(
                 out var messageStoreTeachersInFile);
         // TeachersFileHelper.WriteTeachersToFile(
-        //     out var sucessStoreTeachersInCsv,
+        //     out var successStoreTeachersInCsv,
         //     out var messageStoreTeachersInCsv);
 
         var storeCoursesInFile =
             StoreCoursesInFile(
                 out var messageStoreCoursesInFile);
         // CoursesFileHelper.WriteCoursesToFile(
-        //     out var sucessStoreCoursesInCsv,
+        //     out var successStoreCoursesInCsv,
         //     out var messageStoreCoursesInCsv);
 
         var storeEnrollmentsInFile =
             StoreEnrollmentsInFile(
                 out var messageStoreEnrollmentsInFile);
         // EnrollmentsFileHelper.WriteEnrollmentsToFile(
-        //     out var sucessStoreEnrollmentsInCsv,
+        //     out var successStoreEnrollmentsInCsv,
         //     out var messageStoreEnrollmentsInCsv);
 
         var storeStudentsInFile =
             StoreStudentsInFile(
                 out var messageStoreStudentsInFile);
         // StudentsFileHelper.WriteStudentsToFile(
-        //     out var sucessStoreStudentsInCsv,
+        //     out var successStoreStudentsInCsv,
         //     out var messageStoreStudentsInCsv);
 
         myString =
@@ -115,12 +111,14 @@ public static class XFiles
         //     messageStoreEnrollmentsInCsv + "\n\n" +
         //     messageStoreStudentsInCsv;
 
-        var myBool = storeSchoolClassesInFile && storeTeachersInFile &&
-                     storeCoursesInFile && storeEnrollmentsInFile &&
-                     storeStudentsInFile;
-        // myBool += successStoreSchoolClassesInCsv &&
-        //           sucessStoreTeachersInCsv && sucessStoreCoursesInCsv &&
-        //           sucessStoreEnrollmentsInCsv && sucessStoreStudentsInCsv;
+        var myBool =
+            storeSchoolClassesInFile && storeTeachersInFile &&
+            storeCoursesInFile && storeEnrollmentsInFile &&
+            storeStudentsInFile;
+        // myBool +=
+        //     successStoreSchoolClassesInCsv && successStoreTeachersInCsv &&
+        //     successStoreCoursesInCsv && successStoreEnrollmentsInCsv &&
+        //     successStoreStudentsInCsv;
 
         return myBool;
     }
@@ -133,12 +131,10 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
-
-
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(SchoolClassesFile, FileMode.Create);
+            fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -154,46 +150,42 @@ public static class XFiles
             return false;
         }
 
+        //fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
+        StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
-        using (FileStream fileStream =
-               new(SchoolClassesFile, FileMode.Create))
-        {
-            using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
-            {
-                // Write the header line
-                const string headerLine = "IdSchoolClass;" +
-                                          "ClassAcronym;" +
-                                          "ClassName;" +
-                                          "StartDate;" +
-                                          "EndDate;" +
-                                          "StartHour;" +
-                                          "EndHour;" +
-                                          "Location;" +
-                                          "Type;" +
-                                          "Area;" +
-                                          "CoursesList";
-                streamWriter.WriteLine(headerLine);
+        // Write the header line
+        // const string headerLine =
+        //     "IdSchoolClass;" +
+        //     "ClassAcronym;" +
+        //     "ClassName;" +
+        //     "StartDate;" +
+        //     "EndDate;" +
+        //     "StartHour;" +
+        //     "EndHour;" +
+        //     "Location;" +
+        //     "Type;" +
+        //     "Area;" +
+        //     "CoursesList";
+        // streamWriter.WriteLine(headerLine);
 
-                // Read the public properties to build the header line
-                var properties = typeof(SchoolClass)
-                    .GetProperties(
-                        BindingFlags.Public | BindingFlags.Instance);
+        // Read the public properties to build the header line
+        var properties = typeof(SchoolClass)
+            .GetProperties(
+                BindingFlags.Public | BindingFlags.Instance);
 
-                // Create a list with the public properties
-                // to build the header line
-                var propertyNames =
-                    string.Join(";",
-                        properties.Select(p => p.Name.Normalize()));
+        // Create a list with the public properties
+        // to build the header line
+        var propertyNames =
+            string.Join(";",
+                properties.Select(p => p.Name.Normalize()));
 
-                // Write the header line
-                streamWriter.WriteLine(propertyNames);
+        // Write the header line
+        streamWriter.WriteLine(propertyNames);
 
-
-                foreach (var schoolClass in SchoolClasses.SchoolClasses
-                             .ListSchoolClasses)
-                {
-                    var line =
-                        $"{schoolClass.IdSchoolClass};" +
+        foreach (var line in from schoolClass in
+                     SchoolClasses.SchoolClasses.ListSchoolClasses
+                 let line = string.Empty
+                 select $"{schoolClass.IdSchoolClass};" +
                         $"{schoolClass.ClassAcronym};" +
                         $"{schoolClass.ClassName};" +
                         $"{schoolClass.StartDate};" +
@@ -202,22 +194,24 @@ public static class XFiles
                         $"{schoolClass.EndHour};" +
                         $"{schoolClass.Location};" +
                         $"{schoolClass.Type};" +
-                        $"{schoolClass.Area}";
+                        $"{schoolClass.Area}" +
+                        string.Join(";",
+                            schoolClass.CoursesList != null,
+                            schoolClass.CoursesList
+                                .Select(c => c.IdCourse)))
+            // if (schoolClass.CoursesList != null)
+            // {
+            //     var coursesLine =
+            //         schoolClass.CoursesList.Select(c =>
+            //             $"{c.IdCourse}");
+            //     line += $";{string.Join(";", coursesLine)}";
+            // }
+            streamWriter.WriteLine(line);
 
-                    if (schoolClass.CoursesList != null)
-                    {
-                        var coursesLine =
-                            schoolClass.CoursesList.Select(c =>
-                                $"{c.IdCourse}");
-                        line += $";{string.Join(";", coursesLine)}";
-                    }
-
-                    streamWriter.WriteLine(line);
-                }
-
-                streamWriter.Flush();
-            }
-        }
+        //streamWriter.Flush();
+        //fileStream.Flush();
+        //fileStream.Close();
+        streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
@@ -232,10 +226,10 @@ public static class XFiles
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(TeachersFile, FileMode.Create);
+            fileStream = new FileStream(TeachersFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -250,68 +244,57 @@ public static class XFiles
                        e.Message;
             return false;
         }
+        //fileStream = new FileStream(TeachersFile, FileMode.Create);
+        StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
+        // const string header =
+        //     "TeacherId;Name;LastName;Address;Phone;Email;" +
+        //     "Active;Genre;DateOfBirth;IdentificationNumber;" +
+        //     "ExpirationDateIn;TaxIdentificationNumber;" +
+        //     "Nationality;Birthplace;Photo;IdCourse";
+        // streamWriter.Write(header);
 
-        using (FileStream fileStream = new(TeachersFile, FileMode.Create))
-        {
-            using (var streamWriter =
-                   new StreamWriter(fileStream, Encoding.UTF8))
-            {
-                var csvStringBuilder = new StringBuilder();
+        // Read the public properties to build the header line
+        var properties =
+            typeof(Teacher).GetProperties(
+                BindingFlags.Public | BindingFlags.Instance);
 
-                const string header =
-                    "TeacherId;Name;LastName;Address;Phone;Email;" +
-                    "Active;Genre;DateOfBirth;IdentificationNumber;" +
-                    "ExpirationDateIn;TaxIdentificationNumber;" +
-                    "Nationality;Birthplace;Photo;IdCourse";
+        // Create a list with the public properties
+        // to build the header line
+        var propertyNames =
+            string.Join(";",
+                properties.Select(p => p.Name.Normalize()));
 
-                csvStringBuilder.AppendLine(header);
+        // Write the header line
+        streamWriter.WriteLine(propertyNames);
 
-                // Read the public properties to build the header line
-                var properties = typeof(Teacher)
-                    .GetProperties(
-                        BindingFlags.Public | BindingFlags.Instance);
+        foreach (var line in from teacher in
+                     Teachers.Teachers.TeachersList
+                 let line = string.Empty
+                 select $"{teacher.TeacherId};" +
+                        $"{teacher.Name};" +
+                        $"{teacher.LastName};" +
+                        $"{teacher.Address};" +
+                        $"{teacher.Phone};" +
+                        $"{teacher.Email};" +
+                        $"{teacher.Active};" +
+                        $"{teacher.Genre};" +
+                        $"{teacher.DateOfBirth};" +
+                        $"{teacher.IdentificationNumber};" +
+                        $"{teacher.ExpirationDateIn};" +
+                        $"{teacher.TaxIdentificationNumber};" +
+                        $"{teacher.Nationality};" +
+                        $"{teacher.Birthplace};" +
+                        $"{teacher.Photo};" +
+                        string.Join(";",
+                            teacher.Courses?
+                                .Select(c => c.IdCourse)))
+            streamWriter.Write(line);
 
-                // Create a list with the public properties
-                // to build the header line
-                var propertyNames =
-                    string.Join(";",
-                        properties.Select(p => p.Name.Normalize()));
-
-                // Write the header line
-                streamWriter.WriteLine(propertyNames);
-
-
-                foreach (var teacher in Teachers.Teachers.TeachersList)
-                {
-                    var teacherCsv = new StringBuilder();
-
-                    teacherCsv.Append($"{teacher.TeacherId};");
-                    teacherCsv.Append($"{teacher.Name};");
-                    teacherCsv.Append($"{teacher.LastName};");
-                    teacherCsv.Append($"{teacher.Address};");
-                    teacherCsv.Append($"{teacher.Phone};");
-                    teacherCsv.Append($"{teacher.Email};");
-                    teacherCsv.Append($"{teacher.Active};");
-                    teacherCsv.Append($"{teacher.Genre};");
-                    teacherCsv.Append($"{teacher.DateOfBirth};");
-                    teacherCsv.Append($"{teacher.IdentificationNumber};");
-                    teacherCsv.Append($"{teacher.ExpirationDateIn};");
-                    teacherCsv.Append(
-                        $"{teacher.TaxIdentificationNumber};");
-                    teacherCsv.Append($"{teacher.Nationality};");
-                    teacherCsv.Append($"{teacher.Birthplace};");
-                    teacherCsv.Append($"{teacher.Photo};");
-                    teacherCsv.Append(string.Join(";",
-                        teacher.Courses.Select(c => c.IdCourse)));
-
-                    csvStringBuilder.AppendLine(teacherCsv.ToString());
-                }
-
-                streamWriter.Write(csvStringBuilder.ToString());
-                streamWriter.Flush();
-            }
-        }
+        //streamWriter.Flush();
+        //fileStream.Flush();
+        //fileStream.Close();
+        streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
@@ -325,9 +308,10 @@ public static class XFiles
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream = new(CoursesFile, FileMode.Create);
+            fileStream = new FileStream(CoursesFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -342,38 +326,37 @@ public static class XFiles
                        e.Message;
             return false;
         }
+        // fileStream = new FileStream(CoursesFile, FileMode.Create);
+        StreamWriter streamWriter =
+            new(fileStream, Encoding.UTF8);
 
-        using (FileStream fileStream = new(CoursesFile, FileMode.Create))
-        {
-            using (StreamWriter streamWriter =
-                   new(fileStream, Encoding.UTF8))
-            {
-                // Read the public properties to build the header line
-                var properties = typeof(Course)
-                    .GetProperties(
-                        BindingFlags.Public | BindingFlags.Instance);
+        // Read the public properties to build the header line
+        var properties =
+            typeof(Course).GetProperties(
+                BindingFlags.Public | BindingFlags.Instance);
 
-                // Create a list with the public properties
-                // to build the header line
-                var propertyNames =
-                    string.Join(";",
-                        properties.Select(p => p.Name.Normalize()));
+        // Create a list with the public properties
+        // to build the header line
+        var propertyNames =
+            string.Join(";", properties
+                .Select(p => p.Name.Normalize()));
 
-                // Write the header line
-                streamWriter.WriteLine(propertyNames);
+        // Write the header line
+        streamWriter.WriteLine(propertyNames);
 
+        foreach (var line in Courses.Courses.ListCourses
+                     .Select(course =>
+                         $"{course.IdCourse};" +
+                         $"{course.Name};" +
+                         $"{course.WorkLoad};" +
+                         $"{course.Credits}"
+                     ))
+            streamWriter.WriteLine(line);
 
-                foreach (var line in
-                         Courses.Courses.ListCourses.Select(course =>
-                             $"{course.IdCourse};" +
-                             $"{course.Name};" +
-                             $"{course.WorkLoad};" +
-                             $"{course.Credits}"
-                         ))
-                    streamWriter.WriteLine(line);
-                streamWriter.Flush();
-            }
-        }
+        //streamWriter.Flush();
+        //fileStream.Flush();
+        //fileStream.Close();
+        streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
@@ -387,10 +370,10 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(EnrollmentsFile, FileMode.Create);
+            fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -405,43 +388,39 @@ public static class XFiles
                        e.Message;
             return false;
         }
+        // fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
+        StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
-        using (FileStream fileStream =
-               new(EnrollmentsFile, FileMode.Create))
-        {
-            using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
-            {
-                // Read the public properties to build the header line
-                var properties = typeof(Enrollment)
-                    .GetProperties(
-                        BindingFlags.Public | BindingFlags.Instance);
+        // Read the public properties to build the header line
+        var properties = typeof(Enrollment)
+            .GetProperties(
+                BindingFlags.Public | BindingFlags.Instance);
 
-                // Create a list with the public properties
-                // to build the header line
-                var propertyNames =
-                    string.Join(";",
-                        properties.Select(p => p.Name.Normalize()));
+        // Create a list with the public properties
+        // to build the header line
+        var propertyNames =
+            string.Join(";",
+                properties.Select(p => p.Name.Normalize()));
 
-                // Write the header line
-                streamWriter.WriteLine(propertyNames);
+        // Write the header line
+        streamWriter.WriteLine(propertyNames);
 
+        foreach (var line in
+                 Enrollments.Enrollments.ListEnrollments
+                     .Select(e =>
+                             $"{e.IdEnrollment};" +
+                             $"{e.Grade};" +
+                             $"{e.StudentId};" +
+                             //$"{e.Student};" +
+                             $"{e.CourseId};"
+                         //$"{e.Course}"
+                     ))
+            streamWriter.WriteLine(line);
 
-                foreach (var line in
-                         Enrollments.Enrollments.ListEnrollments
-                             .Select(e =>
-                                     $"{e.IdEnrollment};" +
-                                     $"{e.Grade};" +
-                                     $"{e.StudentId};" +
-                                     //$"{e.Student};" +
-                                     $"{e.CourseId};"
-                                 //$"{e.Course}"
-                             ))
-                {
-                    streamWriter.WriteLine(line);
-                    streamWriter.Flush();
-                }
-            }
-        }
+        //streamWriter.Flush();
+        //fileStream.Flush();
+        //fileStream.Close();
+        streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
@@ -455,10 +434,10 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(StudentsFile, FileMode.Create);
+            fileStream = new FileStream(StudentsFile, FileMode.Create);
         }
         catch (IOException ex)
         {
@@ -473,55 +452,52 @@ public static class XFiles
                        e.Message;
             return false;
         }
+        // fileStream = new FileStream(StudentsFile, FileMode.Create);
+        StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
-        using (FileStream fileStream = new(StudentsFile, FileMode.Create))
-        {
-            using (StreamWriter streamWriter =
-                   new(fileStream, Encoding.UTF8))
-            {
-                // Read the public properties to build the header line
-                var properties = typeof(Student)
-                    .GetProperties(
-                        BindingFlags.Public | BindingFlags.Instance);
+        // Read the public properties to build the header line
+        var properties = typeof(Student)
+            .GetProperties(
+                BindingFlags.Public | BindingFlags.Instance);
 
-                // Create a list with the public properties
-                // to build the header line
-                var propertyNames =
-                    string.Join(";",
-                        properties.Select(p => p.Name.Normalize()));
+        // Create a list with the public properties
+        // to build the header line
+        var propertyNames =
+            string.Join(";",
+                properties.Select(p => p.Name.Normalize()));
 
-                // Write the header line
-                streamWriter.WriteLine(propertyNames);
+        // Write the header line
+        streamWriter.WriteLine(propertyNames);
+        
+        foreach (var line in
+                 Students.Students.ListStudents
+                     .Select(student =>
+                         $"{student.IdStudent};" +
+                         $"{student.Name};" +
+                         $"{student.LastName};" +
+                         $"{student.Address};" +
+                         $"{student.PostalCode};" +
+                         $"{student.City};" +
+                         $"{student.Phone};" +
+                         $"{student.Email};" +
+                         $"{student.Active};" +
+                         $"{student.Genre};" +
+                         $"{student.DateOfBirth};" +
+                         $"{student.IdentificationNumber};" +
+                         $"{student.ExpirationDateIn};" +
+                         $"{student.TaxIdentificationNumber};" +
+                         $"{student.Nationality};" +
+                         $"{student.Birthplace};" +
+                         $"{student.Photo}" +
+                         $"{student.TotalWorkHoursLoad};" +
+                         $"{student.EnrollmentDate};" +
+                         $"{student.Enrollments};"))
+            streamWriter.WriteLine(line);
 
-
-                foreach (var line in
-                         Students.Students.ListStudents.Select(student =>
-                             $"{student.IdStudent};" +
-                             $"{student.Name};" +
-                             $"{student.LastName};" +
-                             $"{student.Address};" +
-                             $"{student.PostalCode};" +
-                             $"{student.City};" +
-                             $"{student.Phone};" +
-                             $"{student.Email};" +
-                             $"{student.Active};" +
-                             $"{student.Genre};" +
-                             $"{student.DateOfBirth};" +
-                             $"{student.IdentificationNumber};" +
-                             $"{student.ExpirationDateIn};" +
-                             $"{student.TaxIdentificationNumber};" +
-                             $"{student.Nationality};" +
-                             $"{student.Birthplace};" +
-                             $"{student.Photo}" +
-                             $"{student.TotalWorkHoursLoad};" +
-                             $"{student.EnrollmentDate};" +
-                             $"{student.Enrollments};"))
-
-                    streamWriter.WriteLine(line);
-
-                streamWriter.Flush();
-            }
-        }
+        //streamWriter.Flush();
+        //fileStream.Flush();
+        //fileStream.Close();
+        streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
@@ -616,7 +592,7 @@ public static class XFiles
     }
 
 
-    // 1st file to read are the courses file
+// 1st file to read are the courses file
     private static bool ReadCoursesFromFile(out string myString)
     {
         //
@@ -625,61 +601,55 @@ public static class XFiles
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using var fileStream =
-                new FileStream(CoursesFile, FileMode.OpenOrCreate);
+            fileStream = new FileStream(CoursesFile, FileMode.OpenOrCreate);
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
+            myString = "Error accessing the file: " +
+                       ex.Source + " | " + ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
+            myString = "Error accessing the file: " +
+                       e.Source + " | " + e.Message;
             return false;
         }
+        // fileStream = new FileStream(CoursesFile, FileMode.OpenOrCreate);
+        StreamReader streamReader = new(fileStream);
 
-
-        using (
-            var fileStream =
-            new FileStream(CoursesFile, FileMode.OpenOrCreate))
+        while (!streamReader.EndOfStream)
         {
-            using (StreamReader streamReader = new(fileStream))
-            {
-                while (!streamReader.EndOfStream)
-                {
-                    // read a line
-                    var line = streamReader.ReadLine();
+            // read a line
+            var line = streamReader.ReadLine();
 
-                    // validating the line,
-                    // if is not null or empty,
-                    // else will continue
-                    if (string.IsNullOrEmpty(line)) continue;
+            // validating the line,
+            // if is not null or empty,
+            // else will continue
+            if (string.IsNullOrEmpty(line)) continue;
 
-                    // split the line into an array of strings
-                    var campos = line.Split(';');
+            // split the line into an array of strings
+            var campos = line.Split(';');
 
-                    // validating the line, if has at least 4 fields,
-                    // less than 4 will continue reading the file
-                    if (campos.Length < 4) continue;
+            // validating the line, if has at least 4 fields,
+            // less than 4 will continue reading the file
+            if (campos.Length < 4) continue;
+            if (campos[0].ToLower().Contains("id")) continue;
 
-                    _ = int.TryParse(campos[0], out var id);
-                    _ = int.TryParse(campos[2], out var workLoad);
-                    _ = int.TryParse(campos[3], out var credits);
+            _ = int.TryParse(campos[0], out var id);
+            _ = int.TryParse(campos[2], out var workLoad);
+            _ = int.TryParse(campos[3], out var credits);
 
-                    Courses.Courses.AddCourse(
-                        id, campos[1], workLoad, credits, null
-                    );
-                }
-
-                streamReader.Close();
-            }
+            Courses.Courses.AddCourse(
+                id, campos[1], workLoad, credits, null
+            );
         }
+
+        streamReader.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
@@ -694,80 +664,76 @@ public static class XFiles
         // with a try and catch
         // and also returning the messages
         //
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(StudentsFile, FileMode.OpenOrCreate);
+            fileStream = new FileStream(StudentsFile, FileMode.OpenOrCreate);
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
+            myString = "Error accessing the file: " +
+                       ex.Source + " | " + ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
+            myString = "Error accessing the file: " +
+                       e.Source + " | " + e.Message;
             return false;
         }
+        // fileStream = new FileStream(StudentsFile, FileMode.OpenOrCreate);
+        StreamReader streamReader = new(fileStream);
 
-        using (FileStream fileStream =
-               new(StudentsFile, FileMode.OpenOrCreate))
+        while (!streamReader.EndOfStream)
         {
-            using (StreamReader streamReader = new(fileStream))
-            {
-                while (!streamReader.EndOfStream)
-                {
-                    // reading a line
-                    var line = streamReader.ReadLine();
+            // reading a line
+            var line = streamReader.ReadLine();
 
-                    // validating the line, if is not null or empty,
-                    // else will continue reading the file
-                    if (string.IsNullOrEmpty(line)) continue;
+            // validating the line, if is not null or empty,
+            // else will continue reading the file
+            if (string.IsNullOrEmpty(line)) continue;
 
-                    // split the line into an array of strings
-                    var campos = line.Split(';');
+            // split the line into an array of strings
+            var campos = line.Split(';');
 
-                    // validating the line, if has at least 18 fields,
-                    // less than 18 will continue reading the file
-                    if (campos.Length < 18) continue;
+            // validating the line, if has at least 18 fields,
+            // less than 18 will continue reading the file
+            if (campos.Length < 18) continue;
+            if (campos[0].ToLower().Contains("id")) continue;
 
-                    _ = int.TryParse(campos[0], out var id);
-                    _ = bool.TryParse(campos[8], out var active);
-                    _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
-                    _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
-                    _ = int.TryParse(campos[17], out var totalWorkHours);
-                    _ = DateOnly.TryParse(campos[18], out var enrollmentDate);
+            _ = int.TryParse(campos[0], out var id);
+            _ = bool.TryParse(campos[8], out var active);
+            _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+            _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+            _ = int.TryParse(campos[17], out var totalWorkHours);
+            _ = DateOnly.TryParse(campos[18], out var enrollmentDate);
 
-                    Students.Students.AddStudent(
-                        id,
-                        campos[1],
-                        campos[2],
-                        campos[3],
-                        campos[4],
-                        campos[5],
-                        campos[6],
-                        campos[7],
-                        active,
-                        campos[9],
-                        dateOfBirth,
-                        campos[11],
-                        expirationDateIn,
-                        campos[13],
-                        campos[14],
-                        campos[15],
-                        campos[16],
-                        totalWorkHours,
-                        enrollmentDate,
-                        new List<Enrollment>()
-                    );
-                }
-
-                streamReader.Close();
-            }
+            Students.Students.AddStudent(
+                id,
+                campos[1],
+                campos[2],
+                campos[3],
+                campos[4],
+                campos[5],
+                campos[6],
+                campos[7],
+                active,
+                campos[9],
+                dateOfBirth,
+                campos[11],
+                expirationDateIn,
+                campos[13],
+                campos[14],
+                campos[15],
+                campos[16],
+                totalWorkHours,
+                enrollmentDate,
+                new List<Enrollment>()
+            );
         }
+
+        streamReader.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
@@ -783,81 +749,78 @@ public static class XFiles
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(EnrollmentsFile, FileMode.OpenOrCreate);
+            fileStream = new FileStream(EnrollmentsFile, FileMode.OpenOrCreate);
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
+            myString = "Error accessing the file: " +
+                       ex.Source + " | " + ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
+            myString = "Error accessing the file: " +
+                       e.Source + " | " + e.Message;
             return false;
         }
+        // fileStream = new FileStream(EnrollmentsFile, FileMode.OpenOrCreate);
+        StreamReader streamReader = new(fileStream);
 
-        using (FileStream fileStream =
-               new(EnrollmentsFile, FileMode.OpenOrCreate))
+        while (!streamReader.EndOfStream)
         {
-            using (StreamReader streamReader = new(fileStream))
-            {
-                while (!streamReader.EndOfStream)
-                {
-                    // reading a line
-                    var line = streamReader.ReadLine();
+            // reading a line
+            var line = streamReader.ReadLine();
 
-                    // validating the line, if is not null or empty,
-                    // else will continue reading the file
-                    if (string.IsNullOrEmpty(line)) continue;
+            // validating the line, if is not null or empty,
+            // else will continue reading the file
+            if (string.IsNullOrEmpty(line)) continue;
 
-                    // split the line into an array of strings
-                    var campos = line.Split(';');
+            // split the line into an array of strings
+            var campos = line.Split(';');
 
-                    // validating the line, if has at least 5 fields,
-                    // less than 5 will continue reading the file
-                    if (campos.Length < 4) continue;
-                    //
-                    //
-                    // public int IdEnrollment { get; }
-                    // public decimal? Grade { get; set; }
-                    // public int StudentId { get; set; }
-                    // public Student Student { get; set; }
-                    // public int CourseId { get; set; }
-                    // public Course Course { get; set; }
-                    //
-                    //
-                    //_ = int.TryParse(campos[0], out var idEnrollment);
-                    _ = decimal.TryParse(campos[1], out var grade);
-                    _ = int.TryParse(campos[2], out var studentId);
-                    _ = int.TryParse(campos[3], out var courseId);
+            // validating the line, if has at least 5 fields,
+            // less than 5 will continue reading the file
+            if (campos.Length < 4) continue;
+            if (campos[0].ToLower().Contains("id")) continue;
 
-                    // verificar este ciclo porque esta adicionar todos tem que
-                    // adicionar na lista deste estudante o que lhe pertence
-                    Enrollments.Enrollments.AddEnrollment(
-                        // IdEnrollment=idEnrollment,
-                        grade,
-                        studentId,
-                        //Student = student,
-                        courseId
-                        //Course = course
-                    );
-                }
+            //
+            //
+            // public int IdEnrollment { get; }
+            // public decimal? Grade { get; set; }
+            // public int StudentId { get; set; }
+            // public Student Student { get; set; }
+            // public int CourseId { get; set; }
+            // public Course Course { get; set; }
+            //
+            //
+            //_ = int.TryParse(campos[0], out var idEnrollment);
+            _ = decimal.TryParse(campos[1], out var grade);
+            _ = int.TryParse(campos[2], out var studentId);
+            _ = int.TryParse(campos[3], out var courseId);
 
-                streamReader.Close();
-            }
+            // verificar este ciclo porque esta adicionar todos tem que
+            // adicionar na lista deste estudante o que lhe pertence
+            Enrollments.Enrollments.AddEnrollment(
+                // IdEnrollment=idEnrollment,
+                grade,
+                studentId,
+                //Student = student,
+                courseId
+                //Course = course
+            );
         }
+
+        streamReader.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
     }
 
-    // 4th file to read are the school-classes file
+// 4th file to read are the school-classes file
     private static bool ReadSchoolClassesFromFile(out string myString)
     {
         //
@@ -866,110 +829,106 @@ public static class XFiles
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(SchoolClassesFile, FileMode.OpenOrCreate);
+            fileStream =
+                new FileStream(SchoolClassesFile, FileMode.OpenOrCreate);
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
+            myString = "Error accessing the file: " +
+                       ex.Source + " | " + ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
+            myString = "Error accessing the file: " +
+                       e.Source + " | " + e.Message;
             return false;
         }
+        //fileStream = new FileStream(SchoolClassesFile, FileMode.OpenOrCreate);
+        StreamReader streamReader = new(fileStream);
 
-        using (FileStream fileStream =
-               new(SchoolClassesFile, FileMode.OpenOrCreate))
+        while (!streamReader.EndOfStream)
         {
-            using (StreamReader streamReader = new(fileStream))
-            {
-                while (!streamReader.EndOfStream)
-                {
-                    // read a line
-                    var line = streamReader.ReadLine();
+            // read a line
+            var line = streamReader.ReadLine();
 
-                    // validating the line,
-                    // if is not null or empty,
-                    // else will continue
-                    if (string.IsNullOrEmpty(line)) continue;
+            // validating the line,
+            // if is not null or empty,
+            // else will continue
+            if (string.IsNullOrEmpty(line)) continue;
 
-                    // split the line into an array of strings
-                    var campos = line.Split(';');
+            // split the line into an array of strings
+            var campos = line.Split(';');
 
-                    // validating the line,
-                    // if is not null or empty,
-                    // else will continue
-                    if (campos.Length < 10) continue;
+            // validating the line,
+            // if is not null or empty,
+            // else will continue
+            if (campos.Length < 10) continue;
+            if (campos[0].ToLower().Contains("id")) continue;
 
+            // ---------------------------------------------------------
+            //
+            // cycle to evaluate which students are select and add it
+            //
+            // ---------------------------------------------------------
 
-                    // ---------------------------------------------------------
-                    //
-                    // cycle to evaluate which students are select and add it
-                    //
-                    // ---------------------------------------------------------
+            //
+            // temp variable of the class student to
+            // retain the students for studentForValidation
+            //
+            List<Course>? coursesList = new();
 
-                    //
-                    // temp variable of the class student to
-                    // retain the students for studentForValidation
-                    //
-                    List<Course> coursesList = new();
+            // validating the line,
+            // if has more than 3 fields,
+            // will read the disciplines
+            if (campos.Length > 9)
+                foreach (var c in Courses.Courses.ListCourses)
+                    for (var index = 10; index < campos.Length; index++)
+                    {
+                        int.TryParse(campos[index], out var idCourse);
+                        if (c.IdCourse == idCourse) coursesList.Add(c);
+                    }
 
-                    // validating the line,
-                    // if has more than 3 fields,
-                    // will read the disciplines
-                    if (campos.Length > 9)
-                        foreach (var c in Courses.Courses.ListCourses)
-                            for (var index = 10; index < campos.Length; index++)
-                            {
-                                int.TryParse(campos[index], out var idCourse);
-                                if (c.IdCourse == idCourse) coursesList.Add(c);
-                            }
+            _ = int.TryParse(campos[0], out var id);
+            _ = DateOnly.TryParse(campos[3], out var startDate);
+            _ = DateOnly.TryParse(campos[4], out var endDate);
+            _ = TimeOnly.TryParse(campos[5], out var startHour);
+            _ = TimeOnly.TryParse(campos[6], out var endHour);
 
-                    _ = int.TryParse(campos[0], out var id);
-                    _ = DateOnly.TryParse(campos[3], out var startDate);
-                    _ = DateOnly.TryParse(campos[4], out var endDate);
-                    _ = TimeOnly.TryParse(campos[5], out var startHour);
-                    _ = TimeOnly.TryParse(campos[6], out var endHour);
+            if (startDate == default)
+                startDate = DateOnly.FromDateTime(DateTime.Now)
+                    .AddYears(-1);
+            if (endDate == default)
+                endDate = DateOnly.FromDateTime(DateTime.Now)
+                    .AddYears(1);
 
-                    if (startDate == default)
-                        startDate = DateOnly.FromDateTime(DateTime.Now)
-                            .AddYears(-1);
-                    if (endDate == default)
-                        endDate = DateOnly.FromDateTime(DateTime.Now)
-                            .AddYears(1);
+            if (startHour == default)
+                startHour = TimeOnly.FromDateTime(DateTime.Now)
+                    .AddHours(9);
+            if (endHour == default) endHour = startHour.AddHours(8);
 
-                    if (startHour == default)
-                        startHour = TimeOnly.FromDateTime(DateTime.Now)
-                            .AddHours(9);
-                    if (endHour == default) endHour = startHour.AddHours(8);
-
-                    SchoolClasses.SchoolClasses.AddSchoolClass(
-                        id, campos[1], campos[2],
-                        startDate, endDate,
-                        startHour, endHour,
-                        campos[7], campos[8], campos[9],
-                        0,
-                        coursesList
-                    );
-                }
-
-                streamReader.Close();
-            }
+            SchoolClasses.SchoolClasses.AddSchoolClass(
+                id, campos[1], campos[2],
+                startDate, endDate,
+                startHour, endHour,
+                campos[7], campos[8], campos[9],
+                0,
+                coursesList
+            );
         }
+
+        streamReader.Close();
 
         myString = "Operação realizada com sucesso";
         return true;
     }
 
 
-    // 5th file to read are the teachers file
+// 5th file to read are the teachers file
     private static bool ReadTeachersInFile(out string myString)
     {
         //
@@ -978,108 +937,101 @@ public static class XFiles
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using FileStream fileStream =
-                new(TeachersFile, FileMode.OpenOrCreate);
+            fileStream = new FileStream(TeachersFile, FileMode.OpenOrCreate);
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
+            myString = "Error accessing the file: " +
+                       ex.Source + " | " + ex.Message;
             return false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
+            myString = "Error accessing the file: " +
+                       e.Source + " | " + e.Message;
             return false;
         }
+        // fileStream = new FileStream(TeachersFile, FileMode.OpenOrCreate);
+        StreamReader streamReader = new(fileStream);
 
-        using (FileStream fileStream =
-               new(TeachersFile, FileMode.OpenOrCreate))
+        while (!streamReader.EndOfStream)
         {
-            using (StreamReader streamReader = new(fileStream))
-            {
-                while (!streamReader.EndOfStream)
-                {
-                    // read a line
-                    var line = streamReader.ReadLine();
+            // read a line
+            var line = streamReader.ReadLine();
 
-                    // validating the line,
-                    // if is not null or empty,
-                    // else will continue
-                    if (string.IsNullOrEmpty(line)) continue;
+            // validating the line,
+            // if is not null or empty,
+            // else will continue
+            if (string.IsNullOrEmpty(line)) continue;
 
-                    // split the line into an array of strings
-                    var campos = line.Split(';');
+            // split the line into an array of strings
+            var campos = line.Split(';');
 
+            // validating the line,
+            // if is not null or empty,
+            // else will continue
+            if (campos.Length < 18) continue;
+            if (campos[0].ToLower().Contains("id")) continue;
 
-                    // validating the line,
-                    // if is not null or empty,
-                    // else will continue
-                    if (campos.Length < 18) continue;
+            // ---------------------------------------------------------
+            //
+            // cycle to evaluate which students are select and add it
+            //
+            // ---------------------------------------------------------
 
+            //
+            // temp variable of the class student to
+            // retain the students for studentForValidation
+            //
+            List<Course> coursesList = new();
 
-                    // ---------------------------------------------------------
-                    //
-                    // cycle to evaluate which students are select and add it
-                    //
-                    // ---------------------------------------------------------
+            // validating the line,
+            // if has more than 3 fields,
+            // will read the disciplines
+            if (campos.Length > 18)
+                foreach (var c in Courses.Courses.ListCourses)
+                    for (var index = 19; index < campos.Length; index++)
+                    {
+                        _ = int.TryParse(campos[index], out index);
+                        if (c.IdCourse == index) coursesList.Add(c);
+                    }
 
-                    //
-                    // temp variable of the class student to
-                    // retain the students for studentForValidation
-                    //
-                    List<Course> coursesList = new();
+            _ = int.TryParse(campos[0], out var id);
+            _ = bool.TryParse(campos[8], out var active);
+            _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+            _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+            _ = int.TryParse(campos[17], out var coursesCount);
+            _ = int.TryParse(campos[18], out var totalWorkHours);
 
-                    // validating the line,
-                    // if has more than 3 fields,
-                    // will read the disciplines
-                    if (campos.Length > 18)
-                        foreach (var c in Courses.Courses.ListCourses)
-                            for (var index = 19; index < campos.Length; index++)
-                            {
-                                _ = int.TryParse(campos[index], out index);
-                                if (c.IdCourse == index) coursesList.Add(c);
-                            }
-
-
-                    _ = int.TryParse(campos[0], out var id);
-                    _ = bool.TryParse(campos[8], out var active);
-                    _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
-                    _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
-                    _ = int.TryParse(campos[17], out var coursesCount);
-                    _ = int.TryParse(campos[18], out var totalWorkHours);
-
-                    Teachers.Teachers.AddTeacher(
-                        id,
-                        campos[1],
-                        campos[2],
-                        campos[3],
-                        campos[4],
-                        campos[5],
-                        campos[6],
-                        campos[7],
-                        active,
-                        campos[9],
-                        dateOfBirth,
-                        campos[11],
-                        expirationDateIn,
-                        campos[13],
-                        campos[14],
-                        campos[15],
-                        campos[16],
-                        coursesCount,
-                        totalWorkHours,
-                        coursesList
-                    );
-                }
-
-                streamReader.Close();
-            }
+            Teachers.Teachers.AddTeacher(
+                id,
+                campos[1],
+                campos[2],
+                campos[3],
+                campos[4],
+                campos[5],
+                campos[6],
+                campos[7],
+                active,
+                campos[9],
+                dateOfBirth,
+                campos[11],
+                expirationDateIn,
+                campos[13],
+                campos[14],
+                campos[15],
+                campos[16],
+                coursesCount,
+                totalWorkHours,
+                coursesList
+            );
         }
+
+        streamReader.Close();
 
         myString = "Operação realizada com sucesso";
         return true;

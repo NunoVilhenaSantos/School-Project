@@ -18,7 +18,7 @@ public static class SchoolClasses
         DateOnly startDate, DateOnly endDate,
         TimeOnly startHour, TimeOnly endHour,
         string location, string type, string area, int studentsCount,
-        List<Course> courses
+        List<Course>? courses
     )
     {
         ListSchoolClasses.Add(new SchoolClass
@@ -106,10 +106,10 @@ public static class SchoolClasses
 
 
     public static List<SchoolClass> ConsultSchoolClasses(
-        int? id, string? classAcronym, string? className,
+        int? id, string classAcronym, string className,
         DateOnly? startDate, DateOnly? endDate,
         TimeOnly? startHour, TimeOnly? endHour,
-        string? location, string? type, string? area,
+        string location, string type, string area,
         int? studentsCount,
         //List<Student>? studentsList
         List<Course>? courses
@@ -337,9 +337,9 @@ public static class SchoolClasses
                             .Select(e => e.Grade);
 
 
-                    if (!grades.Any()) continue;
+                    if (grades != null && !grades.Any()) continue;
 
-                    classTotal += (decimal) grades.Average();
+                    classTotal += ((decimal) grades.Average())!;
                     highestGrade = Math.Max(highestGrade,
                         (decimal) grades.Max());
                     lowestGrade = Math.Min(lowestGrade,

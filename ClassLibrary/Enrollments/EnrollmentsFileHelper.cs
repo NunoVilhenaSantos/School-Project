@@ -26,7 +26,10 @@ public class EnrollmentsFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(EnrollmentsFilePath, FileMode.Create)) ;
+                   new FileStream(EnrollmentsFilePath, FileMode.Create))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {
@@ -65,7 +68,10 @@ public class EnrollmentsFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate)) ;
+                   new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {

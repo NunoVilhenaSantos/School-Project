@@ -1,593 +1,718 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    <!-- 
+      Microsoft ResX Schema 
+      
+      Version 2.0
+      
+      The primary goals of this format is to allow a simple XML format 
+      that is mostly human readable. The generation and parsing of the 
+      various data types are done through the TypeConverter classes 
+      associated with the data types.
+      
+      Example:
+      
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+                  
+      There are any number of "resheader" rows that contain simple 
+      name/value pairs.
+      
+      Each data row contains a name, and value. The row also contains a 
+      type or mimetype. Type corresponds to a .NET class that support 
+      text/value conversion through the TypeConverter architecture. 
+      Classes that don't support this are serialized and stored with the 
+      mimetype set.
+      
+      The mimetype is used for serialized objects, and tells the 
+      ResXResourceReader how to depersist the object. This is currently not 
+      extensible. For a given mimetype the value must be set accordingly:
+      
+      Note - application/x-microsoft.net.object.binary.base64 is the format 
+      that the ResXResourceWriter will generate, however the reader can 
+      read any of the formats listed below.
+      
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+      
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+  
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array 
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+                id="root"
+                xmlns="">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <assembly alias="System.Windows.Forms"
+              name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <data name="Icon-chalkboard-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-chalkboard-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
     </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
+    <data name="novo-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\novo-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Icon-chalkboard-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-chalkboard-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="novo-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\novo-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-doughnut-chart-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-doughnut-chart-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-printer-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-printer-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-report-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-report-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-folder-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-folder-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-chalkboard-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-chalkboard-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="carros" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\carros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="marcacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\marcacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-graduate-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-graduate-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-table-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-table-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-graduate-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-graduate-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-pie-chart-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-pie-chart-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="trocas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trocas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_64x643" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_64x643.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pecas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pecas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-apagar-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-apagar-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pesquisar-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pesquisar-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-bar-chart-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-bar-chart-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-day-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-day-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-days-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-days-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-bar-chart-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-bar-chart-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-address-card-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-address-card-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-folder-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-folder-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-printer-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-printer-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-editar-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-editar-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="seta_branca_direita" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\seta_branca_direita.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-id-card-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-id-card-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="oficina" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\oficina.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_64x642" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_64x642.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-database-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-database-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fundoAuto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fundoAuto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-report-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-report-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="servicos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\servicos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="guardar-base-dados-regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\guardar-base-dados-regular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Registos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Registos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-printer-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-printer-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-table-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-table-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-novo-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-novo-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="return" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\return.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-book-green-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-book-green-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-id-card-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-id-card-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo_rangel_auto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_rangel_auto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pesquisar-negrito" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pesquisar-negrito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_64x641" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_64x641.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="porta-saida-aberta-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\porta-saida-aberta-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editar-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editar-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-chalkboard-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-chalkboard-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-sair1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-sair1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-days-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-days-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-table-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-table-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-book-green-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-book-green-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancelar-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancelar-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-bar-chart-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-bar-chart-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-pie-chart-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-pie-chart-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-pie-chart-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-pie-chart-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pesquisar-recortado" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pesquisar-recortado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-day-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-day-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-day-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-day-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-bar-chart-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-bar-chart-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-report-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-report-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-folder-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-folder-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pesquisar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pesquisar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="staff" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\staff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao_Editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao_Editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="porta-saida-aberta-solido-branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\porta-saida-aberta-solido-branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="faturacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\faturacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="importar-foto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\importar-foto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="funcionarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\funcionarios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-pie-chart-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-pie-chart-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-doughnut-chart-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-doughnut-chart-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-report-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-report-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-id-card-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-id-card-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-address-card-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-address-card-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-book-green-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-book-green-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-database-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-database-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-imprimir-solido-laser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-imprimir-solido-laser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pagamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pagamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-days-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-days-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-graduate-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-graduate-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-doughnut-chart-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-doughnut-chart-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-address-card-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-address-card-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-printer-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-printer-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sair-seta-solida" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sair-seta-solida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-day-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-day-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-chalkboard-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-chalkboard-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-folder-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-folder-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-table-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-table-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-graduate-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-graduate-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="apagar-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apagar-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-doughnut-chart-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-doughnut-chart-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-id-card-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-id-card-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-database-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-database-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-book-green-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-book-green-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Students watching webinar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Students watching webinar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-address-card-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-address-card-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-calendar-days-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-calendar-days-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_64x644" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_64x644.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-database-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-database-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="adicionar-disciplina-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-disciplina-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="adicionar-estudante-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-estudante-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-imprimir-solido-laser1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-imprimir-solido-laser1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-imprimir-solido-fechado" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-imprimir-solido-fechado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="botao-imprimir-solido-aberto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botao-imprimir-solido-aberto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="adicionar-discipina-nuvem" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-discipina-nuvem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="adicionar-estudante-carregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-estudante-carregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="adicionar-estudante" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-estudante.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="adicionar-discipina-carregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-discipina-carregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+    <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-doughnut-chart-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-doughnut-chart-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-printer-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-printer-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-report-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-report-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-folder-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-folder-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-chalkboard-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-chalkboard-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="carros" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\carros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="marcacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\marcacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-graduate-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-graduate-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-table-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-table-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-graduate-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-graduate-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-pie-chart-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-pie-chart-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="trocas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\trocas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon_64x643" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon_64x643.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="pecas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\pecas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-apagar-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-apagar-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Pesquisar-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Pesquisar-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-bar-chart-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-bar-chart-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-day-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-day-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-days-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-days-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-bar-chart-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-bar-chart-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-address-card-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-address-card-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-folder-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-folder-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-printer-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-printer-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-editar-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-editar-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="seta_branca_direita" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\seta_branca_direita.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-id-card-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-id-card-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon_128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon_128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="oficina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\oficina.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon_64x642" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon_64x642.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-database-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-database-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="fundoAuto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\fundoAuto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-report-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-report-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="servicos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\servicos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="guardar-base-dados-regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\guardar-base-dados-regular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Registos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Registos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-printer-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-printer-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-table-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-table-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-novo-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-novo-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="return" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\return.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-book-green-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-book-green-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-id-card-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-id-card-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="logo_rangel_auto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\logo_rangel_auto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="pesquisar-negrito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\pesquisar-negrito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon_64x641" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon_64x641.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="porta-saida-aberta-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\porta-saida-aberta-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="editar-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\editar-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-chalkboard-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-chalkboard-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-sair1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-sair1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-days-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-days-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-table-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-table-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-book-green-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-book-green-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="cancelar-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\cancelar-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-bar-chart-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-bar-chart-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-pie-chart-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-pie-chart-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-pie-chart-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-pie-chart-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="pesquisar-recortado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\pesquisar-recortado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-day-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-day-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-day-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-day-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-bar-chart-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-bar-chart-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-report-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-report-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="calendario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\calendario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-folder-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-folder-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="pesquisar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\pesquisar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="staff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\staff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao_Editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao_Editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="porta-saida-aberta-solido-branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\porta-saida-aberta-solido-branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="faturacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\faturacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="importar-foto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\importar-foto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="funcionarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\funcionarios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-pie-chart-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-pie-chart-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-doughnut-chart-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-doughnut-chart-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-report-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-report-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-id-card-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-id-card-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-address-card-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-address-card-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-book-green-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-book-green-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-database-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-database-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-imprimir-solido-laser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-imprimir-solido-laser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="pagamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\pagamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-days-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-days-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-graduate-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-graduate-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-doughnut-chart-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-doughnut-chart-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-address-card-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-address-card-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-printer-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-printer-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="sair-seta-solida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\sair-seta-solida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-day-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-day-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-chalkboard-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-chalkboard-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-folder-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-folder-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-table-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-table-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon_64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-graduate-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-graduate-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="apagar-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\apagar-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-doughnut-chart-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-doughnut-chart-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-id-card-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-id-card-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-database-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-database-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-book-green-128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-book-green-128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Students watching webinar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Students watching webinar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-address-card-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-address-card-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-calendar-days-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-calendar-days-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon_64x644" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon_64x644.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="Icon-database-16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\Icon-database-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="adicionar-disciplina-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\adicionar-disciplina-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="adicionar-estudante-solido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\adicionar-estudante-solido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-imprimir-solido-laser1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-imprimir-solido-laser1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-imprimir-solido-fechado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-imprimir-solido-fechado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="botao-imprimir-solido-aberto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\botao-imprimir-solido-aberto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="adicionar-discipina-nuvem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\adicionar-discipina-nuvem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="adicionar-estudante-carregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\adicionar-estudante-carregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="adicionar-estudante" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\adicionar-estudante.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
+    <data name="adicionar-discipina-carregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\Resources\adicionar-discipina-carregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
+            Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+        </value>
+    </data>
 </root>

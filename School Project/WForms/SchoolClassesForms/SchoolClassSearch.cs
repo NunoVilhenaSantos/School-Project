@@ -130,7 +130,8 @@ public partial class SchoolClassSearch : Form
         // Create a new list to store the filtered results
 
         // Get the PropertyInfo object for the selected property of the SchoolClass type
-        var property = typeof(SchoolClass).GetProperty(selectedProperty);
+        var property = typeof(SchoolClass)
+            .GetProperty(selectedProperty ?? string.Empty);
 
 
         // Loop through all SchoolClass objects in the ListSchoolClasses collection

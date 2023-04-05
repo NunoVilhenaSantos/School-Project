@@ -30,9 +30,9 @@ public class Enrollment : INotifyPropertyChanged
     private static int _mCounter;
     private decimal? _grade;
     private int _studentId;
-    private Student _student;
+    private Student? _student;
     private int _courseId;
-    private Course _course;
+    private Course? _course;
 
     #endregion
 
@@ -63,7 +63,7 @@ public class Enrollment : INotifyPropertyChanged
         }
     }
 
-    public Student Student
+    public Student? Student
     {
         get => _student;
         set
@@ -85,7 +85,7 @@ public class Enrollment : INotifyPropertyChanged
         }
     }
 
-    public Course Course
+    public Course? Course
     {
         get => _course;
         set

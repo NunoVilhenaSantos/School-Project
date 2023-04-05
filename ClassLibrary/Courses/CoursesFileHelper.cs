@@ -26,7 +26,10 @@ public class CoursesFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(CoursesFilePath, FileMode.Create)) ;
+                   new FileStream(CoursesFilePath, FileMode.Create))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {
@@ -65,7 +68,10 @@ public class CoursesFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(CoursesFilePath, FileMode.OpenOrCreate)) ;
+                   new FileStream(CoursesFilePath, FileMode.OpenOrCreate))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {
@@ -93,7 +99,7 @@ public class CoursesFileHelper
         {
             myString = "Operação realizada com sucesso";
             Success = true;
-            
+
             return csvReader.GetRecords<Course>().ToList();
         }
     }

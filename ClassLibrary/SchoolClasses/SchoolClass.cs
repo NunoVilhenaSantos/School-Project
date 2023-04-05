@@ -76,7 +76,7 @@ public class SchoolClass : INotifyPropertyChanged
     private decimal? _classAverage;
     private decimal? _highestGrade;
     private decimal? _lowestGrade;
-    private List<Course> _coursesList = new();
+    private List<Course>? _coursesList = new();
 
     #endregion
 

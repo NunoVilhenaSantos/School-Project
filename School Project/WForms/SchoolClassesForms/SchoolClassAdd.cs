@@ -311,20 +311,18 @@ public partial class SchoolClassAdd : Form
         var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
 
         // Create a new list to store the filtered results
-        List<SchoolClass> filteredSchoolClass = new();
 
-        var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
-        {
-            if (property == null ||
-                property.GetValue(schoolClass).ToString() == "")
-                continue;
-
-            filteredSchoolClass.Add(schoolClass);
-        }
+        var property = typeof(SchoolClass)
+            .GetProperty(selectedProperty ?? string.Empty);
+        var filteredSchoolClass =
+            SchoolClasses.ListSchoolClasses
+                .Where(
+                    schoolClass => property != null &&
+                                   property
+                                       .GetValue(schoolClass)
+                                       .ToString() != "").ToList();
 
         _bSourceSearchList.DataSource = filteredSchoolClass;
-        //_bSourceSearchList.DataSource = Students.ListStudents.Select(s => s.GetType().GetProperty(selectedProperty).GetValue(s)).ToList();
 
         comboBoxSearchList.Refresh();
         dataGridViewSearch.Refresh();

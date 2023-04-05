@@ -34,7 +34,10 @@ public static class TeachersFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(TeachersFilePath, FileMode.Create)) ;
+                   new FileStream(TeachersFilePath, FileMode.Create))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {
@@ -80,7 +83,10 @@ public static class TeachersFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(TeachersFilePath, FileMode.OpenOrCreate)) ;
+                   new FileStream(TeachersFilePath, FileMode.OpenOrCreate))
+            {
+                ;
+            }
         }
         catch (IOException ex)
         {

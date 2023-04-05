@@ -275,17 +275,14 @@ public partial class DisciplineAdd : Form
         var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
 
         // Create a new list to store the filtered results
-        List<Course> filteredCourse = new();
 
-        var property = typeof(Course).GetProperty(selectedProperty);
-        foreach (var course in Courses.ListCourses)
-        {
-            if (property == null ||
-                property.GetValue(course).ToString() == "")
-                continue;
-
-            filteredCourse.Add(course);
-        }
+        var property = typeof(Course)
+            .GetProperty(selectedProperty ?? string.Empty);
+        var filteredCourse =
+            Courses.ListCourses
+                .Where(course => property != null &&
+                                 property.GetValue(course)
+                                     .ToString() != "").ToList();
 
         _bSourceSearchList.DataSource = filteredCourse;
 

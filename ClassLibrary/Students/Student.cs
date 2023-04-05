@@ -57,11 +57,11 @@ public class Student : INotifyPropertyChanged
     private int _idStudent;
     private string _name;
     private string _lastName;
-    private string? _address;
-    private string? _postalCode;
-    private string? _city;
-    private string? _phone;
-    private string? _email;
+    private string _address;
+    private string _postalCode;
+    private string _city;
+    private string _phone;
+    private string _email;
     private bool _active = true;
     private string _genre;
     private DateOnly _dateOfBirth;
@@ -70,7 +70,7 @@ public class Student : INotifyPropertyChanged
     private string _taxIdentificationNumber;
     private string _nationality;
     private string _birthplace;
-    private string? _photo;
+    private string _photo;
     private DateOnly _enrollmentDate;
     private List<Enrollment> _enrollments = new();
 
@@ -98,7 +98,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? Name
+    public string Name
     {
         get => _name;
         set
@@ -109,7 +109,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? LastName
+    public string LastName
     {
         get => _lastName;
         set
@@ -120,7 +120,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? Address
+    public string Address
     {
         get => _address;
         set
@@ -131,7 +131,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? PostalCode
+    public string PostalCode
     {
         get => _postalCode;
         set
@@ -142,7 +142,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? City
+    public string City
     {
         get => _city;
         set
@@ -153,7 +153,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? Phone
+    public string Phone
     {
         get => _phone;
         set
@@ -164,7 +164,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? Email
+    public string Email
     {
         get => _email;
         set
@@ -189,7 +189,7 @@ public class Student : INotifyPropertyChanged
     public static readonly List<string> Genreslist = new()
         {"Male", "Female", "Non Binary", "Prefer not to say"};
 
-    public string? Genre
+    public string Genre
     {
         get => _genre;
         set
@@ -211,12 +211,12 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? IdentificationNumber
+    public string IdentificationNumber
     {
         get => _identificationNumber;
         set
         {
-            if (value.Equals(_identificationNumber)) return;
+            if (value != null && value.Equals(_identificationNumber)) return;
             _identificationNumber = value;
             OnPropertyChanged();
         }
@@ -233,18 +233,18 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? TaxIdentificationNumber
+    public string TaxIdentificationNumber
     {
         get => _taxIdentificationNumber;
         set
         {
-            if (value.Equals(_taxIdentificationNumber)) return;
+            if (value != null && value.Equals(_taxIdentificationNumber)) return;
             _taxIdentificationNumber = value;
             OnPropertyChanged();
         }
     }
 
-    public string? Nationality
+    public string Nationality
     {
         get => _nationality;
         set
@@ -255,7 +255,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? Birthplace
+    public string Birthplace
     {
         get => _birthplace;
         set
@@ -266,7 +266,7 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public string? Photo
+    public string Photo
     {
         get => _photo;
         set
@@ -346,8 +346,10 @@ public class Student : INotifyPropertyChanged
 
     public int GetWorkHourLoad(Course course)
     {
-        var enrollment = Enrollments?.FirstOrDefault(e =>
-            e.Student.IdStudent == IdStudent && e.Course == course);
+        var enrollment = Enrollments?
+            .FirstOrDefault(
+                e => e.Student != null &&
+                     e.Student.IdStudent == IdStudent && e.Course == course);
 
         return enrollment == null ? 0 : enrollment.Course.WorkLoad;
     }
@@ -355,7 +357,9 @@ public class Student : INotifyPropertyChanged
     public int GetTotalWorkHourLoad()
     {
         var enrollment = Enrollments?
-            .Where(e => e.Student.IdStudent == IdStudent).ToList();
+            .Where(e => e.Student != null &&
+                        e.Student.IdStudent == IdStudent)
+            .ToList();
 
         return Enrollments?.Sum(enrollment => enrollment.Course.WorkLoad) ?? 0;
         /*
