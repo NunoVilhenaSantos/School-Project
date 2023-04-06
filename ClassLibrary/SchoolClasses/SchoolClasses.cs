@@ -313,9 +313,28 @@ public static class SchoolClasses
                 {
                     coursesCount++;
 
-                    studentsCount +=
-                        Enrollments.Enrollments.ListEnrollments?
-                            .Count(e => e.Course == course) ?? 0;
+                    var studentIds = Enrollments.Enrollments.ListEnrollments?
+                        .Where(e => e.Course == course)
+                        .Select(e => e.StudentId)
+                        .Distinct();
+
+                    studentsCount = studentIds?.Count() ?? 0;
+                    
+                    // var uniqueStudents = new HashSet<string>();
+                    //
+                    // foreach (var enrollment in Enrollments.Enrollments.ListEnrollments)
+                    // {
+                    //     if (enrollment.Course == course)
+                    //     {
+                    //         uniqueStudents.Add(enrollment.Student);
+                    //     }
+                    // }
+                    //
+                    // studentsCount += uniqueStudents.Count;
+
+                    // studentsCount +=
+                    //     Enrollments.Enrollments.ListEnrollments?
+                    //         .Count(e => e.Course == course) ?? 0;
                     // studentsCount +=
                     //     Enrollments.Enrollments.ListEnrollments?
                     //         .Count(e => e.Course == course);

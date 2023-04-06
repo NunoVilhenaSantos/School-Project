@@ -94,6 +94,7 @@ namespace School_Project.WForms.SchoolClassesForms
             transparentTabControl1 = new TransparentTabControl();
             tabPage4 = new TabPage();
             dataGridViewSearch = new DataGridView();
+            printDialog1 = new PrintDialog();
             tableLayoutPanelStudentData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalCourses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSchoolClassID).BeginInit();
@@ -534,6 +535,7 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             chartArea1.Name = "ChartArea1";
             chart2.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
             legend1.Name = "Legend1";
             chart2.Legends.Add(legend1);
             chart2.Location = new Point(721, 13);
@@ -542,7 +544,7 @@ namespace School_Project.WForms.SchoolClassesForms
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart2.Series.Add(series1);
-            chart2.Size = new Size(661, 263);
+            chart2.Size = new Size(682, 460);
             chart2.TabIndex = 7;
             chart2.Text = "chart2";
             // 
@@ -550,6 +552,7 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             chartArea2.Name = "ChartArea1";
             chart1.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
             legend2.Name = "Legend1";
             chart1.Legends.Add(legend2);
             chart1.Location = new Point(13, 13);
@@ -558,7 +561,7 @@ namespace School_Project.WForms.SchoolClassesForms
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             chart1.Series.Add(series2);
-            chart1.Size = new Size(661, 263);
+            chart1.Size = new Size(661, 460);
             chart1.TabIndex = 6;
             chart1.Text = "chart1";
             // 
@@ -601,6 +604,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonPrint.TabIndex = 1;
             buttonPrint.TextAlign = ContentAlignment.MiddleRight;
             buttonPrint.UseVisualStyleBackColor = true;
+            buttonPrint.Click += buttonPrint_Click;
             // 
             // panelBottom
             // 
@@ -857,6 +861,10 @@ namespace School_Project.WForms.SchoolClassesForms
             dataGridViewSearch.Size = new Size(1416, 486);
             dataGridViewSearch.TabIndex = 0;
             // 
+            // printDialog1
+            // 
+            printDialog1.UseEXDialog = true;
+            // 
             // SchoolClassAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -945,5 +953,6 @@ namespace School_Project.WForms.SchoolClassesForms
         private Button buttonSearch;
         private TabPage tabPage4;
         private DataGridView dataGridViewSearch;
+        private PrintDialog printDialog1;
     }
 }
