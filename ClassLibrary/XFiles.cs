@@ -817,7 +817,7 @@ public static class XFiles
         return true;
     }
 
-    private static void TryParseEnrollment(string[] campos)
+    private static void TryParseEnrollment(IReadOnlyList<string> campos)
     {
         if (!int.TryParse(campos[2], out var studentId) ||
             !int.TryParse(campos[3], out var courseId) ||
