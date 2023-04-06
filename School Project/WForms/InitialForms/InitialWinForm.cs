@@ -11,8 +11,6 @@ public partial class InitialWinForm : Form
 {
     private bool _closeFromUser;
     private SchoolContext _context;
-    private CultureInfo _culture = CultureInfo.InvariantCulture;
-
 
     //
     // Global Properties for the windows forms
@@ -27,6 +25,12 @@ public partial class InitialWinForm : Form
 
     private void WinFormInitial_Load(object sender, EventArgs e)
     {
+        //this.Show();
+        //this.ShowDialog();
+        this.ShowInTaskbar = true;
+        this.ShowIcon = true;
+        
+
         // try to read files if they exist
         var xFilesMessages = XFiles.ReadFromFiles(out var myString);
         if (!xFilesMessages)
@@ -60,6 +64,7 @@ public partial class InitialWinForm : Form
         _closeFromUser = true;
         //Application.DoEvents();
         //Close();
+        Application.ExitThread();
         Application.Exit();
     }
 
@@ -78,7 +83,7 @@ public partial class InitialWinForm : Form
         //buttonListagens.Image = Properties.Resources.Icon_printer_32x32;
         //buttonCloseProgram.Image = Properties.Resources.Icon_doughnut_chart_32x32;
         //pictureBox1.Image = Properties.Resources.escola-web;
-        //pictureBox1.Image = Properties.Resources.Students_watching_webinar;
+        pictureBox1.Image = Properties.Resources.Students_watching_webinar;
     }
 
 

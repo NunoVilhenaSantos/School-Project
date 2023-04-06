@@ -221,14 +221,15 @@ public class SchoolClass : INotifyPropertyChanged
     }
 
 
-    public int GetStudentsCount()
+    public void GetStudentsCount()
     {
-        //return CoursesList.Join(Enrollments.ListEnrollments?.Where(x=>x.Course)).Count() ?? 0;
-        return CoursesList.Join(Enrollments.Enrollments.ListEnrollments,
-                c => c.IdCourse,
-                e => e.CourseId,
-                (c, e) => e)
-            .Count();
+        if (Enrollments.Enrollments.ListEnrollments != null)
+            StudentsCount = CoursesList?.Join(
+                    Enrollments.Enrollments.ListEnrollments,
+                    c => c.IdCourse,
+                    e => e.CourseId,
+                    (c, e) => e)
+                .Count()??0;
 
         /*
         return CoursesList == null
@@ -241,9 +242,9 @@ public class SchoolClass : INotifyPropertyChanged
     }
 
 
-    public int GetWorkHourLoad()
+    public void GetWorkHourLoad()
     {
-        return CoursesList?.Sum(course => course.WorkLoad) ?? 0;
+        WorkHourLoad =  CoursesList?.Sum(course => course.WorkLoad) ?? 0;
         /*
         return CoursesList == null
             ? 0

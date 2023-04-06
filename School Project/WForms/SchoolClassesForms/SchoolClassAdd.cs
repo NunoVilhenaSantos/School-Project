@@ -749,8 +749,8 @@ public partial class SchoolClassAdd : Form
             checkedListBoxCourses.Invalidate();
             return;
         }
-
-        // Set the checked items in the checkedListBoxCourses control
+        
+        //Set the checked items in the checkedListBoxCourses control
         for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
         {
             var course = (Course) checkedListBoxCourses.Items[i];
@@ -758,6 +758,20 @@ public partial class SchoolClassAdd : Form
                 selectedSchoolClassCourses.Contains(course));
         }
 
+        // Create a dictionary of courses by their ID
+        var coursesById =
+            Courses.ListCourses.ToDictionary(c => c.IdCourse);
+
+        // Set the checked items in the checkedListBoxCourses control
+        foreach (var course in selectedSchoolClassCourses)
+        {
+            if (!coursesById.TryGetValue(course.IdCourse, out var courseId))
+                continue;
+            
+            var index = checkedListBoxCourses.Items.IndexOf(courseId);
+            // if (index >= 0)
+            //     checkedListBoxCourses.SetItemChecked(index, true);
+        }
         // Update the previous row index
         _previousRowIndex = dataGridViewSchoolClasses.CurrentCell.RowIndex;
     }
@@ -799,9 +813,9 @@ public partial class SchoolClassAdd : Form
             checkedListBoxStudents.SetItemChecked(c.IdCourse - 1, true);
 
         numericUpDownTotalNumberEnrolledStudents.Value =
-            SchoolClasses
+            (decimal) SchoolClasses
                 .ListSchoolClasses[courseToView.Index]
-                .GetStudentsCount();
+                .StudentsCount;
 
         Console.WriteLine("Testes de Debug");
     }
@@ -877,61 +891,6 @@ public partial class SchoolClassAdd : Form
             buttonAddCourse.Visible = false;
             buttonAddStudent.Visible = false;
         }
-
-
-        //comboBoxSearchList.Visible = true;
-        //comboBoxSearchOptions.Visible = true;
-        //buttonAddCourse.Visible = false;
-        //buttonAddStudent.Visible = false;
-
-
-        /*
-        // Get the left distance of groupBox1 from the left edge of the form
-        var groupBoxLeftDistance = this.Left-groupBox1.Left ;
-
-        // Get the left distance of groupBox1 from the left edge of the form
-        var groupBoxRightDistance = groupBox1.Right -schoolClassFormWidth;
-
-        if (transparentTabControl1.SelectedTab == transparentTabControl1.TabPages[0])
-        {
-            //this.Width= groupBox1.Left + groupBox1.Width+ groupBox1.Left;
-            this.Width+=groupBoxRightDistance+groupBoxLeftDistance;
-        }
-        else { this.Width = schoolClassFormWidth; }
-        */
-
-
-        /*
-        // Get the left distance of groupBox1 from the left edge of the form
-        var groupBoxLeftDistance = this.Left - groupBox1.Left;
-
-        // Get the right distance of groupBox1 from the right edge of the form
-        var groupBoxRightDistance = this.Left + this.Width - groupBox1.Right;
-
-        // Get the distance from the left side of the form to the right side of the groupbox
-        var distanceToLeftOfGroupBox =
-            groupBox1.Left + groupBox1.Width - this.Left;
-
-        if (transparentTabControl1.SelectedTab ==
-            transparentTabControl1.TabPages[0])
-        {
-            // Add the total horizontal distance of groupBox1
-            // from the left edge to the right edge of the form
-            // to the current width of the form
-            this.Width = groupBoxLeftDistance + groupBox1.Width +  groupBox1.Left;
-            // this.Width = groupBox1.Left + groupBox1.Width + this.Left + this.Width - groupBox1.Right;
-            // this.Width = groupBox1.Left + groupBox1.Width + groupBox1.Left;
-            // this.Width = distanceToLeftOfGroupBox + groupBox1.Left;
-        }
-        else
-        {
-            // Restore the original width of the form
-            // this.Width = schoolClassFormWidth;
-
-            // Restore the original width of the form
-            this.Width = schoolClassFormWidth;
-        }
-        */
     }
 
     private void TransparentTabControl1_TabIndexChanged(

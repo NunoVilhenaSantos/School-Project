@@ -32,15 +32,16 @@ public partial class SchoolClassEdit : Form
         //
         // inserir os dados nas caixas de textos
         //
+        
         numericUpDownSchoolClassID.Value =
             _schoolClassToEdit.IdSchoolClass;
         textBoxSchoolClassAcronym.Text = _schoolClassToEdit.ClassAcronym;
         textBoxSchoolClassName.Text = _schoolClassToEdit.ClassName;
 
         numericUpDownTotalNumberEnrolledStudents.Value =
-            _schoolClassToEdit.GetStudentsCount();
-        numericUpDownWorkingHours.Value = _schoolClassToEdit.GetWorkHourLoad();
-        numericUpDownTotalCourses.Value = _schoolClassToEdit.GetCoursesCount();
+            (decimal) _schoolClassToEdit.StudentsCount;
+        numericUpDownWorkingHours.Value = (decimal) _schoolClassToEdit.WorkHourLoad;
+        numericUpDownTotalCourses.Value = (decimal) _schoolClassToEdit.CoursesCount;
 
         dateTimePickerBeginCourse.Value =
             _schoolClassToEdit.StartDate.ToDateTime(

@@ -134,7 +134,8 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
+            fileStream = new FileStream(SchoolClassesFile, FileMode.Create,
+                FileAccess.ReadWrite);
         }
         catch (IOException ex)
         {
@@ -153,21 +154,6 @@ public static class XFiles
         //fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
-        // Write the header line
-        // const string headerLine =
-        //     "IdSchoolClass;" +
-        //     "ClassAcronym;" +
-        //     "ClassName;" +
-        //     "StartDate;" +
-        //     "EndDate;" +
-        //     "StartHour;" +
-        //     "EndHour;" +
-        //     "Location;" +
-        //     "Type;" +
-        //     "Area;" +
-        //     "CoursesList";
-        // streamWriter.WriteLine(headerLine);
-
         // Read the public properties to build the header line
         var properties = typeof(SchoolClass)
             .GetProperties(
@@ -182,35 +168,33 @@ public static class XFiles
         // Write the header line
         streamWriter.WriteLine(propertyNames);
 
-        foreach (var line in from schoolClass in
-                     SchoolClasses.SchoolClasses.ListSchoolClasses
-                 let line = string.Empty
-                 select $"{schoolClass.IdSchoolClass};" +
-                        $"{schoolClass.ClassAcronym};" +
-                        $"{schoolClass.ClassName};" +
-                        $"{schoolClass.StartDate};" +
-                        $"{schoolClass.EndDate};" +
-                        $"{schoolClass.StartHour};" +
-                        $"{schoolClass.EndHour};" +
-                        $"{schoolClass.Location};" +
-                        $"{schoolClass.Type};" +
-                        $"{schoolClass.Area}" +
-                        string.Join(";",
-                            schoolClass.CoursesList != null,
-                            schoolClass.CoursesList
-                                .Select(c => c.IdCourse)))
-            // if (schoolClass.CoursesList != null)
-            // {
-            //     var coursesLine =
-            //         schoolClass.CoursesList.Select(c =>
-            //             $"{c.IdCourse}");
-            //     line += $";{string.Join(";", coursesLine)}";
-            // }
-            streamWriter.WriteLine(line);
+        foreach (var schoolClass in SchoolClasses.SchoolClasses
+                     .ListSchoolClasses)
+        {
+            var line = string.Empty;
+            line =
+                $"{schoolClass.IdSchoolClass};" +
+                $"{schoolClass.ClassAcronym};" +
+                $"{schoolClass.ClassName};" +
+                $"{schoolClass.StartDate};" +
+                $"{schoolClass.EndDate};" +
+                $"{schoolClass.StartHour};" +
+                $"{schoolClass.EndHour};" +
+                $"{schoolClass.Location};" +
+                $"{schoolClass.Type};" +
+                $"{schoolClass.Area}";
 
-        //streamWriter.Flush();
-        //fileStream.Flush();
-        //fileStream.Close();
+            if (schoolClass.CoursesList != null)
+            {
+                var coursesLine =
+                    schoolClass.CoursesList.Select(c =>
+                        $"{c.IdCourse}");
+                line += $";{string.Join(";", coursesLine)}";
+            }
+
+            streamWriter.WriteLine(line);
+        }
+
         streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
@@ -229,7 +213,8 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(TeachersFile, FileMode.Create);
+            fileStream = new FileStream(TeachersFile, FileMode.Create,
+                FileAccess.ReadWrite);
         }
         catch (IOException ex)
         {
@@ -244,15 +229,9 @@ public static class XFiles
                        e.Message;
             return false;
         }
+
         //fileStream = new FileStream(TeachersFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
-
-        // const string header =
-        //     "TeacherId;Name;LastName;Address;Phone;Email;" +
-        //     "Active;Genre;DateOfBirth;IdentificationNumber;" +
-        //     "ExpirationDateIn;TaxIdentificationNumber;" +
-        //     "Nationality;Birthplace;Photo;IdCourse";
-        // streamWriter.Write(header);
 
         // Read the public properties to build the header line
         var properties =
@@ -275,6 +254,8 @@ public static class XFiles
                         $"{teacher.Name};" +
                         $"{teacher.LastName};" +
                         $"{teacher.Address};" +
+                        $"{teacher.PostalCode};" +
+                        $"{teacher.City};" +
                         $"{teacher.Phone};" +
                         $"{teacher.Email};" +
                         $"{teacher.Active};" +
@@ -286,14 +267,14 @@ public static class XFiles
                         $"{teacher.Nationality};" +
                         $"{teacher.Birthplace};" +
                         $"{teacher.Photo};" +
+                        $"{teacher.CoursesCount};" +
+                        $"{teacher.TotalWorkHoursLoad};" +
                         string.Join(";",
                             teacher.Courses?
                                 .Select(c => c.IdCourse)))
-            streamWriter.Write(line);
+            streamWriter.WriteLine(line);
 
-        //streamWriter.Flush();
-        //fileStream.Flush();
-        //fileStream.Close();
+
         streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
@@ -311,7 +292,8 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(CoursesFile, FileMode.Create);
+            fileStream = new FileStream(CoursesFile, FileMode.Create,
+                FileAccess.ReadWrite);
         }
         catch (IOException ex)
         {
@@ -326,6 +308,7 @@ public static class XFiles
                        e.Message;
             return false;
         }
+
         // fileStream = new FileStream(CoursesFile, FileMode.Create);
         StreamWriter streamWriter =
             new(fileStream, Encoding.UTF8);
@@ -354,8 +337,6 @@ public static class XFiles
             streamWriter.WriteLine(line);
 
         //streamWriter.Flush();
-        //fileStream.Flush();
-        //fileStream.Close();
         streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
@@ -373,7 +354,8 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
+            fileStream = new FileStream(EnrollmentsFile, FileMode.Create,
+                FileAccess.ReadWrite);
         }
         catch (IOException ex)
         {
@@ -388,6 +370,7 @@ public static class XFiles
                        e.Message;
             return false;
         }
+
         // fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
@@ -418,8 +401,6 @@ public static class XFiles
             streamWriter.WriteLine(line);
 
         //streamWriter.Flush();
-        //fileStream.Flush();
-        //fileStream.Close();
         streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
@@ -437,7 +418,10 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(StudentsFile, FileMode.Create);
+            fileStream = new FileStream(
+                StudentsFile,
+                FileMode.Create,
+                FileAccess.ReadWrite);
         }
         catch (IOException ex)
         {
@@ -452,6 +436,7 @@ public static class XFiles
                        e.Message;
             return false;
         }
+
         // fileStream = new FileStream(StudentsFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
@@ -468,7 +453,7 @@ public static class XFiles
 
         // Write the header line
         streamWriter.WriteLine(propertyNames);
-        
+
         foreach (var line in
                  Students.Students.ListStudents
                      .Select(student =>
@@ -495,8 +480,6 @@ public static class XFiles
             streamWriter.WriteLine(line);
 
         //streamWriter.Flush();
-        //fileStream.Flush();
-        //fileStream.Close();
         streamWriter.Close();
 
         myString = "Operação realizada com sucesso";
@@ -604,7 +587,11 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(CoursesFile, FileMode.OpenOrCreate);
+            fileStream =
+                new FileStream(
+                    CoursesFile,
+                    FileMode.OpenOrCreate,
+                    FileAccess.Read);
         }
         catch (IOException ex)
         {
@@ -619,6 +606,7 @@ public static class XFiles
                        e.Source + " | " + e.Message;
             return false;
         }
+
         // fileStream = new FileStream(CoursesFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
@@ -667,7 +655,11 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(StudentsFile, FileMode.OpenOrCreate);
+            fileStream =
+                new FileStream(
+                    StudentsFile,
+                    FileMode.OpenOrCreate,
+                    FileAccess.Read);
         }
         catch (IOException ex)
         {
@@ -682,6 +674,7 @@ public static class XFiles
                        e.Source + " | " + e.Message;
             return false;
         }
+
         // fileStream = new FileStream(StudentsFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
@@ -752,7 +745,11 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(EnrollmentsFile, FileMode.OpenOrCreate);
+            fileStream =
+                new FileStream(
+                    EnrollmentsFile,
+                    FileMode.OpenOrCreate,
+                    FileAccess.Read);
         }
         catch (IOException ex)
         {
@@ -767,6 +764,7 @@ public static class XFiles
                        e.Source + " | " + e.Message;
             return false;
         }
+
         // fileStream = new FileStream(EnrollmentsFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
@@ -777,41 +775,40 @@ public static class XFiles
 
             // validating the line, if is not null or empty,
             // else will continue reading the file
-            if (string.IsNullOrEmpty(line)) continue;
+            //if (string.IsNullOrEmpty(line)) continue;
+            if (string.IsNullOrWhiteSpace(line)) continue;
 
             // split the line into an array of strings
             var campos = line.Split(';');
 
             // validating the line, if has at least 5 fields,
             // less than 5 will continue reading the file
-            if (campos.Length < 4) continue;
-            if (campos[0].ToLower().Contains("id")) continue;
+            if (campos.Length < 4 ||
+                campos[0].Equals("id", StringComparison.OrdinalIgnoreCase))
+                continue;
 
             //
             //
-            // public int IdEnrollment { get; }
-            // public decimal? Grade { get; set; }
-            // public int StudentId { get; set; }
-            // public Student Student { get; set; }
-            // public int CourseId { get; set; }
-            // public Course Course { get; set; }
-            //
-            //
-            //_ = int.TryParse(campos[0], out var idEnrollment);
-            _ = decimal.TryParse(campos[1], out var grade);
-            _ = int.TryParse(campos[2], out var studentId);
-            _ = int.TryParse(campos[3], out var courseId);
+            // ...
+            // Use a HashSet to store the course IDs that each teacher teaches
+            HashSet<int> courseIds = null;
+            courseIds = new HashSet<int>();
 
-            // verificar este ciclo porque esta adicionar todos tem que
-            // adicionar na lista deste estudante o que lhe pertence
-            Enrollments.Enrollments.AddEnrollment(
-                // IdEnrollment=idEnrollment,
-                grade,
-                studentId,
-                //Student = student,
-                courseId
-                //Course = course
-            );
+            HashSet<int> studentIds = null;
+            studentIds = new HashSet<int>();
+
+
+            // Loop through courses once and add them to a dictionary with the course ID as the key
+            var courses =
+                Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
+
+            // Loop through courses once and add them to a dictionary with the course ID as the key
+            var students =
+                Students.Students.ListStudents.ToDictionary(s => s.IdStudent);
+
+            // ...
+
+            TryParseEnrollment(campos);
         }
 
         streamReader.Close();
@@ -820,7 +817,32 @@ public static class XFiles
         return true;
     }
 
-// 4th file to read are the school-classes file
+    private static void TryParseEnrollment(string[] campos)
+    {
+        if (!int.TryParse(campos[2], out var studentId) ||
+            !int.TryParse(campos[3], out var courseId) ||
+            !decimal.TryParse(campos[1], out var grade)) return;
+
+        var student =
+            Students.Students.ListStudents
+                .FirstOrDefault(s => s.IdStudent == studentId);
+        var course =
+            Courses.Courses.ListCourses
+                .FirstOrDefault(c => c.IdCourse == courseId);
+
+        if (student != null && course != null)
+        {
+            Enrollments.Enrollments.AddEnrollment(
+                grade,
+                studentId,
+                courseId,
+                student,
+                course
+            );
+        }
+    }
+
+    // 4th file to read are the school-classes file
     private static bool ReadSchoolClassesFromFile(out string myString)
     {
         //
@@ -833,7 +855,10 @@ public static class XFiles
         try
         {
             fileStream =
-                new FileStream(SchoolClassesFile, FileMode.OpenOrCreate);
+                new FileStream(
+                    SchoolClassesFile,
+                    FileMode.OpenOrCreate,
+                    FileAccess.Read);
         }
         catch (IOException ex)
         {
@@ -848,6 +873,7 @@ public static class XFiles
                        e.Source + " | " + e.Message;
             return false;
         }
+
         //fileStream = new FileStream(SchoolClassesFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
@@ -875,23 +901,39 @@ public static class XFiles
             // cycle to evaluate which students are select and add it
             //
             // ---------------------------------------------------------
-
-            //
-            // temp variable of the class student to
-            // retain the students for studentForValidation
-            //
-            List<Course>? coursesList = new();
-
-            // validating the line,
-            // if has more than 3 fields,
-            // will read the disciplines
+            // ...
+            // Use a HashSet to store the course IDs that each teacher teaches
+            HashSet<int> courseIds = null;
             if (campos.Length > 9)
-                foreach (var c in Courses.Courses.ListCourses)
-                    for (var index = 10; index < campos.Length; index++)
+            {
+                courseIds = new HashSet<int>();
+                for (var i = 10; i < campos.Length; i++)
+                {
+                    if (int.TryParse(campos[i], out var courseId))
                     {
-                        int.TryParse(campos[index], out var idCourse);
-                        if (c.IdCourse == idCourse) coursesList.Add(c);
+                        courseIds.Add(courseId);
                     }
+                }
+            }
+
+            // Loop through courses once and add them to a dictionary with the course ID as the key
+            var courses =
+                Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
+
+            // Loop through course IDs that teacher teaches and look up corresponding course object in dictionary
+            var coursesList = new List<Course>();
+            if (courseIds != null)
+            {
+                foreach (var courseId in courseIds)
+                {
+                    if (courses.TryGetValue(courseId, out Course course))
+                    {
+                        coursesList.Add(course);
+                    }
+                }
+            }
+            // ...
+
 
             _ = int.TryParse(campos[0], out var id);
             _ = DateOnly.TryParse(campos[3], out var startDate);
@@ -928,7 +970,7 @@ public static class XFiles
     }
 
 
-// 5th file to read are the teachers file
+    // 5th file to read are the teachers file
     private static bool ReadTeachersInFile(out string myString)
     {
         //
@@ -940,7 +982,10 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(TeachersFile, FileMode.OpenOrCreate);
+            fileStream = new FileStream(
+                TeachersFile,
+                FileMode.OpenOrCreate,
+                FileAccess.Read);
         }
         catch (IOException ex)
         {
@@ -955,6 +1000,7 @@ public static class XFiles
                        e.Source + " | " + e.Message;
             return false;
         }
+
         // fileStream = new FileStream(TeachersFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
@@ -983,22 +1029,48 @@ public static class XFiles
             //
             // ---------------------------------------------------------
 
-            //
-            // temp variable of the class student to
-            // retain the students for studentForValidation
-            //
-            List<Course> coursesList = new();
+            // ...
+            // Use a HashSet to store the course IDs that each teacher teaches
+            HashSet<int> courseIds = null;
+            if (campos.Length > 18)
+            {
+                courseIds = new HashSet<int>();
+                for (var i = 19; i < campos.Length; i++)
+                {
+                    if (int.TryParse(campos[i], out var courseId))
+                    {
+                        courseIds.Add(courseId);
+                    }
+                }
+            }
 
+            // Loop through courses once and add them to a dictionary with the course ID as the key
+            var courses =
+                Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
+
+            // Loop through course IDs that teacher teaches and look up corresponding course object in dictionary
+            var coursesList = new List<Course>();
+            if (courseIds != null)
+            {
+                foreach (var courseId in courseIds)
+                {
+                    if (courses.TryGetValue(courseId, out Course course))
+                    {
+                        coursesList.Add(course);
+                    }
+                }
+            }
+            // ...
             // validating the line,
             // if has more than 3 fields,
             // will read the disciplines
-            if (campos.Length > 18)
-                foreach (var c in Courses.Courses.ListCourses)
-                    for (var index = 19; index < campos.Length; index++)
-                    {
-                        _ = int.TryParse(campos[index], out index);
-                        if (c.IdCourse == index) coursesList.Add(c);
-                    }
+            // if (campos.Length > 18)
+            //     foreach (var c in Courses.Courses.ListCourses)
+            //         for (var index = 19; index < campos.Length; index++)
+            //         {
+            //             _ = int.TryParse(campos[index], out index);
+            //             if (c.IdCourse == index) coursesList.Add(c);
+            //         }
 
             _ = int.TryParse(campos[0], out var id);
             _ = bool.TryParse(campos[8], out var active);

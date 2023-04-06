@@ -16,14 +16,13 @@ public static class TeachersFileHelper
 
     #region Properties
 
-    private static readonly string TeachersFilePath =
-        XFiles.FilesFolder + "teachers.csv";
+    private const string TeachersFilePath = XFiles.FilesFolder + "teachers.csv";
 
     #endregion
 
 
     public static void WriteTeachersToFile(
-        out bool sucess, out string myString)
+        out bool success, out string myString)
     {
         //
         // constructor for the reading files
@@ -31,26 +30,23 @@ public static class TeachersFileHelper
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using (var fileStream =
-                   new FileStream(TeachersFilePath, FileMode.Create))
-            {
-                ;
-            }
+            fileStream = new FileStream(TeachersFilePath, FileMode.Create);
         }
         catch (IOException ex)
         {
             myString = "Error accessing the file: " + ex.Source + " | " +
                        ex.Message;
-            sucess = false;
+            success = false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
-            sucess = false;
+            success = false;
         }
 
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -58,17 +54,14 @@ public static class TeachersFileHelper
             Delimiter = ";"
         };
 
-        using (var fileStream =
-               new FileStream(TeachersFilePath, FileMode.Create))
-        using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
-        using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+        fileStream = new FileStream(TeachersFilePath, FileMode.Create);
+        var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
+        var csvWriter = new CsvWriter(streamWriter, csvConfig);
 
-        {
-            csvWriter.WriteRecords(Teachers.TeachersList);
+        csvWriter.WriteRecords(Teachers.TeachersList);
 
-            myString = "Operação realizada com sucesso";
-            sucess = true;
-        }
+        myString = "Operação realizada com sucesso";
+        success = true;
     }
 
     public static List<Teacher> ReadTeachersFromFile(
@@ -80,13 +73,11 @@ public static class TeachersFileHelper
         // and also returning the messages
         //
 
+        FileStream fileStream;
         try
         {
-            using (var fileStream =
-                   new FileStream(TeachersFilePath, FileMode.OpenOrCreate))
-            {
-                ;
-            }
+            fileStream =
+                new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
         }
         catch (IOException ex)
         {
@@ -107,15 +98,13 @@ public static class TeachersFileHelper
             Delimiter = ";"
         };
 
-        using (var fileStream =
-               new FileStream(TeachersFilePath, FileMode.OpenOrCreate))
-        using (var streamReader = new StreamReader(fileStream))
-        using (var csvReader = new CsvReader(streamReader, csvConfig))
-        {
-            myString = "Operação realizada com sucesso";
-            sucess = true;
+        fileStream = new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
+        var streamReader = new StreamReader(fileStream);
+        var csvReader = new CsvReader(streamReader, csvConfig);
 
-            return csvReader.GetRecords<Teacher>().ToList();
-        }
+        myString = "Operação realizada com sucesso";
+        sucess = true;
+
+        return csvReader.GetRecords<Teacher>().ToList();
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace ClassLibrary.Enrollments;
+﻿using ClassLibrary.Courses;
+using ClassLibrary.Students;
+
+namespace ClassLibrary.Enrollments;
 
 public static class Enrollments
 {
@@ -56,6 +59,20 @@ public static class Enrollments
         });
     }
 
+
+    public static void AddEnrollment(
+        decimal grade, int studentId, int courseId,
+        Student student, Course course)
+    {
+        ListEnrollments.Add(new Enrollment
+        {
+            Grade = grade,
+            StudentId = studentId,
+            Student = student,
+            CourseId = courseId,
+            Course = course
+        });
+    }
 
     /// <summary>
     ///     Deleting an enrollment
