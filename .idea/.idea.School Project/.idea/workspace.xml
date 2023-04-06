@@ -10,19 +10,26 @@
   <component name="ChangeListManager">
     <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/XFiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/XFiles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/Courses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/Courses.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/bin/Debug/net7.0/ClassLibrary.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ClassLibrary.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ref/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/ref/ClassLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/refint/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/Debug/net7.0/refint/ClassLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/ClassLibrary.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,31 +75,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.33657858&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ics&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.33657858",
+    "com.google.cloudcode.ide_session_index": "20230406_0001",
+    "full.screen.before.presentation.mode": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "ics",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\nunov\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\nunov\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\nunov\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\nunov\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\nunov\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\nunov\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.School Project">
     <configuration name="School Project" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -182,6 +190,7 @@
       <workItem from="1680734534163" duration="11047000" />
       <workItem from="1680810578363" duration="37000" />
       <workItem from="1680810643533" duration="1001000" />
+      <workItem from="1680811691569" duration="4409000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>
@@ -298,7 +307,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs</url>
-          <line>505</line>
+          <line>495</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\CoursesForms\DisciplineAdd.cs" initialLine="490" containingFunctionPresentation="method 'UpdateSelectedCourse'">
             <startOffsets>
               <option value="15488" />
@@ -311,7 +320,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs</url>
-          <line>520</line>
+          <line>510</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\CoursesForms\DisciplineAdd.cs" initialLine="505" containingFunctionPresentation="method 'UpdateSelectedCourse'">
             <startOffsets>
               <option value="16020" />
@@ -324,7 +333,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs</url>
-          <line>517</line>
+          <line>507</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\CoursesForms\DisciplineAdd.cs" initialLine="505" containingFunctionPresentation="method 'UpdateSelectedCourse'">
             <startOffsets>
               <option value="15968" />

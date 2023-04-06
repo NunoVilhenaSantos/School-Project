@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ClassLibrary.Courses;
+using ClassLibrary.Teachers;
 
 namespace ClassLibrary.SchoolClasses;
 
@@ -188,7 +189,7 @@ public class SchoolClass : INotifyPropertyChanged
     //
     // para avaliar se são precisos
     //
-    //public List<Student>? StudentsList { get; set; } = new();
+    //public List<Teacher>? TeachersList { get; set; } = new();
     //public List<Enrollment> Enrollments { get; set; } = new();
 
     #endregion
@@ -229,7 +230,7 @@ public class SchoolClass : INotifyPropertyChanged
                     c => c.IdCourse,
                     e => e.CourseId,
                     (c, e) => e)
-                .Count()??0;
+                .Count() ?? 0;
 
         /*
         return CoursesList == null
@@ -244,7 +245,7 @@ public class SchoolClass : INotifyPropertyChanged
 
     public void GetWorkHourLoad()
     {
-        WorkHourLoad =  CoursesList?.Sum(course => course.WorkLoad) ?? 0;
+        WorkHourLoad = CoursesList?.Sum(course => course.WorkLoad) ?? 0;
         /*
         return CoursesList == null
             ? 0
@@ -256,31 +257,49 @@ public class SchoolClass : INotifyPropertyChanged
     }
 
 
-    //public void ToObtainValuesForCalculatedFields()
-    //{
-    //    //return CoursesList?.Count ?? 0;
-    //    /*
-    //    return CoursesList == null
-    //        ? 0
-    //        : CoursesList.Sum(course => course.Enrollments.Count);
+    public void ToObtainValuesForCalculatedFields()
+    {
+        // int? CoursesCount
+        // int? WorkHourLoad
+        // int? StudentsCount
+        // decimal? ClassAverage
+        // decimal? HighestGrade
+        // decimal? LowestGrade
 
-    //    if (CoursesList == null) return 0;
-    //    return CoursesList.Sum(course => course.Enrollments.Count);
-    //    */
+        CoursesCount = CoursesList?.Count ?? 0;
+        CoursesCount = CoursesList == null
+            ? 0
+            : CoursesList.Count;
+        var enrollments = Enrollments.Enrollments.ListEnrollments;
+        var courses = CoursesList;
 
-    //    CoursesCount = CoursesList?.Sum(course => course.Enrollments.Count) ?? 0;
-    //    WorkHourLoad= CoursesList?.Sum(course => course.WorkLoad) ?? 0;
-    //    StudentsCount= CoursesList?.Count ?? 0;
+        var query = from enrollment in enrollments
+            join course in courses on enrollment.CourseId equals course.IdCourse
+            select new
+            {
+                enrollment,
+                course
+            };
 
-    //    ClassAverage = CoursesList?.Where(course => course.IdCourse == IdCourse)
-    //                               .SelectMany(course => course.Enrollments)
-    //                               .Average(enrollment => enrollment.Enrollments)
-    //                               ?? 0;
-    //    HighestGrade = 0;
-    //    LowestGrade = 0;
+        var totalWorkHourLoad = courses.Sum(course => course?.WorkLoad) ?? 0;
+        var studentsCount = enrollments?.Count ?? 0;
+        var classAverage = query.Average(ec => ec.enrollment.Grade) ?? 0;
+        var highestGrade = query.Max(ec => ec.enrollment.Grade) ?? 0;
+        var lowestGrade = query.Min(ec => ec.enrollment.Grade) ?? 0;
 
+        var studentAverages =
+            query
+                .GroupBy(ec => ec.enrollment.StudentId)
+                .Select(g => new
+                {
+                    StudentId = g.Key,
+                    AverageGrade = g.Average(ec => ec.enrollment.Grade)
+                });
 
-    //}
+        var studentCountAverage =
+            studentAverages.Average(sa => sa.AverageGrade) ?? 0;
+        var studentCount = studentAverages.Count();
+    }
 
     #endregion
 }

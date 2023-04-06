@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Windows.Forms.DataVisualization.Charting;
 using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
 using ClassLibrary.SchoolClasses;
@@ -122,9 +123,9 @@ public partial class DisciplineAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
+        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -134,9 +135,9 @@ public partial class DisciplineAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Courses.AddCourse(
-            (int) numericUpDownDisciplineID.Value,
+            (int)numericUpDownDisciplineID.Value,
             textBoxDisciplineName.Text,
-            (int) numericUpDownNumberHours.Value,
+            (int)numericUpDownNumberHours.Value,
             0, null
         );
 
@@ -167,17 +168,38 @@ public partial class DisciplineAdd : Form
     private void UpdateLists()
     {
         //
-        // list box has a problem
+        Courses.GetStudentsCount();
+
         //
-        // that's why it is necessary to clear the list with a null and
-        // then re-associate the class again and that's how it works.
+        // first chart
         //
-        //listBoxDisciplines.DataSource = null;
-        listBoxDisciplines.DataSource = Courses.ListCourses;
+        // chart1.Series.Clear();
+        // chart1.Series.Add("Students Count");
+        // chart1.Series["Students Count"].ChartType = SeriesChartType.Column;
         //
-        // activate this option if you want a specific value else it will use the override method to string
-        //listBoxDisciplines.DisplayMember = "Name";
-        listBoxDisciplines.ClearSelected();
+        // foreach (var course in Courses.ListCourses)
+        // {
+        //     chart1.Series["Students Count"].Points.AddXY(course.Name, course.StudentsCount);
+        // }
+        //
+        // chart1.DataBind();
+
+
+        chart1.Series.Clear();
+        chart1.Series.Add("Students Count");
+        chart1.Series.Add("Average Grade");
+        chart1.Series["Students Count"].ChartType = SeriesChartType.Column;
+        chart1.Series["Average Grade"].ChartType = SeriesChartType.Line;
+
+        foreach (var course in Courses.ListCourses)
+        {
+            chart1.Series["Students Count"].Points.AddXY(course.Name, course.StudentsCount);
+            var courseEnrollments = Enrollments.ListEnrollments.Where(e => e.CourseId == course.IdCourse);
+            var courseAverageGrade = courseEnrollments.Any() ? courseEnrollments.Average(e => e.Grade) : 0;
+            chart1.Series["Average Grade"].Points.AddXY(course.Name, courseAverageGrade);
+        }
+
+        chart1.DataBind();
 
         // *
         // * 1st 
@@ -360,7 +382,7 @@ public partial class DisciplineAdd : Form
         //
 
         // Get the selected school class from the data source
-        var selectedCourse = (Course) _bSListCourses.Current;
+        var selectedCourse = (Course)_bSListCourses.Current;
 
         // Get the IdSchoolClass from the selected school class from the data source
         var index = selectedCourse.IdCourse;
@@ -416,7 +438,7 @@ public partial class DisciplineAdd : Form
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
         // Get the selected school class from the data source
-        var selectedCourse = (Course) _bSListCourses.Current;
+        var selectedCourse = (Course)_bSListCourses.Current;
 
         if (selectedCourse == null)
         {
@@ -487,7 +509,7 @@ public partial class DisciplineAdd : Form
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var selectedCourse = (Course) _bSListCourses.Current;
+        var selectedCourse = (Course)_bSListCourses.Current;
 
         // Get the students for the selected course from the data source
         var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments
@@ -512,7 +534,7 @@ public partial class DisciplineAdd : Form
         // Set the checked items in the checkedListBoxStudents control
         for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
         {
-            var student = (Student) checkedListBoxStudents.Items[i];
+            var student = (Student)checkedListBoxStudents.Items[i];
             checkedListBoxStudents.SetItemChecked(i,
                 selectedCoursesEnrollmentsStudents.Contains(student));
         }
@@ -642,7 +664,7 @@ public partial class DisciplineAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos estudante(s) para adicionar, vamos lá.");
-        var courseToAdd = (Course) _bSListCourses.Current;
+        var courseToAdd = (Course)_bSListCourses.Current;
         ;
 
         //
@@ -651,22 +673,22 @@ public partial class DisciplineAdd : Form
         List<Enrollment> newEnrollmentList = new();
 
         foreach (var a in Students.ListStudents)
-        foreach (var t in checkedListBoxStudents.CheckedItems)
-            if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
-            {
-                newEnrollmentList.Add(
-                    new Enrollment
-                    {
-                        Grade = null,
-                        StudentId = toVerify.IdStudent,
-                        Student = toVerify,
-                        CourseId = courseToAdd.IdCourse,
-                        Course = courseToAdd
-                    }
-                );
-                Enrollments.AddEnrollment(toVerify.IdStudent,
-                    courseToAdd.IdCourse);
-            }
+            foreach (var t in checkedListBoxStudents.CheckedItems)
+                if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
+                {
+                    newEnrollmentList.Add(
+                        new Enrollment
+                        {
+                            Grade = null,
+                            StudentId = toVerify.IdStudent,
+                            Student = toVerify,
+                            CourseId = courseToAdd.IdCourse,
+                            Course = courseToAdd
+                        }
+                    );
+                    Enrollments.AddEnrollment(toVerify.IdStudent,
+                        courseToAdd.IdCourse);
+                }
 
         //
         // debugging

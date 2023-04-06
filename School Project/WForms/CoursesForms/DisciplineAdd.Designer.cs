@@ -44,7 +44,6 @@ namespace School_Project.WForms.CoursesForms
             textBoxDisciplineName = new TextBox();
             numericUpDownNumberHours = new NumericUpDown();
             numericUpDownDisciplineID = new NumericUpDown();
-            listBoxDisciplines = new ListBox();
             groupBoxDisciplineAdding = new GroupBox();
             buttonStore = new Button();
             buttonClear = new Button();
@@ -81,7 +80,6 @@ namespace School_Project.WForms.CoursesForms
             ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
-            tabPage4.SuspendLayout();
             panelBottom.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,7 +100,7 @@ namespace School_Project.WForms.CoursesForms
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(680, 244);
+            tableLayoutPanel1.Size = new Size(715, 244);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -112,7 +110,7 @@ namespace School_Project.WForms.CoursesForms
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(3, 186);
             label1.Name = "label1";
-            label1.Size = new Size(164, 34);
+            label1.Size = new Size(172, 34);
             label1.TabIndex = 2;
             label1.Text = "Carga Horária da Disciplina:";
             // 
@@ -123,7 +121,7 @@ namespace School_Project.WForms.CoursesForms
             labelDisciplineID.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelDisciplineID.Location = new Point(3, 32);
             labelDisciplineID.Name = "labelDisciplineID";
-            labelDisciplineID.Size = new Size(164, 17);
+            labelDisciplineID.Size = new Size(172, 17);
             labelDisciplineID.TabIndex = 0;
             labelDisciplineID.Text = "ID da Disciplina:";
             // 
@@ -134,26 +132,26 @@ namespace School_Project.WForms.CoursesForms
             labelDisciplineName.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelDisciplineName.Location = new Point(3, 113);
             labelDisciplineName.Name = "labelDisciplineName";
-            labelDisciplineName.Size = new Size(164, 17);
+            labelDisciplineName.Size = new Size(172, 17);
             labelDisciplineName.TabIndex = 1;
             labelDisciplineName.Text = "Nome da Disciplina:";
             // 
             // textBoxDisciplineName
             // 
             textBoxDisciplineName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBoxDisciplineName.Location = new Point(173, 109);
+            textBoxDisciplineName.Location = new Point(181, 109);
             textBoxDisciplineName.Name = "textBoxDisciplineName";
-            textBoxDisciplineName.Size = new Size(504, 25);
+            textBoxDisciplineName.Size = new Size(531, 25);
             textBoxDisciplineName.TabIndex = 4;
             textBoxDisciplineName.KeyUp += TextBox_KeyUp;
             // 
             // numericUpDownNumberHours
             // 
             numericUpDownNumberHours.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            numericUpDownNumberHours.Location = new Point(173, 190);
+            numericUpDownNumberHours.Location = new Point(181, 190);
             numericUpDownNumberHours.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
             numericUpDownNumberHours.Name = "numericUpDownNumberHours";
-            numericUpDownNumberHours.Size = new Size(504, 25);
+            numericUpDownNumberHours.Size = new Size(531, 25);
             numericUpDownNumberHours.TabIndex = 5;
             numericUpDownNumberHours.TextAlign = HorizontalAlignment.Right;
             numericUpDownNumberHours.ThousandsSeparator = true;
@@ -162,22 +160,12 @@ namespace School_Project.WForms.CoursesForms
             // 
             numericUpDownDisciplineID.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownDisciplineID.Enabled = false;
-            numericUpDownDisciplineID.Location = new Point(173, 28);
+            numericUpDownDisciplineID.Location = new Point(181, 28);
             numericUpDownDisciplineID.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numericUpDownDisciplineID.Name = "numericUpDownDisciplineID";
-            numericUpDownDisciplineID.Size = new Size(504, 25);
+            numericUpDownDisciplineID.Size = new Size(531, 25);
             numericUpDownDisciplineID.TabIndex = 3;
             numericUpDownDisciplineID.TextAlign = HorizontalAlignment.Right;
-            // 
-            // listBoxDisciplines
-            // 
-            listBoxDisciplines.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            listBoxDisciplines.FormattingEnabled = true;
-            listBoxDisciplines.ItemHeight = 15;
-            listBoxDisciplines.Location = new Point(49, 18);
-            listBoxDisciplines.Name = "listBoxDisciplines";
-            listBoxDisciplines.Size = new Size(710, 289);
-            listBoxDisciplines.TabIndex = 0;
             // 
             // groupBoxDisciplineAdding
             // 
@@ -188,7 +176,7 @@ namespace School_Project.WForms.CoursesForms
             groupBoxDisciplineAdding.Location = new Point(23, 23);
             groupBoxDisciplineAdding.Name = "groupBoxDisciplineAdding";
             groupBoxDisciplineAdding.Padding = new Padding(20);
-            groupBoxDisciplineAdding.Size = new Size(730, 378);
+            groupBoxDisciplineAdding.Size = new Size(768, 378);
             groupBoxDisciplineAdding.TabIndex = 0;
             groupBoxDisciplineAdding.TabStop = false;
             groupBoxDisciplineAdding.Text = "Adicionar Disciplina";
@@ -205,7 +193,7 @@ namespace School_Project.WForms.CoursesForms
             buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonStore.FlatStyle = FlatStyle.Flat;
             buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStore.Location = new Point(450, 305);
+            buttonStore.Location = new Point(485, 305);
             buttonStore.Name = "buttonStore";
             buttonStore.Size = new Size(125, 50);
             buttonStore.TabIndex = 3;
@@ -225,7 +213,7 @@ namespace School_Project.WForms.CoursesForms
             buttonClear.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClear.Location = new Point(578, 305);
+            buttonClear.Location = new Point(613, 305);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(125, 50);
             buttonClear.TabIndex = 4;
@@ -246,7 +234,7 @@ namespace School_Project.WForms.CoursesForms
             transparentTabControl1.Name = "transparentTabControl1";
             transparentTabControl1.Padding = new Point(30, 10);
             transparentTabControl1.SelectedIndex = 0;
-            transparentTabControl1.Size = new Size(974, 470);
+            transparentTabControl1.Size = new Size(1044, 470);
             transparentTabControl1.TabIndex = 5;
             transparentTabControl1.SelectedIndexChanged += TransparentTabControl1_SelectedIndexChanged;
             transparentTabControl1.TabIndexChanged += TransparentTabControl1_TabIndexChanged;
@@ -257,7 +245,7 @@ namespace School_Project.WForms.CoursesForms
             tabPage1.Location = new Point(4, 38);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(20);
-            tabPage1.Size = new Size(966, 428);
+            tabPage1.Size = new Size(1036, 428);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "1 - Ficha";
             tabPage1.UseVisualStyleBackColor = true;
@@ -269,7 +257,7 @@ namespace School_Project.WForms.CoursesForms
             tabPage2.Location = new Point(4, 38);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(5);
-            tabPage2.Size = new Size(966, 428);
+            tabPage2.Size = new Size(1036, 428);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "2 - Lista";
             tabPage2.UseVisualStyleBackColor = true;
@@ -278,7 +266,7 @@ namespace School_Project.WForms.CoursesForms
             // 
             checkedListBoxStudents.Dock = DockStyle.Right;
             checkedListBoxStudents.FormattingEnabled = true;
-            checkedListBoxStudents.Location = new Point(721, 5);
+            checkedListBoxStudents.Location = new Point(791, 5);
             checkedListBoxStudents.Name = "checkedListBoxStudents";
             checkedListBoxStudents.Size = new Size(240, 418);
             checkedListBoxStudents.TabIndex = 6;
@@ -306,7 +294,7 @@ namespace School_Project.WForms.CoursesForms
             dataGridViewCourses.Location = new Point(5, 5);
             dataGridViewCourses.Name = "dataGridViewCourses";
             dataGridViewCourses.RowTemplate.Height = 25;
-            dataGridViewCourses.Size = new Size(730, 418);
+            dataGridViewCourses.Size = new Size(791, 418);
             dataGridViewCourses.TabIndex = 5;
             dataGridViewCourses.CellBeginEdit += DataGridViewCourses_CellBeginEdit;
             dataGridViewCourses.CellEnter += DataGridViewCourses_CellEnter;
@@ -317,7 +305,7 @@ namespace School_Project.WForms.CoursesForms
             tabPage5.Controls.Add(dataGridViewSearch);
             tabPage5.Location = new Point(4, 38);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(966, 428);
+            tabPage5.Size = new Size(1036, 428);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "3 - Pesquisar";
             tabPage5.UseVisualStyleBackColor = true;
@@ -345,7 +333,7 @@ namespace School_Project.WForms.CoursesForms
             dataGridViewSearch.Location = new Point(0, 0);
             dataGridViewSearch.Name = "dataGridViewSearch";
             dataGridViewSearch.RowTemplate.Height = 25;
-            dataGridViewSearch.Size = new Size(966, 428);
+            dataGridViewSearch.Size = new Size(1036, 428);
             dataGridViewSearch.TabIndex = 0;
             // 
             // tabPage3
@@ -353,7 +341,7 @@ namespace School_Project.WForms.CoursesForms
             tabPage3.Controls.Add(chart1);
             tabPage3.Location = new Point(4, 38);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(966, 428);
+            tabPage3.Size = new Size(1036, 428);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "4 - Gráficos";
             tabPage3.UseVisualStyleBackColor = true;
@@ -362,6 +350,7 @@ namespace School_Project.WForms.CoursesForms
             // 
             chartArea1.Name = "ChartArea1";
             chart1.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
             chart1.Location = new Point(3, 3);
@@ -370,16 +359,15 @@ namespace School_Project.WForms.CoursesForms
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart1.Series.Add(series1);
-            chart1.Size = new Size(694, 369);
+            chart1.Size = new Size(1030, 422);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
             // 
             // tabPage4
             // 
-            tabPage4.Controls.Add(listBoxDisciplines);
             tabPage4.Location = new Point(4, 38);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(966, 428);
+            tabPage4.Size = new Size(1036, 428);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "5 - Lista";
             tabPage4.UseVisualStyleBackColor = true;
@@ -398,9 +386,9 @@ namespace School_Project.WForms.CoursesForms
             panelBottom.Controls.Add(buttonPrint);
             panelBottom.Controls.Add(buttonAddStudents);
             panelBottom.Dock = DockStyle.Bottom;
-            panelBottom.Location = new Point(20, 499);
+            panelBottom.Location = new Point(20, 501);
             panelBottom.Name = "panelBottom";
-            panelBottom.Size = new Size(975, 110);
+            panelBottom.Size = new Size(1044, 110);
             panelBottom.TabIndex = 6;
             // 
             // comboBoxSearchList
@@ -408,7 +396,7 @@ namespace School_Project.WForms.CoursesForms
             comboBoxSearchList.FormattingEnabled = true;
             comboBoxSearchList.Location = new Point(2, 74);
             comboBoxSearchList.Name = "comboBoxSearchList";
-            comboBoxSearchList.Size = new Size(316, 23);
+            comboBoxSearchList.Size = new Size(357, 23);
             comboBoxSearchList.TabIndex = 42;
             // 
             // comboBoxSearchOptions
@@ -416,7 +404,7 @@ namespace School_Project.WForms.CoursesForms
             comboBoxSearchOptions.FormattingEnabled = true;
             comboBoxSearchOptions.Location = new Point(139, 20);
             comboBoxSearchOptions.Name = "comboBoxSearchOptions";
-            comboBoxSearchOptions.Size = new Size(179, 23);
+            comboBoxSearchOptions.Size = new Size(220, 23);
             comboBoxSearchOptions.TabIndex = 41;
             comboBoxSearchOptions.SelectedIndexChanged += ComboBoxSearchOptions_SelectedIndexChanged;
             // 
@@ -432,7 +420,7 @@ namespace School_Project.WForms.CoursesForms
             buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonSearch.FlatStyle = FlatStyle.Flat;
             buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSearch.Location = new Point(1, 1);
+            buttonSearch.Location = new Point(8, 1);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(125, 50);
             buttonSearch.TabIndex = 40;
@@ -452,7 +440,7 @@ namespace School_Project.WForms.CoursesForms
             buttonSearchForm.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonSearchForm.FlatStyle = FlatStyle.Flat;
             buttonSearchForm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSearchForm.Location = new Point(348, 57);
+            buttonSearchForm.Location = new Point(383, 57);
             buttonSearchForm.Name = "buttonSearchForm";
             buttonSearchForm.Size = new Size(125, 50);
             buttonSearchForm.TabIndex = 39;
@@ -472,7 +460,7 @@ namespace School_Project.WForms.CoursesForms
             buttonEdit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonEdit.FlatStyle = FlatStyle.Flat;
             buttonEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEdit.Location = new Point(476, 1);
+            buttonEdit.Location = new Point(511, 1);
             buttonEdit.Margin = new Padding(0);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(125, 50);
@@ -493,7 +481,7 @@ namespace School_Project.WForms.CoursesForms
             buttonRemove.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonRemove.FlatStyle = FlatStyle.Flat;
             buttonRemove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonRemove.Location = new Point(348, 1);
+            buttonRemove.Location = new Point(383, 1);
             buttonRemove.Name = "buttonRemove";
             buttonRemove.Size = new Size(125, 50);
             buttonRemove.TabIndex = 0;
@@ -513,7 +501,7 @@ namespace School_Project.WForms.CoursesForms
             buttonExit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonExit.FlatStyle = FlatStyle.Flat;
             buttonExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonExit.Location = new Point(604, 57);
+            buttonExit.Location = new Point(639, 57);
             buttonExit.Name = "buttonExit";
             buttonExit.Size = new Size(125, 50);
             buttonExit.TabIndex = 4;
@@ -533,7 +521,7 @@ namespace School_Project.WForms.CoursesForms
             buttonNew.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonNew.FlatStyle = FlatStyle.Flat;
             buttonNew.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNew.Location = new Point(604, 1);
+            buttonNew.Location = new Point(639, 1);
             buttonNew.Name = "buttonNew";
             buttonNew.Size = new Size(125, 50);
             buttonNew.TabIndex = 2;
@@ -553,7 +541,7 @@ namespace School_Project.WForms.CoursesForms
             buttonPrint.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonPrint.FlatStyle = FlatStyle.Flat;
             buttonPrint.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPrint.Location = new Point(476, 57);
+            buttonPrint.Location = new Point(511, 57);
             buttonPrint.Margin = new Padding(0);
             buttonPrint.Name = "buttonPrint";
             buttonPrint.Size = new Size(125, 50);
@@ -573,7 +561,7 @@ namespace School_Project.WForms.CoursesForms
             buttonAddStudents.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonAddStudents.FlatStyle = FlatStyle.Flat;
             buttonAddStudents.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddStudents.Location = new Point(778, 1);
+            buttonAddStudents.Location = new Point(849, 1);
             buttonAddStudents.Name = "buttonAddStudents";
             buttonAddStudents.Size = new Size(125, 50);
             buttonAddStudents.TabIndex = 5;
@@ -586,7 +574,7 @@ namespace School_Project.WForms.CoursesForms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(229, 204, 202);
-            ClientSize = new Size(1015, 629);
+            ClientSize = new Size(1084, 631);
             Controls.Add(panelBottom);
             Controls.Add(transparentTabControl1);
             KeyPreview = true;
@@ -609,7 +597,6 @@ namespace School_Project.WForms.CoursesForms
             ((System.ComponentModel.ISupportInitialize)dataGridViewSearch).EndInit();
             tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
-            tabPage4.ResumeLayout(false);
             panelBottom.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -620,7 +607,6 @@ namespace School_Project.WForms.CoursesForms
         private Label labelDisciplineID;
         private Label labelDisciplineName;
         private TextBox textBoxDisciplineName;
-        private ListBox listBoxDisciplines;
         private Label label1;
         private NumericUpDown numericUpDownNumberHours;
         private GroupBox groupBoxDisciplineAdding;
