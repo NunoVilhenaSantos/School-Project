@@ -1,29 +1,17 @@
 ﻿using ClassLibrary.Courses;
+using ClassLibrary.School;
 using ClassLibrary.Students;
 
 namespace ClassLibrary.Enrollments;
 
 public static class Enrollments
 {
-    public static List<Enrollment> ConsultEnrollment(int idStudent)
-    {
-        var enrollments = ListEnrollments;
-
-        if (idStudent >= 0)
-            enrollments =
-                enrollments.Where(e => e.StudentId == idStudent).ToList();
-
-        return enrollments;
-    }
-
     #region Properties
 
     public static List<Enrollment> ListEnrollments { get; set; } = new();
 
-
     public static Dictionary<int, Student> StudentsDictionary { get; set; } =
         new();
-
 
     public static Dictionary<int, Course> CoursesDictionary { get; set; } =
         new();
@@ -38,17 +26,11 @@ public static class Enrollments
     {
         // update the students dictionary
         foreach (var student in Students.Students.ListStudents)
-            if (!StudentsDictionary.ContainsKey(student.IdStudent))
-                StudentsDictionary.Add(student.IdStudent, student);
-            else
-                StudentsDictionary[student.IdStudent] = student;
+            StudentsDictionary[student.IdStudent] = student;
 
         // update the courses dictionary
         foreach (var course in Courses.Courses.ListCourses)
-            if (!CoursesDictionary.ContainsKey(course.IdCourse))
-                CoursesDictionary.Add(course.IdCourse, course);
-            else
-                CoursesDictionary[course.IdCourse] = course;
+            CoursesDictionary[course.IdCourse] = course;
     }
 
 
@@ -79,6 +61,8 @@ public static class Enrollments
             CourseId = courseId,
             Course = course ?? CoursesDictionary[courseId]
         });
+        SchoolDatabase.AddStudentToCourse(studentId,courseId);
+        
     }
 
     public static void RemoveEnrollment(int studentId, int courseId)
@@ -97,6 +81,95 @@ public static class Enrollments
 
         ListEnrollments.Remove(enrollment);
     }
+
+    public static List<Enrollment> ConsultEnrollment(
+        int courseId = -1, int studentId = -1)
+    {
+        var enrollments = ListEnrollments;
+
+        if (courseId != -1)
+            if (CoursesDictionary.ContainsKey(courseId))
+            {
+                var course = CoursesDictionary[courseId];
+                enrollments = enrollments
+                    .Where(e =>
+                        e.CourseId == course.IdCourse)
+                    .ToList();
+            }
+
+        if (studentId != -1)
+            if (StudentsDictionary.ContainsKey(studentId))
+            {
+                var student = StudentsDictionary[studentId];
+                enrollments = enrollments
+                    .Where(e =>
+                        e.StudentId == student.IdStudent)
+                    .ToList();
+            }
+
+        return enrollments;
+    }
+
+    // public static List<Enrollment> ConsultEnrollment(int idStudent)
+    // {
+    //     var enrollments = ListEnrollments;
+    //
+    //     if (idStudent >= 0)
+    //         enrollments =
+    //             enrollments.Where(e => e.StudentId == idStudent).ToList();
+    //
+    //     return enrollments;
+    // }
+    //
+    // public static List<Enrollment> ConsultEnrollment(int idCourse)
+    // {
+    //     var enrollments = ListEnrollments;
+    //
+    //     if (idCourse >= 0)
+    //         enrollments =
+    //             enrollments.Where(e => e.CourseId == idCourse).ToList();
+    //
+    //     return enrollments;
+    // }
+
+
+    //
+    // public static List<Enrollment> ConsultEnrollment(
+    //     int courseId = -1, int studentId = -1)
+    // {
+    //     var enrollments = ListEnrollments;
+    //
+    //     foreach (var filterParam in filterParams)
+    //     {
+    //         switch (filterParam.Key.ToLower())
+    //         {
+    //             case "studentid":
+    //                 if (StudentsDictionary.ContainsKey(filterParam.Value))
+    //                 {
+    //                     var student = StudentsDictionary[filterParam.Value];
+    //                     enrollments = enrollments
+    //                         .Where(e => e.StudentId == student.IdStudent)
+    //                         .ToList();
+    //                 }
+    //
+    //                 break;
+    //             case "courseid":
+    //                 if (CoursesDictionary.ContainsKey(filterParam.Value))
+    //                 {
+    //                     var course = CoursesDictionary[filterParam.Value];
+    //                     enrollments = enrollments
+    //                         .Where(e => e.CourseId == course.IdCourse).ToList();
+    //                 }
+    //
+    //                 break;
+    //             default:
+    //                 // handle unsupported filter parameters if necessary
+    //                 break;
+    //         }
+    //     }
+    //
+    //     return enrollments;
+    // }
 
 
     /// <summary>

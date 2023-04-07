@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Courses;
+using ClassLibrary.School;
 
 namespace ClassLibrary.SchoolClasses;
 
@@ -37,6 +38,11 @@ public static class SchoolClasses
                 CoursesList = courses
             }
         );
+        SchoolDatabase.AddSchoolClass(ListSchoolClasses[^1]);
+
+        foreach (var course in ListSchoolClasses[^1].CoursesList)
+            SchoolDatabase.AddSchoolClassCourses(
+                ListSchoolClasses[^1].IdSchoolClass, course.IdCourse);
 
         ListSchoolClasses[^1].GetStudentsCount();
         ListSchoolClasses[^1].GetWorkHourLoad();
@@ -52,7 +58,8 @@ public static class SchoolClasses
             return $"A turma {id} não existe!\n{GetFullName(id)}";
 
         ListSchoolClasses.Remove(schoolClass);
-        return $"A turma {id} foi apagada!\n{GetFullInfo(id)}";
+        return $"A turma {ListSchoolClasses[id].ClassName}" +
+               $" com o {id} foi apagada!\n{GetFullInfo(id)}";
     }
 
 

@@ -6,7 +6,7 @@ using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using ClassLibrary.Teachers;
 
-namespace ClassLibrary;
+namespace ClassLibrary.School;
 
 public class SchoolManaging : INotifyPropertyChanged
 {

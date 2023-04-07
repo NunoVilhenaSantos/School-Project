@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using ClassLibrary;
+using ClassLibrary.School;
 using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;

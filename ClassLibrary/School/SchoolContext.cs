@@ -5,7 +5,7 @@ using ClassLibrary.Students;
 using ClassLibrary.Teachers;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClassLibrary;
+namespace ClassLibrary.School;
 
 public class SchoolContext : DbContext
 {

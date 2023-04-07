@@ -6,7 +6,7 @@ using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using ClassLibrary.Teachers;
 
-namespace ClassLibrary;
+namespace ClassLibrary.School;
 
 public static class XFiles
 {
@@ -800,6 +800,21 @@ public static class XFiles
         // fileStream = new FileStream(EnrollmentsFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
+        //
+        // creating dictionaries to avoid other methods that are more consuming
+        //
+        // Loop through courses once and add them to a
+        // dictionary with the course ID as the key
+        var courses =
+            Courses.Courses.ListCourses
+                .ToDictionary(c => c.IdCourse);
+
+        // Loop through courses once and add them to a
+        // dictionary with the course ID as the key
+        var students =
+            Students.Students.ListStudents
+                .ToDictionary(s => s.IdStudent);
+
         while (!streamReader.EndOfStream)
         {
             // reading a line
@@ -826,17 +841,6 @@ public static class XFiles
 
             HashSet<int> studentIds = null;
             studentIds = new HashSet<int>();
-
-
-            // Loop through courses once and add them to a dictionary with the course ID as the key
-            var courses =
-                Courses.Courses.ListCourses
-                    .ToDictionary(c => c.IdCourse);
-
-            // Loop through courses once and add them to a dictionary with the course ID as the key
-            var students =
-                Students.Students.ListStudents
-                    .ToDictionary(s => s.IdStudent);
 
             // ...
 
@@ -1070,17 +1074,8 @@ public static class XFiles
                 foreach (var courseId in courseIds)
                     if (courses.TryGetValue(courseId, out var course))
                         coursesList.Add(course);
+
             // ...
-            // validating the line,
-            // if has more than 3 fields,
-            // will read the disciplines
-            // if (campos.Length > 18)
-            //     foreach (var c in Courses.Courses.ListCourses)
-            //         for (var index = 19; index < campos.Length; index++)
-            //         {
-            //             _ = int.TryParse(campos[index], out index);
-            //             if (c.IdCourse == index) coursesList.Add(c);
-            //         }
 
             _ = int.TryParse(campos[0], out var id);
             _ = bool.TryParse(campos[8], out var active);
@@ -1112,28 +1107,6 @@ public static class XFiles
                 coursesList
             );
         }
-        // $"{teacher.TeacherId};" +
-        // $"{teacher.Name};" +
-        // $"{teacher.LastName};" +
-        // $"{teacher.Address};" +
-        // $"{teacher.PostalCode};" +
-        // $"{teacher.City};" +
-        // $"{teacher.Phone};" +
-        // $"{teacher.Email};" +
-        // $"{teacher.Active};" +
-        // $"{teacher.Genre};" +
-        // $"{teacher.DateOfBirth};" +
-        // $"{teacher.IdentificationNumber};" +
-        // $"{teacher.ExpirationDateIn};" +
-        // $"{teacher.TaxIdentificationNumber};" +
-        // $"{teacher.Nationality};" +
-        // $"{teacher.Birthplace};" +
-        // $"{teacher.Photo};" +
-        // $"{teacher.CoursesCount};" +
-        // $"{teacher.TotalWorkHoursLoad};" +
-        // string.Join(";",
-        //     teacher.Courses?
-        //         .Select(c => c.IdCourse)))
 
         streamReader.Close();
 

@@ -514,6 +514,7 @@ namespace School_Project.WForms.SchoolClassesForms
             checkedListBoxCourses.Size = new Size(276, 474);
             checkedListBoxCourses.TabIndex = 0;
             checkedListBoxCourses.SelectedIndexChanged += CheckedListBoxCourses_SelectedIndexChanged;
+            //checkedListBoxCourses.MouseMove += CheckedListBoxCourses_MouseWheel;
             // 
             // tabPage3
             // 

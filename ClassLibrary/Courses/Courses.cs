@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Enrollments;
+using ClassLibrary.School;
 
 namespace ClassLibrary.Courses;
 
@@ -68,10 +69,9 @@ public static class Courses
                 Name = name,
                 WorkLoad = workLoad,
                 Credits = credits
-                // Enrollments = enrollments,
-                // StudentGradesList = studentGrades,
             }
         );
+        SchoolDatabase.AddCourse(ListCourses[^1]);
         GetStudentsCount();
     }
 

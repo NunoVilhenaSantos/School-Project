@@ -813,8 +813,47 @@ public partial class SchoolClassAdd : Form
     }
 
 
-    private void CheckedListBoxCourses_SelectedIndexChanged(
-        object sender, EventArgs e)
+
+    private void CheckedListBoxCourses_SelectedIndexChanged(object sender,
+        EventArgs e)
+    {
+        // Get the selected school class from the data source
+        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
+
+        // Get the selected course from the CheckedListBox
+        var selectedCourse = checkedListBoxCourses.SelectedItem as Course;
+
+        // If either the school class or course is null, exit the method
+        if (selectedSchoolClass == null || selectedCourse == null) return;
+
+        // Clear all checked items
+        for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
+            checkedListBoxStudents.SetItemChecked(i, false);
+
+        // Get the enrollments for the selected course
+        var enrollments =
+            Enrollments.ConsultEnrollment(selectedCourse.IdCourse);
+
+        // Update checked items based on the enrollments
+        foreach (
+            var student in enrollments
+                .Select(enrollment =>
+                    Enrollments.StudentsDictionary[enrollment.StudentId])
+                .Where(student => student.IdStudent >= 0 &&
+                                  student.IdStudent <
+                                  checkedListBoxStudents.Items.Count))
+            checkedListBoxStudents.SetItemChecked(student.IdStudent, true);
+
+        // Set the value of the NumericUpDown control to the number of checked items
+        numericUpDownTotalNumberEnrolledStudents.Value =
+            checkedListBoxStudents.CheckedItems.Count;
+
+        Console.WriteLine("Testes de Debug");
+    }
+
+
+    private void CheckedListBoxCourses_MouseWheel(
+        object sender, MouseEventArgs e)
     {
         var selectedRows = dataGridViewSchoolClasses.SelectedRows;
         if (selectedRows == null || selectedRows.Count == 0)
@@ -834,24 +873,26 @@ public partial class SchoolClassAdd : Form
         if (Courses.ListCourses == null) return;
 
         if (SchoolClasses.ListSchoolClasses == null ||
-            SchoolClasses.ListSchoolClasses[courseToView.Index]
-                .CoursesList == null) return;
+            SchoolClasses.ListSchoolClasses[courseToView.Index].CoursesList ==
+            null) return;
 
+        // Clear all previously checked items
+        checkedListBoxStudents.ClearSelected();
+        for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
+            checkedListBoxStudents.SetItemChecked(i, false);
 
-        foreach (var c in
-                 SchoolClasses.ListSchoolClasses[courseToView.Index]
-                     .CoursesList)
-            //
+        foreach (
+                var c in
+                SchoolClasses.ListSchoolClasses[courseToView.Index]
+                    .CoursesList)
             // subtract 1 from the Courses list,
             // because the list starts at 1 and
             // all other objects start from 0
-            //
             checkedListBoxStudents.SetItemChecked(c.IdCourse - 1, true);
 
         numericUpDownTotalNumberEnrolledStudents.Value =
             (decimal) SchoolClasses
-                .ListSchoolClasses[courseToView.Index]
-                .StudentsCount;
+                .ListSchoolClasses[courseToView.Index].StudentsCount;
 
         Console.WriteLine("Testes de Debug");
     }

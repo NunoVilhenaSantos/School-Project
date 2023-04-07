@@ -656,7 +656,7 @@ public partial class StudentAdd : Form
     private void ChartPrintPreview()
     {
         // Create a new PrintDocument object and set its properties
-        var pd = new PrintDocument();
+        PrintDocument pd = new();
         pd.DefaultPageSettings.Landscape = true;
         pd.DocumentName = "Chart1";
 
@@ -672,8 +672,10 @@ public partial class StudentAdd : Form
 
 
         // Show the print preview dialog
-        var dlg = new PrintPreviewDialog();
-        dlg.Document = pd;
+        PrintPreviewDialog dlg = new()
+        {
+            Document = pd
+        };
         dlg.ShowDialog();
     }
 
@@ -681,7 +683,7 @@ public partial class StudentAdd : Form
     private void DataPrintPreview()
     {
         // Create a new PrintDocument object
-        var pd = new PrintDocument();
+        PrintDocument pd = new();
         pd.DefaultPageSettings.Landscape = true;
         pd.DocumentName = "List of Students";
 
@@ -689,8 +691,10 @@ public partial class StudentAdd : Form
         pd.PrintPage += PrintPage;
 
         // Show the PrintPreviewDialog
-        var ppd = new PrintPreviewDialog();
-        ppd.Document = pd;
+        PrintPreviewDialog ppd = new()
+        {
+            Document = pd
+        };
         ppd.ShowDialog();
     }
 

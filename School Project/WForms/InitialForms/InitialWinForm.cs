@@ -1,5 +1,5 @@
-﻿using ClassLibrary;
-using ClassLibrary.Courses;
+﻿using ClassLibrary.Courses;
+using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using School_Project.Properties;
 using School_Project.WForms.CoursesForms;
@@ -13,6 +13,7 @@ public partial class InitialWinForm : Form
 {
     private bool _closeFromUser;
     private SchoolContext _context;
+    public SchoolDatabase SchoolDatabase = new();
 
     //
     // Global Properties for the windows forms

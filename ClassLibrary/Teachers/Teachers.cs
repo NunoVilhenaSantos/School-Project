@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Courses;
+using ClassLibrary.School;
 
 namespace ClassLibrary.Teachers;
 
@@ -54,6 +55,12 @@ public static class Teachers
             Courses = courses
         };
         TeachersList.Add(teacher);
+
+        SchoolDatabase.AddTeacher(TeachersList[^1]);
+
+        foreach (var course in TeachersList[^1].Courses)
+            SchoolDatabase.AddTeacherCourse(
+                TeachersList[^1].TeacherId, course.IdCourse);
     }
 
 

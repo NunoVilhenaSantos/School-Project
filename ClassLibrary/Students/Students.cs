@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Enrollments;
+using ClassLibrary.School;
 
 namespace ClassLibrary.Students;
 
@@ -65,7 +66,7 @@ public class Students
                 EnrollmentDate = enrollmentDate
             }
         );
-
+        SchoolDatabase.AddStudent(ListStudents[^1]);
         Console.WriteLine("Debugging");
     }
 
