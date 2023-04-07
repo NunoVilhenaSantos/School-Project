@@ -548,6 +548,7 @@ namespace School_Project.WForms.CoursesForms
             buttonPrint.TabIndex = 3;
             buttonPrint.TextAlign = ContentAlignment.MiddleRight;
             buttonPrint.UseVisualStyleBackColor = true;
+            buttonPrint.Click += ButtonPrint_Click;
             // 
             // buttonAddStudents
             // 

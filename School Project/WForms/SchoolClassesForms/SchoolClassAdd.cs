@@ -10,6 +10,8 @@ namespace School_Project.WForms.SchoolClassesForms;
 
 public partial class SchoolClassAdd : Form
 {
+    private const int ItemsPerPage = 10;
+
     //
     // Global variables for the windows forms
     //
@@ -22,11 +24,16 @@ public partial class SchoolClassAdd : Form
     private readonly BindingSource _bSsClassesCourses = new();
 
     private int _coursesCount;
+
+
+    private int _currentPage = 1;
+    private int _endIndex;
     private string _photoFile;
 
     // keep track of the DataGridViewSchoolClasses row index previousRowIndex
     private int _previousRowIndex = -1;
     private int _schoolClassesCount;
+    private int _startIndex;
     private int _studentsCount;
 
     public SchoolClassAdd()
@@ -203,12 +210,13 @@ public partial class SchoolClassAdd : Form
         {
             chart1.Series["Students Count"].Points.AddXY(schoolClass.ClassName,
                 schoolClass.StudentsCount);
-            chart1.Series["Courses Count"].BorderWidth = 3;
             chart1.Series["Courses Count"].Points.AddXY(schoolClass.ClassName,
                 schoolClass.CoursesCount);
-            chart1.Series["Work Hour Load"].BorderWidth = 3;
             chart1.Series["Work Hour Load"].Points.AddXY(schoolClass.ClassName,
                 schoolClass.WorkHourLoad);
+            chart1.Series["Courses Count"].BorderWidth = 3;
+            chart1.Series["Work Hour Load"].BorderWidth = 3;
+            //chart1.Series["Courses Count"].YAxisType = AxisType.Secondary;
             chart1.Series["Work Hour Load"].YAxisType = AxisType.Secondary;
         }
 
@@ -934,7 +942,7 @@ public partial class SchoolClassAdd : Form
         schoolClassSearch.Dispose();
     }
 
-    private void buttonPrint_Click(object sender, EventArgs e)
+    private void ButtonPrint_Click(object sender, EventArgs e)
     {
         if (transparentTabControl1.SelectedTab ==
             transparentTabControl1.TabPages[0])
@@ -978,11 +986,9 @@ public partial class SchoolClassAdd : Form
         // Show the print preview dialog
         var printDialog1 = new PrintPreviewDialog();
         var result = printDialog1.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            pd.Print();
-        }
+        if (result == DialogResult.OK) pd.Print();
     }
+
 
     private void ChartPrintPreview()
     {
@@ -1023,12 +1029,6 @@ public partial class SchoolClassAdd : Form
         ppd.Document = pd;
         ppd.ShowDialog();
     }
-
-
-    private int _currentPage = 1;
-    private const int ItemsPerPage = 10;
-    private int _startIndex = 0;
-    private int _endIndex = 0;
 
 
     private void PrintPage(object sender, PrintPageEventArgs e)
@@ -1087,7 +1087,7 @@ public partial class SchoolClassAdd : Form
             e.MarginBounds.Right, y + font.Height);
 
         // Move to the next row
-        y += font.Height+10;
+        y += font.Height + 10;
 
         // Print the table data
         // Print the data for each class
@@ -1120,13 +1120,13 @@ public partial class SchoolClassAdd : Form
                 e.MarginBounds.Left, y);
             x = e.MarginBounds.Left + colWidths[0];
 
-            y += font.Height+5;
+            y += font.Height + 5;
             // Print the class name
             e.Graphics.DrawString(
                 schoolClass.ClassName, font, Brushes.Black, x, y);
             x += colWidths[1];
 
-            y += font.Height+10;
+            y += font.Height + 10;
             // Print the start date
             e.Graphics.DrawString(
                 schoolClass.StartDate.ToString("d"), font,
@@ -1202,7 +1202,7 @@ public partial class SchoolClassAdd : Form
                 font, Brushes.Black, x, y);
             x += colWidths[14];
 
-            y += font.Height+5;
+            y += font.Height + 5;
         }
 
 

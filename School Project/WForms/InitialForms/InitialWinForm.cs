@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-using ClassLibrary;
+﻿using ClassLibrary;
+using School_Project.Properties;
 using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
@@ -27,9 +27,9 @@ public partial class InitialWinForm : Form
     {
         //this.Show();
         //this.ShowDialog();
-        this.ShowInTaskbar = true;
-        this.ShowIcon = true;
-        
+        ShowInTaskbar = true;
+        ShowIcon = true;
+
 
         // try to read files if they exist
         var xFilesMessages = XFiles.ReadFromFiles(out var myString);
@@ -83,7 +83,7 @@ public partial class InitialWinForm : Form
         //buttonListagens.Image = Properties.Resources.Icon_printer_32x32;
         //buttonCloseProgram.Image = Properties.Resources.Icon_doughnut_chart_32x32;
         //pictureBox1.Image = Properties.Resources.escola-web;
-        pictureBox1.Image = Properties.Resources.Students_watching_webinar;
+        pictureBox1.Image = Resources.Students_watching_webinar;
     }
 
 

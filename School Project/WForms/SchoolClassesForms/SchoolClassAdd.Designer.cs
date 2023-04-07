@@ -601,7 +601,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonPrint.TabIndex = 1;
             buttonPrint.TextAlign = ContentAlignment.MiddleRight;
             buttonPrint.UseVisualStyleBackColor = true;
-            buttonPrint.Click += buttonPrint_Click;
+            buttonPrint.Click += ButtonPrint_Click;
             // 
             // panelBottom
             // 

@@ -319,7 +319,7 @@ public static class SchoolClasses
                         .Distinct();
 
                     studentsCount = studentIds?.Count() ?? 0;
-                    
+
                     // var uniqueStudents = new HashSet<string>();
                     //
                     // foreach (var enrollment in Enrollments.Enrollments.ListEnrollments)

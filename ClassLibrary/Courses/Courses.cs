@@ -223,7 +223,7 @@ public static class Courses
 
         #endregion
     }
-    
+
     //
     // public static void ToObtainValuesForCalculatedFields()
     // {
@@ -287,6 +287,4 @@ public static class Courses
     //         schoolClass.LowestGrade = lowestGrade;
     //     }
     // }
-
- 
 }

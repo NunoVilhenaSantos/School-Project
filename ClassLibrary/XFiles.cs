@@ -831,7 +831,6 @@ public static class XFiles
                 .FirstOrDefault(c => c.IdCourse == courseId);
 
         if (student != null && course != null)
-        {
             Enrollments.Enrollments.AddEnrollment(
                 grade,
                 studentId,
@@ -839,7 +838,6 @@ public static class XFiles
                 student,
                 course
             );
-        }
     }
 
     // 4th file to read are the school-classes file
@@ -908,12 +906,8 @@ public static class XFiles
             {
                 courseIds = new HashSet<int>();
                 for (var i = 10; i < campos.Length; i++)
-                {
                     if (int.TryParse(campos[i], out var courseId))
-                    {
                         courseIds.Add(courseId);
-                    }
-                }
             }
 
             // Loop through courses once and add them to a dictionary with the course ID as the key
@@ -923,15 +917,9 @@ public static class XFiles
             // Loop through course IDs that teacher teaches and look up corresponding course object in dictionary
             var coursesList = new List<Course>();
             if (courseIds != null)
-            {
                 foreach (var courseId in courseIds)
-                {
-                    if (courses.TryGetValue(courseId, out Course course))
-                    {
+                    if (courses.TryGetValue(courseId, out var course))
                         coursesList.Add(course);
-                    }
-                }
-            }
             // ...
 
 
@@ -1036,12 +1024,8 @@ public static class XFiles
             {
                 courseIds = new HashSet<int>();
                 for (var i = 19; i < campos.Length; i++)
-                {
                     if (int.TryParse(campos[i], out var courseId))
-                    {
                         courseIds.Add(courseId);
-                    }
-                }
             }
 
             // Loop through courses once and add them to a dictionary with the course ID as the key
@@ -1051,15 +1035,9 @@ public static class XFiles
             // Loop through course IDs that teacher teaches and look up corresponding course object in dictionary
             var coursesList = new List<Course>();
             if (courseIds != null)
-            {
                 foreach (var courseId in courseIds)
-                {
-                    if (courses.TryGetValue(courseId, out Course course))
-                    {
+                    if (courses.TryGetValue(courseId, out var course))
                         coursesList.Add(course);
-                    }
-                }
-            }
             // ...
             // validating the line,
             // if has more than 3 fields,

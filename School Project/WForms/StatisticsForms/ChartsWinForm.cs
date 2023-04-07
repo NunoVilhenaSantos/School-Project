@@ -16,7 +16,7 @@ public partial class ChartsWinForm : Form
     internal int DisciplinesCount { get; private set; }
     internal int SchoolClassesCount { get; private set; }
     internal int StudentsCount { get; private set; }
-    internal int GradesCount { get; private set; }
+    internal int GradesCount { get; }
 
 
     private void ChartsWinForm_Load(object sender, EventArgs e)

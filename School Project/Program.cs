@@ -1,11 +1,11 @@
-using School_Project.WForms.InitialForms;
 using System.Globalization;
+using School_Project.WForms.InitialForms;
 
 namespace School_Project;
 
 internal static class Program
 {
-    private static CultureInfo _culture = CultureInfo.InvariantCulture;
+    private static readonly CultureInfo _culture = CultureInfo.InvariantCulture;
 
     /// <summary>
     ///     The main entry point for the application.
@@ -22,7 +22,7 @@ internal static class Program
         Application.CurrentCulture = _culture;
 
         //Application.Run(new MainWinForm());
-        
+
         Application.Run(new InitialWinForm());
     }
 }

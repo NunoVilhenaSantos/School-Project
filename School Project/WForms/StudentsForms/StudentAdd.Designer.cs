@@ -649,15 +649,17 @@ namespace School_Project.WForms.StudentsForms
             // 
             chartArea1.Name = "ChartArea1";
             chart1.ChartAreas.Add(chartArea1);
+            chart1.Dock = DockStyle.Fill;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new Point(24, 24);
+            chart1.Location = new Point(0, 0);
             chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart1.Series.Add(series1);
-            chart1.Size = new Size(615, 358);
+            chart1.Size = new Size(1130, 505);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
             // 
@@ -674,7 +676,7 @@ namespace School_Project.WForms.StudentsForms
             panelBottom.Controls.Add(buttonPrint);
             panelBottom.Controls.Add(buttonAddCourses);
             panelBottom.Dock = DockStyle.Bottom;
-            panelBottom.Location = new Point(20, 559);
+            panelBottom.Location = new Point(20, 581);
             panelBottom.Name = "panelBottom";
             panelBottom.Size = new Size(1144, 110);
             panelBottom.TabIndex = 1;
@@ -843,7 +845,7 @@ namespace School_Project.WForms.StudentsForms
             panelTop.Controls.Add(transparentTabControl1);
             panelTop.Location = new Point(20, 22);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1144, 531);
+            panelTop.Size = new Size(1144, 553);
             panelTop.TabIndex = 0;
             // 
             // transparentTabControl1
@@ -859,7 +861,7 @@ namespace School_Project.WForms.StudentsForms
             transparentTabControl1.Name = "transparentTabControl1";
             transparentTabControl1.Padding = new Point(15, 10);
             transparentTabControl1.SelectedIndex = 0;
-            transparentTabControl1.Size = new Size(1138, 525);
+            transparentTabControl1.Size = new Size(1138, 547);
             transparentTabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -870,7 +872,7 @@ namespace School_Project.WForms.StudentsForms
             tabPage1.Location = new Point(4, 38);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(15);
-            tabPage1.Size = new Size(1130, 483);
+            tabPage1.Size = new Size(1130, 505);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "1 - Ficha";
             tabPage1.UseVisualStyleBackColor = true;
@@ -887,7 +889,7 @@ namespace School_Project.WForms.StudentsForms
             buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonStore.FlatStyle = FlatStyle.Flat;
             buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStore.Location = new Point(594, 424);
+            buttonStore.Location = new Point(594, 437);
             buttonStore.Name = "buttonStore";
             buttonStore.Size = new Size(125, 50);
             buttonStore.TabIndex = 1;
@@ -907,7 +909,7 @@ namespace School_Project.WForms.StudentsForms
             buttonClear.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClear.Location = new Point(722, 424);
+            buttonClear.Location = new Point(722, 437);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(125, 50);
             buttonClear.TabIndex = 2;
@@ -921,7 +923,7 @@ namespace School_Project.WForms.StudentsForms
             tabPage2.Location = new Point(4, 38);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(15);
-            tabPage2.Size = new Size(1130, 483);
+            tabPage2.Size = new Size(1130, 505);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "2 - Lista";
             tabPage2.UseVisualStyleBackColor = true;
@@ -931,7 +933,7 @@ namespace School_Project.WForms.StudentsForms
             tabPage3.Controls.Add(dataGridViewSearch);
             tabPage3.Location = new Point(4, 38);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(1130, 483);
+            tabPage3.Size = new Size(1130, 505);
             tabPage3.TabIndex = 3;
             tabPage3.Text = "3 - Pesquisa";
             tabPage3.UseVisualStyleBackColor = true;
@@ -967,7 +969,7 @@ namespace School_Project.WForms.StudentsForms
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dataGridViewSearch.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewSearch.RowTemplate.Height = 25;
-            dataGridViewSearch.Size = new Size(1130, 483);
+            dataGridViewSearch.Size = new Size(1130, 505);
             dataGridViewSearch.TabIndex = 0;
             // 
             // tabPage4
@@ -975,7 +977,7 @@ namespace School_Project.WForms.StudentsForms
             tabPage4.Controls.Add(chart1);
             tabPage4.Location = new Point(4, 38);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(1130, 483);
+            tabPage4.Size = new Size(1130, 505);
             tabPage4.TabIndex = 2;
             tabPage4.Text = "4 - Gráficos";
             tabPage4.UseVisualStyleBackColor = true;
@@ -1000,7 +1002,7 @@ namespace School_Project.WForms.StudentsForms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
-            ClientSize = new Size(1184, 689);
+            ClientSize = new Size(1184, 711);
             Controls.Add(panelTop);
             Controls.Add(panelBottom);
             KeyPreview = true;
