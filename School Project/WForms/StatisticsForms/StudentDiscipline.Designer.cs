@@ -60,7 +60,7 @@
             buttonStudentEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonStudentEdit.AutoSize = true;
             buttonStudentEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStudentEdit.Location = new Point(196, 518);
+            buttonStudentEdit.Location = new Point(204, 518);
             buttonStudentEdit.Name = "buttonStudentEdit";
             buttonStudentEdit.Size = new Size(120, 31);
             buttonStudentEdit.TabIndex = 0;
@@ -109,9 +109,9 @@
             buttonStudentDisciplinesAdding.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             buttonStudentDisciplinesAdding.AutoSize = true;
             buttonStudentDisciplinesAdding.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStudentDisciplinesAdding.Location = new Point(139, 518);
+            buttonStudentDisciplinesAdding.Location = new Point(134, 518);
             buttonStudentDisciplinesAdding.Name = "buttonStudentDisciplinesAdding";
-            buttonStudentDisciplinesAdding.Size = new Size(181, 31);
+            buttonStudentDisciplinesAdding.Size = new Size(190, 31);
             buttonStudentDisciplinesAdding.TabIndex = 3;
             buttonStudentDisciplinesAdding.Text = "Adicionar ou Remover";
             buttonStudentDisciplinesAdding.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             groupBox1.Controls.Add(button1);
             groupBox1.Location = new Point(861, 13);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(320, 556);
+            groupBox1.Size = new Size(337, 556);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -141,7 +141,7 @@
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             button1.AutoSize = true;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(74, 518);
+            button1.Location = new Point(110, 518);
             button1.Name = "button1";
             button1.Size = new Size(143, 31);
             button1.TabIndex = 4;

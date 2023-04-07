@@ -303,7 +303,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.PeachPuff;
+            BackColor = Color.FromArgb(235, 155, 104);
             ClientSize = new Size(1384, 561);
             Controls.Add(tableLayoutPanel1);
             KeyPreview = true;

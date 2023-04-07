@@ -632,7 +632,7 @@ public partial class SchoolClassAdd : Form
         //
         foreach (var student in newStudents)
         foreach (var course in newCourses)
-            Enrollments.AddEnrollment(student.IdStudent, course.IdCourse);
+            Enrollments.EnrollStudent(student.IdStudent, course.IdCourse);
 
 
         //

@@ -863,6 +863,8 @@ namespace School_Project.WForms.StudentsForms
             transparentTabControl1.SelectedIndex = 0;
             transparentTabControl1.Size = new Size(1138, 547);
             transparentTabControl1.TabIndex = 0;
+            transparentTabControl1.SelectedIndexChanged += TransparentTabControl1_SelectedIndexChanged;
+            transparentTabControl1.TabIndexChanged += TransparentTabControl1_TabIndexChanged;
             // 
             // tabPage1
             // 

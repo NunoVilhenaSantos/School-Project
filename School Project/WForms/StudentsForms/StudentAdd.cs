@@ -118,8 +118,8 @@ public partial class StudentAdd : Form
             textBoxBirthPlace.Text,
             _studentPhoto,
             0,
-            DateOnly.FromDateTime(DateTime.Now),
-            null
+            0,
+            DateOnly.FromDateTime(DateTime.Now)
         );
 
         //
@@ -518,16 +518,32 @@ public partial class StudentAdd : Form
 
         var studentToView = Students.ListStudents[rc];
 
+        //
+        // var studentToViewEnrollment =
+        //     Enrollments.ConsultEnrollment(studentToView.IdStudent);
+        //
+        // if (studentToViewEnrollment != null)
+        //     foreach (var enrollment in (Enrollment)studentToViewEnrollment)
+        //         //
+        //         // subtract 1 from the Courses list,
+        //         // because the list starts at 1 and
+        //         // all other objects start from 0
+        //         //
+        //         checkedListBoxDisciplines.SetItemChecked(
+        //             enrollment.CourseId - 1, true);
 
-        if (studentToView?.Enrollments != null)
-            foreach (var enrollment in studentToView.Enrollments)
-                //
-                // subtract 1 from the Courses list,
-                // because the list starts at 1 and
-                // all other objects start from 0
-                //
+        var studentToViewEnrollment =
+            Enrollments.ConsultEnrollment(studentToView.IdStudent);
+
+        if (studentToViewEnrollment.Any())
+        {
+            foreach (var enrollment in studentToViewEnrollment)
+            {
+                // Subtract 1 from the Courses list
                 checkedListBoxDisciplines.SetItemChecked(
                     enrollment.CourseId - 1, true);
+            }
+        }
 
         // update the numericUpDownLabel with  the value
         numericUpDownTotalWorkLoad.Value =
@@ -570,5 +586,49 @@ public partial class StudentAdd : Form
         StudentSearch studentSearch = new();
         studentSearch.ShowDialog();
         studentSearch.Dispose();
+    }
+
+
+    private void TransparentTabControl1_SelectedIndexChanged(
+        object sender, EventArgs e)
+    {
+        if (transparentTabControl1.SelectedTab ==
+            transparentTabControl1.TabPages[0])
+        {
+            comboBoxSearchList.Visible = false;
+            comboBoxSearchOptions.Visible = false;
+            buttonAddCourses.Visible = false;
+            //buttonAddStudent.Visible = false;
+        }
+        else if (transparentTabControl1.SelectedTab ==
+                 transparentTabControl1.TabPages[1])
+        {
+            comboBoxSearchList.Visible = false;
+            comboBoxSearchOptions.Visible = false;
+            buttonAddCourses.Visible = true;
+            //buttonAddStudent.Visible = true;
+        }
+        else if (transparentTabControl1.SelectedTab ==
+                 transparentTabControl1.TabPages[2])
+        {
+            comboBoxSearchList.Visible = true;
+            comboBoxSearchOptions.Visible = true;
+            buttonAddCourses.Visible = false;
+            //buttonAddStudent.Visible = false;
+        }
+        else if (transparentTabControl1.SelectedTab ==
+                 transparentTabControl1.TabPages[3])
+        {
+            comboBoxSearchList.Visible = true;
+            comboBoxSearchOptions.Visible = true;
+            buttonAddCourses.Visible = false;
+            //buttonAddStudent.Visible = false;
+        }
+    }
+
+    private void TransparentTabControl1_TabIndexChanged(
+        object sender, EventArgs e)
+    {
+        TransparentTabControl1_SelectedIndexChanged(sender, e);
     }
 }

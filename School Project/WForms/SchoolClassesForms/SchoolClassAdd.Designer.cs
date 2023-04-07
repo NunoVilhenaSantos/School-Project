@@ -644,7 +644,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonAddStudent.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonAddStudent.FlatStyle = FlatStyle.Flat;
             buttonAddStudent.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddStudent.Location = new Point(1206, 1);
+            buttonAddStudent.Location = new Point(1207, 1);
             buttonAddStudent.Name = "buttonAddStudent";
             buttonAddStudent.Size = new Size(125, 50);
             buttonAddStudent.TabIndex = 13;
@@ -673,7 +673,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonAddCourse.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonAddCourse.FlatStyle = FlatStyle.Flat;
             buttonAddCourse.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddCourse.Location = new Point(924, 1);
+            buttonAddCourse.Location = new Point(925, 1);
             buttonAddCourse.Name = "buttonAddCourse";
             buttonAddCourse.Size = new Size(125, 50);
             buttonAddCourse.TabIndex = 14;

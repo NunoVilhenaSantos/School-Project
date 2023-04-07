@@ -106,8 +106,8 @@ public class SchoolContext : DbContext
         //    .WithOne(e => e.Course);
 
         // Configure one-to-many relationship between Student and Enrollment entities
-        modelBuilder.Entity<Student>().HasMany(s => s.Enrollments)
-            .WithOne(e => e.Student);
+        // modelBuilder.Entity<Student>().HasMany(s => s.Enrollments)
+        //     .WithOne(e => e.Student);
 
         // Configure one-to-one relationship between Teacher and Department entities
         //modelBuilder.Entity<Teacher>().

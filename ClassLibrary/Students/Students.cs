@@ -36,9 +36,9 @@ public class Students
         string nationality,
         string birthplace,
         string photo,
+        int courseCount,
         int totalWorkHours,
-        DateOnly enrollmentDate,
-        List<Enrollment> enrollments
+        DateOnly enrollmentDate
     )
     {
         ListStudents.Add(new Student
@@ -60,9 +60,9 @@ public class Students
                 Nationality = nationality,
                 Birthplace = birthplace,
                 Photo = photo,
+                CoursesCount = courseCount,
                 TotalWorkHoursLoad = totalWorkHours,
                 EnrollmentDate = enrollmentDate,
-                Enrollments = enrollments
             }
         );
 
@@ -101,9 +101,9 @@ public class Students
         string nationality,
         string birthplace,
         string photo,
+        int courseCount,
         int totalWorkHours,
-        DateOnly enrollmentDate,
-        List<Enrollment> enrollments
+        DateOnly enrollmentDate
     )
     {
         if (ListStudents.Count < 1)
@@ -161,9 +161,7 @@ public class Students
         ListStudents.FirstOrDefault(
                 a => a != null && a.IdStudent == id)!
             .EnrollmentDate = enrollmentDate;
-        ListStudents.FirstOrDefault(
-                a => a != null && a.IdStudent == id)!
-            .Enrollments = enrollments;
+
 
         ListStudents[id].GetTotalWorkHourLoad();
 
@@ -276,11 +274,11 @@ public class Students
                     a => a?.EnrollmentDate == enrollmentDate)
                 .ToList();
 
-        if (enrollments != null)
-            students = ListStudents
-                .Where(
-                    a => a?.Enrollments == enrollments)
-                .ToList();
+        // if (enrollments != null)
+        //     students = ListStudents
+        //         .Where(
+        //             a => a?.Enrollments == enrollments)
+        //         .ToList();
 
         return students;
     }

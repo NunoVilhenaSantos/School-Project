@@ -454,30 +454,39 @@ public static class XFiles
         // Write the header line
         streamWriter.WriteLine(propertyNames);
 
-        foreach (var line in
-                 Students.Students.ListStudents
-                     .Select(student =>
-                         $"{student.IdStudent};" +
-                         $"{student.Name};" +
-                         $"{student.LastName};" +
-                         $"{student.Address};" +
-                         $"{student.PostalCode};" +
-                         $"{student.City};" +
-                         $"{student.Phone};" +
-                         $"{student.Email};" +
-                         $"{student.Active};" +
-                         $"{student.Genre};" +
-                         $"{student.DateOfBirth};" +
-                         $"{student.IdentificationNumber};" +
-                         $"{student.ExpirationDateIn};" +
-                         $"{student.TaxIdentificationNumber};" +
-                         $"{student.Nationality};" +
-                         $"{student.Birthplace};" +
-                         $"{student.Photo}" +
-                         $"{student.TotalWorkHoursLoad};" +
-                         $"{student.EnrollmentDate};" +
-                         $"{student.Enrollments};"))
+        foreach (
+            var line in
+            Students.Students.ListStudents
+                .Select(student => StudentMapper.MapToString(student)))
+        {
             streamWriter.WriteLine(line);
+        }
+
+        // foreach (var line in
+        //          Students.Students.ListStudents
+        //              .Select(student =>
+        //                      $"{student.IdStudent};" +
+        //                      $"{student.Name};" +
+        //                      $"{student.LastName};" +
+        //                      $"{student.Address};" +
+        //                      $"{student.PostalCode};" +
+        //                      $"{student.City};" +
+        //                      $"{student.Phone};" +
+        //                      $"{student.Email};" +
+        //                      $"{student.Active};" +
+        //                      $"{student.Genre};" +
+        //                      $"{student.DateOfBirth};" +
+        //                      $"{student.IdentificationNumber};" +
+        //                      $"{student.ExpirationDateIn};" +
+        //                      $"{student.TaxIdentificationNumber};" +
+        //                      $"{student.Nationality};" +
+        //                      $"{student.Birthplace};" +
+        //                      $"{student.Photo};" +
+        //                      $"{student.CoursesCount};"+
+        //                      $"{student.TotalWorkHoursLoad};" +
+        //                      $"{student.EnrollmentDate};"
+        //              ))
+        //     streamWriter.WriteLine(line);
 
         //streamWriter.Flush();
         streamWriter.Close();
@@ -485,6 +494,41 @@ public static class XFiles
         myString = "Operação realizada com sucesso";
         return true;
     }
+
+
+    private static class StudentMapper
+    {
+        private const string Delimiter = ";";
+
+        public static string MapToString(Student student)
+        {
+            return string.Join(Delimiter, new[]
+            {
+                student.IdStudent.ToString(),
+                student.Name,
+                student.LastName,
+                student.Address,
+                student.PostalCode,
+                student.City,
+                student.Phone,
+                student.Email,
+                student.Active.ToString(),
+                student.Genre,
+                student.DateOfBirth.ToString("yyyy-MM-dd"),
+                student.IdentificationNumber,
+                student.ExpirationDateIn.ToString("yyyy-MM-dd"),
+                student.TaxIdentificationNumber,
+                student.Nationality,
+                student.Birthplace,
+                student.Photo,
+                student.CoursesCount.ToString(),
+                student.TotalWorkHoursLoad.ToString(),
+                student.EnrollmentDate.ToString("yyyy-MM-dd")
+            });
+        }
+    }
+
+    
 
     #endregion
 
@@ -691,16 +735,17 @@ public static class XFiles
             var campos = line.Split(';');
 
             // validating the line, if has at least 18 fields,
-            // less than 18 will continue reading the file
-            if (campos.Length < 18) continue;
+            // less than 19 will continue reading the file
+            if (campos.Length < 19) continue;
             if (campos[0].ToLower().Contains("id")) continue;
 
             _ = int.TryParse(campos[0], out var id);
             _ = bool.TryParse(campos[8], out var active);
             _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
             _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
-            _ = int.TryParse(campos[17], out var totalWorkHours);
-            _ = DateOnly.TryParse(campos[18], out var enrollmentDate);
+            _ = int.TryParse(campos[17], out var courseCount);
+            _ = int.TryParse(campos[18], out var totalWorkHours);
+            _ = DateOnly.TryParse(campos[19], out var enrollmentDate);
 
             Students.Students.AddStudent(
                 id,
@@ -720,9 +765,9 @@ public static class XFiles
                 campos[14],
                 campos[15],
                 campos[16],
+                courseCount,
                 totalWorkHours,
-                enrollmentDate,
-                new List<Enrollment>()
+                enrollmentDate
             );
         }
 
@@ -787,8 +832,6 @@ public static class XFiles
                 campos[0].Equals("id", StringComparison.OrdinalIgnoreCase))
                 continue;
 
-            //
-            //
             // ...
             // Use a HashSet to store the course IDs that each teacher teaches
             HashSet<int> courseIds = null;
@@ -800,15 +843,17 @@ public static class XFiles
 
             // Loop through courses once and add them to a dictionary with the course ID as the key
             var courses =
-                Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
+                Courses.Courses.ListCourses
+                    .ToDictionary(c => c.IdCourse);
 
             // Loop through courses once and add them to a dictionary with the course ID as the key
             var students =
-                Students.Students.ListStudents.ToDictionary(s => s.IdStudent);
+                Students.Students.ListStudents
+                    .ToDictionary(s => s.IdStudent);
 
             // ...
 
-            TryParseEnrollment(campos);
+            TryParseEnrollment(campos, courses, students);
         }
 
         streamReader.Close();
@@ -817,27 +862,27 @@ public static class XFiles
         return true;
     }
 
-    private static void TryParseEnrollment(IReadOnlyList<string> campos)
+    private static void TryParseEnrollment(
+        IReadOnlyList<string> campos,
+        IReadOnlyDictionary<int, Course> courses,
+        IReadOnlyDictionary<int, Student?> students)
     {
         if (!int.TryParse(campos[2], out var studentId) ||
             !int.TryParse(campos[3], out var courseId) ||
             !decimal.TryParse(campos[1], out var grade)) return;
 
-        var student =
-            Students.Students.ListStudents
-                .FirstOrDefault(s => s.IdStudent == studentId);
-        var course =
-            Courses.Courses.ListCourses
-                .FirstOrDefault(c => c.IdCourse == courseId);
+        if (!students.TryGetValue(studentId, out var student) ||
+            student == null) return;
+        if (!courses.TryGetValue(courseId, out var course) ||
+            course == null) return;
 
-        if (student != null && course != null)
-            Enrollments.Enrollments.AddEnrollment(
-                grade,
-                studentId,
-                courseId,
-                student,
-                course
-            );
+        Enrollments.Enrollments.EnrollStudent(
+            studentId,
+            courseId,
+            grade,
+            student,
+            course
+        );
     }
 
     // 4th file to read are the school-classes file
@@ -1080,6 +1125,28 @@ public static class XFiles
                 coursesList
             );
         }
+        // $"{teacher.TeacherId};" +
+        // $"{teacher.Name};" +
+        // $"{teacher.LastName};" +
+        // $"{teacher.Address};" +
+        // $"{teacher.PostalCode};" +
+        // $"{teacher.City};" +
+        // $"{teacher.Phone};" +
+        // $"{teacher.Email};" +
+        // $"{teacher.Active};" +
+        // $"{teacher.Genre};" +
+        // $"{teacher.DateOfBirth};" +
+        // $"{teacher.IdentificationNumber};" +
+        // $"{teacher.ExpirationDateIn};" +
+        // $"{teacher.TaxIdentificationNumber};" +
+        // $"{teacher.Nationality};" +
+        // $"{teacher.Birthplace};" +
+        // $"{teacher.Photo};" +
+        // $"{teacher.CoursesCount};" +
+        // $"{teacher.TotalWorkHoursLoad};" +
+        // string.Join(";",
+        //     teacher.Courses?
+        //         .Select(c => c.IdCourse)))
 
         streamReader.Close();
 

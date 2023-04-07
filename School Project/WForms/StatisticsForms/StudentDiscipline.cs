@@ -7,13 +7,17 @@ namespace School_Project.WForms.StatisticsForms;
 
 public partial class StudentDiscipline : Form
 {
-    private int _disciplinesCount;
+
+    #region Attributs
 
     //
     // Global variables for the windows forms
     //
+
+    private int _disciplinesCount;
     private int _studentsCount;
 
+    #endregion
 
     //
     // constructor
@@ -21,6 +25,8 @@ public partial class StudentDiscipline : Form
     public StudentDiscipline()
     {
         InitializeComponent();
+        _disciplinesCount = -1;
+            _studentsCount=-1;
     }
 
 
@@ -83,8 +89,8 @@ public partial class StudentDiscipline : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
-        ((TextBox) sender).Paste();
+        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
+        ((TextBox)sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -121,20 +127,16 @@ public partial class StudentDiscipline : Form
             Filter = null
         };
 
-        //listBoxStudents.DataSource = null;
-        listBoxStudents.DataSource = bSourceListStudents;
-        // activate this option if you want a specific value else it will use the override method to string
-        // listBoxStudent.DisplayMember = "NomeCompleto";
-        listBoxStudents.SelectedItem = null;
-
-
         //
-        // insert disciplines_temp into the checked list-box
+        // checked list-box
         //
         checkedListBoxDisciplines.DataSource = bindingSourceListCourses;
         //checkedListBoxDisciplines.Items.Clear();
         //checkedListBoxDisciplines.Items.AddRange(
-        //    Library.Courses.ListCourses.ToArray());
+
+        listBoxStudents.DataSource = bSourceListStudents;
+        // listBoxStudent.DisplayMember = "NomeCompleto";
+        //listBoxStudents.SelectedItem = null;
 
 
         //
@@ -151,7 +153,7 @@ public partial class StudentDiscipline : Form
     private void ButtonStudentDisciplinesAdding_Click(
         object sender, EventArgs e)
     {
-        var studentToEdit = (Student) listBoxStudents.SelectedItem;
+        var studentToEdit = (Student)listBoxStudents.SelectedItem;
 
         if (studentToEdit == null)
         {
@@ -183,25 +185,25 @@ public partial class StudentDiscipline : Form
         List<Enrollment> enrollments = new();
 
         foreach (var d in Courses.ListCourses)
-        foreach (var t in checkedListBoxDisciplines.CheckedItems)
-            if (t is Course v && d.IdCourse == v.IdCourse)
-                enrollments.Add(
-                    new Enrollment
-                    {
-                        //Grade = 0,
-                        //StudentId = d.IdCourse,
-                        //Student = d,
-                        CourseId = d.IdCourse,
-                        Course = d
-                    }
-                );
+            foreach (var t in checkedListBoxDisciplines.CheckedItems)
+                if (t is Course v && d.IdCourse == v.IdCourse)
+                    enrollments.Add(
+                        new Enrollment
+                        {
+                            //Grade = 0,
+                            //StudentId = d.IdCourse,
+                            //Student = d,
+                            CourseId = d.IdCourse,
+                            Course = d
+                        }
+                    );
 
         Console.WriteLine("Debug point");
 
 
         foreach (var t in checkedListBoxDisciplines.CheckedItems)
         {
-            var b = (Course) t;
+            var b = (Course)t;
             var c =
                 Courses.ListCourses.FirstOrDefault(
                     a => a.IdCourse == b.IdCourse);
@@ -248,20 +250,33 @@ public partial class StudentDiscipline : Form
     private void ListBoxStudents_SelectedIndexChanged(
         object sender, EventArgs e)
     {
-        if (Courses.ListCourses == null) return;
+        if (Courses.ListCourses == null)
+            return;
 
-        var studentToView = (Student) listBoxStudents.SelectedItem;
-        if (studentToView.Enrollments == null) return;
+        var studentToView = (Student)listBoxStudents.SelectedItem;
+        // if (studentToView.Enrollments == null) return;
+        //
+        //
+        // foreach (var enrollment in studentToView.Enrollments)
+        //     //
+        //     // subtract 1 from the Courses list,
+        //     // because the list starts at 1 and
+        //     // all other objects start from 0
+        //     //
+        //     checkedListBoxDisciplines.SetItemChecked(
+        //         enrollment.CourseId - 1, true);
 
+        var studentToViewEnrollment =
+            Enrollments.ConsultEnrollment(studentToView.IdStudent);
 
-        foreach (var enrollment in studentToView.Enrollments)
-            //
-            // subtract 1 from the Courses list,
-            // because the list starts at 1 and
-            // all other objects start from 0
-            //
-            checkedListBoxDisciplines.SetItemChecked(enrollment.CourseId - 1,
-                true);
+        if (!studentToViewEnrollment.Any()) return;
+
+        foreach (var enrollment in studentToViewEnrollment)
+        {
+            // Subtract 1 from the Courses list
+            checkedListBoxDisciplines.SetItemChecked(
+                enrollment.CourseId - 1, true);
+        }
     }
 
 

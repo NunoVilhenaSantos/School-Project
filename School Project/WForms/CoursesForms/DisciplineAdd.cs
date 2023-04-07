@@ -687,7 +687,7 @@ public partial class DisciplineAdd : Form
                         Course = courseToAdd
                     }
                 );
-                Enrollments.AddEnrollment(toVerify.IdStudent,
+                Enrollments.EnrollStudent(toVerify.IdStudent,
                     courseToAdd.IdCourse);
             }
 
@@ -706,8 +706,8 @@ public partial class DisciplineAdd : Form
         );
         MessageBox.Show(nova);
 
-
         SchoolClasses.ToObtainValuesForCalculatedFields();
+
         Courses.GetStudentsCount();
 
         UpdateLists();

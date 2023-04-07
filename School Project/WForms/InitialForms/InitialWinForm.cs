@@ -1,4 +1,7 @@
 ﻿using ClassLibrary;
+using ClassLibrary.Courses;
+using ClassLibrary.SchoolClasses;
+using ClassLibrary.Students;
 using School_Project.Properties;
 using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
@@ -38,8 +41,12 @@ public partial class InitialWinForm : Form
                 "Esta é a mensagem que chegou do XFiles!\n\n" + myString,
                 "Ler ficheiros");
 
-        _context = new SchoolContext();
-        //_context.Database.EnsureCreated();
+        // _context = new SchoolContext();
+        // _context.Database.EnsureCreated();
+        
+        SchoolClasses.ToObtainValuesForCalculatedFields();
+        //Students.GetFullInfo();
+        Courses.GetStudentsCount();
 
         ChangeImageInButtons();
     }

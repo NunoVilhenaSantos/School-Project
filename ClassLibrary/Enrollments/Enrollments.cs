@@ -9,89 +9,102 @@ public static class Enrollments
 
     public static List<Enrollment> ListEnrollments { get; set; } = new();
 
+
+    public static Dictionary<int, Student> StudentsDictionary { get; set; } =
+        new();
+
+
+    public static Dictionary<int, Course> CoursesDictionary { get; set; } =
+        new();
+
     #endregion
 
 
     #region Methods
 
-    /// <summary>
-    ///     Adding a new enrollment
-    /// </summary>
-    /// <param name="studentId"></param>
-    /// <param name="courseId"></param>
-    public static void AddEnrollment(int studentId, int courseId)
+    // update the dictionaries from the list of their corresponding classes
+    public static void UpdateDictionaries()
     {
-        ListEnrollments.Add(
-            new Enrollment
+        // update the students dictionary
+        foreach (var student in Students.Students.ListStudents)
+        {
+            if (!StudentsDictionary.ContainsKey(student.IdStudent))
             {
-                Grade = null,
-                StudentId = studentId,
-                Student =
-                    Students.Students.ListStudents
-                        .Find(s => s.IdStudent == studentId),
-                CourseId = courseId,
-                Course =
-                    Courses.Courses.ListCourses
-                        .Find(c => c.IdCourse == courseId)
+                StudentsDictionary.Add(student.IdStudent, student);
             }
-        );
+            else
+            {
+                StudentsDictionary[student.IdStudent] = student;
+            }
+        }
+
+        // update the courses dictionary
+        foreach (var course in Courses.Courses.ListCourses)
+        {
+            if (!CoursesDictionary.ContainsKey(course.IdCourse))
+            {
+                CoursesDictionary.Add(course.IdCourse, course);
+            }
+            else
+            {
+                CoursesDictionary[course.IdCourse] = course;
+            }
+        }
     }
 
-    /// <summary>
-    ///     Adding a new enrollment
-    /// </summary>
-    /// <param name="studentId"></param>
-    /// <param name="courseId"></param>
-    /// <param name="grade"></param>
-    public static void AddEnrollment(decimal grade, int studentId, int courseId)
+
+    public static void EnrollStudent(
+        int studentId, int courseId,
+        decimal? grade = null,
+        Student student = null, Course course = null)
     {
+        // this is done before adding the Enrollments to improve performance
+        UpdateDictionaries();
+
+        if (!StudentsDictionary.ContainsKey(studentId))
+        {
+            throw new ArgumentException("Invalid student ID");
+        }
+
+        if (!CoursesDictionary.ContainsKey(courseId))
+        {
+            throw new ArgumentException("Invalid course ID");
+        }
+
+        if (ListEnrollments.Any(e =>
+                e.StudentId == studentId && e.CourseId == courseId))
+        {
+            throw new ArgumentException(
+                "This student is already enrolled in this course");
+        }
+
         ListEnrollments.Add(new Enrollment
         {
             Grade = grade,
             StudentId = studentId,
-            Student =
-                Students.Students.ListStudents
-                    .Find(s => s.IdStudent == studentId),
+            Student = student ?? StudentsDictionary[studentId],
             CourseId = courseId,
-            Course =
-                Courses.Courses.ListCourses
-                    .Find(c => c.IdCourse == courseId)
+            Course = course ?? CoursesDictionary[courseId]
         });
     }
 
-
-    public static void AddEnrollment(
-        decimal grade, int studentId, int courseId,
-        Student student, Course course)
+    public static void RemoveEnrollment(int studentId, int courseId)
     {
-        ListEnrollments.Add(new Enrollment
-        {
-            Grade = grade,
-            StudentId = studentId,
-            Student = student,
-            CourseId = courseId,
-            Course = course
-        });
-    }
-
-    /// <summary>
-    ///     Deleting an enrollment
-    /// </summary>
-    /// <param name="studentId"></param>
-    /// <param name="courseId"></param>
-    /// <returns>Return an text informing if the operation was valid or not</returns>
-    public static string DeleteEnrollment(int studentId, int courseId)
-    {
-        var enrollment =
-            ListEnrollments.FirstOrDefault(
-                a => a.StudentId == studentId && a.CourseId == courseId);
+        var enrollment = ListEnrollments
+            .FirstOrDefault(
+                e =>
+                    e.StudentId == studentId &&
+                    e.CourseId == courseId);
 
         if (enrollment == null)
-            return "A matrícula não existe";
+        {
+            throw new ArgumentException("This enrollment does not exist");
+            throw new ArgumentException("A matrícula não existe");
+        }
 
         ListEnrollments.Remove(enrollment);
-        return "A matrícula foi apagada";
     }
+
 
     /// <summary>
     ///     Searching an enrollment
@@ -106,15 +119,18 @@ public static class Enrollments
         var enrollments = ListEnrollments;
 
         if (studentId != -1)
-            enrollments = enrollments.Where(a => a.StudentId == studentId)
+            enrollments = enrollments
+                .Where(a => a.StudentId == studentId)
                 .ToList();
 
         if (courseId != -1)
-            enrollments = enrollments.Where(a => a.CourseId == courseId)
+            enrollments = enrollments
+                .Where(a => a.CourseId == courseId)
                 .ToList();
 
         if (grade.HasValue)
-            enrollments = enrollments.Where(a => a.Grade == grade.Value)
+            enrollments = enrollments
+                .Where(a => a.Grade == grade.Value)
                 .ToList();
 
         return enrollments;
@@ -155,4 +171,15 @@ public static class Enrollments
     }
 
     #endregion
+
+    public static List<Enrollment> ConsultEnrollment(int idStudent)
+    {
+        var enrollments = ListEnrollments;
+
+        if (idStudent >= 0)
+            enrollments =
+                enrollments.Where(e => e.StudentId == idStudent).ToList();
+
+        return enrollments;
+    }
 }

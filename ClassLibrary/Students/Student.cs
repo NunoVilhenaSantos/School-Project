@@ -2,33 +2,12 @@
 using System.Runtime.CompilerServices;
 using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
+using Serilog;
 
 namespace ClassLibrary.Students;
 
 public class Student : INotifyPropertyChanged
 {
-    //
-    // public class Student {
-    //     public int StudentId { get; set; }
-    //     public string Name { get; set; }
-    //     public string Major { get; set; }
-    //
-    //     public override bool Equals(object obj) {
-    //         if (obj == null || !(obj is Student)) {
-    //             return false;
-    //         }
-    //     
-    //         Student other = (Student) obj;
-    //         return this.StudentId == other.StudentId;
-    //     }
-    //
-    //     public override int GetHashCode() {
-    //         return this.StudentId.GetHashCode();
-    //     }
-    //}
-    //
-    //
-
     //
     // Constructor for the class and incrementation of the ID
     //
@@ -71,8 +50,9 @@ public class Student : INotifyPropertyChanged
     private string _nationality;
     private string _birthplace;
     private string _photo;
+
     private DateOnly _enrollmentDate;
-    private List<Enrollment> _enrollments = new();
+    // private List<Enrollment> _enrollments = new();
 
 
     private int _coursesCount;
@@ -315,16 +295,16 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public List<Enrollment> Enrollments
-    {
-        get => _enrollments;
-        set
-        {
-            if (Equals(value, _enrollments)) return;
-            _enrollments = value;
-            OnPropertyChanged();
-        }
-    }
+    // public List<Enrollment> Enrollments
+    // {
+    //     get => _enrollments;
+    //     set
+    //     {
+    //         if (Equals(value, _enrollments)) return;
+    //         _enrollments = value;
+    //         OnPropertyChanged();
+    //     }
+    // }
 
     #endregion
 
@@ -346,7 +326,7 @@ public class Student : INotifyPropertyChanged
 
     public int GetWorkHourLoad(Course course)
     {
-        var enrollment = Enrollments?
+        var enrollment = Enrollments.Enrollments.ListEnrollments?
             .FirstOrDefault(
                 e => e.Student != null &&
                      e.Student.IdStudent == IdStudent && e.Course == course);
@@ -356,12 +336,15 @@ public class Student : INotifyPropertyChanged
 
     public int GetTotalWorkHourLoad()
     {
-        var enrollment = Enrollments?
-            .Where(e => e.Student != null &&
-                        e.Student.IdStudent == IdStudent)
-            .ToList();
+        var enrollment =
+            Enrollments.Enrollments.ListEnrollments?
+                .Where(
+                    e => e.Student != null &&
+                         e.Student.IdStudent == IdStudent)
+                .ToList();
 
-        return Enrollments?.Sum(enrollment => enrollment.Course.WorkLoad) ?? 0;
+        Log.Warning("The ListStudents collection is empty.");
+        return enrollment?.Sum(enrollment => enrollment.Course.WorkLoad) ?? 0;
         /*
         return Enrollments == null
             ? 0
@@ -372,8 +355,9 @@ public class Student : INotifyPropertyChanged
 
     public int? GetCoursesCount()
     {
-        var enrollment = Enrollments?.Where(
-            e => e.Student.IdStudent == IdStudent).Count();
+        var enrollment =
+            Enrollments.Enrollments.ListEnrollments?
+                .Where(e => e.Student.IdStudent == IdStudent).Count();
 
         return enrollment ?? null;
         /*

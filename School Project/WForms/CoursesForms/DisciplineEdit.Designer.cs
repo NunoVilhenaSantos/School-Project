@@ -185,7 +185,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(234, 215, 213);
+            BackColor = Color.FromArgb(235, 155, 104);
             ClientSize = new Size(819, 431);
             Controls.Add(groupBoxDisciplineAdding);
             KeyPreview = true;
