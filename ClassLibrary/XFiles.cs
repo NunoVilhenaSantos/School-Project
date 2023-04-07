@@ -458,9 +458,7 @@ public static class XFiles
             var line in
             Students.Students.ListStudents
                 .Select(student => StudentMapper.MapToString(student)))
-        {
             streamWriter.WriteLine(line);
-        }
 
         // foreach (var line in
         //          Students.Students.ListStudents
@@ -502,33 +500,20 @@ public static class XFiles
 
         public static string MapToString(Student student)
         {
-            return string.Join(Delimiter, new[]
-            {
-                student.IdStudent.ToString(),
-                student.Name,
-                student.LastName,
-                student.Address,
-                student.PostalCode,
-                student.City,
-                student.Phone,
-                student.Email,
-                student.Active.ToString(),
-                student.Genre,
+            return string.Join(Delimiter, student.IdStudent.ToString(),
+                student.Name, student.LastName, student.Address,
+                student.PostalCode, student.City, student.Phone, student.Email,
+                student.Active.ToString(), student.Genre,
                 student.DateOfBirth.ToString("yyyy-MM-dd"),
                 student.IdentificationNumber,
                 student.ExpirationDateIn.ToString("yyyy-MM-dd"),
-                student.TaxIdentificationNumber,
-                student.Nationality,
-                student.Birthplace,
-                student.Photo,
+                student.TaxIdentificationNumber, student.Nationality,
+                student.Birthplace, student.Photo,
                 student.CoursesCount.ToString(),
                 student.TotalWorkHoursLoad.ToString(),
-                student.EnrollmentDate.ToString("yyyy-MM-dd")
-            });
+                student.EnrollmentDate.ToString("yyyy-MM-dd"));
         }
     }
-
-    
 
     #endregion
 

@@ -5,9 +5,9 @@ namespace ClassLibrary.Enrollments;
 
 public class Enrollments1
 {
-    private readonly IDictionary<int, Student> _students;
     private readonly IDictionary<int, Course> _courses;
     private readonly ISet<Enrollment> _enrollments;
+    private readonly IDictionary<int, Student> _students;
 
     public Enrollments1(
         IDictionary<int, Student> students,
@@ -23,16 +23,12 @@ public class Enrollments1
         decimal? grade = null)
     {
         if (!_students.TryGetValue(studentId, out var student))
-        {
             throw new KeyNotFoundException(
                 $"Student with ID {studentId} not found.");
-        }
 
         if (!_courses.TryGetValue(courseId, out var course))
-        {
             throw new KeyNotFoundException(
                 $"Course with ID {courseId} not found.");
-        }
 
         var enrollment = new Enrollment
         {
@@ -42,9 +38,7 @@ public class Enrollments1
         };
 
         if (!_enrollments.Add(enrollment))
-        {
             throw new ArgumentException("Enrollment already exists.");
-        }
     }
 
     public bool DeleteEnrollment(int studentId, int courseId)

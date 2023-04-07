@@ -5,6 +5,17 @@ namespace ClassLibrary.Enrollments;
 
 public static class Enrollments
 {
+    public static List<Enrollment> ConsultEnrollment(int idStudent)
+    {
+        var enrollments = ListEnrollments;
+
+        if (idStudent >= 0)
+            enrollments =
+                enrollments.Where(e => e.StudentId == idStudent).ToList();
+
+        return enrollments;
+    }
+
     #region Properties
 
     public static List<Enrollment> ListEnrollments { get; set; } = new();
@@ -27,29 +38,17 @@ public static class Enrollments
     {
         // update the students dictionary
         foreach (var student in Students.Students.ListStudents)
-        {
             if (!StudentsDictionary.ContainsKey(student.IdStudent))
-            {
                 StudentsDictionary.Add(student.IdStudent, student);
-            }
             else
-            {
                 StudentsDictionary[student.IdStudent] = student;
-            }
-        }
 
         // update the courses dictionary
         foreach (var course in Courses.Courses.ListCourses)
-        {
             if (!CoursesDictionary.ContainsKey(course.IdCourse))
-            {
                 CoursesDictionary.Add(course.IdCourse, course);
-            }
             else
-            {
                 CoursesDictionary[course.IdCourse] = course;
-            }
-        }
     }
 
 
@@ -62,21 +61,15 @@ public static class Enrollments
         UpdateDictionaries();
 
         if (!StudentsDictionary.ContainsKey(studentId))
-        {
             throw new ArgumentException("Invalid student ID");
-        }
 
         if (!CoursesDictionary.ContainsKey(courseId))
-        {
             throw new ArgumentException("Invalid course ID");
-        }
 
         if (ListEnrollments.Any(e =>
                 e.StudentId == studentId && e.CourseId == courseId))
-        {
             throw new ArgumentException(
                 "This student is already enrolled in this course");
-        }
 
         ListEnrollments.Add(new Enrollment
         {
@@ -171,15 +164,4 @@ public static class Enrollments
     }
 
     #endregion
-
-    public static List<Enrollment> ConsultEnrollment(int idStudent)
-    {
-        var enrollments = ListEnrollments;
-
-        if (idStudent >= 0)
-            enrollments =
-                enrollments.Where(e => e.StudentId == idStudent).ToList();
-
-        return enrollments;
-    }
 }

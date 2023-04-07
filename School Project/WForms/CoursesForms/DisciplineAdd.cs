@@ -901,7 +901,6 @@ public partial class DisciplineAdd : Form
             e.MarginBounds.Right, y + font.Height);
 
 
-
         // If there are more pages, indicate that there are more pages
         if (_endIndex < Courses.ListCourses.Count)
         {

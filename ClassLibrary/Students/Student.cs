@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ClassLibrary.Courses;
-using ClassLibrary.Enrollments;
 using Serilog;
 
 namespace ClassLibrary.Students;

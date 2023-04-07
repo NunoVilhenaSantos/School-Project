@@ -62,7 +62,7 @@ public class Students
                 Photo = photo,
                 CoursesCount = courseCount,
                 TotalWorkHoursLoad = totalWorkHours,
-                EnrollmentDate = enrollmentDate,
+                EnrollmentDate = enrollmentDate
             }
         );
 

@@ -818,6 +818,7 @@ namespace School_Project.WForms.StudentsForms
             buttonPrint.TabIndex = 3;
             buttonPrint.TextAlign = ContentAlignment.MiddleRight;
             buttonPrint.UseVisualStyleBackColor = true;
+            buttonPrint.Click += ButtonPrint_Click;
             // 
             // buttonAddCourses
             // 
@@ -942,6 +943,8 @@ namespace School_Project.WForms.StudentsForms
             // 
             // dataGridViewSearch
             // 
+            dataGridViewSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewSearch.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);

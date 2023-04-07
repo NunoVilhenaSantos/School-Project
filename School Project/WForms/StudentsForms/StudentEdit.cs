@@ -70,9 +70,9 @@ public partial class StudentEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
+        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
         {
-            ((TextBox)sender).Paste();
+            ((TextBox) sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -133,7 +133,7 @@ public partial class StudentEdit : Form
         KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || (Keys)e.KeyChar == Keys.Back) return;
+        if (char.IsDigit(e.KeyChar) || (Keys) e.KeyChar == Keys.Back) return;
         e.Handled = true;
     }
 
@@ -207,7 +207,7 @@ public partial class StudentEdit : Form
 
 
     private void UpdateChart()
-    //private void ButtonHouseLoanChart_Click(object sender, EventArgs e)
+        //private void ButtonHouseLoanChart_Click(object sender, EventArgs e)
     {
         //CasaUpdateListBoxValues();
 

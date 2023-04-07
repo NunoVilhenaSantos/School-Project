@@ -1204,7 +1204,7 @@ public partial class SchoolClassAdd : Form
 
             y += font.Height + 5;
         }
-        
+
         // Draw the bottom line of the header row
         e.Graphics.DrawLine(
             Pens.Black, e.MarginBounds.Left, y + font.Height,

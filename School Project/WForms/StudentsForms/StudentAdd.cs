@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Drawing.Printing;
+using System.Reflection;
 using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
 using ClassLibrary.Students;
@@ -536,14 +537,10 @@ public partial class StudentAdd : Form
             Enrollments.ConsultEnrollment(studentToView.IdStudent);
 
         if (studentToViewEnrollment.Any())
-        {
             foreach (var enrollment in studentToViewEnrollment)
-            {
                 // Subtract 1 from the Courses list
                 checkedListBoxDisciplines.SetItemChecked(
                     enrollment.CourseId - 1, true);
-            }
-        }
 
         // update the numericUpDownLabel with  the value
         numericUpDownTotalWorkLoad.Value =
@@ -631,4 +628,309 @@ public partial class StudentAdd : Form
     {
         TransparentTabControl1_SelectedIndexChanged(sender, e);
     }
+
+    private void ButtonPrint_Click(object sender, EventArgs e)
+    {
+        if (transparentTabControl1.SelectedTab ==
+            transparentTabControl1.TabPages[0])
+        {
+        }
+        else if (transparentTabControl1.SelectedTab ==
+                 transparentTabControl1.TabPages[1])
+        {
+            DataPrintPreview();
+        }
+        else if (transparentTabControl1.SelectedTab ==
+                 transparentTabControl1.TabPages[2])
+        {
+            DataPrintPreview();
+        }
+        else if (transparentTabControl1.SelectedTab ==
+                 transparentTabControl1.TabPages[3])
+        {
+            //ChartPrint();
+            ChartPrintPreview();
+        }
+    }
+
+    private void ChartPrintPreview()
+    {
+        // Create a new PrintDocument object and set its properties
+        var pd = new PrintDocument();
+        pd.DefaultPageSettings.Landscape = true;
+        pd.DocumentName = "Chart1";
+
+        // Handle the PrintPage event to render the chart onto the page
+        pd.PrintPage += (s, ev) =>
+        {
+            var bmp = new Bitmap(chart1.Width, chart1.Height);
+            chart1.DrawToBitmap(bmp,
+                new Rectangle(0, 0, bmp.Width, bmp.Height));
+            ev.Graphics.DrawImage(bmp, ev.MarginBounds);
+            ev.HasMorePages = false;
+        };
+
+
+        // Show the print preview dialog
+        var dlg = new PrintPreviewDialog();
+        dlg.Document = pd;
+        dlg.ShowDialog();
+    }
+
+
+    private void DataPrintPreview()
+    {
+        // Create a new PrintDocument object
+        var pd = new PrintDocument();
+        pd.DefaultPageSettings.Landscape = true;
+        pd.DocumentName = "List of Students";
+
+        // Set the PrintPage event handler for the PrintDocument object
+        pd.PrintPage += PrintPage;
+
+        // Show the PrintPreviewDialog
+        var ppd = new PrintPreviewDialog();
+        ppd.Document = pd;
+        ppd.ShowDialog();
+    }
+
+
+    private void PrintPage(object sender, PrintPageEventArgs e)
+    {
+        // Set up the print document with the appropriate font and margins
+        //var font = new Font("Arial", 12);
+        var font = new Font("Arial", 10);
+        var x = e.MarginBounds.Left;
+        var y = e.MarginBounds.Top;
+        var width = e.MarginBounds.Width;
+        var height = e.MarginBounds.Height;
+
+        _startIndex = (_currentPage - 1) * ItemsPerPage;
+        _endIndex = Math.Min(_startIndex + ItemsPerPage,
+            Students.ListStudents.Count);
+
+        // Define the column headers and widths
+        var colHeaders = new[]
+        {
+            // "ID", "Name", "Last Name", "Date of Birth", "Gender",
+            // "ID Number", "Tax ID", "Phone", "Email", "Address",
+            // "Enrollment Status", "Enrollment Date", "Expiration Date",
+            // "Emergency Contact"
+            "Id", "Name", "LastName", "Address", "PostalCode", "City",
+            "Phone", "Email", "Active", "Genre", "Date Birth",
+            "ID Number", "ID Expiration Date",
+            "VAT ID", "Nationality", "Birthplace",
+            "CoursesCount", "TotalWorkHoursLoad", "EnrollmentDate"
+        };
+        var colWidths = new[]
+            //                         email    gender                       
+            //   0,   1,   2,   3,   4,   5,  6,   7,  8,  9, 10, 11,  12,  13
+            //  14, 15, 16, 17, 18
+            {
+                40, 100, 100, 200, 200, 150, 50, 100, 80, 80, 80, 80, 100, 150,
+                50, 50, 50, 50, 50
+            };
+
+        // Print the title
+        e.Graphics.DrawString("Student List",
+            new Font("Arial", 16, FontStyle.Bold), Brushes.Black, x, y);
+        y += font.Height * 2;
+
+        // Print the column headers and lines
+        for (var i = 0; i < colHeaders.Length; i++)
+        {
+            e.Graphics.DrawString(colHeaders[i], font, Brushes.Black, x, y);
+            x += colWidths[i];
+
+            if (i != 8) continue;
+
+            x = e.MarginBounds.Left + colWidths[0];
+            y += font.Height;
+        }
+
+        y += font.Height;
+
+        // Draw the header row bottom line
+        e.Graphics.DrawLine(Pens.Black, e.MarginBounds.Left, y,
+            e.MarginBounds.Right, y);
+
+        // Define the new font
+        font = new Font("Arial", 10);
+
+        // Print the table data
+        // Print the data for each class
+        for (var i = _startIndex; i < _endIndex; i++)
+        {
+            var student = Students.ListStudents[i];
+
+            // Define the row lines
+            var rowLines = new[]
+            {
+                new
+                {
+                    X1 = e.MarginBounds.Left,
+                    Y1 = y,
+                    X2 = e.MarginBounds.Right,
+                    Y2 = y
+                },
+                new
+                {
+                    X1 = e.MarginBounds.Left,
+                    Y1 = y + font.Height,
+                    X2 = e.MarginBounds.Right,
+                    Y2 = y + font.Height
+                }
+            };
+
+            // Print the class acronym
+            y += font.Height + 2;
+            e.Graphics.DrawString(
+                student.IdStudent.ToString("#####"), font, Brushes.Black,
+                e.MarginBounds.Left, y);
+            x = e.MarginBounds.Left + colWidths[0];
+
+            // Print the class name
+            e.Graphics.DrawString(
+                student.Name, font, Brushes.Black, x, y);
+            x += colWidths[1];
+
+            // Print the start date
+            e.Graphics.DrawString(
+                student.LastName, font,
+                Brushes.Black, x, y);
+            x += colWidths[2];
+
+            // Print the end date
+            e.Graphics.DrawString(
+                //student.EndDate.ToString("d"),
+                student.Address,
+                font,
+                Brushes.Black, x, y);
+            x += colWidths[3];
+
+            // Print the start hour
+            e.Graphics.DrawString(
+                //student.StartHour.ToString("t"),
+                $"{student.PostalCode} {student.City}",
+                font,
+                Brushes.Black, x, y);
+            x += colWidths[4];
+
+            // Print the end hour
+            e.Graphics.DrawString(
+                //student.EndHour.ToString("t"),
+                student.Phone,
+                font,
+                Brushes.Black, x, y);
+            x += colWidths[5];
+
+            // Print the location
+            e.Graphics.DrawString(
+                student.Email,
+                font, Brushes.Black, x, y);
+            x += colWidths[6];
+
+            // Print the type
+            // breaking the line
+            y += font.Height;
+            e.Graphics.DrawString(
+                student.Active.ToString(),
+                font, Brushes.Black, x, y);
+
+            // resetting left margin 
+            //x += colWidths[7];
+            // 
+            x = e.MarginBounds.Left + colWidths[0];
+
+            // Print the area
+            e.Graphics.DrawString(
+                student.Genre,
+                font, Brushes.Black, x, y);
+            //x += colWidths[7];
+            x += colWidths[8];
+
+            // Print the number of courses
+            e.Graphics.DrawString(
+                //student.CoursesCount?.ToString("N") ?? "",
+                student.DateOfBirth.ToString("d"),
+                font, Brushes.Black, x, y);
+            x += colWidths[9];
+
+            // Print the WorkHourLoad
+            e.Graphics.DrawString(
+                //student.WorkHourLoad?.ToString("N") ?? "",
+                student.IdentificationNumber,
+                font, Brushes.Black, x, y);
+            x += colWidths[10];
+
+            // Print the StudentsCount
+            e.Graphics.DrawString(
+                student.ExpirationDateIn.ToString("d"),
+                font, Brushes.Black, x, y);
+            x += colWidths[11];
+
+            // Print the ClassAverage
+            e.Graphics.DrawString(
+                //student.ClassAverage?.ToString("N") ?? "",
+                student.TaxIdentificationNumber,
+                font, Brushes.Black, x, y);
+            x += colWidths[12];
+
+            // Print the HighestGrade
+            e.Graphics.DrawString(
+                //student.HighestGrade?.ToString("N") ?? "",
+                student.Nationality,
+                font, Brushes.Black, x, y);
+            x += colWidths[13];
+
+            // Print the LowestGrade
+            e.Graphics.DrawString(
+                //student.LowestGrade?.ToString("N") ?? "",
+                student.Birthplace,
+                font, Brushes.Black, x, y);
+            x += colWidths[14];
+
+
+            y += font.Height + 5;
+            //y += 5;
+            // Draw the bottom line of the student data row
+            e.Graphics.DrawLine(
+                Pens.CadetBlue,
+                e.MarginBounds.Left, y,
+                e.MarginBounds.Right, y);
+            //y += font.Height;
+            y += 2;
+        }
+
+        // Draw the bottom line of the header row
+        e.Graphics.DrawLine(
+            Pens.Black, e.MarginBounds.Left, y + font.Height,
+            e.MarginBounds.Right, y + font.Height);
+
+        // If there are more pages, indicate that there are more pages
+        if (_endIndex < Students.ListStudents.Count)
+        {
+            e.HasMorePages = true;
+            _currentPage++;
+        }
+        else
+        {
+            e.HasMorePages = false;
+            //_currentPage = 1;
+        }
+    }
+
+
+    #region Print Preview Attributes
+
+    // pages control
+    private const int ItemsPerPage = 10;
+    private int _currentPage = 1;
+    private int _startIndex;
+    private int _endIndex;
+
+    // keep track of the DataGridViewSchoolClasses row index previousRowIndex
+    private int _previousRowIndex = -1;
+
+    #endregion
 }
