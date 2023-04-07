@@ -146,8 +146,8 @@ public partial class SchoolClassAdd : Form
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
         //if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
-        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
-        ((TextBox)sender).Paste();
+        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
+        ((TextBox) sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -156,7 +156,7 @@ public partial class SchoolClassAdd : Form
     {
         if (!ValidateTextBoxes()) return;
         SchoolClasses.AddSchoolClass(
-            (int)numericUpDownSchoolClassID.Value,
+            (int) numericUpDownSchoolClassID.Value,
             textBoxSchoolClassAcronym.Text,
             textBoxSchoolClassName.Text,
             DateOnly.FromDateTime(dateTimePickerBeginCourse.Value),
@@ -166,7 +166,7 @@ public partial class SchoolClassAdd : Form
             "location:campos[8]",
             "type:campos[9]",
             "area:campos[10]",
-            (int)numericUpDownTotalNumberEnrolledStudents.Value,
+            (int) numericUpDownTotalNumberEnrolledStudents.Value,
             null
         );
 
@@ -201,11 +201,14 @@ public partial class SchoolClassAdd : Form
 
         foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
         {
-            chart1.Series["Students Count"].Points.AddXY(schoolClass.ClassName, schoolClass.StudentsCount);
+            chart1.Series["Students Count"].Points.AddXY(schoolClass.ClassName,
+                schoolClass.StudentsCount);
             chart1.Series["Courses Count"].BorderWidth = 3;
-            chart1.Series["Courses Count"].Points.AddXY(schoolClass.ClassName, schoolClass.CoursesCount);
+            chart1.Series["Courses Count"].Points.AddXY(schoolClass.ClassName,
+                schoolClass.CoursesCount);
             chart1.Series["Work Hour Load"].BorderWidth = 3;
-            chart1.Series["Work Hour Load"].Points.AddXY(schoolClass.ClassName, schoolClass.WorkHourLoad);
+            chart1.Series["Work Hour Load"].Points.AddXY(schoolClass.ClassName,
+                schoolClass.WorkHourLoad);
             chart1.Series["Work Hour Load"].YAxisType = AxisType.Secondary;
         }
 
@@ -426,7 +429,7 @@ public partial class SchoolClassAdd : Form
         //
 
         // Get the selected school class from the data source
-        var selectedSchoolClass = (SchoolClass)_bSListSClasses.Current;
+        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
 
         // Get the IdSchoolClass from the selected school class from the data source
         var index = selectedSchoolClass.IdSchoolClass;
@@ -459,7 +462,7 @@ public partial class SchoolClassAdd : Form
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
         // Get the selected school class from the data source
-        var selectedSchoolClass = (SchoolClass)_bSListSClasses.Current;
+        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
 
         if (selectedSchoolClass == null)
         {
@@ -502,11 +505,11 @@ public partial class SchoolClassAdd : Form
             char.IsSeparator(e.KeyChar) || // validating if its a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if its a whitespace
             char.IsDigit(e.KeyChar) || // validating if its a digit
-            e.KeyChar is (char)Keys.Back or '.' or '\'' or '-'
-        // validating if its a backspace
-        // validating if its a dot
-        // validating if its an apostrophe
-        // validating if its a separator
+            e.KeyChar is (char) Keys.Back or '.' or '\'' or '-'
+            // validating if its a backspace
+            // validating if its a dot
+            // validating if its an apostrophe
+            // validating if its a separator
         )
             return;
         e.Handled = true;
@@ -520,12 +523,12 @@ public partial class SchoolClassAdd : Form
         if (Keys.V.Equals(e.KeyChar) &&
             Keys.Control.Equals(e.KeyChar))
         {
-            ((TextBox)sender).Paste();
+            ((TextBox) sender).Paste();
             return;
         }
 
         // validating if its a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Keys.Back) return;
 
         e.Handled = true;
     }
@@ -606,22 +609,22 @@ public partial class SchoolClassAdd : Form
         List<Course> newCourses = new();
 
         foreach (var s in Students.ListStudents)
-            foreach (var v in checkedListBoxStudents.CheckedItems)
-                if (v is Student verify && s.IdStudent == verify.IdStudent)
-                    newStudents.Add(verify);
+        foreach (var v in checkedListBoxStudents.CheckedItems)
+            if (v is Student verify && s.IdStudent == verify.IdStudent)
+                newStudents.Add(verify);
 
         foreach (var c in Courses.ListCourses)
-            foreach (var t in checkedListBoxCourses.CheckedItems)
-                if (t is Course verify && c.IdCourse == verify.IdCourse)
-                    newCourses.Add(verify);
+        foreach (var t in checkedListBoxCourses.CheckedItems)
+            if (t is Course verify && c.IdCourse == verify.IdCourse)
+                newCourses.Add(verify);
 
 
         //
         // adding the new list to the class
         //
         foreach (var student in newStudents)
-            foreach (var course in newCourses)
-                Enrollments.AddEnrollment(student.IdStudent, course.IdCourse);
+        foreach (var course in newCourses)
+            Enrollments.AddEnrollment(student.IdStudent, course.IdCourse);
 
 
         //
@@ -706,9 +709,9 @@ public partial class SchoolClassAdd : Form
         List<Course> newCoursesList = new();
 
         foreach (var a in Courses.ListCourses)
-            foreach (var t in checkedListBoxCourses.CheckedItems)
-                if (t is Course toVerify && a.IdCourse == toVerify.IdCourse)
-                    newCoursesList.Add(toVerify);
+        foreach (var t in checkedListBoxCourses.CheckedItems)
+            if (t is Course toVerify && a.IdCourse == toVerify.IdCourse)
+                newCoursesList.Add(toVerify);
 
         //
         // debugging
@@ -763,7 +766,7 @@ public partial class SchoolClassAdd : Form
             _previousRowIndex) return;
 
         // Get the selected school class from the data source
-        var selectedSchoolClass = (SchoolClass)_bSListSClasses.Current;
+        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
 
         // Get the courses for the selected school class from the data source
         var selectedSchoolClassCourses = selectedSchoolClass.CoursesList;
@@ -777,7 +780,7 @@ public partial class SchoolClassAdd : Form
         //Set the checked items in the checkedListBoxCourses control
         for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
         {
-            var course = (Course)checkedListBoxCourses.Items[i];
+            var course = (Course) checkedListBoxCourses.Items[i];
             checkedListBoxCourses.SetItemChecked(i,
                 selectedSchoolClassCourses.Contains(course));
         }
@@ -796,6 +799,7 @@ public partial class SchoolClassAdd : Form
             // if (index >= 0)
             //     checkedListBoxCourses.SetItemChecked(index, true);
         }
+
         // Update the previous row index
         _previousRowIndex = dataGridViewSchoolClasses.CurrentCell.RowIndex;
     }
@@ -837,7 +841,7 @@ public partial class SchoolClassAdd : Form
             checkedListBoxStudents.SetItemChecked(c.IdCourse - 1, true);
 
         numericUpDownTotalNumberEnrolledStudents.Value =
-            (decimal)SchoolClasses
+            (decimal) SchoolClasses
                 .ListSchoolClasses[courseToView.Index]
                 .StudentsCount;
 
@@ -939,10 +943,12 @@ public partial class SchoolClassAdd : Form
         else if (transparentTabControl1.SelectedTab ==
                  transparentTabControl1.TabPages[1])
         {
+            DataPrintPreview();
         }
         else if (transparentTabControl1.SelectedTab ==
                  transparentTabControl1.TabPages[2])
         {
+            DataPrintPreview();
         }
         else if (transparentTabControl1.SelectedTab ==
                  transparentTabControl1.TabPages[3])
@@ -955,20 +961,23 @@ public partial class SchoolClassAdd : Form
     private void ChartPrint()
     {
         // Create a new PrintDocument object and set its properties
-        PrintDocument pd = new PrintDocument();
+        var pd = new PrintDocument();
         pd.DocumentName = "Chart1";
 
         // Handle the PrintPage event to render the chart onto the page
         pd.PrintPage += (s, ev) =>
         {
-            Bitmap bmp = new Bitmap(chart1.Width, chart1.Height);
-            chart1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            var bmp = new Bitmap(chart1.Width, chart1.Height);
+            chart1.DrawToBitmap(bmp,
+                new Rectangle(0, 0, bmp.Width, bmp.Height));
             ev.Graphics.DrawImage(bmp, ev.MarginBounds);
             ev.HasMorePages = false;
         };
 
         // Show a print dialog and print the chart if the user clicks "OK"
-        DialogResult result = printDialog1.ShowDialog();
+        // Show the print preview dialog
+        var printDialog1 = new PrintPreviewDialog();
+        var result = printDialog1.ShowDialog();
         if (result == DialogResult.OK)
         {
             pd.Print();
@@ -986,7 +995,8 @@ public partial class SchoolClassAdd : Form
         pd.PrintPage += (s, ev) =>
         {
             var bmp = new Bitmap(chart1.Width, chart1.Height);
-            chart1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            chart1.DrawToBitmap(bmp,
+                new Rectangle(0, 0, bmp.Width, bmp.Height));
             ev.Graphics.DrawImage(bmp, ev.MarginBounds);
             ev.HasMorePages = false;
         };
@@ -998,5 +1008,214 @@ public partial class SchoolClassAdd : Form
         dlg.ShowDialog();
     }
 
+    private void DataPrintPreview()
+    {
+        // Create a new PrintDocument object
+        var pd = new PrintDocument();
+        pd.DefaultPageSettings.Landscape = true;
+        pd.DocumentName = "List of School Classes";
 
+        // Set the PrintPage event handler for the PrintDocument object
+        pd.PrintPage += PrintPage;
+
+        // Show the PrintPreviewDialog
+        var ppd = new PrintPreviewDialog();
+        ppd.Document = pd;
+        ppd.ShowDialog();
+    }
+
+
+    private int _currentPage = 1;
+    private const int ItemsPerPage = 10;
+    private int _startIndex = 0;
+    private int _endIndex = 0;
+
+
+    private void PrintPage(object sender, PrintPageEventArgs e)
+    {
+        // Set up the print document with the appropriate font and margins
+        var font = new Font("Arial", 12);
+        var x = e.MarginBounds.Left;
+        var y = e.MarginBounds.Top;
+        var width = e.MarginBounds.Width;
+        var height = e.MarginBounds.Height;
+
+        _startIndex = (_currentPage - 1) * ItemsPerPage;
+        _endIndex = Math.Min(_startIndex + ItemsPerPage,
+            SchoolClasses.ListSchoolClasses.Count);
+
+        // Define the column widths and headers
+        var colWidths = new[]
+            {60, 120, 80, 80, 80, 80, 80, 60, 60, 60, 80, 80, 80, 80, 80};
+        var colHeaders = new[]
+        {
+            "Acronym", "Class Name", "Start Date", "End Date",
+            "Start Hour", "End Hour", "Location", "Type", "Area",
+            "Courses", "Work Hours", "Students",
+            "Avg Grade", "Max Grade", "Min Grade"
+        };
+
+        // Define the table lines
+        var tableLines = new[]
+        {
+            new
+            {
+                X1 = e.MarginBounds.Left, Y1 = y, X2 = e.MarginBounds.Right,
+                Y2 = y
+            },
+            new
+            {
+                X1 = e.MarginBounds.Left, Y1 = y + font.Height,
+                X2 = e.MarginBounds.Right, Y2 = y + font.Height
+            }
+        };
+
+        font = new Font("Arial", 8);
+        // Print the column headers and lines
+        for (var i = 0; i < colHeaders.Length; i++)
+        {
+            e.Graphics.DrawString(
+                colHeaders[i], font, Brushes.Black, x, y);
+            x += colWidths[i];
+            e.Graphics.DrawLine(
+                Pens.Black, x, y, x, y + font.Height);
+        }
+
+        // Draw the bottom line of the header row
+        e.Graphics.DrawLine(
+            Pens.Black, e.MarginBounds.Left, y + font.Height,
+            e.MarginBounds.Right, y + font.Height);
+
+        // Move to the next row
+        y += font.Height+10;
+
+        // Print the table data
+        // Print the data for each class
+        for (var i = _startIndex; i < _endIndex; i++)
+        {
+            var schoolClass = SchoolClasses.ListSchoolClasses[i];
+
+            // Define the row lines
+            var rowLines = new[]
+            {
+                new
+                {
+                    X1 = e.MarginBounds.Left,
+                    Y1 = y,
+                    X2 = e.MarginBounds.Right,
+                    Y2 = y
+                },
+                new
+                {
+                    X1 = e.MarginBounds.Left,
+                    Y1 = y + font.Height,
+                    X2 = e.MarginBounds.Right,
+                    Y2 = y + font.Height
+                }
+            };
+
+            // Print the class acronym
+            e.Graphics.DrawString(
+                schoolClass.ClassAcronym, font, Brushes.Black,
+                e.MarginBounds.Left, y);
+            x = e.MarginBounds.Left + colWidths[0];
+
+            y += font.Height+5;
+            // Print the class name
+            e.Graphics.DrawString(
+                schoolClass.ClassName, font, Brushes.Black, x, y);
+            x += colWidths[1];
+
+            y += font.Height+10;
+            // Print the start date
+            e.Graphics.DrawString(
+                schoolClass.StartDate.ToString("d"), font,
+                Brushes.Black, x, y);
+            x += colWidths[2];
+
+            // Print the end date
+            e.Graphics.DrawString(
+                schoolClass.EndDate.ToString("d"), font,
+                Brushes.Black, x, y);
+            x += colWidths[3];
+
+            // Print the start hour
+            e.Graphics.DrawString(
+                schoolClass.StartHour.ToString("t"), font,
+                Brushes.Black, x, y);
+            x += colWidths[4];
+
+            // Print the end hour
+            e.Graphics.DrawString(
+                schoolClass.EndHour.ToString("t"), font,
+                Brushes.Black, x, y);
+            x += colWidths[5];
+
+            // Print the location
+            e.Graphics.DrawString(
+                schoolClass.Location, font, Brushes.Black, x, y);
+            x += colWidths[6];
+
+            // Print the type
+            e.Graphics.DrawString(
+                schoolClass.Type, font, Brushes.Black, x, y);
+            x += colWidths[7];
+
+            // Print the area
+            e.Graphics.DrawString(
+                schoolClass.Area, font, Brushes.Black, x, y);
+            x += colWidths[8];
+
+            // Print the number of courses
+            e.Graphics.DrawString(
+                schoolClass.CoursesCount?.ToString("N") ?? "",
+                font, Brushes.Black, x, y);
+            x += colWidths[9];
+
+            // Print the WorkHourLoad
+            e.Graphics.DrawString(
+                schoolClass.WorkHourLoad?.ToString("N") ?? "",
+                font, Brushes.Black, x, y);
+            x += colWidths[10];
+
+            // Print the StudentsCount
+            e.Graphics.DrawString(
+                schoolClass.StudentsCount?.ToString("N") ?? "",
+                font, Brushes.Black, x, y);
+            x += colWidths[11];
+
+            // Print the ClassAverage
+            e.Graphics.DrawString(
+                schoolClass.ClassAverage?.ToString("N") ?? "",
+                font, Brushes.Black, x, y);
+            x += colWidths[12];
+
+            // Print the HighestGrade
+            e.Graphics.DrawString(
+                schoolClass.HighestGrade?.ToString("N") ?? "",
+                font, Brushes.Black, x, y);
+            x += colWidths[13];
+
+            // Print the LowestGrade
+            e.Graphics.DrawString(
+                schoolClass.LowestGrade?.ToString("N") ?? "",
+                font, Brushes.Black, x, y);
+            x += colWidths[14];
+
+            y += font.Height+5;
+        }
+
+
+        // If there are more pages, indicate that there are more pages
+        if (_endIndex < SchoolClasses.ListSchoolClasses.Count)
+        {
+            e.HasMorePages = true;
+            _currentPage++;
+        }
+        else
+        {
+            e.HasMorePages = false;
+            _currentPage = 1;
+        }
+    }
 }

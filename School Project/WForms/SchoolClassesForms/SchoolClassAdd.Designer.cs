@@ -40,7 +40,6 @@ namespace School_Project.WForms.SchoolClassesForms
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchoolClassAdd));
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
@@ -90,11 +89,9 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonClose = new Button();
             buttonNew = new Button();
             openFileDialog1 = new OpenFileDialog();
-            printPreviewDialog1 = new PrintPreviewDialog();
             transparentTabControl1 = new TransparentTabControl();
             tabPage4 = new TabPage();
             dataGridViewSearch = new DataGridView();
-            printDialog1 = new PrintDialog();
             tableLayoutPanelStudentData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalCourses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSchoolClassID).BeginInit();
@@ -789,16 +786,6 @@ namespace School_Project.WForms.SchoolClassesForms
             // 
             openFileDialog1.RestoreDirectory = true;
             // 
-            // printPreviewDialog1
-            // 
-            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
-            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
-            printPreviewDialog1.ClientSize = new Size(400, 300);
-            printPreviewDialog1.Enabled = true;
-            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
-            printPreviewDialog1.Name = "printPreviewDialog1";
-            printPreviewDialog1.Visible = false;
-            // 
             // transparentTabControl1
             // 
             transparentTabControl1.Controls.Add(tabPage1);
@@ -860,10 +847,6 @@ namespace School_Project.WForms.SchoolClassesForms
             dataGridViewSearch.RowTemplate.Height = 25;
             dataGridViewSearch.Size = new Size(1416, 486);
             dataGridViewSearch.TabIndex = 0;
-            // 
-            // printDialog1
-            // 
-            printDialog1.UseEXDialog = true;
             // 
             // SchoolClassAdd
             // 
@@ -939,7 +922,6 @@ namespace School_Project.WForms.SchoolClassesForms
         private DataGridView dataGridViewSchoolClasses;
         private Button buttonClear;
         private OpenFileDialog openFileDialog1;
-        private PrintPreviewDialog printPreviewDialog1;
         private TableLayoutPanel tableLayoutPanel1;
         private Button buttonStore;
         private Button buttonSearchForm;
@@ -953,6 +935,5 @@ namespace School_Project.WForms.SchoolClassesForms
         private Button buttonSearch;
         private TabPage tabPage4;
         private DataGridView dataGridViewSearch;
-        private PrintDialog printDialog1;
     }
 }
