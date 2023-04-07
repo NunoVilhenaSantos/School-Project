@@ -33,7 +33,7 @@ public static class XFiles
 
     private const string EnrollmentsFile = FilesFolder + "EnrollmentsFile.csv";
 
-    private const string TeachersFile = FilesFolder + "Teachers.csv";
+    private const string TeachersFile = FilesFolder + "TeachersFile.csv";
 
     #endregion
 
@@ -66,37 +66,37 @@ public static class XFiles
         var storeSchoolClassesInFile =
             StoreSchoolClassesInFile(
                 out var messageStoreSchoolClassesInFile);
-        // SchoolClassesFileHelper.WriteSchoolClassesToFile(
-        //     out var successStoreSchoolClassesInCsv,
-        //     out var messageStoreSchoolClassesInCsv);
+        SchoolClassesFileHelper.WriteSchoolClassesToFile(
+            out var successStoreSchoolClassesInCsv,
+            out var messageStoreSchoolClassesInCsv);
 
         var storeTeachersInFile =
             StoreTeachersInFile(
                 out var messageStoreTeachersInFile);
-        // TeachersFileHelper.WriteTeachersToFile(
-        //     out var successStoreTeachersInCsv,
-        //     out var messageStoreTeachersInCsv);
+        TeachersFileHelper.WriteTeachersToFile(
+            out var successStoreTeachersInCsv,
+            out var messageStoreTeachersInCsv);
 
         var storeCoursesInFile =
             StoreCoursesInFile(
                 out var messageStoreCoursesInFile);
-        // CoursesFileHelper.WriteCoursesToFile(
-        //     out var successStoreCoursesInCsv,
-        //     out var messageStoreCoursesInCsv);
+        CoursesFileHelper.WriteCoursesToFile(
+            out var successStoreCoursesInCsv,
+            out var messageStoreCoursesInCsv);
 
         var storeEnrollmentsInFile =
             StoreEnrollmentsInFile(
                 out var messageStoreEnrollmentsInFile);
-        // EnrollmentsFileHelper.WriteEnrollmentsToFile(
-        //     out var successStoreEnrollmentsInCsv,
-        //     out var messageStoreEnrollmentsInCsv);
+        EnrollmentsFileHelper.WriteEnrollmentsToFile(
+            out var successStoreEnrollmentsInCsv,
+            out var messageStoreEnrollmentsInCsv);
 
         var storeStudentsInFile =
             StoreStudentsInFile(
                 out var messageStoreStudentsInFile);
-        // StudentsFileHelper.WriteStudentsToFile(
-        //     out var successStoreStudentsInCsv,
-        //     out var messageStoreStudentsInCsv);
+        StudentsFileHelper.WriteStudentsToFile(
+            out var successStoreStudentsInCsv,
+            out var messageStoreStudentsInCsv);
 
         myString =
             messageStoreSchoolClassesInFile + "\n\n" +
@@ -104,21 +104,22 @@ public static class XFiles
             messageStoreCoursesInFile + "\n\n" +
             messageStoreEnrollmentsInFile + "\n\n" +
             messageStoreStudentsInFile;
-        // myString +=
-        //     messageStoreSchoolClassesInCsv + "\n\n" +
-        //     messageStoreTeachersInCsv + "\n\n" +
-        //     messageStoreCoursesInCsv + "\n\n" +
-        //     messageStoreEnrollmentsInCsv + "\n\n" +
-        //     messageStoreStudentsInCsv;
+        myString +=
+            messageStoreSchoolClassesInCsv + "\n\n" +
+            messageStoreTeachersInCsv + "\n\n" +
+            messageStoreCoursesInCsv + "\n\n" +
+            messageStoreEnrollmentsInCsv + "\n\n" +
+            messageStoreStudentsInCsv;
 
         var myBool =
             storeSchoolClassesInFile && storeTeachersInFile &&
             storeCoursesInFile && storeEnrollmentsInFile &&
             storeStudentsInFile;
-        // myBool +=
-        //     successStoreSchoolClassesInCsv && successStoreTeachersInCsv &&
-        //     successStoreCoursesInCsv && successStoreEnrollmentsInCsv &&
-        //     successStoreStudentsInCsv;
+        myBool =
+            myBool &&
+            successStoreSchoolClassesInCsv && successStoreTeachersInCsv &&
+            successStoreCoursesInCsv && successStoreEnrollmentsInCsv &&
+            successStoreStudentsInCsv;
 
         return myBool;
     }
@@ -134,8 +135,9 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(SchoolClassesFile, FileMode.Create,
-                FileAccess.ReadWrite);
+            fileStream =
+                new FileStream(SchoolClassesFile, FileMode.Create,
+                    FileAccess.ReadWrite);
         }
         catch (IOException ex)
         {

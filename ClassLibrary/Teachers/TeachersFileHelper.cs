@@ -33,7 +33,10 @@ public static class TeachersFileHelper
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(TeachersFilePath, FileMode.Create);
+            fileStream =
+                new FileStream(TeachersFilePath, FileMode.Create,
+                    FileAccess.ReadWrite);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
@@ -54,18 +57,22 @@ public static class TeachersFileHelper
             Delimiter = ";"
         };
 
-        fileStream = new FileStream(TeachersFilePath, FileMode.Create);
+        fileStream =
+            new FileStream(TeachersFilePath, FileMode.Create,
+                FileAccess.ReadWrite);
         var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
         var csvWriter = new CsvWriter(streamWriter, csvConfig);
 
         csvWriter.WriteRecords(Teachers.TeachersList);
+
+        fileStream.Close();
 
         myString = "Operação realizada com sucesso";
         success = true;
     }
 
     public static List<Teacher> ReadTeachersFromFile(
-        out bool sucess, out string myString)
+        out bool success, out string myString)
     {
         //
         // constructor for the reading files
@@ -76,21 +83,22 @@ public static class TeachersFileHelper
         FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
+            fileStream = new FileStream(TeachersFilePath, FileMode.OpenOrCreate,
+                FileAccess.Read);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
             myString = "Error accessing the file: " + ex.Source + " | " +
                        ex.Message;
-            sucess = false;
+            success = false;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
-            sucess = false;
+            success = false;
         }
 
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -98,12 +106,15 @@ public static class TeachersFileHelper
             Delimiter = ";"
         };
 
-        fileStream = new FileStream(TeachersFilePath, FileMode.OpenOrCreate);
+        fileStream = new FileStream(TeachersFilePath, FileMode.OpenOrCreate,
+            FileAccess.Read);
         var streamReader = new StreamReader(fileStream);
         var csvReader = new CsvReader(streamReader, csvConfig);
 
         myString = "Operação realizada com sucesso";
-        sucess = true;
+        success = true;
+
+        fileStream.Close();
 
         return csvReader.GetRecords<Teacher>().ToList();
     }

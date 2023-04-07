@@ -26,9 +26,9 @@ public class EnrollmentsFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(EnrollmentsFilePath, FileMode.Create))
+                   new FileStream(EnrollmentsFilePath, FileMode.Create,
+                       FileAccess.Write))
             {
-                ;
             }
         }
         catch (IOException ex)
@@ -51,7 +51,8 @@ public class EnrollmentsFileHelper
         };
 
         using (var fileStream =
-               new FileStream(EnrollmentsFilePath, FileMode.Create))
+               new FileStream(EnrollmentsFilePath, FileMode.Create,
+                   FileAccess.Write))
         using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
         using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
         {
@@ -68,9 +69,9 @@ public class EnrollmentsFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate))
+                   new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate,
+                       FileAccess.Read))
             {
-                ;
             }
         }
         catch (IOException ex)
@@ -93,7 +94,8 @@ public class EnrollmentsFileHelper
         };
 
         using (var fileStream =
-               new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate))
+               new FileStream(EnrollmentsFilePath, FileMode.OpenOrCreate,
+                   FileAccess.Read))
         using (var streamReader = new StreamReader(fileStream))
         using (var csvReader = new CsvReader(streamReader, csvConfig))
         {

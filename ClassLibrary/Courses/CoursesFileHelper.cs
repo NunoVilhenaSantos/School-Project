@@ -26,9 +26,9 @@ public class CoursesFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(CoursesFilePath, FileMode.Create))
+                   new FileStream(CoursesFilePath, FileMode.Create,
+                       FileAccess.Write))
             {
-                ;
             }
         }
         catch (IOException ex)
@@ -51,7 +51,8 @@ public class CoursesFileHelper
         };
 
         using (var fileStream =
-               new FileStream(CoursesFilePath, FileMode.Create))
+               new FileStream(CoursesFilePath, FileMode.Create,
+                   FileAccess.Write))
         using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
         using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
         {
@@ -68,9 +69,9 @@ public class CoursesFileHelper
         try
         {
             using (var fileStream =
-                   new FileStream(CoursesFilePath, FileMode.OpenOrCreate))
+                   new FileStream(CoursesFilePath, FileMode.OpenOrCreate,
+                       FileAccess.Read))
             {
-                ;
             }
         }
         catch (IOException ex)
@@ -93,7 +94,8 @@ public class CoursesFileHelper
         };
 
         using (var fileStream =
-               new FileStream(CoursesFilePath, FileMode.OpenOrCreate))
+               new FileStream(CoursesFilePath, FileMode.OpenOrCreate,
+                   FileAccess.Read))
         using (var streamWriter = new StreamReader(fileStream))
         using (var csvReader = new CsvReader(streamWriter, csvConfig))
         {
