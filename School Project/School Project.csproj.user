@@ -70,8 +70,5 @@
     <Compile Update="WForms\StudentsForms\StudentEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="WForms\StudentsForms\StudentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

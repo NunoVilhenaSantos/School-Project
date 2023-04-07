@@ -1,6 +1,6 @@
-﻿namespace School_Project.WForms.SchoolClassesForms
+﻿namespace School_Project.WForms.CoursesForms
 {
-    partial class SchoolClassSearch
+    partial class StudentSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -309,15 +309,15 @@
             dataGridViewSchoolClasses.Size = new Size(1378, 375);
             dataGridViewSchoolClasses.TabIndex = 4;
             // 
-            // SchoolClassSearch
+            // StudentSearch
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1384, 561);
             Controls.Add(tableLayoutPanel1);
-            Name = "SchoolClassSearch";
+            Name = "StudentSearch";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "School Class Search";
+            Text = "Student Search";
             Load += SchoolClassSearch_Load;
             KeyDown += WinForm_KeyDown;
             tableLayoutPanel1.ResumeLayout(false);

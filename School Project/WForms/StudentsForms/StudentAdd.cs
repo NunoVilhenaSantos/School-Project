@@ -568,8 +568,8 @@ public partial class StudentAdd : Form
 
     private void ButtonSearchForm_Click(object sender, EventArgs e)
     {
-        //CoursesSearch coursesSearch = new();
-        //coursesSearch.ShowDialog();
-        //coursesSearch.Dispose();
+        StudentSearch studentSearch = new();
+        studentSearch.ShowDialog();
+        studentSearch.Dispose();
     }
 }

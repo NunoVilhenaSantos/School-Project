@@ -73,7 +73,6 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.StudentDiscipline.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentAdd.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentEdit.resources
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentForm.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.Properties.Resources.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.GenerateResource.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.GeneratedMSBuildEditorConfig.editorconfig
@@ -86,3 +85,4 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.genruntimeconfig.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\ref\School Project.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.StudentSearch.resources
