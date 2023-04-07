@@ -1,0 +1,3 @@
+﻿IdStudent;Name;LastName;Address;PostalCode;City;Phone;Email;Active;Genre;DateOfBirth;IdentificationNumber;ExpirationDateIn;TaxIdentificationNumber;Nationality;Birthplace;Photo;CoursesCount;TotalWorkHoursLoad;EnrollmentDate
+1;Name;LastName;Address;PostalCode;City;Phone;Email;False;Genre;01/01/0001;IdentificationNumber;01/01/0001;TaxIdentificationNumber;Nationality;Birthplace;Photo;0;0;01/01/0001
+2;Name;LastName;Address;PostalCode;City;Phone;Email;False;Genre;01/01/0001;IdentificationNumber;01/01/0001;TaxIdentificationNumber;Nationality;Birthplace;Photo0;0;0;01/01/0001

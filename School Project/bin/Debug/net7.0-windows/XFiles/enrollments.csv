@@ -1,0 +1,3 @@
+﻿IdEnrollment;Grade;StudentId;IdStudent;Name;LastName;Address;PostalCode;City;Phone;Email;Active;Genre;DateOfBirth;IdentificationNumber;ExpirationDateIn;TaxIdentificationNumber;Nationality;Birthplace;Photo;CoursesCount;TotalWorkHoursLoad;EnrollmentDate;CourseId;IdCourse;Name;WorkLoad;Credits;StudentsCount
+1;0;0;0;;;;;;;;False;;01/01/0001;;01/01/0001;;;;;0;0;01/01/0001;0;0;;0;0;
+2;0;0;0;;;;;;;;False;;01/01/0001;;01/01/0001;;;;;0;0;01/01/0001;0;0;;0;0;
