@@ -10,37 +10,6 @@ namespace School_Project.WForms.CoursesForms;
 
 public partial class DisciplineAdd : Form
 {
-    #region Attributes
-
-    // BindingSource for combo-boxes and data-grids 
-    private readonly BindingSource _bSCoursesStudents = new();
-    private readonly BindingSource _bSListCourses = new();
-    private readonly BindingSource _bSListStudents = new();
-    private readonly BindingSource _bSourceSearchList = new();
-    private readonly BindingSource _bSourceSearchOptions = new();
-    private readonly BindingSource _bSsClassesCourses = new();
-
-    // retention of the last ID of each class 
-    private int _coursesCount;
-    private int _disciplinesCount;
-    private int _schoolClassesCount;
-    private int _studentsCount;
-
-    // retention of the photo
-    private string _photoFile;
-    
-    // pages control
-    private const int ItemsPerPage = 60;
-    private int _currentPage = 1;
-    private int _startIndex;
-    private int _endIndex;
-
-    // keep track of the DataGridViewSchoolClasses row index previousRowIndex
-    private int _previousRowIndex = -1;
-
-    #endregion
-
-
     public DisciplineAdd()
     {
         InitializeComponent();
@@ -926,6 +895,12 @@ public partial class DisciplineAdd : Form
             y += font.Height + 5;
         }
 
+        // Draw the bottom line of the header row
+        e.Graphics.DrawLine(
+            Pens.Black, e.MarginBounds.Left, y + font.Height,
+            e.MarginBounds.Right, y + font.Height);
+
+
 
         // If there are more pages, indicate that there are more pages
         if (_endIndex < Courses.ListCourses.Count)
@@ -939,4 +914,34 @@ public partial class DisciplineAdd : Form
             //_currentPage = 1;
         }
     }
+
+    #region Attributes
+
+    // BindingSource for combo-boxes and data-grids 
+    private readonly BindingSource _bSCoursesStudents = new();
+    private readonly BindingSource _bSListCourses = new();
+    private readonly BindingSource _bSListStudents = new();
+    private readonly BindingSource _bSourceSearchList = new();
+    private readonly BindingSource _bSourceSearchOptions = new();
+    private readonly BindingSource _bSsClassesCourses = new();
+
+    // retention of the last ID of each class 
+    private int _coursesCount;
+    private int _disciplinesCount;
+    private int _schoolClassesCount;
+    private int _studentsCount;
+
+    // retention of the photo
+    private string _photoFile;
+
+    // pages control
+    private const int ItemsPerPage = 55;
+    private int _currentPage = 1;
+    private int _startIndex;
+    private int _endIndex;
+
+    // keep track of the DataGridViewSchoolClasses row index previousRowIndex
+    private int _previousRowIndex = -1;
+
+    #endregion
 }

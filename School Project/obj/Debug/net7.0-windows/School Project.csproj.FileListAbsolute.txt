@@ -7,6 +7,10 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Azure.Core.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Azure.Identity.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\CsvHelper.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Google.Protobuf.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\K4os.Compression.LZ4.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\K4os.Hash.xxHash.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.dll
@@ -36,18 +40,26 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Tokens.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\MySql.Data.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\BouncyCastle.Crypto.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\System.Memory.Data.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\System.Runtime.Caching.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\WinForms.DataVisualization.Utilities.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\WinForms.DataVisualization.dll
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.AssemblyReference.cache
@@ -73,6 +85,7 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.StudentDiscipline.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentAdd.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentEdit.resources
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentSearch.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.Properties.Resources.resources
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.GenerateResource.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.GeneratedMSBuildEditorConfig.editorconfig
@@ -85,4 +98,3 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.genruntimeconfig.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\ref\School Project.dll
-C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.StudentSearch.resources

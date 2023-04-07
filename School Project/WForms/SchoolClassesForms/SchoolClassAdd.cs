@@ -1204,7 +1204,11 @@ public partial class SchoolClassAdd : Form
 
             y += font.Height + 5;
         }
-
+        
+        // Draw the bottom line of the header row
+        e.Graphics.DrawLine(
+            Pens.Black, e.MarginBounds.Left, y + font.Height,
+            e.MarginBounds.Right, y + font.Height);
 
         // If there are more pages, indicate that there are more pages
         if (_endIndex < SchoolClasses.ListSchoolClasses.Count)
@@ -1215,7 +1219,7 @@ public partial class SchoolClassAdd : Form
         else
         {
             e.HasMorePages = false;
-            _currentPage = 1;
+            //_currentPage = 1;
         }
     }
 }

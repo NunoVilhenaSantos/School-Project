@@ -2,7 +2,6 @@
 using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
 using ClassLibrary.Students;
-using School_Project.WForms.CoursesForms;
 using static System.Windows.Forms.Keys;
 
 namespace School_Project.WForms.StudentsForms;
@@ -22,7 +21,7 @@ public partial class StudentAdd : Form
     public StudentAdd()
     {
         InitializeComponent();
-        _studentPhoto = String.Empty;
+        _studentPhoto = string.Empty;
     }
 
 
@@ -88,9 +87,9 @@ public partial class StudentAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not { Modifiers: Keys.Control, KeyCode: V }) return;
+        if (e is not {Modifiers: Keys.Control, KeyCode: V}) return;
 
-        ((TextBox)sender).Paste();
+        ((TextBox) sender).Paste();
 
         Console.WriteLine("Testes de Debug");
     }
@@ -101,7 +100,7 @@ public partial class StudentAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Students.AddStudent(
-            (int)numericUpDownStudentID.Value,
+            (int) numericUpDownStudentID.Value,
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
@@ -385,11 +384,11 @@ public partial class StudentAdd : Form
             char.IsLetter(e.KeyChar) || // validating if it's a letter
             char.IsSeparator(e.KeyChar) || // validating if it's a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if it's a whitespace
-            e.KeyChar is (char)Back or '.' or '\'' or '-'
-        // validating if it's a backspace
-        // validating if it's a dot
-        // validating if it's an apostrophe
-        // validating if it's a separator
+            e.KeyChar is (char) Back or '.' or '\'' or '-'
+            // validating if it's a backspace
+            // validating if it's a dot
+            // validating if it's an apostrophe
+            // validating if it's a separator
         )
             return;
         e.Handled = true;
@@ -400,7 +399,7 @@ public partial class StudentAdd : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Back) return;
         e.Handled = true;
     }
 
@@ -470,18 +469,18 @@ public partial class StudentAdd : Form
         List<Enrollment> enrollments = new();
 
         foreach (var c in Courses.ListCourses)
-            foreach (var t in checkedListBoxDisciplines.CheckedItems)
-                if (t is Course v && c.IdCourse == v.IdCourse)
-                    enrollments.Add(
-                        new Enrollment
-                        {
-                            //Grade = 0,
-                            //StudentId = ,
-                            //Student = 0,
-                            CourseId = c.IdCourse,
-                            Course = c
-                        }
-                    );
+        foreach (var t in checkedListBoxDisciplines.CheckedItems)
+            if (t is Course v && c.IdCourse == v.IdCourse)
+                enrollments.Add(
+                    new Enrollment
+                    {
+                        //Grade = 0,
+                        //StudentId = ,
+                        //Student = 0,
+                        CourseId = c.IdCourse,
+                        Course = c
+                    }
+                );
 
 
         UpdateLists();

@@ -8,19 +8,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj"/>
-        <ProjectReference Include="..\School Project\School Project.csproj"/>
+        <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+        <ProjectReference Include="..\School Project\School Project.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="WPF\ChartWpfPage1.xaml.cs"/>
-        <Compile Remove="WPF\StudentWpf.xaml.cs"/>
-        <Compile Remove="WPF\ChartWpfWindow.xaml.cs"/>
+        <Compile Remove="WPF\ChartWpfPage1.xaml.cs" />
+        <Compile Remove="WPF\StudentWpf.xaml.cs" />
+        <Compile Remove="WPF\ChartWpfWindow.xaml.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <Page Remove="WPF\ChartWpfWindow.xaml"/>
-        <Page Remove="WPF\ChartWpfPage1.xaml"/>
+        <Page Remove="WPF\ChartWpfWindow.xaml" />
+        <Page Remove="WPF\ChartWpfPage1.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -39,11 +39,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4"/>
-        <PackageReference Include="System.Linq" Version="4.3.0"/>
-        <PackageReference Include="System.Linq.Expressions" Version="4.3.0"/>
-        <PackageReference Include="System.Linq.Queryable" Version="4.3.0"/>
-        <PackageReference Include="System.Xml.XDocument" Version="4.3.0"/>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
+        <PackageReference Include="MySql.Data" Version="8.0.32.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="System.Linq" Version="4.3.0" />
+        <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+        <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+        <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
     </ItemGroup>
 
 </Project>

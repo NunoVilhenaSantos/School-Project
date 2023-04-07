@@ -575,7 +575,7 @@ public static class XFiles
     }
 
 
-// 1st file to read are the courses file
+    // 1st file to read are the courses file
     private static bool ReadCoursesFromFile(out string myString)
     {
         //

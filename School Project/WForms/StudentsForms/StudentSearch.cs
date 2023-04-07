@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using ClassLibrary.SchoolClasses;
 
-namespace School_Project.WForms.CoursesForms;
+namespace School_Project.WForms.StudentsForms;
 
 public partial class StudentSearch : Form
 {
@@ -237,7 +237,7 @@ public partial class StudentSearch : Form
                     sC.GetType().GetProperty(selectedProperty)?.GetValue(sC);
                 if (value != null && value.GetType() == typeof(DateTime))
                     // Convert the value to DateTime and remove the time component
-                    value = ((DateTime)value).Date;
+                    value = ((DateTime) value).Date;
                 return value;
             })
             .Where(value => value != null)
