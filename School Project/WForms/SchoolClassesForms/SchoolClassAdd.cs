@@ -813,7 +813,6 @@ public partial class SchoolClassAdd : Form
     }
 
 
-
     private void CheckedListBoxCourses_SelectedIndexChanged(object sender,
         EventArgs e)
     {

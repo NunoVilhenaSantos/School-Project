@@ -61,8 +61,7 @@ public static class Enrollments
             CourseId = courseId,
             Course = course ?? CoursesDictionary[courseId]
         });
-        SchoolDatabase.AddStudentToCourse(studentId,courseId);
-        
+        SchoolDatabase.AddStudentToCourse(studentId, courseId);
     }
 
     public static void RemoveEnrollment(int studentId, int courseId)

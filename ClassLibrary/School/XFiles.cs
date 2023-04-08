@@ -35,6 +35,12 @@ public static class XFiles
 
     private const string TeachersFile = FilesFolder + "TeachersFile.csv";
 
+    private const string SchoolDictionariesFilePath =
+        XFiles.FilesFolder + "SchoolDictionaries.csv";
+
+    private const string SchoolDictionariesExtensoCsv =
+        XFiles.FilesFolder + "SchoolDictionariesExtenso.csv";
+
     #endregion
 
 
@@ -98,6 +104,17 @@ public static class XFiles
             out var successStoreStudentsInCsv,
             out var messageStoreStudentsInCsv);
 
+        var storeSchoolDictionariesFilePathInFile =
+            SchoolDatabase.SaveToCsv(
+                SchoolDictionariesFilePath,
+                out var messageStoreSchoolDictionariesFilePathInFile);
+
+        var storeSchoolDictionariesExtenso =
+            SchoolDatabase.SaveToCsvExtenso(
+                SchoolDictionariesExtensoCsv,
+                out var messageStoreSchoolDictionariesExtenso);
+
+
         myString =
             messageStoreSchoolClassesInFile + "\n\n" +
             messageStoreTeachersInFile + "\n\n" +
@@ -110,6 +127,9 @@ public static class XFiles
             messageStoreCoursesInCsv + "\n\n" +
             messageStoreEnrollmentsInCsv + "\n\n" +
             messageStoreStudentsInCsv;
+        myString +=
+            messageStoreSchoolDictionariesFilePathInFile + "\n\n" +
+            messageStoreSchoolDictionariesExtenso;
 
         var myBool =
             storeSchoolClassesInFile && storeTeachersInFile &&
@@ -120,6 +140,10 @@ public static class XFiles
             successStoreSchoolClassesInCsv && successStoreTeachersInCsv &&
             successStoreCoursesInCsv && successStoreEnrollmentsInCsv &&
             successStoreStudentsInCsv;
+        myBool =
+            myBool &&
+            storeSchoolDictionariesFilePathInFile &&
+            storeSchoolDictionariesExtenso;
 
         return myBool;
     }
@@ -580,6 +604,11 @@ public static class XFiles
         //     out var successReadTeachersInCsv,
         //     out var messageReadTeachersInCsv);
 
+        var readSchoolDictionariesInCsv =
+            SchoolDatabase.LoadFromCsv(
+                SchoolDictionariesFilePath,
+                out var messageReadTeachersInCsv);
+
         myString =
             messageReadCoursesFromFile + "\n\n" +
             messageReadStudentsFromFile + "\n\n" +
@@ -592,6 +621,8 @@ public static class XFiles
         //     messageReadEnrollmentsInCsv + "\n\n" +
         //     messageReadSchoolClassesFromCsv + "\n\n" +
         //     messageReadTeachersInCsv;
+        myString +=
+            messageReadTeachersInCsv;
 
         var myBool = readCoursesFromFile && readStudentsFromFile &&
                      readEnrollmentsInFile && readSchoolClassesFromFile &&
@@ -601,6 +632,7 @@ public static class XFiles
         //           successReadEnrollmentsInCsv &&
         //           successReadSchoolClassesFromCsv &&
         //           successReadTeachersInCsv;
+        myBool = myBool && readSchoolDictionariesInCsv;
 
         return myBool;
     }

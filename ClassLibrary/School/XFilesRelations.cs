@@ -1,12 +1,12 @@
 ﻿using System.Globalization;
 using System.Text;
-using ClassLibrary.School;
+using ClassLibrary.Courses;
 using CsvHelper;
 using CsvHelper.Configuration;
 
-namespace ClassLibrary.Courses;
+namespace ClassLibrary.School;
 
-public class CoursesFileHelper
+public class XFilesRelations
 {
     //
     // Global Properties for the windows forms
@@ -15,18 +15,27 @@ public class CoursesFileHelper
 
     #region Properties
 
-    private const string CoursesFilePath = XFiles.FilesFolder + "courses.csv";
+    private const string SchoolClassCourseFilePath =
+        XFiles.FilesFolder + "SchoolClassCourse.csv";
+
+    private const string StudentCourseFilePath =
+        XFiles.FilesFolder + "StudentCourse.csv";
+
+    private const string TeacherCourseFilePath =
+        XFiles.FilesFolder + "TeacherCourse.csv";
 
     #endregion
 
 
-    public static void WriteCoursesToFile(
+    #region SchoolClassCourse
+
+    public static void WriteSchoolClassCourseToFile(
         out bool Success, out string myString)
     {
         try
         {
             using (var fileStream =
-                   new FileStream(CoursesFilePath, FileMode.Create,
+                   new FileStream(SchoolClassCourseFilePath, FileMode.Create,
                        FileAccess.Write))
             {
             }
@@ -51,25 +60,26 @@ public class CoursesFileHelper
         };
 
         using (var fileStream =
-               new FileStream(CoursesFilePath, FileMode.Create,
+               new FileStream(SchoolClassCourseFilePath, FileMode.Create,
                    FileAccess.Write))
         using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
         using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
         {
-            csvWriter.WriteRecords(Courses.ListCourses);
+            //csvWriter.WriteRecords(SchoolDatabase.GetCoursesForStudent());
         }
 
         myString = "Operação realizada com sucesso";
         Success = true;
     }
 
-    public static List<Course> ReadCoursesFromFile(
+    public static List<Course> ReadSchoolClassCourseFromFile(
         out bool Success, out string myString)
     {
         try
         {
             using (var fileStream =
-                   new FileStream(CoursesFilePath, FileMode.OpenOrCreate,
+                   new FileStream(SchoolClassCourseFilePath,
+                       FileMode.OpenOrCreate,
                        FileAccess.Read))
             {
             }
@@ -94,7 +104,8 @@ public class CoursesFileHelper
         };
 
         using (var fileStream =
-               new FileStream(CoursesFilePath, FileMode.OpenOrCreate,
+               new FileStream(SchoolClassCourseFilePath,
+                   FileMode.OpenOrCreate,
                    FileAccess.Read))
         using (var streamWriter = new StreamReader(fileStream))
         using (var csvReader = new CsvReader(streamWriter, csvConfig))
@@ -105,4 +116,14 @@ public class CoursesFileHelper
             return csvReader.GetRecords<Course>().ToList();
         }
     }
+
+    #endregion
+
+    #region StudentCourse
+
+    #endregion
+
+    #region TeacherCourse
+
+    #endregion
 }
