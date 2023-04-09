@@ -569,7 +569,8 @@ public partial class SchoolClassAdd : Form
         else
         {
             MessageBox.Show(
-                "Ainda não tem uma turma criada por isso não pode adicionar disciplinas, nem estudantes",
+                "Ainda não tem uma turma criada por isso " +
+                "não pode adicionar disciplinas, nem estudantes",
                 "Adicionar / remover estudante(s)",
                 MessageBoxButtons.OK, MessageBoxIcon.Error
             );
@@ -579,7 +580,8 @@ public partial class SchoolClassAdd : Form
         if (schoolClassToEdit == -1)
         {
             MessageBox.Show(
-                "Selecione uma turma para poder adicionar o(s) estudante(s).",
+                "Selecione uma turma para poder " +
+                "adicionar o(s) estudante(s).",
                 "Adicionar / remover estudante(s)",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning
             );
@@ -589,7 +591,8 @@ public partial class SchoolClassAdd : Form
         if (checkedListBoxCourses.CheckedItems.Count == 0)
         {
             MessageBox.Show(
-                "Selecione uma disciplina para poder adicionar o(s) estudante(s).",
+                "Selecione uma disciplina para poder " +
+                "adicionar o(s) estudante(s).",
                 "Adicionar / remover estudante(s)",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning
             );
@@ -611,29 +614,22 @@ public partial class SchoolClassAdd : Form
         //
         MessageBox.Show("Temos estudante(s), vamos lá.");
 
+        // Get the selected course from the data source
+        var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
+
         //
         // cycle to evaluate which coursesList are select and add it
         //
-        List<Student> newStudents = new();
-        List<Course> newCourses = new();
 
-        foreach (var s in Students.ListStudents)
-        foreach (var v in checkedListBoxStudents.CheckedItems)
-            if (v is Student verify && s.IdStudent == verify.IdStudent)
-                newStudents.Add(verify);
-
-        foreach (var c in Courses.ListCourses)
-        foreach (var t in checkedListBoxCourses.CheckedItems)
-            if (t is Course verify && c.IdCourse == verify.IdCourse)
-                newCourses.Add(verify);
-
-
-        //
-        // adding the new list to the class
-        //
-        foreach (var student in newStudents)
-        foreach (var course in newCourses)
-            Enrollments.EnrollStudent(student.IdStudent, course.IdCourse);
+        SchoolDatabase.EnrollStudentsInClass(
+            checkedListBoxStudents.CheckedItems.Cast<Student>().ToList(),
+            selectedSchoolClass.IdSchoolClass);
+        SchoolDatabase.EnrollStudentsInCourses(
+            checkedListBoxCourses.CheckedItems.Cast<Course>().ToList(),
+            checkedListBoxStudents.CheckedItems.Cast<Student>().ToList());
+        SchoolDatabase.AssignCoursesToClass(
+            checkedListBoxCourses.CheckedItems.Cast<Course>().ToList(),
+            selectedSchoolClass.IdSchoolClass);
 
 
         //
@@ -641,11 +637,13 @@ public partial class SchoolClassAdd : Form
         //
         var nova =
             "Estudantes selecionados " +
-            $"{newStudents.Count}\n";
-        nova = newStudents.Aggregate(
-            nova, (current, item) =>
-                current + string.Concat(
-                    values: $"{item.IdStudent} - {item.Name}\n"));
+            $"{checkedListBoxStudents.CheckedItems
+                .Cast<Student>().ToList().Count}\n";
+        nova = checkedListBoxStudents.CheckedItems
+            .Cast<Student>().ToList().Aggregate(
+                nova, (current, item) =>
+                    current + string.Concat(
+                        values: $"{item.IdStudent} - {item.Name}\n"));
         MessageBox.Show(nova);
 
         Console.WriteLine("Testes de Debug");

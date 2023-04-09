@@ -672,7 +672,7 @@ public partial class DisciplineAdd : Form
         //
         // cycle to evaluate which student(s) are select and add it
         //
-        SchoolDatabase.EnrollStudentInCourse(
+        SchoolDatabase.EnrollStudentsInCourse(
             checkedListBoxStudents.CheckedItems
                 .Cast<Student>().ToList(),
             courseToAdd.IdCourse);

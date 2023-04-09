@@ -853,6 +853,9 @@ public static class XFiles
             Students.Students.ListStudents
                 .ToDictionary(s => s.IdStudent);
 
+        Enrollments.Enrollments.UpdateDictionaries();
+
+
         while (!streamReader.EndOfStream)
         {
             // reading a line
@@ -900,9 +903,16 @@ public static class XFiles
             !int.TryParse(campos[3], out var courseId) ||
             !decimal.TryParse(campos[1], out var grade)) return;
 
-        if (!students.TryGetValue(studentId, out var student) ||
+        // if (!students.TryGetValue(studentId, out var student) ||
+        //     student == null) return;
+        // if (!courses.TryGetValue(courseId, out var course) ||
+        //     course == null) return;
+
+        if (!Enrollments.Enrollments.StudentsDictionary
+                .TryGetValue(studentId, out var student) ||
             student == null) return;
-        if (!courses.TryGetValue(courseId, out var course) ||
+        if (!Enrollments.Enrollments.CoursesDictionary
+                .TryGetValue(courseId, out var course) ||
             course == null) return;
 
         Enrollments.Enrollments.EnrollStudent(

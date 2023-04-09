@@ -106,6 +106,8 @@ public class SchoolDatabase
 
     #region AddingRelationsBetweenPrimaryClasses
 
+    #region EnrollStudentInClass
+
     // Method to add a relationship between a student and a school class
     public static void EnrollStudentInClass(int studentId, int schoolClassId)
     {
@@ -116,6 +118,73 @@ public class SchoolDatabase
         }
 
         StudentClass[studentId].Add(schoolClassId);
+    }
+
+    public static void EnrollStudentsInClass(
+        List<Student> listStudents, int schoolClassId)
+    {
+        foreach (var student in listStudents)
+        {
+            if (!StudentClass.ContainsKey(student.IdStudent))
+            {
+                StudentClass.Add(student.IdStudent, new HashSet<int>());
+                StudentClass[student.IdStudent] =
+                    new HashSet<int> {student.IdStudent};
+            }
+
+            StudentClass[student.IdStudent].Add(schoolClassId);
+        }
+    }
+
+    #endregion
+
+
+    #region EnrollStudentInCourse
+
+    public static void EnrollStudentsInCourses(
+        List<Course> listOfCourses, List<Student> listOfStudents)
+    {
+        foreach (var course in listOfCourses)
+        {
+            foreach (var student in listOfStudents)
+            {
+                if (!Students.ContainsKey(student.IdStudent))
+                {
+                    Log.Error("Invalid student ID: " +
+                              "{StudentId}", student.IdStudent);
+                    continue;
+                }
+
+                if (!Courses.ContainsKey(course.IdCourse))
+                {
+                    Log.Error("Invalid course ID: " +
+                              "{CourseId}", course.IdCourse);
+                    continue;
+                }
+
+                if (CourseStudents
+                        .TryGetValue(student.IdStudent,
+                            out HashSet<int> currentCourse) &&
+                    currentCourse.Contains(course.IdCourse))
+                {
+                    Log.Warning("Student {StudentId} " +
+                                "is already enrolled in course {CourseId}",
+                        student.IdStudent,
+                        course.IdCourse);
+                    continue;
+                }
+
+                Enrollments.Enrollments.EnrollStudent(
+                    student.IdStudent, course.IdCourse);
+
+                if (!CourseStudents.ContainsKey(student.IdStudent))
+                {
+                    CourseStudents.Add(student.IdStudent, new HashSet<int>());
+                }
+
+                CourseStudents[student.IdStudent].Add(course.IdCourse);
+            }
+        }
     }
 
 
@@ -156,7 +225,7 @@ public class SchoolDatabase
     }
 
 
-    public static void EnrollStudentInCourse(
+    public static void EnrollStudentsInCourse(
         List<Student> students, int courseId)
     {
         foreach (var student in students)
@@ -215,7 +284,8 @@ public class SchoolDatabase
                 continue;
             }
 
-            if (CourseStudents.TryGetValue(idStudent,
+            if (
+                CourseStudents.TryGetValue(idStudent,
                     out HashSet<int> courses) &&
                 courses.Contains(course.IdCourse))
             {
@@ -235,6 +305,8 @@ public class SchoolDatabase
             CourseStudents[idStudent].Add(course.IdCourse);
         }
     }
+
+    #endregion
 
     public static void AssignCourseToClass(int courseId, int schoolClassId)
     {

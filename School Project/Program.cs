@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Globalization;
 using School_Project.WForms.InitialForms;
 
@@ -5,7 +6,8 @@ namespace School_Project;
 
 internal static class Program
 {
-    private static readonly CultureInfo _culture = CultureInfo.InvariantCulture;
+    internal static readonly CultureInfo _culture = CultureInfo.InvariantCulture;
+    internal static Stopwatch stopwatch;
 
     /// <summary>
     ///     The main entry point for the application.
@@ -13,6 +15,11 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
+        // inicializar o relógio
+        stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
@@ -23,6 +30,6 @@ internal static class Program
 
         //Application.Run(new MainWinForm());
 
-        Application.Run(new InitialWinForm());
+        Application.Run(new InitialWinForm(stopwatch));
     }
 }

@@ -319,6 +319,7 @@
             Text = "Formulário Principal";
             FormClosing += WinFormInitial_FormClosing;
             Load += WinFormInitial_Load;
+            Shown += InitialWinForm_Shown;
             tableLayoutPanelInitialForm.ResumeLayout(false);
             tableLayoutPanelInitialForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
