@@ -10,8 +10,10 @@ public static class Enrollments
     #region Properties
 
     public static List<Enrollment> ListEnrollments = new();
-    public static Dictionary<int, Student> StudentsDictionary = new();
-    public static Dictionary<int, Course> CoursesDictionary = new();
+    // public static Dictionary<int, Student> StudentsDictionary = new();
+    // public static Dictionary<int, Course> CoursesDictionary = new();
+    public static SortedDictionary<int, Student> StudentsDictionary = new();
+    public static SortedDictionary<int, Course> CoursesDictionary = new();
 
     #endregion
 
@@ -22,11 +24,11 @@ public static class Enrollments
     public static void UpdateDictionaries()
     {
         // update the students dictionary
-        foreach (var student in Students.Students.ListStudents)
+        foreach (var student in Students.Students.StudentsList)
             StudentsDictionary[student.IdStudent] = student;
 
         // update the courses dictionary
-        foreach (var course in Courses.Courses.ListCourses)
+        foreach (var course in Courses.Courses.CoursesList)
             CoursesDictionary[course.IdCourse] = course;
     }
 
@@ -100,22 +102,18 @@ public static class Enrollments
 
         if (courseId != -1)
             if (CoursesDictionary.TryGetValue(courseId, out var course))
-            {
                 enrollments = enrollments
                     .Where(e =>
                         e.CourseId == course.IdCourse)
                     .ToList();
-            }
 
         if (studentId == -1) return enrollments;
         {
             if (StudentsDictionary.TryGetValue(studentId, out var student))
-            {
                 enrollments = enrollments
                     .Where(e =>
                         e.StudentId == student.IdStudent)?
                     .ToList();
-            }
         }
 
         return enrollments;

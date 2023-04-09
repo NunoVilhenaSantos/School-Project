@@ -46,9 +46,9 @@ public partial class SchoolClassSearch : Form
         // * Data bindings
         // * 
         // *
-        //_bSListCourses.DataSource = Courses.ListCourses;
-        _bSListSClasses.DataSource = SchoolClasses.ListSchoolClasses;
-        //_bSListStudents.DataSource = Students.ListStudents;
+        //_bSListCourses.DataSource = Courses.CoursesList;
+        _bSListSClasses.DataSource = SchoolClasses.SchoolClassesList;
+        //_bSListStudents.DataSource = Students.StudentsList;
 
         //_bSListCourses.ResetBindings(false);
         _bSListSClasses.ResetBindings(false);
@@ -134,9 +134,9 @@ public partial class SchoolClassSearch : Form
             .GetProperty(selectedProperty ?? string.Empty);
 
 
-        // Loop through all SchoolClass objects in the ListSchoolClasses collection
+        // Loop through all SchoolClass objects in the SchoolClassesList collection
         /*
-        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+        foreach (var schoolClass in SchoolClasses.SchoolClassesList)
         {
             // Check if the selected property is null or its value is an empty string
             if (property == null ||
@@ -147,7 +147,7 @@ public partial class SchoolClassSearch : Form
             filteredSchoolClass.Add(schoolClass);
         }
         
-        List<SchoolClass> filteredSchoolClass = SchoolClasses.ListSchoolClasses
+        List<SchoolClass> filteredSchoolClass = SchoolClasses.SchoolClassesList
             .Where(schoolClass => property != null &&
                                   property.GetValue(schoolClass)
                                       .ToString() !=
@@ -155,7 +155,7 @@ public partial class SchoolClassSearch : Form
             .ToList();
         */
         // Create a new list to store the filtered results
-        var filteredSchoolClass = SchoolClasses.ListSchoolClasses
+        var filteredSchoolClass = SchoolClasses.SchoolClassesList
             .Where(schoolClass =>
                 property?.GetValue(schoolClass)?.ToString() != null &&
                 property.GetValue(schoolClass).ToString() != "")
@@ -163,7 +163,7 @@ public partial class SchoolClassSearch : Form
 
 
         // Create a list of distinct values for the selected property from all SchoolClass objects
-        var propertyValues = SchoolClasses.ListSchoolClasses
+        var propertyValues = SchoolClasses.SchoolClassesList
             .Select(sC =>
                 sC.GetType().GetProperty(selectedProperty)?.GetValue(sC))
             .Where(value => value != null)
@@ -189,7 +189,7 @@ public partial class SchoolClassSearch : Form
         var convertedValue =
             Convert.ChangeType(selectedValue, selectedProperty.GetType());
         
-        var propertyValues1 = SchoolClasses.ListSchoolClasses
+        var propertyValues1 = SchoolClasses.SchoolClassesList
             .Select(x =>
                 x.GetType().GetProperty(selectedProperty)
                     ?.GetValue(x))
@@ -197,7 +197,7 @@ public partial class SchoolClassSearch : Form
             //.Distinct()
             .ToList();
 
-        var propertyValues2 = SchoolClasses.ListSchoolClasses
+        var propertyValues2 = SchoolClasses.SchoolClassesList
             .Select(x =>
                 x.GetType().GetProperty(selectedProperty)?.GetValue(x))
             .Where(value => value != null && value.Equals(convertedValue) ==
@@ -239,7 +239,7 @@ public partial class SchoolClassSearch : Form
         List<SchoolClass> filteredSchoolClass = new();
 
         var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+        foreach (var schoolClass in SchoolClasses.SchoolClassesList)
         {
             if (property == null ||
                 (property?.GetValue(schoolClass)?.ToString() != null &&
@@ -250,7 +250,7 @@ public partial class SchoolClassSearch : Form
         }
 
         // Get the property values and convert them to the appropriate type
-        var propertyValues = SchoolClasses.ListSchoolClasses
+        var propertyValues = SchoolClasses.SchoolClassesList
             .Select(sC =>
             {
                 var value = sC.GetType().GetProperty(selectedProperty)

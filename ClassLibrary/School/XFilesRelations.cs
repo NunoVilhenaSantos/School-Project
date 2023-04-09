@@ -1,15 +1,4 @@
-﻿using System.IO;
-using System.Text;
-using System.Reflection;
-using System.Globalization;
-using ClassLibrary.Courses;
-using ClassLibrary.Enrollments;
-using ClassLibrary.SchoolClasses;
-using ClassLibrary.Students;
-using ClassLibrary.Teachers;
-using ClassLibrary.Courses;
-using CsvHelper;
-using CsvHelper.Configuration;
+﻿using System.Text;
 
 namespace ClassLibrary.School;
 
@@ -38,7 +27,7 @@ public class XFilesRelations
     private const string COURSE_TEACHERS_FILENAME =
         XFiles.FilesFolder + "course_teacher.csv";
 
-    const string DICTIONARIES_FILENAME =
+    private const string DICTIONARIES_FILENAME =
         XFiles.FilesFolder + "dictionaries.csv";
 
     private const string SchoolClassCourseFilePath =
@@ -87,6 +76,55 @@ public class XFilesRelations
             return false;
         }
 
+        // Sort the dictionaries by their keys
+        // var sortedCourses = SchoolDatabase.Courses.OrderBy(kvp => kvp.Key);
+        // var sortedSchoolClasses = SchoolDatabase.SchoolClasses.OrderBy(kvp => kvp.Key);
+        // var sortedStudents = SchoolDatabase.Students.OrderBy(kvp => kvp.Key);
+        // var sortedTeachers = SchoolDatabase.Teachers.OrderBy(kvp => kvp.Key);
+
+        // Order the dictionaries by their keys
+        var sortedCourses =
+            SchoolDatabase.Courses
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        var sortedStudents =
+            SchoolDatabase.Students
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        var sortedTeachers =
+            SchoolDatabase.Teachers
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        var sortedSchoolClasses =
+            SchoolDatabase.SchoolClasses
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        var sortedCourseClasses =
+            SchoolDatabase.CourseClasses
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        var sortedCourseStudents =
+            SchoolDatabase.CourseStudents
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        var sortedCourseTeacher =
+            SchoolDatabase.CourseTeacher
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        var sortedStudentClass =
+            SchoolDatabase.StudentClass
+                .OrderBy(x => x.Key)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+        // ...
+
         using (fileStream =
                    new FileStream(DICTIONARIES_FILENAME,
                        FileMode.Create, FileAccess.ReadWrite))
@@ -96,50 +134,34 @@ public class XFilesRelations
             writer.WriteLine("CourseClasses:");
             foreach (
                 var kvp in
-                ClassLibrary.School.SchoolDatabase.CourseClasses)
-            {
-                // Write the course ID
-                writer.Write($"{kvp.Key},");
-                // Write the list of class IDs
-                writer.Write(string.Join(lineSeparator, kvp.Value));
-                writer.WriteLine();
-            }
+                sortedCourseClasses) //SchoolDatabase.CourseClasses
+                writer.WriteLine(
+                    $"{kvp.Key}{lineSeparator}" +
+                    $"{string.Join(lineSeparator, kvp.Value)}");
 
             writer.WriteLine("CourseStudents:");
             foreach (
                 var kvp in
-                ClassLibrary.School.SchoolDatabase.CourseStudents)
-            {
-                // Write the course ID
-                writer.Write($"{kvp.Key},");
-                // Write the list of class IDs
-                writer.Write(string.Join(lineSeparator, kvp.Value));
-                writer.WriteLine();
-            }
+                sortedCourseStudents) //SchoolDatabase.CourseStudents
+                writer.WriteLine(
+                    $"{kvp.Key}{lineSeparator}" +
+                    $"{string.Join(lineSeparator, kvp.Value)}");
 
             writer.WriteLine("CourseTeacher:");
             foreach (
                 var kvp in
-                ClassLibrary.School.SchoolDatabase.CourseTeacher)
-            {
-                // Write the course ID
-                writer.Write($"{kvp.Key},");
-                // Write the list of teacher IDs
-                writer.Write(string.Join(lineSeparator, kvp.Value));
-                writer.WriteLine();
-            }
+                sortedCourseTeacher) //SchoolDatabase.CourseTeacher
+                writer.WriteLine(
+                    $"{kvp.Key}{lineSeparator}" +
+                    $"{string.Join(lineSeparator, kvp.Value)}");
 
             writer.WriteLine("StudentClass:");
             foreach (
                 var kvp in
-                ClassLibrary.School.SchoolDatabase.StudentClass)
-            {
-                // Write the course ID
-                writer.Write($"{kvp.Key},");
-                // Write the list of class IDs
-                writer.Write(string.Join(lineSeparator, kvp.Value));
-                writer.WriteLine();
-            }
+                sortedStudentClass) //SchoolDatabase.StudentClass
+                writer.WriteLine(
+                    $"{kvp.Key}{lineSeparator}" +
+                    $"{string.Join(lineSeparator, kvp.Value)}");
 
             writer.Close();
         }
@@ -161,7 +183,7 @@ public class XFilesRelations
         {
             fileStream =
                 new FileStream(DICTIONARIES_FILENAME,
-                    FileMode.Create,
+                    FileMode.OpenOrCreate,
                     FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -180,10 +202,14 @@ public class XFilesRelations
         }
 
         using (fileStream =
-                   new FileStream(DICTIONARIES_FILENAME, FileMode.Create))
-        using (var reader = new StreamReader(fileStream, Encoding.UTF8))
+                   new FileStream(DICTIONARIES_FILENAME,
+                       FileMode.OpenOrCreate, FileAccess.ReadWrite))
+        using (var reader =
+               new StreamReader(fileStream, Encoding.UTF8))
         {
             string currentDictionary = null;
+
+            SchoolDatabase.UpdateDictionaries();
 
             while (!reader.EndOfStream)
             {
@@ -197,37 +223,44 @@ public class XFilesRelations
                     continue;
                 }
 
-
                 var values =
-                    line.Split(lineSeparator,
-                            StringSplitOptions.RemoveEmptyEntries)
+                    line.Trim('"')
+                        .Split(';', StringSplitOptions.RemoveEmptyEntries)
                         .Select(int.Parse)
                         .ToArray();
 
                 switch (currentDictionary)
                 {
                     case "CourseClasses":
-                        ClassLibrary.School.SchoolDatabase
-                                .CourseClasses[values[0]] =
+                        SchoolDatabase.CourseClasses[values[0]] =
                             new HashSet<int>(values.Skip(1));
+                        SchoolDatabase.AssignCoursesToClass(
+                            new HashSet<int>(values.Skip(1)),
+                            values[0]);
                         break;
 
                     case "CourseStudents":
-                        ClassLibrary.School.SchoolDatabase
-                                .CourseStudents[values[0]] =
+                        SchoolDatabase.CourseStudents[values[0]] =
                             new HashSet<int>(values.Skip(1));
-                        break;
-
-                    case "StudentClass":
-                        ClassLibrary.School.SchoolDatabase
-                                .StudentClass[values[0]] =
-                            new HashSet<int>(values.Skip(1));
+                        SchoolDatabase.EnrollStudentInCourses(
+                            new HashSet<int>(values.Skip(1)),
+                            values[0]);
                         break;
 
                     case "CourseTeacher":
-                        ClassLibrary.School.SchoolDatabase
-                                .CourseTeacher[values[0]] =
+                        SchoolDatabase.CourseTeacher[values[0]] =
                             new HashSet<int>(values.Skip(1));
+                        SchoolDatabase.AssignTeacherToCourses(
+                            new HashSet<int>(values.Skip(1)),
+                            values[0]);
+                        break;
+
+                    case "StudentClass":
+                        SchoolDatabase.StudentClass[values[0]] =
+                            new HashSet<int>(values.Skip(1));
+                        SchoolDatabase.AssignCoursesToClass(
+                            new HashSet<int>(values.Skip(1)),
+                            values[0]);
                         break;
 
                     default:

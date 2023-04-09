@@ -6,7 +6,9 @@ namespace School_Project;
 
 internal static class Program
 {
-    internal static readonly CultureInfo _culture = CultureInfo.InvariantCulture;
+    internal static readonly CultureInfo
+        _culture = CultureInfo.InvariantCulture;
+
     internal static Stopwatch stopwatch;
 
     /// <summary>
@@ -15,7 +17,7 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        // inicializar o relógio
+        // inicializar o relÃ³gio
         stopwatch = new Stopwatch();
         stopwatch.Start();
 

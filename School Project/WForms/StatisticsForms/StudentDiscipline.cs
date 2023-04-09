@@ -30,11 +30,11 @@ public partial class StudentDiscipline : Form
         //
         // assign the local variables to is counterpart Global variables from the initial form
         //
-        if (Students.ListStudents.Count > 0)
-            _studentsCount = Students.ListStudents[^1].IdStudent;
+        if (Students.StudentsList.Count > 0)
+            _studentsCount = Students.StudentsList[^1].IdStudent;
 
-        if (Courses.ListCourses.Count > 0)
-            _disciplinesCount = Courses.ListCourses[^1].IdCourse;
+        if (Courses.CoursesList.Count > 0)
+            _disciplinesCount = Courses.CoursesList[^1].IdCourse;
 
         //
         // initial update
@@ -96,7 +96,7 @@ public partial class StudentDiscipline : Form
         {
             Site = null,
             DataMember = null,
-            DataSource = Students.ListStudents,
+            DataSource = Students.StudentsList,
             Position = 0,
             RaiseListChangedEvents = true,
             Sort = null,
@@ -108,7 +108,7 @@ public partial class StudentDiscipline : Form
         {
             Site = null,
             DataMember = null,
-            DataSource = Courses.ListCourses,
+            DataSource = Courses.CoursesList,
             Position = 0,
             RaiseListChangedEvents = true,
             Sort = null,
@@ -171,7 +171,7 @@ public partial class StudentDiscipline : Form
         //
         SchoolDatabase.EnrollStudentInCourses(
             checkedListBoxDisciplines.CheckedItems
-                .Cast<ClassLibrary.Courses.Course>().ToList(),
+                .Cast<Course>().ToList(),
             studentToEdit.IdStudent);
 
         Console.WriteLine("Debug point");
@@ -181,12 +181,12 @@ public partial class StudentDiscipline : Form
         {
             var b = (Course) t;
             var c =
-                Courses.ListCourses.FirstOrDefault(
+                Courses.CoursesList.FirstOrDefault(
                     a => a.IdCourse == b.IdCourse);
         }
 
         Console.WriteLine("Debug point");
-        
+
         UpdateLists();
 
         Console.WriteLine("Testes de Debug");
@@ -195,7 +195,7 @@ public partial class StudentDiscipline : Form
     private void ListBoxStudents_SelectedIndexChanged(
         object sender, EventArgs e)
     {
-        if (Courses.ListCourses == null)
+        if (Courses.CoursesList == null)
             return;
 
         var studentToView = (Student) listBoxStudents.SelectedItem;

@@ -7,7 +7,7 @@ public static class SchoolClasses
 {
     #region Properties
 
-    public static List<SchoolClass> ListSchoolClasses { get; set; } = new();
+    public static List<SchoolClass> SchoolClassesList { get; set; } = new();
 
     #endregion
 
@@ -22,7 +22,7 @@ public static class SchoolClasses
         List<Course>? courses
     )
     {
-        ListSchoolClasses.Add(new SchoolClass
+        SchoolClassesList.Add(new SchoolClass
             {
                 //Id_SchoolClass = id,
                 ClassAcronym = classAcronym,
@@ -33,33 +33,33 @@ public static class SchoolClasses
                 EndHour = endHour,
                 Location = location,
                 Type = type,
-                Area = area,
+                Area = area
                 //StudentsCount = studentsCount,
                 //CoursesList = courses
             }
         );
-        SchoolDatabase.AddSchoolClass(ListSchoolClasses[^1]);
+        SchoolDatabase.AddSchoolClass(SchoolClassesList[^1]);
 
-        // foreach (var course in ListSchoolClasses[^1].CoursesList)
+        // foreach (var course in SchoolClassesList[^1].CoursesList)
         //     SchoolDatabase.AssignCourseToClass(
         //         course.IdCourse,
-        //         ListSchoolClasses[^1].IdSchoolClass);
+        //         SchoolClassesList[^1].IdSchoolClass);
 
-        ListSchoolClasses[^1].GetStudentsCount();
-        ListSchoolClasses[^1].GetWorkHourLoad();
+        SchoolClassesList[^1].GetStudentsCount();
+        SchoolClassesList[^1].GetWorkHourLoad();
     }
 
 
     public static string DeleteSchoolClass(int id)
     {
         var schoolClass =
-            ListSchoolClasses.FirstOrDefault(a => a.IdSchoolClass == id);
+            SchoolClassesList.FirstOrDefault(a => a.IdSchoolClass == id);
 
         if (schoolClass == null)
             return $"A turma {id} não existe!\n{GetFullName(id)}";
 
-        ListSchoolClasses.Remove(schoolClass);
-        return $"A turma {ListSchoolClasses[id].ClassName}" +
+        SchoolClassesList.Remove(schoolClass);
+        return $"A turma {SchoolClassesList[id].ClassName}" +
                $" com o {id} foi apagada!\n{GetFullInfo(id)}";
     }
 
@@ -72,42 +72,42 @@ public static class SchoolClasses
         List<Course> courses
     )
     {
-        if (ListSchoolClasses.Count < 1)
+        if (SchoolClassesList.Count < 1)
             return "A lista está vazia";
 
         var schoolClass =
-            ListSchoolClasses.FirstOrDefault(
+            SchoolClassesList.FirstOrDefault(
                 a => a.IdSchoolClass == id);
 
         if (schoolClass == null)
             return "A turma não existe!";
 
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.ClassAcronym = classAcronym;
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.ClassName = className;
 
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.StartDate = startDate;
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.EndDate = endDate;
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.StartHour = startHour;
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.EndHour = endHour;
 
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.Location = location;
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.Type = type;
-        ListSchoolClasses.FirstOrDefault(
+        SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.Area = area;
 
-        // ListSchoolClasses.FirstOrDefault(
+        // SchoolClassesList.FirstOrDefault(
         //     a => a.IdSchoolClass == id)!.CoursesList = courses;
 
-        ListSchoolClasses[^1].GetStudentsCount();
-        ListSchoolClasses[^1].GetWorkHourLoad();
+        SchoolClassesList[^1].GetStudentsCount();
+        SchoolClassesList[^1].GetWorkHourLoad();
 
         return "Turma alterada com sucesso";
     }
@@ -123,41 +123,41 @@ public static class SchoolClasses
         List<Course>? courses
     )
     {
-        var schoolClasses = ListSchoolClasses;
+        var schoolClasses = SchoolClassesList;
 
         if (!string.IsNullOrWhiteSpace(classAcronym))
-            schoolClasses = ListSchoolClasses
+            schoolClasses = SchoolClassesList
                 .Where(a => a.ClassAcronym == classAcronym).ToList();
         if (!string.IsNullOrWhiteSpace(className))
-            schoolClasses = ListSchoolClasses
+            schoolClasses = SchoolClassesList
                 .Where(a => a.ClassName == className).ToList();
 
-        schoolClasses = ListSchoolClasses.Where(a => a.StartDate == startDate)
+        schoolClasses = SchoolClassesList.Where(a => a.StartDate == startDate)
             .ToList();
         if (endDate > startDate)
-            schoolClasses = ListSchoolClasses.Where(a => a.EndDate == endDate)
+            schoolClasses = SchoolClassesList.Where(a => a.EndDate == endDate)
                 .ToList();
-        schoolClasses = ListSchoolClasses.Where(a => a.StartHour == startHour)
+        schoolClasses = SchoolClassesList.Where(a => a.StartHour == startHour)
             .ToList();
         if (endHour > startHour)
-            schoolClasses = ListSchoolClasses.Where(a => a.EndHour == endHour)
+            schoolClasses = SchoolClassesList.Where(a => a.EndHour == endHour)
                 .ToList();
 
         if (!string.IsNullOrWhiteSpace(location))
-            schoolClasses = ListSchoolClasses.Where(a => a.Location == location)
+            schoolClasses = SchoolClassesList.Where(a => a.Location == location)
                 .ToList();
         if (!string.IsNullOrWhiteSpace(type))
             schoolClasses =
-                ListSchoolClasses.Where(a => a.Type == type).ToList();
+                SchoolClassesList.Where(a => a.Type == type).ToList();
         if (!string.IsNullOrWhiteSpace(area))
             schoolClasses =
-                ListSchoolClasses.Where(a => a.Area == area).ToList();
+                SchoolClassesList.Where(a => a.Area == area).ToList();
         if (studentsCount != null && int.IsNegative((int) studentsCount))
-            schoolClasses = ListSchoolClasses
+            schoolClasses = SchoolClassesList
                 .Where(a => a.StudentsCount == studentsCount).ToList();
 
         // if (courses is {Count: > 0})
-        //     schoolClasses = ListSchoolClasses
+        //     schoolClasses = SchoolClassesList
         //         .Where(a => a.CoursesList == courses).ToList();
 
         return schoolClasses;
@@ -177,7 +177,7 @@ public static class SchoolClasses
         List<SchoolClass> filteredSchoolClass = new();
 
         var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+        foreach (var schoolClass in SchoolClasses.SchoolClassesList)
         {
             if (property == null ||
                 property.GetValue(schoolClass).ToString() == ""
@@ -195,7 +195,7 @@ public static class SchoolClasses
         var convertedValue =
             Convert.ChangeType(selectedValue, propertyType);
 
-        return ListSchoolClasses
+        return SchoolClassesList
             .Where(schoolClass =>
                 property.GetValue(schoolClass)
                     ?.Equals(convertedValue) ==
@@ -229,7 +229,7 @@ public static class SchoolClasses
             return new List<SchoolClass>();
         }
 
-        return ListSchoolClasses
+        return SchoolClassesList
             .Where(schoolClass =>
                 property.GetValue(schoolClass)
                     ?.Equals(convertedValue) ==
@@ -241,9 +241,9 @@ public static class SchoolClasses
     public static int GetLastIndex()
     {
         // handle the case where the collection is empty
-        // return ListStudents[^1].IdStudent;
+        // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
-        var lastSchoolClasses = ListSchoolClasses.LastOrDefault();
+        var lastSchoolClasses = SchoolClassesList.LastOrDefault();
         if (lastSchoolClasses != null)
             return lastSchoolClasses.IdSchoolClass;
         return -1;
@@ -252,14 +252,14 @@ public static class SchoolClasses
 
     public static int GetLastId()
     {
-        var lastSchoolClasses = ListSchoolClasses.LastOrDefault();
+        var lastSchoolClasses = SchoolClassesList.LastOrDefault();
         return lastSchoolClasses?.IdSchoolClass ?? GetLastIndex();
         /*
         return lastSchoolClasses != null
             ? lastSchoolClasses.IdSchoolClass
             : GetLastIndex();
         // handle the case where the collection is empty
-        // return ListStudents[^1].IdStudent;
+        // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
         */
     }
@@ -267,11 +267,11 @@ public static class SchoolClasses
 
     public static string GetFullName(int id)
     {
-        if (ListSchoolClasses.Count < 1)
+        if (SchoolClassesList.Count < 1)
             return "A lista está vazia";
 
         var schoolClass =
-            ListSchoolClasses.FirstOrDefault(
+            SchoolClassesList.FirstOrDefault(
                 a => a.IdSchoolClass == id);
 
         if (schoolClass == null)
@@ -285,11 +285,11 @@ public static class SchoolClasses
 
     public static string GetFullInfo(int id)
     {
-        if (ListSchoolClasses.Count < 1)
+        if (SchoolClassesList.Count < 1)
             return "A lista está vazia";
 
         var schoolClass =
-            ListSchoolClasses.FirstOrDefault(
+            SchoolClassesList.FirstOrDefault(
                 a => a.IdSchoolClass == id);
 
         if (schoolClass == null)
@@ -302,9 +302,9 @@ public static class SchoolClasses
 
     public static void ToObtainValuesForCalculatedFields()
     {
-        if (ListSchoolClasses.Count < 1) return;
+        if (SchoolClassesList.Count < 1) return;
 
-        foreach (var schoolClass in ListSchoolClasses)
+        foreach (var schoolClass in SchoolClassesList)
         {
             var coursesList =
                 SchoolDatabase.GetCoursesForSchoolClass(

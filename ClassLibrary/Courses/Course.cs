@@ -46,7 +46,7 @@ public class Course : INotifyPropertyChanged
     public string GetFullInfo()
     {
         return $"{IdCourse,5} | " +
-               //$"{ListStudents[id].GetFullName()} | " +
+               //$"{StudentsList[id].GetFullName()} | " +
                $"{GetFullName()} | " +
                $"{WorkLoad} - {Credits}";
     }

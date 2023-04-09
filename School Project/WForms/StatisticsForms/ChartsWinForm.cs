@@ -26,13 +26,13 @@ public partial class ChartsWinForm : Form
         // Global variables from the initial form
         //
 
-        if (Courses.ListCourses.Count > 0)
-            DisciplinesCount = Courses.ListCourses[^1].IdCourse;
-        if (SchoolClasses.ListSchoolClasses.Count > 0)
+        if (Courses.CoursesList.Count > 0)
+            DisciplinesCount = Courses.CoursesList[^1].IdCourse;
+        if (SchoolClasses.SchoolClassesList.Count > 0)
             SchoolClassesCount =
-                SchoolClasses.ListSchoolClasses[^1].IdSchoolClass;
-        if (Students.ListStudents.Count > 0)
-            StudentsCount = Students.ListStudents[^1].IdStudent;
+                SchoolClasses.SchoolClassesList[^1].IdSchoolClass;
+        if (Students.StudentsList.Count > 0)
+            StudentsCount = Students.StudentsList[^1].IdStudent;
         //if (Library._grades.Count > 0) _gradesCount = _grades.Count;
 
         DataUpdateValues();
@@ -125,7 +125,7 @@ public partial class ChartsWinForm : Form
         /*
          * update the count of students in each class
          */
-        foreach (var item in SchoolClasses.ListSchoolClasses)
+        foreach (var item in SchoolClasses.SchoolClassesList)
             item.GetStudentsCount();
 
 
@@ -147,7 +147,7 @@ public partial class ChartsWinForm : Form
         //
         // rebinding the data, so the system will refresh the info
         dataGridView1.DataSource = null;
-        dataGridView1.DataSource = SchoolClasses.ListSchoolClasses;
+        dataGridView1.DataSource = SchoolClasses.SchoolClassesList;
         dataGridView1.AutoResizeColumns();
         dataGridView1.AutoSizeColumnsMode =
             DataGridViewAutoSizeColumnsMode.AllCells;
@@ -155,7 +155,7 @@ public partial class ChartsWinForm : Form
 
         //dataGridView2 = new DataGridView();
         dataGridView2.DataSource = null;
-        dataGridView2.DataSource = SchoolClasses.ListSchoolClasses;
+        dataGridView2.DataSource = SchoolClasses.SchoolClassesList;
         dataGridView2.AutoResizeColumns();
         dataGridView2.AutoResizeRows();
         //dataGridView2.Show();
@@ -166,13 +166,13 @@ public partial class ChartsWinForm : Form
     private void UpdateChart()
     {
         using var chartStudents = new Chart();
-        chartStudents.DataSource = Students.ListStudents;
-        //chartStudents.DataBindTable(Students.ListStudents);
+        chartStudents.DataSource = Students.StudentsList;
+        //chartStudents.DataBindTable(Students.StudentsList);
         chartStudents.DataBind();
         chartStudents.Show();
 
         using var chartPayments = new Chart();
-        chartPayments.DataSource = Students.ListStudents;
+        chartPayments.DataSource = Students.StudentsList;
         chartPayments.DataBind();
         chartPayments.Show();
 
@@ -197,7 +197,7 @@ public partial class ChartsWinForm : Form
                     (schoolClass.ClassAcronym, schoolClass.Students.Count));
   
         BindingSource bindingSource1 = new();
-        bindingSource1.DataSource = Students.ListStudents;
+        bindingSource1.DataSource = Students.StudentsList;
 
         var chart1 = new Chart();
         chart1.DataSource = bindingSource1;
@@ -205,7 +205,7 @@ public partial class ChartsWinForm : Form
         chart1.Show();
 
         BindingSource bindingSource2 = new();
-        bindingSource2.DataSource = Students.ListStudents;
+        bindingSource2.DataSource = Students.StudentsList;
 
         var chart2 = new Chart();
         //chart2.DataSource = data;

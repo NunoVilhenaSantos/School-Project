@@ -51,7 +51,7 @@ public static class Teachers
             Birthplace = birthplace,
             Photo = photo,
             CoursesCount = coursesCount,
-            TotalWorkHoursLoad = totalWorkHours,
+            TotalWorkHoursLoad = totalWorkHours
             //Courses = courses
         };
         TeachersList.Add(teacher);
@@ -59,7 +59,7 @@ public static class Teachers
         SchoolDatabase.AddTeacher(TeachersList[^1]);
 
         // foreach (var course in TeachersList[^1].Courses)
-        //     SchoolDatabase.AssignTeacherToCourse(
+        //     SchoolDatabase.AssignTeacherToCourses(
         //         TeachersList[^1].TeacherId, course.IdCourse);
     }
 
@@ -216,7 +216,7 @@ public static class Teachers
     public static int GetLastIndex()
     {
         // handle the case where the collection is empty
-        // return ListStudents[^1].IdStudent;
+        // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
         var lastTeachers = TeachersList.LastOrDefault();
         if (lastTeachers != null)
@@ -234,7 +234,7 @@ public static class Teachers
             ? lastTeachers.TeacherId
             : GetLastIndex();
         // handle the case where the collection is empty
-        // return ListStudents[^1].IdStudent;
+        // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
         */
     }

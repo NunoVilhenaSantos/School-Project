@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ClassLibrary.Courses;
 using ClassLibrary.School;
 using Serilog;
 
@@ -329,7 +328,7 @@ public class Student : INotifyPropertyChanged
         var enrollment =
             SchoolDatabase.GetCoursesForStudent(IdStudent)?
                 .Join(
-                    Courses.Courses.ListCourses,
+                    Courses.Courses.CoursesList,
                     cfs => cfs.IdCourse,
                     c => c.IdCourse,
                     (cfs, c) => c)
@@ -365,7 +364,7 @@ public class Student : INotifyPropertyChanged
     public string GetFullInfo()
     {
         return $"{IdStudent,5} | " +
-               //$"{ListStudents[id].GetFullName()} | " +
+               //$"{StudentsList[id].GetFullName()} | " +
                $"{GetFullName()} | " +
                $"{Phone} - {Address}";
     }
