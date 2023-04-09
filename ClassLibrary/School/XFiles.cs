@@ -23,7 +23,8 @@ public static class XFiles
     public static Logger Logger1 =
         new LoggerConfiguration().CreateLogger();
 
-    public static Logger Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+    public static Logger Logger =
+        new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
     // private static readonly string ProjectFolder =
     //     Directory.GetCurrentDirectory();
@@ -650,11 +651,13 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(
+            using
+                (fileStream = new FileStream(
                     CoursesFile,
                     FileMode.OpenOrCreate,
-                    FileAccess.Read);
+                    FileAccess.Read))
+            {
+            }
         }
         catch (IOException ex)
         {
@@ -670,7 +673,7 @@ public static class XFiles
             return false;
         }
 
-        // fileStream = new FileStream(CoursesFile, FileMode.OpenOrCreate);
+        fileStream = new(CoursesFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
         while (!streamReader.EndOfStream)
@@ -718,11 +721,14 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(
-                    StudentsFile,
-                    FileMode.OpenOrCreate,
-                    FileAccess.Read);
+            using
+                (fileStream =
+                    new FileStream(
+                        StudentsFile,
+                        FileMode.OpenOrCreate,
+                        FileAccess.Read))
+            {
+            }
         }
         catch (IOException ex)
         {
@@ -738,7 +744,7 @@ public static class XFiles
             return false;
         }
 
-        // fileStream = new FileStream(StudentsFile, FileMode.OpenOrCreate);
+        fileStream = new(StudentsFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
         while (!streamReader.EndOfStream)
@@ -918,11 +924,13 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(
-                    SchoolClassesFile,
-                    FileMode.OpenOrCreate,
-                    FileAccess.Read);
+            using (fileStream =
+                       new FileStream(
+                           SchoolClassesFile,
+                           FileMode.OpenOrCreate,
+                           FileAccess.Read))
+            {
+            }
         }
         catch (IOException ex)
         {
@@ -938,8 +946,14 @@ public static class XFiles
             return false;
         }
 
-        //fileStream = new FileStream(SchoolClassesFile, FileMode.OpenOrCreate);
+        fileStream = new(SchoolClassesFile,
+            FileMode.OpenOrCreate, FileAccess.Read);
         StreamReader streamReader = new(fileStream);
+
+        // Loop through courses once and add them to a
+        // dictionary with the course ID as the key
+        var courses =
+            Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
 
         while (!streamReader.EndOfStream)
         {
@@ -976,18 +990,14 @@ public static class XFiles
                         courseIds.Add(courseId);
             }
 
-            // Loop through courses once and add them to a dictionary with the course ID as the key
-            var courses =
-                Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
-
             // Loop through course IDs that teacher teaches and look up corresponding course object in dictionary
             var coursesList = new List<Course>();
             if (courseIds != null)
                 foreach (var courseId in courseIds)
                     if (courses.TryGetValue(courseId, out var course))
                         coursesList.Add(course);
-            // ...
 
+            // ...
 
             _ = int.TryParse(campos[0], out var id);
             _ = DateOnly.TryParse(campos[3], out var startDate);
@@ -1015,6 +1025,8 @@ public static class XFiles
                 0,
                 coursesList
             );
+
+            SchoolDatabase.AssignCoursesToClass(coursesList, id);
         }
 
         streamReader.Close();
@@ -1036,10 +1048,12 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(
-                TeachersFile,
-                FileMode.OpenOrCreate,
-                FileAccess.Read);
+            using (fileStream = new FileStream(
+                       TeachersFile,
+                       FileMode.OpenOrCreate,
+                       FileAccess.Read))
+            {
+            }
         }
         catch (IOException ex)
         {
@@ -1055,8 +1069,14 @@ public static class XFiles
             return false;
         }
 
-        // fileStream = new FileStream(TeachersFile, FileMode.OpenOrCreate);
+        fileStream = new(TeachersFile,
+            FileMode.OpenOrCreate, FileAccess.Read);
         StreamReader streamReader = new(fileStream);
+
+        // Loop through courses once and add them to a
+        // dictionary with the course ID as the key
+        var courses =
+            Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
 
         while (!streamReader.EndOfStream)
         {
@@ -1094,11 +1114,8 @@ public static class XFiles
                         courseIds.Add(courseId);
             }
 
-            // Loop through courses once and add them to a dictionary with the course ID as the key
-            var courses =
-                Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
-
-            // Loop through course IDs that teacher teaches and look up corresponding course object in dictionary
+            // Loop through course IDs that teacher teaches and
+            // look up corresponding course object in dictionary
             var coursesList = new List<Course>();
             if (courseIds != null)
                 foreach (var courseId in courseIds)
@@ -1136,6 +1153,8 @@ public static class XFiles
                 totalWorkHours,
                 coursesList
             );
+            SchoolDatabase
+                .AssignTeacherToCourse(id, coursesList);
         }
 
         streamReader.Close();

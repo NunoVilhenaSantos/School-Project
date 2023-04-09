@@ -317,6 +317,22 @@ public class SchoolDatabase
         CourseTeacher[teacherId].Add(courseId);
     }
 
+
+    public static void AssignTeacherToCourse(
+        int teacherId, List<Course> courses)
+    {
+        foreach (var course in courses)
+        {
+            if (!CourseTeacher.ContainsKey(teacherId))
+            {
+                CourseTeacher.Add(teacherId, new HashSet<int>());
+                CourseTeacher[teacherId] = new HashSet<int>();
+            }
+
+            CourseTeacher[teacherId].Add(course.IdCourse);
+        }
+    }
+
     #endregion
 
 
@@ -402,7 +418,7 @@ public class SchoolDatabase
             string errorDetails =
                 $"The following key was not found in the dictionary: {ex.Message}.";
             Log.Error($"{errorMessage} {errorDetails}");
-            throw new KeyNotFoundException(errorMessage, ex);
+            // throw new KeyNotFoundException(errorMessage, ex);
         }
 
         // log success
@@ -416,7 +432,7 @@ public class SchoolDatabase
     #endregion
 
 
-    #region MyRegion
+    #region GetList
 
     public static int GetCoursesCountForSchoolClass(int schoolClassId)
     {
@@ -425,8 +441,8 @@ public class SchoolDatabase
 
         if (coursesCount == 0)
         {
-            Log.Warning(
-                "No courses found for the specified school class.");
+            Log.Warning("No courses found for " +
+                        "the specified school class.");
         }
 
         return coursesCount;
@@ -436,7 +452,8 @@ public class SchoolDatabase
     {
         var listCoursesForSchoolClass =
             SchoolDatabase.GetCoursesForSchoolClass(schoolClassId);
-        var workHourLoad = listCoursesForSchoolClass?.Sum(c => c.WorkLoad) ?? 0;
+        var workHourLoad =
+            listCoursesForSchoolClass?.Sum(c => c.WorkLoad) ?? 0;
 
         return workHourLoad;
     }

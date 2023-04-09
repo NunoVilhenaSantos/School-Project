@@ -50,6 +50,8 @@ public class XFilesRelations
     private const string TeacherCourseFilePath =
         XFiles.FilesFolder + "TeacherCourse.csv";
 
+    private const string lineSeparator = ";";
+
     #endregion
 
 
@@ -86,7 +88,8 @@ public class XFilesRelations
         }
 
         using (fileStream =
-                   new FileStream(DICTIONARIES_FILENAME, FileMode.Create))
+                   new FileStream(DICTIONARIES_FILENAME,
+                       FileMode.Create, FileAccess.ReadWrite))
             //using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
         using (StreamWriter writer = new(fileStream, Encoding.UTF8))
         {
@@ -98,7 +101,7 @@ public class XFilesRelations
                 // Write the course ID
                 writer.Write($"{kvp.Key},");
                 // Write the list of class IDs
-                writer.Write(string.Join(",", kvp.Value));
+                writer.Write(string.Join(lineSeparator, kvp.Value));
                 writer.WriteLine();
             }
 
@@ -110,7 +113,7 @@ public class XFilesRelations
                 // Write the course ID
                 writer.Write($"{kvp.Key},");
                 // Write the list of class IDs
-                writer.Write(string.Join(",", kvp.Value));
+                writer.Write(string.Join(lineSeparator, kvp.Value));
                 writer.WriteLine();
             }
 
@@ -122,7 +125,7 @@ public class XFilesRelations
                 // Write the course ID
                 writer.Write($"{kvp.Key},");
                 // Write the list of teacher IDs
-                writer.Write(string.Join(",", kvp.Value));
+                writer.Write(string.Join(lineSeparator, kvp.Value));
                 writer.WriteLine();
             }
 
@@ -134,7 +137,7 @@ public class XFilesRelations
                 // Write the course ID
                 writer.Write($"{kvp.Key},");
                 // Write the list of class IDs
-                writer.Write(string.Join(",", kvp.Value));
+                writer.Write(string.Join(lineSeparator, kvp.Value));
                 writer.WriteLine();
             }
 
@@ -186,9 +189,7 @@ public class XFilesRelations
             {
                 var line = reader.ReadLine();
                 if (string.IsNullOrWhiteSpace(line))
-                {
                     continue;
-                }
 
                 if (line.EndsWith(":"))
                 {
@@ -196,9 +197,12 @@ public class XFilesRelations
                     continue;
                 }
 
-                var values = line.Split(',')
-                    .Select(int.Parse)
-                    .ToArray();
+
+                var values =
+                    line.Split(lineSeparator,
+                            StringSplitOptions.RemoveEmptyEntries)
+                        .Select(int.Parse)
+                        .ToArray();
 
                 switch (currentDictionary)
                 {
