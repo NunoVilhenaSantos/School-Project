@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ClassLibrary.Courses;
+using ClassLibrary.School;
 
 namespace ClassLibrary.SchoolClasses;
 
@@ -75,8 +76,9 @@ public class SchoolClass : INotifyPropertyChanged
     private int? _studentsCount;
     private decimal? _classAverage;
     private decimal? _highestGrade;
+
     private decimal? _lowestGrade;
-    private List<Course>? _coursesList = new();
+    //private List<Course>? _coursesList = new();
 
     #endregion
 
@@ -179,11 +181,11 @@ public class SchoolClass : INotifyPropertyChanged
         set => SetField(ref _lowestGrade, value);
     }
 
-    public List<Course>? CoursesList
-    {
-        get => _coursesList;
-        set => SetField(ref _coursesList, value);
-    }
+    // public List<Course>? CoursesList
+    // {
+    //     get => _coursesList;
+    //     set => SetField(ref _coursesList, value);
+    // }
 
     //
     // para avaliar se são precisos
@@ -207,70 +209,71 @@ public class SchoolClass : INotifyPropertyChanged
     }
 
 
-    public int GetCoursesCount()
+    public void GetStudentsCount()
     {
-        return CoursesList?.Count ?? 0;
-        /*
-        return CoursesList == null
-            ? 0
-            : CoursesList.Sum(course => course.Enrollments.Count);
-        
-        if (CoursesList == null) return 0;
-        return CoursesList.Sum(course => course.Enrollments.Count);
-        */
+        var coursesForSchoolClass =
+            SchoolDatabase
+                .GetCoursesForSchoolClass(IdSchoolClass)?
+                .Count ?? 0;
+
+        if (coursesForSchoolClass != 0) return;
+
+        var ListCoursesForSchoolClass =
+            SchoolDatabase
+                .GetCoursesForSchoolClass(IdSchoolClass);
+
+        StudentsCount =
+            ListCoursesForSchoolClass?.Join(
+                    Enrollments.Enrollments.ListEnrollments,
+                    c => c.IdCourse,
+                    e => e.CourseId,
+                    (c, e) => e)
+                .Count() ?? 0;
     }
 
 
-    public void GetStudentsCount()
+    public void GetWorkHourLoad()
     {
-        if (Enrollments.Enrollments.ListEnrollments != null)
-            StudentsCount = CoursesList?.Join(
+        var ListCoursesForSchoolClass =
+            SchoolDatabase
+                .GetCoursesForSchoolClass(IdSchoolClass);
+
+        WorkHourLoad =
+            ListCoursesForSchoolClass?.Sum(c => c.WorkLoad) ?? 0;
+    }
+
+
+    public void ToObtainValuesForCalculatedFields()
+    {
+        // int? CoursesCount;
+        // int? WorkHourLoad;
+        // int? StudentsCount;
+        // decimal? ClassAverage;
+        // decimal? HighestGrade;
+        // decimal? LowestGrade;
+
+
+        CoursesCount =
+            SchoolDatabase
+                .GetCoursesForSchoolClass(IdSchoolClass)?
+                .Count ?? 0;
+
+        var ListCoursesForSchoolClass =
+            SchoolDatabase
+                .GetCoursesForSchoolClass(IdSchoolClass);
+        WorkHourLoad =
+            ListCoursesForSchoolClass?.Sum(c => c.WorkLoad) ?? 0;
+
+        StudentsCount=
+            ListCoursesForSchoolClass?.Join(
                     Enrollments.Enrollments.ListEnrollments,
                     c => c.IdCourse,
                     e => e.CourseId,
                     (c, e) => e)
                 .Count() ?? 0;
 
-        /*
-        return CoursesList == null
-            ? 0
-            : CoursesList.Sum(course => course.Enrollments.Count);
-        
-        if (CoursesList == null) return 0;
-        return CoursesList.Sum(course => course.Enrollments.Count);
-        */
-    }
-
-
-    public void GetWorkHourLoad()
-    {
-        WorkHourLoad = CoursesList?.Sum(course => course.WorkLoad) ?? 0;
-        /*
-        return CoursesList == null
-            ? 0
-            : CoursesList.Sum(course => course.WorkLoad);
-        
-        if (CoursesList == null) return 0;
-        return CoursesList.Sum(course => course.WorkLoad);
-        */
-    }
-
-
-    public void ToObtainValuesForCalculatedFields()
-    {
-        // int? CoursesCount
-        // int? WorkHourLoad
-        // int? StudentsCount
-        // decimal? ClassAverage
-        // decimal? HighestGrade
-        // decimal? LowestGrade
-
-        CoursesCount = CoursesList?.Count ?? 0;
-        CoursesCount = CoursesList == null
-            ? 0
-            : CoursesList.Count;
         var enrollments = Enrollments.Enrollments.ListEnrollments;
-        var courses = CoursesList;
+        var courses = ListCoursesForSchoolClass;
 
         var query = from enrollment in enrollments
             join course in courses on enrollment.CourseId equals course.IdCourse

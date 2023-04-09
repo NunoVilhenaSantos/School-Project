@@ -29,10 +29,12 @@ public class Enrollment : INotifyPropertyChanged
 
     private static int _mCounter;
     private decimal? _grade;
+
     private int _studentId;
-    private Student? _student;
+
+    //private Student? _student;
     private int _courseId;
-    private Course? _course;
+    //private Course? _course;
 
     #endregion
 
@@ -63,16 +65,16 @@ public class Enrollment : INotifyPropertyChanged
         }
     }
 
-    public Student? Student
-    {
-        get => _student;
-        set
-        {
-            if (Equals(value, _student)) return;
-            _student = value;
-            OnPropertyChanged();
-        }
-    }
+    // public Student? Student
+    // {
+    //     get => _student;
+    //     set
+    //     {
+    //         if (Equals(value, _student)) return;
+    //         _student = value;
+    //         OnPropertyChanged();
+    //     }
+    // }
 
     public int CourseId
     {
@@ -85,16 +87,16 @@ public class Enrollment : INotifyPropertyChanged
         }
     }
 
-    public Course? Course
-    {
-        get => _course;
-        set
-        {
-            if (Equals(value, _course)) return;
-            _course = value;
-            OnPropertyChanged();
-        }
-    }
+    // public Course? Course
+    // {
+    //     get => _course;
+    //     set
+    //     {
+    //         if (Equals(value, _course)) return;
+    //         _course = value;
+    //         OnPropertyChanged();
+    //     }
+    // }
 
     #endregion
 

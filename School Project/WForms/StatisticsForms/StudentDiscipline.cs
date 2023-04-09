@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
+using ClassLibrary.School;
 using ClassLibrary.Students;
 using School_Project.WForms.StudentsForms;
 
@@ -163,28 +164,15 @@ public partial class StudentDiscipline : Form
             return;
         }
 
-
         MessageBox.Show("Temos disciplinas, vamos lá");
-
 
         //
         // cycle to evaluate which disciplines_temp are select and add it
         //
-        List<Enrollment> enrollments = new();
-
-        foreach (var d in Courses.ListCourses)
-        foreach (var t in checkedListBoxDisciplines.CheckedItems)
-            if (t is Course v && d.IdCourse == v.IdCourse)
-                enrollments.Add(
-                    new Enrollment
-                    {
-                        //Grade = 0,
-                        //StudentId = d.IdCourse,
-                        //Student = d,
-                        CourseId = d.IdCourse,
-                        Course = d
-                    }
-                );
+        SchoolDatabase.EnrollStudentInCourses(
+            checkedListBoxDisciplines.CheckedItems
+                .Cast<ClassLibrary.Courses.Course>().ToList(),
+            studentToEdit.IdStudent);
 
         Console.WriteLine("Debug point");
 
@@ -198,38 +186,7 @@ public partial class StudentDiscipline : Form
         }
 
         Console.WriteLine("Debug point");
-        /*
-                //
-                // debugging
-                //
-                var nova = "";
-                foreach (var item in studentDisciplineList)
-                {
-                    var courseName =
-                        Courses.ListCourses.FirstOrDefault(a =>
-                            a.IdCourse == item.IdCourse);
-                    nova += Concat(values: $"{item.IdCourse} - {courseName.Name}\n");
-                }
-
-                MessageBox.Show(
-                    Format(Resources.Click_Disciplinas_Selecionadas,
-                        studentDisciplineList.Count));
-                MessageBox.Show(
-                    Format(Resources.Click_Disciplinas_Selecionadas,
-                        nova));
-                //
-                // end of the disciplines_temp cycle
-                //
-
-
-                //
-                // cycle to evaluate which studentForValidation
-                //
-                Students.ListStudents[studentToEdit.IdStudent]
-                        .StudentCoursesGradesList =
-                    studentDisciplineList;
-
-        */
+        
         UpdateLists();
 
         Console.WriteLine("Testes de Debug");

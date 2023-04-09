@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.Courses;
 using ClassLibrary.School;
 using ClassLibrary.Students;
+using Serilog;
 
 namespace ClassLibrary.Enrollments;
 
@@ -8,13 +9,9 @@ public static class Enrollments
 {
     #region Properties
 
-    public static List<Enrollment> ListEnrollments { get; set; } = new();
-
-    public static Dictionary<int, Student> StudentsDictionary { get; set; } =
-        new();
-
-    public static Dictionary<int, Course> CoursesDictionary { get; set; } =
-        new();
+    public static List<Enrollment> ListEnrollments = new();
+    public static Dictionary<int, Student> StudentsDictionary = new();
+    public static Dictionary<int, Course> CoursesDictionary = new();
 
     #endregion
 
@@ -35,34 +32,49 @@ public static class Enrollments
 
 
     public static void EnrollStudent(
-        int studentId, int courseId,
-        decimal? grade = null,
-        Student student = null, Course course = null)
+        int studentId, int courseId, decimal? grade = null)
     {
-        // this is done before adding the Enrollments to improve performance
-        UpdateDictionaries();
-
+        // Check if the student ID is valid
         if (!StudentsDictionary.ContainsKey(studentId))
-            throw new ArgumentException("Invalid student ID");
+        {
+            Log.Error("Invalid student ID: " +
+                      "{StudentId}", studentId);
+            return;
+        }
 
+        // Check if the course ID is valid
         if (!CoursesDictionary.ContainsKey(courseId))
-            throw new ArgumentException("Invalid course ID");
+        {
+            Log.Error("Invalid course ID: " +
+                      "{CourseId}", courseId);
+            return;
+        }
 
-        if (ListEnrollments.Any(e =>
-                e.StudentId == studentId && e.CourseId == courseId))
-            throw new ArgumentException(
-                "This student is already enrolled in this course");
+        // Check if the student is already enrolled in the course
+        if (ListEnrollments
+            .Any(e =>
+                e.StudentId == studentId &&
+                e.CourseId == courseId))
+        {
+            Log.Error("Student {StudentId} " +
+                      "is already enrolled in course {CourseId}",
+                studentId, courseId);
+            return;
+        }
 
-        ListEnrollments.Add(new Enrollment
+        // Create a new enrollment and add it to the list
+        var newEnrollment = new Enrollment
         {
             Grade = grade,
             StudentId = studentId,
-            Student = student ?? StudentsDictionary[studentId],
-            CourseId = courseId,
-            Course = course ?? CoursesDictionary[courseId]
-        });
-        SchoolDatabase.AddStudentToCourse(studentId, courseId);
+            CourseId = courseId
+        };
+        ListEnrollments.Add(newEnrollment);
+
+        // Update the school database
+        SchoolDatabase.EnrollStudentInCourse(studentId, courseId);
     }
+
 
     public static void RemoveEnrollment(int studentId, int courseId)
     {
@@ -87,89 +99,27 @@ public static class Enrollments
         var enrollments = ListEnrollments;
 
         if (courseId != -1)
-            if (CoursesDictionary.ContainsKey(courseId))
+            if (CoursesDictionary.TryGetValue(courseId, out var course))
             {
-                var course = CoursesDictionary[courseId];
                 enrollments = enrollments
                     .Where(e =>
                         e.CourseId == course.IdCourse)
                     .ToList();
             }
 
-        if (studentId != -1)
-            if (StudentsDictionary.ContainsKey(studentId))
+        if (studentId == -1) return enrollments;
+        {
+            if (StudentsDictionary.TryGetValue(studentId, out var student))
             {
-                var student = StudentsDictionary[studentId];
                 enrollments = enrollments
                     .Where(e =>
-                        e.StudentId == student.IdStudent)
+                        e.StudentId == student.IdStudent)?
                     .ToList();
             }
+        }
 
         return enrollments;
     }
-
-    // public static List<Enrollment> ConsultEnrollment(int idStudent)
-    // {
-    //     var enrollments = ListEnrollments;
-    //
-    //     if (idStudent >= 0)
-    //         enrollments =
-    //             enrollments.Where(e => e.StudentId == idStudent).ToList();
-    //
-    //     return enrollments;
-    // }
-    //
-    // public static List<Enrollment> ConsultEnrollment(int idCourse)
-    // {
-    //     var enrollments = ListEnrollments;
-    //
-    //     if (idCourse >= 0)
-    //         enrollments =
-    //             enrollments.Where(e => e.CourseId == idCourse).ToList();
-    //
-    //     return enrollments;
-    // }
-
-
-    //
-    // public static List<Enrollment> ConsultEnrollment(
-    //     int courseId = -1, int studentId = -1)
-    // {
-    //     var enrollments = ListEnrollments;
-    //
-    //     foreach (var filterParam in filterParams)
-    //     {
-    //         switch (filterParam.Key.ToLower())
-    //         {
-    //             case "studentid":
-    //                 if (StudentsDictionary.ContainsKey(filterParam.Value))
-    //                 {
-    //                     var student = StudentsDictionary[filterParam.Value];
-    //                     enrollments = enrollments
-    //                         .Where(e => e.StudentId == student.IdStudent)
-    //                         .ToList();
-    //                 }
-    //
-    //                 break;
-    //             case "courseid":
-    //                 if (CoursesDictionary.ContainsKey(filterParam.Value))
-    //                 {
-    //                     var course = CoursesDictionary[filterParam.Value];
-    //                     enrollments = enrollments
-    //                         .Where(e => e.CourseId == course.IdCourse).ToList();
-    //                 }
-    //
-    //                 break;
-    //             default:
-    //                 // handle unsupported filter parameters if necessary
-    //                 break;
-    //         }
-    //     }
-    //
-    //     return enrollments;
-    // }
-
 
     /// <summary>
     ///     Searching an enrollment

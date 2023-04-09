@@ -5,6 +5,9 @@ using ClassLibrary.Enrollments;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using ClassLibrary.Teachers;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace ClassLibrary.School;
 
@@ -16,6 +19,11 @@ public static class XFiles
     //
 
     #region Properties
+
+    public static Logger Logger1 =
+        new LoggerConfiguration().CreateLogger();
+
+    public static Logger Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
     // private static readonly string ProjectFolder =
     //     Directory.GetCurrentDirectory();
@@ -104,16 +112,6 @@ public static class XFiles
             out var successStoreStudentsInCsv,
             out var messageStoreStudentsInCsv);
 
-        var storeSchoolDictionariesFilePathInFile =
-            SchoolDatabase.SaveToCsv(
-                SchoolDictionariesFilePath,
-                out var messageStoreSchoolDictionariesFilePathInFile);
-
-        var storeSchoolDictionariesExtenso =
-            SchoolDatabase.SaveToCsvExtenso(
-                SchoolDictionariesExtensoCsv,
-                out var messageStoreSchoolDictionariesExtenso);
-
 
         myString =
             messageStoreSchoolClassesInFile + "\n\n" +
@@ -127,9 +125,6 @@ public static class XFiles
             messageStoreCoursesInCsv + "\n\n" +
             messageStoreEnrollmentsInCsv + "\n\n" +
             messageStoreStudentsInCsv;
-        myString +=
-            messageStoreSchoolDictionariesFilePathInFile + "\n\n" +
-            messageStoreSchoolDictionariesExtenso;
 
         var myBool =
             storeSchoolClassesInFile && storeTeachersInFile &&
@@ -140,10 +135,11 @@ public static class XFiles
             successStoreSchoolClassesInCsv && successStoreTeachersInCsv &&
             successStoreCoursesInCsv && successStoreEnrollmentsInCsv &&
             successStoreStudentsInCsv;
-        myBool =
-            myBool &&
-            storeSchoolDictionariesFilePathInFile &&
-            storeSchoolDictionariesExtenso;
+
+
+        ClassLibrary.School.XFilesRelations.SaveDictionariesToFile(
+            out var messageSaveDictionariesToFile);
+        //ClassLibrary.School.XFilesRelations.LoadDictionariesFromFile();
 
         return myBool;
     }
@@ -210,13 +206,13 @@ public static class XFiles
                 $"{schoolClass.Type};" +
                 $"{schoolClass.Area}";
 
-            if (schoolClass.CoursesList != null)
-            {
-                var coursesLine =
-                    schoolClass.CoursesList.Select(c =>
-                        $"{c.IdCourse}");
-                line += $";{string.Join(";", coursesLine)}";
-            }
+            // if (schoolClass.CoursesList != null)
+            // {
+            //     var coursesLine =
+            //         schoolClass.CoursesList.Select(c =>
+            //             $"{c.IdCourse}");
+            //     line += $";{string.Join(";", coursesLine)}";
+            // }
 
             streamWriter.WriteLine(line);
         }
@@ -294,10 +290,8 @@ public static class XFiles
                         $"{teacher.Birthplace};" +
                         $"{teacher.Photo};" +
                         $"{teacher.CoursesCount};" +
-                        $"{teacher.TotalWorkHoursLoad};" +
-                        string.Join(";",
-                            teacher.Courses?
-                                .Select(c => c.IdCourse)))
+                        $"{teacher.TotalWorkHoursLoad};")
+
             streamWriter.WriteLine(line);
 
 
@@ -604,10 +598,10 @@ public static class XFiles
         //     out var successReadTeachersInCsv,
         //     out var messageReadTeachersInCsv);
 
-        var readSchoolDictionariesInCsv =
-            SchoolDatabase.LoadFromCsv(
-                SchoolDictionariesFilePath,
-                out var messageReadTeachersInCsv);
+        // var readSchoolDictionariesInCsv =
+        //     SchoolDatabase.LoadFromCsv(
+        //         SchoolDictionariesFilePath,
+        //         out var messageReadTeachersInCsv);
 
         myString =
             messageReadCoursesFromFile + "\n\n" +
@@ -621,18 +615,24 @@ public static class XFiles
         //     messageReadEnrollmentsInCsv + "\n\n" +
         //     messageReadSchoolClassesFromCsv + "\n\n" +
         //     messageReadTeachersInCsv;
-        myString +=
-            messageReadTeachersInCsv;
 
-        var myBool = readCoursesFromFile && readStudentsFromFile &&
-                     readEnrollmentsInFile && readSchoolClassesFromFile &&
-                     readTeachersInFile;
-        // myBool += successReadCoursesFromCsv &&
-        //           successReadStudentsFromCsv &&
-        //           successReadEnrollmentsInCsv &&
-        //           successReadSchoolClassesFromCsv &&
-        //           successReadTeachersInCsv;
-        myBool = myBool && readSchoolDictionariesInCsv;
+
+        var myBool =
+            readCoursesFromFile && readStudentsFromFile &&
+            readEnrollmentsInFile && readSchoolClassesFromFile &&
+            readTeachersInFile;
+        // myBool =
+        //     myBool &&
+        //     successReadCoursesFromCsv &&
+        //     successReadStudentsFromCsv &&
+        //     successReadEnrollmentsInCsv &&
+        //     successReadSchoolClassesFromCsv &&
+        //     successReadTeachersInCsv;
+
+
+        //ClassLibrary.School.XFilesRelations.SaveDictionariesToFile();
+        ClassLibrary.School.XFilesRelations.LoadDictionariesFromFile(
+            out var messageLoadDictionariesFromFile);
 
         return myBool;
     }
@@ -696,7 +696,7 @@ public static class XFiles
             _ = int.TryParse(campos[3], out var credits);
 
             Courses.Courses.AddCourse(
-                id, campos[1], workLoad, credits, null
+                id, campos[1], workLoad, credits
             );
         }
 
@@ -902,9 +902,7 @@ public static class XFiles
         Enrollments.Enrollments.EnrollStudent(
             studentId,
             courseId,
-            grade,
-            student,
-            course
+            grade
         );
     }
 

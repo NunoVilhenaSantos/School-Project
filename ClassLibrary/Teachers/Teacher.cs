@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ClassLibrary.Courses;
+using ClassLibrary.School;
 
 namespace ClassLibrary.Teachers;
 
@@ -57,7 +58,7 @@ public class Teacher : INotifyPropertyChanged
     private int _coursesCount;
     private int _totalWorkHoursLoad;
 
-    private List<Course> _courses = new();
+    //private List<Course> _courses = new();
 
     #endregion
 
@@ -242,16 +243,16 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public List<Course> Courses
-    {
-        get => _courses;
-        set
-        {
-            if (Equals(value, _courses)) return;
-            _courses = value;
-            OnPropertyChanged();
-        }
-    }
+    // public List<Course> Courses
+    // {
+    //     get => _courses;
+    //     set
+    //     {
+    //         if (Equals(value, _courses)) return;
+    //         _courses = value;
+    //         OnPropertyChanged();
+    //     }
+    // }
 
 
     public int CoursesCount
@@ -281,29 +282,20 @@ public class Teacher : INotifyPropertyChanged
 
     #region Methods
 
-    public int GetWorkHourLoad(Course course)
-    {
-        var enrollment = Courses?.Sum(c => c.WorkLoad);
-        return enrollment ?? 0;
-    }
-
     public int GetTotalWorkHourLoad()
     {
-        var enrollment = Courses?.Sum(c => c.WorkLoad);
-        return enrollment ?? 0;
-        /*
-        return Enrollments == null
-            ? 0
-            : Enrollments.Sum(enrollment => enrollment.Course.WorkLoad);
-        */
+        var totalWorkHourLoad =
+            SchoolDatabase.GetCoursesForTeacher(TeacherId)?
+                .Sum(c => c.WorkLoad);
+        return totalWorkHourLoad ?? 0;
     }
 
 
     public int GetCoursesCount()
     {
-        return Courses == null
-            ? 0
-            : Courses.Count;
+        var CoursesCount =
+            SchoolDatabase.GetCoursesForTeacher(TeacherId)?.Count;
+        return CoursesCount ?? 0;
         /*
         return CoursesList == null
             ? 0
@@ -313,8 +305,19 @@ public class Teacher : INotifyPropertyChanged
         return CoursesList.Sum(course => course.Enrollments.Count);
         */
     }
+    
+    
+    public override string ToString()
+    {
+        // return base.ToString();
+        // return $"{IdStudent,5} | {FullName()} | {Phone} - {Address}";
+        // return $"{IdStudent,3} | {Name} {LastName} | {Phone} - {Address}";
+        return $"{TeacherId,3} | {Name} {LastName}";
+    }
+
 
     #endregion
+
 
     #region PropertyChanged
 

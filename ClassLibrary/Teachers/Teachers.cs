@@ -52,15 +52,15 @@ public static class Teachers
             Photo = photo,
             CoursesCount = coursesCount,
             TotalWorkHoursLoad = totalWorkHours,
-            Courses = courses
+            //Courses = courses
         };
         TeachersList.Add(teacher);
 
         SchoolDatabase.AddTeacher(TeachersList[^1]);
 
-        foreach (var course in TeachersList[^1].Courses)
-            SchoolDatabase.AddTeacherCourse(
-                TeachersList[^1].TeacherId, course.IdCourse);
+        // foreach (var course in TeachersList[^1].Courses)
+        //     SchoolDatabase.AssignTeacherToCourse(
+        //         TeachersList[^1].TeacherId, course.IdCourse);
     }
 
 
@@ -132,7 +132,7 @@ public static class Teachers
             .TotalWorkHoursLoad = totalWorkHours;
         TeachersList.FirstOrDefault(a => a.TeacherId == id)!.CoursesCount =
             coursesCount;
-        TeachersList.FirstOrDefault(a => a.TeacherId == id)!.Courses = courses;
+        // TeachersList.FirstOrDefault(a => a.TeacherId == id)!.Courses = courses;
 
         TeachersList[id].GetTotalWorkHourLoad();
 
@@ -206,8 +206,8 @@ public static class Teachers
         if (!int.IsNegative(totalWorkHours))
             teachers = TeachersList
                 .Where(a => a.TotalWorkHoursLoad == totalWorkHours).ToList();
-        if (courses != null)
-            teachers = TeachersList.Where(a => a.Courses == courses).ToList();
+        // if (courses != null)
+        //     teachers = TeachersList.Where(a => a.Courses == courses).ToList();
 
         return teachers;
     }

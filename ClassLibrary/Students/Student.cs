@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ClassLibrary.Courses;
+using ClassLibrary.School;
 using Serilog;
 
 namespace ClassLibrary.Students;
@@ -323,50 +324,35 @@ public class Student : INotifyPropertyChanged
     }
 
 
-    public int GetWorkHourLoad(Course course)
-    {
-        var enrollment = Enrollments.Enrollments.ListEnrollments?
-            .FirstOrDefault(
-                e => e.Student != null &&
-                     e.Student.IdStudent == IdStudent && e.Course == course);
-
-        return enrollment == null ? 0 : enrollment.Course.WorkLoad;
-    }
-
     public int GetTotalWorkHourLoad()
     {
         var enrollment =
-            Enrollments.Enrollments.ListEnrollments?
-                .Where(
-                    e => e.Student != null &&
-                         e.Student.IdStudent == IdStudent)
+            SchoolDatabase.GetCoursesForStudent(IdStudent)?
+                .Join(
+                    Courses.Courses.ListCourses,
+                    cfs => cfs.IdCourse,
+                    c => c.IdCourse,
+                    (cfs, c) => c)
                 .ToList();
 
-        Log.Warning("The ListStudents collection is empty.");
-        return enrollment?.Sum(enrollment => enrollment.Course.WorkLoad) ?? 0;
-        /*
-        return Enrollments == null
-            ? 0
-            : Enrollments.Sum(enrollment => enrollment.Course.WorkLoad);
-        */
+        if (enrollment == null || enrollment.Count == 0)
+            Log.Warning(
+                "The student is not enroll in any course.");
+
+        return enrollment?.Sum(c => c.WorkLoad) ?? 0;
     }
 
 
     public int? GetCoursesCount()
     {
         var enrollment =
-            Enrollments.Enrollments.ListEnrollments?
-                .Where(e => e.Student.IdStudent == IdStudent).Count();
+            SchoolDatabase.GetCoursesForStudent(IdStudent)?.Count;
 
-        return enrollment ?? null;
-        /*
-        return CoursesList == null
-            ? 0
-            : CoursesList.Sum(course => course.Enrollments.Count);
-        
-        if (CoursesList == null) return 0;
-        return CoursesList.Sum(course => course.Enrollments.Count);
-        */
+        if (enrollment == 0)
+            Log.Warning(
+                "The student is not enroll in any course.");
+
+        return enrollment ?? 0;
     }
 
 

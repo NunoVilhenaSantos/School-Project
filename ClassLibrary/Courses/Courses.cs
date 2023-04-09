@@ -56,10 +56,8 @@ public static class Courses
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
     /// <param name="credits"></param>
-    /// <param name="enrollments"></param>
     public static void AddCourse(
-        int id, string name, int workLoad, int credits,
-        List<Enrollment>? enrollments
+        int id, string name, int workLoad, int credits
     )
     {
         ListCourses.Add(
@@ -99,14 +97,12 @@ public static class Courses
     /// <param name="id"></param>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
-    /// <param name="enrollments"></param>
     /// <returns>
     ///     Informs if the list is empty,
     ///     or the course doesn't exists or was successful editing the course
     /// </returns>
     public static string EditCourse(
-        int id, string name, int workLoad,
-        List<Enrollment> enrollments
+        int id, string name, int workLoad
     )
     {
         if (ListCourses.Count < 1)
@@ -133,11 +129,9 @@ public static class Courses
     /// </summary>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
-    /// <param name="enrollments"></param>
     /// <returns>Returns a list of Courses by name or working hours</returns>
     public static List<Course> ConsultCourse(
-        string name, int workLoad,
-        List<Enrollment>? enrollments
+        string name, int workLoad
     )
     {
         var courses = ListCourses;
@@ -149,10 +143,6 @@ public static class Courses
             courses = ListCourses.Where(
                 a => a.WorkLoad == workLoad).ToList();
 
-        //if (enrollments != null)
-        //    courses = ListCourses.Where(
-        //        a => a.Enrollments == enrollments).ToList();
-
         return courses;
     }
 
@@ -163,11 +153,10 @@ public static class Courses
     /// <param name="id"></param>
     /// <param name="name"></param>
     /// <param name="workLoad"></param>
-    /// <param name="enrollments"></param>
     /// <returns>returns a list </returns>
     public static List<Course> ConsultCourse(
-        int id, string name, int workLoad,
-        List<Enrollment>? enrollments)
+        int id, string name, int workLoad
+    )
     {
         var courses = ListCourses;
 
@@ -176,9 +165,6 @@ public static class Courses
 
         if (workLoad >= 0)
             courses = courses.Where(c => c.WorkLoad == workLoad).ToList();
-
-        //if (enrollments != null)
-        //    courses = courses.Where(c => c.Enrollments == enrollments).ToList();
 
         return courses;
     }

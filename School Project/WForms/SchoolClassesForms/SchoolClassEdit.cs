@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Courses;
+using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 
@@ -163,13 +164,9 @@ public partial class SchoolClassEdit : Form
             _schoolClassToEdit.ClassAcronym = textBoxSchoolClassAcronym.Text;
             _schoolClassToEdit.ClassName = textBoxSchoolClassName.Text;
 
-            //_schoolClassToEdit.IdSchoolClass=numericUpDownSchoolClassID.Value;
             _schoolClassToEdit.ClassAcronym = textBoxSchoolClassAcronym.Text;
             _schoolClassToEdit.ClassName = textBoxSchoolClassName.Text;
 
-            //numericUpDownTotalNumberEnrolledStudents.Value = _schoolClassToEdit.GetStudentsCount();
-            //numericUpDownWorkingHours.Value = _schoolClassToEdit.GetWorkHourLoad();
-            //numericUpDownTotalCourses.Value = _schoolClassToEdit.GetCoursesCount();
 
             _schoolClassToEdit.StartDate =
                 DateOnly.FromDateTime(dateTimePickerBeginCourse.Value);
@@ -228,42 +225,6 @@ public partial class SchoolClassEdit : Form
         // check what was selected, row or cell.
         // 
         //
-        /*
-        var schoolClassToEditByRow = dataGridViewSchoolClasses.SelectedRows;
-        var schoolClassToEditByCell = dataGridViewSchoolClasses.SelectedCells;
-        var schoolClassToEdit = -1;
-
-        if (schoolClassToEditByRow.Count > 0 &&
-            schoolClassToEditByRow != null)
-        {
-            schoolClassToEdit = schoolClassToEditByRow[0].Index;
-        }
-        else if (schoolClassToEditByCell.Count > 0 &&
-                 schoolClassToEditByCell != null)
-        {
-            schoolClassToEdit = schoolClassToEditByCell[0].RowIndex;
-        }
-        else
-        {
-            MessageBox.Show(
-                "Ainda não tem uma turma criada por isso não pode adicionar disciplina(s), nem estudante(s)",
-                "Adicionar / remover disciplina(s)",
-                MessageBoxButtons.OK, MessageBoxIcon.Error
-            );
-            return;
-        }
-
-        if (schoolClassToEdit == -1)
-        {
-            MessageBox.Show(
-                "Tem de selecionar para poder Adicionar ou Remover ",
-                "Adicionar ou Remover",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning
-            );
-            return;
-        }
-        */
-
         if (checkedListBoxCourses.CheckedItems.Count == 0)
         {
             MessageBox.Show(
@@ -275,63 +236,49 @@ public partial class SchoolClassEdit : Form
         }
 
         //
-        // open the edit form with the studentForValidation editing
-        //
-        MessageBox.Show("Temos disciplinas para adicionar, vamos lá.");
-
-
-        //
         // cycle to evaluate which coursesList are select and add it
         //
-        List<Course> newCoursesList = new();
-
-        foreach (var a in Courses.ListCourses)
-        foreach (var t in checkedListBoxCourses.CheckedItems)
-            if (t is Course toVerify && a.IdCourse == toVerify.IdCourse)
-                newCoursesList.Add(toVerify);
+        SchoolDatabase.AssignCoursesToClass(
+            checkedListBoxCourses.CheckedItems.Cast<Course>().ToList(),
+            _schoolClassToEdit.IdSchoolClass);
 
         //
         // debugging
         //
         var nova =
             "Disciplinas selecionadas " +
-            $"{newCoursesList.Count}\n";
-        nova = newCoursesList.Aggregate(
-            nova, (current, item) =>
-                current +
-                string.Concat(values: $"{item.IdCourse} - {item.Name}\n"));
+            $"{checkedListBoxCourses.CheckedItems
+                .Cast<Course>().ToList().Count}\n";
+        nova = checkedListBoxCourses.CheckedItems
+            .Cast<Course>().ToList().Aggregate(
+                nova, (current, item) =>
+                    current + string.Concat(
+                        values: $"{item.IdCourse} - {item.Name}\n"));
         MessageBox.Show(nova);
-
-
-        //
-        // adding the new list to the class
-        //
-        _schoolClassToEdit.CoursesList = newCoursesList;
-
-        Console.WriteLine("Testes de Debug");
 
         SchoolClasses.ToObtainValuesForCalculatedFields();
 
-        //UpdateLists();
+
+        Console.WriteLine("Testes de Debug");
     }
 
 
     private void UpdateSelectedSchoolClass()
     {
-        /*
-        // Check if the row index has changed
-        if (dataGridViewSchoolClasses.CurrentCell == null ||
-            dataGridViewSchoolClasses.CurrentCell.RowIndex ==
-            _previousRowIndex) return;
-        */
-
         // Get the selected school class from the data source
-        //var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
 
         // Get the courses for the selected school class from the data source
-        var selectedSchoolClassCourses = _schoolClassToEdit.CoursesList;
+        var selectedSchoolClassCourses =
+            SchoolDatabase.GetCoursesForSchoolClass(
+                _schoolClassToEdit.IdSchoolClass);
 
-        // Set the checked items in the checkedListBoxCourses control
+        if (selectedSchoolClassCourses == null)
+        {
+            checkedListBoxCourses.Invalidate();
+            return;
+        }
+
+        //Set the checked items in the checkedListBoxCourses control
         for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
         {
             var course = (Course) checkedListBoxCourses.Items[i];
@@ -339,7 +286,19 @@ public partial class SchoolClassEdit : Form
                 selectedSchoolClassCourses.Contains(course));
         }
 
-        // Update the previous row index
-        //_previousRowIndex = dataGridViewSchoolClasses.CurrentCell.RowIndex;
+        // Create a dictionary of courses by their ID
+        var coursesById =
+            Courses.ListCourses.ToDictionary(c => c.IdCourse);
+
+        // Set the checked items in the checkedListBoxCourses control
+        foreach (var course in selectedSchoolClassCourses)
+        {
+            if (!coursesById.TryGetValue(course.IdCourse, out var courseId))
+                continue;
+
+            var index = checkedListBoxCourses.Items.IndexOf(courseId);
+            // if (index >= 0)
+            //     checkedListBoxCourses.SetItemChecked(index, true);
+        }
     }
 }

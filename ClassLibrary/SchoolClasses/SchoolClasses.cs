@@ -35,14 +35,15 @@ public static class SchoolClasses
                 Type = type,
                 Area = area,
                 //StudentsCount = studentsCount,
-                CoursesList = courses
+                //CoursesList = courses
             }
         );
         SchoolDatabase.AddSchoolClass(ListSchoolClasses[^1]);
 
-        foreach (var course in ListSchoolClasses[^1].CoursesList)
-            SchoolDatabase.AddSchoolClassCourses(
-                ListSchoolClasses[^1].IdSchoolClass, course.IdCourse);
+        // foreach (var course in ListSchoolClasses[^1].CoursesList)
+        //     SchoolDatabase.AssignCourseToClass(
+        //         course.IdCourse,
+        //         ListSchoolClasses[^1].IdSchoolClass);
 
         ListSchoolClasses[^1].GetStudentsCount();
         ListSchoolClasses[^1].GetWorkHourLoad();
@@ -102,8 +103,8 @@ public static class SchoolClasses
         ListSchoolClasses.FirstOrDefault(
             a => a.IdSchoolClass == id)!.Area = area;
 
-        ListSchoolClasses.FirstOrDefault(
-            a => a.IdSchoolClass == id)!.CoursesList = courses;
+        // ListSchoolClasses.FirstOrDefault(
+        //     a => a.IdSchoolClass == id)!.CoursesList = courses;
 
         ListSchoolClasses[^1].GetStudentsCount();
         ListSchoolClasses[^1].GetWorkHourLoad();
@@ -155,9 +156,9 @@ public static class SchoolClasses
             schoolClasses = ListSchoolClasses
                 .Where(a => a.StudentsCount == studentsCount).ToList();
 
-        if (courses is {Count: > 0})
-            schoolClasses = ListSchoolClasses
-                .Where(a => a.CoursesList == courses).ToList();
+        // if (courses is {Count: > 0})
+        //     schoolClasses = ListSchoolClasses
+        //         .Where(a => a.CoursesList == courses).ToList();
 
         return schoolClasses;
     }
@@ -305,7 +306,9 @@ public static class SchoolClasses
 
         foreach (var schoolClass in ListSchoolClasses)
         {
-            var coursesList = schoolClass.CoursesList;
+            var coursesList =
+                SchoolDatabase.GetCoursesForSchoolClass(
+                    schoolClass.IdSchoolClass);
             if (coursesList == null || !coursesList.Any()) continue;
 
             var coursesCount = 0;
@@ -315,62 +318,62 @@ public static class SchoolClasses
             decimal highestGrade = 0;
             var lowestGrade = decimal.MaxValue;
 
-            foreach (var course in coursesList)
-                if (course != null)
-                {
-                    coursesCount++;
+            foreach (var course in coursesList.Where(course => course != null))
+            {
+                coursesCount++;
 
-                    var studentIds = Enrollments.Enrollments.ListEnrollments?
-                        .Where(e => e.Course == course)
+                var studentIds =
+                    Enrollments.Enrollments.ListEnrollments?
+                        .Where(e => e.CourseId == course.IdCourse)
                         .Select(e => e.StudentId)
                         .Distinct();
 
-                    studentsCount = studentIds?.Count() ?? 0;
+                studentsCount = studentIds?.Count() ?? 0;
 
-                    // var uniqueStudents = new HashSet<string>();
-                    //
-                    // foreach (var enrollment in Enrollments.Enrollments.ListEnrollments)
-                    // {
-                    //     if (enrollment.Course == course)
-                    //     {
-                    //         uniqueStudents.Add(enrollment.Student);
-                    //     }
-                    // }
-                    //
-                    // studentsCount += uniqueStudents.Count;
+                // var uniqueStudents = new HashSet<string>();
+                //
+                // foreach (var enrollment in Enrollments.Enrollments.ListEnrollments)
+                // {
+                //     if (enrollment.Course == course)
+                //     {
+                //         uniqueStudents.Add(enrollment.Student);
+                //     }
+                // }
+                //
+                // studentsCount += uniqueStudents.Count;
 
-                    // studentsCount +=
-                    //     Enrollments.Enrollments.ListEnrollments?
-                    //         .Count(e => e.Course == course) ?? 0;
-                    // studentsCount +=
-                    //     Enrollments.Enrollments.ListEnrollments?
-                    //         .Count(e => e.Course == course);
+                // studentsCount +=
+                //     Enrollments.Enrollments.ListEnrollments?
+                //         .Count(e => e.Course == course) ?? 0;
+                // studentsCount +=
+                //     Enrollments.Enrollments.ListEnrollments?
+                //         .Count(e => e.Course == course);
 
-                    workHourLoad += course.WorkLoad;
+                workHourLoad += course.WorkLoad;
 
-                    if (Enrollments.Enrollments.ListEnrollments == null ||
-                        !Enrollments.Enrollments.ListEnrollments.Any())
-                        continue;
+                if (Enrollments.Enrollments.ListEnrollments == null ||
+                    !Enrollments.Enrollments.ListEnrollments.Any())
+                    continue;
 
-                    // var grades = Enrollments.Enrollments.ListEnrollments?
-                    //     .Where(e => e.Course == course)
-                    //     .Select(e => e.Grade)
-                    //     .ToList();
+                // var grades = Enrollments.Enrollments.ListEnrollments?
+                //     .Where(e => e.Course == course)
+                //     .Select(e => e.Grade)
+                //     .ToList();
 
-                    var grades =
-                        Enrollments.Enrollments.ListEnrollments?
-                            .Where(e => e.Course == course)
-                            .Select(e => e.Grade);
+                var grades =
+                    Enrollments.Enrollments.ListEnrollments?
+                        .Where(e => e.CourseId == course.IdCourse)
+                        .Select(e => e.Grade);
 
 
-                    if (grades != null && !grades.Any()) continue;
+                if (grades != null && !grades.Any()) continue;
 
-                    classTotal += ((decimal) grades.Average())!;
-                    highestGrade = Math.Max(highestGrade,
-                        (decimal) grades.Max());
-                    lowestGrade = Math.Min(lowestGrade,
-                        (decimal) grades.Min());
-                }
+                classTotal += ((decimal) grades.Average())!;
+                highestGrade = Math.Max(highestGrade,
+                    (decimal) grades.Max());
+                lowestGrade = Math.Min(lowestGrade,
+                    (decimal) grades.Min());
+            }
 
             schoolClass.CoursesCount = coursesCount;
             schoolClass.WorkHourLoad = workHourLoad;

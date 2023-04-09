@@ -189,8 +189,7 @@ public class Students
         string birthplace,
         string photo,
         int totalWorkHours,
-        DateOnly enrollmentDate,
-        List<Enrollment> enrollments
+        DateOnly enrollmentDate
     )
     {
         var students = ListStudents;
@@ -275,25 +274,15 @@ public class Students
                     a => a?.EnrollmentDate == enrollmentDate)
                 .ToList();
 
-        // if (enrollments != null)
-        //     students = ListStudents
-        //         .Where(
-        //             a => a?.Enrollments == enrollments)
-        //         .ToList();
-
         return students;
     }
 
 
     public static int GetLastIndex()
     {
-        // handle the case where the collection is empty
-        // return ListStudents[^1].IdStudent;
-        // return GetLastIndex();
         var lastStudent = ListStudents.LastOrDefault();
-        if (lastStudent != null)
-            return lastStudent.IdStudent;
-        return -1;
+        return ListStudents.LastOrDefault()?.IdStudent ?? -1;
+        //return lastStudent?.IdStudent ?? -1;
     }
 
 

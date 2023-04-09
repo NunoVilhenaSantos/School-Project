@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Windows.Forms.DataVisualization.Charting;
 using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
+using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 
@@ -121,7 +122,7 @@ public partial class DisciplineAdd : Form
             (int) numericUpDownDisciplineID.Value,
             textBoxDisciplineName.Text,
             (int) numericUpDownNumberHours.Value,
-            0, null
+            0
         );
 
         //
@@ -515,7 +516,7 @@ public partial class DisciplineAdd : Form
         // Get the students for the selected course from the data source
         var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments
             .Where(x => x.CourseId == selectedCourse.IdCourse)
-            .Select(e => e.Student)
+            .Select(e => e.StudentId)
             .ToList();
 
         var selectedCourseEnrollments = Enrollments.ListEnrollments
@@ -523,7 +524,7 @@ public partial class DisciplineAdd : Form
             .ToList();
 
         var selectedCourseStudents = selectedCourseEnrollments
-            .Select(e => e.Student)
+            .Select(e => e.StudentId)
             .ToList();
 
         if (selectedCourseEnrollments == null)
@@ -537,7 +538,7 @@ public partial class DisciplineAdd : Form
         {
             var student = (Student) checkedListBoxStudents.Items[i];
             checkedListBoxStudents.SetItemChecked(i,
-                selectedCoursesEnrollmentsStudents.Contains(student));
+                selectedCoursesEnrollmentsStudents.Contains(student.IdStudent));
         }
 
         // Update the previous row index
@@ -634,7 +635,8 @@ public partial class DisciplineAdd : Form
         else
         {
             MessageBox.Show(
-                "Ainda não tem uma disciplina criada por isso não pode adicionar estudante(s)",
+                "Ainda não tem uma disciplina criada " +
+                "por isso não pode adicionar estudante(s)",
                 "Adicionar ou Remover",
                 MessageBoxButtons.OK, MessageBoxIcon.Error
             );
@@ -666,48 +668,35 @@ public partial class DisciplineAdd : Form
         //
         MessageBox.Show("Temos estudante(s) para adicionar, vamos lá.");
         var courseToAdd = (Course) _bSListCourses.Current;
-        ;
 
         //
         // cycle to evaluate which student(s) are select and add it
         //
-        List<Enrollment> newEnrollmentList = new();
-
-        foreach (var a in Students.ListStudents)
-        foreach (var t in checkedListBoxStudents.CheckedItems)
-            if (t is Student toVerify && a.IdStudent == toVerify.IdStudent)
-            {
-                newEnrollmentList.Add(
-                    new Enrollment
-                    {
-                        Grade = null,
-                        StudentId = toVerify.IdStudent,
-                        Student = toVerify,
-                        CourseId = courseToAdd.IdCourse,
-                        Course = courseToAdd
-                    }
-                );
-                Enrollments.EnrollStudent(toVerify.IdStudent,
-                    courseToAdd.IdCourse);
-            }
+        SchoolDatabase.EnrollStudentInCourse(
+            checkedListBoxStudents.CheckedItems
+                .Cast<Student>().ToList(),
+            courseToAdd.IdCourse);
 
         //
         // debugging
         //
         var nova =
             "Disciplinas selecionadas " +
-            $"{newEnrollmentList.Count}\n";
-        nova = newEnrollmentList.Aggregate(
-            nova, (current, item) =>
-                current + string.Concat(
-                    values:
-                    $"{item.StudentId} - {item.Student.Name}|" +
-                    $"{item.CourseId} - {item.Course.Name}\n")
-        );
+            $"{checkedListBoxStudents.CheckedItems
+                .Cast<Student>().ToList().Count}\n";
+        nova = checkedListBoxStudents.CheckedItems
+            .Cast<Student>().ToList().Aggregate(
+                nova, (current, item) =>
+                    current + string.Concat(
+                        values:
+                        $"{item.IdStudent} - " +
+                        $"{Students.ListStudents[item.IdStudent].Name}|" +
+                        $"{courseToAdd.IdCourse} - " +
+                        $"{Courses.ListCourses[courseToAdd.IdCourse].Name}\n")
+            );
         MessageBox.Show(nova);
 
         SchoolClasses.ToObtainValuesForCalculatedFields();
-
         Courses.GetStudentsCount();
 
         UpdateLists();

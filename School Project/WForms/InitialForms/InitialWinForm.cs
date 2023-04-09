@@ -6,6 +6,9 @@ using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
+using Serilog;
+using System;
+// using Log = Microsoft.VisualBasic.Logging.Log;
 
 namespace School_Project.WForms.InitialForms;
 
@@ -14,7 +17,7 @@ public partial class InitialWinForm : Form
     private bool _closeFromUser;
     private SchoolContext _context;
     public SchoolDatabase SchoolDatabase = new();
-
+    
     //
     // Global Properties for the windows forms
     // to store the data into a list of class

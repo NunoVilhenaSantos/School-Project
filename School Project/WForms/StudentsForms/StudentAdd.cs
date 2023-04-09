@@ -467,21 +467,22 @@ public partial class StudentAdd : Form
         // temp variable of the class discipline to
         // retain the disciplines for that studentForValidation
         //
-        List<Enrollment> enrollments = new();
-
-        foreach (var c in Courses.ListCourses)
-        foreach (var t in checkedListBoxDisciplines.CheckedItems)
-            if (t is Course v && c.IdCourse == v.IdCourse)
-                enrollments.Add(
-                    new Enrollment
-                    {
-                        //Grade = 0,
-                        //StudentId = ,
-                        //Student = 0,
-                        CourseId = c.IdCourse,
-                        Course = c
-                    }
-                );
+        // List<Enrollment> enrollments = new();
+        //
+        // foreach (var c in Courses.ListCourses)
+        // foreach (var t in checkedListBoxDisciplines.CheckedItems)
+        //     if (t is Course v && c.IdCourse == v.IdCourse)
+        //         enrollments.Add(
+        //             new Enrollment
+        //             {
+        //                 //Grade = 0,
+        //                 //StudentId = ,
+        //                 //Student = 0,
+        //                 CourseId = c.IdCourse,
+        //                 //Course = c
+        //             }
+        //         );
+        
 
 
         UpdateLists();
@@ -496,8 +497,6 @@ public partial class StudentAdd : Form
         //
         // cast the selected object to be displayed in the dialog box
         //
-
-
         if (dataGridView1.SelectedRows == null) return;
 
         var rc = -1;
@@ -519,20 +518,6 @@ public partial class StudentAdd : Form
 
         var studentToView = Students.ListStudents[rc];
 
-        //
-        // var studentToViewEnrollment =
-        //     Enrollments.ConsultEnrollment(studentToView.IdStudent);
-        //
-        // if (studentToViewEnrollment != null)
-        //     foreach (var enrollment in (Enrollment)studentToViewEnrollment)
-        //         //
-        //         // subtract 1 from the Courses list,
-        //         // because the list starts at 1 and
-        //         // all other objects start from 0
-        //         //
-        //         checkedListBoxDisciplines.SetItemChecked(
-        //             enrollment.CourseId - 1, true);
-
         var studentToViewEnrollment =
             Enrollments.ConsultEnrollment(studentToView.IdStudent);
 
@@ -542,7 +527,7 @@ public partial class StudentAdd : Form
                 checkedListBoxDisciplines.SetItemChecked(
                     enrollment.CourseId - 1, true);
 
-        // update the numericUpDownLabel with  the value
+        // update the numericUpDownLabel value
         numericUpDownTotalWorkLoad.Value =
             Students.ListStudents[^1].TotalWorkHoursLoad;
 
