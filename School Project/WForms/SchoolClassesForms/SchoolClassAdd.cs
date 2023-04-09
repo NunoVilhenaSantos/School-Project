@@ -2,10 +2,10 @@
 using System.Reflection;
 using System.Windows.Forms.DataVisualization.Charting;
 using ClassLibrary.Courses;
-using ClassLibrary.Enrollments;
 using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
+using Serilog;
 
 namespace School_Project.WForms.SchoolClassesForms;
 
@@ -50,13 +50,13 @@ public partial class SchoolClassAdd : Form
          * counterpart Global variables from the initial form
          * 
          */
-        if (Courses.ListCourses.Count > 0)
+        if (Courses.CoursesList.Count > 0)
             _coursesCount = Courses.GetLastId();
 
-        if (SchoolClasses.ListSchoolClasses.Count > 0)
+        if (SchoolClasses.SchoolClassesList.Count > 0)
             _schoolClassesCount = SchoolClasses.GetLastId();
 
-        if (Students.ListStudents.Count > 0)
+        if (Students.StudentsList.Count > 0)
             _studentsCount = Students.GetLastId();
 
         SchoolClasses.ToObtainValuesForCalculatedFields();
@@ -207,7 +207,7 @@ public partial class SchoolClassAdd : Form
         chart1.Series["Courses Count"].ChartType = SeriesChartType.Line;
         chart1.Series["Work Hour Load"].ChartType = SeriesChartType.Line;
 
-        foreach (var schoolClass in SchoolClasses.ListSchoolClasses)
+        foreach (var schoolClass in SchoolClasses.SchoolClassesList)
         {
             chart1.Series["Students Count"].Points.AddXY(schoolClass.ClassName,
                 schoolClass.StudentsCount);
@@ -229,9 +229,9 @@ public partial class SchoolClassAdd : Form
         // * Data bindings
         // * 
         // *
-        _bSListCourses.DataSource = Courses.ListCourses;
-        _bSListSClasses.DataSource = SchoolClasses.ListSchoolClasses;
-        _bSListStudents.DataSource = Students.ListStudents;
+        _bSListCourses.DataSource = Courses.CoursesList;
+        _bSListSClasses.DataSource = SchoolClasses.SchoolClassesList;
+        _bSListStudents.DataSource = Students.StudentsList;
 
         _bSListCourses.ResetBindings(false);
         _bSListSClasses.ResetBindings(false);
@@ -248,7 +248,7 @@ public partial class SchoolClassAdd : Form
         // * must be add before the dataGridView 
         // *
 
-        var query1 = Courses.ListCourses
+        var query1 = Courses.CoursesList
             .ToList()
             .Select(q => new
             {
@@ -262,7 +262,7 @@ public partial class SchoolClassAdd : Form
         //checkedListBoxCourses.DisplayMember = "ToString()";
         //checkedListBoxCourses.ValueMember = "IdCourse";
 
-        var query2 = Students.ListStudents
+        var query2 = Students.StudentsList
             .ToList()
             .Select(q => new
             {
@@ -351,7 +351,7 @@ public partial class SchoolClassAdd : Form
         var property = typeof(SchoolClass)
             .GetProperty(selectedProperty ?? string.Empty);
         var filteredSchoolClass =
-            SchoolClasses.ListSchoolClasses
+            SchoolClasses.SchoolClassesList
                 .Where(
                     schoolClass => property != null &&
                                    property
@@ -755,20 +755,20 @@ public partial class SchoolClassAdd : Form
     }
 
 
+   
+
     private void UpdateSelectedSchoolClass()
     {
-        // Check if the row index has changed
-        if (dataGridViewSchoolClasses.CurrentCell == null ||
-            dataGridViewSchoolClasses.CurrentCell.RowIndex ==
-            _previousRowIndex) return;
+        if (dataGridViewSchoolClasses.CurrentCell == null) return;
 
         // Get the selected school class from the data source
         var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
 
         // Get the courses for the selected school class from the data source
         var selectedSchoolClassCourses =
-            SchoolDatabase.GetCoursesForSchoolClass(
-                selectedSchoolClass.IdSchoolClass);
+            new HashSet<Course>(
+                SchoolDatabase.GetCoursesForSchoolClass(
+                    selectedSchoolClass.IdSchoolClass));
 
         if (selectedSchoolClassCourses == null)
         {
@@ -776,33 +776,22 @@ public partial class SchoolClassAdd : Form
             return;
         }
 
-        //Set the checked items in the checkedListBoxCourses control
-        for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
-        {
-            var course = (Course) checkedListBoxCourses.Items[i];
-            checkedListBoxCourses.SetItemChecked(i,
-                selectedSchoolClassCourses.Contains(course));
-        }
-
-        // Create a dictionary of courses by their ID
-        var coursesById =
-            Courses.ListCourses.ToDictionary(c => c.IdCourse);
+        // Clear all checked items in the checkedListBoxCourses control
+        foreach (int i in checkedListBoxCourses.CheckedIndices)
+            checkedListBoxCourses.SetItemChecked(i, false);
 
         // Set the checked items in the checkedListBoxCourses control
         foreach (var course in selectedSchoolClassCourses)
         {
-            if (!coursesById.TryGetValue(course.IdCourse, out var courseId))
-                continue;
+            var index = checkedListBoxCourses.Items.IndexOf(course);
 
-            var index = checkedListBoxCourses.Items.IndexOf(courseId);
-            // if (index >= 0)
-            //     checkedListBoxCourses.SetItemChecked(index, true);
+            if (index >= 0)
+                checkedListBoxCourses.SetItemChecked(index, true);
         }
 
         // Update the previous row index
         _previousRowIndex = dataGridViewSchoolClasses.CurrentCell.RowIndex;
     }
-
 
     private void CheckedListBoxCourses_SelectedIndexChanged(
         object sender, EventArgs e)
@@ -811,80 +800,62 @@ public partial class SchoolClassAdd : Form
         var selectedSchoolClass = (SchoolClass) _bSListSClasses.Current;
 
         // Get the selected course from the CheckedListBox
-        var selectedCourse = checkedListBoxCourses.SelectedItem as Course;
+        var selectedCourse = (Course) checkedListBoxCourses.SelectedItem;
 
         // If either the school class or course is null, exit the method
-        if (selectedSchoolClass == null || selectedCourse == null) return;
+        if (selectedSchoolClass == null || selectedCourse == null)
+        {
+            Log.Warning(
+                "Either selectedSchoolClass " +
+                "or selectedCourse is null.");
+            return;
+        }
+
+        // If the checked list box is empty, exit the method
+        if (checkedListBoxStudents.Items.Count == 0)
+        {
+            Log.Warning("CheckedListBoxStudents is empty.");
+            return;
+        }
 
         // Clear all checked items
-        for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
+        foreach (int i in checkedListBoxStudents.CheckedIndices)
             checkedListBoxStudents.SetItemChecked(i, false);
 
         // Get the students enrolled in the selected course
-        var enrolledStudents =
-            SchoolDatabase.GetStudentsEnrolledInCoursesForClass(
-                selectedSchoolClass.IdSchoolClass);
-
-        // Update checked items based on the enrollments
-        foreach (var enrollment in enrolledStudents)
+        var enrolledStudents = new HashSet<Student>();
+        if (SchoolDatabase.CourseClasses
+                .ContainsKey(selectedSchoolClass.IdSchoolClass) &&
+            SchoolDatabase.CourseStudents
+                .ContainsKey(selectedCourse.IdCourse))
         {
-            checkedListBoxStudents.SetItemChecked(
-                enrollment.GetHashCode(), true);
+            enrolledStudents =
+                SchoolDatabase.GetEnrolledStudentsByCourseForClass(
+                    selectedSchoolClass.IdSchoolClass)[selectedCourse.IdCourse];
+        }
+        else
+        {
+            Log.Error(
+                $"Unable to retrieve enrolled students " +
+                $"for school class {selectedSchoolClass.IdSchoolClass} " +
+                $"and course {selectedCourse.IdCourse}");
         }
 
-        // Set the value of the NumericUpDown control to the number of checked items
-        numericUpDownTotalNumberEnrolledStudents.Value =
-            checkedListBoxStudents.CheckedItems.Count;
+        // Update checked items based on the enrollments
+        foreach (
+            var enrollment in
+            checkedListBoxStudents.CheckedItems
+                .Cast<Student>().Intersect(enrolledStudents))
+        {
+            checkedListBoxStudents.SetItemChecked(
+                checkedListBoxStudents.Items.IndexOf(enrollment), true);
+        }
 
-        Console.WriteLine("Testes de Debug");
+        Log.Information(
+            $"Updated checked items for course " +
+            $"{selectedCourse.IdCourse} in school class " +
+            $"{selectedSchoolClass.IdSchoolClass}");
     }
-
-
-    // private void CheckedListBoxCourses_MouseWheel(
-    //     object sender, MouseEventArgs e)
-    // {
-    //     var selectedRows = dataGridViewSchoolClasses.SelectedRows;
-    //     if (selectedRows == null || selectedRows.Count == 0)
-    //         // handle the case where no row is selected
-    //         return;
-    //
-    //     var selectedIndex = selectedRows[0].Index;
-    //     if (selectedIndex < 0 ||
-    //         selectedIndex >= SchoolClasses.ListSchoolClasses.Count)
-    //         // handle the case where the selected index is out of range
-    //         return;
-    //
-    //     var courseToView = selectedRows[0];
-    //
-    //     // the rest of the code that uses courseToView
-    //
-    //     if (Courses.ListCourses == null) return;
-    //
-    //     if (SchoolClasses.ListSchoolClasses == null ||
-    //         SchoolClasses.ListSchoolClasses[courseToView.Index].CoursesList ==
-    //         null) return;
-    //
-    //     // Clear all previously checked items
-    //     checkedListBoxStudents.ClearSelected();
-    //     for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
-    //         checkedListBoxStudents.SetItemChecked(i, false);
-    //
-    //     foreach (
-    //             var c in
-    //             SchoolClasses.ListSchoolClasses[courseToView.Index]
-    //                 .CoursesList)
-    //         // subtract 1 from the Courses list,
-    //         // because the list starts at 1 and
-    //         // all other objects start from 0
-    //         checkedListBoxStudents.SetItemChecked(c.IdCourse - 1, true);
-    //
-    //     numericUpDownTotalNumberEnrolledStudents.Value =
-    //         (decimal) SchoolClasses
-    //             .ListSchoolClasses[courseToView.Index].StudentsCount;
-    //
-    //     Console.WriteLine("Testes de Debug");
-    // }
-
 
     private void DataGridViewSchoolClasses_CellBeginEdit(
         object sender, DataGridViewCellCancelEventArgs e)
@@ -1071,7 +1042,7 @@ public partial class SchoolClassAdd : Form
 
         _startIndex = (_currentPage - 1) * ItemsPerPage;
         _endIndex = Math.Min(_startIndex + ItemsPerPage,
-            SchoolClasses.ListSchoolClasses.Count);
+            SchoolClasses.SchoolClassesList.Count);
 
         // Define the column widths and headers
         var colWidths = new[]
@@ -1122,7 +1093,7 @@ public partial class SchoolClassAdd : Form
         // Print the data for each class
         for (var i = _startIndex; i < _endIndex; i++)
         {
-            var schoolClass = SchoolClasses.ListSchoolClasses[i];
+            var schoolClass = SchoolClasses.SchoolClassesList[i];
 
             // Define the row lines
             var rowLines = new[]
@@ -1240,7 +1211,7 @@ public partial class SchoolClassAdd : Form
             e.MarginBounds.Right, y + font.Height);
 
         // If there are more pages, indicate that there are more pages
-        if (_endIndex < SchoolClasses.ListSchoolClasses.Count)
+        if (_endIndex < SchoolClasses.SchoolClassesList.Count)
         {
             e.HasMorePages = true;
             _currentPage++;

@@ -34,9 +34,9 @@ public partial class DisciplineAdd : Form
         // assign the local variables to is counterpart
         // Global variables from the initial form
         //
-        if (Courses.ListCourses.Count > 0)
+        if (Courses.CoursesList.Count > 0)
         {
-            _disciplinesCount = Courses.ListCourses.Count;
+            _disciplinesCount = Courses.CoursesList.Count;
             _disciplinesCount = Courses.GetLastId();
         }
 
@@ -46,13 +46,13 @@ public partial class DisciplineAdd : Form
         // counterpart Global variables from the initial form
         // 
         //
-        if (Courses.ListCourses.Count > 0)
+        if (Courses.CoursesList.Count > 0)
             _coursesCount = Courses.GetLastId();
 
-        if (SchoolClasses.ListSchoolClasses.Count > 0)
+        if (SchoolClasses.SchoolClassesList.Count > 0)
             _schoolClassesCount = SchoolClasses.GetLastId();
 
-        if (Students.ListStudents.Count > 0)
+        if (Students.StudentsList.Count > 0)
             _studentsCount = Students.GetLastId();
 
         SchoolClasses.ToObtainValuesForCalculatedFields();
@@ -171,7 +171,7 @@ public partial class DisciplineAdd : Form
         chart1.Series["Average Grade"].BorderWidth = 3;
 
 
-        foreach (var course in Courses.ListCourses)
+        foreach (var course in Courses.CoursesList)
         {
             var courseEnrollments =
                 Enrollments.ListEnrollments.Where(e =>
@@ -208,8 +208,8 @@ public partial class DisciplineAdd : Form
         // * Data bindings
         // * 
         // *
-        _bSListCourses.DataSource = Courses.ListCourses;
-        _bSListStudents.DataSource = Students.ListStudents;
+        _bSListCourses.DataSource = Courses.CoursesList;
+        _bSListStudents.DataSource = Students.StudentsList;
 
         _bSListCourses.ResetBindings(false);
         _bSListStudents.ResetBindings(false);
@@ -303,7 +303,7 @@ public partial class DisciplineAdd : Form
         var property = typeof(Course)
             .GetProperty(selectedProperty ?? string.Empty);
         var filteredCourse =
-            Courses.ListCourses
+            Courses.CoursesList
                 .Where(course => property != null &&
                                  property.GetValue(course)
                                      .ToString() != "").ToList();
@@ -690,9 +690,9 @@ public partial class DisciplineAdd : Form
                     current + string.Concat(
                         values:
                         $"{item.IdStudent} - " +
-                        $"{Students.ListStudents[item.IdStudent].Name}|" +
+                        $"{Students.StudentsList[item.IdStudent].Name}|" +
                         $"{courseToAdd.IdCourse} - " +
-                        $"{Courses.ListCourses[courseToAdd.IdCourse].Name}\n")
+                        $"{Courses.CoursesList[courseToAdd.IdCourse].Name}\n")
             );
         MessageBox.Show(nova);
 
@@ -781,7 +781,7 @@ public partial class DisciplineAdd : Form
 
         _startIndex = (_currentPage - 1) * ItemsPerPage;
         _endIndex = Math.Min(_startIndex + ItemsPerPage,
-            Courses.ListCourses.Count);
+            Courses.CoursesList.Count);
 
         // Define the column widths and headers
         var colWidths = new[]
@@ -829,7 +829,7 @@ public partial class DisciplineAdd : Form
         // Print the data for each class
         for (var i = _startIndex; i < _endIndex; i++)
         {
-            var course = Courses.ListCourses[i];
+            var course = Courses.CoursesList[i];
 
             // Define the row lines
             var rowLines = new[]
@@ -891,7 +891,7 @@ public partial class DisciplineAdd : Form
 
 
         // If there are more pages, indicate that there are more pages
-        if (_endIndex < Courses.ListCourses.Count)
+        if (_endIndex < Courses.CoursesList.Count)
         {
             e.HasMorePages = true;
             _currentPage++;

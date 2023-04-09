@@ -17,7 +17,7 @@ public partial class StudentEdit : Form
 
         // assigning the parent variable to
         // the local variables to be edited
-        _studentToEdit = Students.ListStudents[studentForEditing];
+        _studentToEdit = Students.StudentsList[studentForEditing];
 
         DataUpdateValues();
     }

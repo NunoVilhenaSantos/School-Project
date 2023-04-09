@@ -32,8 +32,8 @@ public partial class StudentAdd : Form
         // assign the local variables to is counterpart
         // in the Global variables from the initial form
         //
-        if (Students.ListStudents.Count > 0)
-            _studentsCount = Students.ListStudents[^1].IdStudent;
+        if (Students.StudentsList.Count > 0)
+            _studentsCount = Students.StudentsList[^1].IdStudent;
 
         //
         // make the transparent tab-control transparent
@@ -165,8 +165,8 @@ public partial class StudentAdd : Form
         // * Data bindings
         // * 
         // *
-        _bSourceStudents.DataSource = Students.ListStudents;
-        _bSourceCourses.DataSource = Courses.ListCourses;
+        _bSourceStudents.DataSource = Students.StudentsList;
+        _bSourceCourses.DataSource = Courses.CoursesList;
 
         _bSourceStudents.ResetBindings(false);
         _bSourceCourses.ResetBindings(false);
@@ -250,7 +250,7 @@ public partial class StudentAdd : Form
         var property = typeof(Student)
             .GetProperty(selectedProperty ?? string.Empty);
         var filteredStudents =
-            Students.ListStudents
+            Students.StudentsList
                 .Where(
                     student => property != null &&
                                property.GetValue(student)
@@ -321,7 +321,7 @@ public partial class StudentAdd : Form
             //for find the row index number
             rc = dataGridView1.CurrentCell.RowIndex;
 
-        if (Students.ListStudents == null)
+        if (Students.StudentsList == null)
             MessageBox.Show(
                 "Tem de selecionar para poder Adicionar ou Remover ",
                 "Apagar",
@@ -332,8 +332,8 @@ public partial class StudentAdd : Form
         {
             var s =
                 "Tem a certeza que deseja apagar o seguinte registo?\n" +
-                $"{Students.ListStudents[rc].Name} " +
-                $"{Students.ListStudents[rc].LastName}";
+                $"{Students.StudentsList[rc].Name} " +
+                $"{Students.StudentsList[rc].LastName}";
 
             var dialogResult = MessageBox.Show(
                 s, "Apagar",
@@ -362,7 +362,7 @@ public partial class StudentAdd : Form
             //for find the row index number
             rc = dataGridView1.CurrentCell.RowIndex;
 
-        if (Students.ListStudents == null)
+        if (Students.StudentsList == null)
         {
             MessageBox.Show(
                 "Tem de selecionar para poder Adicionar ou Remover ",
@@ -408,7 +408,7 @@ public partial class StudentAdd : Form
     private void ButtonStudentDisciplinesAdding_Click(
         object sender, EventArgs e)
     {
-        if (Students.ListStudents == null)
+        if (Students.StudentsList == null)
         {
             MessageBox.Show(
                 "Ainda não tem um único estudante inserido",
@@ -469,7 +469,7 @@ public partial class StudentAdd : Form
         //
         // List<Enrollment> enrollments = new();
         //
-        // foreach (var c in Courses.ListCourses)
+        // foreach (var c in Courses.CoursesList)
         // foreach (var t in checkedListBoxDisciplines.CheckedItems)
         //     if (t is Course v && c.IdCourse == v.IdCourse)
         //         enrollments.Add(
@@ -482,7 +482,6 @@ public partial class StudentAdd : Form
         //                 //Course = c
         //             }
         //         );
-        
 
 
         UpdateLists();
@@ -516,7 +515,7 @@ public partial class StudentAdd : Form
         rc = dataGridView1.CurrentCell.RowIndex;
         MessageBox.Show("Current Row Index is = " + rc);
 
-        var studentToView = Students.ListStudents[rc];
+        var studentToView = Students.StudentsList[rc];
 
         var studentToViewEnrollment =
             Enrollments.ConsultEnrollment(studentToView.IdStudent);
@@ -529,7 +528,7 @@ public partial class StudentAdd : Form
 
         // update the numericUpDownLabel value
         numericUpDownTotalWorkLoad.Value =
-            Students.ListStudents[^1].TotalWorkHoursLoad;
+            Students.StudentsList[^1].TotalWorkHoursLoad;
 
         numericUpDownTotalWorkLoad.Value =
             studentToView.TotalWorkHoursLoad;
@@ -543,7 +542,7 @@ public partial class StudentAdd : Form
         fileDialog.ShowDialog();
         //openFileDialog1.ShowDialog();
 
-        //Students.ListStudents[^1].Photo = fileDialog.FileName;
+        //Students.StudentsList[^1].Photo = fileDialog.FileName;
         _studentPhoto = fileDialog.FileName;
         pictureBoxPhotoDisplay.ImageLocation = fileDialog.FileName;
     }
@@ -696,7 +695,7 @@ public partial class StudentAdd : Form
 
         _startIndex = (_currentPage - 1) * ItemsPerPage;
         _endIndex = Math.Min(_startIndex + ItemsPerPage,
-            Students.ListStudents.Count);
+            Students.StudentsList.Count);
 
         // Define the column headers and widths
         var colHeaders = new[]
@@ -750,7 +749,7 @@ public partial class StudentAdd : Form
         // Print the data for each class
         for (var i = _startIndex; i < _endIndex; i++)
         {
-            var student = Students.ListStudents[i];
+            var student = Students.StudentsList[i];
 
             // Define the row lines
             var rowLines = new[]
@@ -897,7 +896,7 @@ public partial class StudentAdd : Form
             e.MarginBounds.Right, y + font.Height);
 
         // If there are more pages, indicate that there are more pages
-        if (_endIndex < Students.ListStudents.Count)
+        if (_endIndex < Students.StudentsList.Count)
         {
             e.HasMorePages = true;
             _currentPage++;

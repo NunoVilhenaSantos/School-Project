@@ -30,11 +30,11 @@ public partial class StudentDiscipline : Form
         //
         // assign the local variables to is counterpart Global variables from the initial form
         //
-        if (Students.ListStudents.Count > 0)
-            _studentsCount = Students.ListStudents[^1].IdStudent;
+        if (Students.StudentsList.Count > 0)
+            _studentsCount = Students.StudentsList[^1].IdStudent;
 
-        if (Courses.ListCourses.Count > 0)
-            _disciplinesCount = Courses.ListCourses[^1].IdCourse;
+        if (Courses.CoursesList.Count > 0)
+            _disciplinesCount = Courses.CoursesList[^1].IdCourse;
 
         //
         // initial update
@@ -78,8 +78,8 @@ public partial class StudentDiscipline : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
-        ((TextBox) sender).Paste();
+        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
+        ((TextBox)sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -96,7 +96,7 @@ public partial class StudentDiscipline : Form
         {
             Site = null,
             DataMember = null,
-            DataSource = Students.ListStudents,
+            DataSource = Students.StudentsList,
             Position = 0,
             RaiseListChangedEvents = true,
             Sort = null,
@@ -108,13 +108,26 @@ public partial class StudentDiscipline : Form
         {
             Site = null,
             DataMember = null,
-            DataSource = Courses.ListCourses,
+            DataSource = Courses.CoursesList,
             Position = 0,
             RaiseListChangedEvents = true,
             Sort = null,
             AllowNew = false,
             Filter = null
         };
+
+        var bSourceEnrollments = new BindingSource
+        {
+            Site = null,
+            DataMember = null,
+            DataSource = Enrollments.ListEnrollments,
+            Position = 0,
+            RaiseListChangedEvents = true,
+            Sort = null,
+            AllowNew = false,
+            Filter = null
+        };
+
 
         //
         // checked list-box
@@ -126,6 +139,20 @@ public partial class StudentDiscipline : Form
         listBoxStudents.DataSource = bSourceListStudents;
         // listBoxStudent.DisplayMember = "NomeCompleto";
         //listBoxStudents.SelectedItem = null;
+
+        dataGridView1.DataSource = bSourceEnrollments;
+        // bSourceEnrollments.Filter = $"CourseID = '{bindingSourceListCourses.Current["ID"]}'";
+
+        if (bSourceListStudents.Current != null && bindingSourceListCourses.Current != null)
+        {
+            string studentID = bSourceListStudents.Current["ID"].ToString();
+            string courseID = bindingSourceListCourses.Current["ID"].ToString();
+            bSourceEnrollments.Filter = $"StudentID = '{studentID}' AND CourseID = '{courseID}'";
+        }
+        else
+        {
+            bSourceEnrollments.Filter = null;
+        }
 
 
         //
@@ -142,7 +169,7 @@ public partial class StudentDiscipline : Form
     private void ButtonStudentDisciplinesAdding_Click(
         object sender, EventArgs e)
     {
-        var studentToEdit = (Student) listBoxStudents.SelectedItem;
+        var studentToEdit = (Student)listBoxStudents.SelectedItem;
 
         if (studentToEdit == null)
         {
@@ -171,7 +198,7 @@ public partial class StudentDiscipline : Form
         //
         SchoolDatabase.EnrollStudentInCourses(
             checkedListBoxDisciplines.CheckedItems
-                .Cast<ClassLibrary.Courses.Course>().ToList(),
+                .Cast<Course>().ToList(),
             studentToEdit.IdStudent);
 
         Console.WriteLine("Debug point");
@@ -179,14 +206,14 @@ public partial class StudentDiscipline : Form
 
         foreach (var t in checkedListBoxDisciplines.CheckedItems)
         {
-            var b = (Course) t;
+            var b = (Course)t;
             var c =
-                Courses.ListCourses.FirstOrDefault(
+                Courses.CoursesList.FirstOrDefault(
                     a => a.IdCourse == b.IdCourse);
         }
 
         Console.WriteLine("Debug point");
-        
+
         UpdateLists();
 
         Console.WriteLine("Testes de Debug");
@@ -195,10 +222,10 @@ public partial class StudentDiscipline : Form
     private void ListBoxStudents_SelectedIndexChanged(
         object sender, EventArgs e)
     {
-        if (Courses.ListCourses == null)
+        if (Courses.CoursesList == null)
             return;
 
-        var studentToView = (Student) listBoxStudents.SelectedItem;
+        var studentToView = (Student)listBoxStudents.SelectedItem;
         // if (studentToView.Enrollments == null) return;
         //
         //
@@ -305,6 +332,7 @@ public partial class StudentDiscipline : Form
 
     private int _disciplinesCount;
     private int _studentsCount;
+
 
     #endregion
 }

@@ -7,7 +7,6 @@ using ClassLibrary.Students;
 using ClassLibrary.Teachers;
 using Serilog;
 using Serilog.Core;
-using Serilog.Events;
 
 namespace ClassLibrary.School;
 
@@ -45,10 +44,10 @@ public static class XFiles
     private const string TeachersFile = FilesFolder + "TeachersFile.csv";
 
     private const string SchoolDictionariesFilePath =
-        XFiles.FilesFolder + "SchoolDictionaries.csv";
+        FilesFolder + "SchoolDictionaries.csv";
 
     private const string SchoolDictionariesExtensoCsv =
-        XFiles.FilesFolder + "SchoolDictionariesExtenso.csv";
+        FilesFolder + "SchoolDictionariesExtenso.csv";
 
     #endregion
 
@@ -138,7 +137,7 @@ public static class XFiles
             successStoreStudentsInCsv;
 
 
-        ClassLibrary.School.XFilesRelations.SaveDictionariesToFile(
+        XFilesRelations.SaveDictionariesToFile(
             out var messageSaveDictionariesToFile);
         //ClassLibrary.School.XFilesRelations.LoadDictionariesFromFile();
 
@@ -192,7 +191,7 @@ public static class XFiles
         streamWriter.WriteLine(propertyNames);
 
         foreach (var schoolClass in SchoolClasses.SchoolClasses
-                     .ListSchoolClasses)
+                     .SchoolClassesList)
         {
             var line = string.Empty;
             line =
@@ -348,7 +347,7 @@ public static class XFiles
         // Write the header line
         streamWriter.WriteLine(propertyNames);
 
-        foreach (var line in Courses.Courses.ListCourses
+        foreach (var line in Courses.Courses.CoursesList
                      .Select(course =>
                          $"{course.IdCourse};" +
                          $"{course.Name};" +
@@ -477,12 +476,12 @@ public static class XFiles
 
         foreach (
             var line in
-            Students.Students.ListStudents
+            Students.Students.StudentsList
                 .Select(student => StudentMapper.MapToString(student)))
             streamWriter.WriteLine(line);
 
         // foreach (var line in
-        //          Students.Students.ListStudents
+        //          Students.Students.StudentsList
         //              .Select(student =>
         //                      $"{student.IdStudent};" +
         //                      $"{student.Name};" +
@@ -632,7 +631,7 @@ public static class XFiles
 
 
         //ClassLibrary.School.XFilesRelations.SaveDictionariesToFile();
-        ClassLibrary.School.XFilesRelations.LoadDictionariesFromFile(
+        XFilesRelations.LoadDictionariesFromFile(
             out var messageLoadDictionariesFromFile);
 
         return myBool;
@@ -673,7 +672,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(CoursesFile, FileMode.OpenOrCreate);
+        fileStream = new FileStream(CoursesFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
         while (!streamReader.EndOfStream)
@@ -744,7 +743,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(StudentsFile, FileMode.OpenOrCreate);
+        fileStream = new FileStream(StudentsFile, FileMode.OpenOrCreate);
         StreamReader streamReader = new(fileStream);
 
         while (!streamReader.EndOfStream)
@@ -844,13 +843,13 @@ public static class XFiles
         // Loop through courses once and add them to a
         // dictionary with the course ID as the key
         var courses =
-            Courses.Courses.ListCourses
+            Courses.Courses.CoursesList
                 .ToDictionary(c => c.IdCourse);
 
         // Loop through courses once and add them to a
         // dictionary with the course ID as the key
         var students =
-            Students.Students.ListStudents
+            Students.Students.StudentsList
                 .ToDictionary(s => s.IdStudent);
 
         Enrollments.Enrollments.UpdateDictionaries();
@@ -956,14 +955,14 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(SchoolClassesFile,
+        fileStream = new FileStream(SchoolClassesFile,
             FileMode.OpenOrCreate, FileAccess.Read);
         StreamReader streamReader = new(fileStream);
 
         // Loop through courses once and add them to a
         // dictionary with the course ID as the key
         var courses =
-            Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
+            Courses.Courses.CoursesList.ToDictionary(c => c.IdCourse);
 
         while (!streamReader.EndOfStream)
         {
@@ -1079,14 +1078,14 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(TeachersFile,
+        fileStream = new FileStream(TeachersFile,
             FileMode.OpenOrCreate, FileAccess.Read);
         StreamReader streamReader = new(fileStream);
 
         // Loop through courses once and add them to a
         // dictionary with the course ID as the key
         var courses =
-            Courses.Courses.ListCourses.ToDictionary(c => c.IdCourse);
+            Courses.Courses.CoursesList.ToDictionary(c => c.IdCourse);
 
         while (!streamReader.EndOfStream)
         {
@@ -1164,7 +1163,7 @@ public static class XFiles
                 coursesList
             );
             SchoolDatabase
-                .AssignTeacherToCourse(id, coursesList);
+                .AssignTeacherToCourses(id, coursesList);
         }
 
         streamReader.Close();

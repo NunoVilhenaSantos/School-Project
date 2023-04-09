@@ -1,20 +1,49 @@
-﻿using System.Globalization;
-using System;
-using System.IO;
-using System.Text;
-using ClassLibrary.Courses;
+﻿using ClassLibrary.Courses;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using ClassLibrary.Teachers;
-using CsvHelper;
-using CsvHelper.Configuration;
 using Serilog;
-using Serilog.Core;
 
 namespace ClassLibrary.School;
 
 public class SchoolDatabase
 {
+    #region UpdatingDictionaries
+
+    // update the dictionaries from the list of their corresponding classes
+    public static void UpdateDictionaries()
+    {
+        // update the Courses dictionary
+        foreach (
+            var course in
+            ClassLibrary.Courses.Courses.CoursesList ??
+            Enumerable.Empty<Course>())
+            Courses[course.IdCourse] = course;
+
+        // update the SchoolClasses dictionary
+        foreach (
+            var schoolClass in
+            ClassLibrary.SchoolClasses.SchoolClasses.SchoolClassesList ??
+            Enumerable.Empty<SchoolClass>())
+            SchoolClasses[schoolClass.IdSchoolClass] = schoolClass;
+
+        // update the Students dictionary
+        foreach (
+            var student in
+            ClassLibrary.Students.Students.StudentsList ??
+            Enumerable.Empty<Student>())
+            Students[student.IdStudent] = student;
+
+        // update the Teachers dictionary
+        foreach (
+            var teacher in
+            ClassLibrary.Teachers.Teachers.TeachersList ??
+            Enumerable.Empty<Teacher>())
+            Teachers[teacher.TeacherId] = teacher;
+    }
+
+    #endregion
+
     #region Constructor
 
     //
@@ -77,28 +106,28 @@ public class SchoolDatabase
     public static void AddCourse(Course course)
     {
         Courses.Add(course.IdCourse, course);
-        Courses[course.IdCourse] = course;
+        // Courses[course.IdCourse] = course;
     }
 
 
     public static void AddSchoolClass(SchoolClass schoolClass)
     {
         SchoolClasses.Add(schoolClass.IdSchoolClass, schoolClass);
-        SchoolClasses[schoolClass.IdSchoolClass] = schoolClass;
+        // SchoolClasses[schoolClass.IdSchoolClass] = schoolClass;
     }
 
 
     public static void AddStudent(Student student)
     {
         Students.Add(student.IdStudent, student);
-        Students[student.IdStudent] = student;
+        // Students[student.IdStudent] = student;
     }
 
 
     public static void AddTeacher(Teacher teacher)
     {
         Teachers.Add(teacher.TeacherId, teacher);
-        Teachers[teacher.TeacherId] = teacher;
+        // Teachers[teacher.TeacherId] = teacher;
     }
 
     #endregion
@@ -145,45 +174,41 @@ public class SchoolDatabase
         List<Course> listOfCourses, List<Student> listOfStudents)
     {
         foreach (var course in listOfCourses)
+        foreach (var student in listOfStudents)
         {
-            foreach (var student in listOfStudents)
+            if (!Students.ContainsKey(student.IdStudent))
             {
-                if (!Students.ContainsKey(student.IdStudent))
-                {
-                    Log.Error("Invalid student ID: " +
-                              "{StudentId}", student.IdStudent);
-                    continue;
-                }
-
-                if (!Courses.ContainsKey(course.IdCourse))
-                {
-                    Log.Error("Invalid course ID: " +
-                              "{CourseId}", course.IdCourse);
-                    continue;
-                }
-
-                if (CourseStudents
-                        .TryGetValue(student.IdStudent,
-                            out HashSet<int> currentCourse) &&
-                    currentCourse.Contains(course.IdCourse))
-                {
-                    Log.Warning("Student {StudentId} " +
-                                "is already enrolled in course {CourseId}",
-                        student.IdStudent,
-                        course.IdCourse);
-                    continue;
-                }
-
-                Enrollments.Enrollments.EnrollStudent(
-                    student.IdStudent, course.IdCourse);
-
-                if (!CourseStudents.ContainsKey(student.IdStudent))
-                {
-                    CourseStudents.Add(student.IdStudent, new HashSet<int>());
-                }
-
-                CourseStudents[student.IdStudent].Add(course.IdCourse);
+                Log.Error("Invalid student ID: " +
+                          "{StudentId}", student.IdStudent);
+                continue;
             }
+
+            if (!Courses.ContainsKey(course.IdCourse))
+            {
+                Log.Error("Invalid course ID: " +
+                          "{CourseId}", course.IdCourse);
+                continue;
+            }
+
+            if (CourseStudents
+                    .TryGetValue(student.IdStudent,
+                        out var currentCourse) &&
+                currentCourse.Contains(course.IdCourse))
+            {
+                Log.Warning("Student {StudentId} " +
+                            "is already enrolled in course {CourseId}",
+                    student.IdStudent,
+                    course.IdCourse);
+                continue;
+            }
+
+            Enrollments.Enrollments.EnrollStudent(
+                student.IdStudent, course.IdCourse);
+
+            if (!CourseStudents.ContainsKey(student.IdStudent))
+                CourseStudents.Add(student.IdStudent, new HashSet<int>());
+
+            CourseStudents[student.IdStudent].Add(course.IdCourse);
         }
     }
 
@@ -204,7 +229,7 @@ public class SchoolDatabase
             return;
         }
 
-        if (CourseStudents.TryGetValue(studentId, out HashSet<int> courses) &&
+        if (CourseStudents.TryGetValue(studentId, out var courses) &&
             courses.Contains(courseId))
         {
             Log.Warning(
@@ -217,9 +242,7 @@ public class SchoolDatabase
         Enrollments.Enrollments.EnrollStudent(studentId, courseId);
 
         if (!CourseStudents.ContainsKey(studentId))
-        {
             CourseStudents.Add(studentId, new HashSet<int>());
-        }
 
         CourseStudents[studentId].Add(courseId);
     }
@@ -245,7 +268,7 @@ public class SchoolDatabase
             }
 
             if (CourseStudents.TryGetValue(student.IdStudent,
-                    out HashSet<int> courses) && courses.Contains(courseId))
+                    out var courses) && courses.Contains(courseId))
             {
                 Log.Warning("Student {StudentId} " +
                             "is already enrolled in course {CourseId}",
@@ -256,9 +279,7 @@ public class SchoolDatabase
             Enrollments.Enrollments.EnrollStudent(student.IdStudent, courseId);
 
             if (!CourseStudents.ContainsKey(student.IdStudent))
-            {
                 CourseStudents.Add(student.IdStudent, new HashSet<int>());
-            }
 
             CourseStudents[student.IdStudent].Add(courseId);
         }
@@ -286,7 +307,7 @@ public class SchoolDatabase
 
             if (
                 CourseStudents.TryGetValue(idStudent,
-                    out HashSet<int> courses) &&
+                    out var courses) &&
                 courses.Contains(course.IdCourse))
             {
                 Log.Warning("Student {StudentId} " +
@@ -298,11 +319,49 @@ public class SchoolDatabase
             Enrollments.Enrollments.EnrollStudent(idStudent, course.IdCourse);
 
             if (!CourseStudents.ContainsKey(idStudent))
-            {
                 CourseStudents.Add(idStudent, new HashSet<int>());
-            }
 
             CourseStudents[idStudent].Add(course.IdCourse);
+        }
+    }
+
+
+    public static void EnrollStudentInCourses(HashSet<int> listOfCourses,
+        int idStudent)
+    {
+        foreach (var course in listOfCourses)
+        {
+            if (!Students.ContainsKey(idStudent))
+            {
+                Log.Error("Invalid student ID: " +
+                          "{StudentId}", idStudent);
+                continue;
+            }
+
+            if (!Courses.ContainsKey(course))
+            {
+                Log.Error("Invalid course ID: " +
+                          "{CourseId}", course);
+                continue;
+            }
+
+            if (
+                CourseStudents.TryGetValue(idStudent,
+                    out var courses) &&
+                courses.Contains(course))
+            {
+                Log.Warning("Student {StudentId} " +
+                            "is already enrolled in course {CourseId}",
+                    idStudent, course);
+                continue;
+            }
+
+            Enrollments.Enrollments.EnrollStudent(idStudent, course);
+
+            if (!CourseStudents.ContainsKey(idStudent))
+                CourseStudents.Add(idStudent, new HashSet<int>());
+
+            CourseStudents[idStudent].Add(course);
         }
     }
 
@@ -338,7 +397,7 @@ public class SchoolDatabase
 
 
     public static void AssignCoursesToClass(
-        List<Course> courses, int schoolClassId)
+        List<Course> listOfCourses, int schoolClassId)
     {
         if (!SchoolClasses.TryGetValue(schoolClassId, out var schoolClass))
         {
@@ -349,8 +408,7 @@ public class SchoolDatabase
             return;
         }
 
-        foreach (var course in courses)
-        {
+        foreach (var course in listOfCourses)
             if (Courses.TryGetValue(course.IdCourse, out var c))
             {
                 if (!CourseClasses.TryGetValue(course.IdCourse,
@@ -374,9 +432,49 @@ public class SchoolDatabase
                     "to class {ClassId}. Course does not exist.",
                     course.IdCourse, schoolClassId);
             }
-        }
     }
 
+
+    public static void AssignCoursesToClass(HashSet<int> listOfCourses,
+        int schoolClassId)
+    {
+        if (!SchoolClasses.TryGetValue(schoolClassId, out var schoolClass))
+        {
+            Log.Warning(
+                "Failed to assign courses to class {ClassId}." +
+                " School class does not exist.",
+                schoolClassId);
+            return;
+        }
+
+        foreach (var course in listOfCourses)
+            if (Courses.TryGetValue(course, out var c))
+            {
+                if (!CourseClasses.TryGetValue(course,
+                        out var classes))
+                {
+                    classes = new HashSet<int>();
+                    CourseClasses.Add(course, classes);
+                }
+
+                classes.Add(schoolClassId);
+
+                Log.Information(
+                    "Assigned course {CourseId} " +
+                    "to class {ClassId}.",
+                    course, schoolClassId);
+            }
+            else
+            {
+                Log.Warning(
+                    "Failed to assign course {CourseId} " +
+                    "to class {ClassId}. Course does not exist.",
+                    course, schoolClassId);
+            }
+    }
+
+
+    #region MyRegion
 
     public static void AssignTeacherToCourse(int teacherId, int courseId)
     {
@@ -390,7 +488,7 @@ public class SchoolDatabase
     }
 
 
-    public static void AssignTeacherToCourse(
+    public static void AssignTeacherToCourses(
         int teacherId, List<Course> courses)
     {
         foreach (var course in courses)
@@ -405,6 +503,24 @@ public class SchoolDatabase
         }
     }
 
+
+    public static void AssignTeacherToCourses(
+        HashSet<int> hashSetCourses, int teacherId)
+    {
+        foreach (var course in hashSetCourses)
+        {
+            if (!CourseTeacher.ContainsKey(teacherId))
+            {
+                CourseTeacher.Add(teacherId, new HashSet<int>());
+                CourseTeacher[teacherId] = new HashSet<int>();
+            }
+
+            CourseTeacher[teacherId].Add(course);
+        }
+    }
+
+    #endregion
+
     #endregion
 
 
@@ -413,13 +529,18 @@ public class SchoolDatabase
     public static List<Course> GetCoursesForSchoolClass(
         int schoolClassId)
     {
+        // if (!CourseClasses.ContainsKey(schoolClassId))
+        //     return new List<Course>();
+        //
+        // return CourseClasses[schoolClassId]
+        //     .Select(x => Courses[schoolClassId])
+        //     .ToList();
+
         if (!CourseClasses.ContainsKey(schoolClassId))
-        {
             return new List<Course>();
-        }
 
         return CourseClasses[schoolClassId]
-            .Select(x => Courses[schoolClassId])
+            .Select(x => Courses[x])
             .ToList();
     }
 
@@ -441,10 +562,7 @@ public class SchoolDatabase
 
     public static List<Course> GetCoursesForTeacher(int teacherId)
     {
-        if (!CourseTeacher.ContainsKey(teacherId))
-        {
-            return new List<Course>();
-        }
+        if (!CourseTeacher.ContainsKey(teacherId)) return new List<Course>();
 
         return CourseTeacher[teacherId]
             .Select(x => Courses[teacherId])
@@ -456,49 +574,119 @@ public class SchoolDatabase
     public List<Student> GetStudentsInCourse(int courseId)
     {
         if (!Courses.ContainsKey(courseId))
-        {
             throw new ArgumentException("Invalid course id");
-        }
 
         return CourseStudents[courseId]
             .Select(studentId => Students[studentId])
             .ToList();
     }
 
-    public static HashSet<int> GetStudentsEnrolledInCoursesForClass(
-        int schoolClassId)
-    {
-        HashSet<int> studentIds = new HashSet<int>();
 
-        try
+    // public static Dictionary<int, HashSet<Student>>
+    //     GetEnrolledStudentsByCourseForClass(int schoolClassId)
+    // {
+    //     var enrolledStudentsByCourse = new Dictionary<int, HashSet<Student>>();
+    //
+    //     var courseIds = CourseClasses.ContainsKey(schoolClassId)
+    //         ? CourseClasses[schoolClassId]
+    //         : new HashSet<int>();
+    //
+    //     foreach (var courseId in courseIds)
+    //     {
+    //         var studentIds = CourseStudents.ContainsKey(courseId)
+    //             ? CourseStudents[courseId]
+    //             : new HashSet<int>();
+    //
+    //         var students = studentIds
+    //             .Where(studentId => StudentClass.ContainsKey(studentId) &&
+    //                                 StudentClass[studentId]
+    //                                     .Contains(schoolClassId))
+    //             .Select(studentId => Students.ContainsKey(studentId)
+    //                 ? Students[studentId]
+    //                 : null)
+    //             .Where(student => student != null)
+    //             .ToHashSet();
+    //
+    //         enrolledStudentsByCourse.Add(courseId, students);
+    //     }
+    //
+    //     // log error and rethrow exception
+    //     var errorMessage =
+    //         $"Error retrieving students enrolled in courses for school class with ID {schoolClassId}.";
+    //     var errorDetails =
+    //         $"The following key was not found in the dictionary: {ex.Message}.";
+    //     Log.Error($"{errorMessage} {errorDetails}");
+    //
+    //     // log success
+    //     Log.Information(
+    //         $"Retrieved {studentIds.Count}" +
+    //         $" students enrolled in courses for " +
+    //         $"school class with ID {schoolClassId}.");
+    //
+    //     return enrolledStudentsByCourse;
+    // }
+
+
+    public static Dictionary<int, HashSet<Student>>
+        GetEnrolledStudentsByCourseForClass(int schoolClassId)
+    {
+        var enrolledStudentsByCourse = new Dictionary<int, HashSet<Student>>();
+        var errorMessage =
+            $"Error retrieving students enrolled in " +
+            $"courses for school class with ID {schoolClassId}.";
+
+        if (!CourseClasses.ContainsKey(schoolClassId))
         {
-            HashSet<int> courseIds = CourseClasses[schoolClassId];
-            foreach (int courseId in courseIds)
+            var errorDetails =
+                $"Course classes not found for " +
+                $"school class with ID {schoolClassId}.";
+            Log.Error($"{errorMessage} {errorDetails}");
+            return enrolledStudentsByCourse;
+        }
+
+        var courseIds = CourseClasses[schoolClassId];
+
+        foreach (var courseId in courseIds)
+        {
+            if (!CourseStudents.ContainsKey(courseId))
             {
-                HashSet<int> courseStudentIds = CourseStudents[courseId];
-                foreach (int studentId in courseStudentIds)
+                var errorDetails =
+                    $"Course students not found for course with ID {courseId}.";
+                Log.Warning($"{errorMessage} {errorDetails}");
+                continue;
+            }
+
+            var studentIds = CourseStudents[courseId];
+            var students = new HashSet<Student>();
+
+            foreach (var studentId in studentIds)
+            {
+                if (!StudentClass.ContainsKey(studentId))
                 {
-                    studentIds.Add(studentId);
+                    var errorDetails =
+                        $"Student classes not found for " +
+                        $"student with ID {studentId}.";
+                    Log.Warning($"{errorMessage} {errorDetails}");
+                    continue;
+                }
+
+                if (StudentClass[studentId].Contains(schoolClassId) &&
+                    Students.ContainsKey(studentId))
+                {
+                    students.Add(Students[studentId]);
                 }
             }
-        }
-        catch (KeyNotFoundException ex)
-        {
-            // log error and rethrow exception
-            string errorMessage =
-                $"Error retrieving students enrolled in courses for school class with ID {schoolClassId}.";
-            string errorDetails =
-                $"The following key was not found in the dictionary: {ex.Message}.";
-            Log.Error($"{errorMessage} {errorDetails}");
-            // throw new KeyNotFoundException(errorMessage, ex);
+
+            enrolledStudentsByCourse.Add(courseId, students);
         }
 
-        // log success
+        var totalStudents =
+            enrolledStudentsByCourse
+                .Sum(c => c.Value.Count);
         Log.Information(
-            $"Retrieved {studentIds.Count}" +
-            $" students enrolled in courses for " +
-            $"school class with ID {schoolClassId}.");
-        return studentIds;
+            $"Retrieved {totalStudents} students enrolled " +
+            $"in courses for school class with ID {schoolClassId}.");
+        return enrolledStudentsByCourse;
     }
 
     #endregion
@@ -509,13 +697,11 @@ public class SchoolDatabase
     public static int GetCoursesCountForSchoolClass(int schoolClassId)
     {
         var coursesCount =
-            SchoolDatabase.GetCoursesForSchoolClass(schoolClassId)?.Count ?? 0;
+            GetCoursesForSchoolClass(schoolClassId)?.Count ?? 0;
 
         if (coursesCount == 0)
-        {
             Log.Warning("No courses found for " +
                         "the specified school class.");
-        }
 
         return coursesCount;
     }
@@ -523,7 +709,7 @@ public class SchoolDatabase
     public static int GetWorkHourLoadForSchoolClass(int schoolClassId)
     {
         var listCoursesForSchoolClass =
-            SchoolDatabase.GetCoursesForSchoolClass(schoolClassId);
+            GetCoursesForSchoolClass(schoolClassId);
         var workHourLoad =
             listCoursesForSchoolClass?.Sum(c => c.WorkLoad) ?? 0;
 
@@ -533,7 +719,7 @@ public class SchoolDatabase
     public static int GetStudentsCountForSchoolClass(int schoolClassId)
     {
         var listCoursesForSchoolClass =
-            SchoolDatabase.GetCoursesForSchoolClass(schoolClassId);
+            GetCoursesForSchoolClass(schoolClassId);
         var studentsCount = listCoursesForSchoolClass?.Join(
             Enrollments.Enrollments.ListEnrollments,
             c => c.IdCourse,
@@ -547,7 +733,7 @@ public class SchoolDatabase
         int schoolClassId)
     {
         var enrollments = Enrollments.Enrollments.ListEnrollments;
-        var courses = SchoolDatabase.GetCoursesForSchoolClass(schoolClassId);
+        var courses = GetCoursesForSchoolClass(schoolClassId);
 
         var query = from enrollment in enrollments
             join course in courses on enrollment.CourseId equals course.IdCourse
@@ -567,7 +753,7 @@ public class SchoolDatabase
     public static decimal GetStudentAveragesForSchoolClass(int schoolClassId)
     {
         var enrollments = Enrollments.Enrollments.ListEnrollments;
-        var courses = SchoolDatabase.GetCoursesForSchoolClass(schoolClassId);
+        var courses = GetCoursesForSchoolClass(schoolClassId);
 
         var query = from enrollment in enrollments
             join course in courses on enrollment.CourseId equals course.IdCourse
@@ -594,7 +780,7 @@ public class SchoolDatabase
     public static int GetStudentCountForSchoolClass(int schoolClassId)
     {
         var enrollments = Enrollments.Enrollments.ListEnrollments;
-        var courses = SchoolDatabase.GetCoursesForSchoolClass(schoolClassId);
+        var courses = GetCoursesForSchoolClass(schoolClassId);
 
         var query = from enrollment in enrollments
             join course in courses on enrollment.CourseId equals course.IdCourse

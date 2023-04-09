@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Courses;
+﻿using System.Diagnostics;
+using ClassLibrary.Courses;
 using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using School_Project.Properties;
@@ -6,9 +7,6 @@ using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
-using Serilog;
-using System;
-using System.Diagnostics;
 
 // using Log = Microsoft.VisualBasic.Logging.Log;
 
@@ -16,16 +14,15 @@ namespace School_Project.WForms.InitialForms;
 
 public partial class InitialWinForm : Form
 {
+    //public SchoolDatabase SchoolDatabase = new();
+    private readonly Stopwatch _stopwatch;
     private bool _closeFromUser;
 
     private SchoolContext _context;
-
-    //public SchoolDatabase SchoolDatabase = new();
-    private readonly Stopwatch _stopwatch;
-    private DateTime startTime;
+    private double elapsedSecondsXFiles;
     private TimeSpan elapsedTimeForm;
     private TimeSpan elapsedTimeXFiles;
-    private double elapsedSecondsXFiles;
+    private DateTime startTime;
 
     //
     // Global Properties for the windows forms
@@ -36,7 +33,7 @@ public partial class InitialWinForm : Form
     {
         InitializeComponent();
         //_stopwatch=new Stopwatch();
-        this._stopwatch = stopwatch;
+        _stopwatch = stopwatch;
     }
 
 
@@ -72,7 +69,6 @@ public partial class InitialWinForm : Form
     }
 
 
-
     private void InitialWinForm_Shown(object sender, EventArgs e)
     {
         ShowMainMenu();
@@ -82,24 +78,28 @@ public partial class InitialWinForm : Form
     {
         // Cálculo do tempo decorrido desde o arranque do
         // form até a apresentação do menu principal
-         elapsedTimeForm = DateTime.Now - startTime;
-        double elapsedSecondsForm = elapsedTimeForm.TotalSeconds;
+        elapsedTimeForm = DateTime.Now - startTime;
+        var elapsedSecondsForm = elapsedTimeForm.TotalSeconds;
 
 
         // Cálculo do tempo decorrido desde o arranque do
         // programa até a apresentação do menu principal
         _stopwatch.Stop();
-        double tempoDecorridoProgram = _stopwatch.Elapsed.TotalSeconds;
+        var tempoDecorridoProgram = _stopwatch.Elapsed.TotalSeconds;
         //long tempoDecorridoProgram = _stopwatch.ElapsedMilliseconds;
-        string tempoDecorridoProgramString = elapsedSecondsForm.ToString("0.000");
+        var tempoDecorridoProgramString = elapsedSecondsForm.ToString("0.000");
 
 
         // Mostra o menu principal
         // ...
         MessageBox.Show(
-            "XFiles:\t\t Tempo decorrido: " + elapsedSecondsXFiles + " segundos\n" +
-            "Form:\t\t Tempo decorrido: " + elapsedSecondsForm + " segundos\n"+
-            "Programa:\t Tempo decorrido: " + tempoDecorridoProgram + " segundos\n");
+            "XFiles:\t\t Tempo decorrido: " + elapsedSecondsXFiles +
+            " segundos\n" +
+            "Form:\t\t Tempo decorrido: " + elapsedSecondsForm + " segundos\n" +
+            "Programa:\t Tempo decorrido: " + tempoDecorridoProgram +
+            " segundos\n");
+        
+        SchoolDatabase.UpdateDictionaries();
     }
 
     private void ButtonCloseProgram_Click(object sender, EventArgs e)
@@ -283,5 +283,4 @@ public partial class InitialWinForm : Form
             buttonCloseProgram.PerformClick();
         // Call method to save file...
     }
-
 }

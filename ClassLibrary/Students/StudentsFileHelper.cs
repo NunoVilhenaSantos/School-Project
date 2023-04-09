@@ -58,7 +58,7 @@ public class StudentsFileHelper
         using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
         using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
         {
-            csvWriter.WriteRecords(Students.ListStudents);
+            csvWriter.WriteRecords(Students.StudentsList);
 
             myString = "Operação realizada com sucesso";
             Success = true;

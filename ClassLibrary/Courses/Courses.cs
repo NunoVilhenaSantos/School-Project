@@ -1,5 +1,4 @@
-﻿using ClassLibrary.Enrollments;
-using ClassLibrary.School;
+﻿using ClassLibrary.School;
 
 namespace ClassLibrary.Courses;
 
@@ -7,18 +6,18 @@ public static class Courses
 {
     #region Properties
 
-    public static List<Course> ListCourses { get; set; } = new();
+    public static List<Course> CoursesList { get; set; } = new();
 
     #endregion
 
 
     public static string GetFullName(int id)
     {
-        if (ListCourses.Count < 1)
+        if (CoursesList.Count < 1)
             return "A lista está vazia";
 
         var course =
-            ListCourses.FirstOrDefault(
+            CoursesList.FirstOrDefault(
                 a => a.IdCourse == id);
 
         if (course == null)
@@ -32,11 +31,11 @@ public static class Courses
 
     public static string GetFullInfo(int id)
     {
-        if (ListCourses.Count < 1)
+        if (CoursesList.Count < 1)
             return "A lista está vazia";
 
         var course =
-            ListCourses.FirstOrDefault(
+            CoursesList.FirstOrDefault(
                 a => a.IdCourse == id);
 
         if (course == null)
@@ -60,7 +59,7 @@ public static class Courses
         int id, string name, int workLoad, int credits
     )
     {
-        ListCourses.Add(
+        CoursesList.Add(
             new Course
             {
                 //Id_Course = id,
@@ -69,7 +68,7 @@ public static class Courses
                 Credits = credits
             }
         );
-        SchoolDatabase.AddCourse(ListCourses[^1]);
+        SchoolDatabase.AddCourse(CoursesList[^1]);
         GetStudentsCount();
     }
 
@@ -81,12 +80,12 @@ public static class Courses
     /// <returns>Return an text informing if the operation was valid or not</returns>
     public static string DeleteCourse(int id)
     {
-        var course = ListCourses.FirstOrDefault(a => a.IdCourse == id);
+        var course = CoursesList.FirstOrDefault(a => a.IdCourse == id);
 
         if (course == null)
             return "O curso não existe";
 
-        ListCourses.Remove(course);
+        CoursesList.Remove(course);
         return "O curso foi apagado";
     }
 
@@ -105,19 +104,19 @@ public static class Courses
         int id, string name, int workLoad
     )
     {
-        if (ListCourses.Count < 1)
+        if (CoursesList.Count < 1)
             return "Lista está vazia";
 
 
-        var course = ListCourses.FirstOrDefault(a => a.IdCourse == id);
+        var course = CoursesList.FirstOrDefault(a => a.IdCourse == id);
 
         if (course == null)
             return "O curso não existe";
 
-        ListCourses.FirstOrDefault(a => a.IdCourse == id)!.Name = name;
-        ListCourses.FirstOrDefault(
+        CoursesList.FirstOrDefault(a => a.IdCourse == id)!.Name = name;
+        CoursesList.FirstOrDefault(
             a => a.IdCourse == id)!.WorkLoad = workLoad;
-        //ListCourses.FirstOrDefault(
+        //CoursesList.FirstOrDefault(
         //    a => a.IdCourse == id)!.Enrollments = enrollments;
 
         return "Curso alterado com sucesso";
@@ -134,13 +133,13 @@ public static class Courses
         string name, int workLoad
     )
     {
-        var courses = ListCourses;
+        var courses = CoursesList;
 
         if (!string.IsNullOrWhiteSpace(name))
-            courses = ListCourses.Where(a => a.Name == name).ToList();
+            courses = CoursesList.Where(a => a.Name == name).ToList();
 
         if (!int.IsNegative(workLoad))
-            courses = ListCourses.Where(
+            courses = CoursesList.Where(
                 a => a.WorkLoad == workLoad).ToList();
 
         return courses;
@@ -158,7 +157,7 @@ public static class Courses
         int id, string name, int workLoad
     )
     {
-        var courses = ListCourses;
+        var courses = CoursesList;
 
         if (!string.IsNullOrWhiteSpace(name))
             courses = courses.Where(c => c.Name == name).ToList();
@@ -172,7 +171,7 @@ public static class Courses
 
     public static int GetLastIndex()
     {
-        var lastCourse = ListCourses.LastOrDefault();
+        var lastCourse = CoursesList.LastOrDefault();
         if (lastCourse != null)
             return lastCourse.IdCourse;
         return -1;
@@ -181,7 +180,7 @@ public static class Courses
 
     public static int GetLastId()
     {
-        var lastCourse = ListCourses.LastOrDefault();
+        var lastCourse = CoursesList.LastOrDefault();
         return lastCourse?.IdCourse ?? GetLastIndex();
         /*
         return lastCourse != null
@@ -189,17 +188,17 @@ public static class Courses
             : GetLastIndex();
         */
         // handle the case where the collection is empty
-        // return ListStudents[^1].IdStudent;
+        // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
     }
 
 
     public static string GetStudentsCount()
     {
-        if (ListCourses.Count < 1)
+        if (CoursesList.Count < 1)
             return "A lista está vazia";
 
-        foreach (var course in ListCourses)
+        foreach (var course in CoursesList)
             course.StudentsCount = Enrollments.Enrollments.ListEnrollments?
                 .Where(x => x.CourseId == course.IdCourse)
                 .Distinct()
@@ -213,9 +212,9 @@ public static class Courses
     //
     // public static void ToObtainValuesForCalculatedFields()
     // {
-    //     if (ListSchoolClasses.Count < 1) return;
+    //     if (SchoolClassesList.Count < 1) return;
     //
-    //     foreach (var schoolClass in ListSchoolClasses)
+    //     foreach (var schoolClass in SchoolClassesList)
     //     {
     //         var coursesList = schoolClass.CoursesList;
     //         if (coursesList == null || !coursesList.Any()) continue;

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ClassLibrary.Courses;
 using ClassLibrary.School;
 
 namespace ClassLibrary.Teachers;
@@ -305,8 +304,8 @@ public class Teacher : INotifyPropertyChanged
         return CoursesList.Sum(course => course.Enrollments.Count);
         */
     }
-    
-    
+
+
     public override string ToString()
     {
         // return base.ToString();
@@ -314,7 +313,6 @@ public class Teacher : INotifyPropertyChanged
         // return $"{IdStudent,3} | {Name} {LastName} | {Phone} - {Address}";
         return $"{TeacherId,3} | {Name} {LastName}";
     }
-
 
     #endregion
 

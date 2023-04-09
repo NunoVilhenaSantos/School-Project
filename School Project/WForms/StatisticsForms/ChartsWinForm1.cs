@@ -51,7 +51,7 @@ public partial class ChartsWinForm1 : Form
         var chart = new Chart();
 
         BindingSource bindingSource = new();
-        bindingSource.DataSource = SchoolClasses.ListSchoolClasses;
+        bindingSource.DataSource = SchoolClasses.SchoolClassesList;
 
         chart.DataSource = bindingSource;
         chart.DataBindTable(bindingSource);

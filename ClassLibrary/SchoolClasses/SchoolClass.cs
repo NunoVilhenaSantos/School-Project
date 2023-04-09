@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ClassLibrary.Courses;
 using ClassLibrary.School;
 
 namespace ClassLibrary.SchoolClasses;
@@ -264,7 +263,7 @@ public class SchoolClass : INotifyPropertyChanged
         WorkHourLoad =
             ListCoursesForSchoolClass?.Sum(c => c.WorkLoad) ?? 0;
 
-        StudentsCount=
+        StudentsCount =
             ListCoursesForSchoolClass?.Join(
                     Enrollments.Enrollments.ListEnrollments,
                     c => c.IdCourse,

@@ -64,15 +64,15 @@ public partial class SchoolClassEdit : Form
         // Data bindings
         // 
         //
-        _bSListCourses.DataSource = Courses.ListCourses;
-        _bSListSClasses.DataSource = SchoolClasses.ListSchoolClasses;
-        _bSListStudents.DataSource = Students.ListStudents;
+        _bSListCourses.DataSource = Courses.CoursesList;
+        _bSListSClasses.DataSource = SchoolClasses.SchoolClassesList;
+        _bSListStudents.DataSource = Students.StudentsList;
 
         //var scCoursesList = SchoolClasses.ConsultSchoolClasses;
         //_bSsClassesCourses.DataSource = scCoursesList;
 
         //var cStudentsList = Courses.ConsultCourse(1, "", 0, new List<Enrollment>());
-        //_bSCoursesStudents.DataSource = SchoolClasses.ListSchoolClasses;
+        //_bSCoursesStudents.DataSource = SchoolClasses.SchoolClassesList;
 
 
         //dataGridViewSchoolClasses.DataSource = _bSListSClasses;
@@ -288,7 +288,7 @@ public partial class SchoolClassEdit : Form
 
         // Create a dictionary of courses by their ID
         var coursesById =
-            Courses.ListCourses.ToDictionary(c => c.IdCourse);
+            Courses.CoursesList.ToDictionary(c => c.IdCourse);
 
         // Set the checked items in the checkedListBoxCourses control
         foreach (var course in selectedSchoolClassCourses)

@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ClassLibrary.Courses;
-using ClassLibrary.Students;
 
 namespace ClassLibrary.Enrollments;
 
