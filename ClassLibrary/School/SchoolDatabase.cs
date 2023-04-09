@@ -529,13 +529,6 @@ public class SchoolDatabase
     public static List<Course> GetCoursesForSchoolClass(
         int schoolClassId)
     {
-        // if (!CourseClasses.ContainsKey(schoolClassId))
-        //     return new List<Course>();
-        //
-        // return CourseClasses[schoolClassId]
-        //     .Select(x => Courses[schoolClassId])
-        //     .ToList();
-
         if (!CourseClasses.ContainsKey(schoolClassId))
             return new List<Course>();
 
@@ -548,15 +541,17 @@ public class SchoolDatabase
     // Get all courses a student is enrolled in
     public static List<Course> GetCoursesForStudent(int studentId)
     {
-        if (!CourseStudents.ContainsKey(studentId))
-        {
-            throw new ArgumentException("Invalid student id");
-            return new List<Course>();
-        }
+        if (CourseStudents
+            .TryGetValue(studentId, out var studentCourses))
+            return studentCourses
+                .Select(x => Courses[x])
+                .ToList();
 
-        return CourseStudents[studentId]
-            .Select(x => Courses[studentId])
-            .ToList();
+        Log.Information(
+            "Invalid student id {studentId}.",
+            studentId);
+
+        return new List<Course>();
     }
 
 
@@ -565,7 +560,7 @@ public class SchoolDatabase
         if (!CourseTeacher.ContainsKey(teacherId)) return new List<Course>();
 
         return CourseTeacher[teacherId]
-            .Select(x => Courses[teacherId])
+            .Select(x => Courses[x])
             .ToList();
     }
 
@@ -577,7 +572,7 @@ public class SchoolDatabase
             throw new ArgumentException("Invalid course id");
 
         return CourseStudents[courseId]
-            .Select(studentId => Students[studentId])
+            .Select(x => Students[x])
             .ToList();
     }
 
@@ -671,9 +666,9 @@ public class SchoolDatabase
                 }
 
                 if (StudentClass[studentId].Contains(schoolClassId) &&
-                    Students.ContainsKey(studentId))
+                    Students.TryGetValue(studentId, out var student))
                 {
-                    students.Add(Students[studentId]);
+                    students.Add(student);
                 }
             }
 
@@ -720,11 +715,12 @@ public class SchoolDatabase
     {
         var listCoursesForSchoolClass =
             GetCoursesForSchoolClass(schoolClassId);
-        var studentsCount = listCoursesForSchoolClass?.Join(
-            Enrollments.Enrollments.ListEnrollments,
-            c => c.IdCourse,
-            e => e.CourseId,
-            (c, e) => e).Count() ?? 0;
+        var studentsCount =
+            listCoursesForSchoolClass?
+                .Join(Enrollments.Enrollments.ListEnrollments,
+                    c => c.IdCourse,
+                    e => e.CourseId,
+                    (c, e) => e).Count() ?? 0;
 
         return studentsCount;
     }
@@ -735,7 +731,8 @@ public class SchoolDatabase
         var enrollments = Enrollments.Enrollments.ListEnrollments;
         var courses = GetCoursesForSchoolClass(schoolClassId);
 
-        var query = from enrollment in enrollments
+        var query =
+            from enrollment in enrollments
             join course in courses on enrollment.CourseId equals course.IdCourse
             select new
             {
@@ -743,9 +740,12 @@ public class SchoolDatabase
                 course
             };
 
-        var classAverage = query.Average(ec => ec.enrollment.Grade) ?? 0;
-        var highestGrade = query.Max(ec => ec.enrollment.Grade) ?? 0;
-        var lowestGrade = query.Min(ec => ec.enrollment.Grade) ?? 0;
+        var classAverage =
+            query.Average(ec => ec.enrollment.Grade) ?? 0;
+        var highestGrade =
+            query.Max(ec => ec.enrollment.Grade) ?? 0;
+        var lowestGrade =
+            query.Min(ec => ec.enrollment.Grade) ?? 0;
 
         return (classAverage, highestGrade, lowestGrade);
     }
@@ -755,7 +755,8 @@ public class SchoolDatabase
         var enrollments = Enrollments.Enrollments.ListEnrollments;
         var courses = GetCoursesForSchoolClass(schoolClassId);
 
-        var query = from enrollment in enrollments
+        var query =
+            from enrollment in enrollments
             join course in courses on enrollment.CourseId equals course.IdCourse
             select new
             {
@@ -763,16 +764,18 @@ public class SchoolDatabase
                 course
             };
 
-        var studentAverages = query
-            .GroupBy(ec => ec.enrollment.StudentId)
-            .Select(g => new
-            {
-                StudentId = g.Key,
-                AverageGrade = g.Average(ec => ec.enrollment.Grade)
-            });
+        var studentAverages =
+            query
+                .GroupBy(ec => ec.enrollment.StudentId)
+                .Select(g => new
+                {
+                    StudentId = g.Key,
+                    AverageGrade = g.Average(ec => ec.enrollment.Grade)
+                });
 
         var studentCountAverage =
-            studentAverages.Average(sa => sa.AverageGrade) ?? 0;
+            studentAverages
+                .Average(sa => sa.AverageGrade) ?? 0;
 
         return studentCountAverage;
     }
@@ -790,13 +793,14 @@ public class SchoolDatabase
                 course
             };
 
-        var studentAverages = query
-            .GroupBy(ec => ec.enrollment.StudentId)
-            .Select(g => new
-            {
-                StudentId = g.Key,
-                AverageGrade = g.Average(ec => ec.enrollment.Grade)
-            });
+        var studentAverages =
+            query
+                .GroupBy(ec => ec.enrollment.StudentId)
+                .Select(g => new
+                {
+                    StudentId = g.Key,
+                    AverageGrade = g.Average(ec => ec.enrollment.Grade)
+                });
 
         var studentCount = studentAverages.Count();
 

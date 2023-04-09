@@ -78,8 +78,8 @@ public partial class StudentDiscipline : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
-        ((TextBox)sender).Paste();
+        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
+        ((TextBox) sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -92,7 +92,7 @@ public partial class StudentDiscipline : Form
         // that's why it is necessary to clear the list with a null and
         // then re-associate the class again and that's how it works.
         //
-        var bSourceListStudents = new BindingSource
+        _bSourceListStudents = new BindingSource
         {
             Site = null,
             DataMember = null,
@@ -104,7 +104,7 @@ public partial class StudentDiscipline : Form
             Filter = null
         };
 
-        var bindingSourceListCourses = new BindingSource
+        _bindingSourceListCourses = new BindingSource
         {
             Site = null,
             DataMember = null,
@@ -116,7 +116,7 @@ public partial class StudentDiscipline : Form
             Filter = null
         };
 
-        var bSourceEnrollments = new BindingSource
+        _bSourceEnrollments = new BindingSource
         {
             Site = null,
             DataMember = null,
@@ -132,35 +132,32 @@ public partial class StudentDiscipline : Form
         //
         // checked list-box
         //
-        checkedListBoxDisciplines.DataSource = bindingSourceListCourses;
+        checkedListBoxDisciplines.DataSource = _bindingSourceListCourses;
         //checkedListBoxDisciplines.Items.Clear();
         //checkedListBoxDisciplines.Items.AddRange(
 
-        listBoxStudents.DataSource = bSourceListStudents;
+        listBoxStudents.DataSource = _bSourceListStudents;
         // listBoxStudent.DisplayMember = "NomeCompleto";
         //listBoxStudents.SelectedItem = null;
 
-        dataGridView1.DataSource = bSourceEnrollments;
-        // bSourceEnrollments.Filter = $"CourseID = '{bindingSourceListCourses.Current["ID"]}'";
+        dataGridView1.DataSource = _bSourceEnrollments;
+        // Set the second and third column to be read-only
+        dataGridView1.Columns[2].ReadOnly =
+            true; // Column 3 is index 2 (since column indexes are zero-based)
+        dataGridView1.Columns[3].ReadOnly = true; // Column 4 is index 3
 
-        if (bSourceListStudents.Current != null && bindingSourceListCourses.Current != null)
-        {
-            string studentID = bSourceListStudents.Current["ID"].ToString();
-            string courseID = bindingSourceListCourses.Current["ID"].ToString();
-            bSourceEnrollments.Filter = $"StudentID = '{studentID}' AND CourseID = '{courseID}'";
-        }
-        else
-        {
-            bSourceEnrollments.Filter = null;
-        }
+        // Alternatively, you can also refer to the columns by their names:
+        dataGridView1.Columns["StudentId"].ReadOnly = true;
+        dataGridView1.Columns["CourseId"].ReadOnly = true;
 
+        dataGridView1.AutoSizeColumnsMode =
+            DataGridViewAutoSizeColumnsMode.AllCells;
 
         //
         // disabling the panel for the button's Remove and Edit
         //
         groupBoxStudentsList.Enabled = Students.GetLastId() != 0;
         groupBoxDisciplinesList.Enabled = Courses.GetLastId() != 0;
-
 
         Console.WriteLine("Testes de Debug");
     }
@@ -169,7 +166,7 @@ public partial class StudentDiscipline : Form
     private void ButtonStudentDisciplinesAdding_Click(
         object sender, EventArgs e)
     {
-        var studentToEdit = (Student)listBoxStudents.SelectedItem;
+        var studentToEdit = (Student) listBoxStudents.SelectedItem;
 
         if (studentToEdit == null)
         {
@@ -198,7 +195,8 @@ public partial class StudentDiscipline : Form
         //
         SchoolDatabase.EnrollStudentInCourses(
             checkedListBoxDisciplines.CheckedItems
-                .Cast<Course>().ToList(),
+                .Cast<Course>()
+                .ToList(),
             studentToEdit.IdStudent);
 
         Console.WriteLine("Debug point");
@@ -206,7 +204,7 @@ public partial class StudentDiscipline : Form
 
         foreach (var t in checkedListBoxDisciplines.CheckedItems)
         {
-            var b = (Course)t;
+            var b = (Course) t;
             var c =
                 Courses.CoursesList.FirstOrDefault(
                     a => a.IdCourse == b.IdCourse);
@@ -219,34 +217,42 @@ public partial class StudentDiscipline : Form
         Console.WriteLine("Testes de Debug");
     }
 
+
     private void ListBoxStudents_SelectedIndexChanged(
         object sender, EventArgs e)
     {
         if (Courses.CoursesList == null)
             return;
 
-        var studentToView = (Student)listBoxStudents.SelectedItem;
-        // if (studentToView.Enrollments == null) return;
-        //
-        //
-        // foreach (var enrollment in studentToView.Enrollments)
-        //     //
-        //     // subtract 1 from the Courses list,
-        //     // because the list starts at 1 and
-        //     // all other objects start from 0
-        //     //
-        //     checkedListBoxDisciplines.SetItemChecked(
-        //         enrollment.CourseId - 1, true);
+        var studentToView = (Student) _bSourceListStudents.Current;
 
-        var studentToViewEnrollment =
-            Enrollments.ConsultEnrollment(studentToView.IdStudent);
+        var studentCurses =
+            SchoolDatabase.GetCoursesForStudent(studentToView.IdStudent);
 
-        if (!studentToViewEnrollment.Any()) return;
+        if (studentCurses == null)
+        {
+            //checkedListBoxDisciplines.Invalidate();
+            return;
+        }
 
-        foreach (var enrollment in studentToViewEnrollment)
-            // Subtract 1 from the Courses list
-            checkedListBoxDisciplines.SetItemChecked(
-                enrollment.CourseId - 1, true);
+        // Clear all checked items in the checkedListBoxCourses control
+        foreach (int i in checkedListBoxDisciplines.CheckedIndices)
+            checkedListBoxDisciplines.SetItemChecked(i, false);
+
+        // Set the checked items in the checkedListBoxCourses control
+        foreach (var index in
+                 studentCurses
+                     .Select(course =>
+                         checkedListBoxDisciplines.Items.IndexOf(course))
+                     .Where(index => index >= 0))
+        {
+            checkedListBoxDisciplines.SetItemChecked(index, true);
+        }
+
+        var studentEnrollments =
+            Enrollments.ConsultEnrollment(-1, studentToView.IdStudent);
+
+        _bSourceEnrollments.DataSource = studentEnrollments;
     }
 
 
@@ -256,6 +262,7 @@ public partial class StudentDiscipline : Form
         // cast the selected object to be displayed in the dialog box
         //
         var studentToErase = listBoxStudents.SelectedItem as Student;
+        studentToErase = (Student) _bSourceListStudents.Current;
 
         if (listBoxStudents.SelectedItem == null)
         {
@@ -268,15 +275,13 @@ public partial class StudentDiscipline : Form
         }
 
         //
-        // local variable that will contain the response
-        //
-
-        //
         // get the answer, if yes or soups, displaying the message
         //
         var s =
             "Tem a certeza que deseja apagar o seguinte registo?\n" +
-            $"{Students.GetFullName(studentToErase.IdStudent)}";
+            $"{studentToErase.IdStudent} | " +
+            $"{studentToErase.Name} {studentToErase.LastName}";
+
         var dialogResult =
             MessageBox.Show(
                 s, "Apagar",
@@ -300,6 +305,9 @@ public partial class StudentDiscipline : Form
         //
         var studentToEdit = listBoxStudents.SelectedItem as Student;
 
+        // Get the selected school class from the data source
+        studentToEdit = (Student) _bSourceListStudents.Current;
+
         if (listBoxStudents.SelectedItem != null)
         {
             //
@@ -307,7 +315,7 @@ public partial class StudentDiscipline : Form
             //
             if (studentToEdit != null)
             {
-                StudentEdit winFormStudentEdit = new(studentToEdit.IdStudent);
+                StudentEdit winFormStudentEdit = new(studentToEdit);
                 winFormStudentEdit.ShowDialog();
             }
 
@@ -332,7 +340,9 @@ public partial class StudentDiscipline : Form
 
     private int _disciplinesCount;
     private int _studentsCount;
-
+    BindingSource _bSourceListStudents;
+    BindingSource _bindingSourceListCourses;
+    BindingSource _bSourceEnrollments;
 
     #endregion
 }

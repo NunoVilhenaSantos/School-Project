@@ -755,8 +755,6 @@ public partial class SchoolClassAdd : Form
     }
 
 
-   
-
     private void UpdateSelectedSchoolClass()
     {
         if (dataGridViewSchoolClasses.CurrentCell == null) return;

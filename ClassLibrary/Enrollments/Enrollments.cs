@@ -10,10 +10,8 @@ public static class Enrollments
     #region Properties
 
     public static List<Enrollment> ListEnrollments = new();
-    // public static Dictionary<int, Student> StudentsDictionary = new();
-    // public static Dictionary<int, Course> CoursesDictionary = new();
-    public static SortedDictionary<int, Student> StudentsDictionary = new();
-    public static SortedDictionary<int, Course> CoursesDictionary = new();
+    public static Dictionary<int, Student> StudentsDictionary = new();
+    public static Dictionary<int, Course> CoursesDictionary = new();
 
     #endregion
 

@@ -373,8 +373,9 @@ public partial class StudentAdd : Form
         }
 
         if (!int.IsPositive(rc)) return;
+        var studentToEdit = (Student)_bSourceStudents.Current;
 
-        StudentEdit winFormStudentEdit = new(rc);
+        StudentEdit winFormStudentEdit = new(studentToEdit);
         winFormStudentEdit.ShowDialog();
     }
 

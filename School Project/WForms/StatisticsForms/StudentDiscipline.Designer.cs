@@ -35,12 +35,12 @@
             groupBoxDisciplinesList = new GroupBox();
             buttonStudentDisciplinesAdding = new Button();
             checkedListBoxDisciplines = new CheckedListBox();
-            groupBox1 = new GroupBox();
-            button1 = new Button();
+            groupBoxEnrollments = new GroupBox();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
             groupBoxStudentsList.SuspendLayout();
             groupBoxDisciplinesList.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxEnrollments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             groupBoxStudentsList.Controls.Add(listBoxStudents);
             groupBoxStudentsList.Location = new Point(13, 13);
             groupBoxStudentsList.Name = "groupBoxStudentsList";
-            groupBoxStudentsList.Size = new Size(305, 556);
+            groupBoxStudentsList.Size = new Size(290, 556);
             groupBoxStudentsList.TabIndex = 4;
             groupBoxStudentsList.TabStop = false;
             groupBoxStudentsList.Text = "Lista de Estudantes";
@@ -62,7 +62,7 @@
             buttonStudentEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonStudentEdit.AutoSize = true;
             buttonStudentEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStudentEdit.Location = new Point(179, 518);
+            buttonStudentEdit.Location = new Point(164, 518);
             buttonStudentEdit.Name = "buttonStudentEdit";
             buttonStudentEdit.Size = new Size(120, 31);
             buttonStudentEdit.TabIndex = 0;
@@ -90,7 +90,7 @@
             listBoxStudents.ItemHeight = 15;
             listBoxStudents.Location = new Point(6, 22);
             listBoxStudents.Name = "listBoxStudents";
-            listBoxStudents.Size = new Size(293, 469);
+            listBoxStudents.Size = new Size(278, 469);
             listBoxStudents.TabIndex = 2;
             listBoxStudents.SelectedIndexChanged += ListBoxStudents_SelectedIndexChanged;
             // 
@@ -99,7 +99,7 @@
             groupBoxDisciplinesList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             groupBoxDisciplinesList.Controls.Add(buttonStudentDisciplinesAdding);
             groupBoxDisciplinesList.Controls.Add(checkedListBoxDisciplines);
-            groupBoxDisciplinesList.Location = new Point(342, 13);
+            groupBoxDisciplinesList.Location = new Point(309, 13);
             groupBoxDisciplinesList.Name = "groupBoxDisciplinesList";
             groupBoxDisciplinesList.Size = new Size(445, 556);
             groupBoxDisciplinesList.TabIndex = 5;
@@ -128,28 +128,16 @@
             checkedListBoxDisciplines.Size = new Size(433, 472);
             checkedListBoxDisciplines.TabIndex = 2;
             // 
-            // groupBox1
+            // groupBoxEnrollments
             // 
-            groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Location = new Point(817, 13);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(381, 556);
-            groupBox1.TabIndex = 6;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button1.AutoSize = true;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(97, 518);
-            button1.Name = "button1";
-            button1.Size = new Size(187, 31);
-            button1.TabIndex = 4;
-            button1.Text = "Adicionar Notas";
-            button1.UseVisualStyleBackColor = true;
+            groupBoxEnrollments.Controls.Add(dataGridView1);
+            groupBoxEnrollments.Controls.Add(button1);
+            groupBoxEnrollments.Location = new Point(760, 13);
+            groupBoxEnrollments.Name = "groupBoxEnrollments";
+            groupBoxEnrollments.Size = new Size(438, 556);
+            groupBoxEnrollments.TabIndex = 6;
+            groupBoxEnrollments.TabStop = false;
+            groupBoxEnrollments.Text = "Matriculas";
             // 
             // dataGridView1
             // 
@@ -158,8 +146,20 @@
             dataGridView1.Location = new Point(3, 19);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(375, 475);
+            dataGridView1.Size = new Size(432, 475);
             dataGridView1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button1.AutoSize = true;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(97, 518);
+            button1.Name = "button1";
+            button1.Size = new Size(244, 31);
+            button1.TabIndex = 4;
+            button1.Text = "Adicionar Notas";
+            button1.UseVisualStyleBackColor = true;
             // 
             // StudentDiscipline
             // 
@@ -167,7 +167,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
             ClientSize = new Size(1224, 587);
-            Controls.Add(groupBox1);
+            Controls.Add(groupBoxEnrollments);
             Controls.Add(groupBoxDisciplinesList);
             Controls.Add(groupBoxStudentsList);
             KeyPreview = true;
@@ -181,8 +181,8 @@
             groupBoxStudentsList.PerformLayout();
             groupBoxDisciplinesList.ResumeLayout(false);
             groupBoxDisciplinesList.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBoxEnrollments.ResumeLayout(false);
+            groupBoxEnrollments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -196,7 +196,7 @@
         private GroupBox groupBoxDisciplinesList;
         private Button buttonStudentDisciplinesAdding;
         private CheckedListBox checkedListBoxDisciplines;
-        private GroupBox groupBox1;
+        private GroupBox groupBoxEnrollments;
         private Button button1;
         private DataGridView dataGridView1;
     }

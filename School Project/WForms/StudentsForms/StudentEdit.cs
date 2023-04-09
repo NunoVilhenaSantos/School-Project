@@ -11,17 +11,16 @@ public partial class StudentEdit : Form
     private readonly Student? _studentToEdit;
 
 
-    public StudentEdit(int studentForEditing)
+    public StudentEdit(Student studentToEdit)
     {
         InitializeComponent();
 
         // assigning the parent variable to
         // the local variables to be edited
-        _studentToEdit = Students.StudentsList[studentForEditing];
+        _studentToEdit = studentToEdit;
 
         DataUpdateValues();
     }
-
 
     private void WinForm_Load(object sender, EventArgs e)
     {
