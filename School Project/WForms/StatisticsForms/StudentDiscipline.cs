@@ -128,7 +128,6 @@ public partial class StudentDiscipline : Form
             Filter = null
         };
 
-
         //
         // checked list-box
         //
@@ -141,12 +140,13 @@ public partial class StudentDiscipline : Form
         //listBoxStudents.SelectedItem = null;
 
         dataGridView1.DataSource = _bSourceEnrollments;
-        // Set the second and third column to be read-only
-        dataGridView1.Columns[2].ReadOnly =
-            true; // Column 3 is index 2 (since column indexes are zero-based)
-        dataGridView1.Columns[3].ReadOnly = true; // Column 4 is index 3
+        // Set the third and forth column to be read-only
+        // Column 3 is index 2 (since column indexes are zero-based)
+        dataGridView1.Columns[2].ReadOnly = true;
+        // Column 4 is index 3 (since column indexes are zero-based)
+        dataGridView1.Columns[3].ReadOnly = true;
 
-        // Alternatively, you can also refer to the columns by their names:
+        // Alternatively, we can also refer to the columns by their names:
         dataGridView1.Columns["StudentId"].ReadOnly = true;
         dataGridView1.Columns["CourseId"].ReadOnly = true;
 

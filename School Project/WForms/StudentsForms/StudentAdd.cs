@@ -105,8 +105,8 @@ public partial class StudentAdd : Form
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
-            textBox2.Text,
-            textBox1.Text,
+            textBoxPostalCode.Text,
+            textBoxCity.Text,
             textBoxPhone.Text,
             textBoxEmail.Text,
             true,
@@ -139,8 +139,8 @@ public partial class StudentAdd : Form
         textBoxName.Clear();
         textBoxLastName.Clear();
         textBoxAddress.Clear();
-        textBox2.Clear();
-        textBox1.Clear();
+        textBoxPostalCode.Clear();
+        textBoxCity.Clear();
         textBoxPhone.Clear();
         textBoxEmail.Clear();
         //true;
@@ -373,7 +373,7 @@ public partial class StudentAdd : Form
         }
 
         if (!int.IsPositive(rc)) return;
-        var studentToEdit = (Student)_bSourceStudents.Current;
+        var studentToEdit = (Student) _bSourceStudents.Current;
 
         StudentEdit winFormStudentEdit = new(studentToEdit);
         winFormStudentEdit.ShowDialog();

@@ -25,6 +25,8 @@ public static class XFiles
     public static Logger Logger =
         new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
+    private const string Delimiter = ";";
+
     // private static readonly string ProjectFolder =
     //     Directory.GetCurrentDirectory();
     private const string ProjectFolder =
@@ -158,6 +160,7 @@ public static class XFiles
             fileStream =
                 new FileStream(SchoolClassesFile, FileMode.Create,
                     FileAccess.ReadWrite);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
@@ -173,7 +176,7 @@ public static class XFiles
             return false;
         }
 
-        //fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
+        fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -237,6 +240,7 @@ public static class XFiles
         {
             fileStream = new FileStream(TeachersFile, FileMode.Create,
                 FileAccess.ReadWrite);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
@@ -252,7 +256,7 @@ public static class XFiles
             return false;
         }
 
-        //fileStream = new FileStream(TeachersFile, FileMode.Create);
+        fileStream = new FileStream(TeachersFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -314,6 +318,7 @@ public static class XFiles
         {
             fileStream = new FileStream(CoursesFile, FileMode.Create,
                 FileAccess.ReadWrite);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
@@ -329,9 +334,8 @@ public static class XFiles
             return false;
         }
 
-        // fileStream = new FileStream(CoursesFile, FileMode.Create);
-        StreamWriter streamWriter =
-            new(fileStream, Encoding.UTF8);
+        fileStream = new FileStream(CoursesFile, FileMode.Create);
+        StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
         var properties =
@@ -376,6 +380,7 @@ public static class XFiles
         {
             fileStream = new FileStream(EnrollmentsFile, FileMode.Create,
                 FileAccess.ReadWrite);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
@@ -391,7 +396,7 @@ public static class XFiles
             return false;
         }
 
-        // fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
+        fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -401,9 +406,9 @@ public static class XFiles
 
         // Create a list with the public properties
         // to build the header line
-        var propertyNames =
-            string.Join(";",
-                properties.Select(p => p.Name.Normalize()));
+        var propertyNames = string
+            .Join(Delimiter, properties
+                .Select(p => p.Name.Normalize()));
 
         // Write the header line
         streamWriter.WriteLine(propertyNames);
@@ -438,10 +443,9 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(
-                StudentsFile,
-                FileMode.Create,
+            fileStream = new FileStream(StudentsFile, FileMode.Create,
                 FileAccess.ReadWrite);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
@@ -457,7 +461,8 @@ public static class XFiles
             return false;
         }
 
-        // fileStream = new FileStream(StudentsFile, FileMode.Create);
+        fileStream = new FileStream(StudentsFile, FileMode.Create,
+            FileAccess.ReadWrite);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -516,8 +521,6 @@ public static class XFiles
 
     private static class StudentMapper
     {
-        private const string Delimiter = ";";
-
         public static string MapToString(Student student)
         {
             return string.Join(Delimiter, student.IdStudent.ToString(),
@@ -819,6 +822,7 @@ public static class XFiles
                     EnrollmentsFile,
                     FileMode.OpenOrCreate,
                     FileAccess.Read);
+            fileStream.Close();
         }
         catch (IOException ex)
         {
@@ -834,8 +838,8 @@ public static class XFiles
             return false;
         }
 
-        // fileStream = new FileStream(EnrollmentsFile, FileMode.OpenOrCreate);
-        StreamReader streamReader = new(fileStream);
+        fileStream = new FileStream(EnrollmentsFile, FileMode.OpenOrCreate);
+        StreamReader streamReader = new(fileStream, Encoding.UTF8);
 
         //
         // creating dictionaries to avoid other methods that are more consuming

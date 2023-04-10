@@ -11,13 +11,11 @@
     <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentEdit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.resx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +44,7 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/36e740b59df23626d207e72ea77e34298e53dd99db463eee529f8c416b5664/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3aa0a381a2fd27893e32ab1c142e574a31f4ead11b34de1bb58392253e16de/NativeWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7641a1a0695522e81971758464776ba68659afdcd53575f6917f7593181d9345/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
@@ -60,6 +59,10 @@
     <setting file="mock://C:/Users/nunov/RiderProjects/School Project/ClassLibrary/School/SchoolDatabase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/nunov/RiderProjects/School Project/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/nunov/RiderProjects/School Project/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nunov/RiderProjects/School Project/School Project/WForms/StatisticsForms/StudentDiscipline.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nunov/RiderProjects/School Project/School Project/WForms/StatisticsForms/StudentDiscipline.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nunov/RiderProjects/School Project/School Project/WForms/StudentsForms/StudentAdd.Designer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nunov/RiderProjects/School Project/School Project/WForms/StudentsForms/StudentAdd.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WpfApp1/WPF/ChartWpfPage1.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WpfApp1/WPF/ChartWpfPage1.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WpfApp1/WPF/ChartWpfWindow.xaml" root0="SKIP_HIGHLIGHTING" />
@@ -201,7 +204,7 @@
       <workItem from="1680944204197" duration="12057000" />
       <workItem from="1680961603122" duration="33605000" />
       <workItem from="1681003791818" duration="4445000" />
-      <workItem from="1681038454927" duration="34996000" />
+      <workItem from="1681038454927" duration="38834000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>
@@ -316,10 +319,10 @@
           <line>489</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\StudentsForms\StudentAdd.cs" initialLine="471" containingFunctionPresentation="method 'ButtonStudentDisciplinesAdding_Click'">
             <startOffsets>
-              <option value="14422" />
+              <option value="14428" />
             </startOffsets>
             <endOffsets>
-              <option value="14459" />
+              <option value="14465" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
@@ -404,39 +407,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>916</line>
+          <line>920</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="901" containingFunctionPresentation="Method 'TryParseEnrollment'">
             <startOffsets>
-              <option value="30105" />
+              <option value="30168" />
             </startOffsets>
             <endOffsets>
-              <option value="30217" />
+              <option value="30280" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>577</line>
+          <line>580</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="577" containingFunctionPresentation="Method 'ReadFromFiles'">
             <startOffsets>
-              <option value="18999" />
+              <option value="19029" />
             </startOffsets>
             <endOffsets>
-              <option value="19116" />
+              <option value="19146" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>857</line>
+          <line>861</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="855" containingFunctionPresentation="Method 'ReadEnrollmentsInFile'">
             <startOffsets>
-              <option value="28020" />
+              <option value="28083" />
             </startOffsets>
             <endOffsets>
-              <option value="28053" />
+              <option value="28116" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
@@ -508,13 +511,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>139</line>
+          <line>141</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="139" containingFunctionPresentation="Method 'StoreInFiles'">
             <startOffsets>
-              <option value="4319" />
+              <option value="4362" />
             </startOffsets>
             <endOffsets>
-              <option value="4410" />
+              <option value="4453" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="35" />
@@ -609,6 +612,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs</url>
+          <line>195</line>
+          <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\StatisticsForms\StudentDiscipline.cs" initialLine="193" containingFunctionPresentation="Method 'ButtonStudentDisciplinesAdding_Click'">
+            <startOffsets>
+              <option value="5792" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5978" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
