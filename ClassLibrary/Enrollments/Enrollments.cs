@@ -76,6 +76,32 @@ public static class Enrollments
     }
 
 
+    public static void UnenrollStudent(int idStudent, int idCourse)
+    {
+        var enrollment =
+            ListEnrollments
+                .FirstOrDefault(
+                    e =>
+                        e.StudentId == idStudent &&
+                        e.CourseId == idCourse);
+
+        if (enrollment == null)
+        {
+            Log.Warning(
+                "Attempted to unenroll student {StudentId} " +
+                        "from course {CourseId}," +
+                " but no such enrollment exists",
+                idStudent, idCourse);
+            return;
+        }
+
+        ListEnrollments.Remove(enrollment);
+        Log.Information(
+            "Student {StudentId} " +
+            "has been unenrolled from course {CourseId}",
+            idStudent, idCourse);
+    }
+
     public static void RemoveEnrollment(int studentId, int courseId)
     {
         var enrollment = ListEnrollments
@@ -86,8 +112,12 @@ public static class Enrollments
 
         if (enrollment == null)
         {
-            throw new ArgumentException("This enrollment does not exist");
-            throw new ArgumentException("A matrícula não existe");
+            Log.Warning(
+                "Attempted to unenroll student {StudentId} " +
+                "from course {CourseId}," +
+                " but no such enrollment exists",
+                studentId, courseId);
+            return;
         }
 
         ListEnrollments.Remove(enrollment);

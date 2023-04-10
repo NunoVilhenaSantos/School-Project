@@ -3,6 +3,7 @@ using ClassLibrary.Enrollments;
 using ClassLibrary.School;
 using ClassLibrary.Students;
 using School_Project.WForms.StudentsForms;
+using Serilog;
 
 namespace School_Project.WForms.StatisticsForms;
 
@@ -191,15 +192,54 @@ public partial class StudentDiscipline : Form
         MessageBox.Show("Temos disciplinas, vamos lá");
 
         //
-        // cycle to evaluate which disciplines_temp are select and add it
+        // cycle to evaluate which disciplines are select and add it
         //
-        SchoolDatabase.EnrollStudentInCourses(
+
+       
+
+        // Select courses from CheckedListBox control and create a list of courses
+        var selectedCourses =
             checkedListBoxDisciplines.CheckedItems
                 .Cast<Course>()
-                .ToList(),
-            studentToEdit.IdStudent);
+                .ToList();
 
-        Console.WriteLine("Debug point");
+        // Get all courses that the student is currently enrolled in
+        var enrolledCourses =
+            SchoolDatabase.GetCoursesForStudent(studentToEdit.IdStudent);
+
+        // Identify courses to be removed
+        var coursesToRemove =
+            enrolledCourses.Except(selectedCourses).ToList();
+
+        // Display message boxes with counts
+        MessageBox.Show($"Selected courses: {selectedCourses.Count}");
+        MessageBox.Show($"Enrolled courses: {enrolledCourses.Count}");
+        MessageBox.Show($"Courses to remove: {coursesToRemove.Count}");
+
+        // Enroll the student in the selected courses
+        try
+        {
+            SchoolDatabase.EnrollStudentInCourses(selectedCourses,
+                studentToEdit.IdStudent);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error enrolling student in courses");
+        }
+
+        // Unenroll the student from courses to be removed
+        try
+        {
+            SchoolDatabase.UnenrollStudentFromCourses(coursesToRemove,
+                studentToEdit.IdStudent);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, 
+                "Error unenrolling student from courses");
+        }
+
+        MessageBox.Show("Student enrollments updated successfully.");
 
 
         foreach (var t in checkedListBoxDisciplines.CheckedItems)
@@ -210,7 +250,6 @@ public partial class StudentDiscipline : Form
                     a => a.IdCourse == b.IdCourse);
         }
 
-        Console.WriteLine("Debug point");
 
         UpdateLists();
 
@@ -226,10 +265,10 @@ public partial class StudentDiscipline : Form
 
         var studentToView = (Student) _bSourceListStudents.Current;
 
-        var studentCurses =
+        var studentCoursesForStudent =
             SchoolDatabase.GetCoursesForStudent(studentToView.IdStudent);
 
-        if (studentCurses == null)
+        if (studentCoursesForStudent == null)
         {
             //checkedListBoxDisciplines.Invalidate();
             return;
@@ -241,7 +280,7 @@ public partial class StudentDiscipline : Form
 
         // Set the checked items in the checkedListBoxCourses control
         foreach (var index in
-                 studentCurses
+                 studentCoursesForStudent
                      .Select(course =>
                          checkedListBoxDisciplines.Items.IndexOf(course))
                      .Where(index => index >= 0))

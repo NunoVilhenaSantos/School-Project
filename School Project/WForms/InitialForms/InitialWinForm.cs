@@ -7,6 +7,7 @@ using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
+using Serilog;
 
 // using Log = Microsoft.VisualBasic.Logging.Log;
 
@@ -39,6 +40,14 @@ public partial class InitialWinForm : Form
 
     private void WinFormInitial_Load(object sender, EventArgs e)
     {
+        // Configure Serilog logger
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File(
+                XFiles.SchoolProjectLoggerFile,
+                rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+
         //this.Show();
         //this.ShowDialog();
         ShowInTaskbar = true;
@@ -98,7 +107,7 @@ public partial class InitialWinForm : Form
             "Form:\t\t Tempo decorrido: " + elapsedSecondsForm + " segundos\n" +
             "Programa:\t Tempo decorrido: " + tempoDecorridoProgram +
             " segundos\n");
-        
+
         SchoolDatabase.UpdateDictionaries();
     }
 

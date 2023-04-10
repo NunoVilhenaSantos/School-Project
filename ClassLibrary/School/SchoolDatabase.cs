@@ -285,6 +285,48 @@ public class SchoolDatabase
         }
     }
 
+    public static void UnenrollStudentFromCourses(
+        List<Course> coursesToRemove, int idStudent)
+    {
+        foreach (var course in coursesToRemove)
+        {
+            if (!Students.ContainsKey(idStudent))
+            {
+                Log.Error(
+                    "Invalid student ID: {StudentId}",
+                    idStudent);
+                continue;
+            }
+
+            if (!Courses.ContainsKey(course.IdCourse))
+            {
+                Log.Error(
+                    "Invalid course ID: {CourseId}",
+                    course.IdCourse);
+                continue;
+            }
+
+            if (!CourseStudents.TryGetValue(idStudent, out var courses) ||
+                !courses.Contains(course.IdCourse))
+            {
+                Log.Warning(
+                    "Student {StudentId} " +
+                    "is not enrolled in course {CourseId}",
+                    idStudent, course.IdCourse);
+                continue;
+            }
+
+            Enrollments.Enrollments.UnenrollStudent(idStudent, course.IdCourse);
+
+            CourseStudents[idStudent].Remove(course.IdCourse);
+
+            if (CourseStudents[idStudent].Count == 0)
+            {
+                CourseStudents.Remove(idStudent);
+            }
+        }
+    }
+
 
     public static void EnrollStudentInCourses(
         List<Course> listOfCourses, int idStudent)

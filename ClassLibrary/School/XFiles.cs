@@ -19,11 +19,11 @@ public static class XFiles
 
     #region Properties
 
-    public static Logger Logger1 =
-        new LoggerConfiguration().CreateLogger();
-
-    public static Logger Logger =
-        new LoggerConfiguration().WriteTo.Console().CreateLogger();
+    // public static Logger Logger1 =
+    //     new LoggerConfiguration().CreateLogger();
+    //
+    // public static Logger Logger =
+    //     new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
     private const string Delimiter = ";";
 
@@ -51,6 +51,9 @@ public static class XFiles
     private const string SchoolDictionariesExtensoCsv =
         FilesFolder + "SchoolDictionariesExtenso.csv";
 
+    public const string SchoolProjectLoggerFile =
+        FilesFolder + "SchoolProjectLoggerFile.txt";
+    
     #endregion
 
 
@@ -176,7 +179,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
+        fileStream = new(SchoolClassesFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -872,11 +875,13 @@ public static class XFiles
             // split the line into an array of strings
             var campos = line.Split(';');
 
-            // validating the line, if has at least 5 fields,
-            // less than 5 will continue reading the file
-            if (campos.Length < 4 ||
-                campos[0].Equals("id", StringComparison.OrdinalIgnoreCase))
+            // validating the line, if has at least 3 fields,
+            // less than 3 will continue reading the file
+            // if (campos.Length < 3) continue;
+            
+            if (campos[0].Equals("id", StringComparison.OrdinalIgnoreCase))
                 continue;
+
 
             // ...
             // Use a HashSet to store the course IDs that each teacher teaches
@@ -903,13 +908,9 @@ public static class XFiles
         IReadOnlyDictionary<int, Student?> students)
     {
         if (!int.TryParse(campos[2], out var studentId) ||
-            !int.TryParse(campos[3], out var courseId) ||
-            !decimal.TryParse(campos[1], out var grade)) return;
+            !int.TryParse(campos[3], out var courseId)) return;
 
-        // if (!students.TryGetValue(studentId, out var student) ||
-        //     student == null) return;
-        // if (!courses.TryGetValue(courseId, out var course) ||
-        //     course == null) return;
+        _ = decimal.TryParse(campos[1], out var grade);
 
         if (!Enrollments.Enrollments.StudentsDictionary
                 .TryGetValue(studentId, out var student) ||
@@ -929,7 +930,7 @@ public static class XFiles
     private static bool ReadSchoolClassesFromFile(out string myString)
     {
         //
-        // constructor for the reading files
+        // constructor for reading the files
         // with a try and catch
         // and also returning the messages
         //
