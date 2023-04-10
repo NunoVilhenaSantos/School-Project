@@ -188,6 +188,7 @@
             BackColor = Color.FromArgb(235, 155, 104);
             ClientSize = new Size(819, 431);
             Controls.Add(groupBoxDisciplineAdding);
+            DoubleBuffered = true;
             KeyPreview = true;
             Name = "DisciplineEdit";
             Padding = new Padding(20);

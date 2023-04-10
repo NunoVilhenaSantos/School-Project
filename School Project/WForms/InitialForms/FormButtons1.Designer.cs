@@ -605,6 +605,7 @@
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(buttonAddPhoto);
+            DoubleBuffered = true;
             Name = "FormButtons1";
             Text = "FormButtons1";
             panelBottom.ResumeLayout(false);

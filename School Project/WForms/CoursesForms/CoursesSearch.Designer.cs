@@ -256,7 +256,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(709, 20);
+            textBox1.Location = new Point(709, 16);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(429, 23);
             textBox1.TabIndex = 39;
@@ -264,7 +264,7 @@
             // comboBoxSearchList
             // 
             comboBoxSearchList.FormattingEnabled = true;
-            comboBoxSearchList.Location = new Point(210, 20);
+            comboBoxSearchList.Location = new Point(210, 16);
             comboBoxSearchList.Name = "comboBoxSearchList";
             comboBoxSearchList.Size = new Size(472, 23);
             comboBoxSearchList.TabIndex = 38;
@@ -282,7 +282,7 @@
             buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonSearch.FlatStyle = FlatStyle.Flat;
             buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSearch.Location = new Point(1198, 3);
+            buttonSearch.Location = new Point(1198, 2);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(125, 50);
             buttonSearch.TabIndex = 36;
@@ -292,7 +292,7 @@
             // comboBoxSearchOptions
             // 
             comboBoxSearchOptions.FormattingEnabled = true;
-            comboBoxSearchOptions.Location = new Point(9, 20);
+            comboBoxSearchOptions.Location = new Point(32, 16);
             comboBoxSearchOptions.Name = "comboBoxSearchOptions";
             comboBoxSearchOptions.Size = new Size(172, 23);
             comboBoxSearchOptions.TabIndex = 37;
@@ -315,6 +315,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1384, 561);
             Controls.Add(tableLayoutPanel1);
+            DoubleBuffered = true;
             Name = "CoursesSearch";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Courses Search";

@@ -292,7 +292,7 @@
             toolStripContainer1.ContentPanel.Controls.Add(buttonStudent);
             toolStripContainer1.ContentPanel.Controls.Add(buttonStudenDisciplines);
             toolStripContainer1.ContentPanel.Controls.Add(buttonDiscipline);
-            toolStripContainer1.ContentPanel.Size = new Size(1134, 726);
+            toolStripContainer1.ContentPanel.Size = new Size(1184, 726);
             toolStripContainer1.Dock = DockStyle.Fill;
             toolStripContainer1.Location = new Point(0, 24);
             toolStripContainer1.Name = "toolStripContainer1";
@@ -328,7 +328,7 @@
             buttonListagens.FlatStyle = FlatStyle.Flat;
             buttonListagens.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonListagens.ForeColor = Color.White;
-            buttonListagens.Image = School_Project.Properties.Resources.Icon_printer_32x32;
+            buttonListagens.Image = Properties.Resources.Icon_printer_32x32;
             buttonListagens.ImageAlign = ContentAlignment.MiddleLeft;
             buttonListagens.Location = new Point(30, 461);
             buttonListagens.Name = "buttonListagens";
@@ -347,7 +347,7 @@
             buttonSchoolClass.FlatStyle = FlatStyle.Flat;
             buttonSchoolClass.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSchoolClass.ForeColor = Color.White;
-            buttonSchoolClass.Image = School_Project.Properties.Resources.Icon_chalkboard_32x32;
+            buttonSchoolClass.Image = Properties.Resources.Icon_chalkboard_32x32;
             buttonSchoolClass.ImageAlign = ContentAlignment.MiddleLeft;
             buttonSchoolClass.Location = new Point(30, 49);
             buttonSchoolClass.Name = "buttonSchoolClass";
@@ -367,7 +367,7 @@
             buttonCharts.FlatStyle = FlatStyle.Flat;
             buttonCharts.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonCharts.ForeColor = Color.White;
-            buttonCharts.Image = School_Project.Properties.Resources.Icon_bar_chart_32x32;
+            buttonCharts.Image = Properties.Resources.Icon_bar_chart_32x32;
             buttonCharts.ImageAlign = ContentAlignment.MiddleLeft;
             buttonCharts.Location = new Point(30, 375);
             buttonCharts.Name = "buttonCharts";
@@ -386,7 +386,7 @@
             buttonStudent.FlatStyle = FlatStyle.Flat;
             buttonStudent.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonStudent.ForeColor = Color.White;
-            buttonStudent.Image = School_Project.Properties.Resources.Icon_id_card_32x32;
+            buttonStudent.Image = Properties.Resources.Icon_id_card_32x32;
             buttonStudent.ImageAlign = ContentAlignment.MiddleLeft;
             buttonStudent.Location = new Point(30, 117);
             buttonStudent.Name = "buttonStudent";
@@ -425,7 +425,7 @@
             buttonDiscipline.FlatStyle = FlatStyle.Flat;
             buttonDiscipline.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonDiscipline.ForeColor = Color.White;
-            buttonDiscipline.Image = School_Project.Properties.Resources.Icon_book_green_32x32;
+            buttonDiscipline.Image = Properties.Resources.Icon_book_green_32x32;
             buttonDiscipline.ImageAlign = ContentAlignment.MiddleLeft;
             buttonDiscipline.Location = new Point(30, 203);
             buttonDiscipline.Name = "buttonDiscipline";
@@ -453,6 +453,7 @@
             Controls.Add(statusStrip1);
             Controls.Add(toolStripContainer1);
             Controls.Add(menuStrip1);
+            DoubleBuffered = true;
             Name = "MainWinForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "MainWinForm";

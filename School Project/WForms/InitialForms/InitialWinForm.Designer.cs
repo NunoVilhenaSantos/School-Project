@@ -197,6 +197,7 @@
             // 
             // buttonStudenDisciplines
             // 
+            buttonStudenDisciplines.BackgroundImage = Properties.Resources.grade_corrigido_64x64;
             buttonStudenDisciplines.BackgroundImageLayout = ImageLayout.None;
             buttonStudenDisciplines.Dock = DockStyle.Fill;
             buttonStudenDisciplines.FlatAppearance.BorderSize = 0;
@@ -211,7 +212,7 @@
             buttonStudenDisciplines.Name = "buttonStudenDisciplines";
             buttonStudenDisciplines.Size = new Size(214, 59);
             buttonStudenDisciplines.TabIndex = 5;
-            buttonStudenDisciplines.Text = "Estudante Disciplinas";
+            buttonStudenDisciplines.Text = "Estudante Disciplinas Notas";
             buttonStudenDisciplines.TextAlign = ContentAlignment.MiddleRight;
             buttonStudenDisciplines.UseVisualStyleBackColor = true;
             buttonStudenDisciplines.Click += ButtonStudentDisciplines_Click;

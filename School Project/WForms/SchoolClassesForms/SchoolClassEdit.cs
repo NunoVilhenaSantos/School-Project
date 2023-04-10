@@ -40,11 +40,11 @@ public partial class SchoolClassEdit : Form
         textBoxSchoolClassName.Text = _schoolClassToEdit.ClassName;
 
         numericUpDownTotalNumberEnrolledStudents.Value =
-            (decimal) _schoolClassToEdit.StudentsCount;
+            (decimal)_schoolClassToEdit.StudentsCount;
         numericUpDownWorkingHours.Value =
-            (decimal) _schoolClassToEdit.WorkHourLoad;
+            (decimal)_schoolClassToEdit.WorkHourLoad;
         numericUpDownTotalCourses.Value =
-            (decimal) _schoolClassToEdit.CoursesCount;
+            (decimal)_schoolClassToEdit.CoursesCount;
 
         dateTimePickerBeginCourse.Value =
             _schoolClassToEdit.StartDate.ToDateTime(
@@ -141,9 +141,9 @@ public partial class SchoolClassEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
+        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
 
-        ((TextBox) sender).Paste();
+        ((TextBox)sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -281,7 +281,7 @@ public partial class SchoolClassEdit : Form
         //Set the checked items in the checkedListBoxCourses control
         for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
         {
-            var course = (Course) checkedListBoxCourses.Items[i];
+            var course = (Course)checkedListBoxCourses.Items[i];
             checkedListBoxCourses.SetItemChecked(i,
                 selectedSchoolClassCourses.Contains(course));
         }

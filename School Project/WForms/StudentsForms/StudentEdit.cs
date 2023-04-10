@@ -8,7 +8,8 @@ public partial class StudentEdit : Form
     // Global variables to be used in this windows form
     // Variáveis globais do formulário do Windows
     //
-    private readonly Student? _studentToEdit;
+    private readonly Student _studentToEdit;
+    private string _studentPhoto;
 
 
     public StudentEdit(Student studentToEdit)
@@ -19,7 +20,7 @@ public partial class StudentEdit : Form
         // the local variables to be edited
         _studentToEdit = studentToEdit;
 
-        DataUpdateValues();
+        //DataUpdateValues();
     }
 
     private void WinForm_Load(object sender, EventArgs e)
@@ -28,10 +29,39 @@ public partial class StudentEdit : Form
         // inserir os dados nas caixas de textos
         //
         numericUpDownStudentID.Value = _studentToEdit.IdStudent;
-        textBoxStudentName.Text = _studentToEdit.Name;
-        textBoxStudentLastName.Text = _studentToEdit.LastName;
-        textBoxStudentPhone.Text = _studentToEdit.Phone;
-        textBoxStudentAddress.Text = _studentToEdit.Address;
+        textBoxName.Text = _studentToEdit.Name;
+        textBoxLastName.Text = _studentToEdit.LastName;
+        textBoxAddress.Text = _studentToEdit.Address;
+        textBoxPostalCode.Text = _studentToEdit.PostalCode;
+        textBoxCity.Text = _studentToEdit.City;
+        textBoxPhone.Text = _studentToEdit.Phone;
+        textBoxEmail.Text = _studentToEdit.Email;
+
+        CheckState activeState =
+            _studentToEdit.Active
+                ? CheckState.Checked
+                : CheckState.Unchecked;
+        checkBoxActive.CheckState = activeState;
+        comboBoxGenre.Items.Contains(_studentToEdit.Genre);
+
+        dateTimePickerBirthDate.Value =
+            _studentToEdit.DateOfBirth.ToDateTime(
+                TimeOnly.FromDateTime(DateTime.Now));
+
+        textBoxCC.Text = _studentToEdit.IdentificationNumber;
+
+        dateTimePickerCCValidDate.Value =
+            _studentToEdit.ExpirationDateIn.ToDateTime(
+                TimeOnly.FromDateTime(DateTime.Now));
+
+        textBoxNIF.Text = _studentToEdit.IdentificationNumber;
+        textBoxNationality.Text = _studentToEdit.Nationality;
+        textBoxBirthPlace.Text = _studentToEdit.Birthplace;
+
+        _studentPhoto = _studentToEdit.Photo;
+        pictureBoxPhotoDisplay.ImageLocation = _studentToEdit.Photo;
+        
+        numericUpDownTotalWorkLoad.Value=_studentToEdit.GetTotalWorkHourLoad();
     }
 
 
@@ -69,9 +99,9 @@ public partial class StudentEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
+        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -82,166 +112,116 @@ public partial class StudentEdit : Form
         Close();
     }
 
+    private void ButtonAddPhoto_Click(object sender, EventArgs e)
+    {
+        OpenFileDialog fileDialog = new();
+        fileDialog.ShowDialog();
+        //openFileDialog1.ShowDialog();
+
+        //Students.StudentsList[^1].Photo = fileDialog.FileName;
+        _studentPhoto = fileDialog.FileName;
+        pictureBoxPhotoDisplay.ImageLocation = fileDialog.FileName;
+    }
+
+
+    private void TextBoxStudentPhone_KeyPress(
+        object sender,        KeyPressEventArgs e)
+    {
+        // validating if it's a digit
+        if (char.IsDigit(e.KeyChar) || (Keys)e.KeyChar == Keys.Back) return;
+        e.Handled = true;
+    }
+
 
     private void ButtonSave_Click(object sender, EventArgs e)
     {
-        if (ValidateTextBoxes())
-        {
-            _studentToEdit.Name = textBoxStudentName.Text;
-            _studentToEdit.LastName = textBoxStudentLastName.Text;
-            _studentToEdit.Address = textBoxStudentAddress.Text;
-            _studentToEdit.Phone = textBoxStudentPhone.Text;
+        if (!ValidateTextBoxes()) return;
 
-            Close();
-        }
+        Students.EditStudent(
+            (int)numericUpDownStudentID.Value,
+            textBoxName.Text,
+            textBoxLastName.Text,
+            textBoxAddress.Text,
+            textBoxPostalCode.Text,
+            textBoxCity.Text,
+            textBoxPhone.Text,
+            textBoxEmail.Text,
+            true,
+            comboBoxGenre.Text,
+            DateOnly.FromDateTime(dateTimePickerBirthDate.Value),
+            textBoxCC.Text,
+            DateOnly.FromDateTime(dateTimePickerCCValidDate.Value),
+            textBoxNIF.Text,
+            textBoxNationality.Text,
+            textBoxBirthPlace.Text,
+            _studentPhoto,
+            0,
+            0,
+            DateOnly.FromDateTime(DateTime.Now)
+        );
+
+        //
+        // initial update
+        // count register and the list
+        //
+        //UpdateLists();
+        //UpdateLabelsCounts();
+        //ClearTextBoxes();
+        Close();
+    }
+
+
+    private void ClearTextBoxes()
+    {
+        //(int)numericUpDownStudentID.Value;
+        textBoxName.Clear();
+        textBoxLastName.Clear();
+        textBoxAddress.Clear();
+        textBoxPostalCode.Clear();
+        textBoxCity.Clear();
+        textBoxPhone.Clear();
+        textBoxEmail.Clear();
+        //true;
+        //comboBoxGenre.Items.Clear();
+        //DateOnly.FromDateTime(dateTimePickerBirthDate.Value);
+        textBoxCC.Clear();
+        //DateOnly.FromDateTime(dateTimePickerCCValidDate.Value);
+        textBoxNIF.Clear();
+        textBoxNationality.Clear();
+        textBoxBirthPlace.Clear();
+        _studentPhoto = string.Empty;
+        //0;
+        //DateOnly.FromDateTime(DateTime.Now);
+        //null;
     }
 
 
     private bool ValidateTextBoxes()
     {
+        var valid = true;
+
         if (
-            string.IsNullOrEmpty(textBoxStudentName.Text) ||
-            string.IsNullOrWhiteSpace(textBoxStudentName.Text))
+            string.IsNullOrEmpty(textBoxName.Text) ||
+            string.IsNullOrWhiteSpace(textBoxName.Text))
         {
-            MessageBox.Show(
-                "Insira o Nome",
+            MessageBox.Show("Insira o Nome",
                 "Nome",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            textBoxStudentName.Focus();
-            return false;
+            valid = false;
+            textBoxName.Select();
         }
-
 
         if (
-            string.IsNullOrEmpty(textBoxStudentLastName.Text) ||
-            string.IsNullOrWhiteSpace(textBoxStudentLastName.Text))
+            string.IsNullOrEmpty(textBoxLastName.Text) ||
+            string.IsNullOrWhiteSpace(textBoxLastName.Text))
         {
-            MessageBox.Show(
-                "Insira o apelido do estudante",
+            MessageBox.Show("Insira o apelido do estudante",
                 "Apelido do Estudante",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            labelStudentLastName.Focus();
-            return false;
+            valid = false;
+            labelLastName.Select();
         }
 
-        return true;
-    }
-
-
-    private void TextBoxStudentPhone_KeyPress(object sender,
-        KeyPressEventArgs e)
-    {
-        // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || (Keys) e.KeyChar == Keys.Back) return;
-        e.Handled = true;
-    }
-
-
-    private void DataUpdateValues()
-    {
-        // debugging point
-        Console.WriteLine("Debug point");
-
-
-        /*
-         * update the count of students in each class
-         */
-        ;
-
-
-        // debugging point
-        Console.WriteLine("Debug point");
-
-        UpdateDataGrid();
-        UpdateChart();
-
-        // debugging point
-        Console.WriteLine("Debug point");
-    }
-
-
-    private void UpdateDataGrid()
-    {
-        // Set up the DataGridView.
-        dataGridView1.Dock = DockStyle.Fill;
-
-        // Automatically generate the DataGridView columns.
-        dataGridView1.AutoGenerateColumns = true;
-
-        // Set up the data source.
-        BindingSource bindingSource1 = new()
-        {
-            DataSource = _studentToEdit
-        };
-        dataGridView1.DataSource = bindingSource1;
-
-        // Automatically resize the visible rows.
-        dataGridView1.AutoSizeRowsMode =
-            DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-
-        // Set the DataGridView control's border.
-        dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-
-        // Put the cells in edit mode when user enters them.
-        dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
-
-
-        /*
-        //
-        // rebinding the data, so the system will refresh the info
-        dataGridView1.DataSource = _studentToEdit.StudentCoursesGrades.ToArray();
-        dataGridView1.AutoResizeColumns();
-        dataGridView1.AutoSizeColumnsMode =
-            DataGridViewAutoSizeColumnsMode.AllCells;
-
-
-        //dataGridView2 = new DataGridView();
-        //dataGridView2.DataSource = _schoolClasses;
-        //dataGridView2.AutoResizeColumns();
-        //dataGridView2.AutoResizeRows();
-        //dataGridView2.Show();
-        */
-        Console.WriteLine("Debug point");
-    }
-
-
-    private void UpdateChart()
-        //private void ButtonHouseLoanChart_Click(object sender, EventArgs e)
-    {
-        //CasaUpdateListBoxValues();
-
-
-        /*
-         * ================================================================================
-         * 
-         * entered data set for the chart
-         * that set from the list with the values
-         * total amount of interest
-         * and the total amount of capital paid
-         * 
-         * 
-         */
-
-        //chart1.DataSource = null;
-        chart1.DataSource = _studentToEdit;
-
-        chart1.Series["Series1"].YValueMembers = "value";
-        chart1.Series["Series1"].XValueMember = "key";
-        //chartAutoListPayments.Series["Juros Pagos"].YValueMembers =
-        //    "JurosPagos";
-        //chartAutoListPayments.Series["Juros Pagos"].XValueMember =
-        //    "DataDoPagamento";
-
-        chart1.DataBind();
-        // chart1.Show();
-        /*
-        chartFinanCarro.Series[0].ChartType = 
-            System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-        chartFinanCarro.Series[1].ChartType =
-            System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-        */
-
-
-        Console.WriteLine("Debug point");
+        return valid;
     }
 }

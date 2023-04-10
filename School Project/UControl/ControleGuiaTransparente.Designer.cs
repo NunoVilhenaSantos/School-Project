@@ -201,7 +201,7 @@ namespace School_Project.UControl
             tabPage11.Location = new Point(4, 24);
             tabPage11.Name = "tabPage11";
             tabPage11.Padding = new Padding(3);
-            tabPage11.Size = new Size(192, 72);
+            tabPage11.Size = new Size(651, 157);
             tabPage11.TabIndex = 1;
             tabPage11.Text = "tabPage11";
             tabPage11.UseVisualStyleBackColor = true;
@@ -210,11 +210,14 @@ namespace School_Project.UControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.Gainsboro;
             Controls.Add(transparentTabControl2);
             Controls.Add(pictureBox1);
             Controls.Add(dataGridView1);
             Controls.Add(tabControl2);
+            DoubleBuffered = true;
             Margin = new Padding(20);
             Name = "ControleGuiaTransparente";
             Padding = new Padding(10);

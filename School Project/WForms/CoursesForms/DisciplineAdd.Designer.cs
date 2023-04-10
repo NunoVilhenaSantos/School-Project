@@ -602,6 +602,7 @@ namespace School_Project.WForms.CoursesForms
             ClientSize = new Size(1084, 631);
             Controls.Add(panelBottom);
             Controls.Add(transparentTabControl1);
+            DoubleBuffered = true;
             KeyPreview = true;
             Name = "DisciplineAdd";
             Padding = new Padding(20);

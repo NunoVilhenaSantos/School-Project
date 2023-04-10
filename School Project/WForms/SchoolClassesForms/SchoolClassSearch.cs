@@ -257,7 +257,7 @@ public partial class SchoolClassSearch : Form
                     ?.GetValue(sC);
                 if (value != null && value.GetType() == typeof(DateTime))
                     // Convert the value to DateTime and remove the time component
-                    value = ((DateTime) value).Date;
+                    value = ((DateTime)value).Date;
                 return value;
             })
             .Where(value => value != null)

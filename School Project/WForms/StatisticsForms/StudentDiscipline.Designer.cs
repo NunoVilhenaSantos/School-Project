@@ -99,7 +99,7 @@
             groupBoxDisciplinesList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             groupBoxDisciplinesList.Controls.Add(buttonStudentDisciplinesAdding);
             groupBoxDisciplinesList.Controls.Add(checkedListBoxDisciplines);
-            groupBoxDisciplinesList.Location = new Point(309, 13);
+            groupBoxDisciplinesList.Location = new Point(325, 13);
             groupBoxDisciplinesList.Name = "groupBoxDisciplinesList";
             groupBoxDisciplinesList.Size = new Size(445, 556);
             groupBoxDisciplinesList.TabIndex = 5;
@@ -132,7 +132,7 @@
             // 
             groupBoxEnrollments.Controls.Add(dataGridView1);
             groupBoxEnrollments.Controls.Add(button1);
-            groupBoxEnrollments.Location = new Point(760, 13);
+            groupBoxEnrollments.Location = new Point(789, 13);
             groupBoxEnrollments.Name = "groupBoxEnrollments";
             groupBoxEnrollments.Size = new Size(438, 556);
             groupBoxEnrollments.TabIndex = 6;
@@ -166,10 +166,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
-            ClientSize = new Size(1224, 587);
+            ClientSize = new Size(1240, 587);
             Controls.Add(groupBoxEnrollments);
             Controls.Add(groupBoxDisciplinesList);
             Controls.Add(groupBoxStudentsList);
+            DoubleBuffered = true;
             KeyPreview = true;
             Name = "StudentDiscipline";
             Padding = new Padding(10);

@@ -148,3 +148,4 @@ C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.svg.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.commons.dll
 C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School_Project.ClassFolder.MyChildForm.resources

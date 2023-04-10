@@ -1013,6 +1013,7 @@ namespace School_Project.WForms.StudentsForms
             ClientSize = new Size(1184, 711);
             Controls.Add(panelTop);
             Controls.Add(panelBottom);
+            DoubleBuffered = true;
             KeyPreview = true;
             Name = "StudentAdd";
             Padding = new Padding(20);

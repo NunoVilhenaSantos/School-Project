@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             tableLayoutPanelStudentData = new TableLayoutPanel();
-            button4 = new Button();
+            buttonStore = new Button();
             checkedListBoxStudents = new CheckedListBox();
+            buttonClear = new Button();
             numericUpDownTotalCourses = new NumericUpDown();
             label1 = new Label();
             labelSchoolClassID = new Label();
@@ -53,8 +54,7 @@
             label6 = new Label();
             checkedListBoxCourses = new CheckedListBox();
             button9 = new Button();
-            buttonStore = new Button();
-            buttonClear = new Button();
+            button4 = new Button();
             tableLayoutPanelStudentData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTotalCourses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSchoolClassID).BeginInit();
@@ -112,24 +112,25 @@
             tableLayoutPanelStudentData.Size = new Size(1243, 391);
             tableLayoutPanelStudentData.TabIndex = 1;
             // 
-            // button4
+            // buttonStore
             // 
-            button4.Anchor = AnchorStyles.None;
-            button4.BackgroundImage = Properties.Resources.adicionar_estudante_solido;
-            button4.BackgroundImageLayout = ImageLayout.Zoom;
-            button4.Cursor = Cursors.Hand;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.CheckedBackColor = Color.Transparent;
-            button4.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button4.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(1034, 332);
-            button4.Name = "button4";
-            button4.Size = new Size(125, 50);
-            button4.TabIndex = 18;
-            button4.TextAlign = ContentAlignment.MiddleRight;
-            button4.UseVisualStyleBackColor = true;
+            buttonStore.Anchor = AnchorStyles.None;
+            buttonStore.BackgroundImage = Properties.Resources.guardar_base_dados_regular;
+            buttonStore.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonStore.Cursor = Cursors.Hand;
+            buttonStore.FlatAppearance.BorderSize = 0;
+            buttonStore.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonStore.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonStore.FlatStyle = FlatStyle.Flat;
+            buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonStore.Location = new Point(160, 332);
+            buttonStore.Name = "buttonStore";
+            buttonStore.Size = new Size(125, 50);
+            buttonStore.TabIndex = 15;
+            buttonStore.TextAlign = ContentAlignment.MiddleRight;
+            buttonStore.UseVisualStyleBackColor = true;
+            buttonStore.Click += ButtonSave_Click;
             // 
             // checkedListBoxStudents
             // 
@@ -140,6 +141,26 @@
             tableLayoutPanelStudentData.SetRowSpan(checkedListBoxStudents, 6);
             checkedListBoxStudents.Size = new Size(277, 318);
             checkedListBoxStudents.TabIndex = 18;
+            // 
+            // buttonClear
+            // 
+            buttonClear.Anchor = AnchorStyles.None;
+            buttonClear.BackgroundImage = Properties.Resources.cancelar_solido;
+            buttonClear.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonClear.Cursor = Cursors.Hand;
+            buttonClear.FlatAppearance.BorderSize = 0;
+            buttonClear.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonClear.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonClear.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonClear.FlatStyle = FlatStyle.Flat;
+            buttonClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClear.Location = new Point(495, 332);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(125, 50);
+            buttonClear.TabIndex = 14;
+            buttonClear.TextAlign = ContentAlignment.MiddleRight;
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += ButtonCancel_Click;
             // 
             // numericUpDownTotalCourses
             // 
@@ -382,45 +403,24 @@
             button9.UseVisualStyleBackColor = true;
             button9.Click += ButtonAddCourses_Click;
             // 
-            // buttonStore
+            // button4
             // 
-            buttonStore.Anchor = AnchorStyles.None;
-            buttonStore.BackgroundImage = Properties.Resources.guardar_base_dados_regular;
-            buttonStore.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonStore.Cursor = Cursors.Hand;
-            buttonStore.FlatAppearance.BorderSize = 0;
-            buttonStore.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonStore.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonStore.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonStore.FlatStyle = FlatStyle.Flat;
-            buttonStore.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonStore.Location = new Point(160, 332);
-            buttonStore.Name = "buttonStore";
-            buttonStore.Size = new Size(125, 50);
-            buttonStore.TabIndex = 15;
-            buttonStore.TextAlign = ContentAlignment.MiddleRight;
-            buttonStore.UseVisualStyleBackColor = true;
-            buttonStore.Click += ButtonSave_Click;
-            // 
-            // buttonClear
-            // 
-            buttonClear.Anchor = AnchorStyles.None;
-            buttonClear.BackgroundImage = Properties.Resources.cancelar_solido;
-            buttonClear.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonClear.Cursor = Cursors.Hand;
-            buttonClear.FlatAppearance.BorderSize = 0;
-            buttonClear.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonClear.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonClear.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonClear.FlatStyle = FlatStyle.Flat;
-            buttonClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClear.Location = new Point(495, 332);
-            buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(125, 50);
-            buttonClear.TabIndex = 14;
-            buttonClear.TextAlign = ContentAlignment.MiddleRight;
-            buttonClear.UseVisualStyleBackColor = true;
-            buttonClear.Click += ButtonCancel_Click;
+            button4.Anchor = AnchorStyles.None;
+            button4.BackgroundImage = Properties.Resources.adicionar_estudante_solido;
+            button4.BackgroundImageLayout = ImageLayout.Zoom;
+            button4.Cursor = Cursors.Hand;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.CheckedBackColor = Color.Transparent;
+            button4.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button4.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(1034, 332);
+            button4.Name = "button4";
+            button4.Size = new Size(125, 50);
+            button4.TabIndex = 18;
+            button4.TextAlign = ContentAlignment.MiddleRight;
+            button4.UseVisualStyleBackColor = true;
             // 
             // SchoolClassEdit
             // 
@@ -429,6 +429,7 @@
             BackColor = Color.FromArgb(235, 155, 104);
             ClientSize = new Size(1283, 431);
             Controls.Add(tableLayoutPanelStudentData);
+            DoubleBuffered = true;
             KeyPreview = true;
             Name = "SchoolClassEdit";
             Padding = new Padding(20);

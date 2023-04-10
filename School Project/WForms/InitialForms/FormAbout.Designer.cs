@@ -48,6 +48,7 @@
             BackColor = Color.FromArgb(83, 36, 100);
             ClientSize = new Size(584, 401);
             Controls.Add(uC_About1);
+            DoubleBuffered = true;
             Name = "FormAbout";
             StartPosition = FormStartPosition.CenterParent;
             Text = "FormAbout";

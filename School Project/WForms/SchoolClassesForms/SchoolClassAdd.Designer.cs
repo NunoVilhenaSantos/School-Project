@@ -514,7 +514,6 @@ namespace School_Project.WForms.SchoolClassesForms
             checkedListBoxCourses.Size = new Size(276, 474);
             checkedListBoxCourses.TabIndex = 0;
             checkedListBoxCourses.SelectedIndexChanged += CheckedListBoxCourses_SelectedIndexChanged;
-            //checkedListBoxCourses.MouseMove += CheckedListBoxCourses_MouseWheel;
             // 
             // tabPage3
             // 
@@ -857,6 +856,7 @@ namespace School_Project.WForms.SchoolClassesForms
             ClientSize = new Size(1464, 682);
             Controls.Add(panelBottom);
             Controls.Add(transparentTabControl1);
+            DoubleBuffered = true;
             KeyPreview = true;
             Name = "SchoolClassAdd";
             Padding = new Padding(20);

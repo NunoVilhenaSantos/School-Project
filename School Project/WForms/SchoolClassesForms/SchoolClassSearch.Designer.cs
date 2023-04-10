@@ -315,6 +315,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1384, 561);
             Controls.Add(tableLayoutPanel1);
+            DoubleBuffered = true;
             Name = "SchoolClassSearch";
             StartPosition = FormStartPosition.CenterParent;
             Text = "School Class Search";

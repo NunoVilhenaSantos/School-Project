@@ -79,8 +79,8 @@ public partial class StudentDiscipline : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
-        ((TextBox) sender).Paste();
+        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
+        ((TextBox)sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -167,7 +167,7 @@ public partial class StudentDiscipline : Form
     private void ButtonStudentDisciplinesAdding_Click(
         object sender, EventArgs e)
     {
-        var studentToEdit = (Student) listBoxStudents.SelectedItem;
+        var studentToEdit = (Student)listBoxStudents.SelectedItem;
 
         if (studentToEdit == null)
         {
@@ -243,7 +243,7 @@ public partial class StudentDiscipline : Form
 
         foreach (var t in checkedListBoxDisciplines.CheckedItems)
         {
-            var b = (Course) t;
+            var b = (Course)t;
             var c =
                 Courses.CoursesList.FirstOrDefault(
                     a => a.IdCourse == b.IdCourse);
@@ -262,7 +262,7 @@ public partial class StudentDiscipline : Form
         if (Courses.CoursesList == null)
             return;
 
-        var studentToView = (Student) _bSourceListStudents.Current;
+        var studentToView = (Student)_bSourceListStudents.Current;
 
         var studentCoursesForStudent =
             SchoolDatabase.GetCoursesForStudent(studentToView.IdStudent);
@@ -296,7 +296,7 @@ public partial class StudentDiscipline : Form
         // cast the selected object to be displayed in the dialog box
         //
         var studentToErase = listBoxStudents.SelectedItem as Student;
-        studentToErase = (Student) _bSourceListStudents.Current;
+        studentToErase = (Student)_bSourceListStudents.Current;
 
         if (listBoxStudents.SelectedItem == null)
         {
@@ -340,7 +340,7 @@ public partial class StudentDiscipline : Form
         var studentToEdit = listBoxStudents.SelectedItem as Student;
 
         // Get the selected school class from the data source
-        studentToEdit = (Student) _bSourceListStudents.Current;
+        studentToEdit = (Student)_bSourceListStudents.Current;
 
         if (listBoxStudents.SelectedItem != null)
         {
