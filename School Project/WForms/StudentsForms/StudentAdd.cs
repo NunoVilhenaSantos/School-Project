@@ -88,9 +88,9 @@ public partial class StudentAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: V}) return;
+        if (e is not { Modifiers: Keys.Control, KeyCode: V }) return;
 
-        ((TextBox) sender).Paste();
+        ((TextBox)sender).Paste();
 
         Console.WriteLine("Testes de Debug");
     }
@@ -101,7 +101,7 @@ public partial class StudentAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Students.AddStudent(
-            (int) numericUpDownStudentID.Value,
+            (int)numericUpDownStudentID.Value,
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
@@ -373,7 +373,7 @@ public partial class StudentAdd : Form
         }
 
         if (!int.IsPositive(rc)) return;
-        var studentToEdit = (Student) _bSourceStudents.Current;
+        var studentToEdit = (Student)_bSourceStudents.Current;
 
         StudentEdit winFormStudentEdit = new(studentToEdit);
         winFormStudentEdit.ShowDialog();
@@ -386,11 +386,11 @@ public partial class StudentAdd : Form
             char.IsLetter(e.KeyChar) || // validating if it's a letter
             char.IsSeparator(e.KeyChar) || // validating if it's a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if it's a whitespace
-            e.KeyChar is (char) Back or '.' or '\'' or '-'
-            // validating if it's a backspace
-            // validating if it's a dot
-            // validating if it's an apostrophe
-            // validating if it's a separator
+            e.KeyChar is (char)Back or '.' or '\'' or '-'
+        // validating if it's a backspace
+        // validating if it's a dot
+        // validating if it's an apostrophe
+        // validating if it's a separator
         )
             return;
         e.Handled = true;
@@ -401,7 +401,7 @@ public partial class StudentAdd : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Back) return;
         e.Handled = true;
     }
 
@@ -419,7 +419,6 @@ public partial class StudentAdd : Form
             return;
         }
 
-
         var rowText = string.Empty;
         var rc = -1;
         // by rows
@@ -432,7 +431,6 @@ public partial class StudentAdd : Form
             //for find the row index number
             rc = dataGridView1.CurrentCell.RowIndex;
 
-
         if (rc != -1)
         {
             MessageBox.Show(
@@ -442,7 +440,6 @@ public partial class StudentAdd : Form
             );
             return;
         }
-
 
         if (checkedListBoxDisciplines.CheckedItems.Count == 0)
         {
@@ -458,7 +455,6 @@ public partial class StudentAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos disciplina(s), vamos lá");
-
 
         //
         // cycle to evaluate which disciplines are select and add it
@@ -488,6 +484,84 @@ public partial class StudentAdd : Form
         UpdateLists();
 
         Console.WriteLine("Testes de Debug");
+    }
+
+
+    private void DataGridView_CellBeginEdit(
+        object sender, DataGridViewCellCancelEventArgs e)
+    {
+        // Get the column index of the cell being edited
+        var columnIndex = e.ColumnIndex;
+
+        // Check if the column is read-only
+        if (columnIndex is 0 or 2)
+            // Cancel the edit operation for the read-only column
+            e.Cancel = true;
+    }
+
+
+    private void DataGridView_CellEnter(
+        object sender, DataGridViewCellEventArgs e)
+    {
+        UpdateSelectedData();
+    }
+
+
+    private void DataGridView_Scroll(object sender, ScrollEventArgs e)
+    {
+        // If the scroll event is for scrolling the
+        // vertical bar, update the selected school class
+        if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            UpdateSelectedData();
+    }
+
+
+    private void UpdateSelectedData()
+    {
+        // Check if the row index has changed
+        if (dataGridView1.CurrentCell == null ||
+            dataGridView1.CurrentCell.RowIndex ==
+            _previousRowIndex) return;
+
+        // Get the selected course from the data source
+        var current = (Student)_bSourceStudents.Current;
+
+        // Get the students for the selected course from the data source
+        var selectedCoursesEnrollmentsStudents =
+            Enrollments.ListEnrollments
+                .Where(x => x.StudentId == current.IdStudent)
+                .Select(e => e.CourseId)
+                .ToList();
+
+        var selectedCourseEnrollments =
+            Enrollments.ListEnrollments
+                .Where(x =>
+                    x.StudentId == current.IdStudent)
+                .ToList();
+
+        var selectedCourseStudents =
+            selectedCourseEnrollments
+                .Select(e => e.StudentId)
+                .ToList();
+
+        if (selectedCourseEnrollments == null)
+        {
+            checkedListBoxDisciplines.Invalidate();
+            return;
+        }
+
+        // Set the checked items in the checkedListBoxStudents control
+        for (var i = 0; i < checkedListBoxDisciplines.Items.Count; i++)
+        {
+            var course = (Course)checkedListBoxDisciplines.Items[i];
+            checkedListBoxDisciplines
+                .SetItemChecked(i,
+                    selectedCoursesEnrollmentsStudents
+                        .Contains(course.IdCourse));
+        }
+
+        // Update the previous row index
+        _previousRowIndex = dataGridView1.CurrentCell.RowIndex;
     }
 
 

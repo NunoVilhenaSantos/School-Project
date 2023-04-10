@@ -1,12 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.Globalization;
 using System.Text;
-using System.Globalization;
 using ClassLibrary.School;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Serilog;
-
 
 namespace ClassLibrary.Enrollments;
 
@@ -94,7 +91,7 @@ public class EnrollmentsFileHelper
         catch (Exception e)
         {
             // Log error message
-            Log.Error(e, 
+            Log.Error(e,
                 "Error accessing the file: {ErrorMessage}",
                 e.Message);
             message = $"Error accessing the file: {e.Message}";
@@ -128,7 +125,7 @@ public class EnrollmentsFileHelper
         catch (IOException ex)
         {
             // Log error message
-            Log.Error(ex, 
+            Log.Error(ex,
                 "Error writing to the file: {ErrorMessage}",
                 ex.Message);
             message = $"Error writing to the file: {ex.Message}";
@@ -137,7 +134,7 @@ public class EnrollmentsFileHelper
         catch (Exception e)
         {
             // Log error message
-            Log.Error(e, 
+            Log.Error(e,
                 "Error writing to the file: {ErrorMessage}",
                 e.Message);
             message = $"Error writing to the file: {e.Message}";

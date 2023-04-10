@@ -826,28 +826,22 @@ public partial class SchoolClassAdd : Form
                 .ContainsKey(selectedSchoolClass.IdSchoolClass) &&
             SchoolDatabase.CourseStudents
                 .ContainsKey(selectedCourse.IdCourse))
-        {
             enrolledStudents =
                 SchoolDatabase.GetEnrolledStudentsByCourseForClass(
                     selectedSchoolClass.IdSchoolClass)[selectedCourse.IdCourse];
-        }
         else
-        {
             Log.Error(
                 $"Unable to retrieve enrolled students " +
                 $"for school class {selectedSchoolClass.IdSchoolClass} " +
                 $"and course {selectedCourse.IdCourse}");
-        }
 
         // Update checked items based on the enrollments
         foreach (
             var enrollment in
             checkedListBoxStudents.CheckedItems
                 .Cast<Student>().Intersect(enrolledStudents))
-        {
             checkedListBoxStudents.SetItemChecked(
                 checkedListBoxStudents.Items.IndexOf(enrollment), true);
-        }
 
         Log.Information(
             $"Updated checked items for course " +

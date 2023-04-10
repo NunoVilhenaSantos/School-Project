@@ -42,20 +42,21 @@
             button4 = new Button();
             button6 = new Button();
             panelBottom = new Panel();
+            comboBoxSearchList = new ComboBox();
             button9 = new Button();
+            comboBoxSearchOptions = new ComboBox();
+            buttonSearch = new Button();
             button10 = new Button();
             button11 = new Button();
-            button12 = new Button();
             button13 = new Button();
             button14 = new Button();
             button15 = new Button();
             button16 = new Button();
             buttonPrint = new Button();
+            button12 = new Button();
             button17 = new Button();
             button18 = new Button();
-            comboBoxSearchList = new ComboBox();
-            comboBoxSearchOptions = new ComboBox();
-            buttonSearch = new Button();
+            checkedListBox1 = new CheckedListBox();
             panelBottom.SuspendLayout();
             SuspendLayout();
             // 
@@ -326,6 +327,14 @@
             panelBottom.Size = new Size(1476, 110);
             panelBottom.TabIndex = 30;
             // 
+            // comboBoxSearchList
+            // 
+            comboBoxSearchList.FormattingEnabled = true;
+            comboBoxSearchList.Location = new Point(67, 71);
+            comboBoxSearchList.Name = "comboBoxSearchList";
+            comboBoxSearchList.Size = new Size(295, 23);
+            comboBoxSearchList.TabIndex = 35;
+            // 
             // button9
             // 
             button9.Anchor = AnchorStyles.None;
@@ -344,6 +353,33 @@
             button9.TabIndex = 13;
             button9.TextAlign = ContentAlignment.MiddleRight;
             button9.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxSearchOptions
+            // 
+            comboBoxSearchOptions.FormattingEnabled = true;
+            comboBoxSearchOptions.Location = new Point(183, 17);
+            comboBoxSearchOptions.Name = "comboBoxSearchOptions";
+            comboBoxSearchOptions.Size = new Size(179, 23);
+            comboBoxSearchOptions.TabIndex = 34;
+            // 
+            // buttonSearch
+            // 
+            buttonSearch.Anchor = AnchorStyles.None;
+            buttonSearch.BackgroundImage = Properties.Resources.pesquisar_negrito;
+            buttonSearch.BackgroundImageLayout = ImageLayout.Zoom;
+            buttonSearch.Cursor = Cursors.Hand;
+            buttonSearch.FlatAppearance.BorderSize = 0;
+            buttonSearch.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            buttonSearch.FlatStyle = FlatStyle.Flat;
+            buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSearch.Location = new Point(67, 3);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(110, 45);
+            buttonSearch.TabIndex = 33;
+            buttonSearch.TextAlign = ContentAlignment.MiddleRight;
+            buttonSearch.UseVisualStyleBackColor = true;
             // 
             // button10
             // 
@@ -382,25 +418,6 @@
             button11.TabIndex = 11;
             button11.TextAlign = ContentAlignment.MiddleRight;
             button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            button12.Anchor = AnchorStyles.None;
-            button12.BackgroundImage = Properties.Resources.pesquisar;
-            button12.BackgroundImageLayout = ImageLayout.Zoom;
-            button12.Cursor = Cursors.Hand;
-            button12.FlatAppearance.BorderSize = 0;
-            button12.FlatAppearance.CheckedBackColor = Color.Transparent;
-            button12.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button12.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button12.FlatStyle = FlatStyle.Flat;
-            button12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button12.Location = new Point(1113, 265);
-            button12.Name = "button12";
-            button12.Size = new Size(125, 50);
-            button12.TabIndex = 12;
-            button12.TextAlign = ContentAlignment.MiddleRight;
-            button12.UseVisualStyleBackColor = true;
             // 
             // button13
             // 
@@ -499,6 +516,25 @@
             buttonPrint.TextAlign = ContentAlignment.MiddleRight;
             buttonPrint.UseVisualStyleBackColor = true;
             // 
+            // button12
+            // 
+            button12.Anchor = AnchorStyles.None;
+            button12.BackgroundImage = Properties.Resources.pesquisar;
+            button12.BackgroundImageLayout = ImageLayout.Zoom;
+            button12.Cursor = Cursors.Hand;
+            button12.FlatAppearance.BorderSize = 0;
+            button12.FlatAppearance.CheckedBackColor = Color.Transparent;
+            button12.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button12.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button12.FlatStyle = FlatStyle.Flat;
+            button12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button12.Location = new Point(210, 338);
+            button12.Name = "button12";
+            button12.Size = new Size(125, 50);
+            button12.TabIndex = 12;
+            button12.TextAlign = ContentAlignment.MiddleRight;
+            button12.UseVisualStyleBackColor = true;
+            // 
             // button17
             // 
             button17.Anchor = AnchorStyles.None;
@@ -511,7 +547,7 @@
             button17.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button17.FlatStyle = FlatStyle.Flat;
             button17.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button17.Location = new Point(1113, 209);
+            button17.Location = new Point(210, 282);
             button17.Name = "button17";
             button17.Size = new Size(125, 50);
             button17.TabIndex = 32;
@@ -530,7 +566,7 @@
             button18.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button18.FlatStyle = FlatStyle.Flat;
             button18.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button18.Location = new Point(960, 153);
+            button18.Location = new Point(57, 226);
             button18.Margin = new Padding(0);
             button18.Name = "button18";
             button18.Size = new Size(125, 50);
@@ -538,46 +574,20 @@
             button18.TextAlign = ContentAlignment.MiddleRight;
             button18.UseVisualStyleBackColor = true;
             // 
-            // comboBoxSearchList
+            // checkedListBox1
             // 
-            comboBoxSearchList.FormattingEnabled = true;
-            comboBoxSearchList.Location = new Point(67, 71);
-            comboBoxSearchList.Name = "comboBoxSearchList";
-            comboBoxSearchList.Size = new Size(295, 23);
-            comboBoxSearchList.TabIndex = 35;
-            // 
-            // comboBoxSearchOptions
-            // 
-            comboBoxSearchOptions.FormattingEnabled = true;
-            comboBoxSearchOptions.Location = new Point(183, 17);
-            comboBoxSearchOptions.Name = "comboBoxSearchOptions";
-            comboBoxSearchOptions.Size = new Size(179, 23);
-            comboBoxSearchOptions.TabIndex = 34;
-            // 
-            // buttonSearch
-            // 
-            buttonSearch.Anchor = AnchorStyles.None;
-            buttonSearch.BackgroundImage = Properties.Resources.pesquisar_negrito;
-            buttonSearch.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonSearch.Cursor = Cursors.Hand;
-            buttonSearch.FlatAppearance.BorderSize = 0;
-            buttonSearch.FlatAppearance.CheckedBackColor = Color.Transparent;
-            buttonSearch.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            buttonSearch.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            buttonSearch.FlatStyle = FlatStyle.Flat;
-            buttonSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSearch.Location = new Point(67, 3);
-            buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(110, 45);
-            buttonSearch.TabIndex = 33;
-            buttonSearch.TextAlign = ContentAlignment.MiddleRight;
-            buttonSearch.UseVisualStyleBackColor = true;
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new Point(1095, 93);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(120, 94);
+            checkedListBox1.TabIndex = 33;
             // 
             // FormButtons1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1476, 667);
+            Controls.Add(checkedListBox1);
             Controls.Add(button12);
             Controls.Add(button17);
             Controls.Add(button18);
@@ -631,5 +641,6 @@
         private ComboBox comboBoxSearchList;
         private ComboBox comboBoxSearchOptions;
         private Button buttonSearch;
+        private CheckedListBox checkedListBox1;
     }
 }

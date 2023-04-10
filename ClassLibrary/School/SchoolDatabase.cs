@@ -321,9 +321,7 @@ public class SchoolDatabase
             CourseStudents[idStudent].Remove(course.IdCourse);
 
             if (CourseStudents[idStudent].Count == 0)
-            {
                 CourseStudents.Remove(idStudent);
-            }
         }
     }
 
@@ -709,9 +707,7 @@ public class SchoolDatabase
 
                 if (StudentClass[studentId].Contains(schoolClassId) &&
                     Students.TryGetValue(studentId, out var student))
-                {
                     students.Add(student);
-                }
             }
 
             enrolledStudentsByCourse.Add(courseId, students);

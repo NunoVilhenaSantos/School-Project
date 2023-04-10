@@ -29,22 +29,22 @@ namespace School_Project.WForms.StudentsForms
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentAdd));
             checkedListBoxDisciplines = new CheckedListBox();
             dataGridView1 = new DataGridView();
             pictureBoxPhotoDisplay = new PictureBox();
             buttonSearch = new Button();
             tableLayoutPanelStudentData = new TableLayoutPanel();
-            this.textBoxPostalCode = new TextBox();
-            this.textBoxCity = new TextBox();
+            textBoxPostalCode = new TextBox();
+            textBoxCity = new TextBox();
             label1 = new Label();
             checkBoxActive = new CheckBox();
             numericUpDownTotalWorkLoad = new NumericUpDown();
@@ -124,34 +124,37 @@ namespace School_Project.WForms.StudentsForms
             checkedListBoxDisciplines.FormattingEnabled = true;
             checkedListBoxDisciplines.Location = new Point(850, 3);
             checkedListBoxDisciplines.Name = "checkedListBoxDisciplines";
-            checkedListBoxDisciplines.Size = new Size(277, 474);
+            checkedListBoxDisciplines.Size = new Size(277, 493);
             checkedListBoxDisciplines.TabIndex = 1;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Window;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(841, 474);
+            dataGridView1.Size = new Size(841, 493);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellBeginEdit += DataGridView_CellBeginEdit;
+            dataGridView1.CellEnter += DataGridView_CellEnter;
+            dataGridView1.Scroll += DataGridView_Scroll;
             // 
             // pictureBoxPhotoDisplay
             // 
@@ -194,8 +197,8 @@ namespace School_Project.WForms.StudentsForms
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12F));
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24F));
             tableLayoutPanelStudentData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanelStudentData.Controls.Add(this.textBoxPostalCode, 3, 5);
-            tableLayoutPanelStudentData.Controls.Add(this.textBoxCity, 1, 5);
+            tableLayoutPanelStudentData.Controls.Add(textBoxPostalCode, 3, 5);
+            tableLayoutPanelStudentData.Controls.Add(textBoxCity, 1, 5);
             tableLayoutPanelStudentData.Controls.Add(label1, 0, 5);
             tableLayoutPanelStudentData.Controls.Add(checkBoxActive, 5, 0);
             tableLayoutPanelStudentData.Controls.Add(numericUpDownTotalWorkLoad, 3, 0);
@@ -245,22 +248,22 @@ namespace School_Project.WForms.StudentsForms
             // 
             // textBoxPostalCode
             // 
-            this.textBoxPostalCode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            this.textBoxPostalCode.Location = new Point(395, 302);
-            this.textBoxPostalCode.MaxLength = 7;
-            this.textBoxPostalCode.Name = "textBoxPostalCode";
-            this.textBoxPostalCode.PlaceholderText = "Código Postal";
-            this.textBoxPostalCode.Size = new Size(172, 23);
-            this.textBoxPostalCode.TabIndex = 17;
+            textBoxPostalCode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxPostalCode.Location = new Point(395, 302);
+            textBoxPostalCode.MaxLength = 7;
+            textBoxPostalCode.Name = "textBoxPostalCode";
+            textBoxPostalCode.PlaceholderText = "Código Postal";
+            textBoxPostalCode.Size = new Size(172, 23);
+            textBoxPostalCode.TabIndex = 17;
             // 
             // textBoxCity
             // 
-            this.textBoxCity.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            this.textBoxCity.Location = new Point(110, 302);
-            this.textBoxCity.Name = "textBoxCity";
-            this.textBoxCity.PlaceholderText = "Cidade";
-            this.textBoxCity.Size = new Size(172, 23);
-            this.textBoxCity.TabIndex = 13;
+            textBoxCity.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxCity.Location = new Point(110, 302);
+            textBoxCity.Name = "textBoxCity";
+            textBoxCity.PlaceholderText = "Cidade";
+            textBoxCity.Size = new Size(172, 23);
+            textBoxCity.TabIndex = 13;
             // 
             // label1
             // 
@@ -642,23 +645,23 @@ namespace School_Project.WForms.StudentsForms
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1130, 480);
+            tableLayoutPanel1.Size = new Size(1130, 499);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
             chart1.Dock = DockStyle.Fill;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
             chart1.Location = new Point(0, 0);
             chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
             chart1.Size = new Size(1130, 505);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
@@ -945,34 +948,34 @@ namespace School_Project.WForms.StudentsForms
             // 
             dataGridViewSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewSearch.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Control;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Window;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridViewSearch.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridViewSearch.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewSearch.Dock = DockStyle.Fill;
             dataGridViewSearch.Location = new Point(0, 0);
             dataGridViewSearch.Name = "dataGridViewSearch";
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.Control;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dataGridViewSearch.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewSearch.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewSearch.RowTemplate.Height = 25;
             dataGridViewSearch.Size = new Size(1130, 505);
             dataGridViewSearch.TabIndex = 0;

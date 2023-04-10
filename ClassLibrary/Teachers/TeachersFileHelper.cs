@@ -1,12 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.Globalization;
 using System.Text;
-using System.Globalization;
 using ClassLibrary.School;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Serilog;
-
 
 namespace ClassLibrary.Teachers;
 
@@ -75,7 +72,7 @@ public static class TeachersFileHelper
     //     myString = "Operação realizada com sucesso";
     //     success = true;
     // }
-    
+
     public static void WriteTeachersToFile(
         out bool success, out string myString)
     {
@@ -87,9 +84,9 @@ public static class TeachersFileHelper
             {
                 var csvConfig =
                     new CsvConfiguration(CultureInfo.InvariantCulture)
-                {
-                    Delimiter = ";"
-                };
+                    {
+                        Delimiter = ";"
+                    };
 
                 using (var streamWriter =
                        new StreamWriter(fileStream, Encoding.UTF8))
@@ -108,7 +105,7 @@ public static class TeachersFileHelper
         }
         catch (IOException ex)
         {
-            Log.Error(ex, 
+            Log.Error(ex,
                 "Error accessing the file {FilePath}",
                 TeachersFilePath);
             myString = "Error accessing the file: " +
@@ -117,14 +114,13 @@ public static class TeachersFileHelper
         }
         catch (Exception e)
         {
-            Log.Error(e, "Error writing to file {FilePath}", 
+            Log.Error(e, "Error writing to file {FilePath}",
                 TeachersFilePath);
             myString = "Error accessing the file: "
                        + e.Source + " | " + e.Message;
             success = false;
         }
     }
-
 
 
     public static List<Teacher> ReadTeachersFromFile(

@@ -137,3 +137,14 @@ C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-wind
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.pdb
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\School Project.genruntimeconfig.cache
 C:\Users\nunov\RiderProjects\School Project\School Project\obj\Debug\net7.0-windows\ref\School Project.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.barcodes.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.forms.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.io.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.kernel.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.layout.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.pdfa.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.sign.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.styledxmlparser.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.svg.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\itext.commons.dll
+C:\Users\nunov\RiderProjects\School Project\School Project\bin\Debug\net7.0-windows\Microsoft.DotNet.PlatformAbstractions.dll

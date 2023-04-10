@@ -3,13 +3,6 @@ using System.Text;
 using ClassLibrary.School;
 using CsvHelper;
 using CsvHelper.Configuration;
-using System;
-using System.IO;
-using System.Text;
-using System.Globalization;
-using ClassLibrary.School;
-using CsvHelper;
-using CsvHelper.Configuration;
 using Serilog;
 
 namespace ClassLibrary.Students;
@@ -80,19 +73,19 @@ public class StudentsFileHelper
         try
         {
             //Serilog.Log.Logger.Information("Creating file stream");
-            Serilog.Log.Logger.Information(
+            Log.Logger.Information(
                 "Creating file stream");
             using (var fileStream =
                    new FileStream(StudentsFilePath,
                        FileMode.Create, FileAccess.Write))
             {
-                Serilog.Log.Logger.Information(
+                Log.Logger.Information(
                     "File stream created successfully");
             }
         }
         catch (IOException ex)
         {
-            Serilog.Log.Logger.Error(
+            Log.Logger.Error(
                 ex,
                 "Error accessing file: {Message}",
                 ex.Message);
@@ -103,7 +96,7 @@ public class StudentsFileHelper
         }
         catch (Exception e)
         {
-            Serilog.Log.Logger.Error(e,
+            Log.Logger.Error(e,
                 "Unexpected error accessing file: {Message}",
                 e.Message);
             myString = "Error accessing the file: " + e.Source + " | " +
@@ -119,7 +112,7 @@ public class StudentsFileHelper
 
         try
         {
-            Serilog.Log.Logger.Information(
+            Log.Logger.Information(
                 "Creating file writer");
             using (var fileStream = new FileStream(StudentsFilePath,
                        FileMode.Create, FileAccess.Write))
@@ -127,19 +120,19 @@ public class StudentsFileHelper
                    new StreamWriter(fileStream, Encoding.UTF8))
             using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
             {
-                Serilog.Log.Logger.Information(
+                Log.Logger.Information(
                     "Writing records to file");
                 csvWriter.WriteRecords(Students.StudentsList);
             }
 
             myString = "Operação realizada com sucesso";
             Success = true;
-            Serilog.Log.Logger.Information(
+            Log.Logger.Information(
                 "Records written successfully");
         }
         catch (Exception ex)
         {
-            Serilog.Log.Logger.Error(
+            Log.Logger.Error(
                 ex,
                 "Unexpected error writing records to file:" +
                 " {Message}",

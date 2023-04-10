@@ -107,9 +107,9 @@ public partial class DisciplineAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
+        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
         {
-            ((TextBox) sender).Paste();
+            ((TextBox)sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -119,9 +119,9 @@ public partial class DisciplineAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Courses.AddCourse(
-            (int) numericUpDownDisciplineID.Value,
+            (int)numericUpDownDisciplineID.Value,
             textBoxDisciplineName.Text,
-            (int) numericUpDownNumberHours.Value,
+            (int)numericUpDownNumberHours.Value,
             0
         );
 
@@ -223,7 +223,7 @@ public partial class DisciplineAdd : Form
         // * checkedListBox
         // * must be add before the dataGridView 
         // *
-        checkedListBoxStudents.DataSource = _bSListStudents;
+        checkedListBox1.DataSource = _bSListStudents;
         //checkedListBoxStudents.DisplayMember = "Name";
         //checkedListBoxStudents.DisplayMember = "FullName";
         //checkedListBoxStudents.ValueMember = "IdStudent";
@@ -236,22 +236,22 @@ public partial class DisciplineAdd : Form
         // *
 
         // Set the DataSource property of the DataGridView to the BindingSource object
-        dataGridViewCourses.DataSource = _bSListCourses;
+        dataGridView1.DataSource = _bSListCourses;
 
         // Set the AutoGenerateColumns property of the DataGridView to true
-        dataGridViewCourses.AutoGenerateColumns = true;
+        dataGridView1.AutoGenerateColumns = true;
 
         // Set the BackgroundColor property of the DataGridView to Color.Transparent
         // this cant be used because gives an error
         //dataGridViewSchoolClasses.BackgroundColor = Color.Transparent;
-        dataGridViewCourses.AutoSizeColumnsMode =
+        dataGridView1.AutoSizeColumnsMode =
             DataGridViewAutoSizeColumnsMode.AllCells;
         dataGridViewSearch.AutoSizeColumnsMode =
             DataGridViewAutoSizeColumnsMode.AllCells;
 
 
         // Update the data source of the dataGridViewSchoolClasses control
-        dataGridViewCourses.Refresh();
+        dataGridView1.Refresh();
 
 
         // To display all the properties of the Student class
@@ -359,14 +359,14 @@ public partial class DisciplineAdd : Form
         // by rows
         // var to retain the value of the index, by row or cell
         var rc = -1;
-        foreach (DataGridViewRow row in dataGridViewCourses.SelectedRows)
+        foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             //for find the row index number
-            rc = dataGridViewCourses.CurrentCell.RowIndex;
+            rc = dataGridView1.CurrentCell.RowIndex;
 
         // by cells
-        if (dataGridViewCourses.CurrentCell != null)
+        if (dataGridView1.CurrentCell != null)
             //for find the row index number
-            rc = dataGridViewCourses.CurrentCell.RowIndex;
+            rc = dataGridView1.CurrentCell.RowIndex;
 
 
         if (int.IsNegative(rc))
@@ -384,7 +384,7 @@ public partial class DisciplineAdd : Form
         //
 
         // Get the selected school class from the data source
-        var selectedCourse = (Course) _bSListCourses.Current;
+        var selectedCourse = (Course)_bSListCourses.Current;
 
         // Get the IdSchoolClass from the selected school class from the data source
         var index = selectedCourse.IdCourse;
@@ -440,7 +440,7 @@ public partial class DisciplineAdd : Form
         transparentTabControl1.SelectedTab = transparentTabControl1.TabPages[1];
 
         // Get the selected school class from the data source
-        var selectedCourse = (Course) _bSListCourses.Current;
+        var selectedCourse = (Course)_bSListCourses.Current;
 
         if (selectedCourse == null)
         {
@@ -475,7 +475,7 @@ public partial class DisciplineAdd : Form
     }
 
 
-    private void DataGridViewCourses_CellBeginEdit(
+    private void DataGridView_CellBeginEdit(
         object sender, DataGridViewCellCancelEventArgs e)
     {
         // Get the column index of the cell being edited
@@ -488,30 +488,30 @@ public partial class DisciplineAdd : Form
     }
 
 
-    private void DataGridViewCourses_CellEnter(
+    private void DataGridView_CellEnter(
         object sender, DataGridViewCellEventArgs e)
     {
-        UpdateSelectedCourse();
+        UpdateSelectedData();
     }
 
-    private void DataGridViewCourses_Scroll(
+    private void DataGridView_Scroll(
         object sender, ScrollEventArgs e)
     {
         // If the scroll event is for scrolling the vertical bar, update the selected school class
         if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
-            UpdateSelectedCourse();
+            UpdateSelectedData();
     }
 
 
-    private void UpdateSelectedCourse()
+    private void UpdateSelectedData()
     {
         // Check if the row index has changed
-        if (dataGridViewCourses.CurrentCell == null ||
-            dataGridViewCourses.CurrentCell.RowIndex ==
+        if (dataGridView1.CurrentCell == null ||
+            dataGridView1.CurrentCell.RowIndex ==
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var selectedCourse = (Course) _bSListCourses.Current;
+        var selectedCourse = (Course)_bSListCourses.Current;
 
         // Get the students for the selected course from the data source
         var selectedCoursesEnrollmentsStudents = Enrollments.ListEnrollments
@@ -529,20 +529,20 @@ public partial class DisciplineAdd : Form
 
         if (selectedCourseEnrollments == null)
         {
-            checkedListBoxStudents.Invalidate();
+            checkedListBox1.Invalidate();
             return;
         }
 
         // Set the checked items in the checkedListBoxStudents control
-        for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
+        for (var i = 0; i < checkedListBox1.Items.Count; i++)
         {
-            var student = (Student) checkedListBoxStudents.Items[i];
-            checkedListBoxStudents.SetItemChecked(i,
+            var student = (Student)checkedListBox1.Items[i];
+            checkedListBox1.SetItemChecked(i,
                 selectedCoursesEnrollmentsStudents.Contains(student.IdStudent));
         }
 
         // Update the previous row index
-        _previousRowIndex = dataGridViewCourses.CurrentCell.RowIndex;
+        _previousRowIndex = dataGridView1.CurrentCell.RowIndex;
     }
 
 
@@ -618,8 +618,8 @@ public partial class DisciplineAdd : Form
         // check what was selected, row or cell.
         // 
         //
-        var courseToEditByRow = dataGridViewCourses.SelectedRows;
-        var courseToEditByCell = dataGridViewCourses.SelectedCells;
+        var courseToEditByRow = dataGridView1.SelectedRows;
+        var courseToEditByCell = dataGridView1.SelectedCells;
         var courseToEdit = -1;
 
         if (courseToEditByRow.Count > 0 &&
@@ -653,7 +653,7 @@ public partial class DisciplineAdd : Form
             return;
         }
 
-        if (checkedListBoxStudents.CheckedItems.Count == 0)
+        if (checkedListBox1.CheckedItems.Count == 0)
         {
             MessageBox.Show(
                 "Tem de selecionar para poder Adicionar ou Remover ",
@@ -667,13 +667,13 @@ public partial class DisciplineAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos estudante(s) para adicionar, vamos lá.");
-        var courseToAdd = (Course) _bSListCourses.Current;
+        var courseToAdd = (Course)_bSListCourses.Current;
 
         //
         // cycle to evaluate which student(s) are select and add it
         //
         SchoolDatabase.EnrollStudentsInCourse(
-            checkedListBoxStudents.CheckedItems
+            checkedListBox1.CheckedItems
                 .Cast<Student>().ToList(),
             courseToAdd.IdCourse);
 
@@ -682,9 +682,9 @@ public partial class DisciplineAdd : Form
         //
         var nova =
             "Disciplinas selecionadas " +
-            $"{checkedListBoxStudents.CheckedItems
+            $"{checkedListBox1.CheckedItems
                 .Cast<Student>().ToList().Count}\n";
-        nova = checkedListBoxStudents.CheckedItems
+        nova = checkedListBox1.CheckedItems
             .Cast<Student>().ToList().Aggregate(
                 nova, (current, item) =>
                     current + string.Concat(
@@ -852,33 +852,29 @@ public partial class DisciplineAdd : Form
 
             // Print the class acronym
             e.Graphics.DrawString(
-                course.IdCourse.ToString("5"), font, Brushes.Black,
-                e.MarginBounds.Left, y);
+                course.IdCourse.ToString("N0"),
+                font, Brushes.Black, e.MarginBounds.Left, y);
             x = e.MarginBounds.Left + colWidths[0];
 
             //y += font.Height + 5;
             // Print the class name
-            e.Graphics.DrawString(
-                course.Name, font, Brushes.Black, x, y);
+            e.Graphics.DrawString(course.Name, font, Brushes.Black, x, y);
             x += colWidths[1];
 
             //y += font.Height + 10;
             // Print the start date
-            e.Graphics.DrawString(
-                course.WorkLoad.ToString("N"), font,
-                Brushes.Black, x, y);
+            e.Graphics.DrawString(course.WorkLoad.ToString("N"),
+                font, Brushes.Black, x, y);
             x += colWidths[2];
 
             // Print the end date
-            e.Graphics.DrawString(
-                course.Credits.ToString("N"), font,
-                Brushes.Black, x, y);
+            e.Graphics.DrawString(course.Credits.ToString("N"),
+                font, Brushes.Black, x, y);
             x += colWidths[3];
 
             // Print the start hour
-            e.Graphics.DrawString(
-                course.StudentsCount.ToString(), font,
-                Brushes.Black, x, y);
+            e.Graphics.DrawString(course.StudentsCount.ToString(),
+                font, Brushes.Black, x, y);
             x += colWidths[4];
 
             y += font.Height + 5;
@@ -886,7 +882,8 @@ public partial class DisciplineAdd : Form
 
         // Draw the bottom line of the header row
         e.Graphics.DrawLine(
-            Pens.Black, e.MarginBounds.Left, y + font.Height,
+            Pens.Black,
+            e.MarginBounds.Left, y + font.Height,
             e.MarginBounds.Right, y + font.Height);
 
 

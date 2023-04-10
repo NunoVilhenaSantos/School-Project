@@ -195,7 +195,6 @@ public partial class StudentDiscipline : Form
         // cycle to evaluate which disciplines are select and add it
         //
 
-       
 
         // Select courses from CheckedListBox control and create a list of courses
         var selectedCourses =
@@ -235,7 +234,7 @@ public partial class StudentDiscipline : Form
         }
         catch (Exception ex)
         {
-            Log.Error(ex, 
+            Log.Error(ex,
                 "Error unenrolling student from courses");
         }
 
@@ -269,10 +268,8 @@ public partial class StudentDiscipline : Form
             SchoolDatabase.GetCoursesForStudent(studentToView.IdStudent);
 
         if (studentCoursesForStudent == null)
-        {
             //checkedListBoxDisciplines.Invalidate();
             return;
-        }
 
         // Clear all checked items in the checkedListBoxCourses control
         foreach (int i in checkedListBoxDisciplines.CheckedIndices)
@@ -284,9 +281,7 @@ public partial class StudentDiscipline : Form
                      .Select(course =>
                          checkedListBoxDisciplines.Items.IndexOf(course))
                      .Where(index => index >= 0))
-        {
             checkedListBoxDisciplines.SetItemChecked(index, true);
-        }
 
         var studentEnrollments =
             Enrollments.ConsultEnrollment(-1, studentToView.IdStudent);
@@ -379,9 +374,9 @@ public partial class StudentDiscipline : Form
 
     private int _disciplinesCount;
     private int _studentsCount;
-    BindingSource _bSourceListStudents;
-    BindingSource _bindingSourceListCourses;
-    BindingSource _bSourceEnrollments;
+    private BindingSource _bSourceListStudents;
+    private BindingSource _bindingSourceListCourses;
+    private BindingSource _bSourceEnrollments;
 
     #endregion
 }

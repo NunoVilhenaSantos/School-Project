@@ -63,17 +63,6 @@ public class Enrollment : INotifyPropertyChanged
         }
     }
 
-    // public Student? Student
-    // {
-    //     get => _student;
-    //     set
-    //     {
-    //         if (Equals(value, _student)) return;
-    //         _student = value;
-    //         OnPropertyChanged();
-    //     }
-    // }
-
     public int CourseId
     {
         get => _courseId;
@@ -84,17 +73,6 @@ public class Enrollment : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-
-    // public Course? Course
-    // {
-    //     get => _course;
-    //     set
-    //     {
-    //         if (Equals(value, _course)) return;
-    //         _course = value;
-    //         OnPropertyChanged();
-    //     }
-    // }
 
     #endregion
 

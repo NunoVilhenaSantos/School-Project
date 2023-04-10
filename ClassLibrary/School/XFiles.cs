@@ -5,8 +5,6 @@ using ClassLibrary.Enrollments;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using ClassLibrary.Teachers;
-using Serilog;
-using Serilog.Core;
 
 namespace ClassLibrary.School;
 
@@ -160,7 +158,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new(SchoolClassesFile,
+            fileStream = new FileStream(SchoolClassesFile,
                 FileMode.Create, FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -178,7 +176,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(SchoolClassesFile, FileMode.Create);
+        fileStream = new FileStream(SchoolClassesFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -211,9 +209,7 @@ public static class XFiles
                         $"{schoolClass.Location};" +
                         $"{schoolClass.Type};" +
                         $"{schoolClass.Area}")
-        {
             streamWriter.WriteLine(line);
-        }
 
         streamWriter.Close();
 
@@ -233,7 +229,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new(TeachersFile, FileMode.Create,
+            fileStream = new FileStream(TeachersFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -251,7 +247,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(TeachersFile, FileMode.Create);
+        fileStream = new FileStream(TeachersFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -310,7 +306,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new(CoursesFile, FileMode.Create,
+            fileStream = new FileStream(CoursesFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -328,7 +324,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(CoursesFile, FileMode.Create);
+        fileStream = new FileStream(CoursesFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -372,7 +368,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new(EnrollmentsFile, FileMode.Create,
+            fileStream = new FileStream(EnrollmentsFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -390,7 +386,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(EnrollmentsFile, FileMode.Create);
+        fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -435,7 +431,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new(StudentsFile, FileMode.Create,
+            fileStream = new FileStream(StudentsFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -453,7 +449,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new(StudentsFile, FileMode.Create,
+        fileStream = new FileStream(StudentsFile, FileMode.Create,
             FileAccess.ReadWrite);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
@@ -899,7 +895,12 @@ public static class XFiles
         if (!int.TryParse(campos[2], out var studentId) ||
             !int.TryParse(campos[3], out var courseId)) return;
 
-        _ = decimal.TryParse(campos[1], out var grade);
+        decimal? grade;
+        if (!decimal.TryParse(campos[1], out var parsedGrade))
+            grade = null;
+        else
+            grade = parsedGrade;
+
 
         if (!Enrollments.Enrollments.StudentsDictionary
                 .TryGetValue(studentId, out var student) ||

@@ -89,7 +89,7 @@ public static class Enrollments
         {
             Log.Warning(
                 "Attempted to unenroll student {StudentId} " +
-                        "from course {CourseId}," +
+                "from course {CourseId}," +
                 " but no such enrollment exists",
                 idStudent, idCourse);
             return;

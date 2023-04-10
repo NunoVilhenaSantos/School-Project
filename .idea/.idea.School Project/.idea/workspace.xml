@@ -10,18 +10,44 @@
   <component name="ChangeListManager">
     <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClasses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClasses.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClassesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClassesFileHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Students/StudentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Students/StudentsFileHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/School Project.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/School Project.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/FormButtons1.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.designer.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/Debug/net7.0-windows/School Project.designer.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/School Project.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/School Project.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/WpfApp1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/WpfApp1.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1_MarkupCompile.i.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/Debug/net7.0-windows/WpfApp1_MarkupCompile.i.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/WpfApp1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/WpfApp1.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WpfApp1/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp1/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +126,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "XThreadsFramesViewSplitterKey": "0.33657858",
-    "com.google.cloudcode.ide_session_index": "20230410_0005",
+    "com.google.cloudcode.ide_session_index": "20230410_0007",
     "full.screen.before.presentation.mode": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -216,6 +242,7 @@
       <workItem from="1681003791818" duration="4445000" />
       <workItem from="1681038454927" duration="51529000" />
       <workItem from="1681123938896" duration="551000" />
+      <workItem from="1681124848824" duration="11071000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>
@@ -335,7 +362,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs</url>
-          <line>489</line>
+          <line>485</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\StudentsForms\StudentAdd.cs" initialLine="471" containingFunctionPresentation="method 'ButtonStudentDisciplinesAdding_Click'">
             <startOffsets>
               <option value="14447" />
@@ -351,10 +378,10 @@
           <line>529</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\CoursesForms\DisciplineAdd.cs" initialLine="490" containingFunctionPresentation="method 'UpdateSelectedCourse'">
             <startOffsets>
-              <option value="15509" />
+              <option value="15482" />
             </startOffsets>
             <endOffsets>
-              <option value="15547" />
+              <option value="15520" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="12" />
@@ -364,10 +391,10 @@
           <line>544</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\CoursesForms\DisciplineAdd.cs" initialLine="505" containingFunctionPresentation="method 'UpdateSelectedCourse'">
             <startOffsets>
-              <option value="16041" />
+              <option value="16014" />
             </startOffsets>
             <endOffsets>
-              <option value="16104" />
+              <option value="16077" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="13" />
@@ -377,10 +404,10 @@
           <line>541</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\CoursesForms\DisciplineAdd.cs" initialLine="505" containingFunctionPresentation="method 'UpdateSelectedCourse'">
             <startOffsets>
-              <option value="15989" />
+              <option value="15962" />
             </startOffsets>
             <endOffsets>
-              <option value="15990" />
+              <option value="15963" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="14" />
@@ -426,39 +453,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>910</line>
+          <line>911</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="901" containingFunctionPresentation="Method 'TryParseEnrollment'">
             <startOffsets>
-              <option value="29835" />
+              <option value="29994" />
             </startOffsets>
             <endOffsets>
-              <option value="29947" />
+              <option value="30106" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>572</line>
+          <line>568</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="577" containingFunctionPresentation="Method 'ReadFromFiles'">
             <startOffsets>
-              <option value="18887" />
+              <option value="18942" />
             </startOffsets>
             <endOffsets>
-              <option value="19004" />
+              <option value="19059" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>853</line>
+          <line>849</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="855" containingFunctionPresentation="Method 'ReadEnrollmentsInFile'">
             <startOffsets>
-              <option value="27952" />
+              <option value="28007" />
             </startOffsets>
             <endOffsets>
-              <option value="27985" />
+              <option value="28040" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
@@ -491,26 +518,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs</url>
-          <line>443</line>
+          <line>441</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\SchoolDatabase.cs" initialLine="270" containingFunctionPresentation="Method 'AssignCoursesToClass'">
             <startOffsets>
-              <option value="13158" />
+              <option value="13130" />
             </startOffsets>
             <endOffsets>
-              <option value="13225" />
+              <option value="13197" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs</url>
-          <line>535</line>
+          <line>533</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\SchoolDatabase.cs" initialLine="323" containingFunctionPresentation="Method 'AssignTeacherToCourse'">
             <startOffsets>
-              <option value="16011" />
+              <option value="15983" />
             </startOffsets>
             <endOffsets>
-              <option value="16042" />
+              <option value="16014" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="31" />
@@ -569,13 +596,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.cs</url>
-          <line>854</line>
+          <line>848</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\SchoolClassesForms\SchoolClassAdd.cs" initialLine="838" containingFunctionPresentation="Method 'CheckedListBoxCourses_SelectedIndexChanged'">
             <startOffsets>
-              <option value="28515" />
+              <option value="28455" />
             </startOffsets>
             <endOffsets>
-              <option value="28518" />
+              <option value="28458" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="41" />
