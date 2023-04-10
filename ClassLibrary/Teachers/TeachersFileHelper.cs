@@ -1,8 +1,12 @@
-﻿using System.Globalization;
+﻿using System;
+using System.IO;
 using System.Text;
+using System.Globalization;
 using ClassLibrary.School;
 using CsvHelper;
 using CsvHelper.Configuration;
+using Serilog;
+
 
 namespace ClassLibrary.Teachers;
 
@@ -21,56 +25,107 @@ public static class TeachersFileHelper
 
     #endregion
 
-
+    //
+    // public static void WriteTeachersToFile(
+    //     out bool success, out string myString)
+    // {
+    //     //
+    //     // constructor for the reading files
+    //     // with a try and catch
+    //     // and also returning the messages
+    //     //
+    //
+    //     FileStream fileStream;
+    //     try
+    //     {
+    //         fileStream =
+    //             new FileStream(TeachersFilePath, FileMode.Create,
+    //                 FileAccess.ReadWrite);
+    //         fileStream.Close();
+    //     }
+    //     catch (IOException ex)
+    //     {
+    //         myString = "Error accessing the file: " + ex.Source + " | " +
+    //                    ex.Message;
+    //         success = false;
+    //     }
+    //     catch (Exception e)
+    //     {
+    //         Console.WriteLine(e.Message);
+    //         myString = "Error accessing the file: " + e.Source + " | " +
+    //                    e.Message;
+    //         success = false;
+    //     }
+    //
+    //     var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+    //     {
+    //         Delimiter = ";"
+    //     };
+    //
+    //     fileStream =
+    //         new FileStream(TeachersFilePath, FileMode.Create,
+    //             FileAccess.ReadWrite);
+    //     var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
+    //     var csvWriter = new CsvWriter(streamWriter, csvConfig);
+    //
+    //     csvWriter.WriteRecords(Teachers.TeachersList);
+    //
+    //     fileStream.Close();
+    //
+    //     myString = "Operação realizada com sucesso";
+    //     success = true;
+    // }
+    
     public static void WriteTeachersToFile(
         out bool success, out string myString)
     {
-        //
-        // constructor for the reading files
-        // with a try and catch
-        // and also returning the messages
-        //
-
-        FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(TeachersFilePath, FileMode.Create,
-                    FileAccess.ReadWrite);
-            fileStream.Close();
+            using (var fileStream =
+                   new FileStream(TeachersFilePath,
+                       FileMode.Create, FileAccess.Write))
+            {
+                var csvConfig =
+                    new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    Delimiter = ";"
+                };
+
+                using (var streamWriter =
+                       new StreamWriter(fileStream, Encoding.UTF8))
+                using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+                {
+                    csvWriter.WriteRecords(Teachers.TeachersList);
+                }
+
+                myString = "Operação realizada com sucesso";
+                success = true;
+                Log.Information(
+                    "WriteTeachersToFile " +
+                    "completed successfully with message: " +
+                    "{myString}", myString);
+            }
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
+            Log.Error(ex, 
+                "Error accessing the file {FilePath}",
+                TeachersFilePath);
+            myString = "Error accessing the file: " +
+                       ex.Source + " | " + ex.Message;
             success = false;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
+            Log.Error(e, "Error writing to file {FilePath}", 
+                TeachersFilePath);
+            myString = "Error accessing the file: "
+                       + e.Source + " | " + e.Message;
             success = false;
         }
-
-        var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
-        {
-            Delimiter = ";"
-        };
-
-        fileStream =
-            new FileStream(TeachersFilePath, FileMode.Create,
-                FileAccess.ReadWrite);
-        var streamWriter = new StreamWriter(fileStream, Encoding.UTF8);
-        var csvWriter = new CsvWriter(streamWriter, csvConfig);
-
-        csvWriter.WriteRecords(Teachers.TeachersList);
-
-        fileStream.Close();
-
-        myString = "Operação realizada com sucesso";
-        success = true;
     }
+
+
 
     public static List<Teacher> ReadTeachersFromFile(
         out bool success, out string myString)

@@ -8,13 +8,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="mais feito e mais por fazer">
+    <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.metadata.v6.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/school project.projects.v6.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/InitialForms/InitialWinForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StatisticsForms/StudentDiscipline.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClassesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClassesFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Students/StudentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Students/StudentsFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +100,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "XThreadsFramesViewSplitterKey": "0.33657858",
-    "com.google.cloudcode.ide_session_index": "20230410_0003",
+    "com.google.cloudcode.ide_session_index": "20230410_0005",
     "full.screen.before.presentation.mode": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -207,7 +214,8 @@
       <workItem from="1680944204197" duration="12057000" />
       <workItem from="1680961603122" duration="33605000" />
       <workItem from="1681003791818" duration="4445000" />
-      <workItem from="1681038454927" duration="47538000" />
+      <workItem from="1681038454927" duration="51529000" />
+      <workItem from="1681123938896" duration="551000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>
@@ -418,39 +426,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>921</line>
+          <line>910</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="901" containingFunctionPresentation="Method 'TryParseEnrollment'">
             <startOffsets>
-              <option value="30225" />
+              <option value="29835" />
             </startOffsets>
             <endOffsets>
-              <option value="30337" />
+              <option value="29947" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>583</line>
+          <line>572</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="577" containingFunctionPresentation="Method 'ReadFromFiles'">
             <startOffsets>
-              <option value="19265" />
+              <option value="18887" />
             </startOffsets>
             <endOffsets>
-              <option value="19382" />
+              <option value="19004" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>864</line>
+          <line>853</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="855" containingFunctionPresentation="Method 'ReadEnrollmentsInFile'">
             <startOffsets>
-              <option value="28330" />
+              <option value="27952" />
             </startOffsets>
             <endOffsets>
-              <option value="28363" />
+              <option value="27985" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
@@ -521,40 +529,14 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClassLibrary/School/XFiles.cs</url>
-          <line>144</line>
-          <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFiles.cs" initialLine="139" containingFunctionPresentation="Method 'StoreInFiles'">
-            <startOffsets>
-              <option value="4488" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4579" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs</url>
-          <line>132</line>
-          <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFilesRelations.cs" initialLine="83" containingFunctionPresentation="Method 'SaveDictionariesToFile'">
-            <startOffsets>
-              <option value="4395" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4396" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs</url>
           <line>213</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFilesRelations.cs" initialLine="180" containingFunctionPresentation="Method 'LoadDictionariesFromFile'">
             <startOffsets>
-              <option value="7029" />
+              <option value="7055" />
             </startOffsets>
             <endOffsets>
-              <option value="7056" />
+              <option value="7082" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="37" />
@@ -564,10 +546,10 @@
           <line>231</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFilesRelations.cs" initialLine="198" containingFunctionPresentation="Method 'LoadDictionariesFromFile'">
             <startOffsets>
-              <option value="7602" />
+              <option value="7628" />
             </startOffsets>
             <endOffsets>
-              <option value="7628" />
+              <option value="7654" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="38" />
@@ -577,10 +559,10 @@
           <line>225</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\School\XFilesRelations.cs" initialLine="208" containingFunctionPresentation="Method 'LoadDictionariesFromFile'">
             <startOffsets>
-              <option value="7383" />
+              <option value="7409" />
             </startOffsets>
             <endOffsets>
-              <option value="7396" />
+              <option value="7422" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="40" />

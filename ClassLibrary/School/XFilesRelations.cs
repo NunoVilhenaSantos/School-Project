@@ -39,7 +39,7 @@ public class XFilesRelations
     private const string TeacherCourseFilePath =
         XFiles.FilesFolder + "TeacherCourse.csv";
 
-    private const string lineSeparator = ";";
+    //private const string lineSeparator = ";";
 
     #endregion
 
@@ -136,32 +136,32 @@ public class XFilesRelations
                 var kvp in
                 sortedCourseClasses) //SchoolDatabase.CourseClasses
                 writer.WriteLine(
-                    $"{kvp.Key}{lineSeparator}" +
-                    $"{string.Join(lineSeparator, kvp.Value)}");
+                    $"{kvp.Key}{XFiles.Delimiter}" +
+                    $"{string.Join(XFiles.Delimiter, kvp.Value)}");
 
             writer.WriteLine("CourseStudents:");
             foreach (
                 var kvp in
                 sortedCourseStudents) //SchoolDatabase.CourseStudents
                 writer.WriteLine(
-                    $"{kvp.Key}{lineSeparator}" +
-                    $"{string.Join(lineSeparator, kvp.Value)}");
+                    $"{kvp.Key}{XFiles.Delimiter}" +
+                    $"{string.Join(XFiles.Delimiter, kvp.Value)}");
 
             writer.WriteLine("CourseTeacher:");
             foreach (
                 var kvp in
                 sortedCourseTeacher) //SchoolDatabase.CourseTeacher
                 writer.WriteLine(
-                    $"{kvp.Key}{lineSeparator}" +
-                    $"{string.Join(lineSeparator, kvp.Value)}");
+                    $"{kvp.Key}{XFiles.Delimiter}" +
+                    $"{string.Join(XFiles.Delimiter, kvp.Value)}");
 
             writer.WriteLine("StudentClass:");
             foreach (
                 var kvp in
                 sortedStudentClass) //SchoolDatabase.StudentClass
                 writer.WriteLine(
-                    $"{kvp.Key}{lineSeparator}" +
-                    $"{string.Join(lineSeparator, kvp.Value)}");
+                    $"{kvp.Key}{XFiles.Delimiter}" +
+                    $"{string.Join(XFiles.Delimiter, kvp.Value)}");
 
             writer.Close();
         }

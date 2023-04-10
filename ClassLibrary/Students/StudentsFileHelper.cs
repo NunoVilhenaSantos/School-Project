@@ -3,6 +3,14 @@ using System.Text;
 using ClassLibrary.School;
 using CsvHelper;
 using CsvHelper.Configuration;
+using System;
+using System.IO;
+using System.Text;
+using System.Globalization;
+using ClassLibrary.School;
+using CsvHelper;
+using CsvHelper.Configuration;
+using Serilog;
 
 namespace ClassLibrary.Students;
 
@@ -21,30 +29,87 @@ public class StudentsFileHelper
     #endregion
 
 
-    public static void WriteStudentsToFile(
-        out bool Success, out string myString)
+    // public static void WriteStudentsToFile(
+    //     out bool Success, out string myString)
+    // {
+    //     try
+    //     {
+    //         using (var fileStream =
+    //                new FileStream(StudentsFilePath, FileMode.Create,
+    //                    FileAccess.Write
+    //                ))
+    //         {
+    //         }
+    //     }
+    //     catch (IOException ex)
+    //     {
+    //         myString = "Error accessing the file: " + ex.Source + " | " +
+    //                    ex.Message;
+    //         Success = false;
+    //     }
+    //     catch (Exception e)
+    //     {
+    //         Console.WriteLine(e.Message);
+    //         myString = "Error accessing the file: " + e.Source + " | " +
+    //                    e.Message;
+    //         Success = false;
+    //     }
+    //
+    //     var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+    //     {
+    //         Delimiter = ";"
+    //     };
+    //
+    //     using (var fileStream =
+    //            new FileStream(StudentsFilePath, FileMode.Create,
+    //                FileAccess.Write))
+    //     using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
+    //     using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+    //     {
+    //         csvWriter.WriteRecords(Students.StudentsList);
+    //
+    //         myString = "Operação realizada com sucesso";
+    //         Success = true;
+    //     }
+    // }
+
+
+    public static void WriteStudentsToFile(out bool Success,
+        out string myString)
     {
         try
         {
+            //Serilog.Log.Logger.Information("Creating file stream");
+            Serilog.Log.Logger.Information(
+                "Creating file stream");
             using (var fileStream =
-                   new FileStream(StudentsFilePath, FileMode.Create,
-                       FileAccess.Write
-                   ))
+                   new FileStream(StudentsFilePath,
+                       FileMode.Create, FileAccess.Write))
             {
+                Serilog.Log.Logger.Information(
+                    "File stream created successfully");
             }
         }
         catch (IOException ex)
         {
+            Serilog.Log.Logger.Error(
+                ex,
+                "Error accessing file: {Message}",
+                ex.Message);
             myString = "Error accessing the file: " + ex.Source + " | " +
                        ex.Message;
             Success = false;
+            return;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Serilog.Log.Logger.Error(e,
+                "Unexpected error accessing file: {Message}",
+                e.Message);
             myString = "Error accessing the file: " + e.Source + " | " +
                        e.Message;
             Success = false;
+            return;
         }
 
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -52,18 +117,39 @@ public class StudentsFileHelper
             Delimiter = ";"
         };
 
-        using (var fileStream =
-               new FileStream(StudentsFilePath, FileMode.Create,
-                   FileAccess.Write))
-        using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
-        using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+        try
         {
-            csvWriter.WriteRecords(Students.StudentsList);
+            Serilog.Log.Logger.Information(
+                "Creating file writer");
+            using (var fileStream = new FileStream(StudentsFilePath,
+                       FileMode.Create, FileAccess.Write))
+            using (var streamWriter =
+                   new StreamWriter(fileStream, Encoding.UTF8))
+            using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+            {
+                Serilog.Log.Logger.Information(
+                    "Writing records to file");
+                csvWriter.WriteRecords(Students.StudentsList);
+            }
 
             myString = "Operação realizada com sucesso";
             Success = true;
+            Serilog.Log.Logger.Information(
+                "Records written successfully");
+        }
+        catch (Exception ex)
+        {
+            Serilog.Log.Logger.Error(
+                ex,
+                "Unexpected error writing records to file:" +
+                " {Message}",
+                ex.Message);
+            myString = "Error writing records to file: " + ex.Source + " | " +
+                       ex.Message;
+            Success = false;
         }
     }
+
 
     public static List<Student> ReadStudentsFromFile(
         out bool Success, out string myString)

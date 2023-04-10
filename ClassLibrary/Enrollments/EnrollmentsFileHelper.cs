@@ -1,8 +1,12 @@
-﻿using System.Globalization;
+﻿using System;
+using System.IO;
 using System.Text;
+using System.Globalization;
 using ClassLibrary.School;
 using CsvHelper;
 using CsvHelper.Configuration;
+using Serilog;
+
 
 namespace ClassLibrary.Enrollments;
 
@@ -21,29 +25,81 @@ public class EnrollmentsFileHelper
     #endregion
 
 
+    // public static void WriteEnrollmentsToFile(
+    //     out bool Success, out string myString)
+    // {
+    //     try
+    //     {
+    //         using (var fileStream =
+    //                new FileStream(EnrollmentsFilePath, FileMode.Create,
+    //                    FileAccess.Write))
+    //         {
+    //         }
+    //     }
+    //     catch (IOException ex)
+    //     {
+    //         myString = "Error accessing the file: " + ex.Source + " | " +
+    //                    ex.Message;
+    //         Success = false;
+    //     }
+    //     catch (Exception e)
+    //     {
+    //         Console.WriteLine(e.Message);
+    //         myString = "Error accessing the file: " + e.Source + " | " +
+    //                    e.Message;
+    //         Success = false;
+    //     }
+    //
+    //     var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+    //     {
+    //         Delimiter = ";"
+    //     };
+    //
+    //     using (var fileStream =
+    //            new FileStream(EnrollmentsFilePath, FileMode.Create,
+    //                FileAccess.Write))
+    //     using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
+    //     using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+    //     {
+    //         csvWriter.WriteRecords(Enrollments.ListEnrollments);
+    //
+    //         myString = "Operação realizada com sucesso";
+    //         Success = true;
+    //     }
+    // }
+
     public static void WriteEnrollmentsToFile(
-        out bool Success, out string myString)
+        out bool success, out string message)
     {
         try
         {
-            using (var fileStream =
-                   new FileStream(EnrollmentsFilePath, FileMode.Create,
-                       FileAccess.Write))
+            using (var fileStream = new FileStream(EnrollmentsFilePath,
+                       FileMode.Create, FileAccess.Write))
             {
+                // Log info message
+                Log.Information(
+                    "Enrollments file opened for writing.");
             }
         }
         catch (IOException ex)
         {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
-            Success = false;
+            // Log error message
+            Log.Error(ex,
+                "Error accessing the file: {ErrorMessage}",
+                ex.Message);
+            message = $"Error accessing the file: {ex.Message}";
+            success = false;
+            return;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
-            Success = false;
+            // Log error message
+            Log.Error(e, 
+                "Error accessing the file: {ErrorMessage}",
+                e.Message);
+            message = $"Error accessing the file: {e.Message}";
+            success = false;
+            return;
         }
 
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -51,18 +107,44 @@ public class EnrollmentsFileHelper
             Delimiter = ";"
         };
 
-        using (var fileStream =
-               new FileStream(EnrollmentsFilePath, FileMode.Create,
-                   FileAccess.Write))
-        using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
-        using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+        try
         {
-            csvWriter.WriteRecords(Enrollments.ListEnrollments);
+            using (var fileStream =
+                   new FileStream(EnrollmentsFilePath,
+                       FileMode.Create, FileAccess.Write))
+            using (var streamWriter =
+                   new StreamWriter(fileStream, Encoding.UTF8))
+            using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+            {
+                csvWriter.WriteRecords(Enrollments.ListEnrollments);
+            }
 
-            myString = "Operação realizada com sucesso";
-            Success = true;
+            // Log info message
+            Log.Information(
+                "Enrollments successfully written to file.");
+            message = "Operação realizada com sucesso";
+            success = true;
+        }
+        catch (IOException ex)
+        {
+            // Log error message
+            Log.Error(ex, 
+                "Error writing to the file: {ErrorMessage}",
+                ex.Message);
+            message = $"Error writing to the file: {ex.Message}";
+            success = false;
+        }
+        catch (Exception e)
+        {
+            // Log error message
+            Log.Error(e, 
+                "Error writing to the file: {ErrorMessage}",
+                e.Message);
+            message = $"Error writing to the file: {e.Message}";
+            success = false;
         }
     }
+
 
     public static List<Enrollment> ReadEnrollmentsFromFile(
         out bool Success, out string myString)

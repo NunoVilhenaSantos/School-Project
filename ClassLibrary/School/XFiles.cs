@@ -25,7 +25,7 @@ public static class XFiles
     // public static Logger Logger =
     //     new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
-    private const string Delimiter = ";";
+    internal const string Delimiter = ";";
 
     // private static readonly string ProjectFolder =
     //     Directory.GetCurrentDirectory();
@@ -53,7 +53,7 @@ public static class XFiles
 
     public const string SchoolProjectLoggerFile =
         FilesFolder + "SchoolProjectLoggerFile.txt";
-    
+
     #endregion
 
 
@@ -160,9 +160,8 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream =
-                new FileStream(SchoolClassesFile, FileMode.Create,
-                    FileAccess.ReadWrite);
+            fileStream = new(SchoolClassesFile,
+                FileMode.Create, FileAccess.ReadWrite);
             fileStream.Close();
         }
         catch (IOException ex)
@@ -190,36 +189,29 @@ public static class XFiles
         // Create a list with the public properties
         // to build the header line
         var propertyNames =
-            string.Join(";",
+            string.Join(Delimiter,
                 properties.Select(p => p.Name.Normalize()));
 
         // Write the header line
         streamWriter.WriteLine(propertyNames);
 
-        foreach (var schoolClass in SchoolClasses.SchoolClasses
-                     .SchoolClassesList)
+        foreach (var line
+                 in
+                 from schoolClass
+                     in SchoolClasses.SchoolClasses.SchoolClassesList
+                 let line =
+                     string.Empty
+                 select $"{schoolClass.IdSchoolClass};" +
+                        $"{schoolClass.ClassAcronym};" +
+                        $"{schoolClass.ClassName};" +
+                        $"{schoolClass.StartDate};" +
+                        $"{schoolClass.EndDate};" +
+                        $"{schoolClass.StartHour};" +
+                        $"{schoolClass.EndHour};" +
+                        $"{schoolClass.Location};" +
+                        $"{schoolClass.Type};" +
+                        $"{schoolClass.Area}")
         {
-            var line = string.Empty;
-            line =
-                $"{schoolClass.IdSchoolClass};" +
-                $"{schoolClass.ClassAcronym};" +
-                $"{schoolClass.ClassName};" +
-                $"{schoolClass.StartDate};" +
-                $"{schoolClass.EndDate};" +
-                $"{schoolClass.StartHour};" +
-                $"{schoolClass.EndHour};" +
-                $"{schoolClass.Location};" +
-                $"{schoolClass.Type};" +
-                $"{schoolClass.Area}";
-
-            // if (schoolClass.CoursesList != null)
-            // {
-            //     var coursesLine =
-            //         schoolClass.CoursesList.Select(c =>
-            //             $"{c.IdCourse}");
-            //     line += $";{string.Join(";", coursesLine)}";
-            // }
-
             streamWriter.WriteLine(line);
         }
 
@@ -241,7 +233,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(TeachersFile, FileMode.Create,
+            fileStream = new(TeachersFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -259,7 +251,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new FileStream(TeachersFile, FileMode.Create);
+        fileStream = new(TeachersFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -270,7 +262,7 @@ public static class XFiles
         // Create a list with the public properties
         // to build the header line
         var propertyNames =
-            string.Join(";",
+            string.Join(Delimiter,
                 properties.Select(p => p.Name.Normalize()));
 
         // Write the header line
@@ -298,7 +290,6 @@ public static class XFiles
                         $"{teacher.Photo};" +
                         $"{teacher.CoursesCount};" +
                         $"{teacher.TotalWorkHoursLoad};")
-
             streamWriter.WriteLine(line);
 
 
@@ -319,7 +310,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(CoursesFile, FileMode.Create,
+            fileStream = new(CoursesFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -337,7 +328,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new FileStream(CoursesFile, FileMode.Create);
+        fileStream = new(CoursesFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -348,7 +339,7 @@ public static class XFiles
         // Create a list with the public properties
         // to build the header line
         var propertyNames =
-            string.Join(";", properties
+            string.Join(Delimiter, properties
                 .Select(p => p.Name.Normalize()));
 
         // Write the header line
@@ -381,7 +372,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(EnrollmentsFile, FileMode.Create,
+            fileStream = new(EnrollmentsFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -399,7 +390,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new FileStream(EnrollmentsFile, FileMode.Create);
+        fileStream = new(EnrollmentsFile, FileMode.Create);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
         // Read the public properties to build the header line
@@ -419,12 +410,10 @@ public static class XFiles
         foreach (var line in
                  Enrollments.Enrollments.ListEnrollments
                      .Select(e =>
-                             $"{e.IdEnrollment};" +
-                             $"{e.Grade};" +
-                             $"{e.StudentId};" +
-                             //$"{e.Student};" +
-                             $"{e.CourseId};"
-                         //$"{e.Course}"
+                         $"{e.IdEnrollment};" +
+                         $"{e.Grade};" +
+                         $"{e.StudentId};" +
+                         $"{e.CourseId};"
                      ))
             streamWriter.WriteLine(line);
 
@@ -446,7 +435,7 @@ public static class XFiles
         FileStream fileStream;
         try
         {
-            fileStream = new FileStream(StudentsFile, FileMode.Create,
+            fileStream = new(StudentsFile, FileMode.Create,
                 FileAccess.ReadWrite);
             fileStream.Close();
         }
@@ -464,7 +453,7 @@ public static class XFiles
             return false;
         }
 
-        fileStream = new FileStream(StudentsFile, FileMode.Create,
+        fileStream = new(StudentsFile, FileMode.Create,
             FileAccess.ReadWrite);
         StreamWriter streamWriter = new(fileStream, Encoding.UTF8);
 
@@ -476,7 +465,7 @@ public static class XFiles
         // Create a list with the public properties
         // to build the header line
         var propertyNames =
-            string.Join(";",
+            string.Join(Delimiter,
                 properties.Select(p => p.Name.Normalize()));
 
         // Write the header line
@@ -878,7 +867,7 @@ public static class XFiles
             // validating the line, if has at least 3 fields,
             // less than 3 will continue reading the file
             // if (campos.Length < 3) continue;
-            
+
             if (campos[0].Equals("id", StringComparison.OrdinalIgnoreCase))
                 continue;
 

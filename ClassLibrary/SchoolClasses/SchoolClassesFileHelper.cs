@@ -1,8 +1,11 @@
-﻿using System.Globalization;
+﻿using System;
+using System.IO;
 using System.Text;
+using System.Globalization;
 using ClassLibrary.School;
 using CsvHelper;
 using CsvHelper.Configuration;
+using Serilog;
 
 namespace ClassLibrary.SchoolClasses;
 
@@ -21,49 +24,94 @@ public class SchoolClassesFileHelper
     #endregion
 
 
+    // public static void WriteSchoolClassesToFile(
+    //     out bool Success, out string myString)
+    //
+    // {
+    //     try
+    //     {
+    //         using (var fileStream = new FileStream(
+    //                    SchoolClassesFilePath, FileMode.Create,
+    //                    FileAccess.Write))
+    //         {
+    //         }
+    //     }
+    //     catch (IOException ex)
+    //     {
+    //         myString = "Error accessing the file: " + ex.Source + " | " +
+    //                    ex.Message;
+    //         Success = false;
+    //     }
+    //     catch (Exception e)
+    //     {
+    //         Console.WriteLine(e.Message);
+    //         myString = "Error accessing the file: " + e.Source + " | " +
+    //                    e.Message;
+    //         Success = false;
+    //     }
+    //
+    //     var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+    //     {
+    //         Delimiter = ";"
+    //     };
+    //
+    //     using (var fileStream =
+    //            new FileStream(SchoolClassesFilePath, FileMode.Create,
+    //                FileAccess.Write))
+    //     using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
+    //     using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+    //     {
+    //         csvWriter.WriteRecords(SchoolClasses.SchoolClassesList);
+    //
+    //         myString = "Operação realizada com sucesso";
+    //         Success = true;
+    //     }
+    // }
+
+
     public static void WriteSchoolClassesToFile(
         out bool Success, out string myString)
-
     {
         try
         {
-            using (var fileStream = new FileStream(
-                       SchoolClassesFilePath, FileMode.Create,
-                       FileAccess.Write))
+            using (var fileStream = new FileStream(SchoolClassesFilePath,
+                       FileMode.Create, FileAccess.Write))
             {
+                var csvConfig =
+                    new CsvConfiguration(CultureInfo.InvariantCulture)
+                    {
+                        Delimiter = ";"
+                    };
+
+                using (var streamWriter =
+                       new StreamWriter(fileStream, Encoding.UTF8))
+                using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
+                {
+                    csvWriter.WriteRecords(SchoolClasses.SchoolClassesList);
+                }
             }
-        }
-        catch (IOException ex)
-        {
-            myString = "Error accessing the file: " + ex.Source + " | " +
-                       ex.Message;
-            Success = false;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            myString = "Error accessing the file: " + e.Source + " | " +
-                       e.Message;
-            Success = false;
-        }
-
-        var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
-        {
-            Delimiter = ";"
-        };
-
-        using (var fileStream =
-               new FileStream(SchoolClassesFilePath, FileMode.Create,
-                   FileAccess.Write))
-        using (var streamWriter = new StreamWriter(fileStream, Encoding.UTF8))
-        using (var csvWriter = new CsvWriter(streamWriter, csvConfig))
-        {
-            csvWriter.WriteRecords(SchoolClasses.SchoolClassesList);
 
             myString = "Operação realizada com sucesso";
             Success = true;
+            Log.Information(
+                "WriteSchoolClassesToFile " +
+                "completed successfully with message: " +
+                "{myString}", myString);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex,
+                "An error occurred while " +
+                "writing school classes to file");
+
+            myString = "Error accessing the file: " + ex.Message;
+            Success = false;
+            Log.Error(
+                "WriteSchoolClassesToFile failed with message: " +
+                "{myString}", myString);
         }
     }
+
 
     public static List<SchoolClass> ReadSchoolClassesFromFile(
         out bool Success, out string myString)
