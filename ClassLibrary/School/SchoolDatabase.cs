@@ -325,6 +325,90 @@ public class SchoolDatabase
         }
     }
 
+    //
+    // public static void UnenrollStudentsFromCourse(
+    //     List<Student> studentsToRemove, int idCourse)
+    // {
+    //     foreach (var student in studentsToRemove)
+    //     {
+    //         if (!Students.ContainsKey(student.IdStudent))
+    //         {
+    //             Log.Error(
+    //                 "Invalid student ID: {StudentId}",
+    //                 student.IdStudent);
+    //             continue;
+    //         }
+    //
+    //         if (!Courses.ContainsKey(idCourse))
+    //         {
+    //             Log.Error(
+    //                 "Invalid course ID: {CourseId}",
+    //                 idCourse);
+    //             continue;
+    //         }
+    //
+    //         if (!CourseStudents.TryGetValue(idStudent, out var courses) ||
+    //             !courses.Contains(student.IdCourse))
+    //         {
+    //             Log.Warning(
+    //                 "Student {StudentId} " +
+    //                 "is not enrolled in course {CourseId}",
+    //                 idStudent, student.IdCourse);
+    //             continue;
+    //         }
+    //
+    //         Enrollments.Enrollments.UnenrollStudent(idStudent, student.IdCourse);
+    //
+    //         CourseStudents[idStudent].Remove(student.IdCourse);
+    //
+    //         if (CourseStudents[idStudent].Count == 0)
+    //             CourseStudents.Remove(idStudent);
+    //     }
+    // }
+
+
+    public static void UnenrollStudentsFromCourse(
+        List<Student> students, int courseId)
+    {
+        foreach (var student in students)
+        {
+            if (!Students.ContainsKey(student.IdStudent))
+            {
+                Log.Error(
+                    "Invalid student ID: {StudentId}",
+                    student.IdStudent);
+                continue;
+            }
+
+            if (!Courses.ContainsKey(courseId))
+            {
+                Log.Error(
+                    "Invalid course ID: {CourseId}",
+                    courseId);
+                continue;
+            }
+
+            if (!CourseStudents.TryGetValue(courseId,
+                    out var enrolledStudents) ||
+                !enrolledStudents.Contains(student.IdStudent))
+            {
+                Log.Warning(
+                    "Student {StudentId} is not " +
+                    "enrolled in course {CourseId}",
+                    student.IdStudent, courseId);
+                continue;
+            }
+
+            Enrollments.Enrollments.UnenrollStudent(
+                student.IdStudent, courseId);
+
+            CourseStudents[courseId].Remove(student.IdStudent);
+
+            if (CourseStudents[courseId].Count == 0)
+                CourseStudents.Remove(courseId);
+        }
+    }
+
 
     public static void EnrollStudentInCourses(
         List<Course> listOfCourses, int idStudent)
@@ -585,16 +669,10 @@ public class SchoolDatabase
         {
             var courses = new List<Course>();
             foreach (var courseId in studentCourses)
-            {
                 if (Courses.TryGetValue(courseId, out var course))
-                {
                     courses.Add(course);
-                }
                 else
-                {
                     Log.Information("Invalid course id {courseId}.", courseId);
-                }
-            }
 
             return courses;
         }
@@ -615,15 +693,43 @@ public class SchoolDatabase
     }
 
 
+    // public static List<Student> GetStudentsForCourse(int idCourse)
+    // {
+    //     throw new NotImplementedException();
+    // }
+    //
+    // // Get all students enrolled in a course
+    // public static List<Student> GetStudentsInCourse(int courseId)
+    // {
+    //     if (!Courses.ContainsKey(courseId))
+    //         throw new ArgumentException("Invalid course id");
+    //
+    //     return CourseStudents[courseId]
+    //         .Select(x => Students[x])
+    //         .ToList();
+    // }
+
+
     // Get all students enrolled in a course
-    public List<Student> GetStudentsInCourse(int courseId)
+    public static List<Student> GetStudentsInCourse(int courseId)
     {
         if (!Courses.ContainsKey(courseId))
-            throw new ArgumentException("Invalid course id");
+        {
+            Log.Information(
+                "Invalid course id: {CourseId}", courseId);
+            return new List<Student>();
+        }
 
-        return CourseStudents[courseId]
-            .Select(x => Students[x])
-            .ToList();
+        if (CourseStudents.TryGetValue(courseId, out var student))
+            return student
+                .Select(x => Students[x])
+                .ToList();
+
+        Log.Information(
+            "No students enrolled in course: {CourseId}",
+            courseId);
+
+        return new List<Student>();
     }
 
 

@@ -27,7 +27,7 @@ public class XFilesRelations
     private static string COURSE_TEACHERS_FILENAME =
         XFiles.FilesFolder + "course_teacher.csv";
 
-    private static string DICTIONARIES_FILENAME =
+    private static readonly string DICTIONARIES_FILENAME =
         XFiles.FilesFolder + "dictionaries.csv";
 
     private static string SchoolClassCourseFilePath =

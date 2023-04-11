@@ -18,7 +18,8 @@ public static class TeachersFileHelper
 
     #region Properties
 
-    private static string TeachersFilePath = XFiles.FilesFolder + "teachers.csv";
+    private static readonly string TeachersFilePath =
+        XFiles.FilesFolder + "teachers.csv";
 
     #endregion
 

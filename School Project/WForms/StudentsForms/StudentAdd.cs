@@ -1,11 +1,11 @@
 ﻿using System.Drawing.Printing;
 using System.Reflection;
-using System.Windows.Forms;
 using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
 using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
+using Serilog;
 using static System.Windows.Forms.Keys;
 
 namespace School_Project.WForms.StudentsForms;
@@ -184,7 +184,9 @@ public partial class StudentAdd : Form
         // * must be add before the dataGridView 
         // *
         checkedListBox1.DataSource = _bSourceCourses;
-
+        //_bSourceCourses.ResetBindings(false);
+        checkedListBox1.Invalidate();
+        checkedListBox1.Refresh();
 
         // *
         // * 3rd 
@@ -218,8 +220,8 @@ public partial class StudentAdd : Form
             typeof(Student).GetProperties(BindingFlags.Public |
                                           BindingFlags.Instance);
 
-        List<string> propertyNames = new();
-        foreach (var property in properties) propertyNames.Add(property.Name);
+        var propertyNames =
+            properties.Select(property => property.Name).ToList();
 
         comboBoxSearchOptions.DataSource = propertyNames;
         comboBoxSearchOptions.DisplayMember = "ToString()";
@@ -288,16 +290,14 @@ public partial class StudentAdd : Form
             textBoxName.Select();
         }
 
-        if (
-            string.IsNullOrEmpty(textBoxLastName.Text) ||
-            string.IsNullOrWhiteSpace(textBoxLastName.Text))
-        {
-            MessageBox.Show("Insira o apelido do estudante",
-                "Apelido do Estudante",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            valid = false;
-            labelLastName.Select();
-        }
+        if (!string.IsNullOrEmpty(textBoxLastName.Text) &&
+            !string.IsNullOrWhiteSpace(textBoxLastName.Text)) return valid;
+
+        MessageBox.Show("Insira o apelido do estudante",
+            "Apelido do Estudante",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        valid = false;
+        labelLastName.Select();
 
         return valid;
     }
@@ -409,87 +409,6 @@ public partial class StudentAdd : Form
     }
 
 
-    //private void ButtonStudentDisciplinesAdding_Click(
-    //    object sender, EventArgs e)
-    //{
-    //    if (Students.StudentsList == null)
-    //    {
-    //        MessageBox.Show(
-    //            "Ainda não tem um único estudante inserido",
-    //            "Adicionar disciplina",
-    //            MessageBoxButtons.OK, MessageBoxIcon.Warning
-    //        );
-    //        return;
-    //    }
-
-    //    var rowText = string.Empty;
-    //    var rc = -1;
-    //    // by rows
-    //    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-    //        //for find the row index number
-    //        rc = dataGridView1.CurrentCell.RowIndex;
-
-    //    // by cells
-    //    if (dataGridView1.CurrentCell != null)
-    //        //for find the row index number
-    //        rc = dataGridView1.CurrentCell.RowIndex;
-
-    //    if (rc != -1)
-    //    {
-    //        MessageBox.Show(
-    //            "Tem de selecionar para poder Adicionar ou Remover ",
-    //            "Adicionar ou Remover",
-    //            MessageBoxButtons.OK, MessageBoxIcon.Warning
-    //        );
-    //        return;
-    //    }
-
-    //    if (checkedListBoxDisciplines.CheckedItems.Count == 0)
-    //    {
-    //        MessageBox.Show(
-    //            "Tem de selecionar para poder Adicionar ou Remover ",
-    //            "Adicionar ou Remover",
-    //            MessageBoxButtons.OK, MessageBoxIcon.Warning
-    //        );
-    //        return;
-    //    }
-
-    //    //
-    //    // open the edit form with the studentForValidation editing
-    //    //
-    //    MessageBox.Show("Temos disciplina(s), vamos lá");
-
-    //    //
-    //    // cycle to evaluate which disciplines are select and add it
-    //    //
-
-    //    //
-    //    // temp variable of the class discipline to
-    //    // retain the disciplines for that studentForValidation
-    //    //
-    //    // List<Enrollment> enrollments = new();
-    //    //
-    //    // foreach (var c in Courses.CoursesList)
-    //    // foreach (var t in checkedListBoxDisciplines.CheckedItems)
-    //    //     if (t is Course v && c.IdCourse == v.IdCourse)
-    //    //         enrollments.Add(
-    //    //             new Enrollment
-    //    //             {
-    //    //                 //Grade = 0,
-    //    //                 //StudentId = ,
-    //    //                 //Student = 0,
-    //    //                 CourseId = c.IdCourse,
-    //    //                 //Course = c
-    //    //             }
-    //    //         );
-
-
-    //    UpdateLists();
-
-    //    Console.WriteLine("Testes de Debug");
-    //}
-
-
     private void ButtonAddEnrollments_Click(object sender, EventArgs e)
     {
         //
@@ -552,37 +471,69 @@ public partial class StudentAdd : Form
         //
         // cycle to evaluate which student(s) are select and add it
         //
-        SchoolDatabase.EnrollStudentInCourses(
+        // SchoolDatabase.EnrollStudentInCourses(
+        //     checkedListBox1.CheckedItems
+        //         .Cast<Course>().ToList(),
+        //     studentToAddCourses.IdStudent);
+
+        // Select courses from CheckedListBox control and create a list of courses
+        var selectedCourses =
             checkedListBox1.CheckedItems
-                .Cast<Course>().ToList(),
-            studentToAddCourses.IdStudent);
+                .Cast<Course>()
+                .ToList();
 
-        //
-        // debugging
-        //
-        var nova =
-            "Disciplinas selecionadas " +
-            $"{checkedListBox1.CheckedItems
-                .Cast<Course>().ToList().Count}\n";
+        // Get all courses that the student is currently enrolled in
+        var enrolledCourses =
+            SchoolDatabase.GetCoursesForStudent(studentToAddCourses.IdStudent);
 
-        nova = checkedListBox1.CheckedItems
-            .Cast<Course>()
-            .ToList()
-            .Aggregate(nova, (current, item) =>
-                current + string.Concat(
-                    values:
-                    $"{item.IdCourse} - " +
-                    $"{item.Name} | " +
-                    $"{studentToAddCourses.IdStudent} - " +
-                    $"{studentToAddCourses.Name}" +
-                    $"{studentToAddCourses.LastName}\n")
-            );
-        MessageBox.Show(nova);
+        // Identify courses to be removed
+        var coursesToRemove =
+            enrolledCourses.Except(selectedCourses).ToList();
+
+        // Identify courses to add
+        var coursesToAdd =
+            selectedCourses.Except(enrolledCourses).ToList();
+
+        // Display message boxes with counts
+        MessageBox.Show(
+            $"Selected courses: {selectedCourses.Count}\n" +
+            $"Enrolled courses: {enrolledCourses.Count}\n" +
+            $"Courses to remove: {coursesToRemove.Count}\n" +
+            $"Courses to add: {coursesToAdd.Count}");
+
+        // Enroll the student in the selected courses
+        try
+        {
+            SchoolDatabase.EnrollStudentInCourses(selectedCourses,
+                studentToAddCourses.IdStudent);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error enrolling student in courses");
+        }
+
+        // Unenroll the student from courses to be removed
+        try
+        {
+            SchoolDatabase.UnenrollStudentFromCourses(coursesToRemove,
+                studentToAddCourses.IdStudent);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex,
+                "Error unenrolling student from courses");
+        }
+
+        MessageBox.Show("Student enrollments updated successfully.");
 
         SchoolClasses.ToObtainValuesForCalculatedFields();
         Courses.GetStudentsCount();
-
         UpdateLists();
+
+        var linhaAtual = dataGridView1.CurrentCell.RowIndex;
+        _previousRowIndex = linhaAtual + 1;
+        UpdateSelectedData();
+        _previousRowIndex = linhaAtual;
 
         Console.WriteLine("Testes de Debug");
     }

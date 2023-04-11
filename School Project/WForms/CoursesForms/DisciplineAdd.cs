@@ -6,6 +6,7 @@ using ClassLibrary.Enrollments;
 using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
+using Serilog;
 
 namespace School_Project.WForms.CoursesForms;
 
@@ -672,38 +673,88 @@ public partial class DisciplineAdd : Form
         //
         // cycle to evaluate which student(s) are select and add it
         //
-        SchoolDatabase.EnrollStudentsInCourse(
+        // Select students from CheckedListBox and create a list of them
+        // var selectedStudents =
+        //     checkedListBox1.CheckedItems
+        //         .OfType<Student>()
+        //         .ToList();
+        //
+        // // Get all students currently enrolled in the course
+        // var enrolledStudents =
+        //     SchoolDatabase.GetStudentsInCourse(courseToAddStudents.IdCourse);
+        //
+        // // Identify students to be removed
+        // var studentsToRemove =
+        //     enrolledStudents.Except(selectedStudents).ToList();
+        //
+        // // Display message boxes with counts
+        // MessageBox.Show($"Selected students: {selectedStudents.Count}");
+        // MessageBox.Show($"Enrolled students: {enrolledStudents.Count}");
+        // MessageBox.Show($"Students to remove: {studentsToRemove.Count}");
+
+        // Select students from CheckedListBox control and create a list of students
+        var selectedStudents =
             checkedListBox1.CheckedItems
-                .Cast<Student>().ToList(),
-            courseToAddStudents.IdCourse);
+                .Cast<Student>()
+                .ToList();
 
-        //
-        // debugging
-        //
-        var nova =
-            "Disciplinas selecionadas " +
-            $"{checkedListBox1.CheckedItems
-                .Cast<Student>().ToList().Count}\n";
+        // Get all students that are currently enrolled in the course
+        var enrolledStudents =
+            SchoolDatabase.GetStudentsInCourse(courseToAddStudents.IdCourse);
 
-        nova = checkedListBox1.CheckedItems
-            .Cast<Student>()
-            .ToList()
-            .Aggregate(nova, (current, item) =>
-                current + string.Concat(
-                    values:
-                    $"{item.IdStudent} - " +
-                    $"{item.Name} | " +
-                    $"{courseToAddStudents.IdCourse} - " +
-                    $"{courseToAddStudents.Name}\n")
-            );
-        MessageBox.Show(nova);
+        // Identify students to be removed
+        var studentsToRemove =
+            enrolledStudents.Except(selectedStudents).ToList();
 
+        // Identify students to add
+        var studentsToAdd =
+            selectedStudents.Except(enrolledStudents).ToList();
+
+        // Display message boxes with counts
+        MessageBox.Show(
+            $"Selected students: {selectedStudents.Count}\n" +
+            $"Enrolled students: {enrolledStudents.Count}\n" +
+            $"Students to remove: {studentsToRemove.Count}\n" +
+            $"Students to add: {studentsToAdd.Count}");
+
+
+        // Enroll the selected students in the course
+        try
+        {
+            SchoolDatabase.EnrollStudentsInCourse(selectedStudents,
+                courseToAddStudents.IdCourse);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error enrolling students in course");
+        }
+
+        // Unenroll students to be removed from the course
+        try
+        {
+            SchoolDatabase.UnenrollStudentsFromCourse(
+                studentsToRemove, courseToAddStudents.IdCourse);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex,
+                "Error unenrolling students from course");
+        }
+
+        MessageBox.Show("Student enrollments updated successfully.");
+
+        // Update calculations and UI
         SchoolClasses.ToObtainValuesForCalculatedFields();
         Courses.GetStudentsCount();
-
         UpdateLists();
 
-        Console.WriteLine("Testes de Debug");
+        // Store previous row index and update UI
+        var currentRowIndex = dataGridView1.CurrentCell.RowIndex;
+        _previousRowIndex = currentRowIndex + 1;
+        UpdateSelectedData();
+        _previousRowIndex = currentRowIndex;
+
+        Console.WriteLine("Debug tests");
     }
 
     private void ButtonPrint_Click(object sender, EventArgs e)

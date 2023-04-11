@@ -42,12 +42,12 @@ public partial class SchoolClassEdit : Form
         numericUpDownTotalNumberEnrolledStudents.Minimum = 0;
         numericUpDownTotalNumberEnrolledStudents.Maximum = int.MaxValue;
         numericUpDownTotalNumberEnrolledStudents.Value =
-            (decimal) (_schoolClassToEdit.StudentsCount ?? 0);
+            _schoolClassToEdit.StudentsCount ?? 0;
 
         numericUpDownWorkingHours.Minimum = 0;
         numericUpDownWorkingHours.Maximum = int.MaxValue;
         numericUpDownWorkingHours.Value =
-            (decimal) (_schoolClassToEdit.WorkHourLoad ?? 0);
+            _schoolClassToEdit.WorkHourLoad ?? 0;
 
         numericUpDownTotalCourses.Minimum = 0;
         numericUpDownTotalCourses.Maximum = int.MaxValue;

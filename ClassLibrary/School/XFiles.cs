@@ -32,16 +32,20 @@ public static class XFiles
 
     internal static string FilesFolder = ProjectFolder + "\\XFiles\\";
 
-    private static string CoursesFile = FilesFolder + "CoursesFile.csv";
+    private static readonly string
+        CoursesFile = FilesFolder + "CoursesFile.csv";
 
-    private static string SchoolClassesFile =
+    private static readonly string SchoolClassesFile =
         FilesFolder + "SchoolClassesFile.csv";
 
-    private static string StudentsFile = FilesFolder + "StudentsFile.csv";
+    private static readonly string StudentsFile =
+        FilesFolder + "StudentsFile.csv";
 
-    private static string EnrollmentsFile = FilesFolder + "EnrollmentsFile.csv";
+    private static readonly string EnrollmentsFile =
+        FilesFolder + "EnrollmentsFile.csv";
 
-    private static string TeachersFile = FilesFolder + "TeachersFile.csv";
+    private static readonly string TeachersFile =
+        FilesFolder + "TeachersFile.csv";
 
     private static string SchoolDictionariesFilePath =
         FilesFolder + "SchoolDictionaries.csv";
@@ -1139,15 +1143,15 @@ public static class XFiles
 
             _ = int.TryParse(campos[0], out var id);
             _ = bool.TryParse(campos[8], out var active);
-            
+
             _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
             if (dateOfBirth == default)
                 dateOfBirth = DateOnly.Parse("01/01/1900");
-            
+
             _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
             if (expirationDateIn == default)
                 expirationDateIn = DateOnly.Parse("01/01/1900");
-            
+
             _ = int.TryParse(campos[17], out var coursesCount);
             _ = int.TryParse(campos[18], out var totalWorkHours);
 

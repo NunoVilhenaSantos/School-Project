@@ -16,7 +16,8 @@ public class CoursesFileHelper
 
     #region Properties
 
-    private static string CoursesFilePath = XFiles.FilesFolder + "courses.csv";
+    private static readonly string CoursesFilePath =
+        XFiles.FilesFolder + "courses.csv";
 
     #endregion
 
