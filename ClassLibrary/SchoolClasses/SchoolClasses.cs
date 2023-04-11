@@ -53,14 +53,19 @@ public static class SchoolClasses
     public static string DeleteSchoolClass(int id)
     {
         var schoolClass =
-            SchoolClassesList.FirstOrDefault(a => a.IdSchoolClass == id);
+            SchoolClassesList
+                .FirstOrDefault(a => a.IdSchoolClass == id);
 
-        if (schoolClass == null)
-            return $"A turma {id} não existe!\n{GetFullName(id)}";
+        if (schoolClass == null) return $"A turma {id} não existe!\n";
 
+        if (SchoolClassesList == null)
+            return $"Não foi possível remover a turma " +
+                   $"{id} pois a lista de turmas é nula.";
+
+        var fullInfo = GetFullInfo(id);
         SchoolClassesList.Remove(schoolClass);
-        return $"A turma {SchoolClassesList[id].ClassName}" +
-               $" com o {id} foi apagada!\n{GetFullInfo(id)}";
+        return $"A turma {schoolClass.ClassName} com " +
+               $"o {id} foi apagada!\n{fullInfo}";
     }
 
 
@@ -374,11 +379,11 @@ public static class SchoolClasses
             var coursesList =
                 SchoolDatabase
                     .GetCoursesForSchoolClass(schoolClass.IdSchoolClass);
-            
+
             if (coursesList == null || !coursesList.Any()) continue;
 
             // use a set to ensure uniqueness of student IDs
-            var students = new HashSet<string>(); 
+            var students = new HashSet<string>();
             var coursesCount = 0;
             var workHourLoad = 0;
             decimal classTotal = 0;
@@ -416,7 +421,6 @@ public static class SchoolClasses
                 //     .Select(e => e.StudentId));
                 students.UnionWith(courseEnrollments
                     .Select(e => e.StudentId.ToString()));
-
             }
 
             schoolClass.CoursesCount = coursesCount;

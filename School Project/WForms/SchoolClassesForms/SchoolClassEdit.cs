@@ -39,12 +39,20 @@ public partial class SchoolClassEdit : Form
         textBoxSchoolClassAcronym.Text = _schoolClassToEdit.ClassAcronym;
         textBoxSchoolClassName.Text = _schoolClassToEdit.ClassName;
 
+        numericUpDownTotalNumberEnrolledStudents.Minimum = 0;
+        numericUpDownTotalNumberEnrolledStudents.Maximum = int.MaxValue;
         numericUpDownTotalNumberEnrolledStudents.Value =
-            (decimal)_schoolClassToEdit.StudentsCount;
+            (decimal) (_schoolClassToEdit.StudentsCount ?? 0);
+
+        numericUpDownWorkingHours.Minimum = 0;
+        numericUpDownWorkingHours.Maximum = int.MaxValue;
         numericUpDownWorkingHours.Value =
-            (decimal)_schoolClassToEdit.WorkHourLoad;
+            (decimal) (_schoolClassToEdit.WorkHourLoad ?? 0);
+
+        numericUpDownTotalCourses.Minimum = 0;
+        numericUpDownTotalCourses.Maximum = int.MaxValue;
         numericUpDownTotalCourses.Value =
-            (decimal)_schoolClassToEdit.CoursesCount;
+            _schoolClassToEdit.CoursesCount.GetValueOrDefault();
 
         dateTimePickerBeginCourse.Value =
             _schoolClassToEdit.StartDate.ToDateTime(
@@ -141,9 +149,9 @@ public partial class SchoolClassEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not { Modifiers: Keys.Control, KeyCode: Keys.V }) return;
+        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
 
-        ((TextBox)sender).Paste();
+        ((TextBox) sender).Paste();
         Console.WriteLine("Testes de Debug");
     }
 
@@ -281,7 +289,7 @@ public partial class SchoolClassEdit : Form
         //Set the checked items in the checkedListBoxCourses control
         for (var i = 0; i < checkedListBoxCourses.Items.Count; i++)
         {
-            var course = (Course)checkedListBoxCourses.Items[i];
+            var course = (Course) checkedListBoxCourses.Items[i];
             checkedListBoxCourses.SetItemChecked(i,
                 selectedSchoolClassCourses.Contains(course));
         }

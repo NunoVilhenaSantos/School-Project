@@ -581,15 +581,25 @@ public class SchoolDatabase
     // Get all courses a student is enrolled in
     public static List<Course> GetCoursesForStudent(int studentId)
     {
-        if (CourseStudents
-            .TryGetValue(studentId, out var studentCourses))
-            return studentCourses
-                .Select(x => Courses[x])
-                .ToList();
+        if (CourseStudents.TryGetValue(studentId, out var studentCourses))
+        {
+            var courses = new List<Course>();
+            foreach (var courseId in studentCourses)
+            {
+                if (Courses.TryGetValue(courseId, out var course))
+                {
+                    courses.Add(course);
+                }
+                else
+                {
+                    Log.Information("Invalid course id {courseId}.", courseId);
+                }
+            }
 
-        Log.Information(
-            "Invalid student id {studentId}.",
-            studentId);
+            return courses;
+        }
+
+        Log.Information("Invalid student id {studentId}.", studentId);
 
         return new List<Course>();
     }
