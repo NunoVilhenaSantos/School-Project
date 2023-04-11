@@ -60,8 +60,8 @@ public partial class StudentEdit : Form
 
         _studentPhoto = _studentToEdit.Photo;
         pictureBoxPhotoDisplay.ImageLocation = _studentToEdit.Photo;
-        
-        numericUpDownTotalWorkLoad.Value=_studentToEdit.GetTotalWorkHourLoad();
+
+        numericUpDownTotalWorkLoad.Value = _studentToEdit.GetTotalWorkHourLoad();
     }
 
 
@@ -125,7 +125,7 @@ public partial class StudentEdit : Form
 
 
     private void TextBoxStudentPhone_KeyPress(
-        object sender,        KeyPressEventArgs e)
+        object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
         if (char.IsDigit(e.KeyChar) || (Keys)e.KeyChar == Keys.Back) return;

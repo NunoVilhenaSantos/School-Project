@@ -8,27 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/XFiles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/XFilesRelations.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Teachers/TeachersFileHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/EnrollmentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/EnrollmentsFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/StudentsFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/TeachersFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/TeachersFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/courses.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/courses.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/enrollments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/enrollments.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/schoolclasses.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/schoolclasses.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/students.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/students.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/teachers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/teachers.csv" afterDir="false" />
-    </list>
+    <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -209,7 +189,7 @@
       <workItem from="1681003791818" duration="4445000" />
       <workItem from="1681038454927" duration="51529000" />
       <workItem from="1681123938896" duration="551000" />
-      <workItem from="1681124848824" duration="18158000" />
+      <workItem from="1681124848824" duration="19036000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>

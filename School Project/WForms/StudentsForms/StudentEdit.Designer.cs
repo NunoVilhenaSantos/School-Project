@@ -222,7 +222,7 @@
             numericUpDownTotalWorkLoad.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownTotalWorkLoad.Enabled = false;
             numericUpDownTotalWorkLoad.Location = new Point(395, 17);
-            numericUpDownTotalWorkLoad.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            numericUpDownTotalWorkLoad.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             numericUpDownTotalWorkLoad.Name = "numericUpDownTotalWorkLoad";
             numericUpDownTotalWorkLoad.Size = new Size(172, 23);
             numericUpDownTotalWorkLoad.TabIndex = 3;
@@ -582,7 +582,6 @@
             groupBox1.Size = new Size(1121, 489);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
             // 
             // StudentEdit
             // 
