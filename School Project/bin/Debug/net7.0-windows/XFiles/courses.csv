@@ -1,74 +1,73 @@
 ﻿IdCourse;Name;WorkLoad;Credits;StudentsCount
-1;Língua Portuguesa;50;50;21
-2;Língua Inglesa;50;50;22
-3;Matemática;50;50;20
-4;Empresa Estrutura E Funções;25;25;9
-5;Arquitetura De Hardware;25;25;17
-6;Sistemas De Informação - Fundamentos;25;25;18
-7;Sistemas De Informação - Conceção;25;25;17
-8;Engenharia De Software;25;25;18
-9;Bases De Dados - Conceitos;25;25;18
-10;Bases De Dados - Sistemas De Gestão;25;25;0
-11;Criação De Estrutura De Base De Dados Em SQL;25;25;15
-12;Programação Em SQL;25;25;16
-13;Programação Algoritmos;25;25;19
-14;Programação De Computadores - Estruturada;50;50;15
-15;Programação De Computadores - Orientada A Objetos;50;50;17
-16;Programação Para A WEB - Cliente (Client-Side);50;50;26
-17;WEB - Hipermédia E Acessibilidades;25;25;19
-18;WEB - Ferramentas Multimédia;25;25;16
-19;Programação Para A WEB - Servidor (Server-Side);50;50;16
-20;Redes De Comunicação De Dados;25;25;0
-21;Segurança Em Sistemas Informáticos;25;25;16
-22;Sistemas Operativos Open Source;25;25;17
-23;Sistema Operativo Servidor (Plataforma Proprietária);25;25;19
-24;Integração De Sistemas De Informação - Conceitos;25;25;18
-25;Integração De Sistemas De Informação - Tecnologias E Níveis De Integração;50;50;18
-26;Integração De Sistemas De Informação - Ferramentas;25;25;17
-27;Acesso Móvel A Sistemas De Informação;50;50;18
-28;Planeamento E Gestão De Projetos De Sistemas De Informação;25;25;18
-29;Projeto De Tecnologias E Programação De Sistemas De Informação;50;50;17
+1;Língua Portuguesa;50;50;23
+2;Língua Inglesa;50;50;23
+3;Matemática;50;50;23
+4;Empresa Estrutura E Funções;25;25;23
+5;Arquitetura De Hardware;25;25;23
+6;Sistemas De Informação - Fundamentos;25;25;23
+7;Sistemas De Informação - Conceção;25;25;23
+8;Engenharia De Software;25;25;23
+9;Bases De Dados - Conceitos;25;25;23
+10;Bases De Dados - Sistemas De Gestão;25;25;23
+11;Criação De Estrutura De Base De Dados Em SQL;25;25;23
+12;Programação Em SQL;25;25;23
+13;Programação Algoritmos;25;25;23
+14;Programação De Computadores - Estruturada;50;50;23
+15;Programação De Computadores - Orientada A Objetos;50;50;23
+16;Programação Para A WEB - Cliente (Client-Side);50;50;23
+17;WEB - Hipermédia E Acessibilidades;25;25;23
+18;WEB - Ferramentas Multimédia;25;25;23
+19;Programação Para A WEB - Servidor (Server-Side);50;50;23
+20;Redes De Comunicação De Dados;25;25;23
+21;Segurança Em Sistemas Informáticos;25;25;23
+22;Sistemas Operativos Open Source;25;25;23
+23;Sistema Operativo Servidor (Plataforma Proprietária);25;25;23
+24;Integração De Sistemas De Informação - Conceitos;25;25;23
+25;Integração De Sistemas De Informação - Tecnologias E Níveis De Integração;50;50;0
+26;Integração De Sistemas De Informação - Ferramentas;25;25;0
+27;Acesso Móvel A Sistemas De Informação;50;50;0
+28;Planeamento E Gestão De Projetos De Sistemas De Informação;25;25;0
+29;Projeto De Tecnologias E Programação De Sistemas De Informação;50;50;0
 30;Formação Prática Em Contexto De Trabalho;400;400;0
-31;Teste-1;30;30;15
-32;Teste-1;30;30;17
-33;Teste-1;30;30;18
-34;Teste-1;30;30;17
-35;Teste-7;70;70;17
-36;Teste-5;300;300;17
-37;Teste-5;300;300;17
-38;Hello;600;600;20
-39;Olé;501;501;16
+31;Teste-1;30;30;0
+32;Teste-1;30;30;0
+33;Teste-1;30;30;0
+34;Teste-1;30;30;0
+35;Teste-7;70;70;0
+36;Teste-5;300;300;0
+37;Teste-5;300;300;0
+38;Hello;600;600;0
+39;Olé;501;501;0
 40;Disciplina-2;100;100;0
-41;Disciplina -2;150;150;17
-42;Disciplina-3;200;200;18
-43;Disciplina -3;250;250;18
-44;Disciplina-4;300;300;18
-45;Disciplina -4;350;350;18
-46;Disciplina-5;400;400;17
-47;Disciplina -5;450;450;18
-48;Disciplina-6;500;500;18
-49;Disciplina -6;550;550;18
+41;Disciplina -2;150;150;0
+42;Disciplina-3;200;200;0
+43;Disciplina -3;250;250;0
+44;Disciplina-4;300;300;0
+45;Disciplina -4;350;350;0
+46;Disciplina-5;400;400;0
+47;Disciplina -5;450;450;0
+48;Disciplina-6;500;500;0
+49;Disciplina -6;550;550;0
 50;Disciplina-7;600;600;0
-51;Disciplina -7;650;650;19
-52;Disciplina-8;700;700;18
-53;Disciplina -8;750;750;19
-54;Disciplina-9;800;800;19
-55;Disciplina -9;850;850;19
-56;Disciplina-10;900;900;19
-57;Disciplina -10;950;950;18
-58;Disciplina-11;1000;1000;19
-59;Disciplina -11;1050;1050;19
+51;Disciplina -7;650;650;0
+52;Disciplina-8;700;700;0
+53;Disciplina -8;750;750;0
+54;Disciplina-9;800;800;0
+55;Disciplina -9;850;850;0
+56;Disciplina-10;900;900;0
+57;Disciplina -10;950;950;0
+58;Disciplina-11;1000;1000;0
+59;Disciplina -11;1050;1050;0
 60;Disciplina-12;1100;1100;0
-61;Disciplina -12;1150;1150;19
-62;Disciplina-13;1200;1200;19
-63;Disciplina -13;1250;1250;19
-64;Disciplina-14;1300;1300;18
-65;Disciplina -14;1350;1350;19
-66;Disciplina-15;1400;1400;19
-67;Disciplina -15;1450;1450;19
-68;Disciplina-16;1500;1500;18
-69;Disciplina -16;1550;1550;19
+61;Disciplina -12;1150;1150;0
+62;Disciplina-13;1200;1200;0
+63;Disciplina -13;1250;1250;0
+64;Disciplina-14;1300;1300;0
+65;Disciplina -14;1350;1350;0
+67;Disciplina -15;1450;1450;0
+68;Disciplina-16;1500;1500;0
+69;Disciplina -16;1550;1550;0
 70;Disciplina-17;1600;1600;0
-71;Disciplina -17;1650;1650;18
-72;Disciplina-18;1700;1700;19
-73;Olá-hoje;100;0;19
+71;Disciplina -17;1650;1650;0
+72;Disciplina-18;1700;1700;0
+73;Olá-hoje;100;0;0
