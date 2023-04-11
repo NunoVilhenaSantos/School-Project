@@ -16,7 +16,7 @@ public class CoursesFileHelper
 
     #region Properties
 
-    private const string CoursesFilePath = XFiles.FilesFolder + "courses.csv";
+    private static string CoursesFilePath = XFiles.FilesFolder + "courses.csv";
 
     #endregion
 

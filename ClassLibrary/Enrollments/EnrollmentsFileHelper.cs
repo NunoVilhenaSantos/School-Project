@@ -16,7 +16,7 @@ public class EnrollmentsFileHelper
 
     #region Properties
 
-    private const string EnrollmentsFilePath =
+    private static string EnrollmentsFilePath =
         XFiles.FilesFolder + "enrollments.csv";
 
     #endregion

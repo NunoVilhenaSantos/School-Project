@@ -1,7 +1,10 @@
 ﻿using System.Drawing.Printing;
 using System.Reflection;
+using System.Windows.Forms;
 using ClassLibrary.Courses;
 using ClassLibrary.Enrollments;
+using ClassLibrary.School;
+using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 using static System.Windows.Forms.Keys;
 
@@ -88,9 +91,9 @@ public partial class StudentAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not { Modifiers: Keys.Control, KeyCode: V }) return;
+        if (e is not {Modifiers: Keys.Control, KeyCode: V}) return;
 
-        ((TextBox)sender).Paste();
+        ((TextBox) sender).Paste();
 
         Console.WriteLine("Testes de Debug");
     }
@@ -101,7 +104,7 @@ public partial class StudentAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Students.AddStudent(
-            (int)numericUpDownStudentID.Value,
+            (int) numericUpDownStudentID.Value,
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
@@ -180,7 +183,7 @@ public partial class StudentAdd : Form
         // * checkedListBox
         // * must be add before the dataGridView 
         // *
-        checkedListBoxDisciplines.DataSource = _bSourceCourses;
+        checkedListBox1.DataSource = _bSourceCourses;
 
 
         // *
@@ -207,7 +210,7 @@ public partial class StudentAdd : Form
         // in the comboBoxSearchOptions,
         // you can use reflection to get a list
         // of the property names and set the DataSource
-        // and DisplayMember properties of the combobox accordingly.
+        // and DisplayMember properties of the combo-box accordingly.
         // Here's an example code snippet to achieve this:
 
         _bSourceSearchOptions.DataSource = typeof(Student);
@@ -373,7 +376,7 @@ public partial class StudentAdd : Form
         }
 
         if (!int.IsPositive(rc)) return;
-        var studentToEdit = (Student)_bSourceStudents.Current;
+        var studentToEdit = (Student) _bSourceStudents.Current;
 
         StudentEdit winFormStudentEdit = new(studentToEdit);
         winFormStudentEdit.ShowDialog();
@@ -386,11 +389,11 @@ public partial class StudentAdd : Form
             char.IsLetter(e.KeyChar) || // validating if it's a letter
             char.IsSeparator(e.KeyChar) || // validating if it's a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if it's a whitespace
-            e.KeyChar is (char)Back or '.' or '\'' or '-'
-        // validating if it's a backspace
-        // validating if it's a dot
-        // validating if it's an apostrophe
-        // validating if it's a separator
+            e.KeyChar is (char) Back or '.' or '\'' or '-'
+            // validating if it's a backspace
+            // validating if it's a dot
+            // validating if it's an apostrophe
+            // validating if it's a separator
         )
             return;
         e.Handled = true;
@@ -401,37 +404,126 @@ public partial class StudentAdd : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Back) return;
         e.Handled = true;
     }
 
 
-    private void ButtonStudentDisciplinesAdding_Click(
-        object sender, EventArgs e)
+    //private void ButtonStudentDisciplinesAdding_Click(
+    //    object sender, EventArgs e)
+    //{
+    //    if (Students.StudentsList == null)
+    //    {
+    //        MessageBox.Show(
+    //            "Ainda não tem um único estudante inserido",
+    //            "Adicionar disciplina",
+    //            MessageBoxButtons.OK, MessageBoxIcon.Warning
+    //        );
+    //        return;
+    //    }
+
+    //    var rowText = string.Empty;
+    //    var rc = -1;
+    //    // by rows
+    //    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+    //        //for find the row index number
+    //        rc = dataGridView1.CurrentCell.RowIndex;
+
+    //    // by cells
+    //    if (dataGridView1.CurrentCell != null)
+    //        //for find the row index number
+    //        rc = dataGridView1.CurrentCell.RowIndex;
+
+    //    if (rc != -1)
+    //    {
+    //        MessageBox.Show(
+    //            "Tem de selecionar para poder Adicionar ou Remover ",
+    //            "Adicionar ou Remover",
+    //            MessageBoxButtons.OK, MessageBoxIcon.Warning
+    //        );
+    //        return;
+    //    }
+
+    //    if (checkedListBoxDisciplines.CheckedItems.Count == 0)
+    //    {
+    //        MessageBox.Show(
+    //            "Tem de selecionar para poder Adicionar ou Remover ",
+    //            "Adicionar ou Remover",
+    //            MessageBoxButtons.OK, MessageBoxIcon.Warning
+    //        );
+    //        return;
+    //    }
+
+    //    //
+    //    // open the edit form with the studentForValidation editing
+    //    //
+    //    MessageBox.Show("Temos disciplina(s), vamos lá");
+
+    //    //
+    //    // cycle to evaluate which disciplines are select and add it
+    //    //
+
+    //    //
+    //    // temp variable of the class discipline to
+    //    // retain the disciplines for that studentForValidation
+    //    //
+    //    // List<Enrollment> enrollments = new();
+    //    //
+    //    // foreach (var c in Courses.CoursesList)
+    //    // foreach (var t in checkedListBoxDisciplines.CheckedItems)
+    //    //     if (t is Course v && c.IdCourse == v.IdCourse)
+    //    //         enrollments.Add(
+    //    //             new Enrollment
+    //    //             {
+    //    //                 //Grade = 0,
+    //    //                 //StudentId = ,
+    //    //                 //Student = 0,
+    //    //                 CourseId = c.IdCourse,
+    //    //                 //Course = c
+    //    //             }
+    //    //         );
+
+
+    //    UpdateLists();
+
+    //    Console.WriteLine("Testes de Debug");
+    //}
+
+
+    private void ButtonAddEnrollments_Click(object sender, EventArgs e)
     {
-        if (Students.StudentsList == null)
+        //
+        //
+        // cast the selected object to be displayed in the dialog box
+        // check what was selected, row or cell.
+        // 
+        //
+        var courseToEditByRow = dataGridView1.SelectedRows;
+        var courseToEditByCell = dataGridView1.SelectedCells;
+        var courseToEdit = -1;
+
+        if (courseToEditByRow.Count > 0 &&
+            courseToEditByRow != null)
+        {
+            courseToEdit = courseToEditByRow[0].Index;
+        }
+        else if (courseToEditByCell.Count > 0 &&
+                 courseToEditByCell != null)
+        {
+            courseToEdit = courseToEditByCell[0].RowIndex;
+        }
+        else
         {
             MessageBox.Show(
-                "Ainda não tem um único estudante inserido",
-                "Adicionar disciplina",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning
+                "Ainda não tem uma disciplina criada " +
+                "por isso não pode adicionar estudante(s)",
+                "Adicionar ou Remover",
+                MessageBoxButtons.OK, MessageBoxIcon.Error
             );
             return;
         }
 
-        var rowText = string.Empty;
-        var rc = -1;
-        // by rows
-        foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            //for find the row index number
-            rc = dataGridView1.CurrentCell.RowIndex;
-
-        // by cells
-        if (dataGridView1.CurrentCell != null)
-            //for find the row index number
-            rc = dataGridView1.CurrentCell.RowIndex;
-
-        if (rc != -1)
+        if (courseToEdit == -1)
         {
             MessageBox.Show(
                 "Tem de selecionar para poder Adicionar ou Remover ",
@@ -441,7 +533,7 @@ public partial class StudentAdd : Form
             return;
         }
 
-        if (checkedListBoxDisciplines.CheckedItems.Count == 0)
+        if (checkedListBox1.CheckedItems.Count == 0)
         {
             MessageBox.Show(
                 "Tem de selecionar para poder Adicionar ou Remover ",
@@ -454,32 +546,41 @@ public partial class StudentAdd : Form
         //
         // open the edit form with the studentForValidation editing
         //
-        MessageBox.Show("Temos disciplina(s), vamos lá");
+        MessageBox.Show("Temos disciplina(s) para adicionar, vamos lá.");
+        var studentToAddCourses = (Student) _bSourceStudents.Current;
 
         //
-        // cycle to evaluate which disciplines are select and add it
+        // cycle to evaluate which student(s) are select and add it
         //
+        SchoolDatabase.EnrollStudentInCourses(
+            checkedListBox1.CheckedItems
+                .Cast<Course>().ToList(),
+            studentToAddCourses.IdStudent);
 
         //
-        // temp variable of the class discipline to
-        // retain the disciplines for that studentForValidation
+        // debugging
         //
-        // List<Enrollment> enrollments = new();
-        //
-        // foreach (var c in Courses.CoursesList)
-        // foreach (var t in checkedListBoxDisciplines.CheckedItems)
-        //     if (t is Course v && c.IdCourse == v.IdCourse)
-        //         enrollments.Add(
-        //             new Enrollment
-        //             {
-        //                 //Grade = 0,
-        //                 //StudentId = ,
-        //                 //Student = 0,
-        //                 CourseId = c.IdCourse,
-        //                 //Course = c
-        //             }
-        //         );
+        var nova =
+            "Disciplinas selecionadas " +
+            $"{checkedListBox1.CheckedItems
+                .Cast<Course>().ToList().Count}\n";
 
+        nova = checkedListBox1.CheckedItems
+            .Cast<Course>()
+            .ToList()
+            .Aggregate(nova, (current, item) =>
+                current + string.Concat(
+                    values:
+                    $"{item.IdCourse} - " +
+                    $"{item.Name} | " +
+                    $"{studentToAddCourses.IdStudent} - " +
+                    $"{studentToAddCourses.Name}" +
+                    $"{studentToAddCourses.LastName}\n")
+            );
+        MessageBox.Show(nova);
+
+        SchoolClasses.ToObtainValuesForCalculatedFields();
+        Courses.GetStudentsCount();
 
         UpdateLists();
 
@@ -524,7 +625,7 @@ public partial class StudentAdd : Form
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var current = (Student)_bSourceStudents.Current;
+        var current = (Student) _bSourceStudents.Current;
 
         // Get the students for the selected course from the data source
         var selectedCoursesEnrollmentsStudents =
@@ -546,15 +647,15 @@ public partial class StudentAdd : Form
 
         if (selectedCourseEnrollments == null)
         {
-            checkedListBoxDisciplines.Invalidate();
+            checkedListBox1.Invalidate();
             return;
         }
 
         // Set the checked items in the checkedListBoxStudents control
-        for (var i = 0; i < checkedListBoxDisciplines.Items.Count; i++)
+        for (var i = 0; i < checkedListBox1.Items.Count; i++)
         {
-            var course = (Course)checkedListBoxDisciplines.Items[i];
-            checkedListBoxDisciplines
+            var course = (Course) checkedListBox1.Items[i];
+            checkedListBox1
                 .SetItemChecked(i,
                     selectedCoursesEnrollmentsStudents
                         .Contains(course.IdCourse));
@@ -598,7 +699,7 @@ public partial class StudentAdd : Form
         if (studentToViewEnrollment.Any())
             foreach (var enrollment in studentToViewEnrollment)
                 // Subtract 1 from the Courses list
-                checkedListBoxDisciplines.SetItemChecked(
+                checkedListBox1.SetItemChecked(
                     enrollment.CourseId - 1, true);
 
         // update the numericUpDownLabel value

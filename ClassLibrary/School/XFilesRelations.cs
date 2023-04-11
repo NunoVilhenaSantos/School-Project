@@ -11,32 +11,32 @@ public class XFilesRelations
 
     #region Constants
 
-    //  const string COURSES_FILENAME = XFiles.FilesFolder +"courses.csv";
-    //  const string STUDENTS_FILENAME = XFiles.FilesFolder +"students.csv";
-    //  const string CLASSES_FILENAME =XFiles.FilesFolder +"classes.csv";
+    //  static string COURSES_FILENAME = XFiles.FilesFolder +"courses.csv";
+    //  static string STUDENTS_FILENAME = XFiles.FilesFolder +"students.csv";
+    //  static string CLASSES_FILENAME =XFiles.FilesFolder +"classes.csv";
 
-    private const string COURSE_CLASSES_FILENAME =
+    private static string COURSE_CLASSES_FILENAME =
         XFiles.FilesFolder + "course_classes.csv";
 
-    private const string COURSE_STUDENTS_FILENAME =
+    private static string COURSE_STUDENTS_FILENAME =
         XFiles.FilesFolder + "course_students.csv";
 
-    private const string STUDENTS_CLASSES_FILENAME =
+    private static string STUDENTS_CLASSES_FILENAME =
         XFiles.FilesFolder + "students_classes.csv";
 
-    private const string COURSE_TEACHERS_FILENAME =
+    private static string COURSE_TEACHERS_FILENAME =
         XFiles.FilesFolder + "course_teacher.csv";
 
-    private const string DICTIONARIES_FILENAME =
+    private static string DICTIONARIES_FILENAME =
         XFiles.FilesFolder + "dictionaries.csv";
 
-    private const string SchoolClassCourseFilePath =
+    private static string SchoolClassCourseFilePath =
         XFiles.FilesFolder + "SchoolClassCourse.csv";
 
-    private const string StudentCourseFilePath =
+    private static string StudentCourseFilePath =
         XFiles.FilesFolder + "StudentCourse.csv";
 
-    private const string TeacherCourseFilePath =
+    private static string TeacherCourseFilePath =
         XFiles.FilesFolder + "TeacherCourse.csv";
 
     //private const string lineSeparator = ";";

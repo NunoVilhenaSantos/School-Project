@@ -25,31 +25,31 @@ public static class XFiles
 
     internal const string Delimiter = ";";
 
-    // private static readonly string ProjectFolder =
-    //     Directory.GetCurrentDirectory();
-    private const string ProjectFolder =
-        "C:\\Users\\nunov\\Downloads\\Projeto\\";
+    private static readonly string ProjectFolder =
+        Directory.GetCurrentDirectory();
+    //private static string ProjectFolder =
+    //    "C:\\Users\\nunov\\Downloads\\Projeto\\";
 
-    internal const string FilesFolder = ProjectFolder + "\\XFiles\\";
+    internal static string FilesFolder = ProjectFolder + "\\XFiles\\";
 
-    private const string CoursesFile = FilesFolder + "CoursesFile.csv";
+    private static string CoursesFile = FilesFolder + "CoursesFile.csv";
 
-    private const string SchoolClassesFile =
+    private static string SchoolClassesFile =
         FilesFolder + "SchoolClassesFile.csv";
 
-    private const string StudentsFile = FilesFolder + "StudentsFile.csv";
+    private static string StudentsFile = FilesFolder + "StudentsFile.csv";
 
-    private const string EnrollmentsFile = FilesFolder + "EnrollmentsFile.csv";
+    private static string EnrollmentsFile = FilesFolder + "EnrollmentsFile.csv";
 
-    private const string TeachersFile = FilesFolder + "TeachersFile.csv";
+    private static string TeachersFile = FilesFolder + "TeachersFile.csv";
 
-    private const string SchoolDictionariesFilePath =
+    private static string SchoolDictionariesFilePath =
         FilesFolder + "SchoolDictionaries.csv";
 
-    private const string SchoolDictionariesExtensoCsv =
+    private static string SchoolDictionariesExtensoCsv =
         FilesFolder + "SchoolDictionariesExtenso.csv";
 
-    public const string SchoolProjectLoggerFile =
+    public static string SchoolProjectLoggerFile =
         FilesFolder + "SchoolProjectLoggerFile.txt";
 
     #endregion
@@ -756,11 +756,20 @@ public static class XFiles
 
             _ = int.TryParse(campos[0], out var id);
             _ = bool.TryParse(campos[8], out var active);
+
             _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+            if (dateOfBirth == default)
+                dateOfBirth = DateOnly.Parse("01/01/1900");
+
             _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+            if (expirationDateIn == default)
+                expirationDateIn = DateOnly.Parse("01/01/1900");
+
             _ = int.TryParse(campos[17], out var courseCount);
             _ = int.TryParse(campos[18], out var totalWorkHours);
             _ = DateOnly.TryParse(campos[19], out var enrollmentDate);
+            if (enrollmentDate == default)
+                enrollmentDate = DateOnly.Parse("01/01/1900");
 
             Students.Students.AddStudent(
                 id,
@@ -1130,8 +1139,15 @@ public static class XFiles
 
             _ = int.TryParse(campos[0], out var id);
             _ = bool.TryParse(campos[8], out var active);
+            
             _ = DateOnly.TryParse(campos[10], out var dateOfBirth);
+            if (dateOfBirth == default)
+                dateOfBirth = DateOnly.Parse("01/01/1900");
+            
             _ = DateOnly.TryParse(campos[12], out var expirationDateIn);
+            if (expirationDateIn == default)
+                expirationDateIn = DateOnly.Parse("01/01/1900");
+            
             _ = int.TryParse(campos[17], out var coursesCount);
             _ = int.TryParse(campos[18], out var totalWorkHours);
 

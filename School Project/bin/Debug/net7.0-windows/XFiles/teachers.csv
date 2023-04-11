@@ -1,3 +1,1 @@
-﻿TeacherId;Name;LastName;Address;PostalCode;City;Phone;Email;Active;Genre;DateOfBirth;IdentificationNumber;ExpirationDateIn;TaxIdentificationNumber;Nationality;Birthplace;Photo;Courses;CoursesCount;TotalWorkHoursLoad
-TeacherId;Name;LastName;Address;Phone;Email;Active;Genre;DateOfBirth;IdentificationNumber;ExpirationDateIn;TaxIdentificationNumber;Nationality;Birthplace;Photo;IdCourse
-1;Name;LastName;Address;Phone;Email;False;Genre;01/01/0001;IdentificationNumber;01/01/0001;TaxIdentificationNumber;Nationality;Birthplace;Photo;
+﻿TeacherId;Name;LastName;Address;PostalCode;City;Phone;Email;Active;Genre;DateOfBirth;IdentificationNumber;ExpirationDateIn;TaxIdentificationNumber;Nationality;Birthplace;Photo;CoursesCount;TotalWorkHoursLoad
