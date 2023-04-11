@@ -373,7 +373,7 @@ namespace School_Project.WForms.SchoolClassesForms
             checkedListBoxStudents.Location = new Point(1131, 3);
             checkedListBoxStudents.Name = "checkedListBoxStudents";
             checkedListBoxStudents.Size = new Size(276, 474);
-            checkedListBoxStudents.TabIndex = 0;
+            checkedListBoxStudents.TabIndex = 2;
             // 
             // tabPage1
             // 
@@ -466,7 +466,7 @@ namespace School_Project.WForms.SchoolClassesForms
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(1410, 480);
-            tableLayoutPanel1.TabIndex = 1;
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // dataGridViewSchoolClasses
             // 
@@ -512,7 +512,7 @@ namespace School_Project.WForms.SchoolClassesForms
             checkedListBoxCourses.Location = new Point(849, 3);
             checkedListBoxCourses.Name = "checkedListBoxCourses";
             checkedListBoxCourses.Size = new Size(276, 474);
-            checkedListBoxCourses.TabIndex = 0;
+            checkedListBoxCourses.TabIndex = 1;
             checkedListBoxCourses.SelectedIndexChanged += CheckedListBoxCourses_SelectedIndexChanged;
             // 
             // tabPage3
@@ -577,7 +577,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonSearchForm.Location = new Point(475, 57);
             buttonSearchForm.Name = "buttonSearchForm";
             buttonSearchForm.Size = new Size(125, 50);
-            buttonSearchForm.TabIndex = 11;
+            buttonSearchForm.TabIndex = 4;
             buttonSearchForm.TextAlign = ContentAlignment.MiddleRight;
             buttonSearchForm.UseVisualStyleBackColor = true;
             buttonSearchForm.Click += ButtonSearchForm_Click;
@@ -598,7 +598,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonPrint.Margin = new Padding(0);
             buttonPrint.Name = "buttonPrint";
             buttonPrint.Size = new Size(125, 50);
-            buttonPrint.TabIndex = 1;
+            buttonPrint.TabIndex = 3;
             buttonPrint.TextAlign = ContentAlignment.MiddleRight;
             buttonPrint.UseVisualStyleBackColor = true;
             buttonPrint.Click += ButtonPrint_Click;
@@ -630,7 +630,7 @@ namespace School_Project.WForms.SchoolClassesForms
             comboBoxSearchList.Location = new Point(16, 72);
             comboBoxSearchList.Name = "comboBoxSearchList";
             comboBoxSearchList.Size = new Size(425, 23);
-            comboBoxSearchList.TabIndex = 38;
+            comboBoxSearchList.TabIndex = 10;
             // 
             // buttonAddStudent
             // 
@@ -647,7 +647,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonAddStudent.Location = new Point(1207, 1);
             buttonAddStudent.Name = "buttonAddStudent";
             buttonAddStudent.Size = new Size(125, 50);
-            buttonAddStudent.TabIndex = 13;
+            buttonAddStudent.TabIndex = 7;
             buttonAddStudent.TextAlign = ContentAlignment.MiddleRight;
             buttonAddStudent.UseVisualStyleBackColor = true;
             buttonAddStudent.Click += ButtonAddStudents_Click;
@@ -658,7 +658,7 @@ namespace School_Project.WForms.SchoolClassesForms
             comboBoxSearchOptions.Location = new Point(153, 18);
             comboBoxSearchOptions.Name = "comboBoxSearchOptions";
             comboBoxSearchOptions.Size = new Size(288, 23);
-            comboBoxSearchOptions.TabIndex = 37;
+            comboBoxSearchOptions.TabIndex = 9;
             comboBoxSearchOptions.SelectedIndexChanged += ComboBoxSearchOptions_SelectedIndexChanged;
             // 
             // buttonAddCourse
@@ -676,7 +676,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonAddCourse.Location = new Point(925, 1);
             buttonAddCourse.Name = "buttonAddCourse";
             buttonAddCourse.Size = new Size(125, 50);
-            buttonAddCourse.TabIndex = 14;
+            buttonAddCourse.TabIndex = 6;
             buttonAddCourse.TextAlign = ContentAlignment.MiddleRight;
             buttonAddCourse.UseVisualStyleBackColor = true;
             buttonAddCourse.Click += ButtonAddCourses_Click;
@@ -696,7 +696,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonSearch.Location = new Point(16, 1);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(125, 50);
-            buttonSearch.TabIndex = 36;
+            buttonSearch.TabIndex = 8;
             buttonSearch.TextAlign = ContentAlignment.MiddleRight;
             buttonSearch.UseVisualStyleBackColor = true;
             buttonSearch.Click += ButtonSearch_Click;
@@ -717,7 +717,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonEdit.Margin = new Padding(0);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(125, 50);
-            buttonEdit.TabIndex = 5;
+            buttonEdit.TabIndex = 1;
             buttonEdit.TextAlign = ContentAlignment.MiddleRight;
             buttonEdit.UseVisualStyleBackColor = true;
             buttonEdit.Click += ButtonStudentEdit_Click;
@@ -737,7 +737,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonRemove.Location = new Point(475, 1);
             buttonRemove.Name = "buttonRemove";
             buttonRemove.Size = new Size(125, 50);
-            buttonRemove.TabIndex = 4;
+            buttonRemove.TabIndex = 2;
             buttonRemove.TextAlign = ContentAlignment.MiddleRight;
             buttonRemove.UseVisualStyleBackColor = true;
             buttonRemove.Click += ButtonStudentRemove_Click;
@@ -757,7 +757,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonClose.Location = new Point(731, 57);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(125, 50);
-            buttonClose.TabIndex = 3;
+            buttonClose.TabIndex = 5;
             buttonClose.TextAlign = ContentAlignment.MiddleRight;
             buttonClose.UseVisualStyleBackColor = true;
             buttonClose.Click += ButtonExit_Click;
@@ -777,7 +777,7 @@ namespace School_Project.WForms.SchoolClassesForms
             buttonNew.Location = new Point(731, 1);
             buttonNew.Name = "buttonNew";
             buttonNew.Size = new Size(125, 50);
-            buttonNew.TabIndex = 2;
+            buttonNew.TabIndex = 0;
             buttonNew.TextAlign = ContentAlignment.MiddleRight;
             buttonNew.UseVisualStyleBackColor = true;
             buttonNew.Click += ButtonNew_Click;

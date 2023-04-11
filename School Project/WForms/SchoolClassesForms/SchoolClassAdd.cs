@@ -764,9 +764,8 @@ public partial class SchoolClassAdd : Form
 
         // Get the courses for the selected school class from the data source
         var selectedSchoolClassCourses =
-            new HashSet<Course>(
-                SchoolDatabase.GetCoursesForSchoolClass(
-                    selectedSchoolClass.IdSchoolClass));
+            SchoolDatabase.GetCoursesForSchoolClass(
+                selectedSchoolClass.IdSchoolClass);
 
         if (selectedSchoolClassCourses == null)
         {
@@ -779,16 +778,21 @@ public partial class SchoolClassAdd : Form
             checkedListBoxCourses.SetItemChecked(i, false);
 
         // Set the checked items in the checkedListBoxCourses control
-        foreach (var course in selectedSchoolClassCourses)
-        {
-            var index = checkedListBoxCourses.Items.IndexOf(course);
-
-            if (index >= 0)
-                checkedListBoxCourses.SetItemChecked(index, true);
-        }
+        foreach (var index in selectedSchoolClassCourses
+                     .Select(course =>
+                         checkedListBoxCourses.Items.IndexOf(course))
+                     .Where(index => index >= 0))
+            checkedListBoxCourses.SetItemChecked(index, true);
 
         // Update the previous row index
         _previousRowIndex = dataGridViewSchoolClasses.CurrentCell.RowIndex;
+
+        // Call the CheckedListBoxCourses_SelectedIndexChanged method
+        //CheckedListBoxCourses_SelectedIndexChanged(sender, e);
+
+        // Trigger the SelectedIndexChanged event of the CheckedListBoxCourses control
+        CheckedListBoxCourses_SelectedIndexChanged(
+            checkedListBoxCourses, EventArgs.Empty);
     }
 
     private void CheckedListBoxCourses_SelectedIndexChanged(
@@ -821,33 +825,26 @@ public partial class SchoolClassAdd : Form
             checkedListBoxStudents.SetItemChecked(i, false);
 
         // Get the students enrolled in the selected course
-        var enrolledStudents = new HashSet<Student>();
-        if (SchoolDatabase.CourseClasses
-                .ContainsKey(selectedSchoolClass.IdSchoolClass) &&
-            SchoolDatabase.CourseStudents
-                .ContainsKey(selectedCourse.IdCourse))
-            enrolledStudents =
-                SchoolDatabase.GetEnrolledStudentsByCourseForClass(
-                    selectedSchoolClass.IdSchoolClass)[selectedCourse.IdCourse];
-        else
-            Log.Error(
-                $"Unable to retrieve enrolled students " +
-                $"for school class {selectedSchoolClass.IdSchoolClass} " +
-                $"and course {selectedCourse.IdCourse}");
+        var enrolledStudents =
+            SchoolDatabase.GetStudentsInCourse(selectedCourse.IdCourse);
 
-        // Update checked items based on the enrollments
-        foreach (
-            var enrollment in
-            checkedListBoxStudents.CheckedItems
-                .Cast<Student>().Intersect(enrolledStudents))
-            checkedListBoxStudents.SetItemChecked(
-                checkedListBoxStudents.Items.IndexOf(enrollment), true);
+        // Set the checked items in the checkedListBoxStudents control
+        for (var i = 0; i < checkedListBoxStudents.Items.Count; i++)
+        {
+            var student = (Student) checkedListBoxStudents.Items[i];
+            var enrolled =
+                enrolledStudents.FirstOrDefault(s =>
+                    s.IdStudent == student.IdStudent);
+            checkedListBoxStudents.SetItemChecked(i, enrolled != null);
+        }
+
 
         Log.Information(
             $"Updated checked items for course " +
             $"{selectedCourse.IdCourse} in school class " +
             $"{selectedSchoolClass.IdSchoolClass}");
     }
+
 
     private void DataGridViewSchoolClasses_CellBeginEdit(
         object sender, DataGridViewCellCancelEventArgs e)
@@ -872,11 +869,6 @@ public partial class SchoolClassAdd : Form
         textBoxSchoolClassAcronym.Focus();
     }
 
-    private void ButtonAddPhoto_Click(object sender, EventArgs e)
-    {
-        openFileDialog1.ShowDialog();
-        _photoFile = openFileDialog1.FileName;
-    }
 
     private void ButtonSearch_Click(object sender, EventArgs e)
     {

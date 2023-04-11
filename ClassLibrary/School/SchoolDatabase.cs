@@ -693,22 +693,6 @@ public class SchoolDatabase
     }
 
 
-    // public static List<Student> GetStudentsForCourse(int idCourse)
-    // {
-    //     throw new NotImplementedException();
-    // }
-    //
-    // // Get all students enrolled in a course
-    // public static List<Student> GetStudentsInCourse(int courseId)
-    // {
-    //     if (!Courses.ContainsKey(courseId))
-    //         throw new ArgumentException("Invalid course id");
-    //
-    //     return CourseStudents[courseId]
-    //         .Select(x => Students[x])
-    //         .ToList();
-    // }
-
 
     // Get all students enrolled in a course
     public static List<Student> GetStudentsInCourse(int courseId)

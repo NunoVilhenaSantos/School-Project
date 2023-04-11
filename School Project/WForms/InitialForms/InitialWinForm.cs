@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using ClassLibrary.Courses;
+using ClassLibrary.Enrollments;
 using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
 using School_Project.Properties;
@@ -108,7 +109,9 @@ public partial class InitialWinForm : Form
             "Programa:\t Tempo decorrido: " + tempoDecorridoProgram +
             " segundos\n");
 
+        Enrollments.UpdateDictionaries();
         SchoolDatabase.UpdateDictionaries();
+        Enrollments.AddEnrollmentsToSchoolDatabase();
     }
 
     private void ButtonCloseProgram_Click(object sender, EventArgs e)

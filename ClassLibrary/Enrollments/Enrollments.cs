@@ -30,6 +30,13 @@ public static class Enrollments
             CoursesDictionary[course.IdCourse] = course;
     }
 
+    public static void AddEnrollmentsToSchoolDatabase()
+    {
+        // update the students dictionary
+        foreach (var e in Enrollments.ListEnrollments)
+            SchoolDatabase.EnrollStudentInCourse(e.StudentId, e.CourseId);
+    }
+
 
     public static void EnrollStudent(
         int studentId, int courseId, decimal? grade = null)

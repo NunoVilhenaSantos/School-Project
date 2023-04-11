@@ -1,30 +1,30 @@
 ﻿IdSchoolClass;ClassAcronym;ClassName;StartDate;EndDate;StartHour;EndHour;Location;Type;Area;CoursesCount;WorkHourLoad;StudentsCount;ClassAverage;HighestGrade;LowestGrade
-1;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;24;763.0238970588235294117647059;1476;72
-2;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];11;325;25;574.1707144979203802733214498;1532;72
-3;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;24;763.0238970588235294117647059;1476;72
-4;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;100;24;609.44730392156862745098039217;1476;72
-5;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];4;125;25;586.17371323529411764705882355;1476;72
-6;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;100;24;609.44730392156862745098039217;1476;72
-7;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;100;24;609.44730392156862745098039217;1476;72
-8;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;24;763.0238970588235294117647059;1476;72
-9;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;24;763.0238970588235294117647059;1476;72
-10;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;24;836.1176470588235294117647059;1624;72
-11;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;25;18;1584;1624;1563
-12;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;25;18;1584;1624;1563
-13;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;25;18;1584;1624;1563
-14;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;50;18;1621.6666666666666666666666666;1691;1563
-15;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;50;18;1621.6666666666666666666666666;1691;1563
-16;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;25;18;1659.3333333333333333333333333;1691;1634
-17;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;25;18;1659.3333333333333333333333333;1691;1634
-18;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;25;18;1659.3333333333333333333333333;1691;1634
-19;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;25;18;1659.3333333333333333333333333;1691;1634
-20;TURMA-1;turma-1;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;19;1690.2982456140350877192982456;1756;1634
-21;TURMA-2;turma-22;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;19;1690.2982456140350877192982456;1756;1634
-22;TURMA-3;turma-3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;50;19;1721.2631578947368421052631579;1756;1705
-23;TURMA-4;turma-4;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;50;19;1721.2631578947368421052631579;1756;1705
-24;TURMA-5;turma-55;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];1;50;19;1721.2631578947368421052631579;1756;1705
-25;TURMA-6;turma-6;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;19;1757.5482456140350877192982456;1826;1705
-26;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;1;50;19;1721.2631578947368421052631579;1756;1705
+1;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];22;725;33;8.271135414293309030151135415;89;2
+2;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];12;375;22;5.7937012670565302144249512671;24;2
+3;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;125;22;7.2090643274853801169590643277;24;2
+4;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];4;150;22;6.7567982456140350877192982458;24;2
+5;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];6;200;22;6.5114766081871345029239766082;24;2
+6;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];4;150;22;6.7567982456140350877192982458;24;2
+7;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];4;150;22;6.7567982456140350877192982458;24;2
+8;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;125;22;7.2090643274853801169590643277;24;2
+9;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;125;22;7.2090643274853801169590643277;24;2
+10;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;125;23;8.445665634674922600619195047;68;2
+11;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;23;8.693498452012383900928792570;68;2
+12;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;23;8.693498452012383900928792570;68;2
+13;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;23;8.693498452012383900928792570;68;2
+14;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;100;23;7.628998968008255933952528380;68;2
+15;CET.SITE.DPO.86;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;100;23;7.628998968008255933952528380;68;2
+16;CET.ARCI.D.L.00;Técnico(a) Especialista Em Automação, Robótica E Controlo Industrial;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;22;6.855263157894736842105263158;24;2
+17;CET.SITE.DPO.05;Técnico(a) Especialista Em Desenvolvimento De Produtos Multimédia;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;22;6.855263157894736842105263158;24;2
+18;CET.GRSI.D.L.75;Técnico(a) Especialista Em Gestão De Redes E Sistemas Informáticos;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;22;6.855263157894736842105263158;24;2
+19;CET.TPSI.D.L.76;Técnico(a) Especialista Em Tecnologias E Programação De Sistemas De Informação;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];2;75;22;6.855263157894736842105263158;24;2
+20;TURMA-1;turma-1;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;125;22;6.403508771929824561403508772;24;2
+21;TURMA-2;turma-22;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];11;375;22;6.3234316852737905369484316853;24;2
+22;TURMA-3;turma-3;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];3;150;22;7.2201754385964912280701754387;24;2
+23;TURMA-4;turma-4;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];7;250;20;7.6284013605442176870748299321;68;2
+24;TURMA-5;turma-55;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];9;350;32;10.513832497911445279866332499;89;2
+25;TURMA-6;turma-6;01/04/2022;01/04/2024;21:33;05:33;area:campos[8];type:campos[9];area:campos[10];7;200;19;5.2490196078431372549019607844;68;2
+26;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;1;50;18;5.5;9;2
 27;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;;0;0;;;
 28;ClassAcronym;ClassName;01/04/2022;01/04/2024;21:33;05:33;Location;Type;Area;;0;0;;;
 29;TESTE;teste;01/04/2022;01/04/2024;21:33;05:33;campos[7];campos[8];campos[9];;0;0;;;

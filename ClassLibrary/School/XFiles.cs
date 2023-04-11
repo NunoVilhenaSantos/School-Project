@@ -879,10 +879,9 @@ public static class XFiles
 
             if (campos[0].Equals("id", StringComparison.OrdinalIgnoreCase))
                 continue;
-
-
+            
             // ...
-            // Use a HashSet to store the course IDs that each teacher teaches
+            // Use a HashSet to store the course IDs that each teacher
             HashSet<int> courseIds = null;
             courseIds = new HashSet<int>();
 

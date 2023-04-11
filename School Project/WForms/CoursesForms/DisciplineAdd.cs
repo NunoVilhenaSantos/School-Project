@@ -673,24 +673,6 @@ public partial class DisciplineAdd : Form
         //
         // cycle to evaluate which student(s) are select and add it
         //
-        // Select students from CheckedListBox and create a list of them
-        // var selectedStudents =
-        //     checkedListBox1.CheckedItems
-        //         .OfType<Student>()
-        //         .ToList();
-        //
-        // // Get all students currently enrolled in the course
-        // var enrolledStudents =
-        //     SchoolDatabase.GetStudentsInCourse(courseToAddStudents.IdCourse);
-        //
-        // // Identify students to be removed
-        // var studentsToRemove =
-        //     enrolledStudents.Except(selectedStudents).ToList();
-        //
-        // // Display message boxes with counts
-        // MessageBox.Show($"Selected students: {selectedStudents.Count}");
-        // MessageBox.Show($"Enrolled students: {enrolledStudents.Count}");
-        // MessageBox.Show($"Students to remove: {studentsToRemove.Count}");
 
         // Select students from CheckedListBox control and create a list of students
         var selectedStudents =
