@@ -945,5 +945,10 @@ public class SchoolDatabase
         return studentCount;
     }
 
+    public static void RemoveTeacherFromCourses(List<Course> coursesToRemove, int teacherId)
+    {
+        throw new NotImplementedException();
+    }
+
     #endregion
 }

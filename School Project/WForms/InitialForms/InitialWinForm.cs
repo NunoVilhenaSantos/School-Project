@@ -178,10 +178,10 @@ public partial class InitialWinForm : Form
 
         Console.WriteLine("Código implementado");
 
-        SchoolClassAdd schoolClassAdd = new();
+        TeacherAdd teacherAdd= new();
         Hide();
-        schoolClassAdd.ShowDialog();
-        schoolClassAdd.Dispose();
+        teacherAdd.ShowDialog();
+        teacherAdd.Dispose();
         Show();
     }
 
