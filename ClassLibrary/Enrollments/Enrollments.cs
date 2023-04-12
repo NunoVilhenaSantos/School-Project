@@ -1,6 +1,4 @@
-﻿using ClassLibrary.Courses;
-using ClassLibrary.School;
-using ClassLibrary.Students;
+﻿using ClassLibrary.School;
 using Serilog;
 
 namespace ClassLibrary.Enrollments;

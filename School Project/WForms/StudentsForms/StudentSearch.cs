@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using ClassLibrary.SchoolClasses;
 using ClassLibrary.Students;
 
 namespace School_Project.WForms.StudentsForms;
@@ -88,7 +87,7 @@ public partial class StudentSearch : Form
         _bSourceSearchOptions.DataSource = typeof(Student);
         var properties =
             typeof(Student).GetProperties(BindingFlags.Public |
-                                              BindingFlags.Instance);
+                                          BindingFlags.Instance);
 
         List<string> propertyNames = new();
         foreach (var property in properties) propertyNames.Add(property.Name);
@@ -146,7 +145,7 @@ public partial class StudentSearch : Form
 
         // Create a list of distinct values for the selected property from all SchoolClass objects
         var propertyValues = Students.StudentsList
-            .Select(s =>s.GetType().GetProperty(selectedProperty)?.GetValue(s))
+            .Select(s => s.GetType().GetProperty(selectedProperty)?.GetValue(s))
             .Where(value => value != null)
             .Distinct()
             .ToList();

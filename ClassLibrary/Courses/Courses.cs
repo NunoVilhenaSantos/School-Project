@@ -1,5 +1,4 @@
 ﻿using ClassLibrary.School;
-using ClassLibrary.SchoolClasses;
 
 namespace ClassLibrary.Courses;
 
@@ -137,7 +136,7 @@ public static class Courses
 
 
     public static List<Course> ConsultCourses(
-       string selectedProperty, object selectedValue)
+        string selectedProperty, object selectedValue)
     {
         var property = typeof(Course).GetProperty(selectedProperty);
         if (property == null) return new List<Course>();
@@ -162,13 +161,11 @@ public static class Courses
         }
 
         return CoursesList
-            .Where(c=>                property.GetValue(c)
-                    ?.Equals(convertedValue) ==
-                true)
+            .Where(c => property.GetValue(c)
+                            ?.Equals(convertedValue) ==
+                        true)
             .ToList();
     }
-
-
 
 
     public static int GetLastIndex()
@@ -193,8 +190,6 @@ public static class Courses
         // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
     }
-
-
 
 
     public static string GetFullName(int id)
@@ -230,10 +225,6 @@ public static class Courses
         return $"{GetFullName(id)} | " +
                $"{course.WorkLoad} - {course.StudentsCount}";
     }
-
-
-
-
 
 
     public static string GetStudentsCount()

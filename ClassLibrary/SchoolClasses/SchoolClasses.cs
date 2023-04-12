@@ -43,7 +43,7 @@ public static class SchoolClasses
         );
         SchoolDatabase.AddSchoolClass(SchoolClassesList[^1]);
 
-               SchoolClassesList[^1].GetStudentsCount();
+        SchoolClassesList[^1].GetStudentsCount();
         SchoolClassesList[^1].GetWorkHourLoad();
     }
 
@@ -106,7 +106,7 @@ public static class SchoolClasses
         SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.Area = area;
 
-       
+
         SchoolClassesList[^1].GetStudentsCount();
         SchoolClassesList[^1].GetWorkHourLoad();
 
@@ -157,12 +157,11 @@ public static class SchoolClasses
             schoolClasses = SchoolClassesList
                 .Where(a => a.StudentsCount == studentsCount).ToList();
 
-        
+
         return schoolClasses;
     }
 
 
-    
     public static List<SchoolClass> ConsultSchoolClasses(
         string selectedProperty, object selectedValue)
     {

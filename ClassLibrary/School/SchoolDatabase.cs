@@ -16,13 +16,13 @@ public class SchoolDatabase
         // update the Courses dictionary
         foreach (
             var course in
-            ClassLibrary.Courses.Courses.CoursesList)
+            Courses.Courses.CoursesList)
             Courses.Courses.CoursesDictionary[course.IdCourse] = course;
 
         // update the SchoolClasses dictionary
         foreach (
             var schoolClass in
-            ClassLibrary.SchoolClasses.SchoolClasses.SchoolClassesList)
+            SchoolClasses.SchoolClasses.SchoolClassesList)
             SchoolClasses.SchoolClasses
                     .SchoolClassesDictionary[schoolClass.IdSchoolClass] =
                 schoolClass;
@@ -30,7 +30,7 @@ public class SchoolDatabase
         // update the Students dictionary
         foreach (
             var student in
-            ClassLibrary.Students.Students.StudentsList
+            Students.Students.StudentsList
                 .Where(student => student != null))
             Students.Students.StudentsDictionary[student.IdStudent] =
                 student;
@@ -38,7 +38,7 @@ public class SchoolDatabase
         // update the Teachers dictionary
         foreach (
             var teacher in
-            ClassLibrary.Teachers.Teachers.TeachersList)
+            Teachers.Teachers.TeachersList)
             Teachers.Teachers.TeachersDictionary[teacher.TeacherId] = teacher;
     }
 

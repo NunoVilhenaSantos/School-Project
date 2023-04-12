@@ -1,7 +1,5 @@
 ﻿using System.Reflection;
 using ClassLibrary.Courses;
-using ClassLibrary.SchoolClasses;
-using ClassLibrary.Students;
 
 namespace School_Project.WForms.CoursesForms;
 
@@ -93,7 +91,7 @@ public partial class CoursesSearch : Form
         _bSourceSearchOptions.DataSource = typeof(Course);
         var properties =
             typeof(Course).GetProperties(BindingFlags.Public |
-                                              BindingFlags.Instance);
+                                         BindingFlags.Instance);
 
         List<string> propertyNames = new();
         foreach (var property in properties) propertyNames.Add(property.Name);
@@ -140,16 +138,16 @@ public partial class CoursesSearch : Form
 
         // Create a new list to store the filtered results
         var filteredStudents = Courses.CoursesList
-                .Where(c =>
-                    property?.GetValue(c)?.ToString() != null &&
-                    property.GetValue(c).ToString() != "")
-                .ToList();
+            .Where(c =>
+                property?.GetValue(c)?.ToString() != null &&
+                property.GetValue(c).ToString() != "")
+            .ToList();
 
 
         // Create a list of distinct values for the selected property from all SchoolClass objects
         var propertyValues = Courses.CoursesList
-            .Select(c =>c.GetType()
-            .GetProperty(selectedProperty)?.GetValue(c))
+            .Select(c => c.GetType()
+                .GetProperty(selectedProperty)?.GetValue(c))
             .Where(value => value != null)
             .Distinct()
             .ToList();
@@ -165,7 +163,7 @@ public partial class CoursesSearch : Form
         var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
 
         // Get the name of the selected property
-        var selectedValue =            comboBoxSearchList.SelectedItem;
+        var selectedValue = comboBoxSearchList.SelectedItem;
 
         // Create a new list to store the filtered results
         List<Course> filteredStudents = new();

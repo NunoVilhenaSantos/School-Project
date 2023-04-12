@@ -1,5 +1,4 @@
 ﻿using ClassLibrary.School;
-using ClassLibrary.SchoolClasses;
 using Serilog;
 
 namespace ClassLibrary.Students;
@@ -275,7 +274,7 @@ public class Students
     }
 
     public static List<Student> ConsultStudents(
-       string selectedProperty, object selectedValue)
+        string selectedProperty, object selectedValue)
     {
         var property = typeof(Student).GetProperty(selectedProperty);
         if (property == null) return new List<Student>();
@@ -300,8 +299,8 @@ public class Students
         }
 
         return StudentsList
-            .Where(s =>property.GetValue(s)?
-            .Equals(convertedValue) ==                true)
+            .Where(s => property.GetValue(s)?
+                .Equals(convertedValue) == true)
             .ToList();
     }
 

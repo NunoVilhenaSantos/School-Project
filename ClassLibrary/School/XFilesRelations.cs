@@ -9,8 +9,10 @@ public static class XFilesRelations
     // Global Properties for the windows forms
     // to store the data into files of class
     //
-    static Regex _myRegex1 = new(@"^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$");
-    static Regex _myRegex2 = new("^[a-zA-Z]+:$");
+    private static Regex _myRegex1 =
+        new(@"^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$");
+
+    private static Regex _myRegex2 = new("^[a-zA-Z]+:$");
 
     #region Constants
 
@@ -60,7 +62,7 @@ public static class XFilesRelations
         try
         {
             fileStream =
-                new(DICTIONARIES_FILENAME,
+                new FileStream(DICTIONARIES_FILENAME,
                     FileMode.Create,
                     FileAccess.ReadWrite);
             fileStream.Close();
@@ -170,7 +172,7 @@ public static class XFilesRelations
         // ...
 
         using (fileStream =
-                   new(DICTIONARIES_FILENAME,
+                   new FileStream(DICTIONARIES_FILENAME,
                        FileMode.Create, FileAccess.ReadWrite))
             //using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
         using (StreamWriter writer = new(fileStream, Encoding.UTF8))
@@ -226,7 +228,7 @@ public static class XFilesRelations
         try
         {
             fileStream =
-                new(DICTIONARIES_FILENAME,
+                new FileStream(DICTIONARIES_FILENAME,
                     FileMode.OpenOrCreate,
                     FileAccess.ReadWrite);
             fileStream.Close();
@@ -246,7 +248,7 @@ public static class XFilesRelations
         }
 
         using (fileStream =
-                   new(DICTIONARIES_FILENAME,
+                   new FileStream(DICTIONARIES_FILENAME,
                        FileMode.OpenOrCreate, FileAccess.ReadWrite))
         using (var reader =
                new StreamReader(fileStream, Encoding.UTF8))
@@ -290,7 +292,7 @@ public static class XFilesRelations
                 {
                     case "CourseClasses":
                         SchoolDatabase.CourseClasses[values[0]] =
-                            new(values.Skip(1));
+                            new HashSet<int>(values.Skip(1));
                         SchoolDatabase.AssignCoursesToClass(
                             new HashSet<int>(values.Skip(1)),
                             values[0]);
@@ -298,7 +300,7 @@ public static class XFilesRelations
 
                     case "CourseStudents":
                         SchoolDatabase.CourseStudents[values[0]] =
-                            new(values.Skip(1));
+                            new HashSet<int>(values.Skip(1));
                         SchoolDatabase.EnrollStudentInCourses(
                             new HashSet<int>(values.Skip(1)),
                             values[0]);
@@ -306,22 +308,22 @@ public static class XFilesRelations
 
                     case "CourseTeacher":
                         SchoolDatabase.CourseTeacher[values[0]] =
-                            new(values.Skip(1));
+                            new HashSet<int>(values.Skip(1));
                         SchoolDatabase.AssignTeacherToCourses(
-                            new(values.Skip(1)),
+                            new HashSet<int>(values.Skip(1)),
                             values[0]);
                         break;
 
                     case "StudentClass":
                         SchoolDatabase.StudentClass[values[0]] =
-                            new(values.Skip(1));
+                            new HashSet<int>(values.Skip(1));
                         SchoolDatabase.AssignCoursesToClass(
                             new HashSet<int>(values.Skip(1)),
                             values[0]);
                         break;
 
                     default:
-                        throw new(
+                        throw new Exception(
                             $"Invalid dictionary identifier " +
                             $"'{currentDictionary}'");
                 }

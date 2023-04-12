@@ -1,14 +1,13 @@
 ﻿using ClassLibrary.Courses;
 using ClassLibrary.School;
-using ClassLibrary.SchoolClasses;
 using Serilog;
 
 namespace ClassLibrary.Teachers;
 
 public static class Teachers
 {
-    public static List<Teacher> TeachersList { get; set; } = new();
     public static readonly Dictionary<int, Teacher> TeachersDictionary = new();
+    public static List<Teacher> TeachersList { get; set; } = new();
 
 
     public static void AddTeacher(
@@ -210,7 +209,6 @@ public static class Teachers
     }
 
 
-
     public static List<Teacher> ConsultTeachers(
         string selectedProperty, object selectedValue)
     {
@@ -237,8 +235,7 @@ public static class Teachers
         }
 
         return TeachersList
-            .Where(t =>                property.GetValue(t)                    ?.
-            Equals(convertedValue) ==                true)
+            .Where(t => property.GetValue(t)?.Equals(convertedValue) == true)
             .ToList();
     }
 
