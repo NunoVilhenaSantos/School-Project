@@ -147,7 +147,7 @@ public static class SchoolClasses
             schoolClasses =
                 SchoolClassesList
                     .Where(a => a.Location == location)
-                .ToList();
+                    .ToList();
         if (!string.IsNullOrWhiteSpace(type))
             schoolClasses =
                 SchoolClassesList

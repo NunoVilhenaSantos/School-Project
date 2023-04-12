@@ -210,7 +210,8 @@ public static class Courses
 
 
     /// <summary>
-    ///     Returns the last ID of a course in the course list, or -1 if the list is empty.
+    ///     Returns the last ID of a course in the course list,
+    /// or -1 if the list is empty.
     /// </summary>
     /// <returns>The last ID of a course or -1 if the list is empty.</returns>
     public static int GetLastId()
@@ -218,7 +219,8 @@ public static class Courses
         // Get the last course in the course list or null if the list is empty
         var lastCourse = CoursesList.LastOrDefault();
 
-        // If the last course exists, return its ID; otherwise, get the last index in the list
+        // If the last course exists, return its ID;
+        // otherwise, get the last index in the list
         return lastCourse?.IdCourse ?? GetLastIndex();
         /*
         return lastCourse != null
@@ -277,7 +279,8 @@ public static class Courses
         if (course == null)
             return "A turma não existe!";
 
-        // Return a string containing the course name, credits, workload, and number of students enrolled
+        // Return a string containing the course name, credits,
+        // workload, and number of students enrolled
         return
             $"{GetFullName(id)} | {course.WorkLoad} - {course.StudentsCount}";
     }

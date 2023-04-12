@@ -24,6 +24,8 @@ public class Teacher : INotifyPropertyChanged
     //
     public Teacher()
     {
+        // Generate a unique course ID by incrementing
+        // the counter using the Interlocked.Increment method.
         TeacherId = Interlocked.Increment(ref _mCounter);
     }
 

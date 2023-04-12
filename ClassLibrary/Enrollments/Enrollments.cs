@@ -14,7 +14,9 @@ public static class Enrollments
 
     #region Methods
 
-    // update the dictionaries from the list of their corresponding classes
+    /// <summary>
+    /// used to update the dictionaries from the list of their corresponding classes
+    /// </summary>
     public static void UpdateDictionaries()
     {
         // update the students dictionary
@@ -26,6 +28,9 @@ public static class Enrollments
             Courses.Courses.CoursesDictionary[course.IdCourse] = course;
     }
 
+    /// <summary>
+    /// enroll students in courses 
+    /// </summary>
     public static void AddEnrollmentsToSchoolDatabase()
     {
         // update the students dictionary
@@ -33,7 +38,12 @@ public static class Enrollments
             SchoolDatabase.EnrollStudentInCourse(e.StudentId, e.CourseId);
     }
 
-
+    /// <summary>
+    ///   Enroll a student in a course
+    /// </summary>
+    /// <param name="studentId"></param>
+    /// <param name="courseId"></param>
+    /// <param name="grade"></param>
     public static void EnrollStudent(
         int studentId, int courseId, decimal? grade = null)
     {
@@ -78,6 +88,12 @@ public static class Enrollments
         SchoolDatabase.EnrollStudentInCourse(studentId, courseId);
     }
 
+    
+    /// <summary>
+    /// unenroll a student from a course
+    /// </summary>
+    /// <param name="idStudent"></param>
+    /// <param name="idCourse"></param>
 
     public static void UnenrollStudent(int idStudent, int idCourse)
     {
@@ -105,6 +121,11 @@ public static class Enrollments
             idStudent, idCourse);
     }
 
+    /// <summary>
+    /// remove an enrollment from the list
+    /// </summary>
+    /// <param name="studentId"></param>
+    /// <param name="courseId"></param>
     public static void RemoveEnrollment(int studentId, int courseId)
     {
         var enrollment = ListEnrollments
@@ -126,6 +147,14 @@ public static class Enrollments
         ListEnrollments.Remove(enrollment);
     }
 
+    
+    /// <summary>
+    /// list all enrollments according to the parameters
+    /// </summary>
+    /// <param name="courseId"></param>
+    /// <param name="studentId"></param>
+    /// <returns>list all enrollments according to the parameters
+    /// studentID ou courseID</returns>
     public static List<Enrollment> ConsultEnrollment(
         int courseId = -1, int studentId = -1)
     {
@@ -158,7 +187,8 @@ public static class Enrollments
     /// <param name="studentId"></param>
     /// <param name="courseId"></param>
     /// <param name="grade"></param>
-    /// <returns>Returns a list of enrollments by student or course or grade</returns>
+    /// <returns>Returns a list of enrollments
+    /// by student or course or grade</returns>
     public static List<Enrollment> ConsultEnrollment(
         int studentId, int courseId, decimal? grade)
     {
@@ -190,7 +220,8 @@ public static class Enrollments
     /// <param name="grade"></param>
     /// <param name="studentId"></param>
     /// <param name="courseId"></param>
-    /// <returns>Returns a list of enrollments by student or course or grade</returns>
+    /// <returns>Returns a list of enrollments
+    /// by student or course or grade</returns>
     public static List<Enrollment> ConsultEnrollment(
         int id, decimal? grade,
         int studentId, int courseId)

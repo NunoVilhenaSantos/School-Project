@@ -289,7 +289,6 @@ public static class Teachers
         Log.Information("Teacher metrics calculation completed");
     }
 
-    
 
     public static string GetFullName(int id)
     {
@@ -324,5 +323,4 @@ public static class Teachers
         return $"{GetFullName(id)} | " +
                $"{teacher.Genre} - {teacher.City}";
     }
-
 }

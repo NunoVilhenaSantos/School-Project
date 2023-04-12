@@ -10,20 +10,21 @@
   <component name="ChangeListManager">
     <list default="true" id="32ba782e-e186-4f11-b633-baa80452b4c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.School Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/School Project/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/School Project/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/Course.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/Course.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/Courses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/Courses.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Courses/CoursesFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Enrollments/EnrollmentsFileHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/School/SchoolDatabase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClasses.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/SchoolClasses/SchoolClasses.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Students/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Students/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Teachers/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Teachers/Teacher.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Teachers/Teachers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Teachers/Teachers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/CoursesForms/DisciplineEdit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassAdd.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/SchoolClassesForms/SchoolClassEdit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.resx" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/StudentsForms/StudentAdd.resx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/School Project/WForms/TeachersForms/TeacherAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/TeachersForms/TeacherAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/WForms/TeachersForms/TeacherEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/WForms/TeachersForms/TeacherEdit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/SchoolClassesFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/TeachersFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/TeachersFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/schoolclasses.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/schoolclasses.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/teachers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/teachers.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/CoursesFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/CoursesFile.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/courses.csv" beforeDir="false" afterPath="$PROJECT_DIR$/School Project/bin/Debug/net7.0-windows/XFiles/courses.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +58,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6641ef64e23bc021c22f7a836547714731db956d18c439bc734695b9e72/SafeFileHandle.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f8b78e83a7fcb41b463a82a2c615d0eb9a82f63e6fe93ffd1fe6781e6349d9b/HashSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc30f7b54d886729af74f454d735b7b631b57793cc1bdfac2ce7edf6462488c/ListBox.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nunov/RiderProjects/School Project/ClassLibrary/Courses/Course.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/nunov/RiderProjects/School Project/ClassLibrary/Courses/Courses.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/nunov/RiderProjects/School Project/ClassLibrary/Courses/Courses.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/nunov/RiderProjects/School Project/ClassLibrary/Courses/Courses.cs" root0="SKIP_HIGHLIGHTING" />
@@ -215,7 +217,7 @@
       <workItem from="1681228360175" duration="8255000" />
       <workItem from="1681242021310" duration="163000" />
       <workItem from="1681242230552" duration="11920000" />
-      <workItem from="1681306683504" duration="7195000" />
+      <workItem from="1681306683504" duration="11089000" />
     </task>
     <task id="LOCAL-00001" summary="consertar a burrada do visual studio">
       <created>1680231864095</created>
@@ -335,29 +337,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Enrollments/Enrollments.cs</url>
-          <line>61</line>
+          <line>71</line>
           <properties documentPath="C:\Users\nunov\RiderProjects\School Project\ClassLibrary\Enrollments\Enrollments.cs" initialLine="65" containingFunctionPresentation="Method 'EnrollStudent'">
             <startOffsets>
-              <option value="1798" />
+              <option value="2110" />
             </startOffsets>
             <endOffsets>
-              <option value="1936" />
+              <option value="2248" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/School Project/WForms/TeachersForms/TeacherAdd.cs</url>
-          <line>377</line>
-          <properties documentPath="C:\Users\nunov\RiderProjects\School Project\School Project\WForms\TeachersForms\TeacherAdd.cs" initialLine="348" containingFunctionPresentation="Method 'ButtonStudentRemove_Click'">
-            <startOffsets>
-              <option value="11165" />
-            </startOffsets>
-            <endOffsets>
-              <option value="11197" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

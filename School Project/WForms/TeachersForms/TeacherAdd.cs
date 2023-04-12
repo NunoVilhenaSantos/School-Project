@@ -359,25 +359,9 @@ public partial class TeacherAdd : Form
         {
             MessageBox.Show(Teachers.RemoveTeacher(index));
             //dataGridView1.Rows.RemoveAt(rc);
-            //Teachers.RemoveTeacher(rc);
 
             UpdateLists();
         }
-
-        // var s =
-        //     "Tem a certeza que deseja apagar o seguinte registo?\n" +
-        //     $"{Teachers.TeachersList[rc].Name} " +
-        //     $"{Teachers.TeachersList[rc].LastName}";
-        //
-        // dialogResult = MessageBox.Show(
-        //     s, "Apagar",
-        //     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-        // if (dialogResult == DialogResult.OK)
-        // {
-        //     dataGridView1.Rows.RemoveAt(rc);
-        //     //Teachers.RemoveTeacher(rc);
-        // }
 
         Console.WriteLine("Testes de Debug");
     }

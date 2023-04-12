@@ -11,6 +11,11 @@ public class SchoolDatabase
     #region UpdatingDictionaries
 
     // update the dictionaries from the list of their corresponding classes
+
+    /// <summary>
+    /// used to update the dictionaries from
+    /// the list of their corresponding classes
+    /// </summary>
     public static void UpdateDictionaries()
     {
         // update the Courses dictionary
@@ -98,6 +103,10 @@ public class SchoolDatabase
     //
 
 
+    /// <summary>
+    /// add a course to the Courses dictionary
+    /// </summary>
+    /// <param name="course"></param>
     public static void AddCourse(Course course)
     {
         Courses.Courses.CoursesDictionary.Add(course.IdCourse, course);
@@ -105,6 +114,10 @@ public class SchoolDatabase
     }
 
 
+    /// <summary>
+    /// add a school class to the SchoolClasses dictionary
+    /// </summary>
+    /// <param name="schoolClass"></param>
     public static void AddSchoolClass(SchoolClass schoolClass)
     {
         SchoolClasses.SchoolClasses.SchoolClassesDictionary
@@ -114,6 +127,10 @@ public class SchoolDatabase
     }
 
 
+    /// <summary>
+    /// add a student to the Students dictionary
+    /// </summary>
+    /// <param name="student"></param>
     public static void AddStudent(Student? student)
     {
         if (student != null)
@@ -123,6 +140,10 @@ public class SchoolDatabase
     }
 
 
+    /// <summary>
+    /// add a teacher to the Teachers dictionary
+    /// </summary>
+    /// <param name="teacher"></param>
     public static void AddTeacher(Teacher teacher)
     {
         Teachers.Teachers.TeachersDictionary.Add(teacher.TeacherId, teacher);
@@ -137,6 +158,11 @@ public class SchoolDatabase
     #region EnrollStudentInClass
 
     // Method to add a relationship between a student and a school class
+    /// <summary>
+    /// enroll a student in a school class
+    /// </summary>
+    /// <param name="studentId"></param>
+    /// <param name="schoolClassId"></param>
     public static void EnrollStudentInClass(int studentId, int schoolClassId)
     {
         if (!StudentClass.ContainsKey(studentId))
@@ -148,6 +174,11 @@ public class SchoolDatabase
         StudentClass[studentId].Add(schoolClassId);
     }
 
+    /// <summary>
+    /// enroll a list of students in a school class
+    /// </summary>
+    /// <param name="listStudents"></param>
+    /// <param name="schoolClassId"></param>
     public static void EnrollStudentsInClass(
         List<Student> listStudents, int schoolClassId)
     {
@@ -169,6 +200,11 @@ public class SchoolDatabase
 
     #region EnrollStudentInCourse
 
+    /// <summary>
+    /// enroll students in a courses
+    /// </summary>
+    /// <param name="listOfCourses"></param>
+    /// <param name="listOfStudents"></param>
     public static void EnrollStudentsInCourses(
         List<Course> listOfCourses, List<Student> listOfStudents)
     {
@@ -213,7 +249,11 @@ public class SchoolDatabase
         }
     }
 
-
+    /// <summary>
+    /// enroll a student in a course
+    /// </summary>
+    /// <param name="studentId"></param>
+    /// <param name="courseId"></param>
     public static void EnrollStudentInCourse(int studentId, int courseId)
     {
         if (!Students.Students.StudentsDictionary
@@ -251,6 +291,11 @@ public class SchoolDatabase
     }
 
 
+    /// <summary>
+    /// enroll a list of students in a course
+    /// </summary>
+    /// <param name="students"></param>
+    /// <param name="courseId"></param>
     public static void EnrollStudentsInCourse(
         List<Student> students, int courseId)
     {
@@ -290,6 +335,12 @@ public class SchoolDatabase
         }
     }
 
+
+    /// <summary>
+    /// unenroll a student from a list of courses
+    /// </summary>
+    /// <param name="coursesToRemove"></param>
+    /// <param name="idStudent"></param>
     public static void UnenrollStudentFromCourses(
         List<Course> coursesToRemove, int idStudent)
     {
@@ -332,48 +383,11 @@ public class SchoolDatabase
         }
     }
 
-    //
-    // public static void UnenrollStudentsFromCourse(
-    //     List<Student> studentsToRemove, int idCourse)
-    // {
-    //     foreach (var student in studentsToRemove)
-    //     {
-    //         if (!Students.ContainsKey(student.IdStudent))
-    //         {
-    //             Log.Error(
-    //                 "Invalid student ID: {StudentId}",
-    //                 student.IdStudent);
-    //             continue;
-    //         }
-    //
-    //         if (!Courses.ContainsKey(idCourse))
-    //         {
-    //             Log.Error(
-    //                 "Invalid course ID: {CourseId}",
-    //                 idCourse);
-    //             continue;
-    //         }
-    //
-    //         if (!CourseStudents.TryGetValue(idStudent, out var courses) ||
-    //             !courses.Contains(student.IdCourse))
-    //         {
-    //             Log.Warning(
-    //                 "Student {StudentId} " +
-    //                 "is not enrolled in course {CourseId}",
-    //                 idStudent, student.IdCourse);
-    //             continue;
-    //         }
-    //
-    //         Enrollments.Enrollments.UnenrollStudent(idStudent, student.IdCourse);
-    //
-    //         CourseStudents[idStudent].Remove(student.IdCourse);
-    //
-    //         if (CourseStudents[idStudent].Count == 0)
-    //             CourseStudents.Remove(idStudent);
-    //     }
-    // }
-
-
+    /// <summary>
+    /// unenroll a list of student from a course
+    /// </summary>
+    /// <param name="students"></param>
+    /// <param name="courseId"></param>
     public static void UnenrollStudentsFromCourse(
         List<Student> students, int courseId)
     {
@@ -419,6 +433,11 @@ public class SchoolDatabase
     }
 
 
+    /// <summary>
+    /// enroll a student in a list of courses
+    /// </summary>
+    /// <param name="listOfCourses"></param>
+    /// <param name="idStudent"></param>
     public static void EnrollStudentInCourses(
         List<Course> listOfCourses, int idStudent)
     {
@@ -461,8 +480,13 @@ public class SchoolDatabase
     }
 
 
-    public static void EnrollStudentInCourses(HashSet<int> listOfCourses,
-        int idStudent)
+    /// <summary>
+    /// enroll a student in a list of courses, using a HashSet
+    /// </summary>
+    /// <param name="listOfCourses"></param>
+    /// <param name="idStudent"></param>
+    public static void EnrollStudentInCourses(
+        HashSet<int> listOfCourses, int idStudent)
     {
         foreach (var course in listOfCourses)
         {
@@ -504,6 +528,12 @@ public class SchoolDatabase
 
     #endregion
 
+
+    /// <summary>
+    /// assign a course to a class
+    /// </summary>
+    /// <param name="courseId"></param>
+    /// <param name="schoolClassId"></param>
     public static void AssignCourseToClass(int courseId, int schoolClassId)
     {
         if (Courses.Courses.CoursesDictionary
@@ -534,7 +564,11 @@ public class SchoolDatabase
         }
     }
 
-
+    /// <summary>
+    /// assign a list of courses to a class
+    /// </summary>
+    /// <param name="listOfCourses"></param>
+    /// <param name="schoolClassId"></param>
     public static void AssignCoursesToClass(
         List<Course> listOfCourses, int schoolClassId)
     {
@@ -576,9 +610,13 @@ public class SchoolDatabase
             }
     }
 
-
-    public static void AssignCoursesToClass(HashSet<int> listOfCourses,
-        int schoolClassId)
+    /// <summary>
+    /// assign a list of courses to a class, using a HashSet
+    /// </summary>
+    /// <param name="listOfCourses"></param>
+    /// <param name="schoolClassId"></param>
+    public static void AssignCoursesToClass(
+        HashSet<int> listOfCourses, int schoolClassId)
     {
         if (!SchoolClasses.SchoolClasses.SchoolClassesDictionary
                 .TryGetValue(schoolClassId, out var schoolClass))
@@ -618,8 +656,13 @@ public class SchoolDatabase
     }
 
 
-    #region MyRegion
+    #region AssignTeachersToCourses
 
+    /// <summary>
+    /// assign a teacher to a course
+    /// </summary>
+    /// <param name="teacherId"></param>
+    /// <param name="courseId"></param>
     public static void AssignTeacherToCourse(int teacherId, int courseId)
     {
         if (!CourseTeacher.ContainsKey(teacherId))
@@ -631,7 +674,11 @@ public class SchoolDatabase
         CourseTeacher[teacherId].Add(courseId);
     }
 
-
+    /// <summary>
+    /// assign a teacher to a list of courses
+    /// </summary>
+    /// <param name="teacherId"></param>
+    /// <param name="courses"></param>
     public static void AssignTeacherToCourses(
         int teacherId, List<Course> courses)
     {
@@ -648,6 +695,11 @@ public class SchoolDatabase
     }
 
 
+    /// <summary>
+    /// assign a teacher to a list of courses, using a HashSet
+    /// </summary>
+    /// <param name="hashSetCourses"></param>
+    /// <param name="teacherId"></param>
     public static void AssignTeacherToCourses(
         HashSet<int> hashSetCourses, int teacherId)
     {
@@ -670,6 +722,13 @@ public class SchoolDatabase
 
     #region IEnumerar
 
+    // enumerating zone
+
+    /// <summary>
+    /// get all courses for a school class
+    /// </summary>
+    /// <param name="schoolClassId"></param>
+    /// <returns> get all courses for a school class </returns>
     public static List<Course> GetCoursesForSchoolClass(
         int schoolClassId)
     {
@@ -683,6 +742,12 @@ public class SchoolDatabase
 
 
     // Get all courses a student is enrolled in
+    /// <summary>
+    /// Get all courses a student is enrolled in
+    /// </summary>
+    /// <param name="studentId"></param>
+    /// <returns>Get all courses a student is enrolled in,
+    /// returning a list of courses</returns>
     public static List<Course> GetCoursesForStudent(int studentId)
     {
         if (CourseStudents.TryGetValue(studentId, out var studentCourses))
