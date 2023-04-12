@@ -77,6 +77,9 @@ public partial class DisciplineEdit : Form
     {
         if (!ValidateTextBoxes()) return;
 
+        Courses.EditCourse(_courseToEdit.IdCourse, textBoxDisciplineName.Text,
+            (int) numericUpDownNumberHours.Value);
+
         _courseToEdit.Name = textBoxDisciplineName.Text;
         _courseToEdit.WorkLoad = (int) numericUpDownNumberHours.Value;
 

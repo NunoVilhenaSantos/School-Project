@@ -166,15 +166,24 @@ public partial class SchoolClassEdit : Form
     {
         if (ValidateTextBoxes())
         {
+            SchoolClasses.EditSchoolClass(
+                _schoolClassToEdit.IdSchoolClass,
+                textBoxSchoolClassAcronym.Text,
+                textBoxSchoolClassName.Text,
+                DateOnly.FromDateTime(dateTimePickerBeginCourse.Value),
+                DateOnly.FromDateTime(dateTimePickerEndCourse.Value),
+                TimeOnly.FromDateTime(dateTimePickerBeginHour.Value),
+                TimeOnly.FromDateTime(dateTimePickerEndHour.Value),
+                _schoolClassToEdit.Location,
+                _schoolClassToEdit.Type,
+                _schoolClassToEdit.Area
+            );
+
             //
             // inserir os dados das caixas
             //
             _schoolClassToEdit.ClassAcronym = textBoxSchoolClassAcronym.Text;
             _schoolClassToEdit.ClassName = textBoxSchoolClassName.Text;
-
-            _schoolClassToEdit.ClassAcronym = textBoxSchoolClassAcronym.Text;
-            _schoolClassToEdit.ClassName = textBoxSchoolClassName.Text;
-
 
             _schoolClassToEdit.StartDate =
                 DateOnly.FromDateTime(dateTimePickerBeginCourse.Value);

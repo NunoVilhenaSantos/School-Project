@@ -71,8 +71,7 @@ public static class SchoolClasses
         int id, string classAcronym, string className,
         DateOnly startDate, DateOnly endDate,
         TimeOnly startHour, TimeOnly endHour,
-        string location, string type, string area,
-        List<Course> courses
+        string location, string type, string area
     )
     {
         if (SchoolClassesList.Count < 1)
@@ -145,14 +144,18 @@ public static class SchoolClasses
                 .ToList();
 
         if (!string.IsNullOrWhiteSpace(location))
-            schoolClasses = SchoolClassesList.Where(a => a.Location == location)
+            schoolClasses =
+                SchoolClassesList
+                    .Where(a => a.Location == location)
                 .ToList();
         if (!string.IsNullOrWhiteSpace(type))
             schoolClasses =
-                SchoolClassesList.Where(a => a.Type == type).ToList();
+                SchoolClassesList
+                    .Where(a => a.Type == type).ToList();
         if (!string.IsNullOrWhiteSpace(area))
             schoolClasses =
-                SchoolClassesList.Where(a => a.Area == area).ToList();
+                SchoolClassesList
+                    .Where(a => a.Area == area).ToList();
         if (studentsCount != null && int.IsNegative((int) studentsCount))
             schoolClasses = SchoolClassesList
                 .Where(a => a.StudentsCount == studentsCount).ToList();
@@ -256,71 +259,6 @@ public static class SchoolClasses
         return $"{GetFullName(id)} | " +
                $"{schoolClass.Type} - {schoolClass.Area}";
     }
-
-
-    // public static void ToObtainValuesForCalculatedFields()
-    // {
-    //     if (SchoolClassesList.Count < 1) return;
-    //
-    //     foreach (var schoolClass in SchoolClassesList)
-    //     {
-    //         var coursesList =
-    //             SchoolDatabase.GetCoursesForSchoolClass(
-    //                 schoolClass.IdSchoolClass);
-    //
-    //         if (coursesList == null || !coursesList.Any()) continue;
-    //
-    //         var coursesCount = 0;
-    //         var workHourLoad = 0;
-    //         var studentsCount = 0;
-    //         decimal classTotal = 0;
-    //         decimal highestGrade = 0;
-    //         var lowestGrade = decimal.MaxValue;
-    //
-    //         foreach (var course in coursesList.Where(course => course != null))
-    //         {
-    //             coursesCount++;
-    //
-    //             var studentIds =
-    //                 Enrollments.Enrollments.ListEnrollments?
-    //                     .Where(e => e.CourseId == course.IdCourse)
-    //                     .Select(e => e.StudentId)
-    //                     .Distinct();
-    //
-    //             if (studentIds != null && studentIds.Any())
-    //             {
-    //                 studentsCount += studentIds.Count();
-    //             }
-    //
-    //             workHourLoad += course.WorkLoad;
-    //
-    //             if (Enrollments.Enrollments.ListEnrollments == null ||
-    //                 !Enrollments.Enrollments.ListEnrollments.Any())
-    //                 continue;
-    //
-    //             var grades =
-    //                 Enrollments.Enrollments.ListEnrollments?
-    //                     .Where(e => e.CourseId == course.IdCourse)
-    //                     .Select(e => e.Grade);
-    //
-    //             if (grades == null || !grades.Any()) continue;
-    //
-    //             classTotal += grades.Average() ?? 0;
-    //             highestGrade = Math.Max(highestGrade, grades.Max() ?? 0);
-    //             lowestGrade = Math.Min(lowestGrade,
-    //                 grades.Min() ?? decimal.MaxValue);
-    //         }
-    //
-    //         schoolClass.CoursesCount = coursesCount;
-    //         schoolClass.WorkHourLoad = workHourLoad;
-    //         schoolClass.StudentsCount =
-    //             coursesCount > 0 ? studentsCount / coursesCount : 0;
-    //         schoolClass.ClassAverage =
-    //             coursesCount > 0 ? classTotal / coursesCount : 0;
-    //         schoolClass.HighestGrade = highestGrade;
-    //         schoolClass.LowestGrade = lowestGrade;
-    //     }
-    // }
 
 
     public static void ToObtainValuesForCalculatedFields()

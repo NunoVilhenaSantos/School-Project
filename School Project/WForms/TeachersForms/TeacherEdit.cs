@@ -100,11 +100,10 @@ public partial class TeacherEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
-        {
-            ((TextBox) sender).Paste();
-            Console.WriteLine("Testes de Debug");
-        }
+        if (e is not {Modifiers: Keys.Control, KeyCode: Keys.V}) return;
+
+        ((TextBox) sender).Paste();
+        Console.WriteLine("Testes de Debug");
     }
 
 

@@ -326,6 +326,8 @@ public partial class TeacherAdd : Form
             //for find the row index number
             rc = dataGridView1.CurrentCell.RowIndex;
 
+        if (int.IsNegative(rc)) return;
+
         if (Teachers.TeachersList == null)
             MessageBox.Show(
                 "Tem de selecionar para poder Adicionar ou Remover ",
@@ -333,20 +335,49 @@ public partial class TeacherAdd : Form
                 MessageBoxButtons.OK, MessageBoxIcon.Warning
             );
 
-        if (int.IsPositive(rc))
+        //
+        // get the answer, if yes or soups, displaying the message
+        //
+
+        // Get the selected school class from the data source
+        var teacherToRemove = (Teacher) _bSourceTeachers.Current;
+
+        // Get the IdSchoolClass from the selected school class from the data source
+        var index = teacherToRemove.TeacherId;
+
+        // send a msg to the user to chose if he wants to delete or not the record
+        var msg =
+            "Tem a certeza que deseja apagar o seguinte registo?" +
+            $"\n{Teachers.GetFullInfo(index)}";
+
+        var dialogResult = MessageBox.Show(
+            msg, "Apagar",
+            MessageBoxButtons.OKCancel,
+            MessageBoxIcon.Question);
+
+        if (dialogResult == DialogResult.OK)
         {
-            var s =
-                "Tem a certeza que deseja apagar o seguinte registo?\n" +
-                $"{Teachers.TeachersList[rc].Name} " +
-                $"{Teachers.TeachersList[rc].LastName}";
+            MessageBox.Show(Teachers.RemoveTeacher(index));
+            //dataGridView1.Rows.RemoveAt(rc);
+            //Teachers.RemoveTeacher(rc);
 
-            var dialogResult = MessageBox.Show(
-                s, "Apagar",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            if (dialogResult == DialogResult.OK)
-                dataGridView1.Rows.RemoveAt(rc);
+            UpdateLists();
         }
+
+        // var s =
+        //     "Tem a certeza que deseja apagar o seguinte registo?\n" +
+        //     $"{Teachers.TeachersList[rc].Name} " +
+        //     $"{Teachers.TeachersList[rc].LastName}";
+        //
+        // dialogResult = MessageBox.Show(
+        //     s, "Apagar",
+        //     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+        // if (dialogResult == DialogResult.OK)
+        // {
+        //     dataGridView1.Rows.RemoveAt(rc);
+        //     //Teachers.RemoveTeacher(rc);
+        // }
 
         Console.WriteLine("Testes de Debug");
     }

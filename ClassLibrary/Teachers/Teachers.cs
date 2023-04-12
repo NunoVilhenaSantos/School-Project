@@ -62,17 +62,6 @@ public static class Teachers
     }
 
 
-    public static string RemoveTeacher(int id)
-    {
-        var teacher = TeachersList.FirstOrDefault(x => x.TeacherId == id);
-
-        if (teacher == null) return "Professor(a) não existe";
-
-        TeachersList.Remove(teacher);
-        return "Professor(a) apagado";
-    }
-
-
     public static string EditTeacher(
         int id,
         string name,
@@ -98,15 +87,19 @@ public static class Teachers
     {
         if (TeachersList.Count < 1) return "Lista está vazia";
 
-        var teacher = TeachersList.FirstOrDefault(x => x.TeacherId == id);
+        var teacher =
+            TeachersList.FirstOrDefault(x => x.TeacherId == id);
 
         if (teacher == null) return "Professor(a) não existe";
 
-        TeachersList.FirstOrDefault(a => a.TeacherId == id)!.Name = name;
-        TeachersList.FirstOrDefault(a => a.TeacherId == id)!.LastName =
-            lastName;
-        TeachersList.FirstOrDefault(a => a.TeacherId == id)!.Address = address;
-        TeachersList.FirstOrDefault(a => a.TeacherId == id)!.PostalCode =
+        TeachersList
+            .FirstOrDefault(a => a.TeacherId == id)!.Name = name;
+        TeachersList
+            .FirstOrDefault(a => a.TeacherId == id)!.LastName = lastName;
+        TeachersList
+            .FirstOrDefault(a => a.TeacherId == id)!.Address = address;
+        TeachersList
+                .FirstOrDefault(a => a.TeacherId == id)!.PostalCode =
             postalCode;
         TeachersList.FirstOrDefault(a => a.TeacherId == id)!.City = city;
         TeachersList.FirstOrDefault(a => a.TeacherId == id)!.Phone = phone;
@@ -135,6 +128,17 @@ public static class Teachers
         TeachersList[id].GetTotalWorkHourLoad();
 
         return "Professor(a) alterado(a) com sucesso";
+    }
+
+
+    public static string RemoveTeacher(int id)
+    {
+        var teacher = TeachersList.FirstOrDefault(x => x.TeacherId == id);
+
+        if (teacher == null) return "Professor(a) não existe";
+
+        TeachersList.Remove(teacher);
+        return "Professor(a) removido(a) com sucesso";
     }
 
 
@@ -284,4 +288,41 @@ public static class Teachers
 
         Log.Information("Teacher metrics calculation completed");
     }
+
+    
+
+    public static string GetFullName(int id)
+    {
+        if (TeachersList.Count < 1)
+            return "A lista está vazia";
+
+        var teacher =
+            TeachersList.FirstOrDefault(
+                a => a.TeacherId == id);
+
+        if (teacher == null)
+            return "A turma não existe!";
+
+        return $"{teacher.TeacherId,5} | " +
+               $"{teacher.Name} " +
+               $"{teacher.LastName}";
+    }
+
+
+    public static string GetFullInfo(int id)
+    {
+        if (TeachersList.Count < 1)
+            return "A lista está vazia";
+
+        var teacher =
+            TeachersList.FirstOrDefault(
+                a => a.TeacherId == id);
+
+        if (teacher == null)
+            return "A turma não existe!";
+
+        return $"{GetFullName(id)} | " +
+               $"{teacher.Genre} - {teacher.City}";
+    }
+
 }
