@@ -8,6 +8,7 @@ using School_Project.WForms.CoursesForms;
 using School_Project.WForms.SchoolClassesForms;
 using School_Project.WForms.StatisticsForms;
 using School_Project.WForms.StudentsForms;
+using School_Project.WForms.TeachersForms;
 using Serilog;
 
 // using Log = Microsoft.VisualBasic.Logging.Log;
@@ -173,12 +174,12 @@ public partial class InitialWinForm : Form
 
     private void ButtonTeachers_Click(object sender, EventArgs e)
     {
-        MessageBox.Show("Falta implementar código");
+        //MessageBox.Show("Falta implementar código");
         //Console.WriteLine("Falta implementar código");
 
         Console.WriteLine("Código implementado");
 
-        TeacherAdd teacherAdd= new();
+        TeacherAdd teacherAdd = new();
         Hide();
         teacherAdd.ShowDialog();
         teacherAdd.Dispose();

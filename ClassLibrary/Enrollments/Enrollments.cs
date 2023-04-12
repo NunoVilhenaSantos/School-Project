@@ -9,9 +9,7 @@ public static class Enrollments
 {
     #region Properties
 
-    public static List<Enrollment> ListEnrollments = new();
-    public static Dictionary<int, Student> StudentsDictionary = new();
-    public static Dictionary<int, Course> CoursesDictionary = new();
+    public static readonly List<Enrollment> ListEnrollments = new();
 
     #endregion
 
@@ -23,17 +21,17 @@ public static class Enrollments
     {
         // update the students dictionary
         foreach (var student in Students.Students.StudentsList)
-            StudentsDictionary[student.IdStudent] = student;
+            Students.Students.StudentsDictionary[student.IdStudent] = student;
 
         // update the courses dictionary
         foreach (var course in Courses.Courses.CoursesList)
-            CoursesDictionary[course.IdCourse] = course;
+            Courses.Courses.CoursesDictionary[course.IdCourse] = course;
     }
 
     public static void AddEnrollmentsToSchoolDatabase()
     {
         // update the students dictionary
-        foreach (var e in Enrollments.ListEnrollments)
+        foreach (var e in ListEnrollments)
             SchoolDatabase.EnrollStudentInCourse(e.StudentId, e.CourseId);
     }
 
@@ -42,7 +40,7 @@ public static class Enrollments
         int studentId, int courseId, decimal? grade = null)
     {
         // Check if the student ID is valid
-        if (!StudentsDictionary.ContainsKey(studentId))
+        if (!Students.Students.StudentsDictionary.ContainsKey(studentId))
         {
             Log.Error("Invalid student ID: " +
                       "{StudentId}", studentId);
@@ -50,7 +48,7 @@ public static class Enrollments
         }
 
         // Check if the course ID is valid
-        if (!CoursesDictionary.ContainsKey(courseId))
+        if (!Courses.Courses.CoursesDictionary.ContainsKey(courseId))
         {
             Log.Error("Invalid course ID: " +
                       "{CourseId}", courseId);
@@ -136,7 +134,8 @@ public static class Enrollments
         var enrollments = ListEnrollments;
 
         if (courseId != -1)
-            if (CoursesDictionary.TryGetValue(courseId, out var course))
+            if (Courses.Courses.CoursesDictionary
+                .TryGetValue(courseId, out var course))
                 enrollments = enrollments
                     .Where(e =>
                         e.CourseId == course.IdCourse)
@@ -144,7 +143,8 @@ public static class Enrollments
 
         if (studentId == -1) return enrollments;
         {
-            if (StudentsDictionary.TryGetValue(studentId, out var student))
+            if (Students.Students.StudentsDictionary
+                .TryGetValue(studentId, out var student))
                 enrollments = enrollments
                     .Where(e =>
                         e.StudentId == student.IdStudent)?

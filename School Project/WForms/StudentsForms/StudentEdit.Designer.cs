@@ -475,7 +475,7 @@
             labelGenre.Name = "labelGenre";
             labelGenre.Size = new Size(101, 34);
             labelGenre.TabIndex = 26;
-            labelGenre.Text = "Gênero do Estudante:";
+            labelGenre.Text = "Género do Estudante:";
             // 
             // labelBirthDate
             // 

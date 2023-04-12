@@ -9,6 +9,9 @@ public static class SchoolClasses
 
     public static List<SchoolClass> SchoolClassesList { get; set; } = new();
 
+    public static readonly Dictionary<int, SchoolClass>
+        SchoolClassesDictionary = new();
+
     #endregion
 
 
@@ -40,12 +43,7 @@ public static class SchoolClasses
         );
         SchoolDatabase.AddSchoolClass(SchoolClassesList[^1]);
 
-        // foreach (var course in SchoolClassesList[^1].CoursesList)
-        //     SchoolDatabase.AssignCourseToClass(
-        //         course.IdCourse,
-        //         SchoolClassesList[^1].IdSchoolClass);
-
-        SchoolClassesList[^1].GetStudentsCount();
+               SchoolClassesList[^1].GetStudentsCount();
         SchoolClassesList[^1].GetWorkHourLoad();
     }
 
@@ -108,9 +106,7 @@ public static class SchoolClasses
         SchoolClassesList.FirstOrDefault(
             a => a.IdSchoolClass == id)!.Area = area;
 
-        // SchoolClassesList.FirstOrDefault(
-        //     a => a.IdSchoolClass == id)!.CoursesList = courses;
-
+       
         SchoolClassesList[^1].GetStudentsCount();
         SchoolClassesList[^1].GetWorkHourLoad();
 
@@ -161,54 +157,12 @@ public static class SchoolClasses
             schoolClasses = SchoolClassesList
                 .Where(a => a.StudentsCount == studentsCount).ToList();
 
-        // if (courses is {Count: > 0})
-        //     schoolClasses = SchoolClassesList
-        //         .Where(a => a.CoursesList == courses).ToList();
-
+        
         return schoolClasses;
     }
 
 
-    /*
-    public static List<SchoolClass> ConsultSchoolClasses(
-        string selectedProperty, object selectedValue)
-    {
-        
-        //
-        // 1.º teste
-        //
-
-        // Create a new list to store the filtered results
-        List<SchoolClass> filteredSchoolClass = new();
-
-        var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        foreach (var schoolClass in SchoolClasses.SchoolClassesList)
-        {
-            if (property == null ||
-                property.GetValue(schoolClass).ToString() == ""
-               )
-                continue;
-
-            filteredSchoolClass.Add(schoolClass);
-        }
-
-
-        var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        if (property == null) return new List<SchoolClass>();
-
-        var propertyType = property.PropertyType;
-        var convertedValue =
-            Convert.ChangeType(selectedValue, propertyType);
-
-        return SchoolClassesList
-            .Where(schoolClass =>
-                property.GetValue(schoolClass)
-                    ?.Equals(convertedValue) ==
-                true)
-            .ToList();
-    }
-    */
-
+    
     public static List<SchoolClass> ConsultSchoolClasses(
         string selectedProperty, object selectedValue)
     {

@@ -75,7 +75,7 @@ public class EnrollmentsFileHelper
             {
                 // Log info message
                 Log.Information(
-                    "Enrollments file opened for writing.");
+                    "Enrollments file opened for writing");
             }
         }
         catch (IOException ex)
@@ -118,7 +118,7 @@ public class EnrollmentsFileHelper
 
             // Log info message
             Log.Information(
-                "Enrollments successfully written to file.");
+                "Enrollments successfully written to file");
             message = "Operação realizada com sucesso";
             success = true;
         }

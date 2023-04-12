@@ -1,34 +1,34 @@
 ﻿IdCourse;Name;WorkLoad;Credits;StudentsCount
-1;Língua Portuguesa;50;50;23
-2;Língua Inglesa;50;50;23
-3;Matemática;50;50;23
-4;Empresa Estrutura E Funções;25;25;23
-5;Arquitetura De Hardware;25;25;23
-6;Sistemas De Informação - Fundamentos;25;25;23
-7;Sistemas De Informação - Conceção;25;25;23
-8;Engenharia De Software;25;25;23
-9;Bases De Dados - Conceitos;25;25;23
-10;Bases De Dados - Sistemas De Gestão;25;25;23
-11;Criação De Estrutura De Base De Dados Em SQL;25;25;23
-12;Programação Em SQL;25;25;23
-13;Programação Algoritmos;25;25;23
-14;Programação De Computadores - Estruturada;50;50;23
-15;Programação De Computadores - Orientada A Objetos;50;50;23
-16;Programação Para A WEB - Cliente (Client-Side);50;50;23
-17;WEB - Hipermédia E Acessibilidades;25;25;23
-18;WEB - Ferramentas Multimédia;25;25;23
-19;Programação Para A WEB - Servidor (Server-Side);50;50;23
-20;Redes De Comunicação De Dados;25;25;23
-21;Segurança Em Sistemas Informáticos;25;25;23
-22;Sistemas Operativos Open Source;25;25;23
-23;Sistema Operativo Servidor (Plataforma Proprietária);25;25;23
-24;Integração De Sistemas De Informação - Conceitos;25;25;23
-25;Integração De Sistemas De Informação - Tecnologias E Níveis De Integração;50;50;0
-26;Integração De Sistemas De Informação - Ferramentas;25;25;0
-27;Acesso Móvel A Sistemas De Informação;50;50;0
-28;Planeamento E Gestão De Projetos De Sistemas De Informação;25;25;0
-29;Projeto De Tecnologias E Programação De Sistemas De Informação;50;50;0
-30;Formação Prática Em Contexto De Trabalho;400;400;0
+1;Língua Portuguesa;50;50;24
+2;Língua Inglesa;50;50;25
+3;Matemática;50;50;24
+4;Empresa Estrutura E Funções;25;25;24
+5;Arquitetura De Hardware;25;25;24
+6;Sistemas De Informação - Fundamentos;25;25;24
+7;Sistemas De Informação - Conceção;25;25;24
+8;Engenharia De Software;25;25;24
+9;Bases De Dados - Conceitos;25;25;24
+10;Bases De Dados - Sistemas De Gestão;25;25;25
+11;Criação De Estrutura De Base De Dados Em SQL;25;25;25
+12;Programação Em SQL;25;25;25
+13;Programação Algoritmos;25;25;25
+14;Programação De Computadores - Estruturada;50;50;25
+15;Programação De Computadores - Orientada A Objetos;50;50;25
+16;Programação Para A WEB - Cliente (Client-Side);50;50;25
+17;WEB - Hipermédia E Acessibilidades;25;25;25
+18;WEB - Ferramentas Multimédia;25;25;25
+19;Programação Para A WEB - Servidor (Server-Side);50;50;25
+20;Redes De Comunicação De Dados;25;25;24
+21;Segurança Em Sistemas Informáticos;25;25;24
+22;Sistemas Operativos Open Source;25;25;24
+23;Sistema Operativo Servidor (Plataforma Proprietária);25;25;24
+24;Integração De Sistemas De Informação - Conceitos;25;25;24
+25;Integração De Sistemas De Informação - Tecnologias E Níveis De Integração;50;50;1
+26;Integração De Sistemas De Informação - Ferramentas;25;25;1
+27;Acesso Móvel A Sistemas De Informação;50;50;1
+28;Planeamento E Gestão De Projetos De Sistemas De Informação;25;25;1
+29;Projeto De Tecnologias E Programação De Sistemas De Informação;50;50;1
+30;Formação Prática Em Contexto De Trabalho;400;400;1
 31;Teste-1;30;30;0
 32;Teste-1;30;30;0
 33;Teste-1;30;30;0

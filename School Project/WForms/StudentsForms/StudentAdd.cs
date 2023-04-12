@@ -91,9 +91,9 @@ public partial class StudentAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not {Modifiers: Keys.Control, KeyCode: V}) return;
+        if (e is not { Modifiers: Keys.Control, KeyCode: V }) return;
 
-        ((TextBox) sender).Paste();
+        ((TextBox)sender).Paste();
 
         Console.WriteLine("Testes de Debug");
     }
@@ -104,7 +104,7 @@ public partial class StudentAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Students.AddStudent(
-            (int) numericUpDownStudentID.Value,
+            (int)numericUpDownStudentID.Value,
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
@@ -376,7 +376,7 @@ public partial class StudentAdd : Form
         }
 
         if (!int.IsPositive(rc)) return;
-        var studentToEdit = (Student) _bSourceStudents.Current;
+        var studentToEdit = (Student)_bSourceStudents.Current;
 
         StudentEdit winFormStudentEdit = new(studentToEdit);
         winFormStudentEdit.ShowDialog();
@@ -389,11 +389,11 @@ public partial class StudentAdd : Form
             char.IsLetter(e.KeyChar) || // validating if it's a letter
             char.IsSeparator(e.KeyChar) || // validating if it's a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if it's a whitespace
-            e.KeyChar is (char) Back or '.' or '\'' or '-'
-            // validating if it's a backspace
-            // validating if it's a dot
-            // validating if it's an apostrophe
-            // validating if it's a separator
+            e.KeyChar is (char)Back or '.' or '\'' or '-'
+        // validating if it's a backspace
+        // validating if it's a dot
+        // validating if it's an apostrophe
+        // validating if it's a separator
         )
             return;
         e.Handled = true;
@@ -404,7 +404,7 @@ public partial class StudentAdd : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Back) return;
         e.Handled = true;
     }
 
@@ -466,7 +466,7 @@ public partial class StudentAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos disciplina(s) para adicionar, vamos lá.");
-        var studentToAddCourses = (Student) _bSourceStudents.Current;
+        var studentToAddCourses = (Student)_bSourceStudents.Current;
 
         //
         // cycle to evaluate which student(s) are select and add it
@@ -576,7 +576,7 @@ public partial class StudentAdd : Form
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var current = (Student) _bSourceStudents.Current;
+        var current = (Student)_bSourceStudents.Current;
 
         // Get the students for the selected course from the data source
         var selectedCoursesEnrollmentsStudents =
@@ -605,7 +605,7 @@ public partial class StudentAdd : Form
         // Set the checked items in the checkedListBoxStudents control
         for (var i = 0; i < checkedListBox1.Items.Count; i++)
         {
-            var course = (Course) checkedListBox1.Items[i];
+            var course = (Course)checkedListBox1.Items[i];
             checkedListBox1
                 .SetItemChecked(i,
                     selectedCoursesEnrollmentsStudents
@@ -655,10 +655,10 @@ public partial class StudentAdd : Form
 
         // update the numericUpDownLabel value
         numericUpDownTotalWorkLoad.Value =
-            Students.StudentsList[^1].TotalWorkHoursLoad;
+            Students.StudentsList[^1].TotalWorkHours;
 
         numericUpDownTotalWorkLoad.Value =
-            studentToView.TotalWorkHoursLoad;
+            studentToView.TotalWorkHours;
 
         Console.WriteLine("Testes de Debug");
     }
@@ -835,7 +835,7 @@ public partial class StudentAdd : Form
             "Phone", "Email", "Active", "Genre", "Date Birth",
             "ID Number", "ID Expiration Date",
             "VAT ID", "Nationality", "Birthplace",
-            "CoursesCount", "TotalWorkHoursLoad", "EnrollmentDate"
+            "CoursesCount", "TotalWorkHours", "EnrollmentDate"
         };
         var colWidths = new[]
             //                         email    gender                       

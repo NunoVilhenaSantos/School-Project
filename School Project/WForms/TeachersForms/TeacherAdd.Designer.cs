@@ -1,6 +1,6 @@
 ﻿using School_Project.ClassFolder;
 
-namespace School_Project.WForms.StudentsForms
+namespace School_Project.WForms.TeachersForms
 {
     partial class TeacherAdd
     {
@@ -538,7 +538,7 @@ namespace School_Project.WForms.StudentsForms
             labelGenre.Name = "labelGenre";
             labelGenre.Size = new Size(101, 34);
             labelGenre.TabIndex = 26;
-            labelGenre.Text = "Gênero do Professor:";
+            labelGenre.Text = "Género do Professor:";
             // 
             // labelBirthDate
             // 

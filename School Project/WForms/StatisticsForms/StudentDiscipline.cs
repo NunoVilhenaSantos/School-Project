@@ -133,8 +133,6 @@ public partial class StudentDiscipline : Form
         // checked list-box
         //
         checkedListBoxDisciplines.DataSource = _bindingSourceListCourses;
-        //checkedListBoxDisciplines.Items.Clear();
-        //checkedListBoxDisciplines.Items.AddRange(
 
         listBoxStudents.DataSource = _bSourceListStudents;
         // listBoxStudent.DisplayMember = "NomeCompleto";
@@ -210,9 +208,11 @@ public partial class StudentDiscipline : Form
             enrolledCourses.Except(selectedCourses).ToList();
 
         // Display message boxes with counts
-        MessageBox.Show($"Selected courses: {selectedCourses.Count}");
-        MessageBox.Show($"Enrolled courses: {enrolledCourses.Count}");
-        MessageBox.Show($"Courses to remove: {coursesToRemove.Count}");
+        MessageBox.Show(
+            $"Selected courses: {selectedCourses.Count}\n" +
+            $"Enrolled in courses: {enrolledCourses.Count}\n" +
+            $"courses to enroll: {selectedCourses.Count - enrolledCourses.Count}\n" +
+            $"Courses to remove: {coursesToRemove.Count}.");
 
         // Enroll the student in the selected courses
         try
@@ -284,8 +284,7 @@ public partial class StudentDiscipline : Form
         //
         // cast the selected object to be displayed in the dialog box
         //
-        var studentToErase = listBoxStudents.SelectedItem as Student;
-        studentToErase = (Student) _bSourceListStudents.Current;
+        var studentToErase = (Student) _bSourceListStudents.Current;
 
         if (listBoxStudents.SelectedItem == null)
         {
@@ -355,7 +354,7 @@ public partial class StudentDiscipline : Form
         }
     }
 
-    #region Attributs
+    #region Attributes
 
     //
     // Global variables for the windows forms

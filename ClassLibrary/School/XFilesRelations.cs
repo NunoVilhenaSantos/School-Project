@@ -1,18 +1,16 @@
-﻿using System.Text.RegularExpressions;
-using System.Text;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ClassLibrary.School;
 
-public partial class XFilesRelations
+public static class XFilesRelations
 {
     //
     // Global Properties for the windows forms
     // to store the data into files of class
     //
-
-    [GeneratedRegex("^[a-zA-Z]+:$")]
-    private static partial Regex MyRegex();
-
+    static Regex _myRegex1 = new(@"^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$");
+    static Regex _myRegex2 = new("^[a-zA-Z]+:$");
 
     #region Constants
 
@@ -62,7 +60,7 @@ public partial class XFilesRelations
         try
         {
             fileStream =
-                new FileStream(DICTIONARIES_FILENAME,
+                new(DICTIONARIES_FILENAME,
                     FileMode.Create,
                     FileAccess.ReadWrite);
             fileStream.Close();
@@ -83,13 +81,17 @@ public partial class XFilesRelations
 
         // Sort the dictionaries by their keys
         var sortedCourses =
-            SchoolDatabase.Courses.OrderBy(kvp => kvp.Key);
+            Courses.Courses.CoursesDictionary
+                .OrderBy(kvp => kvp.Key);
         var sortedSchoolClasses =
-            SchoolDatabase.SchoolClasses.OrderBy(kvp => kvp.Key);
+            SchoolClasses.SchoolClasses.SchoolClassesDictionary
+                .OrderBy(kvp => kvp.Key);
         var sortedStudents =
-            SchoolDatabase.Students.OrderBy(kvp => kvp.Key);
+            Students.Students.StudentsDictionary
+                .OrderBy(kvp => kvp.Key);
         var sortedTeachers =
-            SchoolDatabase.Teachers.OrderBy(kvp => kvp.Key);
+            Teachers.Teachers.TeachersDictionary
+                .OrderBy(kvp => kvp.Key);
 
         // Order the dictionaries by their keys
         // var sortedCourses =
@@ -168,7 +170,7 @@ public partial class XFilesRelations
         // ...
 
         using (fileStream =
-                   new FileStream(DICTIONARIES_FILENAME,
+                   new(DICTIONARIES_FILENAME,
                        FileMode.Create, FileAccess.ReadWrite))
             //using (StreamWriter streamWriter = new(fileStream, Encoding.UTF8))
         using (StreamWriter writer = new(fileStream, Encoding.UTF8))
@@ -224,7 +226,7 @@ public partial class XFilesRelations
         try
         {
             fileStream =
-                new FileStream(DICTIONARIES_FILENAME,
+                new(DICTIONARIES_FILENAME,
                     FileMode.OpenOrCreate,
                     FileAccess.ReadWrite);
             fileStream.Close();
@@ -244,7 +246,7 @@ public partial class XFilesRelations
         }
 
         using (fileStream =
-                   new FileStream(DICTIONARIES_FILENAME,
+                   new(DICTIONARIES_FILENAME,
                        FileMode.OpenOrCreate, FileAccess.ReadWrite))
         using (var reader =
                new StreamReader(fileStream, Encoding.UTF8))
@@ -260,13 +262,14 @@ public partial class XFilesRelations
                     continue;
 
                 // Define a regular expression to match letters followed by a colon
-                var regex = MyRegex();
+                //var regex = MyRegex();
 
                 // Get the index of the colon
                 var colonIndex = line.IndexOf(':');
 
                 // Get the substring before the colon
-                var letters = line.Substring(0, colonIndex + 1);
+                var letters =
+                    line.Substring(0, colonIndex + 1);
 
                 // Trim leading and trailing whitespace
                 letters = letters.Trim();
@@ -287,7 +290,7 @@ public partial class XFilesRelations
                 {
                     case "CourseClasses":
                         SchoolDatabase.CourseClasses[values[0]] =
-                            new HashSet<int>(values.Skip(1));
+                            new(values.Skip(1));
                         SchoolDatabase.AssignCoursesToClass(
                             new HashSet<int>(values.Skip(1)),
                             values[0]);
@@ -295,7 +298,7 @@ public partial class XFilesRelations
 
                     case "CourseStudents":
                         SchoolDatabase.CourseStudents[values[0]] =
-                            new HashSet<int>(values.Skip(1));
+                            new(values.Skip(1));
                         SchoolDatabase.EnrollStudentInCourses(
                             new HashSet<int>(values.Skip(1)),
                             values[0]);
@@ -303,22 +306,22 @@ public partial class XFilesRelations
 
                     case "CourseTeacher":
                         SchoolDatabase.CourseTeacher[values[0]] =
-                            new HashSet<int>(values.Skip(1));
+                            new(values.Skip(1));
                         SchoolDatabase.AssignTeacherToCourses(
-                            new HashSet<int>(values.Skip(1)),
+                            new(values.Skip(1)),
                             values[0]);
                         break;
 
                     case "StudentClass":
                         SchoolDatabase.StudentClass[values[0]] =
-                            new HashSet<int>(values.Skip(1));
+                            new(values.Skip(1));
                         SchoolDatabase.AssignCoursesToClass(
                             new HashSet<int>(values.Skip(1)),
                             values[0]);
                         break;
 
                     default:
-                        throw new Exception(
+                        throw new(
                             $"Invalid dictionary identifier " +
                             $"'{currentDictionary}'");
                 }

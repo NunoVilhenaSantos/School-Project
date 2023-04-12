@@ -1,11 +1,14 @@
 ﻿using ClassLibrary.Courses;
 using ClassLibrary.School;
+using ClassLibrary.SchoolClasses;
+using Serilog;
 
 namespace ClassLibrary.Teachers;
 
 public static class Teachers
 {
     public static List<Teacher> TeachersList { get; set; } = new();
+    public static readonly Dictionary<int, Teacher> TeachersDictionary = new();
 
 
     public static void AddTeacher(
@@ -51,16 +54,12 @@ public static class Teachers
             Birthplace = birthplace,
             Photo = photo,
             CoursesCount = coursesCount,
-            TotalWorkHoursLoad = totalWorkHours
+            TotalWorkHours = totalWorkHours
             //Courses = courses
         };
         TeachersList.Add(teacher);
 
         SchoolDatabase.AddTeacher(TeachersList[^1]);
-
-        // foreach (var course in TeachersList[^1].Courses)
-        //     SchoolDatabase.AssignTeacherToCourses(
-        //         TeachersList[^1].TeacherId, course.IdCourse);
     }
 
 
@@ -129,11 +128,11 @@ public static class Teachers
             birthplace;
         TeachersList.FirstOrDefault(a => a.TeacherId == id)!.Photo = photo;
         TeachersList.FirstOrDefault(a => a.TeacherId == id)!
-            .TotalWorkHoursLoad = totalWorkHours;
+            .TotalWorkHours = totalWorkHours;
         TeachersList.FirstOrDefault(a => a.TeacherId == id)!.CoursesCount =
             coursesCount;
-        // TeachersList.FirstOrDefault(a => a.TeacherId == id)!.Courses = courses;
 
+        TeachersList[id].CountCourses();
         TeachersList[id].GetTotalWorkHourLoad();
 
         return "Professor(a) alterado(a) com sucesso";
@@ -205,19 +204,47 @@ public static class Teachers
             teachers = TeachersList.Where(a => a.Photo == photo).ToList();
         if (!int.IsNegative(totalWorkHours))
             teachers = TeachersList
-                .Where(a => a.TotalWorkHoursLoad == totalWorkHours).ToList();
-        // if (courses != null)
-        //     teachers = TeachersList.Where(a => a.Courses == courses).ToList();
+                .Where(a => a.TotalWorkHours == totalWorkHours).ToList();
 
         return teachers;
     }
 
 
+
+    public static List<Teacher> ConsultTeachers(
+        string selectedProperty, object selectedValue)
+    {
+        var property = typeof(Teacher).GetProperty(selectedProperty);
+        if (property == null) return new List<Teacher>();
+
+        var propertyType = property.PropertyType;
+        object convertedValue;
+        try
+        {
+            convertedValue = Convert.ChangeType(selectedValue, propertyType);
+        }
+        catch (InvalidCastException ex)
+        {
+            // Handle invalid cast exception
+            Console.WriteLine($"Invalid cast: {ex.Message}");
+            return new List<Teacher>();
+        }
+        catch (FormatException ex)
+        {
+            // Handle format exception
+            Console.WriteLine($"Invalid format: {ex.Message}");
+            return new List<Teacher>();
+        }
+
+        return TeachersList
+            .Where(t =>                property.GetValue(t)                    ?.
+            Equals(convertedValue) ==                true)
+            .ToList();
+    }
+
+
     public static int GetLastIndex()
     {
-        // handle the case where the collection is empty
-        // return StudentsList[^1].IdStudent;
-        // return GetLastIndex();
         var lastTeachers = TeachersList.LastOrDefault();
         if (lastTeachers != null)
             return lastTeachers.TeacherId;
@@ -237,5 +264,27 @@ public static class Teachers
         // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
         */
+    }
+
+
+    public static void CalculateTeacherMetrics()
+    {
+        if (TeachersList.Count < 1)
+            Log.Warning("No teachers found in the directory");
+
+        foreach (var teacher in TeachersList)
+        {
+            teacher.CalculateTotalWorkHours();
+            teacher.CountCourses();
+            //teacher.CalculateWorkloadPerCourse();
+
+            Log.Information(
+                $"Metrics for {teacher.Name}: " +
+                $"Total work hours = {teacher.TotalWorkHours}, " +
+                $"Course count = {teacher.CoursesCount}, ");
+            // $"Workload per course = {teacher.workloadPerCourse}.");
+        }
+
+        Log.Information("Teacher metrics calculation completed");
     }
 }

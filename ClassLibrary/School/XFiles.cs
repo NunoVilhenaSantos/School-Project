@@ -289,7 +289,7 @@ public static class XFiles
                         $"{teacher.Birthplace};" +
                         $"{teacher.Photo};" +
                         $"{teacher.CoursesCount};" +
-                        $"{teacher.TotalWorkHoursLoad};")
+                        $"{teacher.TotalWorkHours};")
             streamWriter.WriteLine(line);
 
 
@@ -498,7 +498,7 @@ public static class XFiles
         //                      $"{student.Birthplace};" +
         //                      $"{student.Photo};" +
         //                      $"{student.CoursesCount};"+
-        //                      $"{student.TotalWorkHoursLoad};" +
+        //                      $"{student.TotalWorkHours};" +
         //                      $"{student.EnrollmentDate};"
         //              ))
         //     streamWriter.WriteLine(line);
@@ -525,7 +525,7 @@ public static class XFiles
                 student.TaxIdentificationNumber, student.Nationality,
                 student.Birthplace, student.Photo,
                 student.CoursesCount.ToString(),
-                student.TotalWorkHoursLoad.ToString(),
+                student.TotalWorkHours.ToString(),
                 student.EnrollmentDate.ToString("yyyy-MM-dd"));
         }
     }
@@ -879,7 +879,7 @@ public static class XFiles
 
             if (campos[0].Equals("id", StringComparison.OrdinalIgnoreCase))
                 continue;
-            
+
             // ...
             // Use a HashSet to store the course IDs that each teacher
             HashSet<int> courseIds = null;
@@ -914,10 +914,10 @@ public static class XFiles
             grade = parsedGrade;
 
 
-        if (!Enrollments.Enrollments.StudentsDictionary
+        if (!Students.Students.StudentsDictionary
                 .TryGetValue(studentId, out var student) ||
             student == null) return;
-        if (!Enrollments.Enrollments.CoursesDictionary
+        if (!Courses.Courses.CoursesDictionary
                 .TryGetValue(courseId, out var course) ||
             course == null) return;
 

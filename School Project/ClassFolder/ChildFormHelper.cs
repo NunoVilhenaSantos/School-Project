@@ -17,7 +17,7 @@ public class ChildFormHelper
                 return;
             if (controlCollection.Owner.Equals(childForm))
                 return;
-            // unica condição que é verdadeira
+            // única condição que é verdadeira
             if (controlCollection.Owner.ToString().Equals(childForm.ToString()))
                 return;
         }

@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.School;
+using Serilog;
 
 namespace ClassLibrary.Students;
 
@@ -7,11 +8,7 @@ public class Students
     #region Properties
 
     public static List<Student?> StudentsList { get; set; } = new();
-
-    #endregion
-
-
-    #region Attributes
+    public static readonly Dictionary<int, Student> StudentsDictionary = new();
 
     #endregion
 
@@ -61,11 +58,11 @@ public class Students
                 Birthplace = birthplace,
                 Photo = photo,
                 CoursesCount = courseCount,
-                TotalWorkHoursLoad = totalWorkHours,
+                TotalWorkHours = totalWorkHours,
                 EnrollmentDate = enrollmentDate
             }
         );
-        SchoolDatabase.AddStudent(StudentsList[^1]);
+        SchoolDatabase.AddStudent(StudentsList.LastOrDefault());
         Console.WriteLine("Debugging");
     }
 
@@ -73,7 +70,7 @@ public class Students
     public static string DeleteStudent(int id)
     {
         var student =
-            StudentsList.FirstOrDefault(a => a.IdStudent == id);
+            StudentsList.FirstOrDefault(a => a != null && a.IdStudent == id);
 
         if (student == null)
             return "O estudante não existe!";
@@ -157,13 +154,13 @@ public class Students
             a => a != null && a.IdStudent == id)!.Photo = photo;
         StudentsList.FirstOrDefault(
                 a => a != null && a.IdStudent == id)!
-            .TotalWorkHoursLoad = totalWorkHours;
+            .TotalWorkHours = totalWorkHours;
         StudentsList.FirstOrDefault(
                 a => a != null && a.IdStudent == id)!
             .EnrollmentDate = enrollmentDate;
 
-
-        StudentsList[id].GetTotalWorkHourLoad();
+        StudentsList[id]?.CalculateTotalWorkHours();
+        StudentsList[id]?.CountCourses();
 
         return "Estudante alterado com sucesso";
     }
@@ -191,7 +188,7 @@ public class Students
         DateOnly enrollmentDate
     )
     {
-        var students = StudentsList;
+        var students = new List<Student?>();
 
         if (!string.IsNullOrWhiteSpace(name))
             students = StudentsList
@@ -264,7 +261,7 @@ public class Students
 
         if (!int.IsNegative(totalWorkHours))
             students = StudentsList
-                .Where(a => a?.TotalWorkHoursLoad == totalWorkHours)
+                .Where(a => a?.TotalWorkHours == totalWorkHours)
                 .ToList();
 
         if (enrollmentDate != default)
@@ -279,7 +276,7 @@ public class Students
 
     public static int GetLastIndex()
     {
-        var lastStudent = StudentsList.LastOrDefault();
+        //return lastStudent = StudentsList.LastOrDefault();
         return StudentsList.LastOrDefault()?.IdStudent ?? -1;
         //return lastStudent?.IdStudent ?? -1;
     }
@@ -300,48 +297,6 @@ public class Students
     }
 
 
-    /*
-    public static void GetTotalWorkHours(int id)
-    {
-        Console.WriteLine("Debugging");
-
-        if (StudentsList.Count <= id ||
-            StudentsList[id].StudentCoursesGradesList == null ||
-            StudentsList[id].StudentCoursesGradesList.Count <= 0)
-        {
-            // Handle the case where the list is empty or null,
-            // or the index is out of range
-            // return "Lista está vazia"
-            return;
-            if (StudentsList.Count < 1) return;
-            if (StudentsList[id].StudentCoursesGradesList.Count == 0) return;
-            if (StudentsList[id].StudentCoursesGradesList == null) return;
-        }
-
-        // Access the StudentCoursesGradesList property
-        // and perform necessary operations
-
-        //
-        // Resetting the variable,
-        // to start from zero,
-        // if not it will accumulate to the previous balance
-        //
-        StudentsList[id].TotalWorkHoursLoad = 0;
-
-        foreach (var course in StudentsList[id].StudentCoursesGradesList)
-        {
-            var workHoursLoad = Courses.CoursesList
-                .Where(a => a.IdCourse == course.IdCourse)
-                .Sum(x => x.WorkLoad);
-            //Courses.CoursesList;
-            StudentsList[id].TotalWorkHoursLoad += course.IdCourse;
-        }
-
-        Console.WriteLine("Debugging");
-    }
-    */
-
-
     public static string GetFullName(int id)
     {
         return $"{StudentsList[id]?.Name} {StudentsList[id]?.LastName}";
@@ -354,6 +309,32 @@ public class Students
                //$"{StudentsList[id].GetFullName()} | " +
                $"{GetFullName(id)} | " +
                $"{StudentsList[id]?.Phone} - {StudentsList[id]?.Address}";
+    }
+
+
+    public static void CalculateTeacherMetrics()
+    {
+        if (StudentsList.Count < 1)
+            Log.Warning("No teachers found in the directory");
+
+        foreach (var student in StudentsList)
+        {
+            student?.CalculateTotalWorkHours();
+            student?.CountCourses();
+            //teacher.CalculateWorkloadPerCourse();
+
+            if (student != null)
+                Log.Information(
+                    string.Format(
+                        "Metrics for {0}: " +
+                        "Total work hours = {1}, " +
+                        "Course count = {2}, " +
+                        "Workload per course = {3}.",
+                        student?.Name, student?.TotalWorkHours,
+                        student?.CoursesCount));
+        }
+
+        Log.Information("Teacher metrics calculation completed");
     }
 
     #endregion

@@ -25,6 +25,33 @@ public class Student : INotifyPropertyChanged
 
     #endregion
 
+    public void CalculateTotalWorkHours()
+    {
+        var enrollment =
+            SchoolDatabase.GetCoursesForStudent(IdStudent)?
+                .Join(
+                    Courses.Courses.CoursesList,
+                    cfs => cfs.IdCourse,
+                    c => c.IdCourse,
+                    (cfs, c) => c)
+                .ToList();
+
+        if (enrollment == null || enrollment.Count == 0)
+            Log.Warning(
+                "The student is not enroll in any course");
+    }
+
+
+    public void CountCourses()
+    {
+        var enrollment =
+            SchoolDatabase.GetCoursesForStudent(IdStudent)?.Count;
+
+        if (enrollment == 0)
+            Log.Warning(
+                "The student is not enroll in any course");
+    }
+
     #region Attributes
 
     //
@@ -55,7 +82,7 @@ public class Student : INotifyPropertyChanged
 
 
     private int _coursesCount;
-    private int _totalWorkHoursLoad;
+    private int _totalWorkHours;
 
     #endregion
 
@@ -267,20 +294,20 @@ public class Student : INotifyPropertyChanged
         }
     }
 
-    public int TotalWorkHoursLoad
+    public int TotalWorkHours
     {
-        get => _totalWorkHoursLoad;
+        get => _totalWorkHours;
         internal set
         {
-            if (value == _totalWorkHoursLoad) return;
-            _totalWorkHoursLoad = value;
+            if (value == _totalWorkHours) return;
+            _totalWorkHours = value;
             OnPropertyChanged();
         }
     }
 
 
     //
-    // Section of enrolments 
+    // Section of enrollments 
     //
     //public List<Course>? CoursesList { get; set; } = new();
     public DateOnly EnrollmentDate
@@ -320,38 +347,6 @@ public class Student : INotifyPropertyChanged
         // return $"{IdStudent,5} | {FullName()} | {Phone} - {Address}";
         // return $"{IdStudent,3} | {Name} {LastName} | {Phone} - {Address}";
         return $"{IdStudent,3} | {Name} {LastName}";
-    }
-
-
-    public int GetTotalWorkHourLoad()
-    {
-        var enrollment =
-            SchoolDatabase.GetCoursesForStudent(IdStudent)?
-                .Join(
-                    Courses.Courses.CoursesList,
-                    cfs => cfs.IdCourse,
-                    c => c.IdCourse,
-                    (cfs, c) => c)
-                .ToList();
-
-        if (enrollment == null || enrollment.Count == 0)
-            Log.Warning(
-                "The student is not enroll in any course.");
-
-        return enrollment?.Sum(c => c.WorkLoad) ?? 0;
-    }
-
-
-    public int? GetCoursesCount()
-    {
-        var enrollment =
-            SchoolDatabase.GetCoursesForStudent(IdStudent)?.Count;
-
-        if (enrollment == 0)
-            Log.Warning(
-                "The student is not enroll in any course.");
-
-        return enrollment ?? 0;
     }
 
 

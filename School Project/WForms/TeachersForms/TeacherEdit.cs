@@ -1,7 +1,6 @@
-﻿using ClassLibrary.Students;
-using ClassLibrary.Teachers;
+﻿using ClassLibrary.Teachers;
 
-namespace School_Project.WForms.StudentsForms;
+namespace School_Project.WForms.TeachersForms;
 
 public partial class TeacherEdit : Form
 {
@@ -101,9 +100,9 @@ public partial class TeacherEdit : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is { Modifiers: Keys.Control, KeyCode: Keys.V })
+        if (e is {Modifiers: Keys.Control, KeyCode: Keys.V})
         {
-            ((TextBox)sender).Paste();
+            ((TextBox) sender).Paste();
             Console.WriteLine("Testes de Debug");
         }
     }
@@ -130,7 +129,7 @@ public partial class TeacherEdit : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || (Keys)e.KeyChar == Keys.Back) return;
+        if (char.IsDigit(e.KeyChar) || (Keys) e.KeyChar == Keys.Back) return;
         e.Handled = true;
     }
 
@@ -140,7 +139,7 @@ public partial class TeacherEdit : Form
         if (!ValidateTextBoxes()) return;
 
         Teachers.EditTeacher(
-            (int)numericUpDownStudentID.Value,
+            (int) numericUpDownStudentID.Value,
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
@@ -227,6 +226,4 @@ public partial class TeacherEdit : Form
 
         return valid;
     }
-
-
 }

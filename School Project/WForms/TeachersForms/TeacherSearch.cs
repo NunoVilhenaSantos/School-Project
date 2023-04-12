@@ -1,11 +1,14 @@
 ﻿using System.Reflection;
 using ClassLibrary.SchoolClasses;
+using ClassLibrary.Teachers;
 
-namespace School_Project.WForms.StudentsForms;
+namespace School_Project.WForms.TeachersForms;
 
 public partial class TeacherSearch : Form
 {
-    private readonly BindingSource _bSListSClasses = new();
+    //private readonly BindingSource _bSListSClasses = new();
+    //private readonly BindingSource _bSListSClasses = new();
+    private readonly BindingSource _bSListTeachers = new();
     private readonly BindingSource _bSourceSearchList = new();
     private readonly BindingSource _bSourceSearchOptions = new();
 
@@ -47,19 +50,22 @@ public partial class TeacherSearch : Form
         // * 
         // *
         //_bSListCourses.DataSource = Courses.CoursesList;
-        _bSListSClasses.DataSource = SchoolClasses.SchoolClassesList;
+        //_bSListSClasses.DataSource = SchoolClasses.SchoolClassesList;
         //_bSListStudents.DataSource = Students.StudentsList;
+        _bSListTeachers.DataSource = Teachers.TeachersList;
 
         //_bSListCourses.ResetBindings(false);
-        _bSListSClasses.ResetBindings(false);
+        //_bSListSClasses.ResetBindings(false);
         //_bSListStudents.ResetBindings(false);
+        _bSListTeachers.ResetBindings(false);
 
         //_bSListCourses.ResetBindings(true);
-        _bSListSClasses.ResetBindings(true);
+        //_bSListSClasses.ResetBindings(true);
         //_bSListStudents.ResetBindings(true);
+        _bSListTeachers.ResetBindings(true);
 
         // Set the DataSource property of the DataGridView to the BindingSource object
-        dataGridViewSchoolClasses.DataSource = _bSListSClasses;
+        dataGridViewSchoolClasses.DataSource = _bSListTeachers;
 
         // Set the AutoGenerateColumns property of the DataGridView to true
         dataGridViewSchoolClasses.AutoGenerateColumns = true;
@@ -83,9 +89,9 @@ public partial class TeacherSearch : Form
         // and DisplayMember properties of the combobox accordingly.
         // Here's an example code snippet to achieve this:
 
-        _bSourceSearchOptions.DataSource = typeof(SchoolClass);
+        _bSourceSearchOptions.DataSource = typeof(Teacher);
         var properties =
-            typeof(SchoolClass).GetProperties(BindingFlags.Public |
+            typeof(Teacher).GetProperties(BindingFlags.Public |
                                               BindingFlags.Instance);
 
         List<string> propertyNames = new();
@@ -130,22 +136,19 @@ public partial class TeacherSearch : Form
         // Create a new list to store the filtered results
 
         // Get the PropertyInfo object for the selected property of the SchoolClass type
-        var property = typeof(SchoolClass)
+        var property = typeof(Teacher)
             .GetProperty(selectedProperty ?? string.Empty);
 
         // Create a new list to store the filtered results
-        var filteredSchoolClass =
-            SchoolClasses.SchoolClassesList
-                .Where(schoolClass =>
-                    property?.GetValue(schoolClass)?.ToString() != null &&
-                    property.GetValue(schoolClass).ToString() != "")
+        var filteredTeachers =Teachers.TeachersList
+                .Where(t =>property?.GetValue(t)?.ToString() != null &&
+                    property.GetValue(t).ToString() != "")
                 .ToList();
 
 
         // Create a list of distinct values for the selected property from all SchoolClass objects
-        var propertyValues = SchoolClasses.SchoolClassesList
-            .Select(sC =>
-                sC.GetType().GetProperty(selectedProperty)?.GetValue(sC))
+        var propertyValues = Teachers.TeachersList
+            .Select(t =>t.GetType().GetProperty(selectedProperty)?.GetValue(t))
             .Where(value => value != null)
             .Distinct()
             .ToList();
@@ -216,28 +219,28 @@ public partial class TeacherSearch : Form
             comboBoxSearchList.SelectedItem;
 
         // Create a new list to store the filtered results
-        List<SchoolClass> filteredSchoolClass = new();
+        List<Teacher> filteredSchoolClass = new();
 
-        var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        foreach (var schoolClass in SchoolClasses.SchoolClassesList)
+        var property = typeof(Teacher).GetProperty(selectedProperty);
+        foreach (var t in Teachers.TeachersList)
         {
             if (property == null ||
-                (property?.GetValue(schoolClass)?.ToString() != null &&
-                 property.GetValue(schoolClass).ToString() != ""))
+                (property?.GetValue(t)?.ToString() != null &&
+                 property.GetValue(t).ToString() != ""))
                 continue;
 
-            filteredSchoolClass.Add(schoolClass);
+            filteredSchoolClass.Add(t);
         }
 
         // Get the property values and convert them to the appropriate type
-        var propertyValues = SchoolClasses.SchoolClassesList
-            .Select(sC =>
+        var propertyValues = Teachers.TeachersList
+            .Select(t =>
             {
                 var value =
-                    sC.GetType().GetProperty(selectedProperty)?.GetValue(sC);
+                    t.GetType().GetProperty(selectedProperty)?.GetValue(t);
                 if (value != null && value.GetType() == typeof(DateTime))
                     // Convert the value to DateTime and remove the time component
-                    value = ((DateTime)value).Date;
+                    value = ((DateTime) value).Date;
                 return value;
             })
             .Where(value => value != null)
@@ -246,7 +249,7 @@ public partial class TeacherSearch : Form
 
 
         var propertyValues3 =
-            SchoolClasses.ConsultSchoolClasses(
+            Teachers.ConsultTeachers(
                 selectedProperty, selectedValue);
 
 

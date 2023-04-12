@@ -7,6 +7,7 @@ public static class Courses
     #region Properties
 
     public static List<Course> CoursesList { get; set; } = new();
+    public static readonly Dictionary<int, Course> CoursesDictionary = new();
 
     #endregion
 
@@ -205,71 +206,7 @@ public static class Courses
                 .Count() ?? 0;
 
         return "Cálculos executados.";
-
-        #endregion
     }
 
-    //
-    // public static void ToObtainValuesForCalculatedFields()
-    // {
-    //     if (SchoolClassesList.Count < 1) return;
-    //
-    //     foreach (var schoolClass in SchoolClassesList)
-    //     {
-    //         var coursesList = schoolClass.CoursesList;
-    //         if (coursesList == null || !coursesList.Any()) continue;
-    //
-    //         var coursesCount = 0;
-    //         var workHourLoad = 0;
-    //         var studentsCount = 0;
-    //         decimal classTotal = 0;
-    //         decimal highestGrade = 0;
-    //         var lowestGrade = decimal.MaxValue;
-    //
-    //         foreach (var course in coursesList)
-    //             if (course != null)
-    //             {
-    //                 coursesCount++;
-    //
-    //                 studentsCount +=
-    //                     Enrollments.Enrollments.ListEnrollments?
-    //                         .Count(e => e.Course == course) ?? 0;
-    //                 // studentsCount +=
-    //                 //     Enrollments.Enrollments.ListEnrollments?
-    //                 //         .Count(e => e.Course == course);
-    //
-    //                 workHourLoad += course.WorkLoad;
-    //
-    //                 if (Enrollments.Enrollments.ListEnrollments == null ||
-    //                     !Enrollments.Enrollments.ListEnrollments.Any())
-    //                     continue;
-    //
-    //                 // var grades = Enrollments.Enrollments.ListEnrollments?
-    //                 //     .Where(e => e.Course == course)
-    //                 //     .Select(e => e.Grade)
-    //                 //     .ToList();
-    //
-    //                 var grades =
-    //                     Enrollments.Enrollments.ListEnrollments?
-    //                         .Where(e => e.Course == course)
-    //                         .Select(e => e.Grade);
-    //
-    //
-    //                 if (grades != null && !grades.Any()) continue;
-    //
-    //                 classTotal += ((decimal) grades.Average())!;
-    //                 highestGrade = Math.Max(highestGrade,
-    //                     (decimal) grades.Max());
-    //                 lowestGrade = Math.Min(lowestGrade,
-    //                     (decimal) grades.Min());
-    //             }
-    //
-    //         schoolClass.CoursesCount = coursesCount;
-    //         schoolClass.WorkHourLoad = workHourLoad;
-    //         schoolClass.StudentsCount = studentsCount;
-    //         schoolClass.ClassAverage = classTotal / coursesCount;
-    //         schoolClass.HighestGrade = highestGrade;
-    //         schoolClass.LowestGrade = lowestGrade;
-    //     }
-    // }
+    #endregion
 }

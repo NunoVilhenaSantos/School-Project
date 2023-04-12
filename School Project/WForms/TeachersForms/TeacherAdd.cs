@@ -1,16 +1,13 @@
 ﻿using System.Drawing.Printing;
-using System.Linq;
 using System.Reflection;
 using ClassLibrary.Courses;
-using ClassLibrary.Enrollments;
 using ClassLibrary.School;
 using ClassLibrary.SchoolClasses;
-using ClassLibrary.Students;
 using ClassLibrary.Teachers;
 using Serilog;
 using static System.Windows.Forms.Keys;
 
-namespace School_Project.WForms.StudentsForms;
+namespace School_Project.WForms.TeachersForms;
 
 public partial class TeacherAdd : Form
 {
@@ -21,8 +18,8 @@ public partial class TeacherAdd : Form
     private readonly BindingSource _bSourceSearchList = new();
     private readonly BindingSource _bSourceSearchOptions = new();
     private readonly BindingSource _bSourceTeachers = new();
-    private string _teacherPhoto;
     private int _teacherCount;
+    private string _teacherPhoto;
 
     public TeacherAdd()
     {
@@ -39,6 +36,8 @@ public partial class TeacherAdd : Form
         //
         if (Teachers.TeachersList.Count > 0)
             _teacherCount = Teachers.TeachersList[^1].TeacherId;
+
+        Teachers.CalculateTeacherMetrics();
 
         //
         // make the transparent tab-control transparent
@@ -93,9 +92,9 @@ public partial class TeacherAdd : Form
          */
 
         //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
-        if (e is not { Modifiers: Keys.Control, KeyCode: V }) return;
+        if (e is not {Modifiers: Keys.Control, KeyCode: V}) return;
 
-        ((TextBox)sender).Paste();
+        ((TextBox) sender).Paste();
 
         Console.WriteLine("Testes de Debug");
     }
@@ -106,7 +105,7 @@ public partial class TeacherAdd : Form
         if (!ValidateTextBoxes()) return;
 
         Teachers.AddTeacher(
-            (int)numericUpDownStudentID.Value,
+            (int) numericUpDownStudentID.Value,
             textBoxName.Text,
             textBoxLastName.Text,
             textBoxAddress.Text,
@@ -261,8 +260,8 @@ public partial class TeacherAdd : Form
             Teachers.TeachersList
                 .Where(
                     x => property != null &&
-                               property.GetValue(x)
-                                   .ToString() != "").ToList();
+                         property.GetValue(x)
+                             .ToString() != "").ToList();
 
         _bSourceSearchList.DataSource = filteredStudents;
 
@@ -379,7 +378,7 @@ public partial class TeacherAdd : Form
         }
 
         if (!int.IsPositive(rc)) return;
-        var teacherToEdit = (Teacher)_bSourceTeachers.Current;
+        var teacherToEdit = (Teacher) _bSourceTeachers.Current;
 
         TeacherEdit teacherEdit = new(teacherToEdit);
         teacherEdit.ShowDialog();
@@ -392,11 +391,11 @@ public partial class TeacherAdd : Form
             char.IsLetter(e.KeyChar) || // validating if it's a letter
             char.IsSeparator(e.KeyChar) || // validating if it's a separator
             char.IsWhiteSpace(e.KeyChar) || // validating if it's a whitespace
-            e.KeyChar is (char)Back or '.' or '\'' or '-'
-        // validating if it's a backspace
-        // validating if it's a dot
-        // validating if it's an apostrophe
-        // validating if it's a separator
+            e.KeyChar is (char) Back or '.' or '\'' or '-'
+            // validating if it's a backspace
+            // validating if it's a dot
+            // validating if it's an apostrophe
+            // validating if it's a separator
         )
             return;
         e.Handled = true;
@@ -407,7 +406,7 @@ public partial class TeacherAdd : Form
         object sender, KeyPressEventArgs e)
     {
         // validating if it's a digit
-        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Back) return;
+        if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Back) return;
         e.Handled = true;
     }
 
@@ -469,7 +468,7 @@ public partial class TeacherAdd : Form
         // open the edit form with the studentForValidation editing
         //
         MessageBox.Show("Temos disciplina(s) para adicionar, vamos lá.");
-        var teacherToAddCourses = (Teacher)_bSourceTeachers.Current;
+        var teacherToAddCourses = (Teacher) _bSourceTeachers.Current;
 
         //
         // cycle to evaluate which teacher(s) are select and add it
@@ -509,7 +508,7 @@ public partial class TeacherAdd : Form
         {
             SchoolDatabase.AssignTeacherToCourses(
                 teacherToAddCourses.TeacherId, selectedCourses
-                );
+            );
         }
         catch (Exception ex)
         {
@@ -580,7 +579,7 @@ public partial class TeacherAdd : Form
             _previousRowIndex) return;
 
         // Get the selected course from the data source
-        var current = (Teacher)_bSourceTeachers.Current;
+        var current = (Teacher) _bSourceTeachers.Current;
 
         // Get the students for the selected course from the data source
         var selectedCourseEnrollments =
@@ -595,7 +594,7 @@ public partial class TeacherAdd : Form
         // Set the checked items in the checkedListBoxStudents control
         for (var i = 0; i < checkedListBox1.Items.Count; i++)
         {
-            var course = (Course)checkedListBox1.Items[i];
+            var course = (Course) checkedListBox1.Items[i];
             checkedListBox1
                 .SetItemChecked(i,
                     selectedCourseEnrollments
@@ -645,10 +644,10 @@ public partial class TeacherAdd : Form
 
         // update the numericUpDownLabel value
         numericUpDownTotalWorkLoad.Value =
-            Teachers.TeachersList[^1].TotalWorkHoursLoad;
+            Teachers.TeachersList[^1].TotalWorkHours;
 
         numericUpDownTotalWorkLoad.Value =
-            studentToView.TotalWorkHoursLoad;
+            studentToView.TotalWorkHours;
 
         Console.WriteLine("Testes de Debug");
     }
@@ -825,7 +824,7 @@ public partial class TeacherAdd : Form
             "Phone", "Email", "Active", "Genre", "Date Birth",
             "ID Number", "ID Expiration Date",
             "VAT ID", "Nationality", "Birthplace",
-            "CoursesCount", "TotalWorkHoursLoad", "EnrollmentDate"
+            "CoursesCount", "TotalWorkHours", "EnrollmentDate"
         };
         var colWidths = new[]
             //                         email    gender                       

@@ -164,10 +164,12 @@ public class Course : INotifyPropertyChanged
 
 
     /// <summary>
-    ///     Sets the full name of the course, which includes the course ID and name.
+    ///     Sets the full name of the course,
+    ///     which includes the course ID and name.
     /// </summary>
     /// <remarks>
-    ///     This setter is included for consistency with the getter and should not be used externally.
+    ///     This setter is included for consistency
+    ///     with the getter and should not be used externally.
     /// </remarks>
     internal string SetFullName
     {

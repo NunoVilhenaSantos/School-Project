@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ClassLibrary.School;
+using Serilog;
 
 namespace ClassLibrary.Teachers;
 
@@ -29,6 +30,41 @@ public class Teacher : INotifyPropertyChanged
     #endregion
 
 
+    public void CalculateTotalWorkHours()
+    {
+        var totalWorkHourLoad =
+            SchoolDatabase
+                .GetCoursesForTeacher(TeacherId)?
+                .Sum(c => c.WorkLoad);
+
+        if (totalWorkHourLoad is null or 0)
+            Log.Warning(
+                "The student is not enroll in any course");
+
+        TotalWorkHours = totalWorkHourLoad ?? 0;
+    }
+
+    public void CountCourses()
+    {
+        var CoursesCount =
+            SchoolDatabase.GetCoursesForTeacher(TeacherId)?.Count;
+
+        if (CoursesCount is null or 0)
+            Log.Warning(
+                "The student is not enroll in any course");
+
+        CoursesCount = CoursesCount ?? 0;
+        /*
+        return CoursesList == null
+            ? 0
+            : CoursesList.Sum(course => course.Enrollments.Count);
+        
+        if (CoursesList == null) return 0;
+        return CoursesList.Sum(course => course.Enrollments.Count);
+        */
+    }
+
+
     #region Attributes
 
     //
@@ -55,7 +91,7 @@ public class Teacher : INotifyPropertyChanged
     private string _photo;
 
     private int _coursesCount;
-    private int _totalWorkHoursLoad;
+    private int _totalWorkHours;
 
     //private List<Course> _courses = new();
 
@@ -242,17 +278,6 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    // public List<Course> Courses
-    // {
-    //     get => _courses;
-    //     set
-    //     {
-    //         if (Equals(value, _courses)) return;
-    //         _courses = value;
-    //         OnPropertyChanged();
-    //     }
-    // }
-
 
     public int CoursesCount
     {
@@ -265,13 +290,13 @@ public class Teacher : INotifyPropertyChanged
         }
     }
 
-    public int TotalWorkHoursLoad
+    public int TotalWorkHours
     {
-        get => _totalWorkHoursLoad;
+        get => _totalWorkHours;
         internal set
         {
-            if (value == _totalWorkHoursLoad) return;
-            _totalWorkHoursLoad = value;
+            if (value == _totalWorkHours) return;
+            _totalWorkHours = value;
             OnPropertyChanged();
         }
     }
@@ -286,23 +311,13 @@ public class Teacher : INotifyPropertyChanged
         var totalWorkHourLoad =
             SchoolDatabase.GetCoursesForTeacher(TeacherId)?
                 .Sum(c => c.WorkLoad);
+
+        if (totalWorkHourLoad is null or 0)
+            Log.Warning(
+                "The student is not enroll in any course");
+
+        TotalWorkHours = totalWorkHourLoad ?? 0;
         return totalWorkHourLoad ?? 0;
-    }
-
-
-    public int GetCoursesCount()
-    {
-        var CoursesCount =
-            SchoolDatabase.GetCoursesForTeacher(TeacherId)?.Count;
-        return CoursesCount ?? 0;
-        /*
-        return CoursesList == null
-            ? 0
-            : CoursesList.Sum(course => course.Enrollments.Count);
-        
-        if (CoursesList == null) return 0;
-        return CoursesList.Sum(course => course.Enrollments.Count);
-        */
     }
 
 

@@ -25,6 +25,9 @@ public partial class StudentEdit : Form
 
     private void WinForm_Load(object sender, EventArgs e)
     {
+        _studentToEdit.CalculateTotalWorkHours();
+        _studentToEdit.CountCourses();
+
         //
         // inserir os dados nas caixas de textos
         //
@@ -61,8 +64,7 @@ public partial class StudentEdit : Form
         _studentPhoto = _studentToEdit.Photo;
         pictureBoxPhotoDisplay.ImageLocation = _studentToEdit.Photo;
 
-        numericUpDownTotalWorkLoad.Value =
-            _studentToEdit.GetTotalWorkHourLoad();
+        numericUpDownTotalWorkLoad.Value = _studentToEdit.TotalWorkHours;
     }
 
 
