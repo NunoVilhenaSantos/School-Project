@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.School;
+using ClassLibrary.SchoolClasses;
 using Serilog;
 
 namespace ClassLibrary.Students;
@@ -271,6 +272,37 @@ public class Students
                 .ToList();
 
         return students;
+    }
+
+    public static List<Student> ConsultStudents(
+       string selectedProperty, object selectedValue)
+    {
+        var property = typeof(Student).GetProperty(selectedProperty);
+        if (property == null) return new List<Student>();
+
+        var propertyType = property.PropertyType;
+        object convertedValue;
+        try
+        {
+            convertedValue = Convert.ChangeType(selectedValue, propertyType);
+        }
+        catch (InvalidCastException ex)
+        {
+            // Handle invalid cast exception
+            Console.WriteLine($"Invalid cast: {ex.Message}");
+            return new List<Student>();
+        }
+        catch (FormatException ex)
+        {
+            // Handle format exception
+            Console.WriteLine($"Invalid format: {ex.Message}");
+            return new List<Student>();
+        }
+
+        return StudentsList
+            .Where(s =>property.GetValue(s)?
+            .Equals(convertedValue) ==                true)
+            .ToList();
     }
 
 

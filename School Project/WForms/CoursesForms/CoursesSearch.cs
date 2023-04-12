@@ -1,11 +1,14 @@
 ﻿using System.Reflection;
+using ClassLibrary.Courses;
 using ClassLibrary.SchoolClasses;
+using ClassLibrary.Students;
 
 namespace School_Project.WForms.CoursesForms;
 
 public partial class CoursesSearch : Form
 {
-    private readonly BindingSource _bSListSClasses = new();
+    //private readonly BindingSource _bSListSClasses = new();
+    private readonly BindingSource _bSListCourses = new();
     private readonly BindingSource _bSourceSearchList = new();
     private readonly BindingSource _bSourceSearchOptions = new();
 
@@ -47,19 +50,23 @@ public partial class CoursesSearch : Form
         // * 
         // *
         //_bSListCourses.DataSource = Courses.CoursesList;
-        _bSListSClasses.DataSource = SchoolClasses.SchoolClassesList;
+        //_bSListSClasses.DataSource = SchoolClasses.SchoolClassesList;
+        _bSListCourses.DataSource = Courses.CoursesList;
         //_bSListStudents.DataSource = Students.StudentsList;
 
         //_bSListCourses.ResetBindings(false);
-        _bSListSClasses.ResetBindings(false);
+        //_bSListSClasses.ResetBindings(false);
+        _bSListCourses.ResetBindings(false);
         //_bSListStudents.ResetBindings(false);
 
         //_bSListCourses.ResetBindings(true);
-        _bSListSClasses.ResetBindings(true);
+        //_bSListSClasses.ResetBindings(true);
+        _bSListCourses.ResetBindings(true);
         //_bSListStudents.ResetBindings(true);
 
         // Set the DataSource property of the DataGridView to the BindingSource object
-        dataGridViewSchoolClasses.DataSource = _bSListSClasses;
+        //dataGridViewSchoolClasses.DataSource = _bSListSClasses;
+        dataGridViewSchoolClasses.DataSource = _bSListCourses;
 
         // Set the AutoGenerateColumns property of the DataGridView to true
         dataGridViewSchoolClasses.AutoGenerateColumns = true;
@@ -83,9 +90,9 @@ public partial class CoursesSearch : Form
         // and DisplayMember properties of the combobox accordingly.
         // Here's an example code snippet to achieve this:
 
-        _bSourceSearchOptions.DataSource = typeof(SchoolClass);
+        _bSourceSearchOptions.DataSource = typeof(Course);
         var properties =
-            typeof(SchoolClass).GetProperties(BindingFlags.Public |
+            typeof(Course).GetProperties(BindingFlags.Public |
                                               BindingFlags.Instance);
 
         List<string> propertyNames = new();
@@ -109,7 +116,6 @@ public partial class CoursesSearch : Form
         //dataGridViewSearch.Refresh();
         //dataGridViewSearch.Update();
 
-
         Console.WriteLine("Testes de Debug");
     }
 
@@ -122,7 +128,6 @@ public partial class CoursesSearch : Form
                 comboBoxSearchOptions.SelectedItem?.ToString()))
             return;
 
-
         // Get the name of the selected property
         var selectedProperty =
             comboBoxSearchOptions.SelectedItem.ToString();
@@ -130,22 +135,21 @@ public partial class CoursesSearch : Form
         // Create a new list to store the filtered results
 
         // Get the PropertyInfo object for the selected property of the SchoolClass type
-        var property = typeof(SchoolClass)
+        var property = typeof(Course)
             .GetProperty(selectedProperty ?? string.Empty);
 
         // Create a new list to store the filtered results
-        var filteredSchoolClass =
-            SchoolClasses.SchoolClassesList
-                .Where(schoolClass =>
-                    property?.GetValue(schoolClass)?.ToString() != null &&
-                    property.GetValue(schoolClass).ToString() != "")
+        var filteredStudents = Courses.CoursesList
+                .Where(c =>
+                    property?.GetValue(c)?.ToString() != null &&
+                    property.GetValue(c).ToString() != "")
                 .ToList();
 
 
         // Create a list of distinct values for the selected property from all SchoolClass objects
-        var propertyValues = SchoolClasses.SchoolClassesList
-            .Select(sC =>
-                sC.GetType().GetProperty(selectedProperty)?.GetValue(sC))
+        var propertyValues = Courses.CoursesList
+            .Select(c =>c.GetType()
+            .GetProperty(selectedProperty)?.GetValue(c))
             .Where(value => value != null)
             .Distinct()
             .ToList();
@@ -157,84 +161,32 @@ public partial class CoursesSearch : Form
     private void ComboBoxSearchList_SelectedIndexChanged(
         object sender, EventArgs e)
     {
-        /*
-        // Get the name of the selected property
-        var selectedProperty =
-            comboBoxSearchOptions.SelectedItem.ToString();
-
-        // Get the name of the selected property
-        var selectedValue =
-            comboBoxSearchList.SelectedItem;
-
-        var convertedValue =
-            Convert.ChangeType(selectedValue, selectedProperty.GetType());
-        
-        var propertyValues1 = SchoolClasses.SchoolClassesList
-            .Select(x =>
-                x.GetType().GetProperty(selectedProperty)
-                    ?.GetValue(x))
-            .Where(value => value == selectedValue)
-            //.Distinct()
-            .ToList();
-
-        var propertyValues2 = SchoolClasses.SchoolClassesList
-            .Select(x =>
-                x.GetType().GetProperty(selectedProperty)?.GetValue(x))
-            .Where(value => value != null && value.Equals(convertedValue) ==
-                true)
-            //.Distinct()
-            .ToList();
-
-
-        var consultSchoolClasses =
-            SchoolClasses.ConsultSchoolClasses(
-                null, // int id,
-                "", //string classAcronym,
-                "", //string className,
-                default, //DateOnly startDate,
-                default, //DateOnly endDate,
-                default, //TimeOnly startHour,
-                default, //TimeOnly endHour,
-                "", //string location,
-                "", //string type,
-                "", //string area,
-                null, //int studentsCount,
-                //List<Student>? studentsList
-                null);
-
-        var propertyValues3 =
-            SchoolClasses.ConsultSchoolClasses(
-                selectedProperty, selectedValue);
-        */
-
-
         // Get the selected property name
         var selectedProperty = comboBoxSearchOptions.SelectedItem.ToString();
 
         // Get the name of the selected property
-        var selectedValue =
-            comboBoxSearchList.SelectedItem;
+        var selectedValue =            comboBoxSearchList.SelectedItem;
 
         // Create a new list to store the filtered results
-        List<SchoolClass> filteredSchoolClass = new();
+        List<Course> filteredStudents = new();
 
-        var property = typeof(SchoolClass).GetProperty(selectedProperty);
-        foreach (var schoolClass in SchoolClasses.SchoolClassesList)
+        var property = typeof(Course).GetProperty(selectedProperty);
+        foreach (var c in Courses.CoursesList)
         {
             if (property == null ||
-                (property?.GetValue(schoolClass)?.ToString() != null &&
-                 property.GetValue(schoolClass).ToString() != ""))
+                (property?.GetValue(c)?.ToString() != null &&
+                 property.GetValue(c).ToString() != ""))
                 continue;
 
-            filteredSchoolClass.Add(schoolClass);
+            filteredStudents.Add(c);
         }
 
         // Get the property values and convert them to the appropriate type
-        var propertyValues = SchoolClasses.SchoolClassesList
-            .Select(sC =>
+        var propertyValues = Courses.CoursesList
+            .Select(c =>
             {
                 var value =
-                    sC.GetType().GetProperty(selectedProperty)?.GetValue(sC);
+                    c.GetType().GetProperty(selectedProperty)?.GetValue(c);
                 if (value != null && value.GetType() == typeof(DateTime))
                     // Convert the value to DateTime and remove the time component
                     value = ((DateTime) value).Date;
@@ -246,7 +198,7 @@ public partial class CoursesSearch : Form
 
 
         var propertyValues3 =
-            SchoolClasses.ConsultSchoolClasses(
+            Courses.ConsultCourses(
                 selectedProperty, selectedValue);
 
 

@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.School;
+using ClassLibrary.SchoolClasses;
 
 namespace ClassLibrary.Courses;
 
@@ -10,41 +11,6 @@ public static class Courses
     public static readonly Dictionary<int, Course> CoursesDictionary = new();
 
     #endregion
-
-
-    public static string GetFullName(int id)
-    {
-        if (CoursesList.Count < 1)
-            return "A lista está vazia";
-
-        var course =
-            CoursesList.FirstOrDefault(
-                a => a.IdCourse == id);
-
-        if (course == null)
-            return "O curso não existe!";
-
-        return $"{course.IdCourse,5} | " +
-               $"{course.Name} " +
-               $"{course.Credits}";
-    }
-
-
-    public static string GetFullInfo(int id)
-    {
-        if (CoursesList.Count < 1)
-            return "A lista está vazia";
-
-        var course =
-            CoursesList.FirstOrDefault(
-                a => a.IdCourse == id);
-
-        if (course == null)
-            return "A turma não existe!";
-
-        return $"{GetFullName(id)} | " +
-               $"{course.WorkLoad} - {course.StudentsCount}";
-    }
 
 
     #region Methods
@@ -170,6 +136,41 @@ public static class Courses
     }
 
 
+    public static List<Course> ConsultCourses(
+       string selectedProperty, object selectedValue)
+    {
+        var property = typeof(Course).GetProperty(selectedProperty);
+        if (property == null) return new List<Course>();
+
+        var propertyType = property.PropertyType;
+        object convertedValue;
+        try
+        {
+            convertedValue = Convert.ChangeType(selectedValue, propertyType);
+        }
+        catch (InvalidCastException ex)
+        {
+            // Handle invalid cast exception
+            Console.WriteLine($"Invalid cast: {ex.Message}");
+            return new List<Course>();
+        }
+        catch (FormatException ex)
+        {
+            // Handle format exception
+            Console.WriteLine($"Invalid format: {ex.Message}");
+            return new List<Course>();
+        }
+
+        return CoursesList
+            .Where(c=>                property.GetValue(c)
+                    ?.Equals(convertedValue) ==
+                true)
+            .ToList();
+    }
+
+
+
+
     public static int GetLastIndex()
     {
         var lastCourse = CoursesList.LastOrDefault();
@@ -192,6 +193,47 @@ public static class Courses
         // return StudentsList[^1].IdStudent;
         // return GetLastIndex();
     }
+
+
+
+
+    public static string GetFullName(int id)
+    {
+        if (CoursesList.Count < 1)
+            return "A lista está vazia";
+
+        var course =
+            CoursesList.FirstOrDefault(
+                a => a.IdCourse == id);
+
+        if (course == null)
+            return "O curso não existe!";
+
+        return $"{course.IdCourse,5} | " +
+               $"{course.Name} " +
+               $"{course.Credits}";
+    }
+
+
+    public static string GetFullInfo(int id)
+    {
+        if (CoursesList.Count < 1)
+            return "A lista está vazia";
+
+        var course =
+            CoursesList.FirstOrDefault(
+                a => a.IdCourse == id);
+
+        if (course == null)
+            return "A turma não existe!";
+
+        return $"{GetFullName(id)} | " +
+               $"{course.WorkLoad} - {course.StudentsCount}";
+    }
+
+
+
+
 
 
     public static string GetStudentsCount()
