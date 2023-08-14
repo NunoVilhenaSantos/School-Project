@@ -1,14 +1,14 @@
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.deps.json
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.runtimeconfig.json
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.dll
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.pdb
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.csproj.AssemblyReference.cache
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.AssemblyInfoInputs.cache
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.AssemblyInfo.cs
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.csproj.CoreCompileInputs.cache
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.dll
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\refint\ClassLibrary.dll
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.pdb
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.genruntimeconfig.cache
-C:\Users\nunov\RiderProjects\School Project\ClassLibrary\obj\Debug\net7.0\ref\ClassLibrary.dll
+C:\repos\School-Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.deps.json
+C:\repos\School-Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.runtimeconfig.json
+C:\repos\School-Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.dll
+C:\repos\School-Project\ClassLibrary\bin\Debug\net7.0\ClassLibrary.pdb
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.csproj.AssemblyReference.cache
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.AssemblyInfoInputs.cache
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.AssemblyInfo.cs
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.dll
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\refint\ClassLibrary.dll
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.pdb
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ClassLibrary.genruntimeconfig.cache
+C:\repos\School-Project\ClassLibrary\obj\Debug\net7.0\ref\ClassLibrary.dll

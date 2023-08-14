@@ -11,37 +11,37 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="itext7" Version="7.2.5"/>
-        <PackageReference Include="itext7.commons" Version="7.2.5"/>
-        <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1"/>
-        <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.4"/>
-        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.4"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4"/>
-        <PackageReference Include="MySql.Data" Version="8.0.32.1"/>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
-        <PackageReference Include="Serilog" Version="2.12.0"/>
-        <PackageReference Include="System.Linq" Version="4.3.0"/>
-        <PackageReference Include="System.Linq.Expressions" Version="4.3.0"/>
-        <PackageReference Include="System.Linq.Queryable" Version="4.3.0"/>
-        <PackageReference Include="System.Xml.XDocument" Version="4.3.0"/>
-        <PackageReference Include="WinForms.DataVisualization" Version="1.8.0"/>
+        <PackageReference Include="itext7" Version="8.0.1" />
+        <PackageReference Include="itext7.commons" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.10" />
+        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
+        <PackageReference Include="MySql.Data" Version="8.1.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Serilog" Version="3.0.1" />
+        <PackageReference Include="System.Linq" Version="4.3.0" />
+        <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+        <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+        <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
+        <PackageReference Include="WinForms.DataVisualization" Version="1.8.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj"/>
+        <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="Properties\**"/>
+        <Compile Remove="Properties\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Remove="Properties\**"/>
+        <EmbeddedResource Remove="Properties\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Properties\**"/>
+        <None Remove="Properties\**" />
         <None Update="XFiles\SchoolClassesFile.csv">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
@@ -90,17 +90,17 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="Properties\DataSources\ClassLibrary.Course.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.Courses.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.Enrollment.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.Enrollments.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.SchoolClass.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.SchoolContext.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.SchoolManaging.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.Student.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.Students.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.Teacher.datasource"/>
-        <None Include="Properties\DataSources\ClassLibrary.Teachers.datasource"/>
+        <None Include="Properties\DataSources\ClassLibrary.Course.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.Courses.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.Enrollment.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.Enrollments.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.SchoolClass.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.SchoolContext.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.SchoolManaging.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.Student.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.Students.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.Teacher.datasource" />
+        <None Include="Properties\DataSources\ClassLibrary.Teachers.datasource" />
     </ItemGroup>
 
     <ItemGroup>

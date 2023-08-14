@@ -21,7 +21,6 @@ public partial class InitialWinForm : Form
     private readonly Stopwatch _stopwatch;
     private bool _closeFromUser;
 
-    private SchoolContext _context;
     private double elapsedSecondsXFiles;
     private TimeSpan elapsedTimeForm;
     private TimeSpan elapsedTimeXFiles;
