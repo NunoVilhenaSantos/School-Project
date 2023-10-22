@@ -129,7 +129,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.JsonPatch/7.0.5": {
+      "Microsoft.AspNetCore.JsonPatch/7.0.10": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -146,10 +146,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.5": {
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.JsonPatch": "7.0.5",
+          "Microsoft.AspNetCore.JsonPatch": "7.0.10",
           "Newtonsoft.Json": "13.0.1",
           "Newtonsoft.Json.Bson": "1.0.2"
         },
@@ -246,10 +246,10 @@
           }
         }
       },
-      "Microsoft.Data.Sqlite/7.0.10": {
+      "Microsoft.Data.Sqlite/7.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "7.0.10",
+          "Microsoft.Data.Sqlite.Core": "7.0.12",
           "SQLitePCLRaw.bundle_e_sqlite3": "2.1.4"
         },
         "compile": {
@@ -259,7 +259,7 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.Data.Sqlite.Core/7.0.10": {
+      "Microsoft.Data.Sqlite.Core/7.0.12": {
         "type": "package",
         "dependencies": {
           "SQLitePCLRaw.core": "2.1.4"
@@ -275,11 +275,11 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore/7.0.10": {
+      "Microsoft.EntityFrameworkCore/7.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.10",
-          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.10",
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.12",
+          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.12",
           "Microsoft.Extensions.Caching.Memory": "7.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.Extensions.Logging": "7.0.0"
@@ -298,7 +298,7 @@
           "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/7.0.10": {
+      "Microsoft.EntityFrameworkCore.Abstractions/7.0.12": {
         "type": "package",
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
@@ -311,7 +311,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/7.0.10": {
+      "Microsoft.EntityFrameworkCore.Analyzers/7.0.12": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -320,11 +320,11 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/7.0.10": {
+      "Microsoft.EntityFrameworkCore.Design/7.0.12": {
         "type": "package",
         "dependencies": {
           "Humanizer.Core": "2.14.1",
-          "Microsoft.EntityFrameworkCore.Relational": "7.0.10",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.12",
           "Microsoft.Extensions.DependencyModel": "7.0.0",
           "Mono.TextTemplating": "2.2.1"
         },
@@ -342,10 +342,10 @@
           "build/net6.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/7.0.10": {
+      "Microsoft.EntityFrameworkCore.Relational/7.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.10",
+          "Microsoft.EntityFrameworkCore": "7.0.12",
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0"
         },
         "compile": {
@@ -359,11 +359,11 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.SqlServer/7.0.10": {
+      "Microsoft.EntityFrameworkCore.SqlServer/7.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Data.SqlClient": "5.0.2",
-          "Microsoft.EntityFrameworkCore.Relational": "7.0.10"
+          "Microsoft.Data.SqlClient": "5.1.1",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.12"
         },
         "compile": {
           "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
@@ -376,10 +376,10 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/7.0.10": {
+      "Microsoft.EntityFrameworkCore.Tools/7.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "7.0.10"
+          "Microsoft.EntityFrameworkCore.Design": "7.0.12"
         },
         "compile": {
           "lib/net6.0/_._": {}
@@ -589,10 +589,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.10": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.10",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.12",
           "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
           "Microsoft.Extensions.Options": "7.0.1"
@@ -608,7 +608,7 @@
           }
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.10": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.12": {
         "type": "package",
         "compile": {
           "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
@@ -621,12 +621,12 @@
           }
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/7.0.10": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/7.0.12": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "7.0.10",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.10",
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.10"
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.12",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.12",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.12"
         },
         "compile": {
           "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll": {
@@ -1163,10 +1163,10 @@
           }
         }
       },
-      "Serilog.Extensions/3.4.0": {
+      "Serilog.Extensions/3.4.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "7.0.5",
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "7.0.10",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Newtonsoft.Json": "13.0.3",
@@ -1174,8 +1174,7 @@
           "Serilog.Enrichers.Environment": "2.2.0",
           "Serilog.Enrichers.Process": "2.0.2",
           "Serilog.Enrichers.Thread": "3.1.0",
-          "Serilog.Extensions.Logging": "7.0.0",
-          "Serilog.Sinks.Seq": "5.2.2"
+          "Serilog.Extensions.Logging": "7.0.0"
         },
         "compile": {
           "lib/net7.0/Serilog.Extensions.dll": {}
@@ -1259,7 +1258,7 @@
           }
         }
       },
-      "Serilog.Settings.Configuration/7.0.0": {
+      "Serilog.Settings.Configuration/7.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Configuration.Binder": "7.0.0",
@@ -1341,22 +1340,6 @@
           }
         }
       },
-      "Serilog.Sinks.PeriodicBatching/3.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Serilog": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/Serilog.Sinks.PeriodicBatching.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/Serilog.Sinks.PeriodicBatching.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Serilog.Sinks.RollingFile/3.3.0": {
         "type": "package",
         "dependencies": {
@@ -1373,25 +1356,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Serilog.Sinks.Seq/5.2.2": {
-        "type": "package",
-        "dependencies": {
-          "Serilog": "2.12.0",
-          "Serilog.Formatting.Compact": "1.1.0",
-          "Serilog.Sinks.File": "5.0.0",
-          "Serilog.Sinks.PeriodicBatching": "3.1.0"
-        },
-        "compile": {
-          "lib/net5.0/Serilog.Sinks.Seq.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net5.0/Serilog.Sinks.Seq.dll": {
             "related": ".xml"
           }
         }
@@ -2627,10 +2591,10 @@
         "lib/netstandard2.1/K4os.Hash.xxHash.xml"
       ]
     },
-    "Microsoft.AspNetCore.JsonPatch/7.0.5": {
-      "sha512": "WTD0lUlrQEHF0eWlnwJJgBYK1WDI2KHeCLi46YY0mTOebwg+58l/lj+A3EerwC0aMyTB/yLaamjkCRRDVupCeA==",
+    "Microsoft.AspNetCore.JsonPatch/7.0.10": {
+      "sha512": "ZLt5XeTIQhv6yiFa+JdnyxokaQOi3UCV7nVOs8iTrjVvUZW0tYZl0V33ewXr/upFaL2bg5o8F6q2bjwrsbtoaw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.jsonpatch/7.0.5",
+      "path": "microsoft.aspnetcore.jsonpatch/7.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2642,14 +2606,14 @@
         "lib/net7.0/Microsoft.AspNetCore.JsonPatch.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
-        "microsoft.aspnetcore.jsonpatch.7.0.5.nupkg.sha512",
+        "microsoft.aspnetcore.jsonpatch.7.0.10.nupkg.sha512",
         "microsoft.aspnetcore.jsonpatch.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.5": {
-      "sha512": "zOhqXibiA14gy0rFkvvSp0BYnz3lsZ82R9vXJ3H+KCz+TXWIjP6wuqwc97bc00ppCB2oK4jQbii+q9phv18WAg==",
+    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.10": {
+      "sha512": "gw7EIk781pkA1msOgMz41vJOLbEAHUywtXGj/TydY2c+NvNJxl/m3UMTN/nYv26g4Q2SmU+fxxjNKBFQ8/2rzw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/7.0.5",
+      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/7.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2657,7 +2621,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net7.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll",
         "lib/net7.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.xml",
-        "microsoft.aspnetcore.mvc.newtonsoftjson.7.0.5.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.newtonsoftjson.7.0.10.nupkg.sha512",
         "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
@@ -2832,23 +2796,23 @@
         "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll"
       ]
     },
-    "Microsoft.Data.Sqlite/7.0.10": {
-      "sha512": "Ajn0QXUDNKHTXhSUbGLyoetmcEyqx66ScStWBuK4Q/EOvpW9bPNCItSSFX6VhbwzIlgDrQRPNkIjjNEd5JXj0Q==",
+    "Microsoft.Data.Sqlite/7.0.12": {
+      "sha512": "xDe4lzEJm5bl4aEq6SmLBhgYPgh5GgkGzGaw9PGGajfqMAR7TCk1RkzsFb1iAYtetFHKZmQNGkR2EWKJSZTGSw==",
       "type": "package",
-      "path": "microsoft.data.sqlite/7.0.10",
+      "path": "microsoft.data.sqlite/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/_._",
-        "microsoft.data.sqlite.7.0.10.nupkg.sha512",
+        "microsoft.data.sqlite.7.0.12.nupkg.sha512",
         "microsoft.data.sqlite.nuspec"
       ]
     },
-    "Microsoft.Data.Sqlite.Core/7.0.10": {
-      "sha512": "SA6LOen490YTforjaNfVDClYpwiG3LmHJM8objq6KwIIFP0fq9Eulhbu6zBl6AduMefQqUA3pllrFFVQpwPoqw==",
+    "Microsoft.Data.Sqlite.Core/7.0.12": {
+      "sha512": "Y4nEJU7FKYW187VGN0yc71vikqjVhWvpxLkN1R340ONFNXyyFGjYlV3vnnyeGFrxQFBa7N4zJGhZfTFBSduamg==",
       "type": "package",
-      "path": "microsoft.data.sqlite.core/7.0.10",
+      "path": "microsoft.data.sqlite.core/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2857,14 +2821,14 @@
         "lib/net6.0/Microsoft.Data.Sqlite.xml",
         "lib/netstandard2.0/Microsoft.Data.Sqlite.dll",
         "lib/netstandard2.0/Microsoft.Data.Sqlite.xml",
-        "microsoft.data.sqlite.core.7.0.10.nupkg.sha512",
+        "microsoft.data.sqlite.core.7.0.12.nupkg.sha512",
         "microsoft.data.sqlite.core.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore/7.0.10": {
-      "sha512": "24NbXJqJ/x8u88/agqeb1pLdAF9+9StDLA36+P/3g5xsJPOaB2GxXn7epR8dWpZTgHsNZ7cvBMxBgfFmF+xZlg==",
+    "Microsoft.EntityFrameworkCore/7.0.12": {
+      "sha512": "HRge/bJ5SKMNeqybC4NnRwWZn69QBjVVoVmwhmJ8xgQ50Ye+jTOOf2mef/y4Lrq1HUeMg8cu+3JeFdnp+Y8skA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/7.0.10",
+      "path": "microsoft.entityframeworkcore/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2872,42 +2836,42 @@
         "buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props",
         "lib/net6.0/Microsoft.EntityFrameworkCore.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.7.0.12.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/7.0.10": {
-      "sha512": "Z/lDWmGLiT9uNQrp6UXTKZxofSmAKQCiKOz98FDscTbfAGgBXE3DTTqRsPMc8HFIVVSNANSiFRz3JyLg07HN9Q==",
+    "Microsoft.EntityFrameworkCore.Abstractions/7.0.12": {
+      "sha512": "GDlY3DzUbpagqb0683NUM2RK9eJFjTfmlLJd5YtvzBf8T4dwanIOSjd2vN7dXJihyZ0JlYaCetyHgxzbrxiUOw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/7.0.10",
+      "path": "microsoft.entityframeworkcore.abstractions/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.7.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.7.0.12.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/7.0.10": {
-      "sha512": "+8NVNpyJTzW6nNh/7RGfldf+mbeboVcn+X1tD8kMBCEJswuy3RqM/qecEEfOfTcWLliZExPMaHwOwtHO6RMpdA==",
+    "Microsoft.EntityFrameworkCore.Analyzers/7.0.12": {
+      "sha512": "feFe61uKUNoHJfo9tnO65BTzcpWEYIr34xWikhYgZl5c9RiiUJLuCoTqoGc9fuuKy+xk9aUa1NwgDGMC4KmBig==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/7.0.10",
+      "path": "microsoft.entityframeworkcore.analyzers/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.analyzers.7.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.7.0.12.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/7.0.10": {
-      "sha512": "ZDdJ2aAE529A1zd3sEvszADRCiJmlOKxc0WlhS+NIhSs68NESAApPZL4uHXrIk0vb7SBRnNPYPfOhASWf9dahg==",
+    "Microsoft.EntityFrameworkCore.Design/7.0.12": {
+      "sha512": "5UoOLj+qJGkEoL379wi1cSq1bBCCZQZRO5w/wE89ZakQT6qx8juAlJLg4fFwfrg0tYWP12iUAholwcuDM38s7g==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/7.0.10",
+      "path": "microsoft.entityframeworkcore.design/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2915,49 +2879,49 @@
         "build/net6.0/Microsoft.EntityFrameworkCore.Design.props",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.7.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.7.0.12.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational/7.0.10": {
-      "sha512": "PO2QB2Du+pW210UHmepYR12bk+ZOZJCiNkA7zEAxWs+vzvrRAMsUPlDlfgX2LXE7NBsnb0uvZp7a1/qqKf3fRQ==",
+    "Microsoft.EntityFrameworkCore.Relational/7.0.12": {
+      "sha512": "apLzFyjM3s/voBiaMCJPwIOk5SxA1N6GmSbhqthfbUDn8mX+kxZl4RXNdaoBLzPKfUg4EoqCtt0YON/g9YXruQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/7.0.10",
+      "path": "microsoft.entityframeworkcore.relational/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.7.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.7.0.12.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.SqlServer/7.0.10": {
-      "sha512": "qRMzze1QbKa2vhlhjTxwjhJUMCI4qVDFWQCRq9Pdgf9mC+xLz0ZT/4ALEa0oZRicGzPZAqIIhKrHNAjgD4GsAQ==",
+    "Microsoft.EntityFrameworkCore.SqlServer/7.0.12": {
+      "sha512": "jwh9C/RzCZPTYNL5YOvxUJDfzRtrpbWl5qLWYRBxeYTKDRRH9n2vWCV+s2URGfOKCufZEx1wrlFSEZ2TJPb4Gw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlserver/7.0.10",
+      "path": "microsoft.entityframeworkcore.sqlserver/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
-        "microsoft.entityframeworkcore.sqlserver.7.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlserver.7.0.12.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/7.0.10": {
-      "sha512": "+ZctjoxaO3ZOxZGbnwjsycBbFmwcKiwbvoaIbaE4k693rYGo42svOVV+BAt+QbddkBnaAmikp8iWeus33Qj5mw==",
+    "Microsoft.EntityFrameworkCore.Tools/7.0.12": {
+      "sha512": "4ZW43BJzV5aY8rkrSxhej1xiiDr1dLfFl/MitpHn4a5QJpQqctJ0kl/MF1U3CAIKnkeC4RaC9ZjJjODDbHtdeQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/7.0.10",
+      "path": "microsoft.entityframeworkcore.tools/7.0.12",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/_._",
-        "microsoft.entityframeworkcore.tools.7.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.7.0.12.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PS2.psd1",
         "tools/EntityFrameworkCore.PS2.psm1",
@@ -3249,10 +3213,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.10": {
-      "sha512": "Pm+FUjNfeSJWnFhb+w4TeOv3b4JzqPgQyk5g8p4gJlWqhF9BaLlGFI7kK/MSUDFtcxvf4OjLdhubQ7C9KavsOg==",
+    "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.12": {
+      "sha512": "bkTFlABQHlgSLYdxHSPlb5LlGbiJnJt95qS52aaYtRFGm3LTaRqhq2A2WStXUecXH85WzaP7HKyyZphxvW2qpg==",
       "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks/7.0.10",
+      "path": "microsoft.extensions.diagnostics.healthchecks/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3264,14 +3228,14 @@
         "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "microsoft.extensions.diagnostics.healthchecks.7.0.10.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.7.0.12.nupkg.sha512",
         "microsoft.extensions.diagnostics.healthchecks.nuspec"
       ]
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.10": {
-      "sha512": "1hgZxNv/VAdkfW0ML4qwkqJJH7WB3cMad12b/bkURiw8fPgJN4YWY/Bg+KvHGLBKnPAHNMwtbKbN2gz+/ZuJew==",
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.12": {
+      "sha512": "BRGQqLf22sQndpgJcaMcqdiGxOVY4H/pjnZncU3/mUDljsaIbicNGFEcujI2o5y8Yz0jrIrtUIbrWpgfSBhy7g==",
       "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.10",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3283,14 +3247,14 @@
         "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
-        "microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.10.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.12.nupkg.sha512",
         "microsoft.extensions.diagnostics.healthchecks.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/7.0.10": {
-      "sha512": "wvCqzQIsSOAUvgOewlRu8CaIUKu19JJik0VGfWq8BI7QpnCjd6e3vpNh9zdj/6y3my+BaxW/4GE5jDWQ9gD3DA==",
+    "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/7.0.12": {
+      "sha512": "2gEoSrPnJNXa8PwdBWQGBsJpnhgIse7h6Cl/eZLccW0bdUvIYyGvi75KrGJ6S4nIIrpNwEOP8ia0L9csMB/L+g==",
       "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore/7.0.10",
+      "path": "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore/7.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3298,7 +3262,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll",
         "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.xml",
-        "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.7.0.10.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.7.0.12.nupkg.sha512",
         "microsoft.extensions.diagnostics.healthchecks.entityframeworkcore.nuspec"
       ]
     },
@@ -4030,15 +3994,15 @@
         "serilog.enrichers.thread.nuspec"
       ]
     },
-    "Serilog.Extensions/3.4.0": {
-      "sha512": "aI9c2BVa9dH7KeB4Du1yNzrRkIADeYpXmUdZGhrlSmPLil0HdMqc8aUUzkbBPV2MLu9syPDj9SYYgwPxT6FNuw==",
+    "Serilog.Extensions/3.4.2": {
+      "sha512": "cNpfZ76tXJGRi8S5RdN+xmv0ec8D0t1PTsruF2O7Tu1e0aYSZtz+to0CaggPhnkdw3fZYxshlLbWuoyPS58BJg==",
       "type": "package",
-      "path": "serilog.extensions/3.4.0",
+      "path": "serilog.extensions/3.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net7.0/Serilog.Extensions.dll",
-        "serilog.extensions.3.4.0.nupkg.sha512",
+        "serilog.extensions.3.4.2.nupkg.sha512",
         "serilog.extensions.nuspec",
         "serilog.png"
       ]
@@ -4126,10 +4090,10 @@
         "serilog.formatting.compact.nuspec"
       ]
     },
-    "Serilog.Settings.Configuration/7.0.0": {
-      "sha512": "MlabSn74uXAGKNv9WWDdGejmsr7cKhsfi98ZtdeK119s4lTLp+hakBtnPm8OvXNUvtXYs2ijXKA0tIy4IMnjWQ==",
+    "Serilog.Settings.Configuration/7.0.1": {
+      "sha512": "FpUWtc0YUQvCfrKRI73KbmpWK3RvWTQr9gMDfTPEtmVI6f7KkY8Egj6r1BQA1/4oyTjxRbTn5yKX+2+zaWTwrg==",
       "type": "package",
-      "path": "serilog.settings.configuration/7.0.0",
+      "path": "serilog.settings.configuration/7.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4142,7 +4106,7 @@
         "lib/net7.0/Serilog.Settings.Configuration.xml",
         "lib/netstandard2.0/Serilog.Settings.Configuration.dll",
         "lib/netstandard2.0/Serilog.Settings.Configuration.xml",
-        "serilog.settings.configuration.7.0.0.nupkg.sha512",
+        "serilog.settings.configuration.7.0.1.nupkg.sha512",
         "serilog.settings.configuration.nuspec"
       ]
     },
@@ -4235,28 +4199,6 @@
         "serilog.sinks.file.nuspec"
       ]
     },
-    "Serilog.Sinks.PeriodicBatching/3.1.0": {
-      "sha512": "NDWR7m3PalVlGEq3rzoktrXikjFMLmpwF0HI4sowo8YDdU+gqPlTHlDQiOGxHfB0sTfjPA9JjA7ctKG9zqjGkw==",
-      "type": "package",
-      "path": "serilog.sinks.periodicbatching/3.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "lib/net45/Serilog.Sinks.PeriodicBatching.dll",
-        "lib/net45/Serilog.Sinks.PeriodicBatching.xml",
-        "lib/netstandard1.1/Serilog.Sinks.PeriodicBatching.dll",
-        "lib/netstandard1.1/Serilog.Sinks.PeriodicBatching.xml",
-        "lib/netstandard1.2/Serilog.Sinks.PeriodicBatching.dll",
-        "lib/netstandard1.2/Serilog.Sinks.PeriodicBatching.xml",
-        "lib/netstandard2.0/Serilog.Sinks.PeriodicBatching.dll",
-        "lib/netstandard2.0/Serilog.Sinks.PeriodicBatching.xml",
-        "lib/netstandard2.1/Serilog.Sinks.PeriodicBatching.dll",
-        "lib/netstandard2.1/Serilog.Sinks.PeriodicBatching.xml",
-        "serilog.sinks.periodicbatching.3.1.0.nupkg.sha512",
-        "serilog.sinks.periodicbatching.nuspec"
-      ]
-    },
     "Serilog.Sinks.RollingFile/3.3.0": {
       "sha512": "2lT5X1r3GH4P0bRWJfhA7etGl8Q2Ipw9AACvtAHWRUSpYZ42NGVyHoVs2ALBZ/cAkkS+tA4jl80Zie144eLQPg==",
       "type": "package",
@@ -4270,30 +4212,6 @@
         "lib/netstandard1.3/Serilog.Sinks.RollingFile.xml",
         "serilog.sinks.rollingfile.3.3.0.nupkg.sha512",
         "serilog.sinks.rollingfile.nuspec"
-      ]
-    },
-    "Serilog.Sinks.Seq/5.2.2": {
-      "sha512": "1Csmo5ua7NKUe0yXUx+zsRefjAniPWcXFhUXxXG8pwo0iMiw2gjn9SOkgYnnxbgWqmlGv236w0N/dHc2v5XwMg==",
-      "type": "package",
-      "path": "serilog.sinks.seq/5.2.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "lib/net45/Serilog.Sinks.Seq.dll",
-        "lib/net45/Serilog.Sinks.Seq.xml",
-        "lib/net5.0/Serilog.Sinks.Seq.dll",
-        "lib/net5.0/Serilog.Sinks.Seq.xml",
-        "lib/netcoreapp3.1/Serilog.Sinks.Seq.dll",
-        "lib/netcoreapp3.1/Serilog.Sinks.Seq.xml",
-        "lib/netstandard1.1/Serilog.Sinks.Seq.dll",
-        "lib/netstandard1.1/Serilog.Sinks.Seq.xml",
-        "lib/netstandard1.3/Serilog.Sinks.Seq.dll",
-        "lib/netstandard1.3/Serilog.Sinks.Seq.xml",
-        "lib/netstandard2.0/Serilog.Sinks.Seq.dll",
-        "lib/netstandard2.0/Serilog.Sinks.Seq.xml",
-        "serilog.sinks.seq.5.2.2.nupkg.sha512",
-        "serilog.sinks.seq.nuspec"
       ]
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.4": {
@@ -7171,21 +7089,21 @@
     "net7.0": [
       "CsvHelper >= 30.0.1",
       "Microsoft.Data.SqlClient >= 5.1.1",
-      "Microsoft.Data.Sqlite >= 7.0.10",
-      "Microsoft.Data.Sqlite.Core >= 7.0.10",
-      "Microsoft.EntityFrameworkCore >= 7.0.10",
-      "Microsoft.EntityFrameworkCore.Abstractions >= 7.0.10",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.10",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.10",
-      "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore >= 7.0.10",
+      "Microsoft.Data.Sqlite >= 7.0.12",
+      "Microsoft.Data.Sqlite.Core >= 7.0.12",
+      "Microsoft.EntityFrameworkCore >= 7.0.12",
+      "Microsoft.EntityFrameworkCore.Abstractions >= 7.0.12",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.12",
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.12",
+      "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore >= 7.0.12",
       "MySql.Data >= 8.1.0",
       "Newtonsoft.Json >= 13.0.3",
       "Serilog >= 3.0.1",
-      "Serilog.Extensions >= 3.4.0",
+      "Serilog.Extensions >= 3.4.2",
       "Serilog.Extensions.Hosting >= 7.0.0",
       "Serilog.Extensions.Logging >= 7.0.0",
       "Serilog.Extensions.Logging.File >= 3.0.0",
-      "Serilog.Settings.Configuration >= 7.0.0",
+      "Serilog.Settings.Configuration >= 7.0.1",
       "Serilog.Sinks.Console >= 4.1.0",
       "Serilog.Sinks.Debug >= 2.0.0",
       "Serilog.Sinks.File >= 5.0.0",
@@ -7243,33 +7161,33 @@
           },
           "Microsoft.Data.Sqlite": {
             "target": "Package",
-            "version": "[7.0.10, )"
+            "version": "[7.0.12, )"
           },
           "Microsoft.Data.Sqlite.Core": {
             "target": "Package",
-            "version": "[7.0.10, )"
+            "version": "[7.0.12, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[7.0.10, )"
+            "version": "[7.0.12, )"
           },
           "Microsoft.EntityFrameworkCore.Abstractions": {
             "target": "Package",
-            "version": "[7.0.10, )"
+            "version": "[7.0.12, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
-            "version": "[7.0.10, )"
+            "version": "[7.0.12, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[7.0.10, )"
+            "version": "[7.0.12, )"
           },
           "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[7.0.10, )"
+            "version": "[7.0.12, )"
           },
           "MySql.Data": {
             "target": "Package",
@@ -7285,7 +7203,7 @@
           },
           "Serilog.Extensions": {
             "target": "Package",
-            "version": "[3.4.0, )"
+            "version": "[3.4.2, )"
           },
           "Serilog.Extensions.Hosting": {
             "target": "Package",
@@ -7301,7 +7219,7 @@
           },
           "Serilog.Settings.Configuration": {
             "target": "Package",
-            "version": "[7.0.0, )"
+            "version": "[7.0.1, )"
           },
           "Serilog.Sinks.Console": {
             "target": "Package",
@@ -7348,7 +7266,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

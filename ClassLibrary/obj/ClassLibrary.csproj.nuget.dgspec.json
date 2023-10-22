@@ -49,33 +49,33 @@
             },
             "Microsoft.Data.Sqlite": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.12, )"
             },
             "Microsoft.Data.Sqlite.Core": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.12, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Abstractions": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.12, )"
             },
             "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.12, )"
             },
             "MySql.Data": {
               "target": "Package",
@@ -91,7 +91,7 @@
             },
             "Serilog.Extensions": {
               "target": "Package",
-              "version": "[3.4.0, )"
+              "version": "[3.4.2, )"
             },
             "Serilog.Extensions.Hosting": {
               "target": "Package",
@@ -107,7 +107,7 @@
             },
             "Serilog.Settings.Configuration": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.0.1, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",
@@ -154,7 +154,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

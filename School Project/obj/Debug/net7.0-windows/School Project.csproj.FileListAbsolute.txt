@@ -1,37 +1,3 @@
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.AssemblyReference.cache
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.ClassFolder.MyChildForm.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.ControleGuiaTransparente.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.UC_About.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.CoursesSearch.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineAdd.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineEdit.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormAbout.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormButtons1.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.InitialWinForm.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.MainWinForm.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.CopyOfDisciplineAdd.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.EditarCliente.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.FormAbertura.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.FormAdicionarNovoClt.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.FormCliente.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassAdd.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassEdit.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassSearch.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.ChartsWinForm.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.ChartsWinForm1.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.StudentDiscipline.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentAdd.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentEdit.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentSearch.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.TeachersForms.TeacherAdd.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.TeachersForms.TeacherEdit.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.TeachersForms.TeacherSearch.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.Properties.Resources.resources
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.GenerateResource.cache
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.GeneratedMSBuildEditorConfig.editorconfig
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.AssemblyInfoInputs.cache
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.AssemblyInfo.cs
-C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.CoreCompileInputs.cache
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\School Project.exe
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\School Project.dll.config
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\School Project.deps.json
@@ -100,9 +66,7 @@ C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\Serilog.Sinks.As
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\Serilog.Sinks.Console.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\Serilog.Sinks.Debug.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\Serilog.Sinks.File.dll
-C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\Serilog.Sinks.PeriodicBatching.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\Serilog.Sinks.RollingFile.dll
-C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\Serilog.Sinks.Seq.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\SQLitePCLRaw.batteries_v2.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\SQLitePCLRaw.core.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -149,6 +113,40 @@ C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\runtimes\win-x86
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.dll
 C:\repos\School-Project\School Project\bin\Debug\net7.0-windows\ClassLibrary.pdb
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.AssemblyReference.cache
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.ClassFolder.MyChildForm.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.ControleGuiaTransparente.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.UControl.UC_About.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.CoursesSearch.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineAdd.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.CoursesForms.DisciplineEdit.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormAbout.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.FormButtons1.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.InitialWinForm.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.InitialForms.MainWinForm.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.CopyOfDisciplineAdd.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.EditarCliente.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.FormAbertura.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.FormAdicionarNovoClt.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.JoelForms.FormCliente.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassAdd.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassEdit.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.SchoolClassesForms.SchoolClassSearch.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.ChartsWinForm.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.ChartsWinForm1.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StatisticsForms.StudentDiscipline.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentAdd.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentEdit.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.StudentsForms.StudentSearch.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.TeachersForms.TeacherAdd.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.TeachersForms.TeacherEdit.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.WForms.TeachersForms.TeacherSearch.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School_Project.Properties.Resources.resources
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.GenerateResource.cache
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.AssemblyInfoInputs.cache
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.AssemblyInfo.cs
+C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.CoreCompileInputs.cache
 C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.csproj.CopyComplete
 C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\School Project.dll
 C:\repos\School-Project\School Project\obj\Debug\net7.0-windows\refint\School Project.dll
